@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="sai"></ul>
+    <script>
+    var person={
+        name:"Raju",
+        age:22,
+        city:"chittoor",
+        phone:6301400247,
+    }
+
+    person.email="Raju@gmail.com";
+    person["password"]="THELIYADHU";
+
+    console.log(person);
+
+    document.getElementById("sai").innerHTML=
+    "<br> name:"+person.name+
+    "<br>age:"+person.age+
+    "<br>city:"+person.city+
+    "<br>phone:"+person.phone+
+    "<br>emil:"+person.email+
+    "<br>password:"+person.password;
+
+    document.getElementById("sai").style.color="red"
+
+    </script>
+</body>
+</html>

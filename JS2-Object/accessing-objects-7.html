@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var studentDetails={
+            name: "Srividya",
+            house:"Santha Sai towers",
+            flatNo: 204,
+            state: "Hyderabad",
+            village: "Nijampet",
+            nearby: "Gayathri Gardens",
+            pincode: 500090,
+            phone: 94820454,
+        };
+        var {name, house, flatNo, state, village, nearby, pincode, phone} = studentDetails;
+        document.write(
+            name + "<br>" +
+            house + "<br>" +
+            flatNo + "<br>" +
+            state + "<br>" +
+            village + "<br>" +
+            nearby + "<br>" +
+            pincode + "<br>" +
+            phone
+        );
+        console.log(studentDetails)
+    </script>
+</body>
+</html>

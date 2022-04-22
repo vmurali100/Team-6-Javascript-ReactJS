@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var car ={
+            name: "Innvoa Crysta",
+            seates: 7,
+            engine: "2393 cc",
+            bootSpace: 300,           
+            colour: "Super White",
+            price: "18.63 lakh",
+            modelNo: "2.4 G",
+        };
+        var { name, seates, engine, bootSpace, colour, price, modelNo} = car;
+        document.write(
+            name + "<br>" +
+            seates + "<br>" +
+            engine + "<br>" +
+            bootSpace + "<br>" +
+            colour + "<br>" +
+            price + "<br>" +
+            modelNo
+        );
+        console.log(car);
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <div id="demo"></div>
+        <script>
+            var Frienddetails={
+                name:"Supraja",
+                age:40,
+                Eyecolor:"blue",
+                city:"chittor",
+                pin:6326003,
+                email:"supraja40@gmail.com",
+            }
+            Frienddetails.village="Paradarami"
+            Frienddetails["State"]="Tamilnadu"
+            document.write(Frienddetails.name+"<br>"+Frienddetails.age+"<br>"+Frienddetails.Eyecolor+"<br>"+Frienddetails.city+"<br>"+Frienddetails.pin+"<br>"+Frienddetails.email+"<br>"+Frienddetails.village+"<br>"+Frienddetails.State);
+            document.getElementById("demo").innerHTML=Frienddetails.email;
+            console.log(Frienddetails);
+        </script>
+    </center>
+</body>
+</html>

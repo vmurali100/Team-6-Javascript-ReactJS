@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var bike={
+            model:"splender",
+            color:"black",
+            bikedetails:{
+                  speed:"92km/h",
+                  tankcapacity:"10L",
+            },
+            mybike:function(){
+                console.log(this.model+" "+this.color)
+                console.log(this.bikedetails.speed+" "+this.bikedetails.tankcapacity)
+            }
+        }
+        bike.mybike()
+        // function mybike(){
+        //     console.log(bike.model+" "+bike.color)
+        // }
+        // mybike()
+    </script>
+</body>
+</html>

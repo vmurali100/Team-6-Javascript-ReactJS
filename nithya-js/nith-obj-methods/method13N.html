@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var mobile={
+            devicename:"redmi",
+            version:"android",
+            mobiledetails:{
+                  RAM:"4GB",
+                  storage:"16GB"
+            },
+          mymobile:function(){
+              console.log(this.devicename+" "+this.version)
+              console.log(this.mobiledetails.RAM+" "+this.mobiledetails.storage)
+          }
+        }
+        mobile.mymobile()
+        // function mymobile(){
+        //     console.log(mobile.devicename+" "+mobile.version)
+        // }
+        // mymobile()
+    </script>
+</body>
+</html>

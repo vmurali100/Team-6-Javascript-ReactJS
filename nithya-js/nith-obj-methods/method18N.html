@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nation= {
+            nationalFlower:"lotus",
+            nationalAnimal:"Lion",
+            nationdetails:{
+                    nationalbird:"peacock",
+                    nationalFruit:"mango",
+                    nationaltree:"baniantree"
+            },
+            ournation:function(){
+                    console.log(this.nationalFlower+" "+this.nationalAnimal)
+                    console.log(this.nationdetails.nationalbird+" "+this.nationdetails.nationalFruit+" "+nation.nationdetails.nationaltree)
+            }
+        }
+        nation.ournation()
+        // function ournation(){
+        //     console.log(nation.nationalFlower+" "+nation.nationalAnimal)
+        // }
+        // ournation()
+    </script>
+</body>
+</html>

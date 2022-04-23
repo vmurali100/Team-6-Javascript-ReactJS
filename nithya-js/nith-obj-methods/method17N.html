@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var Friend={
+            name:"sandhya",
+            age:"21",
+            FriendDetails:{
+                  city:"chittoor",
+                  maritalstatus:"unmarried",
+                  mail:"sandhya@gmail.com"
+            },
+           myFriend:function(){
+               console.log(this.name+" "+this.age)
+               console.log(this.FriendDetails.city+" "+this.FriendDetails.maritalstatus+" "+this.FriendDetails.mail)
+           }
+        }
+        Friend.myFriend()
+        // function myfriend(){
+        //     console.log(Friend.name+" "+Friend.age)
+        // }
+        // myfriend()
+    </script>
+</body>
+</html>

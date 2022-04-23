@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person={
+            name:"jeeva",
+            age:21,
+            personaldetails:{
+                        city:"chittoor",
+                        pin:632603,
+                        mail:"jeeva@gmail.com",
+            },
+            mypersonal:function(){
+                console.log(this.name+" "+this.age)
+                console.log(this.personaldetails.city+" "+this.personaldetails.pin+" "+this.personaldetails.mail)
+            }
+        }
+        person.mypersonal()
+        // function mypersonal(){
+        //     console.log(person.name+" "+person.age)
+        // }
+        // mypersonal()
+    </script>
+</body>
+</html>

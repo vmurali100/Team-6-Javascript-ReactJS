@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var book={
+          name:"fearNotBeStrong",
+           author:"swami tathagatanananda",
+           bookdetails:{
+                  publisher:"Advaita Ashram",
+                  genre:"motivation",
+                  pages:58,
+           },
+           mybook:function(){
+               console.log(this.name+" "+this.author)
+               console.log(this.bookdetails.publisher+" "+this.bookdetails.genre+" "+this.bookdetails.pages)
+           }
+        }
+        book.mybook()
+        // function mybook(){
+        //     console.log(book.name+" "+book.author);
+        // }
+        // mybook()
+    </script>
+</body>
+</html>

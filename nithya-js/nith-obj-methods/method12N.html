@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var movie={
+            moviename:"bahubali",
+            hero:"prabhas",
+            moviedetails:{
+                      director:"rajamouli",
+                      heroin:"anushka",
+                      year:2018,
+            },
+            favmovie:function(){
+                console.log(this.moviename+" "+this.hero)
+                console.log(this.moviedetails.director+" "+this.moviedetails.heroin+" "+this.moviedetails.year)
+            }
+        }
+        movie.favmovie()
+        // function favmovie(){
+        //     console.log(movie.moviename+" "+movie.hero)
+        // }
+        // favmovie()
+    </script>
+</body>
+</html>

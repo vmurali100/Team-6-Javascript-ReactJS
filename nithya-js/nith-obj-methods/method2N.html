@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var house={
+            bricks:1000,
+            sand:"1load",
+            things:{
+                cement:"100 bags",
+                water:"1 tank",
+                paint:"50ltrs",
+            },
+            myhouse:function(){
+                console.log(this.bricks+" "+this.sand)
+                console.log(this.things.cement+" "+this.things.water+" "+this.things.paint)
+            }
+        }
+        house.myhouse()
+        // function myhouse(){
+        //     console.log(house.bricks+" "+house.sand)
+        // }
+        // myhouse()
+    </script>
+</body>
+</html>

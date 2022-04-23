@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var makeup = {
+           color:"combo 19",
+           type:"shimmering",
+           item:"liquid, pencil",
+           brand:"bluefusion",
+           skintone:"fair",
+           skintype:"normal",
+           age:"adult"
+       };
+       function makeupdetails(){
+            console.log(makeup.color+" "+makeup.type+" "+makeup.item+" "+makeup.brand+" "+makeup.skintone+" "+
+            makeup.skintype+" "+makeup.age)
+        };
+        makeupdetails()
+        for (y in makeup) {
+            document.write(y + " : " + makeup[y] +"<br>")
+        }
+        console.log(makeup)
+    </script>
+</body>
+</html>

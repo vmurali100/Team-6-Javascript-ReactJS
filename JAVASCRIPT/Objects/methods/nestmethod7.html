@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var car = {
+            name:"Audi A4",
+            productionyear:1994,
+            sales:"5,000,000",
+            rating:5,
+            salesoffice:{
+                city:"chennai",
+                place:"hyd"
+            },
+            bikes:function(){
+                console.log(this)
+                console.log(this.name +" "+this.productionyear +" "+this.sales+" "+this.rating);
+                console.log(this.salesoffice.city +" "+this.salesoffice.place)  
+            }
+        }
+        car.bikes()
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var gold = {
+            atomic:79,
+            group:"group 11",
+            period:"period 6",
+            block:"d-block",
+            phase:"solid",
+            location:{
+                city:"chennai",
+                pin:3878036
+           },
+           copper:function(){
+               console.log(this)
+               console.log(this.atomic +" "+this.group +" "+this.period +" "+this.block +" "+this.phase);
+               console.log(this.location.city +" "+this.location.pin)  
+           }
+        }
+        gold.copper()
+    </script>
+</body>
+</html>

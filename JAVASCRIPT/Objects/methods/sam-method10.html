@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var google = {
+            formerly:"google",
+            year:"1998-2017",
+            type:"subsidiary(LLC)",
+            industry:"Artificial intelligence advertising cloud computing computer software internet",
+            founded:"september 4, 1998",
+            ago:"23 years",
+        };
+        function goodetails(){
+            console.log(google.formerly+" "+google.year+" "+google.type+" "+google.industry+" "+google.founded+" "+
+            google.age)
+        };
+        goodetails()
+        for (y in google) {
+            document.write(y + " : " + google[y] +"<br>")
+        }
+        console.log(google)
+        
+    </script>
+</body>
+</html>

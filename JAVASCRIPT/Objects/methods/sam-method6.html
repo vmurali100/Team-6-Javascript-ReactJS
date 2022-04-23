@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var movie = {
+           name:"bhahubali 2",
+           year:2017,
+           rating:3.6,
+           budget:"250 crore",
+           language:"telugu, tamil",
+           director:"Rajamouli",
+           storyby:"Vijayendra Prasad"
+       };
+       function moviedetails(){
+            console.log(movie.name+" "+movie.year+" "+movie.rating+" "+movie.budget+" "+movie.language+" "+
+            movie.director+" "+movie.storyby)
+        };
+        moviedetails()
+        for (y in movie) {
+            document.write(y + " : " + movie[y] +"<br>")
+        }
+        console.log(movie)
+   </script>
+</body>
+</html>

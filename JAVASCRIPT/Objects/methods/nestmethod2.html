@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var biscuit = {
+            name:"darkfantasy",
+            cost:20,
+            color:"brown",
+            packing:{
+                year:2022,
+                end:2023,
+                months:"6 months"
+            },
+            biscuitname:function(){
+                console.log(this)
+                console.log(this.name +" "+this.cost +" "+this.color);
+                console.log(this.packing.year +" "+this.packing.end +" "+this.packing.months)
+            }
+        }
+        biscuit.biscuitname()
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var nonveg = {
+            mutton:"1 kg",
+            fish:"2 kg",
+            chicken:"1 kg",
+            price:"1000 rs",
+            location:{
+                city:"chittoor",
+                area:"santhapet,ram nagar colony"
+            },
+            nv:function(){
+                console.log(this)
+                console.log(this.mutton +" "+this.fish +" "+this.chicken+" "+this.price);
+                console.log(this.location.city +" "+this.location.area)  
+            }
+        }
+        nonveg.nv()
+    </script>
+</body>
+</html>

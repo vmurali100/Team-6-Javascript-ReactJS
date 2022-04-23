@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var person = {
+            fname:"m",
+            lname:"padmaja",
+            fathername:"DMS Reddy",
+            mothername:"Manjula",
+            location:{
+                street:"ration street",
+                colony:"obanapalli colony",
+                city:"chittoor"
+            },
+            human:function(){
+                console.log(this)
+                console.log(this.fname +" "+this.lname +" "+this.fathername+" "+this.mothername);
+                console.log(this.location.street +" "+this.location.colony +" "+this.location.city)  
+            }
+        }
+        person.human()
+    </script>
+</body>
+</html>

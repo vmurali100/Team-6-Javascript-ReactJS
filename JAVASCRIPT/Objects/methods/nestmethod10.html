@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var friends = {
+            fname:"B",
+            lname:"Neeraja",
+            age:24,
+            mobile:84578374893,
+            address:{
+                door:"31/A",
+                pin:503983,
+                city:"Hyd"
+            },
+            frnd:function(){
+                console.log(this)
+                console.log(this.fname +" "+this.lname +" "+this.age +" "+this.mobile);
+                console.log(this.address.door +" "+this.address.pin +" "+this.address.city)  
+            }
+        }
+        friends.frnd()
+    </script>
+</body>
+</html>

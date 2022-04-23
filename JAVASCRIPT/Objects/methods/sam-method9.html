@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var gold = {
+            atomic:79,
+            group:"group 11",
+            period:"period 6",
+            block:"d-block",
+            phase:"solid"
+        };
+        function golddetails(){
+            console.log(gold.atomic+" "+gold.group+" "+gold.period+" "+gold.block+" "+gold.phase)
+        };
+        golddetails()
+        for (y in gold) {
+            document.write(y + " : " + gold[y] +"<br>")
+        }
+        console.log(gold)
+       
+    </script>
+</body>
+</html>

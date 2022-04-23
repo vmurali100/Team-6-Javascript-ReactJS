@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var employee = {
+             name: "neeraja",
+             age: 24,
+             email: "neerajareddy@gmail.com",
+             location: "chennai",
+             company: "Infosis",
+             role: "data analyst",
+             address:{
+                city:"chittoor",
+                state:"AP",
+                country:"India",
+                pin:517004
+             },
+             fullname:function(){
+                console.log(this)
+                console.log(this.name +" "+this.age +" "+this.email +" "+this.location +" "+this.company +" "+this.role);
+                console.log(this.address.city +" "+this.address.state +" "+this.address.country +" "+this.address.pin)
+             }
+         }
+         employee.fullname()
+    </script>
+</body>
+</html>

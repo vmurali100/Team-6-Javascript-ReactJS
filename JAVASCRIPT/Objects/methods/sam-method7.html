@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var vegetables = {
+            carrot:"1 kg",
+            cost:"50 rs",
+            quantity:"low",
+            price:"high"
+        };
+        function vegdetails(){
+            console.log(vegetables.carrot+" "+vegetables.cost+" "+vegetables.quantity+" "+vegetables.price)
+        };
+        vegdetails()
+        for (y in vegetables) {
+            document.write(y + " : " + vegetables[y] +"<br>")
+        }
+        console.log(vegetables)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var book={
+            name:"Human Psychology",
+            ItemWeight:"220 g",
+            rating:"4.5",
+            price:400,
+            bookdetails:{
+                Printlength:"156 pages",
+                Language:"english",
+                Publisher:"Notion Press",
+                Publicationdate:"21 July 2021",},
+
+                hello:function(){
+                    console.log(this)
+                    console.log(this.name+""+this.ItemWeight+""+
+                    this.rating+""+this.price)
+                    console.log(this.bookdetails.Printlength+""+
+                    this.bookdetails.Language+""+
+                    this.bookdetails.Publisher+""+
+                    this.bookdetails.Publicationdate)
+                }
+            }
+        book.hello()
+    </script>
+</body>
+</html>
+
+

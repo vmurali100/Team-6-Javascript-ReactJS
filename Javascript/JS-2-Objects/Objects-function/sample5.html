@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var dress={
+            name:"Harpa",
+            color:"Pink & Orange",
+            Ratings:4.2,
+            price:750,
+            Specifications:{
+                Shape:"A-Line",
+                Neck:"Round Neck",
+                Length:"Midi",
+                PatternType:"Floral",
+                SleeveLength:"Three-Quarter Sleeves",
+                SleeveStyling:"Puff Sleeves",
+                Occasion:"Casual",
+            },
+            dresss:function(){
+                console.log(this.name+""+this.color+""+this.Ratings+""+this.price)
+                console.log(this.Specifications.Shape+""+
+                this.Specifications.Neck+""+
+                this.Specifications.Length+""+
+                this.Specifications.PatternType+""+
+                this.Specifications.SleeveLength+""+
+                this.Specifications.SleeveStyling+""+
+                this.Specifications.Occasion)
+            }
+        }
+        dress.dresss()
+    </script>
+</body>
+</html>

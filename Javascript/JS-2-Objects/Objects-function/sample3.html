@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var veg={
+            Oil:" 1/2 teaspoon",
+            Salt :" taste",
+            Veggies:{
+            Carrot:"1/4 cup",
+            Capsicum:"1/4 cup",
+            RedCapsicum:"1/4 cup chopped",
+            Broccoli:"1/4 cup chopped",
+           },
+           hello:function(){
+               console.log(this.Oil+" "+this.Salt)
+               console.log(this.Veggies.Broccoli+""+
+               this.Veggies.Carrot+""+
+               this.Veggies.Capsicum+""+
+               this.Veggies.RedCapsicum)
+           }
+        }
+        veg.hello()
+    </script>
+</body>
+</html>

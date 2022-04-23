@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var recipe={
+            name:"White Sauce Pasta",
+            PreparationTime: "7 minutes",
+            CookingTime: "15 minutes",
+            Serves: "2 servings",
+           IngredientsforPasta:{
+            PennePasta:"3/4 cup  ",
+            salt:"needed",
+            water:"4 cup",
+           },
+           fullname:function(){
+           console.log(this.name+""+this.PreparationTime+""+
+           this.CookingTime+""+this.Serves)
+           console.log(this.IngredientsforPasta.PennePasta+""+
+           this.IngredientsforPasta.salt+""+
+           this.IngredientsforPasta.water)
+       }
+       }
+      
+        recipe. fullname()
+   </script> 
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var falls={
+            name:"Niagara Falls",
+            Averageflowrate:"85,000 cu ft/s (2,400 m3/s)",
+            Watercourse:"Niagara River",
+            height:"167 ft (51 m)",
+            Numberofdrops: 3,
+            Address:{
+                country:"Canada",
+                city :"Ontario",
+                bridge:" U.S. by the Rainbow Bridge"
+            },
+            fall:function(){
+                console.log(this.name+""+this.Averageflowrate+""+
+                this.Watercourse+""+this.height+""+
+                this.Numberofdrops)
+                console.log(this.Address.country+""+
+                this.Address.city+""+
+                this.Address.bridge) 
+            }
+        }
+            falls.fall()
+    </script>
+</body>
+</html>

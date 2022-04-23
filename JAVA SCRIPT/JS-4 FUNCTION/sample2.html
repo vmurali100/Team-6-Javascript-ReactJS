@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var karnataka = {
+            fname: "bangalore",
+            lname: "green city",
+            vistingplaces: "mysore,coorg,hampi,gokarna,udupi krishna mandir",
+            capital: "bangalore",
+            districts: "31",
+            population: "16.65",
+            bird: "indian roller",
+            flower: "lotus",
+            tree: "sandalwood",
+            address: {
+                postoffice: "bangalore city S.O",
+                pincode: "560002",
+                division: "bangalore west",
+                circle: "karnataka",
+                headoffice: "rajajinagar H.O",
+                contact: "080-22876291",
+            },
+
+
+            fullname: function () {
+                console.log(this.fname + " " + this.lname),
+                    console.log(this.address.postoffice + "," + this.address.pincode + "," + this.address.division + "," + this.address.circle + "," + this.address.headoffice + "," + this.address.contact)
+            }
+        }
+        karnataka.fullname()
+
+        // function fullname(){
+        //     console.log(karnataka.fname+","+karnataka.lname)
+        // }
+        // fullname()
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

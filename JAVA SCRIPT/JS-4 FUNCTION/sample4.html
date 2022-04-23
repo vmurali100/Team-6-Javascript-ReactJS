@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var refrigirator = {
+            fname: "samsung",
+            lname: "double door",
+            price: "25000",
+            modeltype: "5star",
+            location: "tpty",
+            discount: "2500",
+            color: "gray",
+            height: 6.1,
+            address: {
+                doorNo: 16,
+                road: "nethaji",
+                phone: 9963471114,
+                open: 9,
+                close: 10,
+            },
+            fullname: function () {
+                console.log(this.fname + "," + this.lname),
+
+                console.log(this.address.doorNo + "," + this.address.road + "," + this.address.phone + "," + this.address.open + "," + this.address.close)
+            }
+
+        }
+
+
+        refrigirator.fullname()
+
+        // function fullname() {
+        //     console.log(this.refrigirator.fname + "," + this.refrigirator.lname)
+
+        // }
+        // fullname()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

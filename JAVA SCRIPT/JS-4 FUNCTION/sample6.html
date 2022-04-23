@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var water = {
+            fname: "bailley",
+            lname: "parle agro",
+            manufacturing: "india",
+            price: "50",
+            quantity: "1ltr",
+            address: {
+                doorno: "256",
+                road: "chinna road",
+                city: "vijayawada",
+                pincode: "6589852"
+
+            },
+
+            fullname: function () {
+                console.log(this.fname + "," + this.lname),
+                    console.log(this.address.doorno + "," + this.address.road + "," + this.address.city + "," + this.address.pincode)
+
+            }
+
+
+        }
+        water.fullname()
+
+        // function fullname(){
+        //     console.log(water.fname+","+water.lname)
+        // }
+        // fullname()
+    </script>
+</body>
+
+</html>

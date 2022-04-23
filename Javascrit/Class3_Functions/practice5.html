@@ -8,14 +8,17 @@
 </head>
 <body>
     <script>
-        var Book={
-            BookName:"Wings Of Fire",
-            Author:"APJ Abdul kalam",
-            PublicationYear:1999,
+        var TajHotel={
+            TypeofItem:"ChickenBiryani",
+            Price:500,
+            Place:"HYD",
         }
-        Book.Pages=180;
-        Book["Subject"]="Autobiography";
-        console.log(Book)
+        TajHotel.rating=4.7;
+        TajHotel["Homedelivery"]="Yes";
+        var Hotel = function Hotel(){
+            console.log(TajHotel)
+        }
+        Hotel();
     </script>
 </body>
 </html>

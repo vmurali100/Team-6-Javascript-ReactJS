@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var bike={
+            name:"ninjah2",
+            price:3330000,
+            brand:"kawasaki",
+            country:"INDIA",
+            engine:{
+                type:"4 stroke",
+                fuel:"petrol",
+                color:"red"
+
+            },
+               ninja:function(){
+                   console.log(this.name+","+this.price+","+this.brand+","+this.country)
+                   console.log(this.engine.type+","+this.engine.fuel+","+this.engine.color)
+               }
+        }
+        bike.ninja()
+        
+        
+        
+    </script>
+</body>
+</html>

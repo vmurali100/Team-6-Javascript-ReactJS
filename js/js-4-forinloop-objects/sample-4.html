@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-          var car={
-            name:"Ferrari",
-            fuelType:"Petrol",
-            seatingCapacity:4,
-            transmissionType:"Automatic",
-            bootSpace:450,
-            bodyType:"coupe",
-            gearBox:"7 speed",
-            Mileage:"4.0 kmpl",
-            engineDisplacement:6262,
-            price:"4.65 cr",
-            seatingCapacity:4,
+        var car = {
+            name: "Ferrari",
+            fuelType: "Petrol",
+            seatingCapacity: 4,
+            transmissionType: "Automatic",
+            bootSpace: 450,
+            parts: {
+                bodyType: "coupe",
+                gearBox: "7 speed",
+                Mileage: "4.0 kmpl",
+            },
+            parts2: {
+                engineDisplacement: 6262,
+                price: "4.65 cr",
+                seatingCapacity: 4,
+            },
+            feature: function () {
+                console.log(this.name + " " + this.fuelType + " " + this.seatingCapacity + " " + this.transmissionType + " " + this.bootSpace);
+                console.log(this.parts.bodyType + " " + this.parts.gearBox + " " + this.parts.Mileage);
+                console.log(this.parts2.engineDisplacement + " " + this.parts2.price + " " + this.parts2.seatingCapacity)
+
+            }
         }
-        for(a in car){
-            document.write( a + " : " + car[a] + " <br> " );
-            console.log(car)
-        }
+        car.feature()
+        // for(a in car){
+        //     document.write( a + " : " + car[a] + " <br> " );
+        //     console.log(car)
+        // }
     </script>
 </body>
+
 </html>

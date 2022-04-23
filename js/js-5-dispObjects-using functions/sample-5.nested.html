@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var capitals = {
+            andhraPradesh: "Amaravathi",
+            arunachalPradesh: "Itnagar",
+         states:{
+            assam: "Dispur",
+            bihar: "patna",
+            chhattisgarh: "Raipur",
+         },
+           states1:{
+            goa: "Panaji",
+            gujarat: "Gandhinagar",
+            haryana: "Chandigarh",
+            jharkhand: "Ranchi",
+            karnataka: "Bengaluru", 
+           },
+            maharashtra: "Mumbai",
+            manipur: "impal",
+            sikkim: "gangtok",
+            telangana: "Hyderabad",
+        get:function(){
+            console.log(this.andhraPradesh+" "+this.arunachalPradesh);
+            console.log(this.states.assam+" "+this.states.bihar+" "+this.states.chhattisgarh);
+            console.log(this.states1.goa+" "+this.states1.gujarat+" "+this.states1.haryana+" "+this.states1.jharkhand+ " "+ this.states1.karnataka)
+        },
+        }
+        capitals.get()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var biryani = {
+            basmatiRice: "1 cup basmatiRice",
+            chicken: "600 grms chicken",
+            mintLeaves: "1/2 teaspoon mintLeaves",
+            things1:{
+                salt: "as reguired",
+            masala: "1 tablespoon",
+            cardamon: "3 cardamon",
+            clove: 5,
+            },
+            things2:{
+                onions: 2,
+            cuminSeeds: "2 table spoon",
+            gingerGarlic: "3 tablespoons",
+            blackCardamon: 3,
+            },
+            ingrediants:function(){
+                console.log(this.basmatiRice+" "+this.chicken+" "+this.mintLeaves);
+                console.log(this.things1.salt+" "+this.things1.masala+" "+this.things1.cardamon+" "+this.things1.clove);
+                console.log(this.things2.onions+" "+this.things2.cuminSeeds+" "+this.things2.gingerGarlic+" "+this.things2.blackCardamon)
+            }
+        }
+        biryani.ingrediants()
+    </script>
+</body>
+</html>

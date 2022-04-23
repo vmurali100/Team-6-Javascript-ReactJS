@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var speaker = {
+            brand: "sony",
+            connectType: "wireless",
+            features: {
+                speakerSurround: 4.1,
+                speakerType: "multimedia",
+            },
+            sound: function () {
+                console.log(this.brand + " " + this.connectType)
+                console.log(this.features.speakerSurround+" "+this.features.speakerType)
+            }
+        }
+        speaker.sound();
+    </script>
+</body>
+
+</html>

@@ -12,13 +12,21 @@
             director:"s.s.Rajmouli",
             budget:"550 crores INR",
             music:"m.mkeeravani",
+           actor:{
             storyBy:"k.v.vijayaendra prasad",
-            actors:"NTR,Ramcharan"
+            actors:"NTR,Ramcharan",
+           },
+            movie:function(){
+                console.log(this.director+" "+this.budget+" "+this.music);
+                console.log(this.actor.storyBy+" "+this.actor.actors)
+            }
         }
-        for(a in rrr){
-            document.write( a + " : "  + rrr[a] + " <br> " );
-            console.log(rrr)
-        }
+        rrr.movie()
+
+        // for(a in rrr){
+        //     document.write( a + " : "  + rrr[a] + " <br> " );
+        //     console.log(rrr)
+        // }
     </script>
 </body>
 </html>

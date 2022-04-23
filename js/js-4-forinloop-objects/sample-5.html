@@ -12,17 +12,28 @@
             modelName:"f21 pro",
             wirelessCarrier:"unlocked for all carriers",
             brand:"oppo",
+           type1:{
             fornFactor:"bar",
             memoryStorage:"128 gb",
             os:"android 11",
+           },
+           type2:{
             color:"sunset orange",
             modelYear:2022,
             cellularTechnology:"LTE",
+           },
+            phone:function(){
+                console.log(this.modelName+" "+this.wirelessCarrier+" "+this.brand);
+                console.log(this.type1.fornFactor+" "+this.type1.memoryStorage+" "+this.type1.os)
+                console.log(this.type2.color+" "+this.type2.modelYear+" "+this.type2.cellularTechnology)
+            }
         }
-        for(a in oppo){
-            document.write( a + " : " + oppo[a] + " <br> " );
-            console.log(oppo)
-        }
+        oppo.phone()
+
+        // for(a in oppo){
+        //     document.write( a + " : " + oppo[a] + " <br> " );
+        //     console.log(oppo)
+        // }
     </script>
 </body>
 </html>

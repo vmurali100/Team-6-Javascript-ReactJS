@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var student={
-            name:"deepthi",
-            email:"harideepthuboppana@gmail.com",
-            Number:9949940262,
-            village:"akkapalem",
-            city:"tiruvuru",
-            district:"krishna",
-            pincode:521235,
+        var student = {
+            name: "deepthi",
+            email: "harideepthuboppana@gmail.com",
+            Number: 9949940262,
+            type1: {
+                village: "akkapalem",
+                city: "tiruvuru",
+            },
+            type2: {
+                district: "krishna",
+                pincode: 521235,
+            },
+            myDetails: function () {
+                console.log(this.name + " " + this.email + " " + this.Number);
+                console.log(this.type1.village + " " + this.type1.city);
+                console.log(this.type2.district + " " + this.type2.pincode)
+
+            }
         }
-        for(a in student){
-            document.write( a + " : " + student[a] + " <br> " );
-            console.log(student)
-        }
+        student.myDetails()
+        // for(a in student){
+        //     document.write( a + " : " + student[a] + " <br> " );
+        //     console.log(student)
+        // }
     </script>
 </body>
+
 </html>

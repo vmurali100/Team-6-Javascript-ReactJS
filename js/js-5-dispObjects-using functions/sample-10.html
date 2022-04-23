@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var Macbook={
+            name:"mac Book air",
+            brand:"Apple",
+            color:"Gold",
+            os:"MacOs",
+           laptop:{
+            specialFeatur:"Portable",
+            screenSize:"13 inhes",
+            grapgicCard:"integrated",
+           },
+          system:{
+            cpu:"Apple",
+            humanInteraface:"keyboard",
+            specialFeatur:"Portable",
+          },
+            features:function(){
+                console.log(this.name+" "+this.brand+" "+this.color+" "+this.os);
+                console.log(this.laptop.specialFeatur+" "+this.laptop.screenSize+" "+this.laptop.grapgicCard)
+                console.log(this.system.cpu+" "+this.system.humanInteraface+" "+this.system.specialFeatur)
+
+            }
+        }
+        Macbook.features()
+    </script>
+</body>
+</html>

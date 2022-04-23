@@ -12,12 +12,22 @@
             brand:"sony",
             connectType:"wireless",
             speakerSurround:4.1,
-            speakerType:"multimedia",
+            sony:{
+                speakerType:"multimedia",
+            },
+            sound:function(){
+                console.log(this.brand+" "+this.connectType+" "+this.speakerSurround)
+                console.log(this.sony.speakerType)
+
+            }
         }
-        for(a in speaker){
-            document.write( a + " : " + speaker[a] + " <br> " );
-            console.log(speaker)
-        }
+        speaker.sound()
+
+
+        // for(a in speaker){
+        //     document.write( a + " : " + speaker[a] + " <br> " );
+        //     console.log(speaker)
+        // }
     </script>
 </body>
 </html>

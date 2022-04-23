@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-         var Details={
-            name:"Mahitha",
-            age:22,
-            city:"Nellore",
-            education:"MBBS",
-            College:"SVU",
-            state:"andhrapradesh",
-            pincode:521235,
-            districy:"nellore",
+        var Details = {
+            name: "Mahitha",
+            age: 22,
+            city: "Nellore",
+            education: "MBBS",
+            mahitha: {
+                College: "SVU",
+                state: "andhrapradesh",
+                pincode: 521235,
+                districy: "nellore",
+            },
+            friend: function () {
+                console.log(this.name + " " + this.age + " " + this.city + " " + this.education);
+                console.log(this.mahitha.College + " " + this.mahitha.state + " " + this.mahitha.pincode + " " + this.mahitha.districy)
+            }
         }
-        for(a in Details){
-            document.write( a + " : " + Details[a] + " <br> " );
-            console.log(Details)
-        }
+        Details.friend();
+
+        // for(a in Details){
+        //     document.write( a + " : " + Details[a] + " <br> " );
+        //     console.log(Details)
+        // }
     </script>
 </body>
+
 </html>

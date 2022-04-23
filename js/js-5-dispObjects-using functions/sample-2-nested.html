@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var car={
+          Details1:{
+            name:"Ferrari",
+            fuelType:"Petrol",
+            seatingCapacity:4,
+          },
+           Details:{
+            transmissionType:"Automatic",
+            bootSpace:450,
+            bodyType:"coupe",
+            gearBox:"7 speed"
+           },
+           function(){
+               console.log(this.DetailsS);
+               console.log(this.Details1.name+" "+this.Details1.fuelType)
+               console.log(this.Details.transmissionType+" "+this.Details.bootSpace+ " " +this.Details.bodyType+" "+this.Details.gearBox)
+           }
+        }
+        car.function()
+    </script>
+</body>
+</html>

@@ -11,21 +11,18 @@
         var family={
             father:"srinivas",
             mother:"radha",
-           people:{
+           members:{
             sister:"jyothi",
             brother:"vishnu",
             uncle:"srinivas",
            },
-            details:function(){
-                console.log(this.father+" "+this.mother)
-                console.log(this.people.sister+" "+this.people.brother+" "+this.people.uncle)
+            people:function(){
+                console.log(this.father+" "+this.mother);
+                console.log(this.members.sister+" "+this.members.brother+" "+this.members.uncle)
+
             }
         }
-        family.details()
-        // for(a in family){
-        //     document.write(a + " : " + family[a] + " <br> " )
-        //     console.log(family)
-       // }
+        family.people()
     </script>
 </body>
 </html>

@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var hoverboard={
-            brand:"SWAGTRON",
-            color:"blue",
-            itemWeight:"14 pounds",
-            wattage:"400 watta",
-            price:25000,
+        var hoverboard = {
+            brand: "SWAGTRON",
+            color: "blue",
+            slide: {
+                itemWeight: "14 pounds",
+                wattage: "400 watta",
+                price: 25000,
+            },
+            board: function () {
+                console.log(this.brand + " " + this.color);
+                console.log(this.slide.itemWeight + " " + this.slide.wattage + " " + this.slide.price)
+            }
         }
-        for(a in hoverboard){
-            document.write( a + " : " + hoverboard[a] + " <br> " );
-            console.log(hoverboard);
-        }
+        hoverboard.board()
+
+        // for(a in hoverboard){
+        //     document.write( a + " : " + hoverboard[a] + " <br> " );
+        //     console.log(hoverboard);
+        // }
     </script>
 </body>
+
 </html>

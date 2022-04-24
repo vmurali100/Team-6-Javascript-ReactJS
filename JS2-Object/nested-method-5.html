@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var address = {
+            fname: "Latasha",
+            lname: "Wing",
+            phoneNoumbres:{
+                firstNo:8897095427,
+                alternateNo:-9822145114,
+            },
+            nearaddress:{
+                pincode: "500060",
+                city: "Hyderabad",
+                state: "Telangana",
+            },
+            addaddres:function(){
+                console.log(this.fname+" "+this.lname);
+                console.log(this.phoneNoumbres.firstNo+" "+this.phoneNoumbres.alternateNo);
+                console.log(this.nearaddress.pincode+" "+this.nearaddress.city+" "+this.nearaddress.state);
+            }
+        };
+        address.addaddres();
+    </script>
+</body>
+</html>

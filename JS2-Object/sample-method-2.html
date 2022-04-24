@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var student={
+            name: "Srividya",
+            age: 31,
+            mobile: 995553861,
+            city: "Hyderabad",
+            state: "Telangana",
+            pincode: 500090,
+        };
+        function studentDetails(){
+            console.log(student.name+" "+student.age+" "+student.mobile+" "+student.city+" "+
+            student.state+" "+student.pincode)
+        };
+        studentDetails();
+        for (a in student) {
+            document.write(a + " : " + student[a] + "<br>")
+        };
+        console.log(student);
+    </script>
+</body>
+</html>

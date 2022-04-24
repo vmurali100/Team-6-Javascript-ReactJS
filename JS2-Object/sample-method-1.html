@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var person = {
+            fname: "Vidya",
+            lname: "Vasu",
+            email: "vidyachowdary7",
+            city: "Hyderabad",
+            phoneNo: "8897095425"
+        };
+        
+        function persondetails(){
+            console.log(person.fname+" "+person.fname+" "+person.email+" "+person.city+" "+person.phoneNo);
+        };
+        persondetails();
+        for (a in person) {
+            document.write(a + " : " + person[a] + "<br>")
+        };
+        console.log(person);
+    </script>
+</body>
+
+</html>

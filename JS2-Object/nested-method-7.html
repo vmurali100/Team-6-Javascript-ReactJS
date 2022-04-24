@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var studentDetails={
+            name: "Srividya",
+            nearbylocation:{
+                house:"Santha Sai towers",
+            flatNo: 204,
+            state: "Hyderabad",
+            village: "Nijampet",
+            nearby: "Gayathri Gardens",
+            pincode: 500090,
+            phone: 94820454,
+            },
+            details:function(){
+                console.log(this.name)
+                console.log(this.nearbylocation.house+" "+this.nearbylocation.flatNo+" "+this.nearbylocation.state+" "+
+                this.nearbylocation.village+" "+ this.nearbylocation.nearby+" "+this.nearbylocation.pincode+" "+
+                this.nearbylocation.phone);
+            }
+        };
+        studentDetails.details();
+        
+    </script>
+</body>
+</html>

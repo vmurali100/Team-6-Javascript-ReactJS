@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var studentDetails={
+            name: "Srividya",
+            house:"Santha Sai towers",
+            flatNo: 204,
+            state: "Hyderabad",
+            village: "Nijampet",
+            nearby: "Gayathri Gardens",
+            pincode: 500090,
+            phone: 94820454,
+        };
+        function mystudentDetails() {
+            console.log(studentDetails.name+ " " +studentDetails.house+" " +studentDetails.flatNo+ " " +
+            studentDetails.state+" " +studentDetails.village+" "+studentDetails.nearby+" "+
+            studentDetails.pincode+" "+studentDetails.phone)
+        };
+        mystudentDetails();
+        for (a in studentDetails){
+            console.log(a + " : " + studentDetails[a])
+        };
+    </script>
+</body>
+</html>

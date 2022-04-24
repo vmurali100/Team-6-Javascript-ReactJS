@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function employe(employeName){
+            this.creat = "JavaScript";
+            this.instructer = "Srinivas";
+            this.employeName = employeName;
+            this.creatdetalis = function(){
+                return this.creat+" "+this.employeName
+            }
+        };
+
+        employe.prototype.creatanobject = "Constructer Function";
+
+        var employe1 = new employe("srividys");
+        var employe2 = new employe("Srividya");
+        var employe3 = new employe("manikanta");
+        var employe4 = new employe("Lakshmi");
+
+        console.log(employe1,employe2,employe3,employe4);
+        console.log(employe2.creatdetalis());
+        console.log(employe1.creatanobject);
+    </script>
+</body>
+</html>

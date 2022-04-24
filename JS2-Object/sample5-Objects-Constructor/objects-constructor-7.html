@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Flowers(flowersNames){
+            this.name1 = "Tulip";
+            this.name2 = "Rose";
+            this.flowersNames = flowersNames;
+            this.natureflowers = function(){
+                return this.name1+ " " +this.flowersNames
+            };
+        };
+        Flowers.prototype.smellflowers = "Jasmin"
+
+        var flower1 = new Flowers("Sunflower");
+        var flower2 = new Flowers("Lily");
+        var flower3 = new Flowers("Lotus");
+        
+        console.log(flower1,flower2,flower3);
+        console.log(flower3.smellflowers);
+        console.log(flower1.natureflowers());
+    </script>
+</body>
+</html>

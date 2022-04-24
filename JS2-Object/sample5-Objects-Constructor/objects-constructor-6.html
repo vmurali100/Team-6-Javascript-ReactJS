@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Animals(animalNames){
+            this.name1 = "Tiger";
+            this.name2 = "Line";
+            this.animalNames = animalNames;
+            this.JungleName = function(){
+                return this.name1+ " " +this.animalNames
+            };
+        };
+        Animals.prototype.animalsforjungile = "Elephant";
+
+        var animal1 = new Animals("camel");
+        var animal2 = new Animals("giraffe");
+        var animal3 = new Animals("Monkey");
+
+        console.log(animal1,animal2,animal3);
+        console.log(animal1.JungleName());
+        console.log(animal3.animalsforjungile);
+    </script>
+</body>
+</html>

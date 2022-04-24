@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Student =({fname:"Mamatha", age:"31", email:"mamathas@gmail.com"})
+        console.log(Student);
+
+        class Students{
+            constructor(name, age, email, phoneNo){
+                this.name = name;
+                this.age = age;
+                this.email = email;
+                this.phoneNo = phoneNo
+            }
+        }
+        var student1 = new Students("Vasu", "25", "vasuvidya@gmail.com","895134545");
+        var student2 = new Students("Rani", "29", "ranirani@gmail.com", "985523634");
+        var student3 = new Students("Varun", "25", "varun@gmil.com", "885545425");
+
+        console.log(student1);
+        console.log(student2);
+        console.log(student3);
+    </script>
+</body>
+</html>

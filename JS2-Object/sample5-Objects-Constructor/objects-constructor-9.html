@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Cloth(clothName){
+            this.cotton1 = "Dress Material";
+            this.cotton2 = "Saree";
+            this.clothName = clothName;
+            this.pattucloth = function(){
+                return this.cotton1+ " " +this.cotton2+ " "+this.clothName
+            }        
+        };
+
+        Cloth.prototype.newModels = "Kanchi Pattu"
+
+        var cloth1 = new Cloth("Yellow");
+        var cloth2 = new Cloth("Green");
+        var cloth3 = new Cloth("White");
+        console.log(cloth1,cloth2,cloth3);
+        console.log(cloth1.pattucloth());
+        console.log(cloth2.newModels);
+    </script>
+</body>
+</html>

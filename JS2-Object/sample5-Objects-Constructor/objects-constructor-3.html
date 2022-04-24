@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Biryani(biryaniNames){
+            this.special = "Frypeace Biryani";
+            this.chikenspls ="Chilli Chiken";
+            this.biryaniNames = biryaniNames;
+            this.ourspecials = function(){
+                return this.special+ " " +this.chikenspls+ " " +this.biryaniNames
+            }
+        };
+        Biryani.prototype.preparingBiryani = "Thandoori Chiken";
+        
+        var biryani1 = new Biryani("Dhum chiken Biryani");
+        var biryani2 = new Biryani("Mutton Dhum Biryani");
+        var biryani3 = new Biryani("Avakaya Biryani");
+
+        console.log(biryani1, biryani2,biryani3);
+        console.log(biryani1.ourspecials());
+        console.log(biryani3.preparingBiryani);
+
+    </script>
+</body>
+</html>

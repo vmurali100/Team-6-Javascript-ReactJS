@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Colours(coloursNames){
+            this.name1 = "Yellow";
+            this.name2 = "Black";
+            this.coloursNames = coloursNames;
+            this.manycolours = function(){
+                return this.name2+" "+this.coloursNames
+            };
+        };
+        Colours.prototype.rainbowColours = "7 Rainbow Colours"
+
+        var colour1 = new Colours("green");
+        var colour2 = new Colours("Red");
+        var colour3 = new Colours("LemonYellow");
+
+        console.log(colour1);
+        console.log(colour2);
+        console.log(colour3);
+        console.log(colour2.rainbowColours);
+        console.log(colour3.manycolours());
+    </script>
+</body>
+</html>

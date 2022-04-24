@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var course=function(studentname){
+            this.coursename="UI developer";
+            this.location="chittoor";
+            this.studentname=studentname;
+            this.coursedetails=function(){
+                return this.coursename+" "+this.location+" "+this.studentname
+            }
+        }
+        course.prototype.instructor="leela"
+        var course1=new course("nithya")
+        var course2=new course("vidya")
+        var course3=new course("deepthi")
+        console.log(course1,course2,course3)
+        console.log(course1.coursedetails())
+        console.log(course1.instructor)
+    </script>
+</body>
+</html>

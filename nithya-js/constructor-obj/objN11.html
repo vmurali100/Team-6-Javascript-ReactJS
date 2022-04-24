@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person=function(personname){
+            this.personage="20";
+            this.city="vellore";
+            this.personname=personname;
+            this.personal=function(){
+                return this.personage=" "+this.city+" "+this.personname
+            }
+        }
+        person.prototype.mail="akalya@gmail"
+        var person1=new person("akalya")
+        var person2=new person("nithya")
+        console.log(person1,person2)
+        console.log(person1.personal())
+        console.log(person1.mail)
+    </script>
+</body>
+</html>

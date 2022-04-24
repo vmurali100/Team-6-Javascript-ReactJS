@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var student1={
+            college:"vsdc",
+            group:"B.com",
+            studentname:"nithya"
+        }
+        var student2={
+            college:"vsdc",
+            group:"B.com",
+            studentname:"joshna"
+        }
+        var student3={
+            college:"vsdc",
+            group:"B.com",
+            studentname:"sandhya"
+        }
+
+
+        function student (studentname){
+            this.college="vsdc";
+            this.group="B.sc";
+            this.studentname=studentname;
+            this.coursedetails=function(){
+                return this.college+" "+this.group+" "+this.studentname
+            }
+        }
+        student.prototype.learninglanguage="tamil"
+        var student1=new student("nithya")
+        var student2=new student("sathya")
+        var student3=new student("vidhya")
+       console.log(student1,student2,student3)
+       console.log(student1.coursedetails())
+       console.log(student1.learninglanguage)
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function student(studentname){
+             this.institute="sunline";
+             this.course="UI developer";
+             this.studentname=studentname;
+             this.sunlinestudents=function(){
+                 return this.institute+" "+this.course+" "+this.studentname
+             }
+
+        }
+        student.prototype.instructor="murali"
+        var student1=new student("deepthi")
+        var student2=new student("nithya")
+        var student3=new student("vidya")
+        console.log(student1,student2,student3)
+        console.log(student1.sunlinestudents())
+        console.log(student1.instructor)
+    </script>
+</body>
+</html>

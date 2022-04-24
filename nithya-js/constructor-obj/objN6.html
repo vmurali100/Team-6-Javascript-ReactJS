@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+        var student1={
+            college:"vsdc",
+            group:"B.com",
+            studentname:"nithya"
+        }
+        var student2={
+            college:"vsdc",
+            group:"B.com",
+            studentname:"joshna"
+        }
+        var student3={
+            college:"vsdc",
+            group:"B.com",
+            studentname:"sandhya"
+        }
+        function student(studentname){
+            this.college="vijayam";
+            this.group="MPC";
+            this.studentname=studentname;
+            this.studentdata=function(){
+                return this.college+" "+this.group+" "+this.studentname
+            }
+        } 
+        student.prototype.city="chittoor"
+        var student1=new student("thanuja")
+        var student2=new student("gayathri")
+        var student3=new student("pavan")
+        console.log(student1,student2,student3)
+        document.write(student1.studentdata()) 
+        console.log(student1.city)
+
+   </script> 
+</body>
+</html>

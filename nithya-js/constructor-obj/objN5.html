@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // var employee={
+        //     company:"wipro",
+        //     role:"front end developer",
+        //     employeename:"nithya"
+        // }
+        // var employee={
+        //     company:"wipro",
+        //     role:"front end developer",
+        //     employeename:"harish"
+        // }
+        // var employee={
+        //     company:"wipro",
+        //     role:"front end developer",
+        //     employeename:"sai"
+        // }
+        function employee(employeename){
+            this.company="infosis";
+            this.role="UI developer";
+            this.employeename=employeename;
+            this.employeedetails=function(){
+                return this.company+" "+this.role+" "+this.employeename
+            }
+        }
+        employee.prototype.shift="night"
+        var employee1=new employee("ratna")
+        var employee2=new employee("lakshmi")
+        console.log(employee1,employee2)
+        console.log(employee1.employeedetails())
+        console.log(employee1.shift)
+    </script>
+</body>
+</html>

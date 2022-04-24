@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var family=function(familynames){
+           this.family="kollathurfamily";
+           this.familylocation="perumalpalli";
+           this.familynames=familynames
+           this.familydetails=function(){
+               return this.family+" "+this.familylocation+" "+this.familynames
+           }
+       }
+       family.prototype.street="ramanstreet"
+       var family1=new family("harish")
+       var family2=new family("chandhini")
+       console.log(family1,family2)
+       console.log(family1.familydetails())
+       console.log(family1.street)
+   </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var labour=function(labourname){
+            this.labourwages="300per day";
+            this.timing="8 to 5"
+            this.labourname=labourname;
+            this.labourdetails=function(){
+                return this.labourwages+" "+this.timing+" "+this.labourname
+            }
+        }
+        labour.prototype.location="bangalore"
+        var labour1=new labour("harsha")
+        var labour2=new labour("amrutha")
+        console.log(labour1,labour2)
+        console.log(labour1.labourdetails())
+        console.log(labour1.location)
+    </script>
+</body>
+</html>

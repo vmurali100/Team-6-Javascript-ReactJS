@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Mobile (mobileModel){
+            this.redmi = "mi";
+            this.vivo = "v7";
+            this.mobileModel = mobileModel;
+            this.mobileDetails = function (){
+                return this.redmi + " "+this.mobileModel
+            }
+        }
+
+        Mobile.prototype.ct = "price"
+
+        var mobile1 = new Mobile("lenova");
+        var mobile2 = new Mobile("samsaung");
+        var mobile3 = new Mobile("nokia");
+
+        console.log(mobile1);
+        console.log(mobile2);
+        console.log(mobile3);
+    
+
+        console.log(mobile1.mobileDetails());
+        console.log(mobile1.ct);
+    </script>
+</body>
+</html>

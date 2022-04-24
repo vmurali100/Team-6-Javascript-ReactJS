@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Building (buildingRate){
+            this.quality = "quality is high";
+            this.palce = "town";
+            this.buildingRate = buildingRate;
+            this.buildingDetails = function (){
+                return this.quality + " "+this.buildingRate
+            }
+        }
+
+        Building.prototype.ct = "price"
+
+        var building1 = new Building("apurva");
+        var building2 = new Building("cavery");
+        var building3 = new Building("ananda");
+
+        console.log(building1);
+        console.log(building2);
+        console.log(building3);
+    
+
+        console.log(building1.buildingDetails());
+        console.log(building1.ct);
+    </script>
+</body>
+</html>

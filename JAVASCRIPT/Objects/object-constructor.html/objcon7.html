@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Furniture (furnitureCost){
+            this.quality = "quality is high";
+            this.textile = "showroom";
+            this.funitureCost = furnitureCost;
+            this.furnitureDetails = function (){
+                return this.quality + " "+this.funitureCost
+            }
+        }
+
+        Furniture.prototype.ct = "price"
+
+        var furniture1 = new Furniture("soffa");
+        var furniture2 = new Furniture("dressing table");
+        var furniture3 = new Furniture("divana");
+
+        console.log(furniture1);
+        console.log(furniture2);
+        console.log(furniture3);
+    
+
+        console.log(furniture1.furnitureDetails());
+        console.log(furniture1.ct);
+    </script>
+</body>
+</html>

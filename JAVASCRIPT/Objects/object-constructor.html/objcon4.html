@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Machine (machineModel){
+            this.brand = "lg";
+            this.company = "showroom";
+            this.machineModel = machineModel;
+            this.machineDetails = function (){
+                return this.brand + " "+this.machineModel
+            }
+        }
+
+        Machine.prototype.ct = "price"
+
+        var machine1 = new Machine("onida");
+        var machine2 = new Machine("samsaung");
+        var machine3 = new Machine("whirlpool");
+
+        console.log(machine1);
+        console.log(machine2);
+        console.log(machine3);
+    
+
+        console.log(machine1.machineDetails());
+        console.log(machine1.ct);
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person (personGender){
+            this.male = "ladies";
+            this.female = "gens";
+            this.personGender = personGender;
+            this.personDetails = function (){
+                return this.male + " "+this.personGender
+            }
+        }
+
+        Person.prototype.role = "work"
+
+        var person1 = new Person("abc");
+        var person2 = new Person("def");
+        var person3 = new Person("ghi");
+
+        console.log(person1);
+        console.log(person2);
+        console.log(person3);
+    
+
+        console.log(person1.personDetails());
+        console.log(person1.role);
+    
+    </script>
+</body>
+</html>

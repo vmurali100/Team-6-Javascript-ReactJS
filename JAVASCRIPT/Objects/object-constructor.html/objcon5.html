@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Slippers (slipperSize){
+            this.brand = "VKC";
+            this.company = "showroom";
+            this.slipperSize = slipperSize;
+            this.slipperDetails = function (){
+                return this.brand + " "+this.slipperDetailsSize
+            }
+        }
+
+        Slippers.prototype.ct = "price"
+
+        var slipper1 = new Slippers("ladies slippers");
+        var slipper2 = new Slippers("gens slippers");
+        var slipper3 = new Slippers("kids slippers");
+
+        console.log(slipper1);
+        console.log(slipper2);
+        console.log(slipper3);
+    
+
+        console.log(slipper1.slipperDetails());
+        console.log(slipper1.ct);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Dress (dressSize){
+            this.brand = "quality is high";
+            this.textile = "showroom";
+            this.dressSize = dressSize;
+            this.dressDetails = function (){
+                return this.brand + " "+this.dressSize
+            }
+        }
+
+        Dress.prototype.ct = "price"
+
+        var Dress1 = new Dress("ladies dress");
+        var Dress2 = new Dress("gens dress");
+        var Dress3 = new Dress("kids dress");
+
+        console.log(Dress1);
+        console.log(Dress2);
+        console.log(Dress3);
+    
+
+        console.log(Dress1.dressDetails());
+        console.log(Dress1.ct);
+    </script>
+</body>
+</html>

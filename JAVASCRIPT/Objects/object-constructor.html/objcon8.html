@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Tv (tvCost){
+            this.quality = "quality is high";
+            this.shop = "showroom";
+            this.tvCost = tvCost;
+            this.tvDetails = function (){
+                return this.quality + " "+this.tvCost
+            }
+        }
+
+        Tv.prototype.ct = "price"
+
+        var tv1 = new Tv("sony");
+        var tv2 = new Tv("samsaung");
+        var tv3 = new Tv("lg");
+        var tv4 = new Tv("toshiba");
+        var tv5 = new Tv("mi");
+
+        console.log(tv1);
+        console.log(tv2);
+        console.log(tv3);
+        console.log(tv4);
+        console.log(tv5);
+    
+
+        console.log(tv1.tvDetails());
+        console.log(tv1.ct);
+    </script>
+</body>
+</html>

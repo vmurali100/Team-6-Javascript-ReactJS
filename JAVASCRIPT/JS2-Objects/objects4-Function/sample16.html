@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sai={
+            name:"SaiKiran",
+            Class:"3rdYear",
+            RollNumber:26,
+            Group:"B.com",
+            College:"Vijayam",
+            Address:{
+             Place:"chittoor",
+             city:"chittoor",
+             State:"AndraPradesh",
+             Principal:"Teliyadhu",
+            },
+            SaiKiran:function(){
+                console.log(this.Address.Place+","+this.Address.city+","+this.Address.State+","+this.Address.Principal)
+                console.log(this.name+","+this.Class+","+this.RollNumber+","+this.Group+","+this.College)
+            }
+        }
+        sai.SaiKiran();
+    </script>
+</body>
+</html>

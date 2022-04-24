@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var personal={
+            Name:"naveen",
+            Phone:6301400247,
+            DOB:"00July2000",
+            Height:5.7,
+            Friend:"Vijay",
+            FavFood:"Biriyani",
+            School:{
+                teacher:"Baba",
+                age:"46",
+                BFriend:"myfather",
+                class:"1stclass",
+            },
+            life:function(){
+                console.log(this.School.teacher+","+this.School.age+","+this.School.BFriend+","+this.School.class)
+                console.log(this.Name+","+this.Phone+","+this.DOB+","+this.Height+","+this.Friend+","+this.FavFood)
+            }
+        }
+        personal.life()
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var DrAmbdekar={
+            Name:"Bhimrao Ramji Ambedhkar",
+            Born:"14-April-1981",
+            Education:"London school of Economics",
+            Wife:"Savita Ambedkar",
+            Children:"Yeshwant Amabedkar",
+            Moredetails:{
+                Book:"The Constitution,Annihilation of caste",
+                Movie:"Dr.Babasaheb",
+                Died:"6-December-1956",
+            },
+
+            IndianGod:function(){
+                console.log(this.Moredetails.Book+","+this.Moredetails.Movie+","+this.Moredetails.Died);
+                console.log(this.name+","+this.Born+","+this.Education+","+this.Wife+","+this.Children);
+            }
+        }
+        DrAmbdekar.IndianGod()
+    </script>
+</body>
+</html>

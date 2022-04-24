@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Song = {
+            songname: "ArbicKuthu",
+            singer: "Aniruth",
+            Lyrics: "Sivakarthikeyan",
+            Movie: "Beast",
+            Details: {
+                Actor: "ThalapathyVIJAY",
+                Heroine: "Poojahegde",
+                Music: "Aniruth",
+                Dop: "Manoj",
+                Choregrapher: "JaniMaster",
+            },
+            TrendingSong: function () {
+                console.log(this.Details.Actor + "," +
+                    this.Details.Heroine + "," +
+                    this.Details.Music + "," +
+                    this.Details.Dop + "," +
+                    this.Details.Choregrapher);
+                document.write("Actor:"+this.Details.Actor + "<br>" +
+                "Heroine:"+this.Details.Heroine +  "<br>" +
+                "Music:"+ this.Details.Music +  "<br>" +
+                "Dop:"+ this.Details.Dop +  "<br>"+
+                "Choregrapher:"+ this.Details.Choregrapher +"<br>");
+
+                console.log(this.songname + "," + this.singer + "," + this.Lyrics + "," + this.Movie);
+                document.write("SongName:" + this.songname + "<br>" + "Singer:" + this.singer + "<br>" + "Lyrics:" + this.Lyrics + "<br>" + "Movie:" + this.Movie)
+            }
+        }
+        Song.TrendingSong()
+    </script>
+</body>
+
+</html>

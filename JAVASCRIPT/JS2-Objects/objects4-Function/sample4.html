@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var college={
+            Name:"PVKN GOVT DEGREE COLLEGE",
+            Principal:"AnandReddy",
+            Place:"Chittoor",
+            State:"AndraPradesh",
+            Pin:517001,
+            Groups:"B.com,MA,Bsc.MECS,",
+            PVKN:{
+              Year:1961,
+              CampusSize:"112Acres",
+              TotalFaculty:34,
+              TotalStudent:1600,
+              Dist:"chittoor"
+            },
+            mycollege:function(){
+                console.log(this.PVKN.Year+","+this.PVKN.CampusSize+","+this.PVKN.TotalFaculty+","+this.PVKN.TotalStudent+","+this.PVKN.Dist)
+                console.log(this.Name+"" +this.Principal+ "" +this.Place+ "" +this.State+ "" +this.Pin+ "" +this.Groups);
+                document.write(this.Name+"<br>" +this.Principal+ "<br>" +this.Place+ "<br>" +this.State+ "<br>" +this.Pin+ "<br>" +this.Groups);
+            }
+        }
+        college.mycollege()
+        // function mycollege(){
+        //     console.log(college.Name+ ""+ college.Principal+ ""+college.Place+ "" +college.State+ "" +college.Pin+ "" +college.Groups);
+        //     document.write(college.Name+ "<br>"+ college.Principal+ "<br>"+college.Place+ "<br>" +college.State+ "<br>" +college.Pin+ "<br>" +college.Groups)
+        // }
+        // mycollege()
+    </script>
+</body>
+</html>

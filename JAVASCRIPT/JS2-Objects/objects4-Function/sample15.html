@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Dheena={
+            Name:"ThalaDheena",
+            Phone:6301400247,
+            Email:"ThalaDheena@gmail.com",
+            Address:{
+                city:"Chennai",
+                State:"TamilNadu",
+                Dno:"2-45T-Nagar"
+            },
+           BroDheena:function(){
+               console.log(this.Address.city+","+this.Address.State+","+this.Address.Dno)
+               console.log(this.name+","+this.Phone+","+this.Email)
+           }
+        }
+        Dheena.BroDheena();
+
+    </script>
+</body>
+</html>

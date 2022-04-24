@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var friend = {
+            name: "SaiKiran",
+            college: "vijayam",
+            addnumber: 7620,
+            mail: "Sai262000",
+            phone: 6301400247,
+            address:{
+                place:"chittoor",
+                city:"chittoor",
+                pincode:517001,
+                state:"AndraPradesh"
+            },
+            myfriend: function () {
+                console.log(this.address.place+ ""+ this.address.city+ ""+this.address.pincode+ ""+this.address.state)
+                console.log(this.name + "" + this.college+ "" +this.addnumber + "" +this.mail + "" +this.phone)
+                document.write(this.name + "<br>" + this.college+ "<br>" +this.addnumber + "<br>" +this.mail + "<br>" +this.phone)
+            },
+        };
+        friend.myfriend();
+
+        // function myfriend(){
+        //     console.log(friend.name + "" +friend.college + "" +friend.addnumber+ "" +friend.mail + "" +friend.phone);
+        //    document.write(friend.name + "<br>" +friend.college + "<br>" +friend.addnumber+ "<br>" +friend.mail + "<br>" +friend.phone);
+        // }
+        // myfriend();
+    </script>
+</body>
+
+</html>

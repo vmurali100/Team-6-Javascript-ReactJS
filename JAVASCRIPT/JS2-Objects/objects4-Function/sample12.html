@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var car={
+            Carname:"Audi",
+            Color:"White",
+            Brand:"Audi",
+            Model:"RS7",
+            Engine:"7993 cc",
+            Advantages:{
+                Speed:"380KM per Hr",
+                Discount:"20%,",
+                Fueltype:"Petrol",
+            },
+            Audicar:function(){
+                console.log(this.Advantages.Speed+","+this.Advantages.Discount+","+this.Fueltype);
+                console.log(this.Carname+","+this.Color+","+this.Brand+","+this.Model);
+                document.write("CarName:"+this.Carname+"<br>"+"Color:"+this.Color+"<br>"+"Brand:"+this.Brand+"<br>"+"Model:"+this.Model+"<br>"+this.Engine);
+            }
+        }
+        car. Audicar();
+        
+    </script>
+</body>
+</html>

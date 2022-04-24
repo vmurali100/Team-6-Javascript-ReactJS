@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var India={
+            Agra:"Tajmahal",
+            Kolkata:"Victoria Memorial",
+            Aurangabad:"Ellora Caves",
+            NewDelhi:"INDIAN Gate",
+            Delhi:"RedFort",
+            Chennai:"MarinaBeach",
+            Kanyakumari:"Vivekanandha Memorial",
+            world:{
+                France:"Eiffle Tower",
+                UK:"London Eye",
+                USA:"Statue Of Liberty",
+                Chicago:"Navy Pier",
+            },
+            Favplaces:function(){
+                console.log(this.world.France+","+this.world.UK+","+this.world.USA+","+this.world.Chicago);
+                document.write("France:"+this.world.France+"<br>"+"UK:"+this.world.UK+"<br>"+"USA:"+this.world.USA+"<br>"+"Chicago:"+this.world.Chicago);
+                console.log(this.Agra+","+this.Kolkata+","+this.Aurangabad+","+this.NewDelhi+","+this.Delhi+","+this.Chennai+","+this.Kanyakumari);
+                document.write("Agra:"+this.Agra+"<br>"+"Kolkata:"+this.Kolkata+"<br>"+"Aurangabad:"+this.Aurangabad+"<br>"+"NewDelhi:"+this.NewDelhi+"<br>"+"Delhi:"+this.Delhi+"<br>"+"Chennai:"+this.Chennai+"<br>"+"Kanyakumari:"+this.Kanyakumari)
+            }
+        }
+        India.Favplaces();
+        
+    </script>
+</body>
+</html>

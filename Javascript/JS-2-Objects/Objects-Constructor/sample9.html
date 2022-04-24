@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function mammals(mammal) {
+            this.name="Dolphins",
+            this.size="1.7-metre-long (5 ft 7 in)",
+            this.weight="50-kilogram (110-pound)",
+            this.speeds="29 kilometres (18 mi)",
+            this.live="salt water oceans",
+            this.eat="fishes, squids, and crustaceans",
+            this.mammal=mammal;
+            this.dolphins=function(){
+               return this.name+""+this.size+""+
+                this.weight+""+this.speeds+""+
+                this.live+""+this.eat+""+this.mammal
+            }
+        }
+        mammals.prototype.color="grey ,some species  black and white, and a few are even pink."
+        var mammals1=new mammals("Bottlenose Dolphin ")
+        var mammals2=new mammals("Amazon River Dolphin")
+        var mammals3=new mammals("Ganges River Dolphin")
+        console.log(mammals1.dolphins())
+        console.log(mammals1.color)
+    </script>
+</body>
+</html>

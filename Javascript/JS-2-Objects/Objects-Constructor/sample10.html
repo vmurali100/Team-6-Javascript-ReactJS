@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function movie(movies){
+         this.Releasedate="18 July 2008"
+         this.Director= "Christopher Nolan"
+         this.Boxoffice="$1.005 billion"
+         this.Budget= "$185 million"
+         this.Music =" Hans Zimmer; James Newton Howard"
+         this.Distributed=" Warner Bros. Pictures, FilmFlex"
+         this.movies=movies
+         this.moviedetails=function(){
+             return this.Releasedate+""+this.Director+""+
+             this.Boxoffice+""+this.Budget+""+
+             this.Music+""+this.Distributed+""+this.movies
+         }
+        }
+        movie.prototype.rating="9/10"
+        var movie1=new movie("The Dark Knight")
+        var movie2=new movie("The Dark Knight2")
+        console.log(movie1.moviedetails())
+        console.log(movie1.rating)
+    </script>
+</body>
+</html>

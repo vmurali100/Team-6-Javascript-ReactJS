@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var birds=new Object({name:"Parrots",Scientificname: "Psittaciformes",Lifespan:"40 to 60 year"})
+        console.log(birds)
+        class bird{
+            constructor(name,Scientificname,Lifespan){
+                this.name=name
+                this.Scientificname=Scientificname
+                this.Lifespan=Lifespan
+            }
+        }
+        var bird1=new bird("Parrots","Psittaciformes","40 to 60 year")
+        var bird2=new bird("Cockatiel","Nymphicus hollandicus","10 to 14 year")
+        var bird3=new bird("Budgerigar","Melopsittacus undulatus","5 to 8 year")
+        console.log(bird1,bird2,bird3)
+    </script>
+</body>
+</html>

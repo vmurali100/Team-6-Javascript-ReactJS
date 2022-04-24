@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function book(books){
+          this.ItemWeight="220 g"
+          this.rating="4.5"
+          this.price=400
+          this.Printlength="156 pages"
+          this.Language="english"
+          this.Publisher="Notion Press"
+          this.books=books;
+          this.booksdetails=function(){
+              return this.name+""+this.ItemWeight+""+this.rating+""+
+               this.price+""+this.Printlength+""+this.Language+""+
+               this.Publisher+""+this.books
+          }
+        }
+        book.prototype.Publicationdate="21 July 2021"
+        var book1= new book("Thinking, Fast and Slow");
+        var book2= new book("Predictably Irrational");
+        var book3= new book("Drive: The Surprising Truth About What Motivates Us");
+        console.log(book1.booksdetails())
+        console.log(book1.Publicationdate)
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function tree(trees){
+        this.name="mango tree"
+        this.height="50 to 60 feet"
+        this.flowers="small"
+        this.fruit="mango"
+        this.fruitCharacteristic="fragrance,smooth,thin,tough skin"
+        this.color="pale yellow to orange"
+        this.trees=trees
+        this.treedetails=function(){
+            return this.name+""+this.height+""+this.flowers
+            +""+this.fruit+""+this.fruitCharacteristic
+            +""+this.color+""+this.trees
+        }
+        }
+        tree.prototype.live="100 years"
+        var tree1=new tree("Dasheri Mangoes")
+        var tree2=new tree("Francis Mangoes")
+        var tree3=new tree(" Keitt Mangoes")
+        console.log(tree1.treedetails())
+        console.log(tree1.live)
+    </script>
+</body>
+</html>

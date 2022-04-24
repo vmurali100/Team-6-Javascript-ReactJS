@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function dress(dresss){
+         this.color="Pink & Orange"
+         this.Ratings=4.2
+         this.price=750
+         this.Shape="A-Line"
+         this.Neck="Round Neck"
+         this.Length="Midi"
+         this.PatternType="Floral"
+         this.SleeveLength="Three-Quarter Sleeves"
+         this.SleeveStyling="Puff Sleeves"
+         this.dresss=dresss
+         this.details=function(){
+             return this.SleeveStyling+""+this.color+""+this.Ratings+""+
+             this.price+""+this.Shape+""+this.Neck+""+
+             this.Length+""+this.PatternType+""+this.SleeveLength+""+
+             this.dresss
+         }
+            }
+            dress.prototype.Occasion="Casual"
+            var dress1=new dress("Mustard Ethnic Checked Flared Shirt Dress")
+            var dress2=new dress("Fit And Flare Dress")
+            var dress3=new dress("Flared Shirt Dress")
+            console.log(dress1.details())
+            console.log(dress1.Occasion)
+    </script>
+</body>
+</html>

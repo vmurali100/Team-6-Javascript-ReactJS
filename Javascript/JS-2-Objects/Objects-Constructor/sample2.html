@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function recipe (rice){
+          this. indredients=9
+          this.curd="2 1/2 cups"
+          this.cookedrice="3 cups"
+          this. oil="2 tbsp"
+          this. mustardseeds="1 tbsp"
+          this.uraddal="2 tsp"
+          this.curryleaves=6
+          this.greenchillies="1 tsp"
+          this.coriander="2 tbspsp"
+          this.rice=rice
+            this.recipedetails=function(){
+                return this.indredients+""+this.curd+""+
+                this.cookedrice+""+this.oil+""+this.mustardseeds+""+
+                this.uraddal+""+this.curryleaves+""+this.curd+""+
+                this.name+""+this.indredients+""+this.coriander+""+this.rice
+            }
+        }
+        recipe.prototype.salt="needed"
+        var recipe1=new recipe("milk rice")
+        var recipe2=new recipe("pongal")
+        var recipe3=new recipe("curd rice")
+        console.log(recipe1.recipedetails())
+        console.log(recipe1.salt)
+    </script>
+</body>
+</html>

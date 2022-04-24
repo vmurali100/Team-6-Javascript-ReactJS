@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function drink(cafe){
+         this.milkpowder="1 cup";
+         this.milk="2 cup";
+         this.sugar="1/2 cup";
+         this.coffee="1/2 cup";
+         this.cafe=cafe;
+         this.cafedetails=function(){
+             return this.milkpowder+""+this.milk+"" +this.sugar+""+this.coffee+""+this.cafe
+         }
+        }
+        drink.prototype.water="1 cup";
+        var drink1=new drink("Cappuccino")
+        var drink2=new drink("Americano")
+        var drink3=new drink("Cortado")
+        console.log(drink1.cafedetails())
+        console.log(drink1.water)
+    </script>
+</body>
+</html>

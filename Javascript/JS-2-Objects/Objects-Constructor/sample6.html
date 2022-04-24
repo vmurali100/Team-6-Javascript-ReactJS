@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function plant(plants){
+        this.Scientificname= "Nelumbo nucifera",
+        this.Family=" Nelumbonaceae",
+        this.Order= "Proteales",
+        this. Kingdom=" Plantae",
+        this.Water= "81.42 g",
+        this.Energy= "278 kJ (66 kcal)",
+        this.Otherconstituents=" Quantity",
+        this. VitaminC=" 33% 27.4 mg";
+        this.plants=plants;
+        this.plantdetails=function(){
+            return this.Scientificname+""+this.Family+""+
+            this.Order+""+this.Kingdom+""+
+            this.Water+""+this.Energy+""+
+            this.Otherconstituents+""+this.VitaminC+""+
+            this.plants
+        }
+        }
+        plant.prototype.price=170;
+        var plant1=new plant("white Lotus Plant ")
+        var plant2=new plant("pink Lotus Plant ")
+        var plant3=new plant(" Blue Star Lotus Plant ")
+        console.log(plant3.plantdetails())
+        console.log(plant3.price)
+    </script>
+</body>
+</html>

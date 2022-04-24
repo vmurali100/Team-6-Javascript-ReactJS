@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function student(studentName){
+            this.course="nutrition";
+            this.instructer="akalya.k";
+            this.studentName=studentName;
+            this.coursedetails=function(){
+                return this.course+" "+this.studentName
+            }
+        }
+         student.prototype.language="tamil,english"
+        var student1=new student("jaishree");
+        var student2=new student("arun");
+        var student3=new student("krishnamoorthy");
+        var student4=new student("padma")
+        console.log(student1.coursedetails())
+        console.log(student1.language)
+    </script>
+</body>
+</html>

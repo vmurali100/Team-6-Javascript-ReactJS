@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function movie(movies){
+           this.Releasedate= "6 April 2018 (India)";
+           this.Director="John Krasinski";
+           this.Boxoffice="$341 million";
+           this.Languages= "American Sign Language; English";
+           this.Starring="Emily Blunt; John Krasinsk";
+           this.Screenplayby=" Bryan Woods; Scott Beck";
+            this.movies=movies;
+           this.moviedetails=function(){
+               return this.Releasedate+""+this.Director+""+this.Boxoffice+""+
+               this.Languages+""+this.Starring+""+this.Screenplayby+""+this.movies
+           }
+       }
+        movie.prototype.Rating=4.3;
+        var movie1=new movie("A Quiet Place")
+        var movie2=new movie("A Quiet Place 2")
+        var movie3=new movie("A Quiet Place 3")
+        console.log(movie1.moviedetails())
+        console.log(movie1.Rating)
+    </script>
+</body>
+</html>

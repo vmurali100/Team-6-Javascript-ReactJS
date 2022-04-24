@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var bag=new Object({material:"polyster",itemweight:"520grms",origin:"india"})
+        console.log(bag);
+
+        class bags{
+            constructor(material,itemweight,origin,literes){
+                this.material=material;
+                this.itemweight=itemweight;
+                this.origin=origin;
+                this.literes=literes;
+            }
+        }
+        var item1=new bags("polyste","400grms","india","5lit")
+        var item2=new bags("jute","400grms","india","5lit")
+        var item3=new bags("polyster","400grms","india","5lit")
+        console.log(item1,item2,item3)
+    </script>
+</body>
+</html>

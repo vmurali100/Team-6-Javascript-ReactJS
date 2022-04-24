@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function tv(tvName){
+            this.tvName=tvName;
+            this.screenSize="32 inches";
+            this.supportedServices="Netflix,prime video,Hotstar,youtube,apps";
+            this.resolution="720p";
+            this.DisplayTechnology="LED";
+            this.modelYear=2021;
+            this.tvDetails=function(){
+                return this.tvName+" "+this.screenSize+" "+this.supportedServices+" "+this.resolution+" "+this.DisplayTechnology+" "+this.modelYear
+            }
+        }
+        tv.prototype.refershRate="60hz"
+         var tv1=new tv("Redmi");
+        var tv2=new tv("Mi");
+        var tv3=new tv("samsung");
+        console.log(tv1,tv2,tv3);
+        console.log(tv1.tvDetails());
+        console.log(tv1.refershRate)
+
+    </script>
+</body>
+</html>

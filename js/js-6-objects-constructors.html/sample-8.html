@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fridge(fridgeName){
+            this.fridgeName=fridgeName;
+            this.colour="black";
+            this.formFactor="side by side";
+            this.coolingMethod="compressor";
+            this.capacity="564 lit";
+            this.fridgeDetails=function(){
+                return this.fridgeName+" "+this.colour+" "+this.formFactor+" "+this.coolingMethod+" "+this.capacity
+            }
+        }
+        fridge.prototype.salfType="glass"
+        var fridge1=new fridge("Whirlpool");
+        var fridge2=new fridge("LG");
+        var fridge3=new fridge("AmazonBasics")
+        console.log(fridge1,fridge2,fridge3)
+        console.log(fridge1.fridgeDetails());
+        console.log(fridge1.salfType)
+    </script>
+</body>
+</html>

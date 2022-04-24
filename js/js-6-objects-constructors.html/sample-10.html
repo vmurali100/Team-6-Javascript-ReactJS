@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function company(companyName) {
+            this.companyName = companyName;
+            this.role = "UI developer";
+            this.location = "Hyderabad";
+            // this.companyDetails = function () {
+            //     return this.companyName + " " + this.role + " " + this.location
+            // }
+        }
+        company.prototype.package = "10 lpa"
+
+        var company1 = new company ("Goldman sachs");
+        var company2 = new company  ("JB morgan");
+        var company3 = new company  ("Deloitte");
+        console.log(company1)
+        // console.log(company1.companyDetails());
+        console.log(company1.package)
+    </script>
+</body>
+
+</html>

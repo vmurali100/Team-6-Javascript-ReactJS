@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+        var charger=new Object({connectorType:"micro usb",cableType:"usb",color:"black"})
+        console.log(charger)
+
+        class cable{
+            constructor(connectorType,cableType,color,brand){
+                this.connectorType=connectorType;
+                this.cableType=cableType;
+                this.color=color;
+                this.brand=brand;
+            }
+        }
+        var type1=new cable("micro usb","USB","black","Boat")
+        var type2=new cable("micro usb","USB","green","one plus")
+        var type3=new cable("micro usb","USB","white","rockers")
+        console.log(type1,type2,type3)
+   </script>
+</body>
+</html>

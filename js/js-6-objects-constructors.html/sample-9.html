@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ac(AcName){
+            this.AcName=AcName;
+            this.colour="white";
+            this.energyStar="4 star";
+            this.capacity="1.5 tons";
+            this.energyEfficiency="3 star rating";
+            this.acDetais=function(){
+                return this.AcName+" "+this.colour+" "+this.energyStar+" "+this.capacity+" "+this.energyEfficiency
+            }
+        }
+        ac.prototype.itemWeight="11000 grams"
+        var ac1=new ac("Daikin");
+        var ac2=new ac("Blue star");
+        var ac3=new ac("Voltas");
+        console.log(ac1,ac2,ac3);
+        // console.log(ac1.acDetais());
+        console.log(ac1.itemWeight)
+    </script>
+</body>
+</html>

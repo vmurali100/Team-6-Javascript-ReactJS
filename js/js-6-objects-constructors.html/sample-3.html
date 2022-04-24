@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function people (stateName){
+            this.country="INDIA";
+            this.continent="Asia";
+            this.stateName=stateName;
+            this.Details=function(){
+                return this.country+" "+this.stateName
+            }
+        }
+
+        people.prototype.religion="Hindu"
+        var people1= new people("AndhraPradesh");
+        var people2= new people("Mumbai");
+        var people3= new people("Telangana");
+        console.log(people1);
+        console.log(people2);
+        console.log(people3)
+        console.log(people1.Details())
+        console.log(people1.religion)
+    </script>
+</body>
+</html>

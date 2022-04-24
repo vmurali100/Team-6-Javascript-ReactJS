@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function biryani(BiryaniName){
+            this.BiryaniName=BiryaniName;
+            this.chicken="1 kg chicken";
+            this.mintLeaves="one cup";
+            this.salt="as required";
+            this.clove=5;
+            this.onion=2;
+            this.masala="2 table spoons"
+            this.biryaniDetails=function(){
+              return  this.BiryaniName+" "+this.chicken+" "+this.mintLeaves+" "+this.salt+" "+this.clove+" "+
+                this.onion+" "+this.masala
+            }
+        }
+        biryani.prototype.gingerPaste="2 table spoon"
+        var biryani1=new biryani("Dum Biryani");
+        var biryani2= new biryani("fry piece biryani");
+        var biryani3=new biryani("chicken 65 biryani");
+        console.log(biryani1,biryani2,biryani3)
+        console.log(biryani1.biryaniDetails())
+        console.log(biryani1.gingerPaste)
+    </script>
+</body>
+</html>

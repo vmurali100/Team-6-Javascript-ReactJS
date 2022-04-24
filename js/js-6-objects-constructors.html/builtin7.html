@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var books=new Object({publisher:"harpercoolins",language:"english"})
+        console.log(books);
+
+        class tagoreBOOk{
+            constructor(bookName,publisher,pages,language){
+                this.bookName=bookName;
+                this.publisher=publisher;
+                this.pages=pages;
+                this.language=language
+            }
+        }
+        var tbook1=new tagoreBOOk("Rabindra nath tagore","prakash","372 pages","english")
+        var tbook2=new tagoreBOOk("Rabindra nath tagore","prakash","372 pages","english")
+        var tbook3=new tagoreBOOk("Rabindra nath tagore","prakash","372 pages","english")
+        console.log(tbook1,tbook2,tbook3)
+    </script>
+</body>
+</html>

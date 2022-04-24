@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function customer(customerorder){
+            this.restaurantName="kritunga";
+            this.address="KPHB";
+            this.customerorder=customerorder;
+            this.customerDetails=function(){
+                return this.restaurantName+" "+customerorder
+            }
+        }
+        customer.prototype.rating=9.5
+    
+
+        var customer1= new customer ("chicken biryani");
+        var customer2= new customer ("Mutton biryani");
+        var customer3= new customer ("Prawn biryani")
+       
+        console.log(customer1,customer2,customer3)
+        console.log(customer1.customerDetails())
+        console.log(customer1.rating)
+    </script>
+</body>
+</html>

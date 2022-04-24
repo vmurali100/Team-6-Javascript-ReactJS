@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function mobile(phoneName){
+            this.phoneName=phoneName
+            this.formFactor="touch screen";
+            this.os="Android 11";
+            this.model=2020;
+            this.color="black";
+            this.RAM="8 gb"
+           this. mobileDetails=function(){
+                return this.phoneName+" "+this.formFactor+" "+this.os+" "+this.model+" "+this.color+" "+this.ram
+            }
+        }
+        mobile.prototype.storage="128 gb"
+        var mobile1= new mobile("oppo");
+        var mobile2=new mobile("one plus");
+        var mobile3=new mobile("vivo");
+        console.log(mobile1,mobile2,mobile3)
+        console.log(mobile1.mobileDetails())
+        console.log(mobile1.storage)
+    </script>
+</body>
+</html>

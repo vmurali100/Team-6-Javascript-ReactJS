@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <script>
+            var frienddetails={
+                    fname:"Radhika",
+                    lname:"Reddy",
+                    age:"35years",
+                    Username:"Radhi30",
+                    Email:"Radh490@gmail.com",
+                    Password:"chinni",
+                    adress:{
+                        city:"Tirupathi",
+                        State:"Andhrapradesh",
+                        Pin:560640
+                    },
+                    fullname:function(){
+                        console.log(this.fname+" "+this.lname+" "+this.age+" "+this.Username+" "+this.Email+" "+this.Password+" "+
+                        this.adress.city+" "+this.adress.State+" "+this.adress.Pin);
+                    }
+            }
+            frienddetails.fullname()
+        </script>
+    </center>
+</body>
+</html>

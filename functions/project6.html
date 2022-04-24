@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <script>
+            var recipe={
+               recipename:"Muttoncurry",
+               mutton:"1/2kg",
+               turmeric:"1 tea spoon",
+               water:"2glass",
+               Ingrediants:{
+                   oil:"3tablespoon",
+                   mustard:"1/2teaspoon",
+                   ginger:"1tablespoon",
+                   garlic:"1tablespoon",
+                   salt:"1spoon"
+               },
+               recipedetails:function(){
+                   console.log(this.recipename+" "+this.mutton+" "+this.turmeric+" "+this.water+" "+
+                   this.Ingrediants.oil+" "+this.Ingrediants.mustard+" "+this.Ingrediants.ginger+" "+this.Ingrediants.garlic+" "+this.Ingrediants.salt);
+               }
+
+            }
+            recipe.recipedetails()
+          /*  function recipedetails(){
+                console.log(recipe.recipename+" "+recipe.mutton)
+            }
+            recipedetails()*/
+        </script>
+    </center>
+</body>
+</html>

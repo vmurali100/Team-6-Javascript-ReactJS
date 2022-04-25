@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var scooty = ["jupiter", "activa","honda", "suzuki","bajaj","yamaha","pept","ntorq"];
+        //adding
+        scooty.push("tvs")
+        scooty.unshift("access")
+        scooty.splice(2,0,"mahindra")
+        //removing
+        scooty.pop()
+        scooty.shift()
+        scooty.splice(5,1)
+        // //asending and descending
+        scooty.sort()
+        scooty.reverse()
+        
+        console.log(scooty.length);
+        for(i=0;i<scooty.length;i++){
+        document.write(scooty[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

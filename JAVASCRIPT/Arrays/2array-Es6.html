@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var cooldrinks = ["pepsi", "cococola","thumpsup", "fanta","mirenda"];
+         cooldrinks.forEach((value,i)=>{
+             document.write(value + i + "<br>")
+         })
+         var newcooldrinks=cooldrinks.map((val)=>{
+             return val+ "-juice"
+         })
+         console.log(newcooldrinks)
+
+         var Char5Names = cooldrinks.find((val)=>{
+            return val.length == 5
+        })
+
+        var Char5Names = cooldrinks.filter((val)=>{
+            return val.length == 5
+        })
+        console.log(Char5Names)
+    </script>
+</body>
+</html>

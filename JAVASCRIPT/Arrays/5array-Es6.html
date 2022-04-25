@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var colors = ["red", "green","blue", "yellow","white","lemon","brown","grey"];
+        colors.forEach((value,i)=>{
+             document.write(value + i + "<br>")
+         })
+         var newcolors=colors.map((val)=>{
+             return val+ "-color"
+         })
+         console.log(newcolors)
+
+         var Char5Names = colors.find((val)=>{
+            return val.length == 5
+        })
+
+        var Char5Names = colors.filter((val)=>{
+            return val.length == 5
+        })
+        console.log(Char5Names)
+    </script>
+</body>
+</html>

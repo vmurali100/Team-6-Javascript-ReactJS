@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var shirtsbrand = ["tommy hilfiger", "gelaallen sollyto","peter", "john","park"];
+        //adding
+        shirtsbrand.push("van")
+        shirtsbrand.unshift("levis")
+        shirtsbrand.splice(5,0,"parx")
+        //removing
+        shirtsbrand.pop()
+        shirtsbrand.shift()
+        shirtsbrand.splice(3,1)
+        //asending and descending
+        shirtsbrand.sort()
+        shirtsbrand.reverse()
+        
+        console.log(shirtsbrand.length);
+        for(i=0;i<shirtsbrand.length;i++){
+        document.write(shirtsbrand[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

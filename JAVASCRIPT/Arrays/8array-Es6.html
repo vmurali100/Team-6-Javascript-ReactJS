@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var icecream = ["kulfi", "gelato","sorbet", "cookies","forzen"];
+        icecream.forEach((value,i)=>{
+             document.write(value + i + "<br>")
+         })
+         var newicecream=icecream.map((val)=>{
+             return val+ "-flavors"
+         })
+         console.log(newicecream)
+
+         var Char6Names = icecream.find((val)=>{
+            return val.length == 6
+        })
+
+        var Char6Names = icecream.filter((val)=>{
+            return val.length == 6
+        })
+        console.log(Char6Names)
+    </script>
+</body>
+</html>

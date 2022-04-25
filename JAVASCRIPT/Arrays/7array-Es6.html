@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var kids = ["luna", "maeve","eloise", "ophelia","isla","aurelia"];
+        kids.forEach((value,i)=>{
+             document.write(value + i + "<br>")
+         })
+         var newkids=kids.map((val)=>{
+             return val+ "-dress"
+         })
+         console.log(newkids)
+
+         var Char4Names = kids.find((val)=>{
+            return val.length == 4
+        })
+
+        var Char4Names = kids.filter((val)=>{
+            return val.length == 4
+        })
+        console.log(Char4Names)
+    </script>
+</body>
+</html>

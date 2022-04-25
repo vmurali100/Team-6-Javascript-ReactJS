@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var movies = ["manam", "bimmarillu","okkadu", "arya","shiva","lakshy","rowdyboy","raja"];
+        //adding
+        movies.push("eega")
+        movies.unshift("pushpa")
+        movies.splice(5,0,"rrr")
+        //removing
+        movies.pop()
+        movies.shift()
+        movies.splice(3,1)
+        //asending and descending
+        movies.sort()
+        movies.reverse()
+        
+        console.log(movies.length);
+        for(i=0;i<movies.length;i++){
+        document.write(movies[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

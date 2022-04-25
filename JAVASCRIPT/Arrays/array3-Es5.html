@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var books = ["reading", "writting","speaking", "story","dictionary"];
+        //adding
+        books.push("novel")
+        books.unshift("singing")
+        books.splice(2,0,"dancing")
+        //removing
+        books.pop()
+        books.shift()
+        books.splice(5,1)
+        //asending and descending
+        books.sort()
+        books.reverse()
+        
+        console.log(books.length);
+        for(i=0;i<books.length;i++){
+        document.write(books[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

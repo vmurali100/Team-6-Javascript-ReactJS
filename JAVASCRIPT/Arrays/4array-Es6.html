@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var house = ["tables", "beds","chairs", "doors","fans","lights","tv","fridege","washingmachine"];
+        house.forEach((value,i)=>{
+             document.write(value + i + "<br>")
+         })
+         var newhouse=house.map((val)=>{
+             return val+ "-books"
+         })
+         console.log(newhouse)
+
+         var Char4Names = house.find((val)=>{
+            return val.length == 4
+        })
+
+        var Char4Names = house.filter((val)=>{
+            return val.length == 4
+        })
+        console.log(Char4Names)
+    </script>
+</body>
+</html>

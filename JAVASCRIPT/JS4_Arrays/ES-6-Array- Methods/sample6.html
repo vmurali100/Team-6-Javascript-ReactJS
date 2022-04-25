@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Bike=["Duke","Sports","KTM","R15","Fzs","Apachi","Cbz"]
+
+        // Bike .forEach((value,i)=>{
+        //     document.write(value+i+"<br>")
+        // })
+
+        // var newone=Bike.map((val)=>{
+        //    return val+"-2.0"+"<br>"
+        // })
+        // document.write(newone)
+
+        // var characters= Bike.find((val)=>{
+        //     return val.length==3
+        // })
+        // console.log(characters)
+
+        // var characters= Bike.filter((val)=>{
+        //     return val.length==3
+        // })
+        // document.write(characters)
+        // console.log(characters)
+
+        // var sai=Bike.every((val)=>{
+        //     return val.length >=2
+        // })
+        // console.log(sai)
+
+        var sai=Bike.some((val)=>{
+            return val.length >=7
+        })
+        console.log(sai)
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var ipl=["RCB","DC","RR","CSK","SRH","KKR","GT","LSG","MI"]
+
+        ipl.forEach((value,i)=>{
+            document.write(i+value+"<br>")
+        })
+        var sai=ipl.map((val)=>{
+            return val+"-11"+"<br>"
+        })
+        document.write(sai)
+
+        var Royal=ipl.find((val)=>{
+            return val.length ==3
+        })
+        document.write(Royal)
+
+        var Royal=ipl.filter((val)=>{
+            return val.length ==3
+        })
+        document.write(Royal)
+
+        var challengers=ipl.every((val)=>{
+            return val.length  >=2
+        })
+        document.write(challengers)
+
+        var challengers=ipl.some((val)=>{
+            return val.length  >=4
+        })
+        document.write(challengers)
+    </script>
+</body>
+</html>

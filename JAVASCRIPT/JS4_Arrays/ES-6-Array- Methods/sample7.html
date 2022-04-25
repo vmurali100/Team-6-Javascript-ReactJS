@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var player=["virat","Kohli","Rohit","Ishan","Dinesh","Devillers","Siraj"];
+
+        // player.forEach((value,i)=>{
+        //     document.write(value+i+"<br>")
+        // })
+
+        // var Newplayer=player.map((val)=>{
+        //     return val+"-India"+"<br>"
+        // })
+        // console.log(Newplayer)
+        // document.write(Newplayer)
+
+        // var players=player.find((val)=>{
+        //     return val.length==5
+        // })
+        // document.write(players)
+
+        // var players=player.filter((val)=>{
+        //     return val.length==5
+        // })
+        // document.write(players)
+
+        // var saikiran=player.every((val)=>{
+        //     return val.length >=5
+        // })
+        // console.log(saikiran)
+        // document.write(saikiran)
+
+        var saikiran=player.some((val)=>{
+            return val.length >=10
+        })
+        console.log(saikiran)
+        document.write(saikiran)
+    </script>
+</body>
+</html>

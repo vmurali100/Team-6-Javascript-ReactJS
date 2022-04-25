@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sports=["Cricket","Football","volyball","Hockey","Golf","Tennis","kabadi"]
+        // console.log(sports.length)
+
+        //1
+        // sports. forEach((value,i)=>{
+        //     document.write(i+value+"<br>")
+        // })
+         //2
+        // var saikiran=sports.map((val)=>{
+        //     return val+"-Game"+"<br>"
+        // })
+        // console.log(saikiran)
+        // document.write(saikiran)
+       
+        //3
+
+        // var characters=sports.find((val)=>{
+        //     return val.length==6
+        // })
+        // console.log(characters)
+
+        //4
+        // var characters=sports.filter((val)=>{
+        //     return val.length==6
+        // })
+        // console.log(characters)
+
+        //5
+
+        // var sai=sports.every((val)=>{
+        //     return val.length ==3
+        // })
+        // console.log(sai)
+       //6
+        var sai=sports.some((val)=>{
+            return val.length >=4
+        })
+        console.log(sai)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Cinema=["RRR","Beast","KGF","Acharya","Master"]
+
+        Cinema.forEach((value,i)=>{
+            document.write(i+value+"<br>")
+        })
+
+        var adding=Cinema.map((val)=>{
+            return val +"-Blockbuster"+"<br>"
+        })
+        document.write(adding)
+
+        var characters=Cinema.find((val)=>{
+            return val.length==3
+        })
+        document.write(characters)
+
+        var characters=Cinema.filter((val)=>{
+            return val.length==3
+        })
+        document.write(characters)
+
+        var last=Cinema.every((val)=>{
+            return val.length >=2
+        })
+        document.write(last)
+
+        
+        var last=Cinema.some((val)=>{
+            return val.length >=8
+        })
+        document.write(last)
+
+    </script>
+</body>
+</html>

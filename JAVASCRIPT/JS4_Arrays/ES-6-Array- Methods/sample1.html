@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var students=["Sai","Aruna","Raj","Jai","Sujatha","Siree","Virat"];
+//1
+         students.forEach((value,i)=>{
+             document.write(value +"<br>")
+         });
+         
+//2
+         var newstudents=students.map((val)=>{
+             return val +" -pvkn"+"<br>"
+         })
+         console.log(newstudents)
+         document.write(newstudents)
+//3
+        var studentnames=students.find((val)=>{
+            return val.length ==3
+        })      
+        console.log(studentnames)   
+
+//4        
+         var studentnames=students.filter((val)=>{
+            return val.length ==3
+         })
+         console.log(studentnames) 
+      
+//5
+        var sai = students . every ((val)=>{
+            return val.length>=3
+        })     
+        console.log(sai) 
+//6
+         var sai = students. some((val)=>{
+             return val .length ==2
+         })  
+         console.log(sai)        
+    </script>
+</body>
+</html>

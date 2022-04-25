@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var RCB=["virat","kohli","Dinesh","Siraj","Rawat","Anuj","Sabhaz"]
+
+        RCB.forEach((value,i)=>{
+            document.write(i+value+"<br>")
+        })
+
+        var Sai=RCB.map((val)=>{
+            return val+"-Batsman"+"<br>"
+        })
+        document.write(Sai)
+
+        var kiran=RCB.find((val)=>{
+            return val.length ==5
+        })
+        document.write(kiran)
+
+        var kiran=RCB.filter((val)=>{
+            return val.length ==5
+        })
+        document.write(kiran)
+
+        var sai=RCB.every((val)=>{
+            return val.length >=4
+        })
+        document.write(sai)
+
+        var sai=RCB.some((val)=>{
+            return val.length >=8
+        })
+        document.write(sai)
+    </script>
+</body>
+</html>

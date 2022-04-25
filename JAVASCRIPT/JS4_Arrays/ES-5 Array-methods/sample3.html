@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var cricketers =["Sachina","ViratKohli","Dhoni","DineshKarthik","MohamadSiraj","Rawat","Surya","Ishan"]
+        console.log(cricketers.length)
+
+        // cricketers.push("Naveen");
+        // cricketers.unshift("Harish")
+        // cricketers.splice(2,1,"Jayasankar")
+
+        cricketers.pop()
+        cricketers.shift()
+        cricketers.splice(1,1)
+
+        cricketers.sort();
+        cricketers.reverse();
+
+        for (i=0;i<cricketers.length;i++){
+            document.write(cricketers[i]+"<br>");
+        }
+    </script>
+</body>
+</html>

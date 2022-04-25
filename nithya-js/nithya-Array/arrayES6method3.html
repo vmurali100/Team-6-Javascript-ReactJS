@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var teachers=["murali","ramana","narasimha","bhanu","sekhar","lakshmi"]
+    //    teachers.forEach((val,i)=>{
+    //        document.write(i+"."+val+"<br>")
+    //    })
+    //    var newschool=teachers.map((val)=>{
+    //        return val+"-govt school"+"<br>"
+    //    })
+    //    document.write(newschool)
+    // var char6=teachers.find((val)=>{
+    //     return val.length ==6
+    // })
+    // console.log(char6)
+    // var chars6=teachers.filter((val)=>{
+    //     return val.length ==6
+    // })
+    // console.log(chars6)
+    var check=teachers.every((val)=>{
+        return val.length>4
+    })
+    console.log(check)
+    var result=teachers.every((val)=>{
+        return val.length>3
+    })
+    console.log(result)
+   </script> 
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var drivers=["ravi","lokesh","sathish","damu","naveen","arun"]
+        // drivers.forEach((value,i)=>{
+        //     document.write(i+"."+value+"<br>")
+        // })
+        // console.log(drivers)
+        // var newname=drivers.map((val)=>{
+        //     return val+"-cabdriver"+"<br>"
+        // })
+        // document.write(newname)
+        // var char4=drivers.find((val)=>{
+        //     return val.length ==4
+        // })
+        // console.log(char4)
+        // var char4=drivers.filter((val)=>{
+        //     return val.length==4
+        // })
+        // console.log(char4)
+        // var check=drivers.every((val)=>{
+        //     return val.length>3
+        // })
+        // console.log(check)
+        var result=drivers.some((value)=>{
+            return value.length>4
+        })
+        console.log(result)
+
+
+        
+        
+    </script>
+</body>
+</html>

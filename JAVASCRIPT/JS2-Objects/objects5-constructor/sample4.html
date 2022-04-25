@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function person(state){
+            this. name="ViratKohli";
+            this. place="Chittoor";           
+            this. age=33;
+            this. phone=6301400247;
+            this. state=state;
+            this.persondetails = function(){
+                return this.person+ "" +this.state
+            }
+        }
+        person.prototype.language="TELUGU"
+
+        var person1 = new person("Kerala");
+        var person2 = new person("TamilNadu");
+        var person3 = new person("Karnataka")
+
+        console.log(person1,person2,person3)
+        // console.log(person1.persondetails())
+        console.log(person1.language)
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function person(personname){
+            this. number=6300400247;
+            this.mail="sai@gmail.com";
+            this. city="chittoor";
+            this. personname=personname;
+            this.persondetails=function(){
+                return this.person+""+this.personname
+            }
+        }
+
+        person.prototype.learningLanguage = "English"
+
+        var person1 =new person("saikiran")
+        var person2 =new person("Raju")
+        var person3 =new person("Chinnoda")
+
+        console.log(person1,person2,person3)
+        // console.log(person1.persondetails())
+        console.log(person1.learningLanguage)
+    </script>
+</body>
+</html>

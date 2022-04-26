@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var alcoholbrands = ["johnnie walker", "smirnoff", "hennessy", "jack daniel", "bacardi", "absolut",]
+        alcoholbrands.push("captain morgan")
+        alcoholbrands.unshift("chivas regal")
+        alcoholbrands.splice(3,5,"royal challenge")
+
+        alcoholbrands.pop()
+        alcoholbrands.shift()
+        alcoholbrands.splice(2.3)
+        alcoholbrands.sort()
+        alcoholbrands.reverse()
+        console.log(alcoholbrands)
+        for (i = 0; i < alcoholbrands.length; i++) {
+            document.write(alcoholbrands[i] + "<br>")
+        }
+    </script>
+</body>
+
+</html>

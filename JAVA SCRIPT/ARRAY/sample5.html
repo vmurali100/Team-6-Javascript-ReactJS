@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var college=["sv university","pvkn","sv arts",'vijayam',"sri chaithanya","vidyanikethan"]
+        college.forEach((student,i)=>{
+            document.write(i+"."+student+"<br>")
+        })
+        var newstudent=college.map((val)=>{
+            return val+"-student"+"<br>"
+        })
+        document.write(newstudent)
+        var char6=college.find((val)=>{
+            return val.length==6
+        })
+        console.log(char6)
+        var char6=college.filter((val)=>{
+            return val.length==6
+        })
+        console.log(char6)
+        var result=college.some((val)=>{
+            return val.length>=4
+        })
+        console.log(result)
+        var check=college.every((val)=>{
+            return val.length>=4
+        })
+        console.log(check)
+        
+    </script>
+</body>
+</html>

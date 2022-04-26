@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person = ["kumari", "vardhan", "venkatamani prasad", "srinivasulu", "madhan mohan", "amrutha nair"]
+        person.forEach((i, val) => {
+            document.write(val,i + "<br>")
+        })
+            var name = person.map((val) => {
+                return val + "-frinds" + "<br>"
+            })
+
+            document.write(name)
+            var char4 = person.find((human) => {
+                return human.length == 4
+            })
+            document.write(char6)
+            var char4=person.filter((human)=>{
+                return human.length==6
+            })
+            document.write(char6)
+            var result=person.some((val)=>{
+                return val.length>=4
+            })
+            console.log(result)
+            document.write(char6)
+            var result=person.every((val)=>{
+                return val.length>=4
+            })
+            
+           
+    </script>
+
+</body>
+
+</html>

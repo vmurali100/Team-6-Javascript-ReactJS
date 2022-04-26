@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var birds = ["parrot", "eagle", "peacock", "woodpecker", "kingfisher"]
+        birds.forEach((i, sky) => {
+            document.write(i + "." + "<br>")
+        })
+        var flying = birds.map((val) => {
+            return val + "=light weight" + "<br>"
+        })
+        document.write(flying)
+        var char4 = birds.find((val) => {
+            return legs.length == 4
+        })
+
+        document.write(char4)
+        var char4 = birds.filter((val) => {
+            return val.length >= 4
+        })
+        console.log(char4)
+        var char4 = birds.some((val) => {
+            return val.length == 4
+        })
+        console.log(char4)
+        var char4 = birds.every((val) => {
+            return val.length >= 4
+        })
+    </script>
+</body>
+
+</html>

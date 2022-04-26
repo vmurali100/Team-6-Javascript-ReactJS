@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var things=["chair","table","books","pen","pencil","scale"]
+        //adding
+        things.push("laptop")
+        things.unshift("desk")
+        things.splice(6,0,"bag")
+        //removing
+        things.pop()
+        things.shift()
+        things.splice(5,1)
+        things.sort()
+        things.reverse()
+        for(i=0;i<things.length;i++){
+            document.write(things[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        names=["Sravya","Kavya","Divya","Navya"]
+        //adding
+        names.push("Amulya")
+        names.unshift("Akalya")
+        names.splice(4,0,"keerthi")
+
+        //removing
+        names.pop()
+        names.shift()
+        names.splice(2,1)
+
+        names.sort()
+        names.reverse()
+        
+        for(i=0;i<names.length;i++){
+            document.write(names[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

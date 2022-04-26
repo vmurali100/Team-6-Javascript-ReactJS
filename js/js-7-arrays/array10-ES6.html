@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var animals=["lion","tiger","zebra","ox","fox","dog","cat","pig"]
+        animals.forEach((value)=>{
+            document.write(value+"<br>")
+        })
+        //map
+        var newline=animals.map((val)=>{
+            return val+" is a animal"
+        })
+        console.log(newline)
+        //find
+        var check=animals.find((val)=>{ 
+            return val.length==3
+        })
+        console.log(check)
+        //filter
+        var check=animals.filter((val)=>{ 
+            return val.length==3
+        })
+        console.log(check)
+        //some
+        var char2=animals.some((val)=>{ 
+            return val.length >=5
+        })
+        console.log(char2)
+        //every
+        var char2=animals.every((val)=>{ 
+            return val.length >=5
+        })
+        console.log(char2)
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var movies=["eega","f3","robo","ishq","king","remo"]
+        movies.forEach((value)=>{
+            document.write(value+"<br>")
+        })
+        var newmovie=movies.map((val)=>{
+            return val+" is a movie"
+        })
+        console.log(newmovie)
+        //find
+        var char4=movies.find((val)=>{
+            return val.length==4
+        })
+        console.log(char4)
+        //filter
+        var char4=movies.filter((val)=>{
+            return val.length==4
+        })
+        console.log(char4)
+        //some
+        var char4=movies.some((val)=>{
+            return val.length >=4
+        })
+        console.log(char4)
+        //every
+        var char4=movies.every((val)=>{
+            return val.length >=4
+        })
+        console.log(char4)
+     </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var fruits=["apple","banana","guva","grapes","kiwi","papaya"]
+        fruits.forEach((value)=>{
+            document.write(value+"<br>")
+        })
+        //map method
+        var fruitadd=fruits.map((val)=>{
+            return val+" is a fruit"
+        })
+        console.log(fruitadd)
+        // find
+        var char4name=fruits.find((val)=>{
+            return val.length==4
+        })
+        console.log(char4name)
+        //filter
+        var char4name=fruits.filter((val)=>{
+            return val.length==4
+        })
+        console.log(char4name)
+        //some
+        var check=fruits.some((val)=>{
+            return val.length >=5
+        })
+        console.log(check)
+        //every
+        var check=fruits.every((val)=>{
+            return val.length >=5
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

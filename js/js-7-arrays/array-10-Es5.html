@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var company=["goldman sach","tcs","wipro","morganstainley","infosis","mindtree","congizant"]
+        //adding
+        company.push("emphasis")
+        company.unshift("deloitte")
+        company.splice(5,0,"jb morgan")
+        //removing
+        company.pop()
+        company.shift()
+        company.splice(4,1)
+
+        company.sort()
+        company.reverse()
+        for(i=0;i<company.length;i++){
+            document.write(company[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

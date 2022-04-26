@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var things=["pen","car","pencil","book","desk","table"]
+        things.forEach((value)=>{
+            document.write(value+"<br>")
+        })
+        //map
+        var newthings=things.map((val)=>{
+            return val+" is used"
+        })
+        console.log(newthings)
+        //find
+        var char3=things.find((val)=>{
+            return val.length==3
+        })
+        console.log(char3)
+        //filter
+        var char3=things.filter((val)=>{
+            return val.length==3
+        })
+        console.log(char3)
+        //some
+        var check=things.some((val)=>{
+            return val.length >=5
+        })
+        console.log(check)
+        //every
+        var check=things.every((val)=>{
+            return val.length >=5
+        })
+        console.log(check)
+    </script>
+    
+</body>
+</html>

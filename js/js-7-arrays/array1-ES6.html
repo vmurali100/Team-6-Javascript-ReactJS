@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names=["sai","vishnu","abi","deepak","ajay","sanju","jai"]
+        names.forEach((value,i)=>{
+            document.write(value+i+"<br>")
+        })
+        //map
+        var newNames=names.map((val)=>{
+            return val+"- india"
+        })
+        console.log(newNames)
+        //find
+        var char3Names=names.find((val)=>{
+            return val.length==3
+        })
+        console.log(char3Names)
+        //filter
+        var char3=names.filter((val)=>{
+            return val.length==3
+        })
+        console.log(char3)
+        //some
+       var check = names.some((val)=>{
+            return val.length >=2
+        })
+        console.log(check)
+        //every
+        var check=names.every((val)=>{
+            return val.length >=4
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

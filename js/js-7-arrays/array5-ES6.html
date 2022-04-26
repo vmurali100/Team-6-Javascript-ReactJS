@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var places=["goa","maldives","canada","dubai","usa","paris"]
+        places.forEach((value)=>{
+            document.write(value+"<br>")
+        })
+        //map
+        var newplaces=places.map((val)=>{
+            return val+" is my favorute place"
+        })
+        console.log(newplaces)
+        //find
+        var char3=places.find((val)=>{
+            return val.length==3
+        })
+        console.log(char3)
+        //filter
+        var char3=places.filter((val)=>{
+            return val.length==3
+        })
+        console.log(char3)
+        //some
+        var char5=places.some((val)=>{
+            return val.length >=5
+        })
+        console.log(char5)
+        //every
+        var char5=places.every((val)=>{
+            return val.length >=5
+        })
+        console.log(char5)
+    </script>
+</body>
+</html>

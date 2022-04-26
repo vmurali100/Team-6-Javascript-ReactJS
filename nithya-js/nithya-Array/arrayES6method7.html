@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var godnames=["shiva","parvathi","ganesh","muguga","venkatesha"]
+        godnames.forEach((i,val)=>{
+            document.write(val,i+"<br>")
+        })
+        var name=godnames.map((val)=>{
+            return val+"-lord"+"<br>"
+        })
+        document.write(name)
+        var char6=godnames.find((gods)=>{
+            return gods.length==6
+        })
+        document.write(char6)
+        var char6=godnames.filter((gods)=>{
+            return gods.length==6
+        })
+        document.write(char6)
+        var result=godnames.some((val)=>{
+            return val.length>=4
+        })
+        console.log(result)
+        document.write(char6)
+        var result=godnames.every((val)=>{
+            return val.length>=4
+        })
+        console.log(result)
+    </script>
+</body>
+</html>

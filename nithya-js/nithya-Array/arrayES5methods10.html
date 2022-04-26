@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var states=["AP","tamilnadu","karnataka","maharastra","orissa"]
+        for(i=0;i<states.length;i++){
+            document.write(states[i]+"<br>")
+        }
+        states.push("madhyapradesh")
+        states.unshift("kerala")
+        states.splice(1,0,"nepal")
+        states.pop()
+        states.shift()
+        states.splice(0,1)
+        states.sort()
+        states.reverse()
+        console.log(states)
+    </script>
+</body>
+</html>

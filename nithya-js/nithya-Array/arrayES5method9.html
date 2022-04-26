@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var colors=["red","yellow","rose","green","blue","gray"]
+    for(i=0;i<colors.length;i++){
+        document.write(colors[i]+"<br>")
+    }
+    colors.push("greenyellow")
+    colors.unshift("pink")
+    colors.splice(1,1,"gold")
+    colors.pop()
+    colors.shift()
+    colors.splice(0,2)
+    colors.sort()
+    colors.reverse()
+    console.log(colors)
+</script>
+</body>
+</html>

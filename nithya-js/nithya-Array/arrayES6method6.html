@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var flowers=["rose","jasmine","sunflower","lilly","lotus"]
+        flowers.forEach((flow)=>{
+            document.write(flow+"<br>")
+        })
+        var newflower=flowers.map((flo)=>{
+            return flo+"-flower"+"<br>"
+        })
+        document.write(newflower)
+        var char4=flowers.find((char)=>{
+            return char.length==4
+        })
+        document.write(newflower)
+        var char5=flowers.filter((char5)=>{
+            return char5.length==5
+        })
+        document.write(char5)
+        var check=flowers.every((val)=>{
+            return val.length>=3
+        })
+        document.write(check)
+        var check2=flowers.some((val)=>{
+            return val.length>=3
+        })
+        document.write(check2)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Tea=["Black","Green","Oolong","White","Herbal","Yerba Mate","Yellow","Pu-erh"]
+
+        Tea.forEach((value,i)=>{
+            document.write(value,i+"<br>")
+        })
+        var Te=Tea.map((val)=>{
+            return val+"-Tea"
+        })
+        console.log(Te)
+
+        var Teatype=Tea.find((val)=>{
+            return val.length==9
+        })
+        var Teatype=Tea.filter((val)=>{
+            return val.length==9
+        })
+        console.log(Teatype)
+
+        var check=Tea.every((val)=>{
+            return val.length>=6
+        })
+        console.log(check)
+        var check=Tea.some((val)=>{
+            return val.length=6
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

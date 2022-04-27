@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var hairclips=["Claw Clip","Snap Clip","Classic Hinged Barrettes","Banana Clip"]
+
+        hairclips.push("Double Prong Curl")
+        hairclips.unshift("Alligator Hair Clips")
+        hairclips.splice(2,1,"Duckbill Clip")
+
+        hairclips.pop()
+        hairclips.shift()
+        hairclips.splice(2,1)
+
+        hairclips.sort()
+        hairclips.reverse()
+
+        console.log(hairclips.length)
+
+        for(i=0;i<hairclips.length;i++){
+            document.write(hairclips[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Spirituality=["Mystical","Authoritarian"]
+
+        Spirituality.push("Intellectual")
+        Spirituality.unshift("Service")
+        Spirituality.splice(1,0,"Social")
+
+        Spirituality.pop()
+        Spirituality.shift()
+        Spirituality.splice(1,0)
+
+        Spirituality.sort()
+        Spirituality.reverse()
+
+        console.log(Spirituality.length)
+
+        for(i=0;i<Spirituality.length;i++){
+            document.write(Spirituality[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

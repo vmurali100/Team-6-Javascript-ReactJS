@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var yoga=["Hatha yoga","Ashtanga yoga","Bikram yoga","Iyengar yoga"]
+
+        yoga.push("Kundalini yoga")
+        yoga.unshift("Restorative yoga")
+        yoga.splice(0,0,"Yin yoga")
+
+        yoga.pop()
+        yoga.shift()
+        yoga.splice(0,0)
+
+        yoga.sort()
+        yoga.reverse()
+
+        console.log(yoga.length)
+
+        for(i=0;i<yoga.length;i++){
+            document.write(yoga[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

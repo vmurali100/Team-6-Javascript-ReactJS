@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var BodyInternalOrgans=["Brain","Lungs","Heart","Kidney","Large intestine"]
+
+       BodyInternalOrgans.push("Small intestine")
+       BodyInternalOrgans.unshift("Liver")
+       BodyInternalOrgans.splice(3,1,"Stomach")
+
+       BodyInternalOrgans.pop()
+       BodyInternalOrgans.unshift()
+       BodyInternalOrgans.splice(1,0)
+
+       BodyInternalOrgans.sort()
+       BodyInternalOrgans.reverse()
+
+       console.log(BodyInternalOrgans.length)
+
+       for(i=0;i<BodyInternalOrgans.length;i++){
+           document.write(BodyInternalOrgans[i]+"<br>")
+       }
+    </script>
+</body>
+</html>

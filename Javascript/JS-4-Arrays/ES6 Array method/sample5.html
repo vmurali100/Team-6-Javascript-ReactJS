@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var vitamins=["A","B complex","C","D","E","K"]
+
+        vitamins.forEach((value,i)=>{
+        document.write(value+i+"<br>")
+        })
+        var vitamin=vitamins.map((val)=>{
+            return val+"-vitamins"
+        })
+        console.log(vitamin)
+
+        var vit=vitamins.find((val)=>{
+            return val.length == 9
+        })
+
+        var vit=vitamins.filter((val)=>{
+            return val.length == 6
+        })
+        console.log(vit)
+
+        var check=vitamins.every((val)=>{
+            return val.length>=7
+        })
+        console.log(check)
+        var check=vitamins.some((val)=>{
+            return val.length==2
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

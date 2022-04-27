@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var meditation=["mindfulness","spiritual","focused","movement","mantra",
+       "transcendental","progressive","loving-kindness"]
+       
+       meditation.forEach((value,i)=>{
+           document.write(value+i+"<br>")
+       })
+
+       var ameditation=meditation.map((val)=>{
+           return val+"-meditation"
+       })
+       
+       console.log(ameditation)
+
+       var med=meditation.find((val)=>{
+           return val.length == 3
+       })
+
+       var med=meditation.filter((val)=>{
+           return val.length == 3
+       })
+
+       console.log(med)
+
+       var check=meditation.every((val)=>{
+           return val.length>=3
+       })
+
+       console.log(check)
+
+       var check=meditation.some((val)=>{
+           return val.length==2
+       })
+
+       console.log(check)
+    </script>
+</body>
+</html>

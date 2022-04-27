@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      var Spirituality=["Mystical","Authoritarian","Intellectual","Service","Social"] 
+
+      Spirituality.forEach((value,i)=>{
+          document.write(value+i+"<br>")
+      })
+      var spiritual=Spirituality.map((val)=>{
+          return val+"-Spirituality"
+      })
+      console.log(spiritual)
+
+      var spirit=Spirituality.find((val)=>{
+          return val.length==6
+      })
+
+      var spirit=Spirituality.filter((val)=>{
+          return val.length>=3
+      })
+      console.log(spirit)
+
+      var check=Spirituality.every((val)=>{
+          return val.length>=3
+      })
+      console.log(check)
+
+      var check=Spirituality.some((val)=>{
+          return val.length==9
+      })
+      console.log(check)
+    </script>
+</body>
+</html>

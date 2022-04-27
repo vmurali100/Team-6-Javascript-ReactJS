@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var BookTypes=["Personal development","Action and Adventure","Classics",
+        "Comic Book","Detective and Mystery","Fantasy","Historical Fiction","Literary Fiction"]
+
+        BookTypes.forEach((value,i)=>{
+         document.write(value+i+"<br>")
+        })
+        var BookType=BookTypes.map((val)=>{
+        return val+"-book"
+        })
+        console.log(BookType)
+
+        var book=BookTypes.find((val)=>{
+            return val.length==11
+        })
+        var book=BookTypes.filter((val)=>{
+            return val.length=8
+        })
+        console.log(book)
+        var check=BookTypes.every((val)=>{
+            return val.length>=9
+        })
+        console.log(check)
+        var check=BookTypes.some((val)=>{
+            return val.length>=9
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var chakras=["Root","Sacral","Solar plexus","Heart ","Throat","Third eye","Crown"]
+        
+        chakras.forEach((value,i)=>{
+            document.write(value+i+"<br>")
+        })
+        var newchakras=chakras.map((val)=>{
+            return val+"-chakras"
+        })
+        console.log(newchakras)
+        var chak=chakras.find((val)=>{
+            return val.length==3
+        })
+        var chak=chakras.filter((val)=>{
+            return val.length==3
+        })
+        console.log(chak)
+        var check=chakras.every((val)=>{
+            return val.length>=3
+        })
+        console.log(check)
+        var check=chakras.some((val=>{
+            return val.length==2
+        }))
+        console.log(check)
+    </script>
+</body>
+</html>

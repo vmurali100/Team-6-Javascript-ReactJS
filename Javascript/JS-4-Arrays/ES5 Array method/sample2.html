@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var chakras=["Root chakra","Sacral chakra","Solar plexus chakra","Heart chakra"]
+
+        chakras.push("Throat chakra")
+        chakras.unshift("Third eye chakra")
+        chakras.splice(3,0,"Crown chakra")
+
+        chakras.pop()
+        chakras.shift()
+        chakras.splice(2,1)
+
+        chakras.sort()
+        chakras.reverse()
+
+        console.log(chakras.length)
+        for(i=0;i<chakras.length;i++){
+            document.write(chakras[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Smoothies=["Green Pear","Ginger Plum","Blood Orange and Strawberry",
+        "Strawberry Almond","Virgin Miami Vice","Chocolate Banana",""]
+
+        Smoothies.forEach((value,i)=>{
+            document.write(value+i+"<br>")
+        })
+        var Smoothie=Smoothies.map((val)=>{
+            return val+"-Smoothies"
+        })
+        console.log(Smoothie)
+        
+        var Smooth=Smoothies.find((val)=>{
+            return val.length==11
+        })
+        var Smooth=Smoothies.filter((val)=>{
+            return val.length==6
+        })
+        console.log(Smooth)
+
+        var check=Smoothies.every((val)=>{
+            return val.length>=13
+        })
+        console.log(check)
+
+        var check=Smoothies.some((val)=>{
+            return val.length==9
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

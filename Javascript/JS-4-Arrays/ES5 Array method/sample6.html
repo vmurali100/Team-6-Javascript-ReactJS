@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var brain=["Cerebral cortex","Cerebellum","Hypothalamus","Thalamus","Pituitary gland"," Mid- brain"]
+
+        brain.push("Pineal gland")
+        brain.unshift("Amygdala")
+        brain.splice(1,0," Hippocampas")
+
+        brain.pop()
+        brain.shift()
+        brain.splice(1,1)
+
+        brain.sort()
+        brain.reverse()
+
+        console.log(brain.length)
+
+        for(i=0;i<brain.length;i++){
+            document.write(brain[i]+"<br>")
+        }
+    </script>
+</body>
+</html>

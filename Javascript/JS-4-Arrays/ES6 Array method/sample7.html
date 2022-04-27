@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var JavaScripttypes=["Boolean","Null","Undefined","Number type","BigInt type","String type","Symbol type"]
+       JavaScripttypes.forEach((value,i)=>{
+           document.write(value+i+"<br>")
+       })
+       var JavaScripttype=JavaScripttypes.map((val)=>{
+            return val+"- JavaScripttypes"
+        })
+        console.log(JavaScripttypes)
+
+
+        var java=JavaScripttypes.find((val)=>{
+            return val.length == 8
+        })
+        var java=JavaScripttypes.filter((val)=>{
+            return val.length==8
+        })
+        console.log(java)
+
+
+        var check=JavaScripttypes.every((val)=>{
+            return val.length=3
+        })
+        console.log(check)
+        
+        var check=JavaScripttypes.some((val)=>{
+            return val.length==3
+        })
+        console.log(check)
+   </script> 
+</body>
+</html>

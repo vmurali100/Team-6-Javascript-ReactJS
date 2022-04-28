@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+        var college=["PVKN","VIjayam","Vidhyardhi","SVU","Sitams","VigNanaSudha","VignanaSuma"]
+
+        college.push("chithanya")
+        college.unshift("Vivekanandha")
+        college.splice(2,1,"Vijetha")
+
+        college.pop()
+        college.shift()
+        college.shift(2,1)
+
+        console.log(college.length)
+        for (i=0;i<college.length;i++){
+            document.write(college[i]+"<br>")
+        }
+    </script>
+    
+</body>
+</html>

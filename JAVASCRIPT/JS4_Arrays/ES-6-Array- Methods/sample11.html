@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var mobiles=["vivo","Samsung","redmi","Reakme","Oppo","1plus","Ipnone","NOKIA"]
+         mobiles.forEach((value,i)=>{
+            document.write(i+value+"<br>")
+        })
+
+        var adding=mobiles.map((val)=>{
+            return val +"-Phone"+"<br>"
+        })
+        document.write(adding)
+
+        var characters=mobiles.find((val)=>{
+            return val.length==4
+        })
+        document.write(characters)
+
+        var characters=mobiles.filter((val)=>{
+            return val.length==4
+        })
+        document.write(characters)
+
+        var last=mobiles.every((val)=>{
+            return val.length >=4
+        })
+        document.write(last)
+
+        
+        var last=mobiles.some((val)=>{
+            return val.length >=8
+        })
+        document.write(last)
+    </script>
+</body>
+</html>

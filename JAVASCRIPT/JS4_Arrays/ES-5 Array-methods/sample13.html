@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+               
+        var Students=["SaiKIran","Sireesha","Priya","Sindhu","Akhil","Vijay","Jasmine"]
+
+        Students.push("Anjali")
+        Students.unshift("Pavanyoyo")
+        Students.splice(2,1,"Nikhil")
+
+        Students.pop()
+        Students.shift()
+        Students.shift(2,1)
+
+        console.log(Students.length)
+        for (i=0;i<Students.length;i++){
+            document.write(Students[i]+"<br>")
+        }
+    
+    </script>
+</body>
+</html>

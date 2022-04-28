@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var flowers=["rose", "Jasmine","Lotus","Tulip","Sunflower"]
+         
+        flowers.forEach((value,i)=>{
+            document.write(i + " : " + value + "<br>")
+        });
+
+        var flowers1=flowers.map((val)=>{
+            return val + " - Many Colours"
+        })
+        console.log(flowers1)
+
+        var flowers2=flowers.find((val)=>{
+            return val.length == 4
+        })
+        document.write(flowers2)
+
+        var flowers3=flowers.filter((val)=>{
+            return val.length ==7
+        })
+        console.log(flowers3)
+
+        var flowers4=flowers.every((val)=>{
+            return val.length >=10
+        })
+        document.write(flowers4)
+
+        var flowers5=flowers.some((val)=>{
+            return val.length >=5
+        })
+        console.log(flowers5)
+
+    </script>
+</body>
+</html>

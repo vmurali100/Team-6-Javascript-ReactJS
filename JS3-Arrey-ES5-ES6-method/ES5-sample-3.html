@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var mobiles=["Lg","Oppo","Smasung"]
+
+        for(i=0;i<mobiles.length;i++){
+            document.write(mobiles[i]+"<br>")
+        };
+        mobiles.push("Moto")
+        mobiles.unshift("Micromax")
+        mobiles.splice(2,0,"Apple")
+
+        mobiles.pop()
+        mobiles.shift()
+        mobiles.splice(2,2)
+
+        mobiles.sort()
+        mobiles.reverse()
+        
+        console.log(mobiles)
+
+    </script>
+</body>
+</html>

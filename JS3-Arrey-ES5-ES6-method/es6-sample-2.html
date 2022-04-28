@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var students=["Varun","Leela","Swathi","Srija"]
+
+        students.forEach((studet, i)=>{
+            document.write(i+ " : " + students+"<br>")
+        });
+
+        var allstudents=students.map((val)=>{
+            return val + " -students"
+        })
+        console.log(allstudents);
+
+        var students1 = students.find((val)=>{
+            return val = length== 5
+        });
+        console.log(students1)
+
+        var student2=students.filter((val)=>{
+            return val.length == 6
+        })
+        document.write(student2)
+
+        var student3=students.every((val)=>{
+            return val.length >=4
+        })
+        document.write(student3)
+        
+        var student5=students.some((val)=>{
+            return val.length >=7
+        })
+        document.write(student5)
+
+    </script>
+</body>
+</html>

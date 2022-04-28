@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var languages=["Telugu","Hindhi","English","Thamil","Malayalam"]
+        
+        languages.forEach((value,i)=>{
+            document.write(i + " : " + value + "<br>")
+        });
+         
+        var languages1=languages.map((val)=>{
+            return val + " - Language" 
+        })
+        document.write(languages1)
+
+        var languages2=languages.find((val)=>{
+            return val.length == 6
+        })
+        console.log(languages2)
+
+        var languages3=languages.filter((val)=>{
+            return val.length == 7
+        })
+        document.write(languages3)
+
+        var languages4=languages.every((val)=>{
+            return val.length >= 5
+        })
+        document.write(languages4)
+
+        var languages5=languages.some((val)=>{
+            return val.length >= 10
+        })
+        console.log(languages5)
+    </script>
+</body>
+</html>

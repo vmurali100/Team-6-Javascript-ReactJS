@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var cars=["Innova","Swift","Ford","Honda","Dodge","Renault"]
+
+        cars.forEach((value,i)=>{
+            document.write(i+" : "+ value + "<br>")
+        })
+
+        var cars1=cars.map((val)=>{
+            return val + " - Service" + "<br>"
+        })
+        document.write(cars1)
+
+        var cars2=cars.find((val)=>{
+            return val.length == 5
+        })
+        console.log(cars2)
+
+        var cars3=cars.filter((val)=>{
+            return val.length == 4
+        })
+        document.write(cars3)
+
+        var cars4=cars.every((val)=>{
+            return val.length >=3
+        })
+        document.write(cars4)
+
+        var cars5=cars.some((val)=>{
+            return val.length >=7
+        })
+        console.log(cars5)
+    </script>
+</body>
+</html>

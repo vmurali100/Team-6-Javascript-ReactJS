@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var colours=["Red", "Blue", "Green","Yellow","Pink","White","Orange","Lightpink"]
+
+        colours.forEach((colo,i)=>{
+            document.write(i+" : " + colo  + "<br>")
+        });
+        var colours1=colours.map((val)=>{
+            return val+ " -Many Colours" +"<br>"
+        })
+        document.write(colours1);
+
+        var colours2=colours.find((val)=>{
+            return val.length == 6
+        })
+        console.log(colours2)
+
+        var colours3=colours.filter((val)=>{
+            return val.length == 3
+        })
+        document.write(colours3)
+
+        var colours4=colours.every((val)=>{
+            return val.length >=2
+        })
+        document.write(colours4)
+
+        var colours5=colours.some((val)=>{
+            return val.length >= 9
+        })
+        console.log(colours5)
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var languages=["Telugu","Hindhi","English","Thamil"]
+        for(i=0;i<languages.length;i++){
+            document.write(languages[i]+"<br>")
+        }
+
+        languages.push("Mlayalam")
+        languages.unshift("Kanada")
+        languages.splice(2,0,"Urdhu")
+
+        languages.pop()
+        languages.shift()
+        languages.splice(2,3)
+
+        languages.sort()
+        languages.reverse()
+        
+        console.log(languages)
+    </script>
+</body>
+</html>

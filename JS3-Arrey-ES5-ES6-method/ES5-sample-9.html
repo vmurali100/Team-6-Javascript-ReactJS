@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var temples=["Tirupathi","Vijayawada","Kalasthi","Knipakam"]
+        for(i=0;i<temples.length;i++){
+            document.write(temples[i]+"<br>")
+        }
+
+        temples.push("Mangapuram")
+        temples.unshift("Shabharimala")
+        temples.slice(2,0,"Mopidevi")
+
+        temples.pop()
+        temples.shift()
+        temples.slice(2,1)
+
+        temples.sort()
+        temples.reverse()
+        
+        console.log(temples)
+    </script>
+</body>
+</html>

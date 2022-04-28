@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var flowers=["rose", "Jasmine","Lotus","Tulip","Sunflower"]
+        for(i=0;i<flowers.length;i++){
+            document.write(flowers[i]+"<br>")
+        };
+        flowers.push("Light Rose")
+        flowers.unshift("Lilly")
+        flowers.splice(2,0, "Red Rose")
+
+        flowers.pop()
+        flowers.shift()
+        flowers.splice(2,2)
+
+        flowers.sort()
+        flowers.reverse()
+        
+        console.log(flowers);
+    
+    </script>
+</body>
+</html>

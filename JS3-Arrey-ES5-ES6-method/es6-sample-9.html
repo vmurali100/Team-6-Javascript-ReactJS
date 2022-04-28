@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var states=["AP","Telangana","Tamilanadu","Krnataka","Kadapa"]
+
+        states.forEach((value,i)=>{
+            document.write(i +" : " + states + "<br>")
+        });
+
+        var states1=states.map((val)=>{
+            return val + " - States"
+        })
+        console.log(states1)
+
+        var states2=states.find((val)=>{
+            return val.length == 8
+        })
+        document.write(states2)
+
+        var states3=states.filter((val)=>{
+            return val.length == 2
+        })
+        document.write(states3)
+
+        var states4=states.every((val)=>{
+            return val.length >= 11
+        })
+        document.write(states4)
+
+        var states5=states.some((val)=>{
+            return val.length >= 8
+        })
+        console.log(states5)
+    </script>
+</body>
+</html>

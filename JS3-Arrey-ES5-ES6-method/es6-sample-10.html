@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var laptops=["Dell","Lg","NoteBook","Acer","Apple","Hp"]
+
+        laptops.forEach((value,i)=>{
+            document.write(i + " : " + value + "<br>")
+        });
+        
+        var laptops1=laptops.map((val)=>{
+            return val + " - Service"
+        })
+        console.log(laptops1)
+
+        var laptops2=laptops.find((val)=>{
+            return val.length == 4
+        })
+        document.write(laptops2)
+
+        var laptops3=laptops.filter((val)=>{
+            return val.length == 8
+        })
+        console.log(laptops3)
+
+        var laptops4=laptops.every((val)=>{
+            return val.length >=2
+        })
+
+        document.write(laptops4)
+
+        var laptops5=laptops.some((val)=>{
+            return val.length >= 9
+        })
+        console.log(laptops5)
+    </script>
+</body>
+</html>

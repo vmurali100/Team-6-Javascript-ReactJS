@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var temples=["Tirupathi","Vijayawada","Kalasthi","Knipakam"]
+        temples.forEach((value,i)=>{
+            document.write(i + " : " + value + "<br>")
+        })
+
+        var temples1=temples.map((val)=>{
+            return val + " - Temples" + "<br>"
+        })
+        document.write(temples1)
+
+        var temples2=temples.find((val)=>{
+            return val.length == 8
+        })
+        console.log(temples2)
+
+        var temples3=temples.filter((val)=>{
+            return val.length == 9
+        })
+        document.write(temples3)
+
+        var temples5=temples.every((val)=>{
+            return val.length >= 9
+        })
+        console.log(temples5)
+
+        var temples6=temples.some((val)=>{
+            return val.length >=7
+        })
+        document.write(temples6)
+    </script>
+</body>
+</html>

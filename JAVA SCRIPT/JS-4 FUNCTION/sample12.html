@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var battrey = {
+            fname: "cell chemistry",
+            lname: "cell shape",
+            weight: "2.5kg",
+            details: {
+                curbmass: "1445kg",
+                range: "250",
+                battreycapacity: "36.9",
+                battreymass: "335kg",
+                specificenergy: "110"
+
+            },
+            battrey: function () {
+                console.log(this.fname + "" + this.lname);
+                console.log(this.details.curbmass + "" + this.details.range + "" + this.details.battreycapacity + "" + this.details.battreymass + "" + this.details.specificenergy)
+            }
+
+
+        }
+
+        battrey.fullname()
+        // function fullname(){
+        //     console.log(battrey.fname+""+battrey.lname)
+        // }
+        // fullname()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var temple = {
+            fname: "Badrinath Temple",
+            lname: "Adi Shankara ",
+            century: "8th",
+            state: "Uttarakhand",
+            address: {
+                district: "Chamoli",
+                localtime: "Saturday, 3:39 pm",
+                Vehicleregistration: "UK 11",
+                Population: "2,438 (2011)"
+            },
+            fullname:function(){
+                console.log(this.name+""+this.lname);
+                console.log(this.address.district+""+this.address.localtime+""+this.address.Vehicleregistration+""+this.address.Population)
+            }
+
+        }
+
+        temple.fullname()
+        //    function fullname(){
+        //     console.log(temple.fname+""+temple.lname)
+        // }
+        // fullname()
+
+
+
+        
+    </script>
+</body>
+
+</html>

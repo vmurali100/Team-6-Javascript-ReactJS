@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var foreincars=["audi","bmw","aston martin","cadillac","datsun","ferrari","honda","volkswagen"]
+       foreincars.forEach((i,val)=>{
+           document.write(val,i+"<br>")
+       })
+       var name=foreincars.map((val)=>{
+           return val+"=branded"+"<br>"
+       })
+       document.write(name)
+       var char6=foreincars.find((foreincars)=>{
+           return foreincars.length==7
+       })
+       document.write(char6)
+       var char6=foreincars.filter((foreincars)=>{
+           return foreincars.length==6
+       })
+       document.write(char6)
+       var results=foreincars.some((val)=>{
+           return val.length>=4
+       })
+       console.log(result)
+       document.write(char6)
+       var result=foreincars.every((val)=>{
+           return val.length>=4     
+       })
+   </script>
+</body>
+</html>

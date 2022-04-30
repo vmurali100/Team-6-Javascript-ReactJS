@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var rivernames = ["brahmaputra river", "indus river", "godavari river", "narmada river", "krishna river", "yamuna river", "chambal", "mahanadi river"]
+        rivernames.forEach((i, val) => {
+            document.write(val, i + "<br>")
+        })
+        var name = rivernames.map((val) => {
+            return val + "=sea" + "<br>"
+        })
+        document.write(name)
+        var char6 = rivernames.find((rivernames) => {
+            return rivernames.length == 7
+        })
+        document.write(char6)
+        var char6 = rivernames.filter((rivernames) => {
+            return rivernames.length == 6
+        })
+        document.write(char6)
+        var results = rivernames.some((val) => {
+            return val.length >= 4
+        })
+        console.log(result)
+        document.write(char6)
+        var result = rivernames.every((val) => {
+            return val.length >= 4
+        })
+    </script>
+</body>
+
+</html>

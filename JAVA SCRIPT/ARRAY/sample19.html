@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var temples=["badrinath temple","sun temple","brihadeeswara temple","ramanathaswamy temple","vaishno devi temple","shri jagannath temple"," shri padmanabhaswamy temple"," shri ranganathaswamy temple"," neelkanth mahadev temple",]
+        for(i=0;i<temples.length;i++){
+            document.write(temples[i]+"<br>")
+
+        }
+        temples.push("amarnath cave temple")
+        temples.unshift("kanchipuram temple")
+        temples.splice(1,2,"shri digambar jain lal mandir")
+        temples.pop()
+        temples.sort()
+        temples.shift
+        temples.reverse()
+
+        console.log(temples)
+    </script>
+</body>
+</html>

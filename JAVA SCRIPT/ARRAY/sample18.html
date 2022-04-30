@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var seasons=["spring","summer","monsoon","autumn","pre winter","winter"]
+        for (i=0;i<seasons.length;i++){
+            document.write(seasons[i]+"<br>")
+        }
+        seasons.push("vasant ritu")
+        seasons.unshift("grishma ritu")
+        seasons.splice(1,0,"varsha ritu")
+        seasons.pop()
+        seasons.shift()
+        seasons.splice(1,2)
+        seasons.sort()
+        seasons.reverse()
+        console.log(seasons)
+    </script>
+</body>
+</html>

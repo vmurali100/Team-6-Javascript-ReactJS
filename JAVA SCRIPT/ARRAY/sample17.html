@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var simcard=["Airtel","Jio","Vodafone","Bsnl","Reliance","Tataindicom","Mtnl"]
+        for (i = 0; i < simcard.length; i++) {
+            document.write(simcard[i] + "<br>")
+
+        }
+        simcard.push("spice")
+        simcard.unshift("bpl mobile")
+        simcard.splice("idea cellular")
+        simcard.pop()
+        simcard.splice()
+        simcard.sort()
+        simcard.reverse()
+        console.log(simcard)
+    </script>
+</body>
+</html>

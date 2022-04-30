@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var fruits =["APPLE","APRICOT","BANANA ","BLACK BERRY","BLACK BERRY","DATE","JAVA PLUM","","GRAPES","JACKFRUIT"]
+        for(i=0;i<fruits.length;i++){
+            document.write(fruits[i]+"<br>")
+        }
+        fruits.push("orange")
+        fruits.unshift("mango")       
+        fruits.splice(0,1,"watermillon")
+
+          fruits.pop()
+        fruits.shift()
+        fruits.sort()
+        fruits.reverse()
+
+        console.log(fruits)
+    </script>
+</body>
+</html>

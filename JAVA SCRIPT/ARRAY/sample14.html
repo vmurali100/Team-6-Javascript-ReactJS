@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var cooldrinks=["thumps up","pepsi","coca cola","limca","mirinda","fanta","7up","mountain dew"]
+       cooldrinks.forEach((i,val)=>{
+           document.write(val,i+"<br>")
+       })
+       var name=cooldrinks.map((val)=>{
+           return val+"=branded"+"<br>"
+       })
+       document.write(name)
+       var char6=cooldrinks.find((cooldrinks)=>{
+           return cooldrinks.length==7
+       })
+       document.write(char6)
+       var char6=cooldrinks.filter((cooldrinks)=>{
+           return cooldrinks.length==6
+       })
+       document.write(char6)
+       var results=cooldrinks.some((val)=>{
+           return val.length>=4
+       })
+       console.log(result)
+       document.write(char6)
+       var result=cooldrinks.every((val)=>{
+           return val.length>=4     
+       })
+    </script>
+</body>
+</html>

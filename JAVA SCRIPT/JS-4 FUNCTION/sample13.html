@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var phone={
+            fname:"vivo",
+            laname:"y725G",
+            ram:"8.00+4.00gb",
+            storage:{
+                phonesrorage:"128gb",
+                processor:"2.0ghz",
+                snapdragon:"480 octa-core"
+
+            },
+            fullname:function(){
+                console.log(this.fname+""+this.laname);
+                console.log(this.storage.phonesrorage+","+this.storage.processor+","+this.storage.snapdragon)
+            }
+        }
+        phone.fullname()
+        
+        // function fullname(){
+        //     console.log(phone.fname+""+phone.laname)
+        // }
+        // fullname()
+     </script>
+</body>
+</html>

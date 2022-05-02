@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person={
+            name:"Dheena",
+            Age:23,
+            place:"chittoor",
+            detail:{
+                FavHero:"Yash",
+                FavHeroine:"Saipallavi",
+                FavMusicDirector:"Anirudh",
+                FavDirector:"Atlee",
+                FavDancerMaster:"Jani"
+
+            },
+            myperson:function(){
+                console.log(this.name+","+this.Age+","+this.place)
+                document.write(this.name+"<br>"+this.Age+"<br>"+this.place)
+                console.log(this.detail.FavHero+","+this.detail.FavHeroine+","+this.detail. FavMusicDirector+","+this.detail.FavDirector+","+this.detail.FavDancerMaster)
+                document.write(this.detail.FavHero+"<br>"+this.detail.FavHeroine+"<br>"+this.detail. FavMusicDirector+"<br>"+this.detail.FavDirector+"<br>"+this.detail.FavDancerMaster)
+            }
+        }
+        person. myperson()
+        // function myperson(){
+        //     console.log(person.name+""+person.Age+""+person.place)
+        //     document.write(person.name+"<br>"+person.Age+"<br>"+person.place)
+        // }
+        // myperson()
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   <ul id="Chinnoda"></ul>
+    <script>
+        var Saikiran = {
+            name: "Saikiran",
+            Class: "3rd Year",
+            Group: "B.Com[CA]",
+            AddmissionNumber: 7620,
+            RollNumber: 26,
+            DOB: "26/07/2001"
+
+        }
+        Saikiran.FatherName = "Jayasankar";
+        Saikiran["Mother"] = "Sujatha";
+        console.log(Saikiran)
+        // document.write(Saikiran)
+        document.getElementById("Chinnoda").innerHTML = " <br> name :" + Saikiran.name +
+            " <br> Class :" + Saikiran.Class +
+            "  <br> Group: " + Saikiran.Group +
+            "<br> AddmissionNumber:" + Saikiran.AddmissionNumber +
+            "<br> RollNumber:" + Saikiran.RollNumber +
+            "<br> DOB:" + Saikiran.DOB +
+            "<br> FatherName:" + Saikiran.FatherName +
+            "<br> Mother:" + Saikiran.Mother;
+            document.getElementById("Chinnoda").style.color="red";
+            document.getElementById("Chinnoda").style.textAlign="center"
+            
+    </script>
+</body>
+
+</html>

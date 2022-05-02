@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var flower={
+            name1:"Rose",
+            name2:"peony",
+            name3:"violet",
+            name4:"lris",
+            name5:"canna",
+            more:{
+                flow1:"Lotus",
+                flow2:"Lily",
+                flow3:"Jasmine",
+                flow4:"Bluebell"
+            },
+            myflower:function(){
+                console.log(this.name1+""+this.name2+""+this.name3+""+this.name4+""+this.name5)
+                document.write(this.name1+"<br>"+this.name2+"<br>"+this.name3+"<br>"+this.name4+"<br>"+this.name5)
+                console.log(this.more.flow1+","+this.more.flow2+","+this.more.flow3+","+this.more.flow4)
+                document.write(this.more.flow1+"<br>"+this.more.flow2+"<br>"+this.more.flow3+"<br>"+this.more.flow4)
+            }
+        }
+        flower.myflower()
+        function myflower(){
+            console.log(flower.name1+","+flower.name2+","+flower.name3+","+flower.name4+","+flower.name5)
+            document.write(flower.name1+"<br>"+flower.name2+"<br>"+flower.name3+"<br>"+flower.name4+"<br>"+flower.name5)
+        }
+        myflower()
+    </script>
+</body>
+</html>

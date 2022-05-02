@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>       
+          var CricketPlyers={  
+              india:"ViratKohli",         
+            Austrilia:"Maxiwell",
+            SouthAfrica:"Ab Devillirs",
+            NewZealand:"Bolt",
+            EngLand:"EionMorgan",
+            India:{
+                Andrapradesh:"AmbatiRayudu",
+                TamilNadu:"Natarajan",
+                Karnataka:"KL Rahul",
+                Jarkhand:"Hardik",
+               
+            },
+            mycricketplyers:function(){
+                console.log(this.india+","+this.Austrilia+","+this.SouthAfrica+","+this.NewZealand+","+this.EngLand)
+                document.write(this.india+"<br>"+this.Austrilia+"<br>"+this.SouthAfrica+"<br>"+this.NewZealand+"<br>"+this.EngLand)
+                console.log(this.India.Andrapradesh+","+this.India.TamilNadu+","+this.India.Karnataka+","+this.India.Jarkhand)
+                document.write(this.India.Andrapradesh+"<br>"+this.India.TamilNadu+"<br>"+this.India.Karnataka+"<br>"+this.India.Jarkhand)
+            }
+        }
+        CricketPlyers.mycricketplyers()
+    </script>
+</body>
+</html>

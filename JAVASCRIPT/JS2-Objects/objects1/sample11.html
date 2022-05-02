@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Student"></div>
+    <script>
+        var Rehman={
+            Name:"Rehman",
+            Age:22,
+            Place:"chittoor",
+            college:"PVKN",
+            City:"Chittoor",
+            State:"AndraPradesh"
+        }
+        Rehman.Email="Rehman123@gmail.com";
+        Rehman["Nickname"]="Cheppanu"
+        console.log(Rehman)
+
+        document.getElementById("Student").innerHTML="Name:"+Rehman.Name+
+        "<br> Age:"+Rehman.Age+
+        "<br>place:"+Rehman.Place+
+        "<br>college:"+Rehman.college+
+        "<br> City:"+Rehman.City+
+        "<br> State:"+Rehman.State+
+        "<br> Email:"+Rehman.Email+
+        "<br> Nickname:"+Rehman.Nickname;
+        document.getElementById("Student").style.color="blue"
+        document.getElementById("Student").style.textAlign="center"
+    </script>
+</body>
+</html>

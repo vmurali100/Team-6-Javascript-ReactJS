@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var student = {
+            name: "Rehman",
+            age: 23,
+            place: "chittoor",
+            college: {
+                name: "PVKN",
+                City: "chittoor",
+                group: "B.COM",
+                State: "chittoor",
+            },
+            mystudent: function () {
+                console.log(this.name + "," + this.age + "," + this.place)
+                document.write(this.name + "<br>" + this.age + "<br>" + this.place)
+                console.log(this.college.name + "," + this.college.City + "," + this.college.group + "," + this.college.State)
+                document.write(this.college.name + "<br>" + this.college.City + "<br>" + this.college.group + "<br>" + this.college.State)
+            }
+        }
+        student.mystudent()
+
+      
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var movie = {
+            name: "RRR",
+            Hero: "RamCharan,JrNTR",
+            Director: "SS rajamouli",
+            Music: "MM.Keervani",
+            producer: "DVV Dhanya",
+            Release: "24march2022",
+            Budget: "550crores",
+            Story: "V.VijayendraPrasad",
+            mymovie: function () {
+                console.log(this.name + "," + this.Hero + "," + this.Director + "," + this.Music + "," + this.producer + "," + this.Release + "," + this.Budget + "," + this.Story)
+                document.write(this.name + "<br>" + this.Hero + "<br>" + this.Director + "<br>" + this.Music + "<br>" + this.producer + "<br>" + this.Release + "<br>" + this.Budget + "<br>" + this.Story)
+            }
+        };
+        movie.mymovie()
+
+
+    </script>
+</body>
+
+</html>

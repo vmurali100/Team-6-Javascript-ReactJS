@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <strong>cricketPlayers:-</strong>
+    <br>
+    <script>
+        var cricket={
+            player1:"ViratKohli",
+            player2:"MS Dhoni",
+            Player3:"RohitSharma",
+            player4:"IshanKishan",
+            player5:"SuryaKumar",
+            player6:"MohmadSiraj",
+            Extraplayers:{
+                name1:"DineshKarthik",
+                name2:"Maxiwell",
+                name3:"fafDuplasis",
+                name4:"AnujRawat"
+            },
+           mycricket:function(){
+               console.log(this.player1+","+this.player2+","+this.Player3+","+this.player4+","+this.player5+","+this.player6)
+               document.write(this.player1+"<br>"+this.player2+"<br>"+this.Player3+"<br>"+this.player4+"<br>"+this.player5+"<br>"+this.player6)
+               console.log(this.Extraplayers.name1+","+this.Extraplayers.name2+","+this.Extraplayers.name3+","+this.Extraplayers.name4)
+               document.write(this.Extraplayers.name1+"<br>"+this.Extraplayers.name2+"<br>"+this.Extraplayers.name3+"<br>"+this.Extraplayers.name4)
+           }                   
+        }
+        cricket.mycricket()
+        // function cricketPlayers(){
+        //     console.log(cricket.player1+","+cricket.player2+","+cricket.Player3+","+cricket.player4+","+cricket.player5+","+cricket.player6)
+        // }
+        // cricketPlayers()
+    </script>
+</body>
+</html>

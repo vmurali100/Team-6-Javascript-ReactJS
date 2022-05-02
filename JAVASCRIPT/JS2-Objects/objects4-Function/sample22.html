@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Thalapathy={
+            name:"Vijay",
+            age:42,
+            Wife:"SangeethaVijay",
+            Son:"SanjaiVijay",
+            city:"chennai",
+            state:"Tamilnadu",
+            details:{
+                   Father:"S.A ChandraSekar",
+                   mother:"Shoba",
+                   DOB:"22/06/1974",                   
+                   Favmovie:"Gilli"
+            },
+            mythalapthy:function(){
+                console.log(this.name+","+this.age+","+this.Wife+","+this.Son+","+this.city+","+this.state)
+                document.write(this.name+"<br>"+this.age+"<br>"+this.Wife+"<br>"+this.Son+"<br>"+this.city+"<br>"+this.state)
+                console.log(this.details.Father+","+this.details.mother+","+this.details.DOB+","+this.details.Favmovie)
+                document.write(this.details.Father+"<br>"+this.details.mother+"<br>"+this.details.DOB+"<br>"+this.details.Favmovie)
+            }
+        }
+        Thalapathy.mythalapthy()
+//         function actor(){
+//             console.log(Thalapathy.name+""+Thalapathy.age+""+ Thalapathy.Wife+""+Thalapathy.Son+""+ Thalapathy.city+""+Thalapathy.state) 
+//             document.write(Thalapathy.name+"<br>"+Thalapathy.age+"<br>"+ Thalapathy.Wife+"<br>"+Thalapathy.Son+"<br>"+ Thalapathy.city+"<br>"+Thalapathy.state)        
+//    }
+//         actor()
+    </script>
+</body>
+</html>

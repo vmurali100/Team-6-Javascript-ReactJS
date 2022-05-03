@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="left" style="float:left;width: 200px;">
+    <button onclick="addColorAtStart()">Add colour at the start</button><br><br>
+    <button onclick="addColorAtEnd()">Add colour at the End</button><br><br>
+    <button onclick="addColorAtMiddle()">Add colour at the Middle</button><br><br>
+    <button onclick="deleteColorAtStart()">Delete colour at the start</button><br><br>
+    <button onclick="deleteColorAtEnd()">Delete colour at the End</button><br><br>
+    <button onclick="deleteColorAtMiddle()">Delete colour at the Middle</button><br><br>
+    <button onclick="sortTheColors()">sort the colours</button><br><br>
+    <button onclick="reverseTheColors()">reverse the colours</button><br><br>
+</div>
+    <div id="first" style="float:left"></div>
+    <script>
+        var paint=["red","blue","green","pink","yellow","orange","white","black"]
+        function displayAllColours(){
+            var colours=""
+            paint.forEach((color)=>{
+                colours+=color+"<br>";
+            })
+            document.getElementById("first").innerHTML=colours
+        }
+        displayAllColours()
+
+        function addColorAtStart(){
+            paint.unshift("grey")
+            displayAllColours()
+        }
+        function addColorAtEnd(){
+            paint.push("cream")
+            displayAllColours()
+        }
+        function addColorAtMiddle(){
+            paint.splice(5,0,"lavender")
+            displayAllColours()
+        }
+        function deleteColorAtStart(){
+            paint.shift()
+            displayAllColours()
+        }
+        function deleteColorAtEnd(){
+            paint.pop()
+            displayAllColours()
+        }
+        function deleteColorAtMiddle(){
+            paint.splice(4,1)
+            displayAllColours()
+        }
+        function sortTheColors(){
+            paint.sort()
+            displayAllColours()
+        }
+        function reverseTheColors(){
+            paint.reverse()
+            displayAllColours()
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="first" style="float: left;width: 150px;">
+    <button onclick="map()">map method</button><br><br>
+    <button onclick="find()">find method</button><br><br>
+    <button onclick="filter()">filter method</button><br><br>
+    <button onclick="some()">some method</button><br><br>
+    <button onclick="every()">every method</button><br><br>
+
+   </div>
+    <div id="demo" style="float: left;"></div>
+    <script>
+        var colors=["red","yellow","green","pink","black","grey"]
+        function displayColors(){
+            var paint="";
+            colors.forEach((val)=>{
+                return paint+=val+"<br>"
+            })
+            document.getElementById("demo").innerHTML=paint
+        }
+        displayColors()
+        function map(){
+            var newmap=colors.map((val)=>{
+                return val+" -color"+"<br>"
+            })
+            document.getElementById("demo").innerHTML=newmap
+        }
+        displayColors()
+        function find(){
+            var char4=colors.find((val)=>{
+                return val.length==4
+            })
+            document.getElementById("demo").innerHTML=char4
+        }
+        displayColors()
+        function filter(){
+            var char4=colors.filter((val)=>{
+                return val.length==4
+            })
+            document.getElementById("demo").innerHTML=char4
+        }
+        displayColors()
+        function some(){
+            var check=colors.some((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("demo").innerHTML=check
+        }
+        displayColors()
+        function every(){
+            var check=colors.every((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("demo").innerHTML=check
+        }
+        displayColors()
+
+    </script>
+</body>
+</html>

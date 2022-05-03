@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <div id="demo1"style="float:left;width: 200px;">
+    <button onclick="addFruitsAtTop()"> add fruits at top</button><br><br>
+    <button onclick="addFruitsAtEnd()">add fruits at end</button><br><br>
+    <button onclick="addFruitsAtMiddle()">add fruits at middle</button><br><br>
+    <button onclick="deleteFruitsAtTop()">delete fruits at top</button><br><br>
+    <button onclick="deleteFruitsAtEnd()">delete fruits at end</button><br><br>
+    <button onclick="deleteFruitsAtMiddle()">delete fruits at middle</button><br><br>
+    <button onclick="sortTheFruits()">sort the fruits</button><br><br>
+    <button onclick="reverseTheFruits()">reverse the fruits</button><br><br>
+ </div>
+ <div id="demo2" style="float:left;"></div>
+ <script>
+     var fruits=["Apple","Banana","Custard apple","Grpes","Kiwi","Dragon fruit","Pine Apple","Sapota",]
+     function displayFruits(){
+       var list="";
+         fruits.forEach((fruit)=>{
+             list+=fruit+"<br>"
+         })
+         document.getElementById("demo2").innerHTML=list
+     }
+     displayFruits()
+     function addFruitsAtTop(){
+         fruits.unshift("Mango")
+         displayFruits()
+     }
+     function addFruitsAtEnd(){
+         fruits.push("papaya")
+         displayFruits()
+     }
+     function addFruitsAtMiddle(){
+         fruits.splice(3,0,"Watermelon")
+         displayFruits()
+     }
+     function deleteFruitsAtTop(){
+         fruits.shift()
+         displayFruits()
+     }
+     function deleteFruitsAtEnd(){
+         fruits.pop()
+         displayFruits()
+     }
+     function deleteFruitsAtMiddle(){
+         fruits.splice(4,1)
+         displayFruits()
+     }
+     function sortTheFruits(){
+         fruits.sort()
+         displayFruits()
+     }
+     function reverseTheFruits(){
+         fruits.reverse()
+         displayFruits()
+     }
+ </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="demo1" style="float:left;width: 200px;">
+    <button onclick="addBikeNameAtTop()">add bike name at the top</button><br><br>
+    <button onclick="addBikeNameAtEnd()">add bike name at the end</button><br><br>
+    <button onclick="addBikeNameAtMiddle()">add bike name at the middle</button><br><br>
+    <button onclick="deleteBikeNameAtTop()">delete bike name at the top</button><br><br>
+    <button onclick="deleteBikeNameAtEnd()">delete bike name at the end</button><br><br>
+    <button onclick="deleteBikeNameAtMiddle()">delete bike name at the middle</button><br><br>
+    <button onclick="sortBikeName()">sort the bike names</button><br><br>
+    <button onclick="reverseBikeName()">reverse the bike names</button><br><br>
+</div>
+<div id="demo2" style="float:left"></div>
+<script>
+    var bikeNames=["TVS Jupiter","Honda Dio","Bajaj Auto","Honda Activa 125","TVS Zest","Vespa","Pleasure","Fascino"]
+    function displayBikeNames(){
+      var  scootyNames="";
+        bikeNames.forEach((bike)=>{
+            scootyNames+=bike+"<br>"
+        })
+        document.getElementById("demo2").innerHTML=scootyNames
+    }
+    displayBikeNames()
+    function addBikeNameAtTop(){
+        bikeNames.unshift("scooty pept")
+        displayBikeNames()
+    } 
+    function addBikeNameAtEnd(){
+        bikeNames.push("yamaha")
+        displayBikeNames()
+    }
+    function addBikeNameAtMiddle(){
+        bikeNames.splice(4,0,"Grazia")
+        displayBikeNames()
+    }
+    function deleteBikeNameAtTop(){
+        bikeNames.shift()
+        displayBikeNames()
+    }
+    function deleteBikeNameAtEnd(){
+        bikeNames.pop()
+        displayBikeNames()
+    }
+    function deleteBikeNameAtMiddle(){
+        bikeNames.splice(5,1)
+        displayBikeNames()
+    }
+    function sortBikeName(){
+        bikeNames.sort()
+        displayBikeNames()
+    }
+    function reverseBikeName(){
+        bikeNames.reverse()
+        displayBikeNames()
+    }
+</script>
+</body>
+</html>

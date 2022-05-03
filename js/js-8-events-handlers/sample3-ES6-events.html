@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo1" style="float: left;width: 200px;">
+        <button onclick="map()">map method</button><br><br>
+        <button onclick="find()">find method</button><br><br>
+        <button onclick="filter()">filter method</button><br><br>
+        <button onclick="some()">some method</button><br><br>
+        <button onclick="every()">every method</button><br><br>
+    </div>
+    <div id="demo2"></div>
+    <script>
+        var fruits=["apple","banana","mango","orange","papaya","grapes","kiwi"]
+        function displayFruits(){
+            var list="";
+            fruits.forEach((val)=>{
+                return list+=val+"<br>"
+            })
+            document.getElementById("demo2").innerHTML=list
+        }
+        displayFruits()
+        function map(){
+            var newmap=fruits.map((val)=>{
+                return val+" -is a fruit"+"<br>"
+            })
+            document.getElementById("demo2").innerHTML=newmap
+        }
+        displayFruits()
+        function find(){
+            var char6=fruits.find((val)=>{
+               return  val.length==6
+            })
+            document.getElementById("demo2").innerHTML=char6
+        }
+        displayFruits()
+        function filter(){
+            var char6=fruits.filter((val)=>{
+               return  val.length==6
+            })
+            document.getElementById("demo2").innerHTML=char6
+        }
+        displayFruits()
+        function some(){
+            var check=fruits.some((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("demo2").innerHTML=check
+        }
+        displayFruits()
+        function every(){
+            var check=fruits.every((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("demo2").innerHTML=check
+        }
+        displayFruits()
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo1" style="float: left;width: 75px;">
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="map()">map</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo2" style="float: left;"></div>
+    <script>
+        var animals = ["Tiger", "lions", "cheetha", "wolf", "Hyna"]
+        function displayAnimals() {
+            var wild = "";
+            animals.forEach((val) => {
+                wild += val + "<br>"
+            })
+            document.getElementById("demo2").innerHTML=wild
+        }
+        displayAnimals()
+        function find(){
+            var char5=animals.find((val)=>{
+                return val.length==5
+            })
+            document.getElementById("demo2").innerHTML=char5
+        }
+        displayAnimals()
+        function filter(){
+            var char5=animals.filter((val)=>{
+                return val.length==5
+            })
+            document.getElementById("demo2").innerHTML=char5
+        }
+        displayAnimals()
+        function map(){
+            var newmap=animals.map((val)=>{
+                return val+" is a animal"+"<br>"
+            })
+            document.getElementById("demo2").innerHTML=newmap
+        }
+        displayAnimals()
+        function some(){
+            var check=animals.some((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("demo2").innerHTML=check
+        }
+        displayAnimals()
+        function every(){
+            var check=animals.every((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("demo2").innerHTML=check
+        }
+    </script>
+</body>
+
+</html>

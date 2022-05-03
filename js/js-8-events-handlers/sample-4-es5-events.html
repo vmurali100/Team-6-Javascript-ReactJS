@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="demo1" style="float: left;width: 300px;">
+    <button onclick="addThingAtTop()">add things at the top</button><br><br>
+    <button onclick="addThingAtEnd()">add things at the end</button><br><br>
+    <button onclick="addThingAtMiddle()">add things at the middle</button><br><br>
+    <button onclick="deleteThingAtTop()">delete things at the top</button><br><br>
+    <button onclick="deleteThingAtEnd()">delete things at the end</button><br><br>
+    <button onclick="deleteThingAtMiddle()">delete things at the middle</button><br><br>
+    <button onclick="sortTheThings()">sort the things</button><br><br>
+    <button onclick="reverseTheThings()">reverse the things</button><br><br>
+</div>
+    <div id="demo2" style="float: left;"></div>
+    <script>
+        var things=["chair","table","pen","penci","book","desk","mobile","tv"]
+        function displayThings(){
+          var  items="";
+            things.forEach((things)=>{
+                items+=things+"<br>"
+            })
+            document.getElementById("demo2").innerHTML=items
+        }
+        displayThings()
+        function addThingAtTop(){
+            things.unshift("laptop")
+            displayThings()
+        }
+        function addThingAtEnd(){
+            things.push("computer")
+            displayThings()
+        }
+        function addThingAtMiddle(){
+            things.splice(5,0,"pendrive")
+            displayThings()
+        }
+        function deleteThingAtTop(){
+            things.shift()
+            displayThings()
+        }
+        function deleteThingAtEnd(){
+            things.pop()
+            displayThings()
+        }
+        function deleteThingAtMiddle(){
+            things.splice(5,1)
+            displayThings()
+        }
+         function sortTheThings(){
+            things.sort()
+            displayThings()
+        }
+        function reverseTheThings(){
+            things.reverse()
+            displayThings()
+        }
+
+    </script>
+
+</body>
+</html>

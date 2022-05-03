@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="demo1" style="float: left;width: 200px;">
+    <button onclick="map()">map method</button><br><br>
+    <button onclick="find()">find method</button><br><br>
+    <button onclick="filter()">filter method</button><br><br>
+    <button onclick="some()">some method</button><br><br>
+    <button onclick="every()">every method</button><br><br>
+</div>
+<div id="demo2" style="float: left;"></div>
+<script>
+    var vegetables=["carrot","beetroot","tomato","spinach","capsicum","brinjal"]
+    function displayVegetables(){
+        var veggies="";
+        vegetables.forEach((val)=>{
+            return veggies+=val+"<br>"
+        })
+        document.getElementById("demo2").innerHTML=veggies
+    }
+    displayVegetables()
+    function map(){
+        var char6=vegetables.map((val)=>{
+            return val+"-is vegetable"+"<br>"
+        })
+        document.getElementById("demo2").innerHTML=char6
+    }
+    displayVegetables()
+    function find(){
+        var char6=vegetables.find((val)=>{
+            return val.length==6
+        })
+        document.getElementById("demo2").innerHTML=char6
+    }
+    displayVegetables()
+    function filter(){
+        var char6=vegetables.filter((val)=>{
+            return val.length==6
+        })
+        document.getElementById("demo2").innerHTML=char6
+    }
+    displayVegetables()
+    function some(){
+        var char7=vegetables.some((val)=>{
+            return val.length >=7
+        })
+        document.getElementById("demo2").innerHTML=char7
+    }
+    displayVegetables()
+    function every(){
+        var char7=vegetables.every((val)=>{
+            return val.length >=7
+        })
+        document.getElementById("demo2").innerHTML=char7
+    }
+    displayVegetables()
+</script>
+</body>
+</html>

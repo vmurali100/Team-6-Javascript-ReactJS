@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="demo1" style="float: left;width: 300px;">
+    <button onclick="addCoffeeAtTop()">add coffee name at the top</button><br><br>
+    <button onclick="addCoffeeAtEnd()">add coffee name at the end</button><br><br>
+    <button onclick="addCoffeeAtMiddle()">add coffee name at the bottom</button><br><br>
+    <button onclick="deleteCoffeeAtTop()">delete coffee name at the top</button><br><br>
+    <button onclick="deleteCoffeeAtEnd()">delete coffee name at the end</button><br><br>
+    <button onclick="deleteCoffeeAtMiddle()">delete coffee name at the middle</button><br><br>
+    <button onclick="sortTheCoffee()">sort the coffee names</button><br><br>
+    <button onclick="reverseTheCoffee()">reverse the coffee names</button><br><br>
+  </div>
+  <div id="demo2" style="float: left;"></div>
+  <script>
+      var coffee=["Espresso","cappuccino","Latte","Caffe Mocha","Americano","Macchiato","Flat white","Affogato"]
+      function displayCoffeeNames(){
+        var Beverages="";
+          coffee.forEach((caffine)=>{
+              Beverages+=caffine+"<br>"
+          })
+          document.getElementById("demo2").innerHTML=Beverages
+      }
+      displayCoffeeNames()
+
+      function addCoffeeAtTop(){
+        coffee.unshift("Cortado")
+        displayCoffeeNames()
+      }
+      function addCoffeeAtEnd(){
+        coffee.push("Doppio")
+        displayCoffeeNames()
+      }
+      function addCoffeeAtMiddle(){
+        coffee.splice(4,0,"Robusta")
+        displayCoffeeNames()
+      }
+      function deleteCoffeeAtTop(){
+        coffee.shift()
+        displayCoffeeNames()
+      }
+      function deleteCoffeeAtEnd(){
+        coffee.pop()
+        displayCoffeeNames()
+      }
+      function deleteCoffeeAtMiddle(){
+        coffee.splice(3,1)
+        displayCoffeeNames()
+      }
+      function sortTheCoffee(){
+        coffee.sort()
+        displayCoffeeNames()
+      }
+      function reverseTheCoffee(){
+        coffee.reverse()
+        displayCoffeeNames()
+      }
+  </script>
+</body>
+</html>

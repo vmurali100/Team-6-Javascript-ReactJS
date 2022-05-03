@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="demo1" style="float:left;width: 200px;">
+    <button onclick="addAnimalAtTop()">add animal at top</button><br><br>
+    <button onclick="addAnimalAtEnd()">add animal at end</button><br><br>
+    <button onclick="addAnimalAtMiddle()">add animal at middle</button><br><br>
+    <button onclick="deleteAnimalAtTop()">delete animal at top</button><br><br>
+    <button onclick="deleteAnimalAtEnd()">delete animal at end</button><br><br>
+    <button onclick="deleteAnimalAtMiddle()">delete animal at middle</button><br><br>
+    <button onclick="sortTheAnimals()">sort the animals</button><br><br>
+    <button onclick="reverseTheAnimals()">reverse the animals</button><br><br>
+</div>
+<div id="demo2" style="float:left;"></div>
+<script>
+    var animals=["Tiger","Lion","Cheetha","FOx","Leopard","Panther","Wolf","Jackle"]
+    function displayAnimals(){
+       var wild="";
+        animals.forEach((animal)=>{
+            wild+=animal+"<br>"
+        })
+        document.getElementById("demo2").innerHTML=wild
+    }
+    displayAnimals()
+    function addAnimalAtTop(){
+        animals.unshift("Hyna")
+        displayAnimals()
+    }
+    function addAnimalAtEnd(){
+        animals.push("Crocodile")
+        displayAnimals()
+    }
+    function addAnimalAtMiddle(){
+        animals.splice(4,1,"Alligator")
+        displayAnimals()
+    }
+    function deleteAnimalAtTop(){
+        animals.shift()
+        displayAnimals()
+    }
+    function deleteAnimalAtEnd(){
+        animals.pop()
+        displayAnimals()
+    }
+    function deleteAnimalAtMiddle(){
+        animals.splice(6,1)
+        displayAnimals()
+    }
+    function sortTheAnimals(){
+        animals.sort()
+        displayAnimals()
+    }
+    function reverseTheAnimals(){
+        animals.reverse()
+        displayAnimals()
+    }
+
+
+</script>
+</body>
+</html>

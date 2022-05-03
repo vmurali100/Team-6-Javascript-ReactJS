@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="demo1" style="float: left;width: 200px;">
+    <button onclick="addMovieAtTop()">add movie at the top</button><br><br>
+    <button onclick="addMovieAtEnd()">add movie at the end</button><br><br>
+    <button onclick="addMovieAtMiddle()">add movie at the middle</button><br><br>
+    <button onclick="deleteMovieAtTop()">delete movie at the top</button><br><br>
+    <button onclick="deleteMovieAtEnd()">delete movie at the end</button><br><br>
+    <button onclick="deleteMovieAtMiddle()">delete movie at the middle</button><br><br>
+    <button onclick="sortMovies()">sort the movie</button><br><br>
+    <button onclick="reverseMovies()">reverse the movie  </button><br><br>
+</div>
+    <div id="demo2" style="float:left"></div>
+    <script>
+        var movies=["rrr","kgf","king","magadheera","sahoo","billa","shivaji","robo"]
+        function displayMovies(){
+         var cinemas="";
+            movies.forEach((movie)=>{
+                cinemas+=movie+"<br>"
+            })
+            document.getElementById("demo2").innerHTML=cinemas
+        }
+        displayMovies()
+        function addMovieAtTop(){
+            movies.unshift("Race gurram")
+            displayMovies()
+        }
+        function addMovieAtEnd(){
+            movies.push("bluff master")
+            displayMovies()
+        }
+        function addMovieAtMiddle(){
+            movies.splice(5,0,"kushi")
+            displayMovies()
+        }
+        function deleteMovieAtTop(){
+            movies.shift()
+            displayMovies()
+        }
+        function deleteMovieAtEnd(){
+            movies.pop()
+            displayMovies()
+        }
+        function deleteMovieAtMiddle (){
+            movies.splice(6,1)
+            displayMovies()
+        }
+        function sortMovies(){
+            movies.sort()
+            displayMovies()
+        }
+        function reverseMovies(){
+            movies.reverse()
+            displayMovies()
+        }
+    </script>
+</body>
+</html>

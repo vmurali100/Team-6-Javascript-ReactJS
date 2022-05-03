@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="demo1" style="float: left;width: 300px;">
+    <button onclick="addVegetableNameAtTop()">add vegetables name at the top</button><br><br>
+    <button onclick="addVegetableNameAtEnd()">add vegetables name at the end</button><br><br>
+    <button onclick="addVegetableNameAtMiddle()">add vegetables name at the middle</button><br><br>
+    <button onclick="deleteVegetableAtTop()">delete vegetables name at the top</button><br><br>
+    <button onclick="deleteVegetableAtEnd()">delete vegetables name at the end</button><br><br>
+    <button onclick="deleteVegetableAtMiddle()">delete vegetables name at the middle</button><br><br>
+    <button onclick="sortTheVegetables()">sort the vegetables</button><br><br>
+    <button onclick="reverseTheVegetables()">reverse the vegetables</button><br><br>
+</div>
+<div id="demo2" style="float: left;"></div>
+<script>
+    var vegetables=["Tomato","Carrot","Beetroot","Brinjal","Bottle Gourd","Ridgr Gourd","Cucumber","Spinach"]
+    function displayVegetables(){
+      var veggies="";
+        vegetables.forEach((veg)=>{
+            veggies+=veg+"<br>"
+        })
+        document.getElementById("demo2").innerHTML=veggies
+    }
+    displayVegetables()
+    function addVegetableNameAtTop(){
+        vegetables.unshift("Bitte Gourd")
+        displayVegetables()
+    }
+    function addVegetableNameAtEnd(){
+        vegetables.push("Ladi's finger")
+        displayVegetables()
+    }
+    function addVegetableNameAtMiddle(){
+        vegetables.splice(4,0,"Pumpkin")
+        displayVegetables()
+    }
+    function deleteVegetableAtTop(){
+        vegetables.shift()
+        displayVegetables()
+    }
+    function deleteVegetableAtEnd(){
+        vegetables.pop()
+        displayVegetables()
+    }
+    function deleteVegetableAtMiddle(){
+        vegetables.splice(5,1)
+        displayVegetables()
+    }
+    function sortTheVegetables(){
+        vegetables.sort()
+        displayVegetables()
+    }
+    function reverseTheVegetables(){
+        vegetables.reverse()
+        displayVegetables()
+    }
+</script>
+</body>
+</html>

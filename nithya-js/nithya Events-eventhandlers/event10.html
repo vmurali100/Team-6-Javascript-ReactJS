@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="call">
+        <button onclick="findmethod()">find</button><br><br>
+        <button  onclick="filtermethod()">filter</button><br><br>
+        <button  onclick="everymethod()">every</button><br><br>
+        <button  onclick="somemethod()">some</button><br><br>
+        <button  onclick="mapmethod()">map</button><br><br>
+    </div>
+    <div id="lock"></div>
+    <script>
+        var states=["AP","telangana","tamilnadu","kerala","karnataka"]
+        function displaystates(){
+            var differentstates=""
+            states.forEach((stat)=>{
+                differentstates+=stat+"<br>"
+            })
+            document.getElementById("lock").innerHTML=differentstates
+        }
+        displaystates()
+        function findmethod(){
+            var char9=states.find((val)=>{
+                return val.length==9
+            })
+            document.getElementById("lock").innerHTML=char9
+        }
+        displaystates()
+        function filtermethod(){
+            var char9=states.filter((val)=>{
+                return val.length==9
+            })
+            document.getElementById("lock").innerHTML=char9
+        }
+        displaystates()
+        function everymethod(){
+            var search=states.every((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("lock").innerHTML=search
+        }
+        displaystates()
+        function somemethod(){
+            var result=states.some((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("lock").innerHTML=result
+        }
+        displaystates()
+        function mapmethod(){
+            var newmap=states.map((val)=>{
+                return val+"-indian states"+"<br>"
+            })
+            document.getElementById("lock").innerHTML=newmap
+        }
+        displaystates()
+    </script>
+</body>
+</html>

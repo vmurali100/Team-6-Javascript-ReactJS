@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="info" style="float: left;">
+        <button onclick="first()">add in start</button><br><br>
+        <button onclick="end()">add in end</button><br><br>
+        <button onclick="middle()">add in middle</button><br><br>
+        <button onclick="deletestart()">delete in staart</button><br><br>
+        <button onclick="deleteend()">delete in end</button><br><br>
+        <button onclick="deletemiddle()">delete in middie</button><br><br>
+        <button onclick="sortemployee()">sort</button><br><br>
+        <button onclick="Reverseemployee()">reverse</button>
+    </div>
+    <div id="moto" style="float: left;"></div>
+    <script>
+         var employees=["nithya","mani","shobha","vanitha","dharani","triveni","kumari"]
+         function displayemployees(){
+             var empdetails=""
+              employees.forEach((emp)=>{
+                  empdetails+=emp+"<br>"
+              })
+              document.getElementById("moto").innerHTML=empdetails
+         }
+         displayemployees()
+         function first(){
+             employees.unshift("harish")
+             displayemployees()
+         }
+         function end(){
+             employees.push("chandhu")
+             displayemployees()
+         }
+         function middle(){
+             employees.splice(2,0,"babu")
+             displayemployees()
+         }
+         function deletestart(){
+             employees.shift()
+             displayemployees()
+         }
+         function deleteend(){
+             employees.pop()
+             displayemployees()
+         }
+         function deletemiddle(){
+             employees.splice(2,1)
+             displayemployees()
+         }
+         function sortemployee(){
+             employees.sort()
+             displayemployees()
+         }
+         function Reverseemployee(){
+             employees.reverse()
+             displayemployees()
+         }
+
+    </script>
+</body>
+
+</html>

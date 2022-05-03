@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="monu" style="float: left;">
+        <button onclick="findmethod()">find</button><br><br>
+        <button onclick="filtermethod()">filter</button><br><br>
+        <button onclick="everymethod()">some</button><br><br>
+        <button onclick="somemethod()">every</button><br><br>
+        <button onclick="mapmethod()">map</button>
+        
+    </div>
+    <div id="lot" style="float: left;"></div>
+    <script>
+        var movies=["KGF","anji","hareram","RRR","murari"]
+        function displaymovies(){
+            var movienames=""
+            movies.forEach((move)=>{
+                movienames+=move+"<br>"
+            })
+            document.getElementById("lot").innerHTML=movienames
+        }
+        displaymovies()
+        function findmethod(){
+           var char3= movies.find((val)=>{
+                return val.length==3
+            })
+            document.getElementById("lot").innerHTML=char3
+        }
+        displaymovies()
+        function filtermethod(){
+            var char3=movies.filter((val)=>{
+                return val.length==3
+            })
+            document.getElementById("lot").innerHTML=char3
+        }
+        displaymovies()
+        function everymethod(){
+            var check=movies.every((val)=>{
+                return val.length>=2
+            })
+            document.getElementById("lot").innerHTML=check
+        }
+        displaymovies()
+        function somemethod(){
+            var result=movies.some((val)=>{
+                return val.length>=2
+            })
+            document.getElementById("lot").innerHTML=result
+        }
+        displaymovies()
+        function mapmethod(){
+            var newone=movies.map((val)=>{
+                return val+"-telugumovienames"+"<br>"
+            })
+            document.getElementById("lot").innerHTML=newone
+        }
+        displaymovies
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="col" style="float: left;">
+        <button onclick="addfirst()">add start</button><br><br>
+        <button onclick="addlast()">add end</button><br><br>
+        <button onclick="addmid()">addmid</button><br><br>
+        <button onclick="deletefirst()">deletestart</button><br><br>
+        <button onclick="deletelast()">deleteend</button><br><br>
+        <button onclick="deletemid()">deletemid</button><br><br>
+        <button onclick="fruitssort()">sort</button><br><br>
+        <button onclick="fruitsreverse()">reverse</button>
+    </div>
+    <div id="rom" style="float: left;"></div>
+    <script>
+        var fruits=["apple","orange","papaya","banana","straberry"]
+        function displayfruits(){
+            var fruitdetails=""
+            fruits.forEach((frut)=>{
+                fruitdetails+=frut+"<br>"
+            })
+            document.getElementById("rom").innerHTML=fruitdetails
+        }
+        displayfruits()
+        function addfirst(){
+            fruits.unshift("custodapple")
+            displayfruits()
+        }
+        function addlast(){
+            fruits.push("gouva")
+            displayfruits()
+        }
+        function addmid(){
+            fruits.splice(3,0,"pomogranate")
+            displayfruits()
+        }
+        function deletefirst(){
+            fruits.shift()
+            displayfruits()
+        }
+        function deletelast(){
+            fruits.pop()
+            displayfruits()
+        }
+        function deletemid(){
+            fruits.splice(3,1)
+            displayfruits()
+        }
+        function fruitssort(){
+            fruits.sort()
+            displayfruits()
+        }
+        function fruitsreverse(){
+            fruits.reverse()
+            displayfruits()
+        }
+    </script>
+</body>
+</html>

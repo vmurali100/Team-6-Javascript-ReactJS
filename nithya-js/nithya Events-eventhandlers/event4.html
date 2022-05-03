@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="row" style="float: left;">
+        <button onclick="addfirst()">add first</button><br><br>
+        <button onclick="addlast()">add last</button><br><br>
+        <button onclick="addmiddle()">add middle</button><br><br>
+        <button onclick="deletefirst()">delete first</button><br><br>
+        <button onclick="deletelast()">delete last</button><br><br>
+        <button onclick="deletemiddle()">delete middle</button><br><br>
+        <button onclick="schoolsort()">sort</button><br><br>
+        <button onclick="schoolreverse()">reverse</button>
+    </div>
+    <div id="cot" style="float: left;"></div>
+    <script>
+        var schools=["chaitanya","keshavareddy","littleflowers","narayana","BVreddy","venkateswara"]
+        function displayschool(){
+            var schooldetails=""
+            schools.forEach((schoo)=>{
+                schooldetails+=schoo+"<br>"
+            })
+            document.getElementById("cot").innerHTML=schooldetails
+        }
+        displayschool()
+        function addfirst(){
+            schools.unshift("guruji")
+            displayschool()
+        }
+        function addlast(){
+            schools.push("ramkrishna")
+            displayschool()
+        }
+        function addmiddle(){
+            schools.splice(4,0,"kingston")
+            displayschool()
+        }
+        function deletefirst(){
+            schools.shift()
+            displayschool()
+        }
+        function deletelast(){
+            schools.pop()
+            displayschool()
+        }
+        function deletemiddle(){
+            schools.splice(4,1)
+            displayschool()
+        }
+        function schoolsort(){
+            schools.sort()
+            displayschool()
+        }
+        function schoolreverse(){
+            schools.reverse()
+            displayschool()
+        }
+    </script>
+</body>
+</html>

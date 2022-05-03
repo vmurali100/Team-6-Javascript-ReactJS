@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="molo" style="float: left;">
+        <button onclick="findmethod()">find</button><br><br>
+        <button onclick="filtermethod()">filter</button><br><br>
+        <button onclick=" everymethod()">every</button><br><br>
+        <button onclick="somemethod()">some</button><br><br>
+        <button onclick="mapmethod()">map</button><br><br>
+    </div>
+    <div id="main" style="float: left;"></div>
+    <script>
+        var animals=["cat","cow","lion","tiger","dog"]
+        function displayanimals(){
+             var animalnames=""
+             animals.forEach((anim)=>{
+                 animalnames+=anim+"<br>"
+             })
+            document.getElementById("main").innerHTML=animalnames
+        }
+        displayanimals()
+        function findmethod(){
+            var char3=animals.find((val)=>{
+                return val.length==3
+            })
+            document.getElementById("main").innerHTML=char3
+        }
+        displayanimals()
+        function filtermethod(){
+            var char3=animals.filter((val)=>{
+                return val.length==3
+            })
+            document.getElementById("main").innerHTML=char3
+        }
+        displayanimals()
+        function everymethod(){
+            var result=animals.every((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("main").innerHTML=result
+        }
+        displayanimals()
+        function somemethod(){
+            var result=animals.some((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("main").innerHTML=result
+        }
+        displayanimals()
+        function mapmethod(){
+            var newone=animals.map((val)=>{
+                return val+"-animalnames"+"<br>"
+            })
+            document.getElementById("main").innerHTML=newone
+        
+        }
+        displayanimals()
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="hello" style="float: left;">
+       <button  onclick="addstart()">addstart</button><br><br>
+       <button onclick="addend()">addend</button><br><br>
+       <button onclick="addmiddle()">addmiddle</button><br><br>
+       <button onclick="deletefirst()">deletestart</button><br><br>
+       <button onclick="deletelast()">deleteend</button><br><br>
+       <button onclick="deletemid()">deletemiddle</button><br><br>
+       <button onclick="sortlabour()">sort</button><br><br>
+       <button onclick="reverselabour()">reverse</button>
+   </div> 
+   <div id="roar" style="float: left;"></div>
+   <script>
+       var labours=["malli","aravind","rajani","poornima","anitha"]
+       function displaylabours(){
+           var labourdetail=""
+           labours.forEach((lab)=>{
+               labourdetail+=lab+"<br>"
+           })
+           document.getElementById("roar").innerHTML=labourdetail
+       }
+       displaylabours()
+       function addstart(){
+           labours.unshift("lalitha")
+           displaylabours()
+       }
+       function addend(){
+           labours.push("kavitha")
+           displaylabours()
+       }
+       function addmiddle(){
+           labours.splice(1,0,"mamatha")
+           displaylabours()
+       }
+       function deletefirst(){
+           labours.shift()
+           displaylabours()
+       }
+       function deletelast(){
+           labours.pop()
+           displaylabours()
+       }
+       function deletemid(){
+           labours.splice(1,1)
+           displaylabours()
+       }
+       function sortlabour(){
+           labours.sort()
+           displaylabours()
+       }
+       function reverselabour(){
+           labours.reverse()
+           displaylabours()
+       }
+   </script>
+</body>
+</html>

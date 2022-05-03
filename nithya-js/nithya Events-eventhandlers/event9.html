@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="low" style="float: left;">
+        <button onclick="findmethod()">find</button><br><br>
+        <button onclick="filtermethod()">filter</button><br><br>
+        <button onclick="everymethod()">every</button><br><br>
+        <button onclick="somemethod()">some</button><br><br>
+        <button onclick="mapmethod()">map</button><br><br>
+    </div>
+    <div id="xxx" style="float: left;"></div>
+    <script>
+        var colors=["red","pink","yellow","rose","green","blue"]
+        function displaycolors(){
+            var colordetails=""
+            colors.forEach((value)=>{
+                colordetails+=value+"<br>"
+            })
+            document.getElementById("xxx").innerHTML=colordetails
+        }
+        displaycolors()
+        function findmethod(){
+            var char3=colors.find((val)=>{
+                return val.length==3
+            })
+            document.getElementById("xxx").innerHTML=char3
+        }
+        displaycolors()
+        function filtermethod(){
+            var char4=colors.filter((val)=>{
+                return val.length==4
+            })
+            document.getElementById("xxx").innerHTML=char4
+        }
+        displaycolors()
+        function everymethod(){
+            var search=colors.every((val)=>{
+                return val.length>=2
+            })
+            document.getElementById("xxx").innerHTML=search
+        }
+        displaycolors()
+        function somemethod(){
+            var result=colors.some((val)=>{
+                return val.length>=3
+            })
+            document.getElementById("xxx").innerHTML=result
+        }
+         displaycolors()
+         function mapmethod(){
+             var newmap=colors.map((val)=>{
+                 return val+"-colorsname"+"<br>"
+             })
+             document.getElementById("xxx").innerHTML=newmap
+         }
+         displaycolors()
+    </script>
+</body>
+</html>

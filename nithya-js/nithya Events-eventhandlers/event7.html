@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="hear" style="float: left;">
+        <button onclick="findmethod()">find</button><br><br>
+        <button onclick="filtermethod()">filter</button><br><br>
+        <button onclick="somemethod()">every</button><br><br>
+        <button onclick="everymethod()">some</button><br><br>
+        <button onclick="mapmethod()">map</button><br><br>
+    </div>
+    <div id="tear" style="float: left;"></div>
+    <script>
+        var heros=["chiranjeevi","ram","nani","NTR","vijay","cheru"]
+        function herodetails(){
+            var heronames=""
+            heros.forEach((val)=>{
+                heronames+=val+"<br>"
+            })
+            document.getElementById("tear").innerHTML=heronames
+        }
+        herodetails()
+        function findmethod(){
+            var char4=heros.find((val)=>{
+                return val.length==4
+            })
+            document.getElementById("tear").innerHTML=char4
+        }
+        herodetails()
+        function filtermethod(){
+            var char3=heros.filter((val)=>{
+                return val.length==3
+            })
+            document.getElementById("tear").innerHTML=char3
+        }
+        herodetails()
+        function somemethod(){
+            var search=heros.some((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("tear").innerHTML=search
+        }
+        herodetails()
+        function everymethod(){
+            var result=heros.every((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("tear").innerHTML=result
+        }
+        herodetails()
+        function mapmethod(){
+            var newone=heros.map((val)=>{
+                return val+ "-heronames"+"<br>"
+            })
+            document.getElementById("tear").innerHTML=newone
+        }
+        herodetails()
+    </script>
+</body>
+</html>

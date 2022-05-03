@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left;width: 200px;">
+      <button onclick=" addvalueatstart()">Add user at Start</button> <br> <br>
+      <button onclick="addvalueatend()">Add user at End</button><br> <br>
+      <button onclick="addvalueatmiddle()">Add user at Middle</button><br> <br>
+      <button onclick="Deletevalueatfirst()">Delete A user at Start</button><br> <br>
+      <button onclick=" Deletevalueatend()">Delete A user at End</button> <br> <br>
+      <button onclick="Deletevalueatmiddle()">Delete A user at Middle</button> <br> <br>
+      <button onclick="sortvalue()">Sort Users</button> <br> <br>
+      <button onclick="Reversevalue()">Reverse Users</button> <br> <br>
+    </div>
+    <div id="sai"></div>
+    <script>
+        
+         var Persons=["saikiran",
+         "Raju",
+         "Dheena",
+         "Surya",
+         "Rehman",
+         "Vijay",
+         "Akhil",
+         "Vinith",
+         "Nikhil",
+        ];
+
+        function displayAllUsers(){
+            var users="";
+            Persons.forEach((user)=>{
+                users+=user+"<br>"
+            })
+            document.getElementById("sai").innerHTML=users
+        }
+        displayAllUsers()
+        1//
+
+        function addvalueatstart(){
+            Persons.unshift("Jayasankar")
+            displayAllUsers()
+        }
+
+        2//
+        function addvalueatend(){
+            Persons.push("SivaSankar")
+            displayAllUsers()            
+        }
+        3//
+        function addvalueatmiddle(){
+            Persons.splice(2,0,"JohnCena")
+            displayAllUsers() 
+        }
+        4//
+        function Deletevalueatfirst(){
+            Persons.shift()
+            displayAllUsers() 
+        }
+        5//
+        function Deletevalueatend(){
+            Persons.pop()
+            displayAllUsers()
+        }
+        6//
+        function Deletevalueatmiddle(){
+            Persons.splice(2,1)
+            displayAllUsers()
+        }
+        7//
+        function sortvalue(){
+            Persons.sort()
+            displayAllUsers()
+        }
+        8//
+        function Reversevalue(){
+            Persons.reverse()
+            displayAllUsers()
+        }
+
+
+     
+
+    </script>
+</body>
+</html>

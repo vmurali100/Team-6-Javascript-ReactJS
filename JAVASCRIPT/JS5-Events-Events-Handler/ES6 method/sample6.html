@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="left" style="float: left;width: 200px;">
+    <button onclick="mapmethod()">MapMethod</button><br><br>
+    <button onclick="findmethod()">FindMethod</button><br><br>
+    <button onclick="filtermethod()">FilterMethod</button><br><br>
+    <button onclick="everymethod()">EveryMethod</button><br><br>
+    <button onclick="Somemethod()">Somemethod</button><br><br>
+</div>
+    <div id="Saisiri"></div>
+    <script>
+        var college=["Viganasudha","Vivekanadha","Vijayam","PVKN","PCR","Vijetha","Sitams","Vemu","svcet"];
+
+        function mycollege(){
+            var favourite="";
+            college.forEach((sai)=>{
+                favourite+=sai+"<br>"
+            })
+            document.getElementById("Saisiri").innerHTML=favourite
+        }
+        mycollege()
+
+        function mapmethod(){
+            var newcollege=college.map((val)=>{
+                return val+"-chittoor"+"<br>"
+            })
+            document.getElementById("Saisiri").innerHTML=newcollege
+        }
+        mycollege()
+
+        function findmethod(){
+            var characters=college.find((val)=>{
+                return val.length==4
+            })
+            document.getElementById("Saisiri").innerHTML=characters
+        }
+        mycollege()
+
+        function filtermethod(){
+            var characters=college.filter((val)=>{
+                return val.length==4
+            })
+            document.getElementById("Saisiri").innerHTML=characters
+        }
+        mycollege()
+
+        function everymethod(){
+            var cheak=college.every((val)=>{
+                return val.length>=3
+            })
+            document.getElementById("Saisiri").innerHTML=cheak
+        }
+        mycollege()
+
+        function Somemethod(){
+            var cheak=college.some((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("Saisiri").innerHTML=cheak
+        }
+        mycollege()
+    </script>
+</body>
+</html>

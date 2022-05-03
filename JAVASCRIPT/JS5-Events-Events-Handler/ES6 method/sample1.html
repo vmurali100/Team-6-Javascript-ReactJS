@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cheppanu" style="float: left;width: 100px;">
+        <button onclick="mapmethod()">mapmethod</button><br><br>
+        <button onclick=" findmethod()">findmethod</button><br><br>
+        <button onclick=" filtermethod()">filtermethod</button><br><br>
+        <button onclick=" everymethod()">everymethod</button><br><br>
+        <button onclick="somemethod()">somemethod</button> <br><br>
+    </div>
+    <div id="Neekndhuku" style="float: left;"></div>
+
+    <script>
+        var students = ["Sai", "Raju", "Kohli", "Dheena", "VIjay","Akhil", "Ram", "Virat", "Naveen", "Rehman", "Vinod"]
+            
+
+        function saikiran() {
+            Users = "";
+            students.forEach((sai) => {
+                Users += sai + "<br>"
+            })
+            document.getElementById("Neekndhuku").innerHTML = Users
+        }
+        saikiran()
+
+        function mapmethod(){
+            var newstudnets=students.map((val)=>{
+                return val+"-Goodstudents"+"<br>"
+            })
+            document.getElementById("Neekndhuku").innerHTML=newstudnets
+        }
+        saikiran()
+
+        function findmethod(){
+            var characters5=students.find((val)=>{
+                return val.length==5
+            })
+            document.getElementById("Neekndhuku").innerHTML=characters5
+        }
+        saikiran()
+
+        function filtermethod(){
+            var characters5=students.filter((val)=>{
+                return val.length==5
+            })
+            document.getElementById("Neekndhuku").innerHTML=characters5
+        }
+        saikiran()
+
+        function everymethod(){
+            var cheak=students.every((val)=>{
+                return val .lastIndexOf>=3
+            })
+            document.getElementById("Neekndhuku").innerHTML=cheak
+        }
+        saikiran()
+
+        function somemethod(){
+            var cheak5=students.some((val)=>{
+                return val.length==3
+            })
+            document.getElementById("Neekndhuku").innerHTML=cheak5
+        }
+        saikiran()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="John"n style="float: left;width: 250px;">
+    <button onclick="Start()">Beast</button> <br> <br>
+    <button onclick="Ending()">KGF-2</button> <br> <br>
+    <button onclick=" Addmiddle()">RRR</button> <br> <br>
+    <button onclick="deletevalueatstart()">Acharya</button> <br> <br>
+    <button onclick="deletevalueatEnding()">Theri</button> <br> <br>
+    <button onclick="Deletevalueatmiddle()">Maahan</button> <br> <br>
+    <button onclick="sortvalue()">Pushpa</button> <br> <br>
+    <button onclick="reversevalue()">Don</button> <br> <br>
+   </div>
+
+    <ul id="saikiran" style="float: left;"></ul>
+
+    <script>
+        var Actors=["ThalapathyVIJAY","Yash","RamCharan","Chiranjivi",
+                    "GV.Prakash","Vikarm","AlluArjun","Sivakarthikeyan"];
+
+         function users(){
+             var acting="";
+             Actors.forEach((telugu)=>{
+                acting+=telugu+"<br>"
+             })
+             document.getElementById("saikiran").innerHTML=acting
+         }
+         users()
+
+         function Start(){
+             Actors.unshift("Magadheera")
+             users()
+         }
+
+         function Ending(){
+             Actors.push("Rangasthalam")
+             users()
+         }
+
+         function Addmiddle(){
+             Actors.splice(2,0,"Chirutha")
+             users()
+         }
+
+         function deletevalueatstart(){
+             Actors.shift()
+             users()
+         }
+
+         function deletevalueatEnding(){
+             Actors.pop()
+             users()
+         }
+
+         function Deletevalueatmiddle(){
+             Actors.splice(4,1)
+             users()
+         }
+
+         function sortvalue(){
+             Actors.sort()
+             users()
+         }
+
+         function reversevalue(){
+             Actors.reverse()
+             users()
+         }
+    </script>
+</body>
+</html>

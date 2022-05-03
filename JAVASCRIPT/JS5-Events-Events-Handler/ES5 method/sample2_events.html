@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div id="left" style="float: left; width: 200px;">
+        <button onclick="Start()">RCB</button> <br> <br>
+        <button onclick="ending()">CSK</button><br> <br>
+        <button onclick="addmiddle()">Punjab</button><br> <br>
+        <button onclick=" Deletestartvalue()">MI</button> <br> <br>
+        <button onclick="Deleteendvalue()">KKr</button> <br> <br>
+        <button onclick=" Deletemiddlevalue()">DC</button> <br> <br>
+        <button onclick="sortvalue()">SRH</button> <br> <br>
+        <button onclick="reversevalue()">GT</button> <br> <br>
+     </div>
+    <ul id="sai" style="float: left;"></ul> 
+    <script>
+        var cricketers=["virakohli","Maxiwell","ABdevillirs","Fafduplassis",
+        "AnujRawat","Siraj","HAzelwood","Hasaranga",];
+        
+        function displayAllUsers(){
+            var Users="";
+            cricketers.forEach((Rahul)=>{
+                Users+=Rahul+"<br>"
+            });
+            document.getElementById("sai").innerHTML=Users
+        }
+        displayAllUsers();
+
+        function Start(){
+            cricketers.unshift("Harshalpatel")
+            displayAllUsers()
+        }
+
+        function ending(){
+            cricketers.push("DineshKarthik")
+            displayAllUsers()
+        }
+
+        function addmiddle(){
+            cricketers.splice(2,0,"Prabhudesai")
+            displayAllUsers()
+        }
+
+        function Deletestartvalue(){
+            cricketers.shift()
+            displayAllUsers()
+        }
+
+        function Deleteendvalue(){
+            cricketers.pop()
+            displayAllUsers()            
+        }
+
+        function Deletemiddlevalue(){
+            cricketers.splice(2,1)
+            displayAllUsers() 
+        }
+
+        function sortvalue(){
+            cricketers.sort()
+            displayAllUsers() 
+        }
+
+        function reversevalue(){
+            cricketers.reverse()
+            displayAllUsers() 
+        }
+        
+    </script>
+</body>
+</html>

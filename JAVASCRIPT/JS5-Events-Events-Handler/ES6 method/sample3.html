@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mydear" style="float: left;width: 200px;">
+        <button onclick="mapmethod()">Mapmethod</button><br><br>
+        <button onclick=" findmethod()">Finmethod</button><br><br>
+        <button onclick="filtermethod()">filtermethod</button><br><br>
+        <button onclick=" everymethod()">everymethod</button><br><br>
+        <button onclick="somemethod()">Somemethod</button><br><br>
+    </div>
+
+    <ul id="sollamaten" style="float: left;"></ul>
+    <script>
+       var players=["Virat","Kohli","dhoni","Rohit","Rahul","Dinesh","Siraj","Hasaranga","Hazilwood","Harsahl"]
+
+       function Bestplayers(){
+           var cricket="";
+           players.forEach((cricketers)=>{
+               cricket+=cricketers+"<br>";
+           })
+           document.getElementById("sollamaten").innerHTML=cricket
+       }
+       Bestplayers()
+
+       function mapmethod(){
+           var newplayer=players.map((val)=>{
+               return val+"-Batsman"+"<br>"
+           })
+           document.getElementById("sollamaten").innerHTML=newplayer
+       }
+       Bestplayers()
+
+       function findmethod(){
+           var characters=players.find((val)=>{
+               return val.length==5
+           })
+           document.getElementById("sollamaten").innerHTML=characters
+       }
+       Bestplayers()
+
+       function filtermethod(){
+           var characters=players.filter((val)=>{
+               return val.length==5
+           })
+           document.getElementById("sollamaten").innerHTML=characters
+       }
+       Bestplayers()
+
+       function everymethod(){
+           var cheak=players.every((val)=>{
+               return val.length>=5
+           })
+           document.getElementById("sollamaten").innerHTML=cheak
+       }
+       Bestplayers()
+
+       function somemethod(){
+           var cheak=players.some((val)=>{
+               return val.length==2
+           })
+           document.getElementById("sollamaten").innerHTML=cheak
+       }
+       Bestplayers()
+
+    </script>
+</body>
+</html>

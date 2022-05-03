@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="saikiran" style="float: left;width: 300px;">
+        <button onclick=" addvalatstart()">Addvalue Biginning</button> <br> <br>
+        <button onclick="AddvalatEnding()">Addvalue Ending</button> <br> <br>
+        <button onclick="Addvalatmiddle()">Addvalue Middle</button> <br> <br>
+        <button onclick="deletevalatstart()">Deletevalue Biginning</button> <br> <br>
+        <button onclick="deletevalatending()">Deletevalue Ending</button> <br> <br> 
+        <button onclick="deletevalatmiddle()">Deletevalue Middle</button> <br> <br>
+        <button onclick="sortvalue()">sortvalue</button> <br> <br>
+        <button onclick=" reversevalue()">Reverse Value</button>
+    </div>
+    <div id="Place" style="float: left;"></div>
+    <script>
+        var countrys=["India","England","Australia","Newzeland","Japan","France","America","Canada","China"];
+
+        function saikiran(){
+            var World="";
+            countrys.forEach((places)=>{
+                World+=places+"<br>";
+            })
+            document.getElementById("Place").innerHTML=World
+        }
+        saikiran()
+
+        function addvalatstart(){
+            countrys.unshift("SriLanka")
+            saikiran()
+        }
+
+        function AddvalatEnding(){
+            countrys.push("Pakisthan")
+            saikiran()
+        }
+
+        function Addvalatmiddle(){
+            countrys.splice(2,0,"Brezil")
+            saikiran()
+        }
+
+        function deletevalatstart(){
+            countrys.shift()
+            saikiran()
+        }
+
+        function deletevalatending(){
+            countrys.pop()
+            saikiran()
+        }
+        function deletevalatmiddle(){
+            countrys.splice(2,1)
+            saikiran()
+        }
+
+        function sortvalue(){
+            countrys.sort()
+            saikiran()
+        }
+
+        function reversevalue(){
+            countrys.reverse()
+            saikiran()
+        }
+    </script>
+</body>
+
+</html>

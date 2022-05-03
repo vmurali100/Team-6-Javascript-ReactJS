@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="saikiran" style="float: left; width: 200px;">
+    <button onclick=" mapmethod()">Mapmethod</button><br><br>
+    <button onclick="findmethod()">findmethod</button><br><br>
+    <button onclick=" filtermethod()">filtermethod</button><br><br>
+    <button onclick="everymethod()">everymethod</button><br><br>
+    <button onclick="somemethod()">Somemethod</button><br><br>
+   </div>
+   <ul id="raju" style="float: left;"></ul>
+   <script>
+       var Actors=["Vijay","Charan","Mahesh","GVPrakash","Yash","Rajini","Surya","Dhanush","Karthik","siva","Varun","Akhil"];
+       function favActors(){
+           var favourite="";
+           Actors.forEach((sai)=>{
+               favourite+=sai+"<br>"
+           })
+           document.getElementById("raju").innerHTML=favourite
+       }
+       favActors()
+
+       function mapmethod(){
+           var newactor=Actors.map((val)=>{
+               return val+"-masshero"+"<br>"
+           })
+           document.getElementById("raju").innerHTML=newactor
+       }
+       favActors()
+
+       function findmethod(){
+           var characters=Actors.find((val)=>{
+               return val.length==5
+           })
+           document.getElementById("raju").innerHTML=characters
+       }
+       favActors()
+
+       function filtermethod(){
+           var characters=Actors.filter((val)=>{
+               return val.length==5
+           })
+           document.getElementById("raju").innerHTML=characters
+       }
+       favActors()
+
+       function everymethod(){
+           var cheak=Actors.every((val)=>{
+               return val.length>=3
+           })
+           document.getElementById("raju").innerHTML=cheak
+       }
+       favActors()
+
+       function somemethod(){
+           var cheak=Actors.some((val)=>{
+               return val.length==3
+           })
+           document.getElementById("raju").innerHTML=cheak
+       }
+       favActors()
+   </script>
+</body>
+</html>

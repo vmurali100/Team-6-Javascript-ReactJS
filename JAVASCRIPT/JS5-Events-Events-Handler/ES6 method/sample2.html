@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mydear" style="float: left; width: 150px;">
+        <button onclick="mepmethod()">mapmethod</button> <br><br>
+        <button onclick=" findmethod()">Find</button><br><br>
+        <button onclick="filtermethod()">Filter</button><br><br>
+        <button onclick="everymethod()">every</button><br><br>
+        <button onclick="somemethod()">some</button><br><br>
+    </div>
+    <ul id="urwish" style="float: left;"></ul>
+    <script>
+        var movies=["RRR","Beast","Acharya","Chiruta","kaththi","Temper",
+        "Magadeera","Gilli","Master","Bigil","Theri"]
+        function favmovies(){
+            var sai="";
+            movies.forEach((kiran)=>{
+                sai+=kiran+"<br>";
+            })
+            document.getElementById("urwish").innerHTML=sai
+        }
+        favmovies()
+
+        function mepmethod(){
+            var newmovie=movies.map((val)=>{
+                return val+"-blockbuster"+"<br>"
+            })
+            document.getElementById("urwish").innerHTML=newmovie
+        }
+        favmovies()
+
+        function findmethod(){
+            var characters=movies.find((val)=>{
+                return val.length==5
+            })
+            document.getElementById("urwish").innerHTML=characters
+        }
+        favmovies()
+
+        function filtermethod(){
+            var characters=movies.filter((val)=>{
+                return val.length==5
+            })
+            document.getElementById("urwish").innerHTML=characters
+        }
+        favmovies()
+
+        function everymethod(){
+            var cheak=movies.every((val)=>{
+                return val.length>=3
+            })
+            document.getElementById("urwish").innerHTML=cheak
+        }
+        favmovies()
+
+        function somemethod(){
+            var cheak=movies.some((val)=>{
+                return val.length==5
+            })
+            document.getElementById("urwish").innerHTML=cheak
+        }
+        favmovies()
+
+
+    </script>
+</body>
+</html>

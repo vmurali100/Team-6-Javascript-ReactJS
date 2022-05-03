@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="left" style="float: left;width: 150px;">
+        <button onclick="mapmethod()">MapMethod</button><br><br>
+        <button onclick="findmethod()">Findmethod</button><br><br>
+        <button onclick="filtermethod()">FilterMethod</button><br><br>
+        <button onclick=" EveryMethod()">EveryMethod</button><br><br>
+        <button onclick="Somemethod()">Somemethod</button><br><br>
+    </div>
+    <div id="Virat" style="float: left;"></div>
+    <script>
+        var Ipl=["RCB","CSK","DC","SRH","KKr","KX11","GT","LSG","MI","RR",];
+
+        function indianIpl(){
+            var sai="";
+            Ipl.forEach((kiran)=>{
+                sai+=kiran+"<br>";
+            })
+            document.getElementById("Virat").innerHTML=sai
+        }
+        indianIpl()
+
+        function mapmethod(){
+            var newone=Ipl.map((val)=>{
+                return val+"-Team"+"<br>"
+            })
+            document.getElementById("Virat").innerHTML=newone
+        }
+        indianIpl()
+
+        function findmethod(){
+            var characters=Ipl.find((val)=>{
+                return val.length==3
+            })
+            document.getElementById("Virat").innerHTML=characters
+        }
+        indianIpl()
+
+        function filtermethod(){
+            var characters=Ipl.filter((val)=>{
+                return val.length==3
+            })
+            document.getElementById("Virat").innerHTML=characters
+        }
+        indianIpl()
+
+        function EveryMethod(){
+            var cheak=Ipl.every((val)=>{
+                return val.length>=1
+            })
+            document.getElementById("Virat").innerHTML=cheak
+        }
+        indianIpl()
+
+        function Somemethod(){
+            var cheak=Ipl.some((val)=>{
+                return val.length==3
+            })
+            document.getElementById("Virat").innerHTML=cheak
+        }
+        indianIpl()
+    </script>
+</body>
+
+</html>

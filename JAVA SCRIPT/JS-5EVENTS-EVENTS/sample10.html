@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="sathish" style="float: left; width: 200px;">
+    <button onclick="mapmethaod()">mapmethod</button><br><br>
+    <button onclick="findmethod()">findmethod</button><br><br>
+    <button onclick=" filtermethod()">filtermethod</button><br><br>
+    <button onclick=" everymethod()">everymehtod</button><br><br>
+    <button onclick="somemethod()">somemethod</button><br><br>
+</div>
+<div id="respect"></div>
+<script>
+    var movies=["Chirutha","RRR","KGF","Yamadhonga","Orange","Temper","Janatha","Mirchi","lovers"]
+
+    function mymovies(){
+        var close="";
+        movies.map((ram)=>{
+            close+=ram+"<br>" 
+        })
+        document.getElementById("respect").innerHTML=close
+    }
+    mymovies()
+
+    function mapmethaod(){
+        var newone=movies.map((val)=>{
+            return val+"-bestmovie"+"<br>"
+        })
+        document.getElementById("respect").innerHTML=newone
+    }
+    mymovies()
+
+    function findmethod(){
+        var characters=movies.find((val)=>{
+            return val.length==3
+        })
+        
+        document.getElementById("respect").innerHTML=characters
+    }
+    mymovies()
+
+    function filtermethod(){
+        var characters=movies.filter((val)=>{
+            return val.length==3
+        })
+        
+        document.getElementById("respect").innerHTML=characters
+    }
+    mymovies()
+
+    function everymethod(){
+        var cheak=movies.every((val)=>{
+            return val.length>=5
+        })
+        document.getElementById("respect").innerHTML=cheak
+    }
+    mymovies()
+
+    function somemethod(){
+        var cheak=movies.some((val)=>{
+            return val.length>=4
+        })
+        document.getElementById("respect").innerHTML=cheak
+    }
+    mymovies()
+
+</script>
+</body>
+</html>

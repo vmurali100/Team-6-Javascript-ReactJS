@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="naveen" style="float: left;width: 200px;">
+    <button onclick="mapmethod()">mapmethod</button><br><br>
+    <button onclick="findmethod()">findmethod</button><br><br>
+    <button onclick="filtermethod()">filtermethod</button><br><br>
+    <button onclick="everymethod()">everymethod</button><br><br>
+    <button onclick="somemethod()">somemethod</button><br><br>
+</div>
+<div id="pratheep"></div>
+<script>
+    var friends=["Balji","varun","charan","kiran",
+    "praveen","kohli","hanuman","murali","Hemanth"]
+
+    function myfriends(){
+        var close="";
+        friends.map((ram)=>{
+            close+=ram+"<br>" 
+        })
+        document.getElementById("pratheep").innerHTML=close
+    }
+    myfriends()
+
+    function mapmethod(){
+        var newone=friends.map((val)=>{
+            return val+"-bestfriend"+"<br>"
+        })
+        document.getElementById("pratheep").innerHTML=newone
+    }
+    myfriends()
+
+    function findmethod(){
+        var characters=friends.find((val)=>{
+            return val.length==5
+        })
+        
+        document.getElementById("pratheep").innerHTML=characters
+    }
+    myfriends()
+    function filtermethod(){
+        var characters=friends.filter((val)=>{
+            return val.length==5
+        })
+        
+        document.getElementById("pratheep").innerHTML=characters
+    }
+    myfriends()
+
+    function everymethod(){
+        var cheak=friends.every((val)=>{
+            return val.length>=4
+        })
+        document.getElementById("pratheep").innerHTML=cheak
+    }
+    myfriends()
+
+    function somemethod(){
+        var cheak=friends.some((val)=>{
+            return val.length>=4
+        })
+        document.getElementById("pratheep").innerHTML=cheak
+    }
+    myfriends()
+</script>
+</body>
+</html>

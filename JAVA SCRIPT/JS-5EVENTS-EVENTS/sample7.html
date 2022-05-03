@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="rocky" style="float: left; width: 250px;">
+        <button onclick="mapmethaod()">mapmethaod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filetrmethod</button><br><br>
+        <button onclick="everymethod()">everymethod</button><br><br>
+        <button onclick=" somemethod()">somemethod</button><br><br>
+    </div>
+    <div id="bai" style="float: left;"></div>
+    <script>
+        var pens = ["Parker Pens", "Cross Pens", "MontBlanc Pens", "Waterman Pens", "Shanghai Hero Pens", "Sheaffer Pens", "Aurora Pens"]
+        function displayAllUsers() {
+            var Users = "";
+            pens.forEach(user => {
+                Users += user + "<br>";
+
+            });
+            document.getElementById("bai").innerHTML = Users
+
+        }
+        displayAllUsers()
+
+        function mapmethaod() {
+            var kalam = pens.map((val) => {
+                return val+"=kalam"+"<br>"
+            })
+            document.getElementById("bai").innerHTML = kalam
+        }
+        displayAllUsers()
+
+        function findmethod(){
+            var kalam=pens.find((val)=>{
+                return val.length==10
+            })
+            document.getElementById("bai").innerHTML=kalam
+        }
+        displayAllUsers()
+
+        function filetrmethod(){
+            var kalam=pens.filter((val)=>{
+                return val=pens.length==7
+            })
+            document.getElementById("bai").innerHTML=kalam
+            
+        }
+        displayAllUsers()
+
+        function everymethod(){
+            var  kalam=pens.every((val)=>{
+                return val.length>=5
+            })
+            document.getElementById("bai").innerHTML=kalam
+        }
+        displayAllUsers()
+
+       
+
+        function somemethod(){
+            var kalam=pens.some((val)=>{
+                return val.length==9
+            })
+            document.getElementById("bai").innerHTML=kalam
+        }
+        displayAllUsers()
+
+    </script>
+</body>
+
+</html>

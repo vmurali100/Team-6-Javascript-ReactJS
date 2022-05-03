@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="surya" style="width: 250px; float: left;">
+        <button onclick="addedvaluestart()">Start</button><br><br>
+        <button onclick="addedvalueend()">End</button><br><br>
+        <button onclick="addedvaluemiddle()">Middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">userat start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick=" deleteValueAtMiddle()">user at Middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="raju2" style="float: left;"></div>
+    <script>
+        var colours = ["red", "blue", "white", "pink", "aliceblue", "darkblue", "yellowgreen", "yellow", "black", "orange", "purple", "Brown"]
+        function displayAllUsers() {
+            var Users = "";
+            colours.forEach(User => {
+                Users += User + "<br>";
+            });
+            document.getElementById("raju2").innerHTML = Users
+        }
+        displayAllUsers()
+        function addedvaluestart() {
+            colours.unshift("LightPink")
+            displayAllUsers()
+
+        }
+        function addedvalueend() {
+            colours.push("LightSalmon")
+            displayAllUsers()
+        }
+        function addedvaluemiddle() {
+            colours.splice(2, 3, "DarkRed")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst() {
+            colours.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast(){
+            colours.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            colours.splice()
+            displayAllUsers()
+        }
+        function sortvalue(){
+            colours.sort()
+            displayAllUsers()
+        }
+        function reversevalue(){
+            colours.reverse()
+            displayAllUsers()
+        }
+
+
+
+    </script>
+</body>
+
+</html>

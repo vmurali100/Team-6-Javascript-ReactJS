@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="sk1" style="width: 250px;float: left;">
+        <button onclick="addvalueatstart()">Start</button><br><br>
+        <button onclick=" addvalueatend()">End</button><br><br>
+        <button onclick="addedvalueatmiddle()">Middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at Middle</button><br><br>
+        <button onclick=" sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+
+    </div>
+    <div id="sai" style="float: left;"></div>
+
+
+    <script>
+        var temple = ["badrinath temple", "sun temple", "Brihadeeswara Temple", "Somnath Temple", "Kedarnath Temple", "Sanchi Stupa", "Ramanathaswamy Temple", "Vaishno Devi Temple", "Siddhivinayak Temple", "Gangotri Temple", "Golden Temple", "Kashi Vishwanath Temple", "Shri Jagannath Temple", "Yamunotri Temple", "Meenakshi Temple", "Amarnath Cave Temple"]
+
+        function displayAllUsers() {
+            var users = "";
+            temple.forEach((user) => {
+                users += user + "<br>";
+            })
+            document.getElementById("sai").innerHTML = users
+        }
+        displayAllUsers()
+
+        function addvalueatstart() {
+            temple.unshift("kasi vishwanath temple")
+            displayAllUsers()
+        }
+        function addvalueatend() {
+            temple.push("Shri Padmanabhaswamy Temple")
+            displayAllUsers()
+        }
+        function addedvalueatmiddle() {
+            temple.splice(2, 4, "Shri Digambar Jain Lal Mandir")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst() {
+            temple.push()
+            displayAllUsers()
+        }
+        function deleteValueAtLast() {
+            temple.pop()
+            displayAllUsers()
+        }
+
+        function deleteValueAtMiddle() {
+            temple.splice(2, 1)
+            displayAllUsers()
+        }
+
+        function sortvalue() {
+            temple.sort()
+            displayAllUsers()
+        }
+        function reversevalue() {
+            temple.reverse()
+            displayAllUsers()
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

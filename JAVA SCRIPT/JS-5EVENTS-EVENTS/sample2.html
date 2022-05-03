@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left;width: 350px;">
+        <button onclick="addvalueatstart()">Start</button><br><br>
+        <button onclick="addUserAtMiddle()">End</button><br><br>
+        <button onclick="addUserAtMiddle()">Middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at Start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at Middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick=" reverse()">reverse</button><br><br></div>
+    <div id="pk1" style="float: left;"></div>
+    <script>
+        var players=["steve smith","david warner","glenn maxwell","pat cummins","aaron finch","usman khawaja","mitchell starc","marnus labuschagn","adam zampa","marcus stoinis","nathan lyon","alex carey","josh inglish","matthew wade","scott boland","jason behrendorff","peter handcomb","nathan ellis","nathan coulter-nile","jackson bird","marcus harris"];
+        function displayAllUsers(){
+            var Users="";
+            players.forEach((venki)=>{
+                Users+=venki +"<br>";
+
+            });
+            document.getElementById("pk1").innerHTML=Users
+        
+        }
+        displayAllUsers()
+
+        function addvalueatstart(){
+            players.unshift("msdhoni")
+            displayAllUsers()
+        }
+        function addUserAtMiddle(){
+            players.push("jadeja")
+            displayAllUsers()
+        }
+        function addUserAtMiddle(){
+            players.splice(2,3,"virat kohli")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst(){
+            players.shift()
+            displayAllUsers()
+
+        }
+        function deleteValueAtLast(){
+            players.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            players.splice(4,1,"yuvaraj singh")
+            displayAllUsers()
+        }
+        function sortvalue(){
+            players.sort()
+            displayAllUsers()
+        }
+        function reverse(){
+            players.reverse()
+            displayAllUsers()
+        }
+    </script>
+    
+</body>
+</html>

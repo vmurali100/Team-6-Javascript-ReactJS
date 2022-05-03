@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   <div id="naveen" style="float: left;width: 300px;">
+    <button onclick="addvalueatstart()">Start</button><br><br>
+    <button onclick="addUserAtEnd()">End</button><br><br>
+    <button onclick="addUserAtMiddle()">Middle</button><br><br>
+    <button onclick="deleteValueAtFirst()">user at Start</button><br><br>
+    <button onclick="deleteValueAtLast()">user at End</button><br><br>
+    <button onclick="deleteValueAtMiddle()">user at Middle</button><br><br>
+    <button onclick="sortvalue()">Sort</button><br><br>
+    <button onclick="reverse()">reverse</button><br><br>
+   </div>
+    <ul id="pk" style="float: left;"></ul>
+    <script>
+        var flowers = ["rose", "lilly", "sunflower", "jasmine", "chammnthi", "cosmos", "lotus"];
+
+        function displayAllUsers() {
+            let Users = "";
+            flowers.forEach(user => {
+                Users += user + "<br>";
+
+            });
+            document.getElementById("pk").innerHTML=Users
+        }
+        displayAllUsers()
+
+        function addvalueatstart(){
+            flowers.unshift("mogra")
+            displayAllUsers()
+            
+        }
+        function addUserAtEnd(){
+            flowers.push("water lily")
+            displayAllUsers()
+        }
+        function addUserAtMiddle(){
+            flowers.splice(2,2,"tuberose")
+            displayAllUsers()
+        }
+
+        function deleteValueAtFirst(){
+            flowers.shift()
+            displayAllUsers()
+        }
+
+        function deleteValueAtLast(){
+            flowers.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            flowers.splice(2,1)
+            displayAllUsers()
+        }
+        function sortvalue(){
+            flowers.sort()
+            displayAllUsers()
+        }
+        function reverse(){
+            flowers.reverse()
+            displayAllUsers()
+        }
+
+    </script>
+</body>
+
+</html>

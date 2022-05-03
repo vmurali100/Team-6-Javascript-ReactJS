@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="sweet" style="float: left;width: 300px;">
+    <button onclick="mapmethod()">mapmethod</button><br><br>
+    <button onclick="findmethod()">findmethod</button><br><br>
+    <button onclick="filetrmethod()">filetrmethod</button><br><br>
+    <button onclick="everymethod()">everymethod</button><br><br>
+    <button onclick=" somemethod()">somemethod</button><br><br>
+    </div>
+    <div id="heart" style="float: left;"></div>
+
+    <script>
+        var beaches = ["Radhanagar Beach", "Kala Pathar Beach", "Arambol Beach", "Ullal Beach", "Auroville Beach", "Agatti Island", "Velneshwar Beach", "Puri Beach"]
+        function displayAllUsers() {
+            var Users = "";
+            beaches.forEach(user => {
+                Users += user + "<br>";
+
+            });
+
+            document.getElementById("heart").innerHTML = Users
+
+        }
+        displayAllUsers()
+
+        function mapmethod(){
+            var newbeach=beaches.map((val)=>{
+                return val+"-India"+"<br>"
+            })
+            document.getElementById("heart").innerHTML=newbeach
+        }
+        displayAllUsers()
+
+        function findmethod(){
+            var char=beaches.find((val)=>{
+                return val.length==15
+            })
+            document.getElementById("heart").innerHTML=char
+        }
+        displayAllUsers()
+        
+        function filetrmethod(){
+            var char=beaches.filter((val)=>{
+                return val.length==10
+            })
+            document.getElementById("heart").innerHTML=char
+        }
+        displayAllUsers()
+
+        function everymethod(){
+            var  char=beaches.every((val)=>{
+                return val.length==5
+            })
+            document.getElementById("heart").innerHTML=char
+        }
+        displayAllUsers()
+
+       
+
+        function somemethod(){
+            var char=beaches.some((val)=>{
+                return val.length==15
+            })
+            document.getElementById("heart").innerHTML=char
+        }
+        displayAllUsers()
+
+        
+    </script>
+</body>
+
+</html>

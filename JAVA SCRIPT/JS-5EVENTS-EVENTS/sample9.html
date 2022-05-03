@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="pratheep" style="float: left;width: 200px;">
+    <button onclick="mapmethaod()">map</button> <br><br>
+    <button onclick="findmethod()">find</button> <br><br>
+    <button onclick="filtermethod()">filter</button> <br><br>
+    <button onclick=" everymethod()">every</button> <br><br>
+    <button onclick=" somemethod()">some</button> <br><br>
+</div>
+<div id="naveen"></div>
+<script>
+    var heros=["Vijay","Ajith","Dhanush","Rajini","Vikram","Jeeva","Surya","Yash"]
+
+    function myheros(){
+        var close="";
+        heros.map((ram)=>{
+            close+=ram+"<br>" 
+        })
+        document.getElementById("naveen").innerHTML=close
+    }
+    myheros()
+
+    function mapmethaod(){
+        var newone=heros.map((val)=>{
+            return val+"-bestactor"+"<br>"
+        })
+        document.getElementById("naveen").innerHTML=newone
+    }
+    myheros()
+
+    function findmethod(){
+        var characters=heros.find((val)=>{
+            return val.length==5
+        })
+        
+        document.getElementById("naveen").innerHTML=characters
+    }
+    myheros()
+
+    function filtermethod(){
+        var characters=heros.filter((val)=>{
+            return val.length==5
+        })
+        
+        document.getElementById("naveen").innerHTML=characters
+    }
+    myheros()
+
+    function everymethod(){
+        var cheak=heros.every((val)=>{
+            return val.length>=5
+        })
+        document.getElementById("naveen").innerHTML=cheak
+    }
+    myheros()
+
+    function somemethod(){
+        var cheak=heros.some((val)=>{
+            return val.length>=4
+        })
+        document.getElementById("naveen").innerHTML=cheak
+    }
+    myheros()
+
+</script>
+</body>
+</html>

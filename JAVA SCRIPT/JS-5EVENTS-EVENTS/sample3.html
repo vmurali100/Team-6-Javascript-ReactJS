@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="BB" style="float: left;width: 300px;">
+        <button onclick="addvalueatstart()">Start</button><br><br>
+        <button onclick="addUserAtEnd()">End</button><br><br>
+        <button onclick="addUserAtMiddle()">Middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at Start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at Middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+
+    <div id="BB1" style="float: left;"></div>
+    <script>
+        var festival = ["makara sankranti", "pongal", "basant panchami", "maha shivratri", "holi", "mewar", "baisakhi", "thrissur pooram", "buddha jayanti", "ratha yatra", "hemis", "eid ul fitr", "rashabandhan", "janmashtmi", "onam", "navratri", "dussehra", "diwali", "gurupurab", "christmas"]
+
+        function displayAllUsers() {
+            let Users = "";
+            festival.forEach(user => {
+                Users += user + "<br>";
+            });
+
+            document.getElementById("BB1").innerHTML = Users
+        }
+        displayAllUsers()
+
+
+        function addvalueatstart() {
+            festival.unshift("durga puja")
+            displayAllUsers()
+        }
+        function addUserAtEnd() {
+            festival.push("camel festivel")
+            displayAllUsers()
+        }
+        function addUserAtMiddle() {
+            festival.splice(2, 5, "easter")
+            displayAllUsers()
+        }
+
+        function deleteValueAtFirst() {
+            festival.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast() {
+            festival.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle() {
+            festival.splice()
+            displayAllUsers()
+        }
+
+        function sortvalue() {
+            festival.sort()
+            displayAllUsers()
+        }
+        function reversevalue() {
+            festival.reverse()
+            displayAllUsers()
+        }
+    </script>
+
+</body>

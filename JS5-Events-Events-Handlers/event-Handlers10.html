@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var mobiles=["Lg","Oppo","Smasung","Moto","Micromax","Apple","Iphone"]
+        function displayAllMobiles(){
+            var name = " "
+            mobiles.forEach((names)=>{
+                name += names + "<br>"
+            })
+            document.getElementById("demo").innerHTML = mobiles;
+        }
+        displayAllMobiles()
+        function mapMethod(){
+            var newmobiles = mobiles.map((val)=>{
+                return val + " - Services" + "<br>"
+            })
+            document.getElementById("demo").innerHTML = newmobiles;
+        }
+        displayAllMobiles()
+        function findMethod(){
+            var mobiles1 = mobiles.find((val)=>{
+                return val.length == 4
+            })
+            document.getElementById("demo").innerHTML = mobiles1;
+        }
+        displayAllMobiles()
+        function filterMethod(){
+            var mobiles2 = mobiles.filter((val)=>{
+                return val.length == 2
+            })
+            document.getElementById("demo").innerHTML = mobiles2;
+        }
+        displayAllMobiles()
+            function someMethod(){
+                var mobiles3 =mobiles.some((val)=>{
+                    return val.length >=7
+                })
+                document.getElementById("demo").innerHTML = mobiles3;
+        }
+        displayAllMobiles()
+        function everyMethod(){
+            var mobiles4 = mobiles.every((val)=>{
+                return val.every >= 9
+            })
+            document.getElementById("demo").innerHTML = mobiles4
+        }
+        displayAllMobiles()
+    </script>
+</body>
+</html>

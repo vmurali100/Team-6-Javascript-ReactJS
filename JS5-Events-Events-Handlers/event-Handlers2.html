@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="left" style="float: left; width: 200px">
+      <button onclick="addUserAtStart()">Add A User at Start</button><br /><br />
+      <button onclick="addUserAtEnd()">Add A User at End</button><br /><br />
+      <button onclick="addUserAtMiddle()">Add A User at Middle</button><br /><br />
+      <button onclick="deleteValueAtFirst()">Delete Add A User at Start</button><br /><br />
+      <button onclick="deleteValueAtLast()">Delate Add A User at End</button><br /><br />
+      <button onclick="deleteValueAtMiddle()">Delate Add A User at Middle</button><br /><br />
+      <button onclick="sortUsers()">Sort Users</button><br /><br />
+      <button onclick="reverseUsers()">Reverse Users</button><br /><br />
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+      var colours = [
+          "Red", 
+          "Blue", 
+          "Green", 
+          "Yellow", 
+          "Pink",
+          "Black",
+          "Orange",
+          "White"
+        ];
+        function displayAllUsers() {
+            var users = " "
+            colours.forEach((user)=>{
+                users += user +"<br>"
+            })
+            document.getElementById("demo").innerHTML = users;
+        }
+        displayAllUsers()
+
+        function addUserAtStart(){
+            colours.unshift("Light Green");
+            displayAllUsers()
+        }
+        function addUserAtEnd(){
+            colours.push("Light Pink");
+            displayAllUsers()
+        }
+        function addUserAtMiddle(){
+            colours.splice(3,0,"Light Blue");
+            displayAllUsers()
+        }
+        function deleteValueAtFirst(){
+            colours.shift();
+            displayAllUsers()
+        }
+        function deleteValueAtLast(){
+            colours.pop();
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            colours.splice(3,2);
+            displayAllUsers()
+        }
+        function sortUsers(){
+            colours.sort();
+            displayAllUsers()
+        }
+        function reverseUsers(){
+            colours.reverse();
+            displayAllUsers()
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></divi>
+    <script>
+        var allmoviename = [
+            "RRR",
+            "Aravind Sametha",
+            "Temper",
+            "Nannaku Prematho",
+            "Jai Lava Kusa",
+            "Janatha Garage",
+            "Baadshah",
+            "Brindavanam"
+        ]
+        function displayAllMovies(){
+            var movies = " "
+            allmoviename.forEach((names)=>{
+                movies += names + "<br>"
+            });
+            document.getElementById("demo").innerHTML = movies;
+        }
+        displayAllMovies()
+        function  mapMethod(){
+            var newmovies= allmoviename.map((val)=>{
+                return val + " - KGf-2" + "<br>"
+            })
+            document.getElementById("demo").innerHTML = newmovies;
+        }
+        displayAllMovies()
+       function findMethod(){
+           var movies1 = allmoviename.find((val)=>{
+               return val.length == 11
+           })
+           document.getElementById("demo").innerHTML = movies1
+       }
+       displayAllMovies()
+       function filterMethod(){
+           var movies2 = allmoviename.filter((val)=>{
+               return val.length == 3
+           })
+           document.getElementById("demo").innerHTML = movies2
+       }
+       displayAllMovies()
+
+       function someMethod(){
+           var movies3 = allmoviename.some((val)=>{
+               return val.length >= 6
+           })
+           document.getElementById("demo").innerHTML = movies3
+       }
+       displayAllMovies()
+        function everyMethod(){
+            var movies5 = allmoviename.every((val)=>{
+                return val.length >= 18
+            })
+            document.getElementById("demo").innerHTML = movies5
+        }
+        displayAllMovies()
+    </script>
+</body>
+</html>

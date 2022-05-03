@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="addAnimalAtStart()">Add A Animal at Start</button><br><br>    
+        <button onclick="addAnimalAtEnd()">Add A Animal at End</button><br><br>    
+        <button onclick="addAnimalAtMiddle()">Add A Animal at Middle</button><br><br>    
+        <button onclick="deleteAnimalAtStart()">Delete Add A Animal at Start</button><br><br>    
+        <button onclick="deleteAnimalAtEnd()">Delete Add A Animal at End</button><br><br>    
+        <button onclick="deleteAnimalAtMiddle()">Delete Add A Animal at Middle</button><br><br>    
+        <button onclick="sortAnimal()">Sort Animal</button><br><br>    
+        <button onclick="reverseAnimal()">Reverse Animal</button><br><br>    
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var animals = [
+            "Elephant",
+            "Cat",
+            "Bear",
+            "Horse",
+            "Fox",
+            "Hippopotamus",
+            "Tiger",
+            "Rabbit"
+        ]
+
+        function displayAllAnimals(){
+            var zoo = " "
+            animals.forEach((zoos)=>{
+                zoo += zoos + "<br>"
+            });
+            document.getElementById("demo").innerHTML = zoo;
+        }
+        displayAllAnimals()
+
+        function addAnimalAtStart(){
+            animals.unshift("Line");
+            displayAllAnimals()
+        }
+        function addAnimalAtEnd(){
+            animals.push("Duck");
+            displayAllAnimals()
+        }
+        function addAnimalAtMiddle(){
+            animals.splice(4,0,"Deer")
+            displayAllAnimals()
+        }
+        function deleteAnimalAtStart(){
+            animals.shift();
+            displayAllAnimals()
+        }
+        function deleteAnimalAtEnd(){
+            animals.pop();
+            displayAllAnimals()
+        }
+        function deleteAnimalAtMiddle(){
+            animals.splice(2,5)
+            displayAllAnimals()
+        }
+        function sortAnimal(){
+            animals.sort()
+            displayAllAnimals()
+        }
+        function reverseAnimal(){
+            animals.reverse()
+            displayAllAnimals()
+        }
+    </script>
+    
+</body>
+</html>

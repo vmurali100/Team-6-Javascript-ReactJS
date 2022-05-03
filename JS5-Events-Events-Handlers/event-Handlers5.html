@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="addStateAtStart()">Add State Name at Start</button><br><br>
+        <button onclick="addStateAtEnd()">Add State Name at End</button><br><br>
+        <button onclick="addStateAtMiddle()">Add State Name at Middle</button><br><br>
+        <button onclick="deleteStateAtStart()">Delete Add State Name at Start</button><br><br>
+        <button onclick="deleteStateAtEnd()">Delete Add State Name at End</button><br><br>
+        <button onclick="deleteStateAtMiddle()">Delete Add State Name at Middle</button><br><br>
+        <button onclick="sortState()">Sort at State</button><br><br>
+        <button onclick="reverseAtState()">Reverse at State</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var states = [
+            "Ap",
+            "Telangana",
+            "Kerala",
+            "Maharashtra",
+            "Karnataka",
+            "Tamil Nadu",
+            "Bihar",
+            "Manipur"
+        ]
+        function displayAllStates(){
+            var names = " "
+            states.forEach((name)=>{
+                names += name + "<br>"
+            })
+            document.getElementById("demo").innerHTML = names;
+        }
+        displayAllStates()
+        function addStateAtStart(){
+            states.unshift("Himachal Pradesh")
+            displayAllStates()
+        }
+        function addStateAtEnd(){
+            states.push("Arunachal Pradesh");
+            displayAllStates()
+        }
+        function addStateAtMiddle(){
+            states.splice(2,0,"Tripura");
+            displayAllStates()
+        }
+        function deleteStateAtStart(){
+            states.shift();
+            displayAllStates()
+        }
+        function deleteStateAtEnd(){
+            states.pop();
+            displayAllStates()
+        }
+        function deleteStateAtMiddle(){
+            states.splice(5,2);
+            displayAllStates()
+        }
+        function sortState(){
+            states.sort();
+            displayAllStates()
+        }
+        function reverseAtState(){
+            states.reverse();
+            displayAllStates()
+        }
+    </script>
+</body>
+</html>

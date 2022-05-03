@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="addFruitAtStart()">Add Fruit Names at Start</button><br><br>
+        <button onclick="addFruitAtEnd()">Add Fruit Names at End</button><br><br>
+        <button onclick="addFruitAtMiddle()">Add Fruit Names at Middle</button><br><br>
+        <button onclick="deleteFruitAtStart()">Delete Fruit Names at Start</button><br><br>
+        <button onclick="deleteFruitAtEnd()">Delete Fruit Names at End</button><br><br>
+        <button onclick="deleteFruitAtMiddle()">Delete Fruit Names at Middle</button><br><br>
+        <button onclick="sortAtFruit()">Sort At Fruit</button><br><br>
+        <button onclick="reverseAtFruit()">Reverse At Fruit</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var fruits = [
+            "Banana",
+            "Apple",
+            "Orange",
+            "Grape",
+            "Watermelon",
+            "Mango",
+            "Pear",
+            "Cherry"
+        ]
+        function displayAllFruits(){
+            var names = " "
+            fruits.forEach((name)=>{
+                names += name + "<br>"
+            })
+            document.getElementById("demo").innerHTML = names;
+        }
+        displayAllFruits()
+        function addFruitAtStart(){
+            fruits.unshift("Lemon")
+            displayAllFruits()
+        }
+        function addFruitAtEnd(){
+            fruits.push("Pomegranate");
+            displayAllFruits()
+        }
+        function addFruitAtMiddle(){
+            fruits.splice(5,0,"Guava");
+            displayAllFruits()
+        }
+        function deleteFruitAtStart(){
+            fruits.shift();
+            displayAllFruits()
+        }
+        function deleteFruitAtEnd(){
+            fruits.pop();
+            displayAllFruits()
+        }
+        function deleteFruitAtMiddle(){
+            fruits.splice(3,2);
+            displayAllFruits()
+        }
+        function sortAtFruit(){
+            fruits.sort();
+            displayAllFruits()
+        }
+        function reverseAtFruit(){
+            fruits.reverse();
+            displayAllFruits()
+        }
+    </script>
+</body>
+</html>

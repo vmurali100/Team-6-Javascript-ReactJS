@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <div id="left" style="float: left; width: 200px;">
+      <button onclick="addUserAtStart()">Add A Uset at Start</button><br><br>
+      <button onclick="addUserAtEnd()">Add A Uset at End</button><br><br>
+      <button onclick="addUserAtMiddle()">Add A Uset at Middle</button><br><br>
+      <button onclick="deleteValueAtFirst()">Delete Add A Uset at Start</button><br><br>
+      <button onclick="deleteValueAtLast()">Delete Add A Uset at End</button><br><br>
+      <button onclick="deleteValueAtMiddle()">Delete Add A Uset at Middle</button><br><br>
+      <button onclick="sortUsers()">Sort Users</button><br><br>
+      <button onclick="reverseUsers()">Reverse Users</button><br><br>
+   </div>
+   <div id="demo" style="float: left; line-height: 35px;"></div>
+   <script>
+      var laptops = [
+         "Lg",
+         "Dell",
+         "Acer",
+         "Hp",
+         "Lenovo",
+         "Asus",
+         "Apple",
+         "MacBook"
+      ]
+      function displayAllUsers(){
+         var company = " "
+         laptops.forEach((comp)=>{
+            company += comp +"<br>"
+         });
+         document.getElementById("demo").innerHTML = company;
+      }
+      displayAllUsers()
+      function addUserAtStart(){
+         laptops.unshift("Realme")
+         displayAllUsers()
+      }
+      function addUserAtEnd(){
+         laptops.push("Samsung");
+         displayAllUsers()
+      }
+      function addUserAtMiddle(){
+         laptops.splice("Toshiba");
+         displayAllUsers()
+      }
+      function deleteValueAtFirst(){
+         laptops.shift();
+         displayAllUsers()
+      }
+      function deleteValueAtLast(){
+         laptops.pop();
+         displayAllUsers()
+      }
+      function deleteValueAtMiddle(){
+         laptops.splice(2,3);
+         displayAllUsers()
+      }
+      function sortUsers(){
+         laptops.sort();
+         displayAllUsers()
+      }
+      function reverseUsers(){
+         laptops.reverse();
+         displayAllUsers()
+      }
+
+   </script>
+</body>
+</html>

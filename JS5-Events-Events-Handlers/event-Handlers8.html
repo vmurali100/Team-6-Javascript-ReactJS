@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var cars=["Innova","Swift","Ford","Honda","Dodge","Renault"]
+
+        function displayAllCars(){
+            var name = " "
+            cars.forEach((names)=>{
+                name += names + "<br>"
+            })
+            document.getElementById("demo").innerHTML = name;
+        }
+        displayAllCars()
+        function mapMethod(){
+            var newCars = cars.map((value)=>{
+                return value + " -Service " + "<br>"
+            })
+            document.getElementById("demo").innerHTML = newCars;
+        }
+        displayAllCars()
+        function findMethod(){
+            var car6 = cars.find((val)=>{
+                return val.length == 6
+            })
+            document.getElementById("demo").innerHTML = car6;
+        }
+        displayAllCars()
+        function filterMethod(){
+            var car1 = cars.find((val)=>{
+                return val.length == 5
+            })
+            document.getElementById("demo").innerHTML = car1
+        }
+        displayAllCars()
+        function someMethod(){
+            var car2 = cars.some((val)=>{
+                return val.length >= 9
+            })
+            document.getElementById("demo").innerHTML = car2;
+        }
+        displayAllCars()
+        function everyMethod(){
+            var car3 = cars.every((val)=>{
+                return val.length >= 4
+            })
+            document.getElementById("demo").innerHTML = car3;
+        }
+        displayAllCars()
+
+    </script>
+</body>
+</html>

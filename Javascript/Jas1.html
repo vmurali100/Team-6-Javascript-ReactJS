@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="left" style="float:left;width:200px">
+      <button onclick="addUserAtStart()">add a user at start</button> <br /><br />
+      <button onclick="addUserAtEnd()">add a user at end</button> <br /><br />
+      <button onclick="addUserAtMiddle()">add a user at middle</button> <br /><br />
+      <button onclick="deleteValueAtFirst()">delete a user at start</button> <br /><br />
+      <button onclick="deleteValueAtLast()">delete a user at end</button> <br /><br />
+      <button onclick="deleteValueAtMiddle()">delete a user at middle</button> <br /><br />
+      
+    </div>
+    <div id="demo"  style="float:left"></div>
+    <script>
+      var students = ["lion","tiger","cheeta","bear","snake","lepord"];
+
+      function displayAllUsers() {
+        let users = "";
+        students.forEach((user) => {
+          users += user + "<br>";
+        });
+        document.getElementById("demo").innerHTML = users;
+      }
+
+      displayAllUsers();
+
+     function addUserAtStart(){
+        students.unshift("Sea lion");
+        displayAllUsers()
+     }
+
+     function addUserAtEnd(){
+        students.push("cat fish");
+        displayAllUsers()
+     }
+
+     function addUserAtMiddle(){
+        students.splice(3,0,"eal");
+        displayAllUsers()
+     }
+
+     function deleteValueAtFirst(){
+        students.shift()
+        displayAllUsers()
+     }
+
+     function deleteValueAtLast(){
+        students.pop()
+        displayAllUsers()
+     }
+     
+     function deleteValueAtMiddle(){
+        students.splice(3,1)
+        displayAllUsers()
+     }
+
+    
+     
+    </script>
+  </body>
+</html>

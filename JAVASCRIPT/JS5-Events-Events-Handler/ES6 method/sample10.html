@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Sai" style="float: left;width: 150px;">
+        <button onclick=" mapmethod()">Map</button><br><br>
+        <button onclick="FilterMethod()">Filter</button><br><br>
+        <button onclick=" Somemethod()">Some</button><br><br>
+        <button onclick="everymethod()">Every</button><br><br>
+        <button onclick=" findmethod()">Find</button><br><br>
+    </div>
+    <ul id="kiran"></ul>
+    <script>
+        var Games=["Cricket","Football","SoftBall","VollyBall","Tennis","GOlf","Hockey","Kabbadi","ThrowBall","HandBall"];
+
+        function AllGames(){
+            var Sai="";
+            Games . forEach((kiran)=>{
+                Sai+=kiran+"<br>"
+            })
+            document.getElementById("kiran").innerHTML=Sai
+        }
+        AllGames()
+
+        function mapmethod(){
+            var newone=Games.map((sai)=>{
+                return sai+"-favouritegame"+"<br>"
+            })
+            document.getElementById("kiran").innerHTML=newone
+        }
+        AllGames()
+
+        function FilterMethod(){
+            var characters=Games.filter((sai)=>{
+                return sai.length==7
+            })
+            document.getElementById("kiran").innerHTML=characters
+        }
+        AllGames()
+
+        function Somemethod(){
+            var saisiri=Games.some((sai)=>{
+                return sai.length==10
+            })
+            document.getElementById("kiran").innerHTML=saisiri
+        }
+        AllGames()
+
+        function everymethod(){
+            var saisiri=Games.every((sai)=>{
+                return sai.length==2
+            })
+            document.getElementById("kiran").innerHTML=saisiri
+        }
+        AllGames()
+
+        function findmethod(){
+            var saisiri=Games.find((sai)=>{
+                return sai.length==7
+            })
+            document.getElementById("kiran").innerHTML=saisiri
+        }
+        AllGames()
+
+    </script>
+</body>
+</html>

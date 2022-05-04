@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sollamten" style="float: left;width: 150px;">
+    <button onclick=" MapMethod()">MapMethod</button><br><br>
+    <button onclick="FindMethod()">FindMethod</button><br><br>
+    <button onclick="FilterMethod()">FilterMethod</button><br><br>
+    <button onclick="EveryMethod()">EveryMethod</button><br><br>
+    <button onclick="SomeMethod()">Somemethod</button><br><br>
+    </div>
+    <ul id="saisiri"></ul>
+    <script>
+        var city=["Chennai","Hyderabad","Delhi","Banaglore","Vizag","mumbai"]
+
+        function mycity(){
+            var captails="";
+            city.forEach((sai)=>{
+                captails+=sai+"<br>"
+            })
+            document.getElementById("saisiri").innerHTML=captails
+        }
+        mycity()
+
+        function MapMethod(){
+            var newone=city.map((sai)=>{
+                return sai+"Industrial Area"+"<br>"
+            })
+            document.getElementById("saisiri").innerHTML=newone
+        }
+        mycity()
+        
+        function FindMethod(){
+            var newone=city.find((sai)=>{
+                return sai.length==5
+            })
+            document.getElementById("saisiri").innerHTML=newone
+        }
+        mycity()
+        function FilterMethod(){
+            var newone=city.filter((sai)=>{
+                return sai.length==5
+            })
+            document.getElementById("saisiri").innerHTML=newone
+        }
+        mycity()
+
+        function EveryMethod(){
+            var newone=city.every((sai)=>{
+                return sai.length>=2
+            })
+            document.getElementById("saisiri").innerHTML=newone
+        }
+        mycity()
+        
+        function SomeMethod(){
+            var newone=city.some((sai)=>{
+                return sai.length>=10
+            })
+            document.getElementById("saisiri").innerHTML=newone
+        }
+        mycity()
+        
+    </script>
+</body>
+</html>

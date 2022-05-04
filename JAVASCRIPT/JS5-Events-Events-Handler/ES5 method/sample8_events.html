@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left;width: 150px;">
+        <button onclick="addvaluatend()">unshift</button><br><br>
+        <button onclick="addvaluatstart()">push</button><br><br>
+        <button onclick="addvaluatmiddle()">splice_Add</button><br><br>
+        <button onclick="delvaluatstart()">shift</button><br><br>
+        <button onclick="delvaluatend()">pop</button><br><br>
+        <button onclick="delvaluatmiddle()">splice_Del</button><br><br>
+        <button onclick=" sort()">Sort</button><br><br>
+        <button onclick=" reverse()">Reverse</button><br><br>
+    </div>
+        <div id="fresh"></div>
+    <script>
+        var food=["Chicken","FriedFish","kebab","pizza","Burger","Egg","bread","Steak","sandwich","jam","butter"]
+
+        function fooditems(){
+            var Users="";
+            food.forEach((user)=>{
+                Users+=user+"<br>"
+            })
+            document.getElementById("fresh").innerHTML=Users
+        }
+        fooditems()
+
+        function addvaluatend(){
+            food.unshift("Seafood")
+            fooditems()
+        }
+        function addvaluatstart(){
+            food.push("RostChicken")
+            fooditems()
+        }
+
+        function addvaluatmiddle(){
+            food.splice(2,0,"Bacon")
+            fooditems()
+        }
+
+        function delvaluatstart(){
+            food.shift()
+            fooditems()
+        }
+        function delvaluatend(){
+            food.pop()
+            fooditems()
+        }
+        function delvaluatmiddle(){
+            food.splice(2,1)
+            fooditems()
+        }
+
+        function sort(){
+            food.sort()
+            fooditems()
+        }
+        function reverse(){
+            food.reverse()
+            fooditems()
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="dheena" style="float: left;width:150px;">
+        <button onclick="mapmethod()">MapMethod</button><br><br>
+        <button onclick=" FindMethod()">findMethod</button><br><br>
+        <button onclick=" FilterMethod()">FilterMethod</button><br><br>
+        <button onclick="EveryMethod()">EveryMethod</button><br><br>
+        <button onclick="Somemethod()">Somemethod</button><br><br>
+    </div>
+    <div id="1526"></div>
+    <script>
+        var Animals=["Elephant","Bear","Lion","Cat","Tiger","Deer","Cow","Monkey","Fox","Horse"];
+
+        function aniAnimals(){ 
+            var sai="";
+            Animals.forEach((kiran)=>{
+                sai+=kiran+"<br>"
+            })
+            document.getElementById("1526").innerHTML=sai
+        }
+        aniAnimals()
+
+        function mapmethod(){
+            var newone=Animals.map((raju)=>{
+                return raju+"-Name"+"<br>"
+            })
+            document.getElementById("1526").innerHTML=newone
+        }
+        aniAnimals()
+
+        function FindMethod(){
+            var characters=Animals.find((ani)=>{
+                return ani.length==4
+            })
+            document.getElementById("1526").innerHTML=characters
+        }
+        aniAnimals()
+
+        function FilterMethod(){
+            var characters=Animals.filter((dhena)=>{
+                return dhena.length==4
+            })
+            document.getElementById("1526").innerHTML=characters
+        }
+        aniAnimals()
+
+        function EveryMethod(){
+            var saisai=Animals.every((rahman)=>{
+                return rahman.length>=2
+            })
+            document.getElementById("1526").innerHTML=saisai
+        }
+        aniAnimals()
+
+        
+        function Somemethod(){
+            var saisai=Animals.some((rahman)=>{
+                return rahman.length>=6
+            })
+            document.getElementById("1526").innerHTML=saisai
+        }
+        aniAnimals()
+
+    </script>
+</body>
+
+</html>

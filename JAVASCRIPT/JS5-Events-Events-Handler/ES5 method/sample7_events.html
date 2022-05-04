@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left;width: 100px;">
+        <button onclick="addvalueatbiginningofthearray()">unshift</button><br><br>    
+        <button onclick="addvalueatEndingofthearray()">push</button><br><br>       
+        <button onclick="addvalueatMiddleofthearray()">splice-Add</button><br><br>    
+        <button onclick="deletevalatbiginningofthearray()">Shift</button><br><br>    
+        <button onclick="deletevalatENDINGofthearray()">Pop</button><br><br>    
+        <button onclick="deletevalatMIDDLEofthearray()">splice_Del</button><br><br>    
+        <button onclick="charactersReverse()">Sort</button><br><br>    
+        <button onclick="charactersReverse()">Reverse</button><br><br>    
+    </div>
+    <ul id="26002001"></ul>
+
+    <script>
+        var mobiles=["Iphone","Redmi","1plus","Vivo","Oppo","Samsung","Realme","Infinix","Nokia"];
+
+        function Brandmobiles(){
+            var Users="";
+            mobiles.forEach((user)=>{
+                Users+=user+"<br>"
+            })
+            document.getElementById("26002001").innerHTML=Users
+        }
+        Brandmobiles()
+
+        function addvalueatbiginningofthearray(){
+            mobiles.unshift("GalaxyM12")
+            Brandmobiles()
+        }
+        function addvalueatEndingofthearray(){
+            mobiles.push("Oneplus 7 Pro")
+            Brandmobiles()
+        }
+        function addvalueatMiddleofthearray(){
+            mobiles.splice(4,0,"Oppo K3")
+            Brandmobiles()
+        }
+        function deletevalatbiginningofthearray(){
+            mobiles.shift()
+            Brandmobiles()
+        }
+        function deletevalatENDINGofthearray(){
+            mobiles.pop()
+            Brandmobiles()
+        }
+        function deletevalatMIDDLEofthearray(){
+            mobiles.splice(2,2)
+            Brandmobiles()
+        }
+        function charactersOrder(){
+            mobiles.sort()
+            Brandmobiles()
+        }
+        function charactersReverse(){
+            mobiles.reverse()
+            Brandmobiles()
+        }
+        
+    </script>
+</body>
+</html>

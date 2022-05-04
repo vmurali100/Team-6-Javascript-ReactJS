@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sai" style="float: left;width: 150px;">
+        <button onclick=" addingValueAtBiginning()">UnshiftMehod</button><br><br>
+        <button onclick=" addingValueAtEnding()">Pushmethod</button><br><br>
+        <button onclick=" addingValueAtMiddle()">spliceMethod</button><br><br>
+        <button onclick=" EndingvalAtdelt()">Shiftmethod</button><br><br>
+        <button onclick=" startingvalAtdelt()">PopMethod</button><br><br>
+        <button onclick="deltmiddleval()">spliceMethod</button><br><br>
+        <button onclick="sort()">Sortmethod</button><br><br>
+        <button onclick="Reverse()">ReverseMethod</button><br><br>      
+       
+    </div>
+    <div id="saikiran"></div>
+    <script>
+        var colours=["Red","Blue","Pink","Yellow","White","black","Orange","Green"]
+
+        function favcolours(){
+            var Users="";
+            colours.forEach((user)=>{
+                Users+=user+"<br>";
+            })
+            document.getElementById("saikiran").innerHTML=Users
+        }
+        favcolours()
+
+        function addingValueAtBiginning(){
+            colours.unshift("SkyBlue")
+            favcolours()
+        }
+
+        function addingValueAtEnding(){
+            colours.push("LiteGreen")
+            favcolours()
+        }
+        function addingValueAtMiddle(){
+            colours.splice(2,0,"gray")
+            favcolours()
+        }
+        function EndingvalAtdelt(){
+            colours.shift()
+            favcolours()
+        }
+        function startingvalAtdelt(){
+            colours.pop()
+            favcolours()
+        }
+        function deltmiddleval(){
+            colours.splice(4,1)
+            favcolours()
+        }
+        function sort(){
+            colours.sort()
+            favcolours()
+        }
+        function Reverse(){
+            colours.reverse()
+            favcolours()
+        }
+        
+ 
+    </script>
+</body>
+</html>

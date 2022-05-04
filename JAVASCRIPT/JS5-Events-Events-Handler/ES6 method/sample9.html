@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="theliyaadhu" style="float: left;width: 150px;">
+        <button onclick="FindMethod()">FindMethod</button><br><br>
+        <button onclick="MapMethod()">MapMethod</button><br><br>
+        <button onclick="Somemethod()">Somemethod</button><br><br>
+        <button onclick="EveryMethod()">EveryMethod</button><br><br>
+        <button onclick="FilterMethod()">FilterMethod</button>    <br><br>
+    </div>
+    <div id="1520"></div>
+    <script>
+        var Languages=["English","Hindhi","Telugu","Tamil","Arabic","French","German","Dutch","Bengali","Kannada","Malayalam","Korean"];
+
+        function AllLanguages(){
+            var world="";
+            Languages .forEach((Sai)=>{
+                world+=Sai+"<br>"
+            })
+            document.getElementById("1520").innerHTML=world
+        }
+        AllLanguages()
+
+        function FindMethod(){
+            var characters=Languages.find((sai)=>{
+                return sai.length==6
+            })
+            document.getElementById("1520").innerHTML=characters
+        }
+        AllLanguages()
+
+        function MapMethod(){
+           var newone=Languages.map((sai)=>{
+               return sai+"-World"+"<br>"
+           })
+            document.getElementById("1520").innerHTML=newone
+        }
+        AllLanguages()
+
+        function Somemethod(){
+            var saisiri=Languages.some((sai)=>{
+                return sai.length==10
+            })
+            document.getElementById("1520").innerHTML=saisiri
+        }
+        AllLanguages()
+
+        function EveryMethod(){
+            var saisiri=Languages.every((sai)=>{
+                return sai.length>=2
+            })
+            document.getElementById("1520").innerHTML=saisiri
+        }
+        AllLanguages()
+
+        function FilterMethod(){
+            var characters=Languages.filter((saikiran)=>{
+                return saikiran.length==6
+            })
+            document.getElementById("1520").innerHTML=characters
+        }
+        AllLanguages()
+
+    </script>
+</body>
+</html>

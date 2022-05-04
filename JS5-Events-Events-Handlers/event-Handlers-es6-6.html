@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var vegetables = ["Carrot","Tomato","Cucumber","Brinjal","Cabbage"]
+        function displayAllVeges(){
+            var names = " "
+            vegetables.forEach((value)=>{
+                names += value + " <br>"
+            })
+            document.getElementById("demo").innerHTML = names;
+        }
+        displayAllVeges()
+        function mapMethod(){
+            var vegetables1 = vegetables.map((val)=>{
+                return val + " - Potato " + "<br>"
+            })
+            document.getElementById("demo").innerHTML = vegetables1;
+        }
+        displayAllVeges()
+        function findMethod(){
+            var vegetables2 = vegetables.find((val)=>{
+                return val.length == 6
+            })
+            document.getElementById("demo").innerHTML = vegetables2
+        }
+        displayAllVeges()
+        function filterMethod(){
+            var vegetables3 = vegetables.filter((val)=>{
+                return val.length == 6
+            })
+            document.getElementById("demo").innerHTML = vegetables3;
+        }
+        displayAllVeges()
+        function someMethod(){
+            var vegetables4 = vegetables.some((val)=>{
+                return val.length >= 7
+            })
+            document.getElementById("demo").innerHTML = vegetables4;
+        }
+        displayAllVeges()
+        function everyMethod(){
+            var vegetables5 = vegetables.every((val)=>{
+                return val.length >=7
+            })
+            document.getElementById("demo").innerHTML = vegetables5
+        }
+        displayAllVeges()
+    </script>
+    
+</body>
+</html>

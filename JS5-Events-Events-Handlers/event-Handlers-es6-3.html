@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var temples=["Tirupathi","Vijayawada","Kalasthi","Knipakam"]
+        function displayAllTemples(){
+            var visit = " "
+            temples.forEach((names)=>{
+                visit += names + " <br>"
+            })
+            document.getElementById("demo").innerHTML = visit;
+        }
+        displayAllTemples()
+        function mapMethod(){
+            var newtemples = temples.map((val)=>{
+                return val + " - Visit Temples" + " <br>"
+            })
+            document.getElementById("demo").innerHTML = newtemples;
+        }
+        displayAllTemples()
+        function findMethod(){
+            var temples1 = temples.find((value)=>{
+                return value.length == 9
+            })
+            document.getElementById("demo").innerHTML = temples1;
+        }
+        displayAllTemples()
+        function filterMethod(){
+            var temples2 = temples.filter((value)=>{
+                return value.length == 10
+            })
+            document.getElementById("demo").innerHTML = temples2
+        }
+        displayAllTemples()
+        function someMethod(){
+            var temples3 = temples.some((value)=>{
+                return value.length >= 6
+            })
+            document.getElementById("demo").innerHTML = temples3
+        }
+        displayAllTemples()
+        function everyMethod(){
+            var temples4 = temples.every((value)=>{
+                return value.length >=14
+            })
+            document.getElementById("demo").innerHTML = temples4
+        }
+        displayAllTemples()
+    </script>
+</body>
+</html>

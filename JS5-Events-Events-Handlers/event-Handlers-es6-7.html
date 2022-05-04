@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var flowers = [ "Rose","Lily","Dahlia","Daffodil","Marigold",]
+        function displayAllFlowers(){
+            var smell = " "
+            flowers.forEach((value)=>{
+                smell += value + "<br>"
+            })
+            document.getElementById("demo").innerHTML = smell;
+        }
+        displayAllFlowers()
+        function mapMethod(){
+            var flowers1 = flowers.map((val)=>{
+                return val + " - Different Colours" + "<br>"
+            })
+            document.getElementById("demo").innerHTML = flowers1
+        }
+        displayAllFlowers()
+        function findMethod(){
+            var flowers2 =flowers.find((val)=>{
+                return val.length == 4
+            })
+            document.getElementById("demo").innerHTML = flowers2
+        }
+        displayAllFlowers()
+        function filterMethod(){
+            var flowers3 = flowers.filter((val)=>{
+                return val.length == 4
+            })
+            document.getElementById("demo").innerHTML = flowers3;
+        }
+        displayAllFlowers()
+        function someMethod(){
+            var flowers4 = flowers.some((val)=>{
+                return val.length >= 8
+            })
+            document.getElementById("demo").innerHTML = flowers4
+        }
+        displayAllFlowers()
+        function everyMethod(){
+            var flowers5 =flowers.every((val)=>{
+                return val,length >= 8
+            })
+            document.getElementById("demo").innerHTML = flowers5
+        }
+        displayAllFlowers()
+    </script>
+</body>
+</html>

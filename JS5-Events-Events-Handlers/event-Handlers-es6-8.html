@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var colours = ["Red", "Blue","Yellow","Green","Pink"]
+        function displayAllColours(){
+            var name = " "
+            colours.forEach((value)=>{
+                name += value + "<br>"
+            })
+            document.getElementById("demo").innerHTML = name;
+        }
+        displayAllColours()
+        function mapMethod(){
+            var colours1 =colours.map((value)=>{
+                return value + " - Dark Colours" + "<br>"
+            })
+            document.getElementById("demo").innerHTML = colours1
+        }
+        displayAllColours()
+        function findMethod(){
+            var colours2 = colours.find((val)=>{
+                return val.length == 6
+            })
+            document.getElementById("demo").innerHTML = colours2
+        }
+        displayAllColours()
+        function filterMethod(){
+            var colours3 =colours.filter((val)=>{
+                return val.length == 5
+            })
+            document.getElementById("demo").innerHTML = colours3
+        }
+        displayAllColours()
+        function someMethod(){
+            var colours4 =colours.some((val)=>{
+                return val.length >= 3
+            })
+            document.getElementById("demo").innerHTML = colours4
+        }
+        displayAllColours()
+        function everyMethod(){
+            var colours5 = colours.every((val)=>{
+                return val.length >= 6
+            })
+            document.getElementById("demo").innerHTML = colours5
+        }
+        displayAllColours()
+    </script>
+</body>
+</html>

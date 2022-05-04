@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 300px;">
+        <button onclick="mapMethod()">Map Method</button><br><br>
+        <button onclick="findMethod()">Find Method</button><br><br>
+        <button onclick="filterMethod()">Filter Method</button><br><br>
+        <button onclick="someMethod()">Some Method</button><br><br>
+        <button onclick="everyMethod()">Every Method</button><br><br>
+    </div>
+    <div id="demo" style="float: left; line-height: 35px;"></div>
+    <script>
+        var students = ["Srinivas","Srividya","Padhma","Sambhasiva Rao","RamMohan"]
+        function displayallstudents(){
+            var student = " "
+            students.forEach((names)=>{
+                student += names + "<br>"
+            })
+            document.getElementById("demo").innerHTML = student;
+        }
+        displayallstudents()
+        function mapMethod(){
+            var newstudent =students.map((val)=>{
+                return val + " - Manikanta" + "<br>"
+            })
+            document.getElementById("demo").innerHTML = newstudent;
+        }
+        displayallstudents()
+        function findMethod(){
+            var student1 = students.find((value)=>{
+                return value.length == 8
+            })
+            document.getElementById("demo").innerHTML = student1;
+        }
+        displayallstudents()
+        function filterMethod(){
+            var student2 = students.filter((value)=>{
+                return value.length == 8 
+            })
+            document.getElementById("demo").innerHTML = student2;
+        }
+        displayallstudents()
+        function someMethod(){
+            var student3 = students.some((value)=>{
+                return value.length >= 8
+            })
+            document.getElementById("demo").innerHTML = student3;
+        }
+        displayallstudents()
+        function everyMethod(){
+            var student4 = students.every((value)=>{
+                return value.length >= 7
+            })
+            document.getElementById("demo").innerHTML = student4;
+        }
+        displayallstudents()
+    </script>
+    
+</body>
+</html>

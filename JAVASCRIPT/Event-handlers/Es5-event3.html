@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px;">
+        <button onclick="addatthestart()">Add value at start</button><br/><br/>
+        <button onclick="addattheend()">Add value at end</button><br/><br/>
+        <button onclick="addatthemiddle()">Add value at middle</button><br/><br/>
+        <button onclick="deleteatthestart()">Delete value at start</button><br/><br/>
+        <button onclick="deleteattheend()">Delete value at end</button><br/><br/>
+        <button onclick="deleteatthemiddle()">Delete value at middle</button><br/><br/>
+        <button onclick="sort()">Sort</button><br/><br/>
+        <button onclick="reverse()">Reverse</button><br/><br/>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+         var numbers = ["one", "two","three", "four","five","siz","seven"];
+         function displayallusers(){
+            var users = "";
+            numbers.forEach((user) => {
+                users += user + "<br>"; 
+            });
+            document.getElementById("demo").innerHTML = users;
+        }
+         displayallusers();
+
+            function addatthestart(){
+             numbers.unshift("zero");
+             displayallusers()
+         }
+         function addattheend(){
+             numbers.push("nine");
+             displayallusers()
+         }
+         function addatthemiddle(){
+             numbers.splice(3,0,"ten");
+             displayallusers()
+         }
+         function deleteatthestart(){
+             numbers.shift()
+             displayallusers()
+         }
+         function deleteattheend(){
+             numbers.pop()
+             displayallusers()
+         }
+         function deleteatthemiddle(){
+             numbers.splice(3,1)
+             displayallusers()
+         }
+         function sort(){
+             numbers.sort()
+             displayallusers()
+         }
+
+         function reverse(){
+             numbers.reverse()
+             displayallusers()
+         }
+    </script>
+</body>
+</html>

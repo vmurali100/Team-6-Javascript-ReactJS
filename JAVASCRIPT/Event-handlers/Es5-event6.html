@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px;">
+        <button onclick="addatthestart()">Add value at start</button><br/><br/>
+        <button onclick="addattheend()">Add value at end</button><br/><br/>
+        <button onclick="addatthemiddle()">Add value at middle</button><br/><br/>
+        <button onclick="deleteatthestart()">Delete value at start</button><br/><br/>
+        <button onclick="deleteattheend()">Delete value at end</button><br/><br/>
+        <button onclick="deleteatthemiddle()">Delete value at middle</button><br/><br/>
+        <button onclick="sort()">Sort</button><br/><br/>
+        <button onclick="reverse()">Reverse</button><br/><br/>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+         var vegetables = ["carrot", "cabbage","bitcrot", "bringal","ladiesfinger","tomoto","onion"];
+         function displayallusers(){
+            var users = "";
+            vegetables.forEach((user) => {
+                users += user + "<br>"; 
+            });
+            document.getElementById("demo").innerHTML = users;
+        }
+         displayallusers();
+
+            function addatthestart(){
+                vegetables.unshift("garlic");
+             displayallusers()
+         }
+         function addattheend(){
+            vegetables.push("ginger");
+             displayallusers()
+         }
+         function addatthemiddle(){
+            vegetables.splice(3,0,"potato");
+             displayallusers()
+         }
+         function deleteatthestart(){
+            vegetables.shift()
+             displayallusers()
+         }
+         function deleteattheend(){
+            vegetables.pop()
+             displayallusers()
+         }
+         function deleteatthemiddle(){
+            vegetables.splice(3,1)
+             displayallusers()
+         }
+         function sort(){
+            vegetables.sort()
+             displayallusers()
+         }
+
+         function reverse(){
+            vegetables.reverse()
+             displayallusers()
+         }
+         </Script>
+</body>
+</html>

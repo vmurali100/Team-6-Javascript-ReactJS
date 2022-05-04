@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div id="left" style="float: left; width: 200px;">
+            <button onclick="addatthestart()">Add value at start</button><br/><br/>
+            <button onclick="addattheend()">Add value at end</button><br/><br/>
+            <button onclick="addatthemiddle()">Add value at middle</button><br/><br/>
+            <button onclick="deleteatthestart()">Delete value at start</button><br/><br/>
+            <button onclick="deleteattheend()">Delete value at end</button><br/><br/>
+            <button onclick="deleteatthemiddle()">Delete value at middle</button><br/><br/>
+            <button onclick="sort()">Sort</button><br/><br/>
+            <button onclick="reverse()">Reverse</button><br/><br/>
+        </div>
+        <div id="demo" style="float: left"></div>
+        <script>
+             var cars = ["nano", "toyato","suziki", "honda","ford","chevy","audi"];
+             function displayallusers(){
+                var users = "";
+                cars.forEach((user) => {
+                    users += user + "<br>"; 
+                });
+                document.getElementById("demo").innerHTML = users;
+            }
+             displayallusers();
+    
+                function addatthestart(){
+                    cars.unshift("ferari");
+                 displayallusers()
+             }
+             function addattheend(){
+                cars.push("bentley");
+                 displayallusers()
+             }
+             function addatthemiddle(){
+                cars.splice(3,0,"dodge");
+                 displayallusers()
+             }
+             function deleteatthestart(){
+                cars.shift()
+                 displayallusers()
+             }
+             function deleteattheend(){
+                cars.pop()
+                 displayallusers()
+             }
+             function deleteatthemiddle(){
+                cars.splice(3,1)
+                 displayallusers()
+             }
+             function sort(){
+                cars.sort()
+                 displayallusers()
+             }
+    
+             function reverse(){
+                cars.reverse()
+                 displayallusers()
+             }
+             </Script>
+</body>
+</html>

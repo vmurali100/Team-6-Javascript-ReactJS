@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float:left; width:300px">
+        <button onclick="adduseratstart()">Add a user at start</button> <br/> <br/>
+        <button onclick="adduseratend()">Add a user at end</button> <br/> <br/>
+        <button onclick="adduseratmiddle()">Add a user at middle</button> <br/> <br/>
+        <button onclick="deletevalueatstart()">delete a user at start</button> <br/> <br/>
+        <button onclick="deletevalueatend()">delete a user at end</button> <br/> <br/>
+        <button onclick="deletevalueatmiddle()">delete a user at middle</button> <br/> <br/>
+        <button onclick="sortusers()">sort users</button> <br/> <br/>
+        <button onclick="reverseusers()">reverse users</button> <br/> <br/>
+    </div>
+    <div id="demo" style="float:left"></div>
+    <script>
+         var students = ["neeraja", "bhargavi","mouni", "padmaja","sowmya","sandhya","deepa"];
+         function displayallusers(){
+            var users = "";
+            students.forEach((user) => {
+                users += user + "<br>"; 
+            });
+            document.getElementById("demo").innerHTML = users;
+        }
+         displayallusers();
+
+        function adduseratstart(){
+            students.unshift("shalini");
+            displayallusers()
+        }
+        function adduseratend(){
+            students.push("sneha");
+            displayallusers()
+        }
+        function adduseratmiddle(){
+            students.splice(3,0,"geethu");
+            displayallusers()
+        }
+        function deletevalueatstart(){
+            students.shift()
+            displayallusers()
+        }
+        function deletevalueatend(){
+            students.pop()
+            displayallusers()
+        }
+        function deletevalueatmiddle(){
+            students.splice(3,1)
+            displayallusers()
+        }
+        function sortusers(){
+            students.sort()
+            displayallusers()
+        }
+        function reverseusers(){
+            students.reverse()
+            displayallusers()
+        }
+    </script>
+</body>
+</html>

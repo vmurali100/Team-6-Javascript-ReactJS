@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px;">
+        <button onclick="addatthestart()">Add value at start</button><br/><br/>
+        <button onclick="addattheend()">Add value at end</button><br/><br/>
+        <button onclick="addatthemiddle()">Add value at middle</button><br/><br/>
+        <button onclick="deleteatthestart()">Delete value at start</button><br/><br/>
+        <button onclick="deleteattheend()">Delete value at end</button><br/><br/>
+        <button onclick="deleteatthemiddle()">Delete value at middle</button><br/><br/>
+        <button onclick="sort()">Sort</button><br/><br/>
+        <button onclick="reverse()">Reverse</button><br/><br/>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+         var trees = ["neen", "tamarind","rose tree", "money tree","ylang","pongame","indian karanja"];
+         function displayallusers(){
+            var users = "";
+            trees.forEach((user) => {
+                users += user + "<br>"; 
+            });
+            document.getElementById("demo").innerHTML = users;
+        }
+         displayallusers();
+
+            function addatthestart(){
+                trees.unshift("banyan");
+             displayallusers()
+         }
+         function addattheend(){
+            trees.push("boomstick");
+             displayallusers()
+         }
+         function addatthemiddle(){
+            trees.splice(3,0,"sandal");
+             displayallusers()
+         }
+         function deleteatthestart(){
+            trees.shift()
+             displayallusers()
+         }
+         function deleteattheend(){
+            trees.pop()
+             displayallusers()
+         }
+         function deleteatthemiddle(){
+            trees.splice(3,1)
+             displayallusers()
+         }
+         function sort(){
+            trees.sort()
+             displayallusers()
+         }
+
+         function reverse(){
+            trees.reverse()
+             displayallusers()
+         }
+         </Script>
+</body>
+</html>

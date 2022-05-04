@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chinna" style="float: left; width: 350px;">
+        <button onclick="addedvaluestart()">start</button><br><br>
+        <button onclick="addedvaluesend()">end</button><br><br>
+        <button onclick="addedvaluesmiddle()">middle</button><br><br>
+        <button onclick="addedvaluesmiddle()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at end</button><br><br>
+        <button onclick=" deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick="sortvalue()">sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="start" style="float: left;"></div>
+    <script>
+        var animals=["Penguin"," Albatross","Rhinoceros","Hippopotamus","Raccoon","Moose","Tiger","Leopard","Chita"," Python","Anaconda","Tortoise"," Meerkat","Kangaroo","Octopus"," Panda","Walrus",]
+          function displayAllUsers(){
+              var Users="";
+              animals.forEach(user=>{
+                  Users+=user+"<br>";
+              });
+
+              document.getElementById("start").innerHTML=Users
+          }
+          displayAllUsers()
+
+          function addedvaluestart(){
+              animals.unshift("Australian Retriever")
+              displayAllUsers()
+          }
+
+          function addedvaluesend(){
+              animals.push("Reindeer")
+              displayAllUsers()
+          }
+          function addedvaluesmiddle(){
+              animals.splice(2,3,"Sheep")
+              displayAllUsers()
+          }
+          function deleteValueAtFirst(){
+              animals.shift()
+              displayAllUsers()
+          }
+          function deleteValueAtLast(){
+              animals.pop()
+              displayAllUsers()
+          }
+          function deleteValueAtMiddle(){
+              animals.splice(3,5)
+              displayAllUsers()
+          }
+          function sortvalue(){
+              animals.sort()
+              displayAllUsers()
+          }
+          function reversevalue(){
+              animals.reverse()
+              displayAllUsers()
+          }
+    </script>
+    
+</body>
+</html>

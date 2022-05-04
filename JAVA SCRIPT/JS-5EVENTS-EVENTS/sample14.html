@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="1111" style="float: left; width: 350px;">
+        <button onclick="addedvalueatstart()">start</button><br><br>
+        <button onclick=" addedvaluesend()">End</button><br><br>
+        <button onclick="addedvaluesmiddle()">Middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick=" deleteValueAtMiddle()">user at Middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="22" style="float: left;"></div>
+    <script>
+        var travellersname = ["All Around the World", "Baby on Trip", " Baby Will Travel", "Bon Voyage", "Chasing Horizons", "Destination and More", " Dream - Go - Breathe", "Escape to 'Everywhere", ". Exploring Unseen", "Finding Universe", "Get Stuck Experience", "Goats on the Road", "Little Long Journeys", "Never Ending Footsteps", "Out of Continent"]
+        function displayAllUsers() {
+            var Users = "";
+            travellersname.forEach((user )=> {
+                Users += user + "<br>";
+            });
+            document.getElementById("22").innerHTML=Users
+        }
+        displayAllUsers()
+
+        function addedvalueatstart(){
+            travellersname.unshift("Ticket to Utopia ")
+            displayAllUsers()
+        }
+        function addedvaluesend(){
+            travellersname.push("Travel Family dot com")
+            displayAllUsers()
+        }
+        function addedvaluesmiddle(){
+            travellersname.splice(3,5,"Vacation Wanderer ")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst(){
+            travellersname.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast(){
+            travellersname.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            travellersname.splice(4,6)
+            displayAllUsers()
+        }
+        function sortvalue(){
+        travellersname.sort()
+        displayAllUsers()
+        }
+        function reversevalue(){
+            travellersname.reverse()
+            displayAllUsers()
+        }
+
+
+    </script>
+</body>
+
+</html>

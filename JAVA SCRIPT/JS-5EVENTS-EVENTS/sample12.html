@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="11" style="float: left; width: 350px;">
+        <button onclick="addedvalueatstart()">start</button><br><br>
+        <button onclick="addedvaluesend()">End</button><br><br>
+        <button onclick="addedvaluesmiddle()">middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick=" deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="22" style="float: left;"></div>
+    <script>
+        var treenames = [" Indian Mahogany", "Gulmohar", "Neem", " Amla", ". Peepal", "Banyan", "Eucalyptus", "Deodar", "Kachar", "Ashoka", "Tulsi", " Curry", "Sal", "Khair", " Arjuna", "The silk cotton", "Tendu", "Turmeric", "Lagerstroemia speciosa", "Babul", "Rosewood", "Parijat"]
+        function displayAllUsers() {
+            var Users = "";
+            treenames.forEach(user => {
+                Users += user + "<br>";
+            });
+            document.getElementById("22").innerHTML = Users
+        }
+        displayAllUsers()
+
+        function addedvalueatstart(){
+            treenames.unshift(" Asparagus")
+            displayAllUsers()
+        }
+        function addedvaluesend(){
+            treenames.push("Earleaf Acacia")
+            displayAllUsers()
+        }
+        function addedvaluesmiddle(){
+            treenames.splice(7,3,"Badminton Ball")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst(){
+            treenames.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast(){
+            treenames.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            treenames.splice(2,7)
+            displayAllUsers()
+        }
+        function sortvalue(){
+            treenames.sort()
+            displayAllUsers()
+        }
+        function reversevalue(){
+            treenames.reverse()
+            displayAllUsers()
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="yedhuku" style="float: left; width: 250px;">
+        <button onclick="mapmethod()">mapmethod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick=" somemethod()">somemethod</button><br><br>
+        <button onclick="everymethod()">everymethod</button><br><br>
+    </div>
+    <div id="rejina" style="float: left;"></div>
+    <script>
+        var cooldrinks = ["Coca-Cola", "Pepsi", "Sprite", "Thums Up", "Fanta", "Maaza", "7Up", "Mirinda", "Limca", "Mountain Dew", "orange juice", " sapota juice", " mango juice", "apple juice", "watermelon juice"]
+        function displayAllUsers() {
+            var Users = "";
+            cooldrinks.forEach(user => {
+                Users += user + "<br>";
+            });
+            document.getElementById("rejina").innerHTML = Users
+        }
+        displayAllUsers()
+        
+        function mapmethod() {
+            var drinking = cooldrinks.map((val) => {
+                return val + "= drinks" + "<br>";
+            })
+            document.getElementById("rejina").innerHTML = drinking
+
+        }
+        displayAllUsers()
+
+        function findmethod() {
+            var char = cooldrinks.find((val) => {
+                return val.length == 7
+            })
+            document.getElementById("rejina").innerHTML = char
+        }
+        displayAllUsers()
+
+        function filetrmethod() {
+            var char = cooldrinks.filter((val) => {
+                return val.length == 9
+            })
+            document.getElementById("rejina").innerHTML = char
+        }
+        displayAllUsers()
+
+        function somemethod(){
+            var char=cooldrinks.some((val)=>{
+                return val.length==12
+            })
+            document.getElementById("rejina").innerHTML = char
+        }
+        displayAllUsers()
+
+        function everymethod(){
+            var char9=cooldrinks.every((val)=>{
+                return val.length==15
+            })
+            document.getElementById("rejina").innerHTML = char9
+        }
+        displayAllUsers()
+
+    </script>
+</body>
+
+</html>

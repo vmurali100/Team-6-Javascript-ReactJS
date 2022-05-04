@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="sukumar" style="float: left; width: 150px;">
+        <button onclick=" mapmethaod()">mapmethod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick=" somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod()">everymethod</button><br><br>
+    </div>
+    <div id="pushpa" style="float: left;"></div>
+
+    <script>
+        var moviename = ["C/o Kancharapalem", "Jersey ", "Mayabazar", "Agent Sai Srinivasa Athreya ", "Mahanati", "Nuvvu Naaku Nachchav", "Aha Naa Pellanta ", "Baahubali 2: The Conclusion ", "Reddy Garintlo Rowdyism", "Bheemla Nayak", "Sebastian PC 524", "Nallamala"]
+        function displayAllUsers() {
+            var Users = "";
+            moviename.forEach(user => {
+                Users += user + "<br>";
+            });
+            document.getElementById("pushpa").innerHTML = Users
+        }
+        displayAllUsers()
+
+        function mapmethaod(){
+            var cinema=moviename.map((val)=>{
+                return val+ "=enjoy" + "<br>";
+            })
+            document.getElementById("pushpa").innerHTML=cinema
+        }
+        displayAllUsers()
+
+        function findmethod(){
+            var char=moviename.find((val)=>{
+                return val.length==8
+            })
+            document.getElementById("pushpa").innerHTML=char
+        }
+        displayAllUsers()
+
+        function filetrmethod(){
+            var char=moviename.filter((val)=>{
+                return val.length==9
+            })
+            document.getElementById("pushpa").innerHTML=char
+        }
+        displayAllUsers()
+
+        function somemethod(){
+            var char=moviename.filter((val)=>{
+                return val.length==9
+            })
+            document.getElementById("pushpa").innerHTML=char
+        }
+        displayAllUsers()
+
+        function everymehtod(){
+            var char=moviename.every((val)=>{
+                return val.length==24
+            })
+            document.getElementById("pushpa").innerHTML=char
+        }
+        displayAllUsers()
+
+    </script>
+</body>
+
+</html>

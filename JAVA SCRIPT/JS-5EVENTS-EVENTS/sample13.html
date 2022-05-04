@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="22" style="float: left; width: 450px;">
+        <button onclick=" addedvalueatstart()">start</button><br><br>
+        <button onclick="addedvaluesend()">End</button><br><br>
+        <button onclick=" addedvaluesmiddle()">Middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick=" deleteValueAtLast()"> user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at Middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="33" style="float: left;"></div>
+    <script>
+        var planetnames = [" Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Saturn", "Charon", "Ceres", "Pluto",]
+        function displayAllUsers() {
+            var Users = "";
+            planetnames.forEach(user => {
+                Users += user + "<br>";
+            });
+            document.getElementById("33").innerHTML = Users
+
+        }
+        displayAllUsers()
+        function addedvalueatstart() {
+            planetnames.unshift("HD 209458b")
+            displayAllUsers()
+        }
+        function addedvaluesend() {
+            planetnames.push("Kepler-186f")
+            displayAllUsers()
+        }
+        function addedvaluesmiddle() {
+            planetnames.splice(3, 4, "HD 209458b")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst(){
+            planetnames.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast(){
+            planetnames.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle(){
+            planetnames.splice(4,4)
+            displayAllUsers()
+        }
+        function sortvalue(){
+            planetnames.sort()
+            displayAllUsers()
+        }
+        function reversevalue(){
+        planetnames.reverse()
+        displayAllUsers()
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="ram" style="float: left; width: 350px;">
+        <button onclick="mapmethod()">mapmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick="somemethod()">somemethod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="everymethod()">everymethod</button><br><br>
+    </div>
+    <div id="krishna" style="float: left;"></div>
+    <script>
+        var subjectname=["telugu","tamil","hindi","english","social","natural science","mathamatics","envinronment studies","physics","chemistry","biology","bhotony","chemical","computer basics","Arts (Drawing)"]
+        function displayAllUsers(){
+            var Users="";
+            subjectname.forEach(user=>{
+                Users+=user+"<br>";
+            });
+            document.getElementById("krishna").innerHTML=Users
+        }
+        displayAllUsers()
+
+        function mapmethod(){
+            var studying= subjectname.map((val)=>{
+                return val+"=names"+"<br>";
+            });
+            
+            document.getElementById("krishna").innerHTML=studying
+        }
+
+        displayAllUsers()
+
+        function filetrmethod(){
+            var char=subjectname.filter((val)=>{
+                return val.length==5
+            })
+            document.getElementById("krishna").innerHTML=char
+        }
+        displayAllUsers()
+
+        function somemethod(){
+            var char=subjectname.some((val)=>{
+                return val.length==7
+            })
+            document.getElementById("krishna").innerHTML=char
+        }
+        displayAllUsers()
+
+        function findmethod(){
+             var char=subjectname.find((val)=>{
+                 return val.length==7
+             })
+             document.getElementById("krishna").innerHTML=char
+        }
+        displayAllUsers()
+
+        function everymethod(){
+            var char=subjectname.every((val)=>{
+                return val.length==8
+            })
+            document.getElementById("krishna").innerHTML=char
+        }
+        displayAllUsers()
+
+       
+    </script>
+</body>
+</html>

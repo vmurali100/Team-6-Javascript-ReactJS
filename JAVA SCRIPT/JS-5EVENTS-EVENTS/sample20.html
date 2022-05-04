@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="105" style="float: left; width: 350px;">
+        <button onclick="mapmethaod()">mapmethaod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filetrmethod</button><br><br>
+        <button onclick="somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod()">everymehtod</button><br><br>
+    </div>
+    <div id="106" style="float: left;"></div>
+    <script>
+        var state = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Dadra and Nagar Haveli", "Bihar", "	Chandigarh ", "Chhattisgarh", "Gujarat", "	Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "	Karnataka", "Kerala", "Ladakh", "	Maharashtra",]
+        function displayAllUsers() {
+            var users = "";
+            state.forEach(user => {
+                users += user + "<br>";
+            });
+            document.getElementById("106").innerHTML = users
+        }
+        displayAllUsers()
+
+        function mapmethaod(){
+            var india=state.map((val)=>{
+                return val+"-country"+"<br>";
+            });
+            document.getElementById("106").innerHTML=india
+        }
+        displayAllUsers()
+
+        function findmethod(){
+            var char=state.find((val)=>{
+                return val.length==6
+            })
+            document.getElementById("106").innerHTML=char
+        }
+        displayAllUsers()
+
+        function filetrmethod(){
+            var char=state.filter((val)=>{
+                return val.length==12
+            })
+            document.getElementById("106").innerHTML=char
+        }
+        displayAllUsers()
+
+        function somemethod(){
+            var char=state.some((val)=>{
+                return val.length==18
+            })
+            document.getElementById("106").innerHTML=char
+        }
+        displayAllUsers()
+
+        function everymehtod(){
+            var char=state.every((val)=>{
+                return val.length==19
+            })
+            document.getElementById("106").innerHTML=char
+        }
+        displayAllUsers()
+
+
+
+    </script>
+</body>
+
+</html>

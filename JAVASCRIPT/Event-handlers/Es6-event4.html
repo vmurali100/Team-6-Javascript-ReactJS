@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px">
+        <button onclick="map()">Map</button><br/><br/>
+        <button onclick="find()">find</button><br/><br/>
+        <button onclick="filter()">Filter</button><br/><br/>
+        <button onclick="every()">Every</button><br/><br/>
+        <button onclick="some()">Some</button><br/><br/>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+        var colors = ["red", "green","blue", "yellow","white","lemon","brown","grey"];
+        function displaycolors(){
+            var colorsname ="";
+            colors.forEach((colors)=>{
+                colorsname +=colors +"<br>";
+            })
+           document.getElementById("demo").innerHTML =colors; 
+        }
+        displaycolors();
+        function map(){
+            var newmap = colors.map((val)=>{
+                return val +"- coloring" +"<br>";
+            })
+            document.getElementById("demo").innerHTML =newmap; 
+        }
+        function find(){
+            var char5=colors.find((val)=>{
+                return val.length==5
+            })
+            document.getElementById("demo").innerHTML =char5; 
+        }
+        function filter(){
+            var char5=colors.filter((val)=>{
+                return val.length==5
+            })
+            document.getElementById("demo").innerHTML =char5; 
+        }
+        function every(){
+            var check=colors.every((val)=>{
+                return val.length==5
+            })
+            document.getElementById("demo").innerHTML =check; 
+        }
+        function some(){
+            var result=colors.some((val)=>{
+                return val.length==9
+            })
+            document.getElementById("demo").innerHTML =result; 
+        }
+        </script>
+</body>
+</html>

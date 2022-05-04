@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px">
+        <button onclick="map()">Map</button><br> <br>
+        <button onclick="filter()">Filter</button><br> <br>
+        <button onclick="find()">Find</button><br> <br>
+        <button onclick="every()">Every</button><br> <br>
+        <button onclick="some()">Some</button><br> <br>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+        icecream = ["kulfi", "gelato","sorbet", "cookies","forzen"];
+        function displayicecream(){
+            var icecreamname="";
+            icecream.forEach((icecream)=>{
+                icecreamname += icecream +"<br>";
+            })
+            document.getElementById("demo").innerHTML=icecream;
+        }
+        displayicecream();
+        function map(){
+            var newmap=icecream.map((val)=>{
+                return val +" - salad" +"<br>";
+            })
+            document.getElementById("demo").innerHTML=newmap;
+        }
+        function filter(){
+            var char6=icecream.filter((val)=>{
+                return val.length==6
+            })
+            document.getElementById("demo").innerHTML=char6;
+        }
+        function find(){
+            var char6=icecream.find((val)=>{
+                return val.length==6
+            })
+            document.getElementById("demo").innerHTML=char6;
+        }
+        function every(){
+            var check=icecream.every((val)=>{
+                return val.length==6
+            })
+            document.getElementById("demo").innerHTML=check;
+        }
+        function some(){
+            var result=icecream.some((val)=>{
+                return val.length==1
+            })
+            document.getElementById("demo").innerHTML=result;
+        }
+    </script>
+</body>
+</html>

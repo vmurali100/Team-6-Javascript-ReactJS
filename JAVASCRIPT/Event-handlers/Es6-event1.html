@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px;">
+        <button onclick="map()">Map</button><br/><br/>
+        <button onclick="find()">find</button><br/><br/>
+        <button onclick="filter()">Filter</button><br/><br/>
+        <button onclick="every()">Every</button><br/><br/>
+        <button onclick="some()">Some</button><br/><br/>
+       
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+         var cooldrinks = ["pepsi", "cococola","thumpsup", "fanta","mirenda"];
+         function displaycooldrinks(){
+            var cooldrinksname = "";
+            cooldrinks.forEach((cooldrinks) => {
+                cooldrinksname += cooldrinks + "<br>"; 
+            });
+            document.getElementById("demo").innerHTML = cooldrinksname;
+        }
+         displaycooldrinks();
+         function map(){
+         var newmap = cooldrinks.map((val)=>{
+            return val+" - juice" +"<br>"
+        })
+        document.getElementById("demo").innerHTML = newmap;
+        }
+         displaycooldrinks()
+         function find(){
+             var char5=cooldrinks.find((val) =>{
+                return val.length==5
+             })
+             document.getElementById("demo").innerHTML = char5;
+         }
+        displaycooldrinks()
+        function filter(){
+             var char5=cooldrinks.filter((val) =>{
+                return val.length==5
+             })
+             document.getElementById("demo").innerHTML = char5;
+         }
+        displaycooldrinks()
+        function every(){
+             var check=cooldrinks.every((val) =>{
+                return val.length==5
+             })
+             document.getElementById("demo").innerHTML = check;
+         }
+        displaycooldrinks()
+        function every(){
+             var result=cooldrinks.some((val) =>{
+                return val.length==8
+             })
+             document.getElementById("demo").innerHTML = result;
+         }
+        displaycooldrinks()
+         </Script>
+</body>
+</html>

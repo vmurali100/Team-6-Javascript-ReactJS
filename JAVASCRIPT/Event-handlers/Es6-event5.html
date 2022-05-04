@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px">
+        <button onclick="map()">Map</button><br> <br>
+        <button onclick="filter()">Filter</button><br> <br>
+        <button onclick="find()">Find</button><br> <br>
+        <button onclick="every()">Every</button><br> <br>
+        <button onclick="some()">Some</button><br> <br>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+        var scooty = ["jupiter", "activa","honda", "suzuki","bajaj","yamaha","pept","ntorq"];
+        function displayscooty(){
+            var scootyname="";
+            scooty.forEach((scooty)=>{
+                scootyname += scooty +"<br>";
+            })
+            document.getElementById("demo").innerHTML=scooty;
+        }
+        displayscooty();
+        function map(){
+            var newmap=scooty.map((val)=>{
+                return val +"is a scooty" +"<br>";
+            })
+            document.getElementById("demo").innerHTML=newmap;
+        }
+        function filter(){
+            var char6=scooty.filter((val)=>{
+                return val.length==6
+            })
+            document.getElementById("demo").innerHTML=char6;
+        }
+        function find(){
+            var char6=scooty.find((val)=>{
+                return val.length==6
+            })
+            document.getElementById("demo").innerHTML=char6;
+        }
+        function every(){
+            var check=scooty.every((val)=>{
+                return val.length==6
+            })
+            document.getElementById("demo").innerHTML=check;
+        }
+        function some(){
+            var result=scooty.some((val)=>{
+                return val.length==1
+            })
+            document.getElementById("demo").innerHTML=result;
+        }
+    </script>
+</body>
+</html>

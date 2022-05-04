@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="left" style="float: left; width: 200px">
+        <button onclick="map()">Map</button><br/><br/>
+        <button onclick="find()">find</button><br/><br/>
+        <button onclick="filter()">Filter</button><br/><br/>
+        <button onclick="every()">Every</button><br/><br/>
+        <button onclick="some()">Some</button><br/><br/>
+    </div>
+    <div id="demo" style="float: left"></div>
+    <script>
+         var books = ["reading", "writting","speaking", "story","dictionary","syste"];
+         function displaybooks(){
+            var booksname = "";
+            books.forEach((books) => {
+                booksname += books + "<br>"; 
+            });
+            document.getElementById("demo").innerHTML = booksname;
+        }
+         displaybooks();
+         function map(){
+         var newmap = books.map((val)=>{
+            return val+" - books" +"<br>"
+        })
+        document.getElementById("demo").innerHTML = newmap;
+        }
+         displaybooks()
+         function find(){
+             var char8=books.find((val)=>{
+                 return val.length==8
+             })
+             document.getElementById("demo").innerHTML = char8;
+         }
+         displaybooks()
+         function filter(){
+             var char5=books.filter((val) =>{
+                return val.length==5
+             })
+             document.getElementById("demo").innerHTML = char5;
+         }
+        displaybooks()
+        function some(){
+             var result=books.some((val) =>{
+                return val.length==5
+             })
+             document.getElementById("demo").innerHTML = result;
+         }
+        displaybooks()
+        function every(){
+             var check=books.every((val) =>{
+                return val.length==5
+             })
+             document.getElementById("demo").innerHTML = check;
+         }
+        displaybooks()
+    </script>
+</body>
+</html>

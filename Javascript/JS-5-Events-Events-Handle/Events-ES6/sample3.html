@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo" style="float: left;width: 300px;">
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="map()">map</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo1"></div>
+    <script>
+        var BookTypes=["Personal development","Action and Adventure","Classics",
+        "Comic Book","Detective and Mystery","Fantasy","Historical Fiction","Literary Fiction"]
+       function disbook(){
+           var book=""
+           BookTypes.forEach((type)=>{
+               book+=type+"<br>"
+           })
+           document.getElementById("demo1").innerHTML=book
+       }
+       disbook()
+       function find(){
+           var books=BookTypes.find((type)=>{
+               return type.length==7
+           })
+           document.getElementById("demo1").innerHTML=books
+       }
+       disbook()
+       function filter(){
+           var books=BookTypes.filter((type)=>{
+               return type.length==7
+           })
+           document.getElementById("demo1").innerHTML=books
+       }
+       disbook()
+       function map(){
+           var books=BookTypes.map((type)=>{
+               return type+"book"+"<br>"
+           })
+           document.getElementById("demo1").innerHTML=books
+       }
+       disbook()
+       function some(){
+           var books=BookTypes.some((type)=>{
+               return type.length>=11
+           })
+           document.getElementById("demo1").innerHTML=books
+       }
+       disbook()
+       function every(){
+           var books=BookTypes.every((type)=>{
+               return type.length>=11
+           })
+           document.getElementById("demo1").innerHTML=books
+       }
+       disbook()
+    </script>
+</body>
+</html>

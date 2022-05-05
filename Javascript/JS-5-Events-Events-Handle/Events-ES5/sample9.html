@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="addTouristplaceatstart()">add Touristplace at start</button><br><br>
+        <button onclick="addTouristplaceatend()">add Touristplace at end</button><br><br>
+        <button onclick="addTouristplaceatmiddle()">add Touristplace at middle</button><br><br>
+        <button onclick="deleteTouristplaceatstart()">delete Touristplace at start</button><br><br>
+        <button onclick="deleteTouristplaceatend()">delete Touristplace at end</button><br><br>
+        <button onclick=" deleteTouristplaceatmiddle()">delete Touristplace at middle</button><br><br>
+        <button onclick="sortTouristplace()">sort Touristplace</button><br><br>
+        <button onclick="reTouristplace()">reverse Touristplace</button><br><br>
+    </div>
+    <div id="demo"></div>
+    <script>
+         var Touristplace=["Goa","Agra"," Rajasthan"," Delhi","Munnar","Coorg","Ooty"
+       ,"Shillong","Kolkata","Shimla"]
+       function disTouristplace(){
+          var Tourist=""
+           Touristplace.forEach((place)=>{
+               Tourist+=place+"<br>"
+           })
+           document.getElementById("demo").innerHTML=Tourist
+       }
+       disTouristplace()
+       function addTouristplaceatstart(){
+          Touristplace.unshift("Manali")
+          disTouristplace() 
+       }
+       function addTouristplaceatend(){
+          Touristplace.push("Lonavala and Khandala")
+          disTouristplace() 
+       }
+       function addTouristplaceatmiddle(){
+          Touristplace.splice(2,1,"Shillong")
+          disTouristplace() 
+       }
+       function deleteTouristplaceatstart(){
+          Touristplace.shift()
+          disTouristplace() 
+       }
+       function deleteTouristplaceatend(){
+          Touristplace.pop()
+          disTouristplace() 
+       }
+       function deleteTouristplaceatmiddle(){
+          Touristplace.splice(2,3)
+          disTouristplace() 
+       }
+       function sortTouristplace(){
+           Touristplace.sort()
+           disTouristplace()
+       }
+       function reTouristplace(){
+           Touristplace.reverse()
+           disTouristplace()
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="addSpiritualityatstart()">add   Spirituality at start</button><br><br>
+        <button onclick="addSpiritualityatend()">add Spirituality at end</button><br><br>
+        <button onclick="addSpiritualityatmiddle()">add  Spirituality at middle</button><br><br>
+        <button onclick="deleteSpiritualityatstart()">delete  Spirituality at start</button><br><br>
+        <button onclick="deleteSpiritualityatend()">delete Spirituality at end</button><br><br>
+        <button onclick="deleteSpiritualityatmiddle()">delete  Spirituality at middle</button><br><br>
+        <button onclick="sortSpirituality()">sort  Spirituality</button><br><br>
+        <button onclick="reveSpirituality()">reverse  Spirituality</button><br><br>
+    </div>
+    <div id="demo"></div>
+    <script>
+         var Spirituality=["Mystical","Authoritarian"]
+         function disSpirituality(){
+             var rituality=""
+             Spirituality.forEach((spirit)=>{
+                 rituality+=spirit+"<br>"
+             })
+             document.getElementById("demo").innerHTML=rituality
+         }
+         disSpirituality()
+         function addSpiritualityatstart(){
+             Spirituality.unshift("Intellectual")
+             disSpirituality()
+         }
+         disSpirituality()
+         function addSpiritualityatend(){
+             Spirituality.push("Service")
+             disSpirituality()
+         }
+         disSpirituality()
+         function addSpiritualityatmiddle(){
+             Spirituality.splice(1,0,"Social")
+             disSpirituality()
+         }
+         disSpirituality()
+         function deleteSpiritualityatstart(){
+             Spirituality.shift()
+             disSpirituality()
+         }
+         function deleteSpiritualityatend(){
+             Spirituality.pop()
+             disSpirituality()
+         }
+         function deleteSpiritualityatmiddle(){
+             Spirituality.splice(1,1)
+             disSpirituality()
+         }
+         function sortSpirituality(){
+             Spirituality.sort()
+             disSpirituality()
+         }
+         function reveSpirituality(){
+             Spirituality.reverse()
+             disSpirituality()
+         }
+    </script>
+</body>
+</html>

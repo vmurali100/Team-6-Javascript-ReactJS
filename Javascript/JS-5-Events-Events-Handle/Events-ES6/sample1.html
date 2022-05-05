@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo" style="float: left;width: 300px;">
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="map()">map</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo1"></div>
+    <script>
+        var Habits=["Brushing twice a day","Bathing every day","Eat breakfast",
+        "Hand wash","Drink water","Regular physical activities","Read everyday","Family time"]
+        function disHabits(){
+            var Habit=""
+            Habits.forEach((bit)=>{
+                Habit+=bit+"<br>"
+            })
+            document.getElementById("demo1").innerHTML=Habit
+        }
+        disHabits()
+        function find(){
+            var habi=Habits.find((bit)=>{
+                return bit.length==11
+            })
+            document.getElementById("demo1").innerHTML=habi
+        }
+        disHabits()
+        function filter(){
+            var habi=Habits.filter((bit)=>{
+                return bit.length==11
+            })
+            document.getElementById("demo1").innerHTML=habi
+        }
+        disHabits()
+        function map(){
+            var habi=Habits.map((bit)=>{
+                return bit+"Habits"+"<br>"
+            })
+            document.getElementById("demo1").innerHTML=habi
+        }
+        disHabits()
+        function some(){
+            var habi=Habits.some((bit)=>{
+                return bit.length>=11
+            })
+            document.getElementById("demo1").innerHTML=habi
+        }
+        disHabits()
+        function every(){
+            var habi=Habits.every((bit)=>{
+                return bit.length>=11
+            })
+            document.getElementById("demo1").innerHTML=habi
+        }
+        disHabits()
+    </script>
+</body>
+</html>

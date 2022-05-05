@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="addhairclipsatstart()">add hairclips at start</button><br><br>
+        <button onclick=" addhairclipsatend()">add hairclips at end</button><br><br>
+        <button onclick="addhairclipsatmiddle()">add hairclips at middle</button><br><br>
+        <button onclick="deletehairclipsatstart()">delete hairclips at start</button><br><br>
+        <button onclick="deletehairclipsatend()">delete hairclips at end</button><br><br>
+        <button onclick="deletehairclipsatmiddle()">delete hairclips at middle</button><br><br>
+        <button onclick="sorthairclips()">sorthairclips</button><br><br>
+        <button onclick="reverhairclips()">reverse hairclips</button><br><br>
+    </div>
+    <div id="demo1"></div>
+    <script>
+            var hairclips=["Claw Clip","Snap Clip","Classic Hinged Barrettes","Banana Clip"]
+            function dishairclips(){
+                var hairclip=""
+                hairclips.forEach((clips)=>{
+                    hairclip+=clips+"<br>"
+                })
+                document.getElementById("demo1").innerHTML=hairclip
+            }
+            dishairclips()
+            function addhairclipsatstart(){
+                hairclips.unshift("Double Prong Curl")
+                dishairclips()
+            }
+            function addhairclipsatend(){
+                hairclips.push("Alligator Hair Clips")
+                dishairclips()
+            }
+            function addhairclipsatmiddle(){
+                hairclips.splice(2,1,"Duckbill Clip")
+                dishairclips()
+            }
+            function deletehairclipsatstart(){
+                hairclips.shift()
+                dishairclips()
+            }
+            function deletehairclipsatend(){
+                hairclips.pop()
+                dishairclips()
+            }
+            function deletehairclipsatmiddle(){
+                hairclips.splice(1,2)
+                dishairclips()
+            }
+            function sorthairclips(){
+                hairclips.sort()
+                dishairclips()
+            }
+            function reverhairclips(){
+                hairclips.reverse()
+                dishairclips()
+            }
+    </script>
+</body>
+</html>

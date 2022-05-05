@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="addvitaminsatstart()">add vitamins at start</button><br><br>
+        <button onclick="addvitaminsatend()">add vitamins at end</button><br><br>
+        <button onclick="addvitaminsatmiddle()">add vitamins at middle</button><br><br>
+        <button onclick="deletevitaminsatstart()">delete vitamins at start</button><br><br>
+        <button onclick="deletevitaminsatend()">delete vitamins at end</button><br><br>
+        <button onclick="deletevitaminsatmiddle()">delete vitamins at middle</button><br><br>
+        <button onclick="sortvitamins()">sort vitamins</button><br><br>
+        <button onclick="reverse()">reverse vitamins</button><br><br>
+    </div>
+    <div id="demo1"></div>
+    <script>
+         var vitamins=["vitamins A","B vitamins","vitamins C"]
+         function disvitamins(){
+             vitami=""
+             vitamins.forEach((vitamin)=>{
+             vitami+=vitamin+"<br>"   
+             })
+             document.getElementById("demo1").innerHTML=vitami
+         }
+         disvitamins()
+         function addvitaminsatstart(){
+            vitamins.unshift("vitamins E")
+            disvitamins() 
+         }
+         function addvitaminsatend(){
+            vitamins.push("vitamins K")
+            disvitamins() 
+         }
+         function addvitaminsatmiddle(){
+            vitamins.splice(1,1,"vitamins D")
+            disvitamins() 
+         }
+         function deletevitaminsatstart(){
+            vitamins.shift()
+            disvitamins() 
+         }
+         function deletevitaminsatend(){
+            vitamins.pop()
+            disvitamins() 
+         }
+         function deletevitaminsatmiddle(){
+            vitamins.splice(2,3)
+            disvitamins() 
+         }
+         function sortvitamins(){
+             vitamins.sort()
+             disvitamins()
+         }
+         function reversevitamins(){
+             vitamins.reverse()
+             disvitamins()
+         }
+    </script>
+</body>
+</html>

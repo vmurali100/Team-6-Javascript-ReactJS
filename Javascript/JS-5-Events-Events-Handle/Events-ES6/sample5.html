@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="map()">map</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo1" ></div>
+    <script>
+      var Tea=["Black","Green","Oolong","White","Herbal","Yerba Mate","Yellow","Pu-erh"]
+      function distea(){
+          var te=""
+          Tea.forEach((teas)=>{
+              te+=teas+"<br>"
+          })
+          document.getElementById("demo1").innerHTML=te
+      } 
+      distea()
+      function find(){
+          var chai=Tea.find((teas)=>{
+              return teas.length==5
+          })
+          document.getElementById("demo1").innerHTML=chai 
+      }
+      distea()
+      function filter(){
+          var chai=Tea.filter((teas)=>{
+              return teas.length==5
+          })
+          document.getElementById("demo1").innerHTML=chai 
+      }
+      distea()
+      function map(){
+          var chai=Tea.map((teas)=>{
+              return teas+"tea"+"<br>"
+          })
+          document.getElementById("demo1").innerHTML=chai 
+      }
+      distea()
+      function some(){
+          var chai=Tea.some((teas)=>{
+              return teas.length>=5
+          })
+          document.getElementById("demo1").innerHTML=chai 
+      }
+      distea()
+      function every(){
+          var chai=Tea.every((teas)=>{
+              return teas.length>=5
+          })
+          document.getElementById("demo1").innerHTML=chai 
+      }
+      distea()
+
+    </script>
+</body>
+</html>

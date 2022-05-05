@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <button onclick=" addfeelingsatstart()">add feelings at start </button><br><br>
+    <button onclick=" addfeelingsatend()">add feelings at end</button><br><br>
+    <button onclick="addfeelingsatmiddle()">add feelings at middle</button><br><br>
+    <button onclick="deletefeelingsatstart()">delete feelings at start</button><br><br>
+    <button onclick=" deletefeelingsatend()">delete feelings at end</button><br><br>
+    <button onclick=" deletefeelingsatstart()">delete feelings at middle</button><br><br>
+    <button onclick="sortfeelings()">sort feelings</button><br><br>
+    <button onclick="reversefeelings()">reverse feelings</button><br><br>
+    </div>
+    <div id="hello" style="float: left;"></div>
+    <script>
+         var  feelings=["Enjoyment","Sadness","adoration","craving"," excitement","relief"]
+         function disfeelings(){
+             var feeling=""
+             feelings.forEach((feel)=>{
+                 feeling+=feel+"<br>"
+             })
+             document.getElementById("hello").innerHTML=feeling
+         }
+         disfeelings()
+         function addfeelingsatstart(){
+             feelings.unshift("Fear")
+             disfeelings()
+         }
+         function addfeelingsatend(){
+             feelings.push("Anger")
+             disfeelings()
+         }
+         function addfeelingsatmiddle(){
+             feelings.splice(2,3,"Disgust")
+             disfeelings()
+         }
+         function deletefeelingsatstart(){
+             feelings.shift()
+             disfeelings()
+         }
+         function deletefeelingsatend(){
+             feelings.pop()
+             disfeelings()
+         }
+         function deletefeelingsatstart(){
+             feelings.splice(2,1)
+             disfeelings()
+         }
+         function sortfeelings(){
+             feelings.sort()
+             disfeelings()
+         }
+         function reversefeelings(){
+             feelings.reverse()
+             disfeelings()
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="left" style="float: left;width: 300px;">
+    <button onclick="addyogaatstart()">add yoga at start</button><br><br>
+    <button onclick=" addyogaatend()">add yoga at end</button><br><br>
+    <button onclick="addyogaatmiddle()">add yoga at middle</button><br><br>
+    <button onclick=" deleteyogaatstart()">delete yoga at start</button><br><br>
+    <button onclick="deleteyogaatend()">delete yoga at end</button><br><br>
+    <button onclick="deleteyogaatmiddle()">delete yoga at middle</button><br><br>
+    <button onclick=" sortayoga()">sort a yoga</button><br><br>
+    <button onclick="reverseayoga()">reverse a yoga</button><br>
+    </div>
+    
+    <div id="demo" style="float: left;"></div>
+    <script>
+        var yoga = ["Hatha yoga", "Ashtanga yoga", "Bikram yoga", "Iyengar yoga"]
+        function displayyoga() {
+            let yogaa = "";
+            yoga.forEach((yog) => {
+                yogaa += yog + "<br>"
+            })
+            document.getElementById("demo").innerHTML = yogaa
+        }
+        displayyoga()
+        function addyogaatstart(){
+            yoga.unshift("Restorative yoga")
+            displayyoga() 
+        }
+        function addyogaatend(){
+            yoga.push("Kundalini yoga")
+            displayyoga() 
+        }
+        function addyogaatmiddle(){
+            yoga.splice(2,0,"Yin yoga")
+            displayyoga() 
+        }
+        function deleteyogaatstart(){
+            yoga.shift()
+            displayyoga() 
+        }
+        function deleteyogaatend(){
+            yoga.pop()
+            displayyoga() 
+        }
+        function deleteyogaatmiddle(){
+            yoga.splice(2,0)
+            displayyoga() 
+        }
+        function sortayoga(){
+            yoga.sort()
+            displayyoga()  
+        }
+        function reverseayoga(){
+            yoga.reverse()
+            displayyoga()  
+        }
+    </script>
+</body>
+
+</html>

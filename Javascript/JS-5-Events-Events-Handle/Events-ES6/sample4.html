@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="map()">map</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo1"></div>
+    <script>
+        var Smoothies=["Green Pear","Ginger Plum","Blood Orange and Strawberry",
+        "Strawberry Almond","Virgin Miami Vice","Chocolate Banana",""]
+        function disSmoothies(){
+            var smooth=""
+            Smoothies.forEach((Smoothie)=>{
+                smooth+=Smoothie+"<br>"
+            })
+           document.getElementById("demo1").innerHTML=smooth
+        }
+        disSmoothies() 
+        function find(){
+            var smoo=Smoothies.find((Smoothie)=>{
+                return Smoothie.length==11
+            })
+            document.getElementById("demo1").innerHTML=smoo
+        }
+        disSmoothies()
+        function filter(){
+            var smoo=Smoothies.filter((Smoothie)=>{
+                return Smoothie.length==11
+            })
+            document.getElementById("demo1").innerHTML=smoo
+        }
+        disSmoothies()
+        function map(){
+            var smoo=Smoothies.map((Smoothie)=>{
+                return Smoothie+"smoothie"+"<br>"
+            })
+            document.getElementById("demo1").innerHTML=smoo   
+        }
+        disSmoothies()
+        function some(){
+            var smoo=Smoothies.some((Smoothie)=>{
+                return Smoothie.length=12
+            })
+            document.getElementById("demo1").innerHTML=smoo 
+        }
+        disSmoothies()
+        function every(){
+            var smoo=Smoothies.every((Smoothie)=>{
+                return Smoothie.length=12
+            })
+            document.getElementById("demo1").innerHTML=smoo 
+        }
+        disSmoothies()
+    </script>
+</body>
+</html>

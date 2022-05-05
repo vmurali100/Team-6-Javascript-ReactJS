@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo1" style="float:left;width: 200px;">
+        <button onclick="addmeditationtop()">add meditation at top</button><br><br>
+        <button onclick="addmeditationend()">add meditation at end</button><br><br>
+        <button onclick="addmeditationmiddle()">add meditation at middle</button><br><br>
+        <button onclick="deletemeditationtop()">delete meditation at top</button><br><br>
+        <button onclick="deletemeditationend()">delete meditation at end</button><br><br>
+        <button onclick=" deletemeditationmiddle()">delete meditation at middle</button><br><br>
+        <button onclick="sortmeditation()">sort the meditation</button><br><br>
+        <button onclick="remeditation()">reverse the meditation</button><br><br>
+    </div>
+    <div id="demo2" style="float:left;"></div>
+    <script>
+         var meditation=["mindfulness","spiritual","focused","movement","mantra",
+       ]
+       function displaymeditation(){
+           var meditation="";
+           meditation.forEach((meditation)=>{
+            meditation+-meditation+"<br>"
+           })
+           document.getElementById("demo2").innerHTML=meditation
+       }
+       displaymeditation()
+       function addmeditationtop(){
+           meditation.unshift("loving-kindness")
+           displaymeditation()
+       }
+       function addmeditationend(){
+           meditation.push("progressive")
+           displaymeditation()
+       }
+       function addmeditationmiddle(){
+           meditation.splice(3,2,"transcendental")
+           displaymeditation()
+       }
+       function deletemeditationtop(){
+           meditation.shift()
+           displaymeditation()
+       }
+       function deletemeditationend(){
+           meditation.pop()
+           displaymeditation()
+       }
+       function deletemeditationmiddle(){
+           meditation.splice()
+           displaymeditation()
+       }
+       function sortmeditation(){
+           meditation.sort()
+           deletemeditationend()
+       }
+       function remeditation(){
+           meditation.reverse()
+           deletemeditationend()
+       }
+    </script>
+</body>
+</html>

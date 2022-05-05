@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="addBodyInternalOrgansatstart()">add  BodyInternalOrgans at start</button><br><br>
+        <button onclick="addBodyInternalOrgansatend()">add  BodyInternalOrgans at end</button><br><br>
+        <button onclick=" addBodyInternalOrgansatmiddle()">add BodyInternalOrgans at middle</button><br><br>
+        <button onclick="deleteBodyInternalOrgansatstart()">delete BodyInternalOrgans at start</button><br><br>
+        <button onclick="deleteBodyInternalOrgansatend()">delete BodyInternalOrgans at end</button><br><br>
+        <button onclick="deleteBodyInternalOrgansatmiddle()">delete BodyInternalOrgansat middle</button><br><br>
+        <button onclick="sortBodyInternalOrgans()">sort  BodyInternalOrgans</button><br><br>
+        <button onclick="reveBodyInternalOrgans()">reverse  BodyInternalOrgans</button><br><br>
+    </div>
+    <div id="demo"></div>
+    <script>
+       var BodyInternalOrgans=["Brain","Lungs","Heart","Kidney","Large intestine"]
+       function disBodyin(){
+        var BodyInter=""
+        BodyInternalOrgans.forEach((body)=>{
+            BodyInter+=body+"<br>"
+        })
+        document.getElementById("demo").innerHTML=BodyInter
+       } 
+       disBodyin() 
+       function addBodyInternalOrgansatstart(){
+           BodyInternalOrgans.unshift("Small intestine")
+           disBodyin() 
+       }
+       function addBodyInternalOrgansatend(){
+           BodyInternalOrgans.push("Liver")
+           disBodyin() 
+       }
+       function addBodyInternalOrgansatmiddle(){
+           BodyInternalOrgans.splice(2,2,"Stomach")
+           disBodyin() 
+       }
+       function deleteBodyInternalOrgansatstart(){
+           BodyInternalOrgans.shift()
+           disBodyin() 
+       }
+       function deleteBodyInternalOrgansatend(){
+           BodyInternalOrgans.pop()
+           disBodyin() 
+       }
+       function deleteBodyInternalOrgansatmiddle(){
+           BodyInternalOrgans.splice(2,1)
+           disBodyin() 
+       }
+       function sortBodyInternalOrgans(){
+           BodyInternalOrgans.sort()
+           disBodyin()
+       }
+       function reveBodyInternalOrgans(){
+           BodyInternalOrgans.reverse()
+           disBodyin()
+       }
+    </script>
+</body>
+</html>

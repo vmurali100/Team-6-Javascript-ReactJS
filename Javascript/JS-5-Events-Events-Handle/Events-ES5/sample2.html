@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div> 
+      <button onclick="addchakrastart()">add chakra start</button><br><br>
+    <button onclick="addchakraend()">add chakra end</button><br><br>
+    <button onclick="addchakramiddle() ">add chakra middle</button><br><br>
+    <button onclick="deletechakrastart()">delete chakra start</button><br><br>
+    <button onclick=" deletechakramiddle()">delete chakra end</button><br><br>
+    <button onclick="deletechakramiddle()">delete chakra middle</button><br><br>
+    <button onclick=" sortthechakra()">sort a chakra</button><br><br>
+    <button onclick="reversethechakra()">reverse a chakra</button><br><br>
+</div>
+   <div id="demo" style="float:left"></div>
+   <script>
+        var chakras=["Root chakra","Sacral chakra","Solar plexus chakra","Third eye chakra","Crown chakra"]
+        function displaychakra(){
+            var chakra=""
+            chakras.forEach((chakr)=>{
+                chakra+=chakr+"<br>"
+            })
+            document.getElementById("demo").innerHTML=chakra
+        }
+        displaychakra()
+        function addchakrastart(){
+            chakras.unshift("Heart chakra")
+            displaychakra()
+        }
+        function addchakraend(){
+            chakras.push("Throat chakra")
+            displaychakra()
+        }
+        function addchakramiddle(){
+            chakras.splice(3,0,"Heart chakra")
+            displaychakra()
+        }
+        function deletechakrastart(){
+            chakras.shift()
+            displaychakra()
+        }
+        function deletechakraend(){
+            chakras.pop()
+            displaychakra()
+        }
+        function deletechakramiddle(){
+            chakras.splice(4,1)
+            displaychakra()
+        }
+        function sortthechakra(){
+            chakras.sort()
+            displaychakra()
+        }
+        function reversethechakra(){
+            chakras.reverse()
+            displaychakra()
+        }
+   </script>
+</body>
+</html>

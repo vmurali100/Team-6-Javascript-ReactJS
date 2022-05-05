@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <button onclick=" addbrainatstart()">add brain at start</button><br><br>
+    <button onclick="addbrainatend()">add brain at end</button><br><br>
+    <button onclick="addbrainatmiddle()">add brain at middle</button><br><br>
+    <button onclick="deletebrainatstart()">delete brain at start</button><br><br>
+    <button onclick="deletebrainatend()">delete brain at end</button><br><br>
+    <button onclick="deletebrainatmiddle()">delete brain at middle</button><br><br>
+    <button onclick="sortbrain()">sort brain</button><br><br>
+    <button onclick="sortbrain()">reverse brain </button><br><br>
+    </div>
+    <div id="demo" style="float: left;"></div>
+    <script>
+         var brain=["Cerebral cortex","Cerebellum","Hypothalamus","Thalamus","Pituitary gland"," Mid- brain"]
+        function disbrain(){
+            brai=""
+            brain.forEach((brains)=>{
+                brai+=brains+"<br>"
+            })
+            document.getElementById("demo").innerHTML=brai
+        }
+        disbrain()
+        function addbrainatstart(){
+            brain.unshift("Pineal gland")
+            disbrain()
+        }
+        function addbrainatend(){
+            brain.push("Amygdala")
+            disbrain()
+        }
+        function addbrainatmiddle(){
+            brain.splice(1,0," Hippocampas")
+            disbrain()
+        }
+        function deletebrainatstart(){
+            brain.shift()
+            disbrain()
+        }
+        function deletebrainatend(){
+            brain.pop()
+            disbrain()
+        }
+        function deletebrainatmiddle(){
+            brain.splice(2,0)
+            disbrain()
+        }
+        function sortbrain(){
+            brain.sort()
+            disbrain()
+        }
+        function reversebrain(){
+            brain.reverse()
+            disbrain()
+        }
+    </script>
+</body>
+</html>

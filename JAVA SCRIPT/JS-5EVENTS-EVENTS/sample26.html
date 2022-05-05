@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="567" style="float: left; width: 250px;">
+        <button onclick="mapmethod()">mapmethod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick="somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod()">everymethod</button><br><br>
+
+
+    </div>
+    <div id="0123" style="float: left;"></div>
+    <script>
+        var stadiumsname = ["Aishbagh Stadium", "Ambedkar Stadium", "Anna Stadium", "Arlem Breweries Ground", "Arun Jaitley Stadium", "Baichung Stadium", "Bakhshi Stadium", "Barabati Stadium", "Barkatullah Khan Stadium", "Bhausaheb Bandodkar Ground", "Biju Patnaik Hockey Stadium", "Birsa Munda Athletics Stadium", "Birsa Munda Football Stadium", "Calicut Medical College Stadium", "Captain Roop Singh Stadium",]
+
+        function displayAllUsers() {
+            var Ground = "";
+            stadiumsname.forEach(user => {
+                Ground += user + "<br>";
+            });
+            document.getElementById("0123").innerHTML = Ground
+        }
+        displayAllUsers()
+
+        function mapmethod() {
+            var Ground = stadiumsname.map(val => {
+                return val += "=places" + "<br>";
+            });
+            document.getElementById("0123").innerHTML = Ground
+        }
+        displayAllUsers()
+
+        function findmethod() {
+            var char = stadiumsname.find(val => {
+                return val.length == 15
+            })
+            document.getElementById("0123").innerHTML = char
+        }
+        displayAllUsers()
+
+        function filetrmethod() {
+            var char = stadiumsname.filter(val => {
+                return val.length == 20
+            })
+            document.getElementById("0123").innerHTML = char
+        }
+        displayAllUsers()
+
+        function somemethod() {
+            var char = stadiumsname.some(val => {
+                return val == 20
+            })
+            document.getElementById("0123").innerHTML = char
+        }
+        displayAllUsers()
+
+        function everymehtod(){
+            var char=stadiumsname.every(val=>{
+                return val.length==18
+            })
+            document.getElementById("0123").innerHTML=char
+        }
+        displayAllUsers()
+    </script>
+</body>
+
+</html>

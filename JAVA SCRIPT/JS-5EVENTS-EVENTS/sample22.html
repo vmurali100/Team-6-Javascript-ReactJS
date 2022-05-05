@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="93" style="float: left;width: 350px;">
+        <button onclick="addedvalueatstart()">start</button><br><br>
+        <button onclick="addedvalueatend()">End</button><br><br>
+        <button onclick="addedvalueatmiddle()">middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="95" style="float: left;"></div>
+    <script>
+        var sportsname = ["Acrobatics", "Aerobic Gymnastics", "Archery", "Arnis", "Artistic Gymnastics", "Artistic Swimming", "Badminton", "Baseball", "Basketball", "Baton Twirling", "Bicycle Motocross (BMX)", "Billiards/ Pool (U.S.)", "Bobsleigh", "Bodybuilding"]
+
+        function displayAllUsers() {
+            var ram = "";
+            sportsname.forEach(user => {
+                ram += user + "<br>";
+
+            });
+            document.getElementById("95").innerHTML = ram
+        }
+        displayAllUsers()
+
+        function addedvalueatstart() {
+            sportsname.unshift("Bowling")
+            displayAllUsers()
+        }
+        function addedvalueatend() {
+            sportsname.push("Boxing")
+            displayAllUsers()
+        }
+        function addedvalueatmiddle() {
+            sportsname.splice(4, 9, "Car Racing")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst() {
+            sportsname.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast() {
+            sportsname.pop()
+            displayAllUsers()
+        }
+
+        function deleteValueAtMiddle() {
+            sportsname.splice(5, 7)
+            displayAllUsers()
+        }
+
+        function sortvalue() {
+            sportsname.sort()
+            displayAllUsers()
+        }
+        function reversevalue() {
+            sportsname.reverse()
+            displayAllUsers()
+        }
+    </script>
+</body>
+
+</html>

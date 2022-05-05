@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="987" style="float: left;width: 350px;">
+        <button onclick="addedvalueatstart()">start</button><br><br>
+        <button onclick="addedvalueatlast()">End</button><br><br>
+        <button onclick="addedvalueatmiddle()">middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="321" style="float: left;"></div>
+    <script>
+        var countrynames = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "	Argentina", "Armenia", "	Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin"]
+
+        function displayAllUsers() {
+            var dheena = "";
+            countrynames.forEach(user => {
+                dheena += user + "<br>";
+            });
+            document.getElementById("321").innerHTML = dheena
+        }
+        displayAllUsers()
+
+        function addedvalueatstart() {
+            countrynames.unshift("Bhutan")
+            displayAllUsers()
+        }
+
+        function addedvalueatlast() {
+            countrynames.push("Bolivia")
+            displayAllUsers()
+        }
+        function addedvalueatmiddle() {
+            countrynames.splice(9, 5, "Bosnia and Herzegovina")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst() {
+            countrynames.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast() {
+            countrynames.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle() {
+            countrynames.splice(5, 7)
+            displayAllUsers()
+        }
+        function sortvalue() {
+            countrynames.sort()
+            displayAllUsers()
+        }
+
+        function reversevalue() {
+            countrynames.reverse()
+            displayAllUsers()
+        }
+    </script>
+</body>
+
+</html>

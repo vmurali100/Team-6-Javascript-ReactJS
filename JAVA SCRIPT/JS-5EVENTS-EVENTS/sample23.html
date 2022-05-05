@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="123" style="float: left; width: 350px;">
+        <button onclick=" addedvalueatstart()">start</button><br><br>
+        <button onclick="addedvalueatlast()">End</button><br><br>
+        <button onclick="addedvalueatmiddle()">middle</button><br><br>
+        <button onclick=" deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick=" sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="456" style="float: left;"></div>
+    <script>
+        var Iplwinnigteams = ["Rajasthan Royals", "Deccan Chargers", "Chennai Super Kings", "Chennai Super Kings", "Kolkata Knight Riders ", "	Mumbai Indians", "Kolkata Knight Riders", "Mumbai Indians", "Sunrisers Hyderabad"]
+        function displayAllUsers() {
+            var sat = "";
+            Iplwinnigteams.forEach(user => {
+                sat += user + "<br>";
+            });
+            document.getElementById("456").innerHTML = sat
+        }
+        displayAllUsers()
+
+        function addedvalueatstart() {
+            Iplwinnigteams.unshift("Mumbai Indians")
+            displayAllUsers()
+        }
+        function addedvalueatlast() {
+            Iplwinnigteams.push("Mumbai Indians")
+            displayAllUsers()
+        }
+        function addedvalueatmiddle() {
+            Iplwinnigteams.splice(5, 1, "Chennai Super Kings")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst() {
+            Iplwinnigteams.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast() {
+            Iplwinnigteams.pop()
+            displayAllUsers()
+        }
+        function deleteValueAtMiddle() {
+            Iplwinnigteams.splice(3, 4)
+            displayAllUsers()
+        }
+        function sortvalue() {
+            Iplwinnigteams.sort()
+            displayAllUsers()
+        }
+        function reversevalue() {
+            Iplwinnigteams.reverse()
+            displayAllUsers()
+        }
+
+    </script>
+</body>
+
+</html>

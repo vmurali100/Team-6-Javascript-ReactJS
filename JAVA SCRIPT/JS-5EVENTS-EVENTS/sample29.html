@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="BB" style="float: left; width: 225px;">
+        <button onclick="mapmethaod()">mapmethaod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick=" somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod()">everymehtod</button><br><br>
+    </div>
+    <div id="AA" style="float: left;"></div>
+    <script>
+        var apps = ["TikTok", "Instagram", "Snapchat", "Cash App", "Zoom", "Facebook Messenger", "Facebook", "WhatsApp", "YouTube", "HBO Max", "Uber Eats", "Disney+", "NHS Covid-19", "Microsoft Teams",]
+
+        function displayAllUsers() {
+            var folider = "";
+            apps.forEach(user => {
+                folider += user + "<br>";
+            });
+            document.getElementById("AA").innerHTML = folider
+        }
+        displayAllUsers()
+
+        function mapmethaod() {
+            var folider = apps.map((val) => {
+                return val += "=Applications" + "<br>";
+            });
+            document.getElementById("AA").innerHTML = folider
+        }
+        displayAllUsers()
+
+        function findmethod() {
+            var char = apps.find((val) => {
+                return val.length == 12
+            })
+            document.getElementById("AA").innerHTML = char
+        }
+        displayAllUsers()
+
+        function filetrmethod() {
+            var char = apps.filter((val) => {
+                return val.length == 8
+            })
+            document.getElementById("AA").innerHTML = char
+        }
+        displayAllUsers()
+
+        function somemethod() {
+            var char = apps.some((val) => {
+                return val.length == 12
+            })
+            document.getElementById("AA").innerHTML = char
+        }
+        displayAllUsers()
+
+        function everymehtod() {
+            var char = apps.every((val) => {
+                return val.length == 5
+            })
+            document.getElementById("AA").innerHTML = char
+        }
+        displayAllUsers()
+
+    </script>
+</body>
+
+</html>

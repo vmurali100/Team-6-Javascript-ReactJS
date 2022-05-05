@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="987" style="float: left; width: 225px;">
+        <button onclick="mapmethaod()">mapmethaod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick="somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod()">everymehtod</button><br><br>
+    </div>
+    <div id="654" style="float: left;"></div>
+
+    <script>
+        var airfortname = ["Chhatrapati Shivaji International Airport", "Kempegowda International Airport", "Chennai International Airport", "Netaji Subhas Chandra Bose International Airport", "Chaudhary Charan Singh International Airport", "Sri Guru Ram Dass Jee International Airport", "Visakhapatnam International Airport", "Kannur International Airport", "Surat International Airport", "Devi Ahilya Bai Holkar Airport", "Cochin International Airport", "Sardar Vallabhbhai Patel International Airport ", "Indira Gandhi International Airport", "Dabolim Airpor", "Pune Airport", "Gaya Airport", "Ambikapur Airport"]
+
+        function displayAllUsers() {
+            var flights = "";
+            airfortname.forEach(user => {
+                flights += user + "<br>";
+            });
+            document.getElementById("654").innerHTML = flights
+        }
+        displayAllUsers()
+
+        function mapmethaod(){
+            var flights=airfortname.map((val)=>{
+                return val+="=landing places"+"<br>";
+            });
+            document.getElementById("654").innerHTML=flights
+        }
+        displayAllUsers()
+
+        function findmethod(){
+            var char=airfortname.find((val=>{
+                return val.length==14
+            }))
+            document.getElementById("654").innerHTML=char
+        }
+        displayAllUsers()
+
+        function filetrmethod(){
+            var char=airfortname.filter((val)=>{
+                return val.length==30
+            })
+            document.getElementById("654").innerHTML=char
+        }
+        displayAllUsers()
+
+        function somemethod(){
+            var char=airfortname.some((val)=>{
+                return val.length==28
+            })
+            document.getElementById("654").innerHTML=char
+        }
+        displayAllUsers()
+
+        function everymehtod(){
+            var char=airfortname.every((val)=>{
+                return val .length==10
+            })
+            document.getElementById("654").innerHTML=char
+        }
+        displayAllUsers()
+    </script>
+</body>
+
+</html>

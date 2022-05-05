@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="raju" style="float: left;width: 175px;">
+        <button onclick="mapmethaod()">mapmethaod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick="filetrmethod()">filtermethod</button><br><br>
+        <button onclick=" somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod()">everymehtod</button><br><br>
+    </div>
+    <div id="surya" style="float:  left;"></div>
+    <script>
+        var directors = [" Radha Krishna Jagarlamudi", "Chandra Sekhar Yeleti", "Neelakanta", "Trivikram Srinivas", "Sukumar", "Sekhar Kammula", "S.S. Rajamouli", " Gunasekhar", "Puri Jagannadh", " Krishna Vamsi", "E.V.V. Satyanarayana", "Muthyala Subbaiah", " Ram Gopal Varma", "Uma Maheswara Rao", "A. Kodandarami Reddy",]
+
+        function displayAllUsers() {
+            var cinema = "";
+            directors.forEach(user => {
+                cinema += user + "<br>";
+            });
+            document.getElementById("surya").innerHTML = cinema
+        }
+        displayAllUsers()
+
+        function mapmethaod(){
+            var char=directors.map((val)=>{
+                return val+="=telugu directors"+"<br>";
+            });
+            document.getElementById("surya").innerHTML=char
+        }
+        displayAllUsers()
+
+        function findmethod(){
+            var char=directors.find((val)=>{
+                return val.length==20
+            })
+            document.getElementById("surya").innerHTML=char
+        }
+        displayAllUsers()
+
+        function filetrmethod(){
+            var char=directors.filter((val)=>{
+                return val.length==18
+            })
+            document.getElementById("surya").innerHTML=char
+        }
+        displayAllUsers()
+
+        function somemethod(){
+            var char=directors.some((val)=>{
+                return val.length==23
+            })
+            document.getElementById("surya").innerHTML=char
+        }
+        displayAllUsers()
+
+        function everymehtod(){
+            var char=directors.every((val)=>{
+                return val.length==15
+            })
+            document.getElementById("surya").innerHTML=char
+        }
+        displayAllUsers()
+        
+
+
+    </script>
+</body>
+
+</html>

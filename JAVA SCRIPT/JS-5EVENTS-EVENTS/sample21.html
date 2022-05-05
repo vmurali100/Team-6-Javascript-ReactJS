@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="1193" style="float: left; width: 250px;">
+        <button onclick=" addedvalueatstart()">start</button><br><br>
+        <button onclick="addvalueatend()">end</button><br><br>
+        <button onclick="addedvalueatmiddle()">middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at end</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick="sortvalue()">sort</button><br><br>
+        <button onclick=" reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="1603" style="float: left;"></div>
+    <script>
+        var cricketsteam = [" India", "England", "Australia", " Pakistan", " South Africa", "Bangladesh", " Sri Lanka", " West Indies", " Afghanistan", " Ireland", " Scotland", " Scotland",]
+
+        function displayAllUsers() {
+            var users = "";
+            cricketsteam.forEach(user => {
+                users += user + "<br>";
+            });
+            document.getElementById("1603").innerHTML = users
+
+        }
+        displayAllUsers()
+
+        function addedvalueatstart() {
+            cricketsteam.unshift("Zimbabwe")
+            displayAllUsers()
+        }
+
+        function addvalueatend() {
+            cricketsteam.push("Namibia")
+            displayAllUsers()
+        }
+
+        function addedvalueatmiddle() {
+            cricketsteam.splice(3, 4, " Papua New Guinea")
+            displayAllUsers()
+        }
+        
+
+        function deleteValueAtFirst() {
+            cricketsteam.shift()
+            displayAllUsers()
+        }
+
+        function deleteValueAtLast() {
+            cricketsteam.pop()
+            displayAllUsers()
+        }
+
+        function deleteValueAtMiddle() {
+            cricketsteam.splice(2, 8)
+            displayAllUsers()
+        }
+
+        function sortvalue() {
+            cricketsteam.sort()
+            displayAllUsers()
+        }
+
+        function reversevalue() {
+            cricketsteam.reverse()
+            displayAllUsers()
+        }
+    </script>
+</body>
+
+</html>

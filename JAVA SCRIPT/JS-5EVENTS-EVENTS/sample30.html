@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="1234" style="float: left; width: 250px;">
+
+        <button onclick=" mapmethaod()">mapmethaod</button><br><br>
+        <button onclick="findmethod()">findmethod</button><br><br>
+        <button onclick=" filetrmethod()">filtermethod</button><br><br>
+        <button onclick=" somemethod()">somemethod</button><br><br>
+        <button onclick="everymehtod() ">everymehtod</button><br><br>
+    </div>
+    <div id="4567" style="float: left;"></div>
+    <script>
+        var programs = ["Eenadu Saragalu", "Jeevana Jyothi", "BHAKTI GEETALU", "Alitho Saradaga", "Cash", "Dhee 14 The Dancing Icon", "Extra Jabardasth", "Jabardasth", "Jabardasth Matinee Show", "Jayaho", "Padutha Theeyaga", "Sridevi Drama Company", "Swarabhishekam", "Wow 3", "Aadavari Partilaku Arthale Verule",]
+
+        function displayAllUsers() {
+            var entainment = "";
+            programs.forEach(user => {
+                entainment += user + "<br>";
+            });
+            document.getElementById("4567").innerHTML = entainment
+        }
+        displayAllUsers()
+
+        function mapmethaod() {
+            var entainment = programs.map((val) => {
+                return val += "=ETV" + "<br>";
+            });
+            document.getElementById("4567").innerHTML = entainment
+        }
+        displayAllUsers()
+
+        function findmethod() {
+            var char = programs.find((val) => {
+                return val.length == 15
+            });
+            document.getElementById("4567").innerHTML = char
+        }
+        displayAllUsers()
+
+        function filetrmethod() {
+            var char = programs.filter((val) => {
+                return val.length == 10
+            })
+            document.getElementById("4567").innerHTML = char
+        }
+        displayAllUsers()
+        function somemethod() {
+            var char = programs.some((val) => {
+                return val.length == 6
+            })
+            document.getElementById("4567").innerHTML = char
+        }
+        displayAllUsers()
+
+        function everymehtod() {
+            var char = programs.every((val) => {
+                return val.length == 7
+            })
+            document.getElementById("4567").innerHTML = char
+        }
+
+        displayAllUsers()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="789" style="float: left; width: 450px;">
+        <button onclick="addedvalueatstart()">start</button><br><br>
+        <button onclick="addedvalueatlast()">End</button><br><br>
+        <button onclick="addedvalueatmiddle()">middle</button><br><br>
+        <button onclick="deleteValueAtFirst()">user at start</button><br><br>
+        <button onclick="deleteValueAtLast()">user at End</button><br><br>
+        <button onclick="deleteValueAtMiddle()">user at middle</button><br><br>
+        <button onclick="sortvalue()">Sort</button><br><br>
+        <button onclick="reversevalue()">reverse</button><br><br>
+    </div>
+    <div id="741" style="float: left;"></div>
+    <script>
+        var StateCmNames = ["Pema Khandu", "Himanta Biswa Sarma", "Nitish Kumar", "Bhupesh Baghel", "Arvind Kejriwal", "Pramod Sawant", "Bhupendrabhai Patel", "Manohar Lal Khattar", "Jai Ram Thakur", "Hemant Soren", "Basavaraj Bommai", "Pinarayi Vijayan", "Shivraj Singh Chouhan", "Uddhav Thackeray", "Nongthombam Biren Singh", "Conrad Sangma"]
+
+        function displayAllUsers() {
+            var cheifminister = "";
+            StateCmNames.forEach(user => {
+                cheifminister += user + "<br>";
+
+            });
+            document.getElementById("741").innerHTML = cheifminister
+        }
+        displayAllUsers()
+
+        function addedvalueatstart() {
+            StateCmNames.unshift("Zoramthanga")
+            displayAllUsers()
+        }
+
+        function addedvalueatlast() {
+            StateCmNames.push("Neiphiu Rio")
+            displayAllUsers()
+        }
+
+        function addedvalueatmiddle() {
+            StateCmNames.splice(5, 3, "Naveen Patnaik")
+            displayAllUsers()
+        }
+        function deleteValueAtFirst() {
+            StateCmNames.shift()
+            displayAllUsers()
+        }
+        function deleteValueAtLast() {
+            StateCmNames.pop()
+            displayAllUsers()
+        }
+
+        function deleteValueAtMiddle() {
+            StateCmNames.splice(2, 1)
+            displayAllUsers()
+        }
+
+        function sortvalue() {
+            StateCmNames.sort()
+            displayAllUsers()
+        }
+
+        function reversevalue() {
+            StateCmNames.reverse()
+            displayAllUsers()
+        }
+    </script>
+</body>
+
+</html>

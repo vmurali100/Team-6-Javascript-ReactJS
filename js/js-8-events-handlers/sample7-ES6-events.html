@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo1" style="float: left;width: 100px;">
+        <button onclick="map()">map</button><br><br>
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo2" style="float: left;"></div>
+    <script>
+        var places = ["Goa", "Maldives", "Paris", "USA", "Dubai", "London"]
+        function displayPlaces() {
+            var vist = "";
+            places.forEach((val) => {
+                vist += val + "<br>"
+            })
+            document.getElementById("demo2").innerHTML = vist
+        }
+        displayPlaces()
+        function map(){
+            var newmap=places.map((val)=>{
+                return val+="is a place"+"<br>"
+            })
+            document.getElementById("demo2").innerHTML = newmap
+        }
+        displayPlaces()
+        function find(){
+            var char3=places.find((val)=>{
+                return val.length==3
+            })
+            document.getElementById("demo2").innerHTML = char3
+        }
+        displayPlaces()
+        function filter(){
+            var char3=places.filter((val)=>{
+                return val.length==3
+            })
+            document.getElementById("demo2").innerHTML = char3
+        }
+        displayPlaces()
+        function some(){
+            var check=places.some((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("demo2").innerHTML = check
+        }
+        displayPlaces()
+        function every(){
+            var check=places.every((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("demo2").innerHTML = check
+        }
+        displayPlaces()
+
+    </script>
+</body>
+
+</html>

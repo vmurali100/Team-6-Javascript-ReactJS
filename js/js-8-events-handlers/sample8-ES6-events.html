@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo1" style="float: left;width: 100px;">
+        <button onclick="map()">map</button><br><br>
+        <button onclick="find()">find</button><br><br>
+        <button onclick="filter()">filter</button><br><br>
+        <button onclick="some()">some</button><br><br>
+        <button onclick="every()">every</button><br><br>
+    </div>
+    <div id="demo2" style="float: left;"></div>
+    <script>
+        var bikes = ["Duke", "KTM", "Activa", "Pleasure", "Yamaha", "R15"]
+        function displayBikes() {
+            var ride = "";
+            bikes.forEach((val) => {
+                ride += val + "<br>"
+            })
+            document.getElementById("demo2").innerHTML = ride
+        }
+        displayBikes()
+        function map(){
+            var newmap=bikes.map((val)=>{
+                return val+="is a bike"+"<br>"
+            })
+            document.getElementById("demo2").innerHTML = newmap
+        }
+        displayBikes()
+        function find(){
+            var char3=bikes.find((val)=>{
+                return val.length==3
+            })
+            document.getElementById("demo2").innerHTML = char3
+        }
+        displayBikes()
+        function filter(){
+            var char3=bikes.filter((val)=>{
+                return val.length==3
+            })
+            document.getElementById("demo2").innerHTML = char3
+        }
+        displayBikes()
+        function some(){
+            var check=bikes.some((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("demo2").innerHTML = check
+        }
+        displayBikes()
+        function every(){
+            var check=bikes.every((val)=>{
+                return val.length>=4
+            })
+            document.getElementById("demo2").innerHTML = check
+        }
+        displayBikes()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="123">i am a ludo kking</div>
+
+    <button onclick="setvaluetext()">set value</button>
+    <button onclick="changevaluetext()">change value</button><br><br>
+
+    <input type="text" name="chinna" id="gowthami" value="naveen"><br><br>
+
+    <button onclick="setnametext()">set name value</button>
+    <button onclick="changenametext()">change name value</button>
+
+    <p>i am student in sunline</p>
+
+    <button onclick="settagtext()">set tag name value</button>
+    <button onclick="changetagtext()">change tagname value</button>
+
+    <h1 class="bindu">i am a student 1</h1>
+
+    <button onclick="setclasstext()">set class value</button>
+    <button onclick="changeclasstext()">change class value</button>
+
+    <h2>i am a student 2</h2>
+
+    <button onclick="setquerytext()">set quaryselector value</button>
+    <button onclick="changequarytext()">set queryselector value</button>
+
+    <h3>i am a student 3</h3>
+
+    <button onclick="setqueryalltext()"> set quary value</button>
+    <button onclick="changequeryalltext()"> change quaryall value</button>
+
+    <hr>
+    <hr>
+
+    <script>
+        // getelementbyid/
+        function setvaluetext(){
+            document.getElementById("123").innerHTML = "i am new student 1"
+        }
+
+        function changevaluetext(){
+            document.getElementById("123").innerHTML="i am new student 2"
+        }
+
+        // getElementsByName
+        function setnametext(){
+            document.getElementsByName("chinna")[0].value="i am a front bench student 123"
+        }
+        function changenametext(){
+            document.getElementsByName("chinna")[0].value="i am middle bench student456"
+        }
+        
+    //  getElementsByTagName
+
+        function settagtext(){
+            document.getElementsByTagName("P")[0].innerHTML="flowers"
+        }
+
+        function changetagtext(){
+            document.getElementsByTagName("p")[0].innerHTML="ram"
+        }
+    //    getElementsByClassName
+
+        function setclasstext(){
+            document.getElementsByClassName("bindu")[0].innerHTML="saravana"
+        }
+
+        function changeclasstext(){
+            document.getElementsByClassName("bindu")[0].innerHTML="chinna thambi"
+        }
+        // querySelector
+
+        function setquerytext(){
+            document.querySelector("h2").innerHTML="arjun"
+        }
+
+        function changequarytext(){
+            document.querySelector("h2").innerHTML="meena"
+        }
+
+        // querySelectorAll
+        
+         function setqueryalltext(){
+             document.querySelectorAll("h3")[0].innerHTML="kumari"
+         }
+         function changequeryalltext(){
+             document.querySelectorAll("h3")[0].innerHTML="ramana"
+         }
+
+    </script>
+
+
+</body>
+
+</html>

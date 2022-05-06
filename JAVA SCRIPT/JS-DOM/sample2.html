@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="456">ur my heart</div>
+    <button onclick="setvalueext()">set value</button>
+    <button onclick="changevaluetext()">change value</button><br><br>
+
+    <input type="111" name="dheena" id="surya" value="krishna"><br><br>
+
+    <button onclick="setnametext()">set name text</button>
+    <button onclick="changenametext()">change name text</button>
+
+    <p> Y should ur asking me</p>
+
+    <button onclick="settagtext()">set tag text</button>
+    <button onclick="changetagtext()">change tag text</button>
+
+    <h1 class="roopa">i am not intersted</h1>
+
+    <button onclick="setclasstext()">setclasstext</button>
+    <button onclick="changeclasstext()">changeclasstext</button>
+
+    <h2>plzzz tell me answer</h2>
+
+    <button onclick="setquerytext()">setquerytext</button>
+    <button onclick="changequarytext()">changequarytext</button>
+
+    <h3>i will tell tommrow</h3>
+
+    <button onclick="setqueryalltext()">setqueryalltext</button>
+    <button onclick="changequeryalltext()">changequeryalltext</button>
+
+
+    <hr>
+    <hr>
+
+
+    <script>
+        //    getelementsbyid
+
+        function setvalueext() {
+            document.getElementById("456").innerHTML = "geetha"
+        }
+        function changevaluetext() {
+            document.getElementById("456").innerHTML = "teju"
+        }
+
+        // getElementsByName
+        function setnametext() {
+            document.getElementsByName("dheena")[0].value = "valli"
+        }
+
+        function changenametext() {
+            document.getElementsByName("dheena")[0].value = "devi"
+        }
+
+        //  getElementsByTagName
+
+        function settagtext() {
+            document.getElementsByTagName("p")[0].innerHTML = "kumari"
+        }
+        function changetagtext() {
+            document.getElementsByTagName("p")[0].innerHTML = "chandirika"
+        }
+
+        //    getElementsByClassName
+
+        function setclasstext() {
+            document.getElementsByClassName("roopa")[0].innerHTML = "srivalli"
+        }
+
+        function changeclasstext() {
+            document.getElementsByClassName("roopa")[0].innerHTML = "pushpa"
+        }
+
+        // querySelector
+
+        function setquerytext() {
+            document.querySelector("h2").innerHTML = "nag"
+        }
+
+        function changequarytext() {
+            document.querySelector("h2").innerHTML = "amala"
+        }
+
+        // querySelectorAll
+
+        function setqueryalltext() {
+            document.querySelectorAll("h3")[0].innerHTML = "venkat"
+        }
+
+        function changequeryalltext() {
+            document.querySelectorAll("h3")[0].innerHTML = "sujatha"
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

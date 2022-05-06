@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="786">i am allways free bird</div>
+
+    <button onclick="setvaluetext()">set value</button>
+    <button onclick="changevaluetext()">change value</button><br><br>
+
+    <input type="text" name="mano" id="vasantha" value="reena"><br><br>
+
+    <button onclick="setnametext()">set name value</button>
+    <button onclick="changenametext()">change name value</button>
+
+    <p>i am getting tired</p>
+
+    <button onclick="settagtext()">set tag name value</button>
+    <button onclick="changetagtext()">change tagname value</button>
+
+    <h5 class="rocky">rrr</h5>
+
+    <button onclick="setclasstext()">set class value</button>
+    <button onclick="changeclasstext()">change class value</button>
+
+    <h4>akanda</h4>
+
+    <button onclick="setquerytext()">set quaryselector value</button>
+    <button onclick="changequarytext()">set queryselector value</button>
+
+    <h3>pushpa</h3>
+
+    <button onclick="setqueryalltext()"> set quary value</button>
+    <button onclick="changequeryalltext()"> change quaryall value</button>
+
+    <hr>
+    <hr>
+
+    <script>
+        // getelementbyid/
+        function setvaluetext() {
+            document.getElementById("786").innerHTML = "reshma"
+        }
+
+        function changevaluetext() {
+            document.getElementById("786").innerHTML = "supraja"
+        }
+
+        // getElementsByName
+        function setnametext() {
+            document.getElementsByName("mano")[0].value = "santhosh"
+        }
+        function changenametext() {
+            document.getElementsByName("mano")[0].value = "bhaskar"
+        }
+
+        //  getElementsByTagName
+
+        function settagtext() {
+            document.getElementsByTagName("P")[0].innerHTML = "vechicle"
+        }
+
+        function changetagtext() {
+            document.getElementsByTagName("p")[0].innerHTML = "motor"
+        }
+        //    getElementsByClassName
+
+        function setclasstext() {
+            document.getElementsByClassName("rocky")[0].innerHTML = "class"
+        }
+
+        function changeclasstext() {
+            document.getElementsByClassName("rocky")[0].innerHTML = "table"
+        }
+        // querySelector
+
+        function setquerytext() {
+            document.querySelector("h4").innerHTML = "vijay"
+        }
+
+        function changequarytext() {
+            document.querySelector("h4").innerHTML = "anandh"
+        }
+
+        // querySelectorAll
+
+        function setqueryalltext() {
+            document.querySelectorAll("h3")[0].innerHTML = "bety"
+        }
+        function changequeryalltext() {
+            document.querySelectorAll("h3")[0].innerHTML = "malar"
+        }
+
+    </script>
+
+
+</body>
+
+</html>

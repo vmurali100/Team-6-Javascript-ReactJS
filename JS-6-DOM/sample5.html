@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- getElementById -->
+    <div id="happy">hello All</div>
+    <button onclick="setdiv()">click for set getElementById</button>
+    <button onclick="changediv()">click for change getElementById</button>
+    <script>
+       function setdiv(){
+        document.getElementById("happy").innerHTML="Life is short"
+       }
+       function changediv(){
+        document.getElementById("happy").innerHTML="Spend it happily"
+       }
+    </script>
+    <br><br>
+
+    <!-- getElementsByName -->
+    <h1 class="byname"></h1>
+    <button onclick="sethead()">click for set getElementsByName</button>
+    <button onclick="changehead()">click for change getElementsByName</button>
+    <script>
+        function sethead(){
+            document.getElementsByName("byname")[0].innerHTML="Never say “I canot” "
+        }
+        function changehead(){
+            document.getElementsByName("byname")[0].innerHTML="when “You can” is right in front of you"
+        }
+    </script>
+    <br><br>
+
+    <!-- getElementsByClassName -->
+    <h2 class="okay"></h2>
+    <button onclick="sethead2()">click for set getElementsByClassName</button>
+    <button onclick="changehead2()">click for set getElementsByClassName</button>
+    <script>
+        function sethead2(){
+            document.getElementsByClassName("okay")[0].innerHTML="The past cannot be changed"
+        }
+        function changehead2(){
+            document.getElementsByClassName("okay")[0].innerHTML=" The future is yet in your power"
+        }
+    </script>
+    <br><br>
+
+    <!-- getElementsByTagName -->
+    <h3 class="tagname"></h3>
+    <button onclick="sethead3()">click for set getElementsByTagName</button>
+    <button onclick="changehead3()">click for change getElementsByTagName</button>
+    <script>
+        function sethead3(){
+            document.getElementsByTagName("tagname")[0].innerHTML="Your mind is a garden.Your thoughts are the seeds"
+        }
+        function changehead3(){
+            document.getElementsByTagName("tagname")[0].innerHTML=" You can grow flowers or you can grow weeds."
+        }
+    </script>
+      <br><br>
+
+      <!-- querySelector -->
+      <h4></h4>
+      <button onclick="sethead4()">click for set querySelector </button>
+      <button onclick="changehead4()">click for change querySelector </button>
+      <script>
+          function sethead4(){
+              document.querySelector("h4").innerHTML="You get what you focus on"
+          }
+          function changehead4(){
+              document.querySelector("h4").innerHTML="so focus on what you want"
+          }
+      </script>
+      <br><br>
+
+      <!-- querySelectorAll -->
+      <h5></h5>
+      <button onclick="sethead5()">click for set querySelectorAll</button>
+      <button onclick="changehead5()">click for change querySelectorAll</button>
+      <script>
+          function sethead5(){
+              document.querySelectorAll("h5")[0].innerHTML="One day I will be at the place"
+          }
+          function changehead5(){
+              document.querySelectorAll("h5")[0].innerHTML="I always wanted to be"
+          }
+      </script>
+</body>
+</html>

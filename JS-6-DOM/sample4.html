@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- getElementById -->
+    <div id="World"></div>
+    <button onclick="setdiv()"> click for set getElementById</button>
+    <button onclick="changediv()"> click for change getElementById</button>
+    <script>
+        function setdiv(){
+            document.getElementById("World").innerHTML="Positivity always wins"
+        }
+        function changediv(){
+            document.getElementById("World").innerHTML="Keep looking up"
+        }
+    </script>
+    <br> <br>
+    <!-- getElementsByName -->
+    <p class="well"></p>
+    <input type="text" name="well" id="">
+    <button onclick="sethead1()"> click for set getElementsByName</button>   
+    <button onclick="changehead1()">click for change getElementsByName</button> 
+    <script>
+        function sethead1(){
+            document.getElementsByName("well")[0].innerHTML="When things go wrong"
+        }
+        function changehead1(){
+            document.getElementsByName("well")[0].innerHTML="don't go with them"
+        }
+    </script> 
+    <br><br>
+
+    <!-- getElementsByTagName -->
+    <h2 class="hi"></h2>
+    <button onclick="setpara()">click for set getElementsByTagName</button>
+    <button onclick="changepara()">click for change getElementsByTagName</button>
+    <script>
+        function setpara(){
+            document.getElementsByTagName("hi")[0].innerHTML="Everyone is gifted"
+        }
+        function changepara(){
+            document.getElementsByTagName("hi")[0].innerHTML="but some people never open their package"
+        }
+    </script>
+     <br> <br>
+
+     <!-- getElementsByClassName -->
+     <h3 class="para1"></h3>
+     <input type="text" name="para1" id="">
+     <button onclick="setpara1()">click for set getElementsByClassName</button>
+     <button onclick="changepara1()">click for change getElementsByClassName</button>
+     <script>
+         function setpara1(){
+             document.getElementsByClassName("para1")[0].innerHTML="Forget what hurt you in the past"
+         }
+         function changepara1(){
+             document.getElementsByClassName("para1")[0].innerHTML="But never forget what it taught you"
+         }
+     </script>
+     <br><br>
+
+     <!-- querySelector -->
+     <h4 ></h4>
+     <button onclick="sethead3()">click for set querySelector</button>
+     <button onclick="changehead3()">click for change querySelector</button>
+     <script>
+         function sethead3(){
+             document.querySelector("h4").innerHTML="Happiness is not something ready-made"
+         }
+         function changehead3(){
+             document.querySelector("h4").innerHTML="It comes from your own actions"
+         }
+     </script>
+     <br><br>
+
+     <!-- querySelectorAll -->
+     <h5></h5>
+     <button onclick="sethead4()">click for set querySelectorAll</button>
+     <button onclick="changehead4()">click for change querySelectorAll</button>
+     <script>
+         function sethead4(){
+             document.querySelectorAll("h5")[0].innerHTML="If the plan doesnot work"
+         }
+         function changehead4(){
+             document.querySelectorAll("h5")[0].innerHTML=" change the plan but never the goal"
+         }
+     </script>
+</body>
+</html>

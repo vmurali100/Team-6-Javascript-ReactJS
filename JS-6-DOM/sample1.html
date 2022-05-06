@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- getElementById -->
+    <div id="demo"> i am inside dive</div>
+    <button onclick="setdivtext()">set value div getElementById</button>
+    <button onclick="changedivtext()">change value div getElementById</button>
+    <script>
+         function setdivtext(){
+            document.getElementById("demo").innerHTML="i will set by used in getElementById " 
+        }
+        function changedivtext(){
+            document.getElementById("demo").innerHTML="i will change by used in getElementById" 
+        }
+    </script>
+    <br> <br>
+
+    <!-- getElementsByName -->
+    <h2 class="my"></h2>
+    <input type="text" name="myname" id="" value="krishnar">
+    <button onclick="setheadingtext()">set heading getElementsByName</button>
+    <button onclick="changeheadingtext()">change heading getElementsByName</button>
+    <script>
+        function setheadingtext(){
+            document.getElementsByName("myname")[0].value="set heading text"
+        }
+        function changeheadingtext(){
+            document.getElementsByName("myname")[0].value="change heading text"
+        }
+    </script>
+    <br> <br>
+
+    <!-- getElementsByClassName -->
+    <h2 class="my">jaikrishna</h2>
+    <button onclick="setheading2text()">set2 heading getElementsByClassName</button>
+    <button onclick="changeheading2text()">change2 heading getElementsByClassName</button>
+    <script>
+         function setheading2text(){
+            document.getElementsByClassName("my")[1].innerHTML="set heading2 text"
+        }
+        function changeheading2text(){
+            document.getElementsByClassName("my")[1].innerHTML="change heading2 text"
+        }
+    </script>
+    <br> <br>
+
+    <!-- getElementsByTagName -->
+    <p></p>
+    <button onclick="setparatext()">set para getElementsByTagName</button>
+    <button onclick="changeparatext()">change para getElementsByTagName</button>
+    <script>
+    function setparatext(){
+            document.getElementsByTagName("p")[0].innerHTML="i am set getElementsByTagName"
+        }
+        function changeparatext(){
+            document.getElementsByTagName("p")[0].innerHTML="i am change getElementsByTagName"
+        }
+    </script>
+    <br> <br>
+
+    <!-- querySelector -->
+    <h3></h3>
+    <button onclick="setpara1text()">set para querySelector</button>
+    <button onclick="changepara1text()">change para querySelector</button>
+   <script>
+       function setpara1text(){
+            document.querySelector("h3").innerHTML="para set"
+        }
+        function changepara1text(){
+            document.querySelector("h3").innerHTML="para change"
+        }
+   </script>
+   <br> <br>
+
+   <!-- querySelectorAll -->
+    <h4></h4>
+    <button onclick="seth4text()">set para querySelectorAll</button>
+    <button onclick="changeh4text()">change para querySelectorAll</button>
+    <script>
+        function seth4text(){
+            document.querySelectorAll("h4")[0].innerHTML="h4 set"
+        }
+        function changeh4text(){
+            document.querySelectorAll("h4")[0].innerHTML="h4 change"
+        }
+    </script>
+    <br> <br>
+    <script>
+        document.write("hello")
+    </script>
+</body>
+</html>

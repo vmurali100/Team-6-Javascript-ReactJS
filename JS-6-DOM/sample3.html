@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- getElementById -->
+    <div id="name"></div>
+    <button onclick="setdive()">Click here for ser</button>
+    <button onclick="changedive()">Click here for change</button>
+    <script>
+       function setdive(){
+        document.getElementById("name").innerHTML="Every day is a good day"
+       }
+       function changedive(){
+        document.getElementById("name").innerHTML="Do good and good will come to you"
+       }
+    </script>
+    <br><br>
+
+    <!-- getElementsByName -->
+    <h1 class="bangal"></h1>
+    <input type="text" name="head" id="">
+    <button onclick="setheading()">Click for getElementsByName set</button>
+    <button onclick="changeheading()">Click for getElementsByName change</button>
+    <script>
+        function setheading(){
+            document.getElementsByName("head")[0].value="Every moment is a fresh beginning"
+        }
+        function changeheading(){
+            document.getElementsByName("head")[0].value="Never regret anything that made you smile"
+        }
+    </script>
+      <br><br>
+
+      <!-- getElementsByTagName -->
+      <p></p>
+      <button onclick="setpara()">Click for getElementsByTagName set</button>
+      <button onclick="changepara()">Click for getElementsByTagName change</button>
+      <script>
+          function setpara(){
+              document.getElementsByTagName("p")[0].innerHTML="Die with memories, not dreams"
+          }
+          function changepara(){
+            document.getElementsByTagName("p")[0].innerHTML="Self care, self love"
+          }
+      </script>
+
+        <!-- getElementsByClassName -->
+      <h2 class="self">good</h2>
+      <button onclick="sethead2()">Click for getElementsByClassName set</button>
+      <button onclick="changehead2()">Click for getElementsByClassName change</button>
+      <script>
+          function sethead2(){
+              document.getElementsByClassName("self")[0].innerHTML="Do the best you can"
+          }
+          function changehead2(){
+              document.getElementsByClassName("self")[0].innerHTML="If you can dream it, you can do it"
+          }
+      </script>
+      <br><br>
+
+      <!-- querySelector -->
+      <h3></h3>
+     <button onclick="setheading3()">set heading1 querySelector</button>
+     <button onclick="changeheading3()">change heading1 querySelector</button>
+     <script>
+         function setheading3(){
+             document.querySelector("h3").innerHTML="Be brave"
+         }
+         function changeheading3(){
+             document.querySelector("h3").innerHTML="Keep your head up"
+         }
+     </script>
+        <br><br>
+
+        <!-- querySelectorAll -->
+        <h4></h4>
+        <button onclick="setheading4()">set heading4 querySelectorAll</button>
+        <button onclick="changeheading4()">change heading4 querySelectorAll</button>
+        <script>
+            function setheading4(){
+                document.querySelectorAll("h4")[0].innerHTML="Be yourself"
+            }
+            function changeheading4(){
+                document.querySelectorAll("h4")[0].innerHTML="More smiling, less worrying"
+            }
+        </script>
+</body>
+</html>

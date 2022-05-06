@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="1">apple</div>
+    <button onclick="q()">click</button>
+    <hr>
+
+    <div id="2">orange</div>
+    <button onclick="w()">click</button>
+    <hr>
+
+     <div class="3">banana</div> 
+     <button onclick="e()">click</button>
+     <hr>
+
+    <div class="4">cherry</div>
+    <button onclick="R()">click</button>
+    <hr>
+
+    <div class="3">watermelon</div>
+    <button onclick="t()">click</button>
+    <input type="text" name="s" id="">
+    <h1></h1>
+
+    <script>
+        
+        function q(){
+            document.getElementById("1") .innerHTML="5"
+        }
+        function w(){
+            document.getElementById("2"). innerHTML="40"
+        }
+        function e(){
+            document.getElementsByClassName("3")[0].innerHTML="30"
+        }
+        function R(){
+            document.getElementsByClassName("4")[0].innerHTML="20"
+        }
+        function t(){
+            document.getElementsByClassName("3")[1].innerHTML="50"
+        }
+       
+        document.getElementsByName("s")[0].value="text"
+        document.getElementsByTagName("h1")[0] .innerHTML="INDIA"
+
+    </script>
+</body>
+</html>

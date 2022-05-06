@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>Document object model</h1>
+    <div id="demo">Iam inside div</div>a
+    <button onclick="setDivtext()">Set value</button><br>
+    <button onclick="changeDivtext()">Change div text</button>
+    <hr>
+    <input type="text" name="myname" value="Ramasita">
+    <p>Iam inside para</p>
+    <h2 id="my">Iam inside h2 class 1</h2>
+    <h2 id="my">Iam inside h2 class 2</h2>
+    <h3>Iam inside h3 element</h3>
+    <script>
+        function setDivtext(){
+            document.getElementById("demo").innerHTML="I will be adding when you set me"
+        }
+        function changeDivtext(){
+            document.getElementById("demo").innerHTML="I will change when you click me"
+        }
+        document.getElementById("demo").innerHTML="Iam from Dom method"
+        document.getElementsByName("myname")[0].value="Jyothimurali";
+        document.getElementsByTagName("p")[0].innerHTML="I am inside para"
+        document.getElementsByClassName("my")[1].innerHTML="Iam inside heading"
+        document.querySelector("h2").innerHTML="Iam from first heading"
+        document.querySelectorAll("h3"[0].innerHTML="Iam from query selector all method ")
+    </script>
+</body>
+</html>

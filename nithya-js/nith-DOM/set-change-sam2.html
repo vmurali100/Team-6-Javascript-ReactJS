@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="coil">vanitha</div>
+    <button onclick="setvani()">set vanitha</button>
+    <button onclick="changevani()">change vanitha</button><br><br>
+    <input type="text" name="triveniname" value="triveni"><br><br>
+    <button onclick="settriv()">set triveni</button>
+    <button onclick="changetriv()">change triveni</button>
+    <li class="motu">kusala</li>
+    <button onclick="setkus()">set kusala</button>
+    <button onclick="changekus()">change kusala</button>
+    <ul>dharani</ul>
+    <button onclick="setdhar()">set dharani</button>
+    <button onclick="changedhar()">change dharani</button>
+    <h1>mani</h1>
+    <button onclick="setmani()">set mani</button>
+    <button onclick="changemani()">change mani</button>
+    <h2>shobha</h2>
+    <button onclick="setshobha()">set shobha</button>
+    <button onclick="changeshobha()">change shobha</button>
+    <script>
+        //getElementById
+        function setvani(){
+            document.getElementById("coil").innerHTML="vanithareddy"
+        }
+        function changevani(){
+            document.getElementById("coil").innerHTML="vanitha chabnged to vanithathiruthani"
+        }
+        //getElementsByName
+        function settriv(){
+            document.getElementsByName("triveniname")[0].value="trivanitiruthani"
+        }
+        function changetriv(){
+            document.getElementsByName("triveniname")[0].value="trivanisiri"
+        }
+        //getElementsByClassName
+        function setkus(){
+            document.getElementsByClassName("motu")[0].innerHTML="kusalathiruthani"
+        }
+        function changekus(){
+            document.getElementsByClassName("motu")[0].innerHTML="kusalakumari"
+        }
+        //getElementsByTagName
+        function setdhar(){
+            document.getElementsByTagName("ul")[0].innerHTML="dharanithiruthani"
+        }
+        function changedhar(){
+            document.getElementsByTagName("ul")[0].innerHTML="dharaninaveen"
+        }
+        //querySelector
+         function setmani(){
+             document.querySelector("h1").innerHTML="manikanta"
+         }
+         function changemani(){
+             document.querySelector("h1").innerHTML="manikantareddy"
+         }
+         //querySelectorAll
+         function setshobha(){
+             document.querySelectorAll("h2")[0].innerHTML="shobhamma"
+         }
+         function changeshobha(){
+             document.querySelectorAll("h2")[0].innerHTML="shobhathiruthani"
+         }
+    </script>
+</body>
+</html>

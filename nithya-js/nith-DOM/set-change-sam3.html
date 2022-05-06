@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="hot">sandhya</div>
+    <button onclick="setsandhya()">set sandhya</button>
+    <button onclick="changesandhya()">change sandhya</button>
+    <input type="text" name="myname" value="jeeva"><br><br>
+    <button onclick="setjeeva()">set jeeva</button><br><br>
+    <button onclick="changejeeva()">change jeeva</button>
+    <div class="cold">ishu</div>
+    <button onclick="setishu()">set ishu</button>
+    <button onclick="changeishu()">change ishu</button><br><br>
+    <b>chinna</b><br><br>
+    <button onclick="setchinna()">set chinna</button>
+    <button onclick="changechinna()">change chinna</button>
+    <h1>rekha</h1>
+    <button onclick="setrekha()">set rekha</button>
+    <button onclick="changerekha()">change rekha</button>
+    <li>dineesha</li>
+    <button onclick="setdineesha()">set dineesha</button>
+    <button onclick="changedineesha()">change dineesha</button>
+    <script>
+        //getElementById
+        function setsandhya(){
+            document.getElementById("hot").innerHTML="sandhyayadav"
+        }
+        function changesandhya(){
+            document.getElementById("hot").innerHTML="sandhyagopi"
+        }
+        //getElementsByName
+        function setjeeva(){
+            document.getElementsByName("myname")[0].value="jeevareddy"
+        }
+        function changejeeva(){
+            document.getElementsByName("myname")[0].value="jeevithakumari"
+        }
+        //getElementsByClassName
+        function setishu(){
+            document.getElementsByClassName("cold")[0].innerHTML="ishwarya"
+        }
+        function changeishu(){
+            document.getElementsByClassName("cold")[0].innerHTML="ishwaryaroy"
+        }
+        //getElementsByTagName
+        function setchinna(){
+            document.getElementsByTagName("b")[0].innerHTML="chinnakka"
+        }
+        function changechinna(){
+            document.getElementsByTagName("b")[0].innerHTML="chinmayi"
+        }
+        //querySelector
+        function setrekha(){
+            document.querySelector("h1").innerHTML="rekhareddy"
+        }
+        function changerekha(){
+            document.querySelector("h1").innerHTML="rekhareddykumari"
+        }
+        //querySelectorAll
+        function setdineesha(){
+            document.querySelectorAll("li")[0].innerHTML="dineeshareddy"
+        }
+        function changedineesha(){
+            document.querySelectorAll("li")[0].innerHTML="puthurudineeshareddy"
+        }
+
+    </script>
+</body>
+</html>

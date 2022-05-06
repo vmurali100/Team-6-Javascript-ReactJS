@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="row">rajitha</div>
+    <button onclick="setrajitha()">set rajitha</button>
+    <button onclick="changerajitha()">change rajitha</button><br><br>
+    <input type="text" name="myname" value="supraja"><br><br>
+    <button onclick="setpriya()">set supraja</button>
+    <button onclick="changepriya()">change supraja</button><br><br>
+    <b>i am bold tag</b><br><br>
+    <button onclick="setaravind()">set aravindh</button>
+    <button onclick="changearavind()">change aravind</button>
+    <h1 class="hero">i am latha</h1>
+    <button onclick="setlatha()">set latha</button>
+    <button onclick="changelatha()">change latha</button><br><br>
+    <i>babu</i><br><br>
+    <button onclick="setbabu()">set babu</button>
+    <button onclick="changebabu()">change babu</button>
+    <ul>mani</ul>
+    <ul>maninith</ul>
+    <button onclick="setarun()">set arun</button>
+    <button onclick="changearun()">change arun</button>
+    <script>
+        //getElementById
+        function setrajitha(){
+            document.getElementById("row").innerHTML="rajithareddy"
+        }
+        function changerajitha(){
+            document.getElementById("row").innerHTML="rajithachiru"
+        }
+        //getElementsByName
+        function setpriya(){
+            document.getElementsByName("myname")[0].value="supraja sai"
+        }
+        function changepriya(){
+            document.getElementsByName("myname")[0].value="suprijakumari"
+        }
+        //getElementsByClassName
+        function setlatha(){
+            document.getElementsByClassName("hero")[0].innerHTML="lathababu"
+        }
+        function changelatha(){
+            document.getElementsByClassName("hero")[0].innerHTML="lathareddy"
+        }
+        //getElementsByTagName
+        function setaravind(){
+            document.getElementsByTagName("b")[0].innerHTML="aravindreddy"
+        }
+        function changearavind(){
+            document.getElementsByTagName("b")[0].innerHTML="aravindkumar"
+        }
+        //querySelector
+        function setbabu(){
+            document.querySelector("i").innerHTML="babureddy"
+        }
+        function changebabu(){
+            document.querySelector("i").innerHTML="babulatha"
+        }
+        //querySelectorAll
+        function setarun(){
+            document.querySelectorAll("ul")[0].innerHTML="arunkumar"
+        }
+        function changearun(){
+            document.querySelectorAll("ul")[0].innerHTML="arunkumarreddy"
+        }
+    </script>
+</body>
+</html>

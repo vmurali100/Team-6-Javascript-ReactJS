@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="row">nithya</div>
+    <button onclick="setnithya()">set nithya</button>
+    <button onclick="changenithya()">change nithya</button><br><br>
+    <input type="text" name="nithyaname" value="priya"><br><br>
+    <button onclick="setpriya()">set priya</button>
+    <button onclick="changepriya()">change priya</button><br><br>
+    <b>i am bold tag</b><br><br>
+    <button onclick="sethari()">set hari</button>
+    <button onclick="changehari()">change hari</button>
+    <h1 class="hero">i am latha</h1>
+    <button onclick="setlatha()">set latha</button>
+    <button onclick="changelatha()">change latha</button><br><br>
+    <i>babu</i><br><br>
+    <button onclick="setbabu()">set babu</button>
+    <button onclick="changebabu()">change babu</button>
+    <ul>mani</ul>
+    <ul>maninith</ul>
+    <button onclick="setmani()">set mani</button>
+    <button onclick="changemani()">change mani</button>
+    <script>
+        //getElementById
+        function setnithya(){
+            document.getElementById("row").innerHTML="my name is nithya"
+        }
+        function changenithya(){
+            document.getElementById("row").innerHTML="nithya name changed to nithyamani"
+        }
+        //getElementsByName
+        function setpriya(){
+            document.getElementsByName("nithyaname")[0].value="priyareddy"
+        }
+        function changepriya(){
+            document.getElementsByName("nithyaname")[0].value="priya name changed to chandhinipriya"
+        }
+        //getElementsByTagName
+        function sethari(){
+            document.getElementsByTagName("b")[0].innerHTML="harishreddy"
+        }
+        function changehari(){
+            document.getElementsByTagName("b")[0].innerHTML="hari name changed to harishkumar"
+        }
+        //getElementsByClassName
+        function setlatha(){
+            document.getElementsByClassName("hero")[0].innerHTML="lathamoorthy"
+        }
+        function changelatha(){
+            document.getElementsByClassName("hero")[1].innerHTML="lathababu"
+        }
+        //querySelector
+        function setbabu(){
+            document.querySelector("i").innerHTML="babureddy"
+        }
+        function changebabu(){
+            document.querySelector("i").innerHTML="babu changed to malasiababu"
+        }
+        //querySelectorAll
+        function setmani(){
+            document.querySelectorAll("ul")[0].innerHTML="mani"
+        }
+        function changemani(){
+            document.querySelectorAll("ul")[0].innerHTML="manikanta"
+        }
+    </script>
+</body>
+</html>

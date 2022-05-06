@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo" >I am in demo</div>
+    <button onclick="setdivtext()">set value</button>
+    <button onclick="changedivtext()">changevalue</button><br><br>
+    <input type="text" name="myname" id="" value="nithya"><br><br>
+    <button onclick="setnametext()">set name value</button>
+    <button onclick="changenametext()">change name value</button>
+    <p>i am paragraph tag</p>
+    <button onclick="settagtext()">set tagname value</button>
+    <button onclick="changetagtext()">change tagname value</button>
+    <h1 class="moto">i am heading one</h1>
+    <button onclick="setclasstext()">set class value</button>
+    <button onclick="changeclasstext()">change class value</button>
+    <h2>i am heading two</h2>
+    <button onclick="setquerytext()">set queryselectorvalue</button>
+    <button onclick="changequerytext()">change queryselectorvalue</button>
+    <h3>i am heading three</h3>
+    <button onclick="setquaryalltext()">set queryall value</button>
+    <button onclick="changequeryalltext()">change queryall value</button>
+    <script>
+        
+        //getElementById
+         function setdivtext(){
+             document.getElementById("demo").innerHTML="i am from set value"
+         }
+         function changedivtext(){
+             document.getElementById("demo").innerHTML="i am a change value"
+         }
+         //getElementsByName
+        function setnametext(){
+            document.getElementsByName("myname")[0].value="i am from set name value"
+        }
+        function changenametext(){
+            document.getElementsByName("myname")[0].value="i am from change name value"
+        }
+        //getElementsByTagName
+        function settagtext(){
+            document.getElementsByTagName("p")[0].innerHTML="i am from set tagname value"
+        }
+        function changetagtext(){
+            document.getElementsByTagName("p")[0].innerHTML="i am from change tagname value"
+        }
+        //getElementsByClassName
+        function setclasstext(){
+            document.getElementsByClassName("moto")[0].innerHTML="i am a setclassname"
+        }
+        function changeclasstext(){
+            document.getElementsByClassName("moto")[0].innerHTML="i am a changeclassname"
+        }
+        //queryselector
+        function setquerytext(){
+            document.querySelector("h2").innerHTML="i am set queryselector"
+        }
+        function changequerytext(){
+            document.querySelector("h2").innerHTML="i am change queryselector"
+        }
+        //queryallselector
+        function setquaryalltext(){
+            document.querySelectorAll("h3")[0].innerHTML="i am set queryall"
+        }
+        function changequeryalltext(){
+            document.querySelectorAll("h3")[0].innerHTML="i am change queryall"
+        }
+    </script>
+</body>
+</html>

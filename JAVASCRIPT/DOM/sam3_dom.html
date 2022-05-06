@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="flow"></div>
+    <input type="text" name="flow" id="">
+    <p></p>
+
+    <h2 class="file">file 1</h2>
+    <button onclick="changeClassText()">Change Text</button>
+    <button onclick="setClassText()">Set Text</button>
+
+    <h2 class="file">file 2</h2>
+    <h3></h3>
+    <script>
+        function changeClassText(){
+            document.getElementsByClassName("file")[1].innerHTML = "Bootstrap";
+        }
+        function setClassText(){
+            document.getElementsByClassName("file")[1].innerHTML = "React";
+        }
+        document.write("Hi all welcome");
+        document.getElementById("flow").innerHTML = "Javascript programs";
+        document.getElementsByName("flow")[0].value = "Html";
+        document.getElementsByTagName("p")[0].innerHTML = "Cascading Style Sheet";
+        document.getElementsByClassName("file")[1].innerHTML = "Bootstrap";
+        document.querySelector("h2").innerHTML = "React";
+        document.querySelectorAll("h3")[0].innerHTML = "Ajax";
+    </script>
+</body>
+</html>

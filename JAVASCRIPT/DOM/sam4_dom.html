@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="inform"></div>
+    <input type="text" name="getting" id="">
+    <p></p>
+    <h2 class="form">to change 1</h2>
+    
+    <h2 class="form">to change 2</h2>
+    <h3>helooo</h3>
+    <button onclick="changeClassText()">Change Text</button>
+    <button onclick="setClassText()">Set Text</button>
+    <script>
+        function changeClassText(){
+            document.querySelectorAll("h3")[0].innerHTML = "gathered";
+        }
+        function setClassText(){
+            document.querySelectorAll("h3")[0].innerHTML = "information";
+        }
+        document.write("Welcom");
+        document.getElementById("inform").innerHTML = "Hi to all";
+        document.getElementsByName("getting")[0].value = "information";
+        document.getElementsByTagName("p")[0].innerHTML = "computer";
+        document.getElementsByClassName("form")[1].innerHTML = tables;
+        document.querySelector("h2").innerHTML = "allowed";
+        document.querySelectorAll("h3")[0].innerHTML = "gathered";
+    </script>
+</body>
+</html>

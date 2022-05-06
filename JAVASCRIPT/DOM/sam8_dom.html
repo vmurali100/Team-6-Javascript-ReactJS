@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="induce"></div>
+    <input type="text" name="inform" id="">
+    <button onclick="changeClassText()">Change Text</button>
+    <button onclick="setClassText()">Set Text</button>
+    <p></p>
+    <h2 class="form">to change 1</h2>
+    
+    <h2 class="form">to change 2</h2>
+    <h3>helooo</h3>
+    
+    <script>
+        function changeClassText(){
+            document.getElementsByName("inform")[0].value = "Desktop";
+        }
+        function setClassText(){
+            document.getElementsByName("inform")[0].value = "Computer";
+        }
+        document.write("Welcom");
+        document.getElementById("induce").innerHTML = "Dell";
+        document.getElementsByName("inform")[0].value = "Lenova";
+        document.getElementsByTagName("p")[0].innerHTML = "HP";
+        document.getElementsByClassName("form")[1].innerHTML = tables;
+        document.querySelector("h2").innerHTML = "Acer";
+        document.querySelectorAll("h3")[0].innerHTML = "LG";
+    </script>
+</body>
+</html>

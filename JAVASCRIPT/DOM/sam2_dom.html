@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sample">Iam from div</div>
+    <input type="text" name="name" id="" value="text">
+    <button onclick="changeDivText()">change text</button>
+    <button onclick="setDivText()">set text</button>
+    <hr/>
+    <p></p>
+    <h2 class="image">Heading 1</h2>
+    <h2 class="image">Heading 2</h2>
+    <h3></h3>
+    <script>
+        
+        function changeDivText(){
+            document.getElementsByName("name")[0].value = "A";
+        }
+        function setDivText(){
+            document.getElementsByName("name")[0].value = "B";
+        }
+        document.write("Hiiiiiiiiiiiiiiiii");
+        document.getElementById("sample").innerHTML = "Hi Iam Padmaja";
+        document.getElementsByName("name")[0].value = "Seetha";
+        document.getElementsByTagName("p")[0].innerHTML = "Hi to all my dear friends";
+        document.getElementsByClassName("image")[1].innerHTML ="document object model";
+        document.querySelector("h2").innerHTML = "Iam inner heading";
+        document.querySelectorAll("h3")[0].innerHTML = "Iam from inner heading of the query selector all method"; 
+    </script>
+</body>
+</html>

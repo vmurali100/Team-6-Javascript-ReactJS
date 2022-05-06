@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="figure">Iam from div element</div>
+    <button onclick="setdivText()">Set Text</button>
+    <button onclick="changedivText()">Change Text</button>
+    <hr/>
+
+    <input type="text" name="manjula" value="padhu">
+    <button onclick="setnameText()">Set Name Text</button>
+    <button onclick="changenameText()">Change Name Text</button>
+    <hr/>
+
+    <h2 class="uniform">Hiiiiiiiiiiiiiiiii</h2>
+    <button onclick="setclassnameText()">Set Class Name Text</button>
+    <button onclick="changeclassnameText()">Change Class Name Text</button>
+    <hr/>
+
+    <h2 class="uniform"></h2>
+    <button onclick="setqueryText()">Set query selector Text</button>
+    <button onclick="changequeryText()">Change query selector Text</button>
+    <hr/>
+
+    <p>Iam from para</p>
+    <button onclick="settagnameText()">Set tag Name Text</button>
+    <button onclick="changetagnameText()">Change tag Name Text</button>
+    <hr/>
+
+    <h3>Heading</h3>
+    <button onclick="setqueryselectorallText()">Set all Text</button>
+    <button onclick="changequeryselectorallText()">Change all Text</button>
+    <hr/>
+    <script>
+        //getelementbyid
+        function setdivText(){
+            document.getElementById("figure").innerHTML = "Iam from the setdiv to get element by Id";
+        }
+        function changedivText(){
+            document.getElementById("figure").innerHTML = "Iam from the changediv to get element by Id";
+        }
+
+        //getelementsbyname
+        function  setnameText(){
+            document.getElementsByName("manjula")[0].value = "Iam from the set name is manju";
+        }
+        function changenameText(){
+            document.getElementsByName("manjula")[0].value = "Iam from the change name is dms";
+        }
+
+        //getelementsbyclassname
+        function setclassnameText(){
+            document.getElementsByClassName("uniform")[1].innerHTML= "unity";
+        }
+        function changeclassnameText(){
+            document.getElementsByClassName("uniform")[1].innerHTML= "equity";
+        }
+        
+        //getelementsbytagname
+        function settagnameText(){
+            document.getElementsByTagName("p")[0].innerHTML = "Iam from set tag name";
+        }
+        function changetagnameText(){
+            document.getElementsByTagName("p")[0].innerHTML = "Iam from change tag name";
+        }
+
+        //selectquery
+        function setqueryText(){
+            document.querySelector("h2").innerHTML = "Iam from set query name";
+        }
+        function changequeryText(){
+            document.querySelector("h2").innerHTML = "Iam from change query name";
+        }
+
+        //selectqueryall
+        function setqueryselectorallText(){
+            document.querySelectorAll("h3")[0].innerHTML = "small";
+        }
+        function changequeryselectorallText(){
+            document.querySelectorAll("h3")[0].innerHTML = "large";
+        }
+    </script>
+</body>
+</html>

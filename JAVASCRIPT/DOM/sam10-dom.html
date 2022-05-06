@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="compare">Iam from div element</div>
+    <button onclick="setdivText()">Set Text</button>
+    <button onclick="changedivText()">Change Text</button>
+    <hr/>
+
+    <input type="text" name="manjula" value="RAM">
+    <button onclick="setnameText()">Set Name Text</button>
+    <button onclick="changenameText()">Change Name Text</button>
+    <hr/>
+
+    <h2 class="compute"></h2>
+    <button onclick="setclassnameText()">Set Class Name Text</button>
+    <button onclick="changeclassnameText()">Change Class Name Text</button>
+    <hr/>
+
+    <p>Iam from para</p>
+    <button onclick="settagnameText()">Set tag Name Text</button>
+    <button onclick="changetagnameText()">Change tag Name Text</button>
+    <hr/>
+
+    <h2 class="compute"></h2>
+    <button onclick="setqueryText()">Set query selector Text</button>
+    <button onclick="changequeryText()">Change query selector Text</button>
+    <hr/>
+
+
+    <h3>Heading</h3>
+    <button onclick="setqueryselectorallText()">Set all Text</button>
+    <button onclick="changequeryselectorallText()">Change all Text</button>
+    <hr/>
+    <script>
+        //getelementbyid
+        function setdivText(){
+            document.getElementById("compare").innerHTML = "Iam from value";
+        }
+        function changedivText(){
+            document.getElementById("compare").innerHTML = "Iam from value toooo";
+        }
+
+        //getelementsbyname
+        function  setnameText(){
+            document.getElementsByName("manjula")[0].value = "Iam from RAM";
+        }
+        function changenameText(){
+            document.getElementsByName("manjula")[0].value = "Iam from SEETHA";
+        }
+
+        //getelementsbyclassname
+        function setclassnameText(){
+            document.getElementsByClassName("compute")[0].innerHTML= "LOWER CASE";
+        }
+        function changeclassnameText(){
+            document.getElementsByClassName("compute")[0].innerHTML= "UPPER CASE";
+        }
+        
+        //getelementsbytagname
+        function settagnameText(){
+            document.getElementsByTagName("p")[0].innerHTML = "Iam from PARAGRAPH 1";
+        }
+        function changetagnameText(){
+            document.getElementsByTagName("p")[0].innerHTML = "Iam from PARAGRAPH 2";
+        }
+
+        //selectquery
+        function setqueryText(){
+            document.querySelector("h2").innerHTML = "Iam from set query 1";
+        }
+        function changequeryText(){
+            document.querySelector("h2").innerHTML = "Iam from change query 2";
+        }
+
+        //selectqueryall
+        function setqueryselectorallText(){
+            document.querySelectorAll("h3")[0].innerHTML = "SMALLER";
+        }
+        function changequeryselectorallText(){
+            document.querySelectorAll("h3")[0].innerHTML = "LARGER";
+        }
+    </script>
+</body>
+</html>

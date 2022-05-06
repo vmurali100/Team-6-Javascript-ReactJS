@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mono">
+        <button  onclick="addinstart()">Add user at start</button><br><br>
+        <button onclick="addinend()">Add a user at end</button><br><br>
+        <button onclick="addmiddle()">Add in middle</button><br><br>
+        <button onclick="deletestart()">Delete a user at start</button><br><br>
+        <button onclick="deleteend()">Delete a user at the end</button><br><br>
+        <button onclick="deletemiddle()">Delete a user at the middle</button><br><br>
+        <button onclick="usersort()">Sort user </button><br><br>
+        <button onclick="userreverse()"> reverse user</button>
+        
+    </div>
+    
+    <div id="demo" style="float:left;width: 500px;"></div>
+    <script>
+        var students=["Pavani","Divya","Deepthi","Jyothi","Usha","Radhika"];
+        function displayAlluser(){
+            var username="";
+            students.forEach((val)=>{
+                username+=val+"<br>"
+            })
+            document.getElementById("demo").innerHTML=username;
+
+        }
+        displayAlluser()
+
+        function addinstart(){
+            students.unshift("Radhakrishna")
+            displayAlluser()
+        }
+
+        function addinend(){
+            students.push("Sita")
+            displayAlluser()
+        }
+        function addmiddle(){
+            students.splice(1,0,"Lithish")
+            displayAlluser()
+        }
+        function deletestart(){
+            students.shift()
+            displayAlluser()
+        }
+        function deleteend(){
+            students.pop()
+            displayAlluser()
+        }
+        function deletemiddle(){
+            students.splice(2,1)
+            displayAlluser()
+        }
+        function usersort(){
+            students.sort()
+            displayAlluser()
+        }
+        function userreverse(){
+            students.reverse()
+            displayAlluser()
+        }
+    </script>
+</body>
+</html>

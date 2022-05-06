@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="addvaluestart()">Add a value at start</button><br><br>
+        <button onclick="addvalueend()">Add a value at the end</button><br><br>
+        <button onclick="addvalumiddle()">Add a value at the middle</button><br><br>
+        <button onclick="removevaluestart()">Remove the value at the start</button><br><br>
+        <button onclick="removevalueend()">Remove value at the end</button><br><br>
+        <button onclick="removevaluemiddle()">Remove value at the middle</button><br><br>
+        <button onclick="alphabeticalwize()">Sort of value</button><br><br>
+        <button onclick="reversewize()">Reverse of value</button>
+    </div>
+    <p id="demo"></p>
+    <script>
+        var flowers=["Jasmine","Tulip","Hibiscus","Rose","Sunflower"];
+        function displayflowers(){
+            var flowername="";
+            flowers.forEach((val)=>{
+                    flowername+=val+"<br>"
+            })
+            document.getElementById("demo").innerHTML=flowername;
+        }
+        displayflowers()
+
+        function addvaluestart(){
+            flowers.unshift("Mariegold")
+            displayflowers()
+        }
+        function addvalueend(){
+            flowers.push("Lotus")
+            displayflowers()
+        }
+        function addvalumiddle(){
+            flowers.splice(2,0,"Jajimalli")
+            displayflowers()
+        }
+        function removevaluestart(){
+            flowers.shift()
+            displayflowers()
+        }
+        function removevalueend(){
+            flowers.pop()
+            displayflowers()
+        }
+        function removevaluemiddle(){
+            flowers.splice(1,0)
+            displayflowers()
+        }
+        function alphabeticalwize(){
+            flowers.sort()
+            displayflowers()
+        }
+        function reversewize(){
+            flowers.reverse()
+            displayflowers()
+        }
+    </script>
+</body>
+</html>

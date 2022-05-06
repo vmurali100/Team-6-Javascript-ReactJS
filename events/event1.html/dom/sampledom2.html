@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <button onclick="set()">Set</button>
+    <button onclick="change()">Change</button>
+    <input type="text" name="my" id="">
+    <button onclick="setbyname()">Setbyname</button>
+    <button onclick="changebyname()">Changebyname</button><hr>
+    <p></p>
+    <button onclick="setbytag()">Setby tag</button>
+    <button onclick="changebytag()">Change by tag</button>
+    <ol class="myclass"></ol>
+    <button onclick="setbyclass()">Set by class</button>
+    <button onclick="changebyclass()">Change by class</button>
+    <h4></h4>
+    <button onclick="setbyqueryselector()">Set by query selector</button>
+    <button onclick="changeByqueryselector()">change by query selector</button>
+    <h4></h4>
+    <button onclick="setbyqueryselectorAll()">SetBy query selector </button>
+    <button onclick="changebyqueryselectorAll()">Change By query selector</button>
+
+    <script>
+        //getElementById
+        function set(){
+            document.getElementById("demo").innerHTML="Hello World"
+        }
+        function change(){
+            document.getElementById("demo").innerHTML="Hello welcome"
+        }
+        //getsElementsByname
+        function setbyname(){
+            document.getElementsByName("my")[0].value="Welcome to javascript"
+        }
+        function changebyname(){
+            document.getElementsByName("my")[0].value="Welcomes to you all"
+        }
+        //getElementsbytagname
+        function setbytag(){
+            document.getElementsByTagName("p")[0].innerHTML="Pavani"
+        }
+        function changebytag(){
+            document.getElementsByTagName("p")[0].innerHTML="Divya"
+        }
+       // getElementsbyclassname
+       function setbyclass(){
+           document.getElementsByClassName("myclass")[0].innerHTML="DeepthiReddy"
+       }
+       function changebyclass(){
+           document.getElementsByClassName("myclass")[0].innerHTML="Jyothi"
+       }
+       //queryselector
+       function setbyqueryselector(){
+           document.querySelector("h4").innerHTML="Thanu"
+       }
+       function changeByqueryselector(){
+           document.querySelector("h4").innerHTML="LithishReddy"
+       }
+       //queryselectorAll
+
+       function setbyqueryselectorAll(){
+           document.querySelectorAll("h4").innerHTML="PavaniReddy"
+       }
+
+       function changebyqueryselectorAll(){
+           document.querySelectorAll("h4").innerHTML="DivyaReddy"
+       }
+    </script>
+
+</body>
+</html>

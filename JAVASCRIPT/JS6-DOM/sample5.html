@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Virat">Royalchallangers</div>
+    <button onclick=" setvalue()">Setvalue</button>
+    <button onclick="chnagevaluetext()">ChangeValue</button><br><br>
+
+    <input type="text" name="sai1526" id="" value="Sunline">
+    <button onclick="setvaluebytext()">setvaluebyname</button>
+    <button onclick=" Changevaluebytext()">chnage valuebyname</button>
+
+    <p>IT Sollution</p>
+    <p>IT Sollution</p>
+    <p>IT Sollution</p>
+    <button onclick="settagvalue()">Set Tag Value</button>
+    <button onclick=" Changetagvalue()">Change Tag Value</button>
+
+    <h1 class="sai">SunLineIT SOLUTION</h1>
+    <h1 class="sai">SunLineIT SOLUTION</h1>
+    <h1 class="sai">SunLineIT SOLUTION</h1>
+    <button onclick="setClassvalue()">Set Bycalss value</button>
+    <button onclick="Changecalssvalue()">Change Bycalss value</button>
+
+    <h2>Basics</h2>    
+    <button onclick="SetQueryText()">seryQueryvalue</button>
+    <button onclick="ChangeQueryText()">ChangeyQueryvalue</button>
+
+    <h3>Software</h3>
+    <h3>Software</h3>
+    <h3>Software</h3>
+    <button onclick="setqueryalltext()">Set QSelall value </button>
+    <button onclick=" Changequeryalltext()">Change QSelall value</button>
+    
+    <script>
+        //getelementById
+        function setvalue(){
+            document.getElementById("Virat").innerHTML="Virat We Love You Forever"
+        }
+        function chnagevaluetext(){
+            document.getElementById("Virat").innerHTML="RoyalChallengersBangalore"
+        }
+        //getElementByName
+
+        function setvaluebytext(){
+            document.getElementsByName("sai1526")[0].value="Professor"
+        }
+        
+        function Changevaluebytext(){
+            document.getElementsByName("sai1526")[0].value="Dr.Muralikrishna"
+        }
+         //getElementByTagName
+         function settagvalue(){
+             document.getElementsByTagName("p")[1].innerHTML="HTML,CSS"
+         }
+         function Changetagvalue(){
+             document.getElementsByTagName("p")[2].innerHTML="JS-React"
+         }
+         //getElementByClassName
+
+         function setClassvalue(){
+             document.getElementsByClassName("sai")[0].innerHTML="FullStack programs"
+         }
+
+         function Changecalssvalue(){
+             document.getElementsByClassName("sai")[2].innerHTML="Individual Programs"
+         }
+         //QuerySelctor
+         function SetQueryText(){
+             document.querySelector("h2").innerHTML="Step by step"
+         }
+         function ChangeQueryText(){
+             document.querySelector("h2").innerHTML="Project Oriented Training"
+         }
+         //QueryselctorAll
+         function setqueryalltext(){
+             document.querySelectorAll("h3")[1].innerHTML="Ui Developer"
+         }
+         function Changequeryalltext(){
+             document.querySelectorAll("h3")[2].innerHTML="Front End Developers"
+         }
+         
+    </script>
+</body>
+</html>

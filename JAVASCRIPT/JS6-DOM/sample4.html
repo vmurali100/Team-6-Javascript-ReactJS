@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="raju">i Am from Div</div>
+    <button onclick=" setvalue()">Set value</button>
+    <button onclick="changevalue()">Changevalue</button><br><br>
+    
+    <input type="text" name="Myname" id="" value="Bikes">
+    <button onclick="setbynamevalue()">set byname</button>
+    <button onclick="changebynamevalue()">change byname</button>
+
+    <p>I'M a GoodBoy</p>
+    <button onclick="settagvalue()">settagvalue</button>
+    <button onclick="changetagvalue()">changetagvalue</button>
+
+    <h1 class="person">Firstone</h1>
+    <button onclick="setbyclassvalue()">set by class value </button>
+    <button onclick="changebyclassvalue()">change by class value </button>
+
+    <h3>SecondOne</h3>    
+    <button onclick="setquerytext()">set Qvalue</button>
+    <button onclick="changequerytext()">Chabge Qvalue</button>
+
+    
+    <h2>Lastone</h2>
+    <h2>Lastone</h2>
+    <h2>Lastone</h2>    
+    <button onclick="setqyeryallvalue()">set QAllvalue</button>
+    <button onclick=" changeqyeryallvalue()">Change QAllvalue</button>
+    <script>
+        //getelementById
+        function setvalue(){
+            document.getElementById("raju").innerHTML="space rider"
+        }
+        function changevalue(){
+            document.getElementById("raju").innerHTML="bike racer"
+        }
+        //getelementsByName
+        function setbynamevalue(){
+            document.getElementsByName("Myname")[0].innerHTML="R15"
+        }
+        function changebynamevalue(){
+            document.getElementsByName("Myname")[0].innerHTML="RoyalEnfiled"
+        }
+        //getelementByTag
+
+        function settagvalue(){
+            document.getElementsByTagName("p")[0].innerHTML="Saikiran"
+        }
+        function changetagvalue(){
+            document.getElementsByTagName("p")[0].innerHTML="Jayasankar"
+        }
+        //getelementByClassName
+        function setbyclassvalue(){
+            document.getElementsByClassName("person")[0].innerHTML="I Love Cricket"
+        }
+        function changebyclassvalue(){
+            document.getElementsByClassName("person")[0].innerHTML="I Love virat"
+        }
+        //queryselector
+        function setquerytext(){
+            document.querySelector("h3").innerHTML="I Love Football"
+        }
+        function changequerytext(){
+            document.querySelector("h3").innerHTML="I Love Cr7ronaldo"
+        }
+        //queryselectorAll
+         function setqyeryallvalue(){
+             document.querySelectorAll("h2")[0].innerHTML="I am A BadBoy"
+         }
+         function changeqyeryallvalue(){
+             document.querySelectorAll("h2")[1].innerHTML="Yes"
+         }
+    </script>
+</body>
+</html>

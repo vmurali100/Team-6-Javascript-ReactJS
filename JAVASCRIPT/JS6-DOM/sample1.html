@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sai"> I am A student</div>
+
+    <button onclick=" setvalueText()">SetValue</button>
+    <button onclick="ChangeValueText()">ChangeValue</button>   
+     <br><br>
+    <input type="text" name="Chinna" id="" value="SAIKIRAN">
+    <button onclick="setbyname()">SetValuebyname</button>
+    <button onclick="changebyname()">Changevaluebyname</button>
+    <br><br>
+
+    <p>i am getElementsByTagName</p>
+    <button onclick="settagtext()">Settagname</button>
+    <button onclick="changetagtext()">Changetagname</button>
+
+    <h1 class="Raju">I'M a Heading</h1>
+    <button onclick="setclasstext()">set Class value</button>
+    <button onclick=" Changeclasstext()">change Class value</button>
+
+    <h2>I'M Queryselector</h2>
+    <button onclick=" setquerytext()">set Query value</button>
+    <button onclick="changequerytext() ">change Query value</button>
+
+    <h3>I'M QueryAllselector</h3>
+    <button onclick="setqueryalltext()">set queryall value</button>
+    <button onclick="changequeryalltext()">change queryall value</button>
+ 
+    <script>
+// getElementById
+    function setvalueText(){
+        document.getElementById("sai").innerHTML="I Am Chittoor"
+    }
+
+    function ChangeValueText(){
+        document.getElementById("sai").innerHTML="In Andrapradesh"
+    }
+// getElementsByName
+    function setbyname(){
+        document.getElementsByName("Chinna")[0].value=" JayaSankarSaiKiran"
+    }
+    function changebyname(){
+        document.getElementsByName("Chinna")[0].value="Saichinna"
+    };
+// getElementsBytagName
+    function settagtext(){
+        document.getElementsByTagName("p")[0].innerHTML="JayasankarRaju"
+    }
+
+    function changetagtext(){
+        document.getElementsByTagName("p")[0].innerHTML="RajuBhai"
+    }
+ //  getelementByClassName
+ function setclasstext(){
+     document.getElementsByClassName("Raju")[0].innerHTML="B.com(CA)"
+ } 
+
+ function Changeclasstext(){
+     document.getElementsByClassName("Raju")[0].innerHTML="ComputerApplication"
+ }
+ //Queryselector
+ function setquerytext(){
+     document.querySelector("h2").innerHTML="I am From Set Queryselector"
+ }
+ function changequerytext(){
+     document.querySelector("h2").innerHTML="I am From chnage Queryselector"
+ }   
+ //querAllselector
+ function setqueryalltext(){
+     document.querySelectorAll("h3")[0].innerHTML="Sai,raju,Dheena"
+ }
+ function changequeryalltext(){
+     document.querySelectorAll("h3")[0].innerHTML="JayasankarSai,Jayasankarraju"
+ }
+    
+   
+    </script>
+</body>
+</html>

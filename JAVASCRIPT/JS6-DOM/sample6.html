@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- getelementById -->
+    <div id="student">I Love Travelling</div>
+     <button onclick="setvalue()">setvalue</button>
+     <button onclick="changevalue()">Changevalue</button><br><br>
+    <script>
+      function setvalue(){
+          document.getElementById("student").innerHTML="Favouriteplace"
+      }
+      function changevalue(){
+          document.getElementById("student").innerHTML="Leh Ladak"
+      }
+    </script>
+    <!-- getElementByName -->
+    <input type="text" name="myname" id="" value="Kerala">
+    <button onclick="setvaluebyname()"> Set value by Name</button>
+    <button onclick="Chnagevalbyname()"> Change value by Name</button>
+    <script>
+        function setvaluebyname(){
+            document.getElementsByName("myname")[0].value="TouristPlace"
+        }
+        function Chnagevalbyname(){
+            document.getElementsByName("myname")[0].value="munnar"
+        }
+    </script>
+    <!-- getElementByTagName -->
+     <p>Favplace</p>
+     <p>Favplace</p>
+     <p>Favplace</p>
+     <button onclick="gettagvalue()">Set Tag Value</button>
+     <button onclick="Changetagvalue()">Change Tag Value</button>
+     <script>
+         function gettagvalue(){
+             document.getElementsByTagName("p")[1].innerHTML="SouthIndia"
+         }
+         function Changetagvalue(){
+             document.getElementsByTagName("p")[2].innerHTML="Pondicherry"
+         }
+     </script>
+     <!-- getElementByCalssName -->
+     <h3 class="sai">SaiKiran</h3>
+     <h3 class="sai">SaiKiran</h3>
+     <h3 class="sai">SaiKiran</h3>
+     <button onclick="setvaluebycalss()">Set val By calss</button>
+     <button onclick="Changevaluebycalss()">Change val By calss</button>
+     <script>
+         function setvaluebycalss(){
+             document.getElementsByClassName("sai")[1].innerHTML="SoftWare"
+         }
+         function Changevaluebycalss(){
+             document.getElementsByClassName("sai")[2].innerHTML="UI Devloper"
+         }
+     </script>
+     <!-- Queryselector      -->
+     <h4>Chinna</h4>
+     <button onclick="setquerytext()">SetQselector</button>
+     <button onclick="chnagequerytext()">ChangeQselector</button>
+     <script>
+         function setquerytext(){
+             document.querySelector("h4").innerHTML="Very Talented Person"
+         }
+         function chnagequerytext(){
+             document.querySelector("h4").innerHTML=" Young Person"
+         }
+     </script>
+     <!-- QueryselectorAll     -->
+     <h5>AB Devilliers</h5>
+     <h5>AB Devilliers</h5>
+     <h5>AB Devilliers</h5>
+     <h5>AB Devilliers</h5>
+
+
+     <button onclick="setqallvalue()">SetQallvalue</button>
+     <button onclick="changeqallvalue()">changedQallvalue</button>
+
+     <script>
+         function setqallvalue(){
+             document.querySelectorAll("h5")[2].innerHTML="Wolrdbest BatsMan"
+         }
+         function changeqallvalue(){
+             document.querySelectorAll("h5")[3].innerHTML="Mr.360"
+         }
+     </script>
+
+
+
+
+</body>
+</html>

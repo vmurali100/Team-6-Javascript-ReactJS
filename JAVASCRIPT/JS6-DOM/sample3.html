@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <div id="saikiran">I am form DIV</div>
+       <button onclick=" SetvalueText()">Set value</button>
+       <button onclick="ChangevalueText()">Change Value</button><br><br>
+
+       <input type="text" name="myname" id="" value="Naveen">
+       <button onclick="setvaluebytext()">set value by name</button>
+       <button onclick=" changevaluebytext()">Change value by name</button>
+
+       <p>saikiran</p>
+       <button onclick=" settagvalue()">Set tag value</button>
+       <button onclick="changetagvalue()">change tag value</button>
+
+       <h1 class="vijay">Dheena</h1>
+       <button onclick="setbyclassvalue()">set byclass value</button>
+       <button onclick="changebyclassvalue()">Change byclass value</button>
+
+       <h2>Raju</h2>
+       <button onclick="setquerytext()">set queryvalue</button>
+       <button onclick="chnagequerytext()">Change queryvalue</button>
+
+       <h3> queryallsel</h3>
+       <button onclick="setqueryAlltext()">set queryAllvalue</button>
+       <button onclick="chnageAllquerytext()">Change All queryvalue</button>
+    <script>
+        //getelementById
+        function SetvalueText(){
+           document.getElementById("saikiran").innerHTML="I am from Set value"
+        }
+        function ChangevalueText(){
+           document.getElementById("saikiran").innerHTML="I am from Change value"
+        }
+        //getelementsByName
+        function setvaluebytext(){
+            document.getElementsByName("myname")[0].value="I am from set byname value"
+        }
+        function changevaluebytext(){
+            document.getElementsByName("myname")[0].value="I am from change byname value"
+        }
+        //getelementByTagName
+        function settagvalue(){
+            document.getElementsByTagName("p")[0].innerHTML="I'm from settag element"
+        }
+        function changetagvalue(){
+            document.getElementsByTagName("p")[0].innerHTML="I'm from changetag element"
+        }
+        //getElementsByClassName
+        function setbyclassvalue(){
+            document.getElementsByClassName("vijay")[0].innerHTML="i am a setclassname"
+        }
+        function changebyclassvalue(){
+            document.getElementsByClassName("vijay")[0].innerHTML="i am a changeclassname"
+        }
+        //querySelector
+        function setquerytext(){
+            document.querySelector("h2").innerHTML="Dheena"
+        }
+        function chnagequerytext(){
+            document.querySelector("h2").innerHTML="Rehman"
+        }
+        //queryAllSelector
+        function setqueryAlltext(){
+            document.querySelectorAll("h3")[0].innerHTML="Harish"
+        }
+        function chnageAllquerytext(){
+            document.querySelectorAll("h3")[0].innerHTML="lokesh"
+        }
+    </script>
+</body>
+</html>

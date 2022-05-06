@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="vijay">I am A student</div>
+    <button onclick="setdivtext()">Set Value</button>
+    <button onclick="changedivtext()">Change Value</button><br><br>
+    
+    <input type="text" name="myname" id="" value="saikiran"><br><br>
+    <button onclick="setnametext()">Set Name value</button>
+    <button onclick="chnagenametext()"> Change name value</button>
+
+    <p>I am A ParaTag</p>
+    <button onclick="settagtext()">Set TagName value</button>
+    <button onclick="Changetagtext()"> Change Tagname value</button>
+
+    <h1 class="Sai">I am Heading</h1>
+    <button onclick="setcalssname()">set class value</button>
+    <button onclick="changecalssname()">Change class value</button>
+
+    <h2>I am HeadingTwo</h2>
+     <button onclick="setqueryselector()">set Queryselectorvalue</button>
+     <button onclick="changequeryselector()">Change Queryselectorvalue</button>
+
+     <h3>I am HeadingTree</h3>
+     <button onclick="setqueryalltext()">Set Queryallselectorvalue</button>
+     <button onclick="changequeryalltext()">change Queryallselectorvalue </button>
+
+    <script>
+        //getElementById
+        function setdivtext(){
+            document.getElementById("vijay").innerHTML="I am From set value"
+        }
+        function changedivtext(){
+            document.getElementById("vijay").innerHTML="I am from change value "
+        }
+        //getElementByname
+        function  setnametext(){
+            document.getElementsByName("myname")[0].value="I am from set Name value"
+        }
+
+        function chnagenametext(){
+            document.getElementsByName("myname")[0].value="I am from set Change value"
+        }
+        //getElementsByTagName
+        function settagtext(){
+            document.getElementsByTagName("p")[0].innerHTML="I am From Setname Value"
+        }
+        function Changetagtext(){
+            document.getElementsByTagName("p")[0].innerHTML="I am From changename Value"
+        }
+        //getElementsByClassName
+        function setcalssname(){
+            document.getElementsByClassName("Sai")[0].innerHTML="I am a setclassname"
+        }
+        function changecalssname(){
+            document.getElementsByClassName("Sai")[0].innerHTML="I am a changeclassname"
+        }
+        //queryselector
+        function setqueryselector(){
+            document.querySelector("h2").innerHTML="I am from set Queryselector"
+        }
+        function changequeryselector(){
+            document.querySelector("h2").innerHTML="I am from changed queryselector"
+        }
+        //queryselector
+        function setqueryalltext(){
+            document.querySelectorAll("h3")[0].innerHTML="I am From SetqueryAllselector"
+        }
+
+        function changequeryalltext(){
+            document.querySelectorAll("h3")[0].innerHTML="I am from Changed QueryAllselector"
+        }
+
+    </script>
+</body>
+</html>

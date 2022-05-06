@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="samplDiv">I am Inside Div</div>
+    <button onclick="setDivText()">Set Value</button>
+    <button onclick="changeDivText()">Change Value</button>
+    <hr>
+    
+    <input type="text" name="myName" value="Kumar"> <br><br>
+    <input type="text" name="myName" value="Vimal"> <br><br>
+    <input type="text" name="myName" value="Leela"> <br><br>
+    <button onclick="setInput()"> Set Value </button>
+    <button onclick="changeInput()"> Change Value </button>
+    <hr>
+
+    <h2>I am Inside Heading 1</h2>
+    <h2>I am Inside Heading 2</h2>
+    <button onclick="setHeading()">Set value</button>
+    <button onclick="changeHeading()">Change Value</button>
+    <hr>
+
+    <p class="myPara">I am Inside Para 1</p>
+    <p class="myPara">I am Inside Para 2</p>
+    <p class="myPara">I am Inside Para 3</p>
+    <button onclick="setPara()">Set Value</button>
+    <button onclick="changePara()">Change Value</button>
+    <hr>
+
+    <h1>I am inside Heading 1</h1>
+    <button onclick="setHeadin1()">Set Value</button>
+    <button onclick="changeH1()">Change Value</button>
+    <hr>
+    
+    <h3>I am Inside Heading 1</h3>
+    <h3>I am Inside Heading 2</h3>
+    <h3>I am Inside Heading 3</h3>
+    <button onclick="sethedText()">Set Value</button>
+    <button onclick="changeHedText()">Change Value</button>
+    <hr>
+    <script>
+        document.write("Hello HTML")
+        //getElementById
+        document.getElementById("samplDiv").innerHTML = "I am from DOM Method"
+        function setDivText(){
+            document.getElementById("samplDiv").innerHTML = "I will be adding when you Set me  !!"
+        }
+        function changeDivText(){
+            document.getElementById("samplDiv").innerHTML = "I will Change when you click me !!"
+        }  
+        //getElementsByName        
+        document.getElementsByName("myName")[1].value = "Mani"
+        function setInput(){
+            document.getElementsByName("myName")[2].value = "I will be adding Name when you set me!!"
+        }
+        function changeInput(){
+            document.getElementsByName("myName")[0].value = "I will Change Name when you click me!!"
+        }
+        //getElementsByTagName
+        document.getElementsByTagName("h2")[0].innerHTML = "I am from Dom Method"
+        function setHeading(){
+            document.getElementsByTagName("h2")[0].innerHTML= "I will be adding when you set me!!"
+        }
+        function changeHeading(){
+            document.getElementsByTagName("h2")[1].innerHTML = "I will change when you click me!!"
+        }
+        //getElementsByClassName
+        document.getElementsByClassName("myPara")[1].innerHTML = "I am from Dom Method" 
+        function setPara(){
+            document.getElementsByClassName("myPara")[0].innerHTML = "I will be adding when you set me!!"
+        }
+        function changePara(){
+            document.getElementsByClassName("myPara")[2].innerHTML = "I will change when you click me!!"
+        }
+        //querySelector
+        document.querySelector("h1").innerHTML = "I am from DOM Method"
+        function setHeadin1(){
+            document.querySelector("h1").innerHTML = "I wii be adding when you set me!!"
+        }
+        function changeH1(){
+            document.querySelector("h1").innerHTML = "I will Change when you click me!!"
+        }
+        //querySelectorAll
+        document.querySelectorAll("h3")[1].innerHTML = "I am from DOM Method"
+        function sethedText(){
+            document.querySelectorAll("h3")[0].innerHTML = "I will be adding when you set me!!"
+        }
+        function changeHedText(){
+            document.querySelectorAll("h3")[2].innerHTML = "I will change when you click me!!"
+        }
+
+    </script>
+    
+</body>
+</html>

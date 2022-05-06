@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div id="demo">Iam From Div</div>
+     <button onclick="Setdivtext()">Set Value</button>
+     <button onclick="Changedivtext()">Change Value</button>
+     <hr>
+     <input type="text" name="MyName" id="" value="">
+     <p>Iam From Paragraph</p>
+     <h1>Iam From h1 Tag</h1>
+     <h4 class="Amv">Iam From h4 Tag1</h4>
+     <h4 class="Amv">Iam From h4 Tag2</h4>
+     <script>
+         function Changedivtext(){
+             document.getElementById("demo").innerHTML="Iam Change The Text Value";
+         }
+         function Setdivtext(){
+             document.getElementById("demo").innerHTML="Iam Set The Text Value"
+         }
+         document.write("Hiiiiii");
+         document.getElementById("demo").innerHTML="Iam From The DOM Method";
+         document.getElementsByClassName("Amv")[1].innerHTML="Iam Inside The Heading";
+         document.getElementsByName("MyName")[0].value= "Mansur";
+         document.getElementsByTagName("p")[0].innerHTML="Iam Inside The Paragraph";
+         document.querySelector("h1").innerHTML="Iam From The First Heading";
+         document.querySelectorAll(h4)[0].innerHTML="Iam From Query Selector To All Methods"
+     </script>
+</body>
+</html>

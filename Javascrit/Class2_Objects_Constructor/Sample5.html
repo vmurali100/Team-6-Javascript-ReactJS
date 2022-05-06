@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Laptops (LaptopBrand) {
+            this.RAM = "8 GB";
+            this.Processor = "Intel Core I5";
+            this.Windows = "Windows 11";
+            this.LaptopBrand = LaptopBrand;
+            this.FullDetails = function(){
+                return this.LaptopBrand + " " +this.RAM + " " +this.Processor + " " +this.Windows 
+            }
+        }
+        var Brand1 = new Laptops ("hp");
+        var Brand2 = new Laptops ("Dell");
+        var Brand3 = new Laptops ("Lenovo");
+        var Brand4 = new Laptops ("Acer");
+        var Brand5 = new Laptops ("Thoshiba");
+        console.log(Brand1.FullDetails())
+        console.log(Brand2.FullDetails())
+        console.log(Brand3.FullDetails())
+        console.log(Brand4.FullDetails())
+        console.log(Brand5.FullDetails())
+    </script>
+</body>
+</html>

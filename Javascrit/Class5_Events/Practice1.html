@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Main" style="float:left;width: 200px;">
+        <button onclick="Addatthestart()">Add Value At Starting</button><br><br>
+        <button onclick="AddattheEnd()">Add Value At End</button><br><br>
+        <button onclick="AddattheMiddle()">Add Value At Middle</button><br><br>
+        <button onclick="DeleteattheStart()">Delete Value At Start</button><br><br>
+        <button onclick="DeleteattheEnd()">Delete Value At End</button><br><br>
+        <button onclick="DeleteattheMiddle()">Delete Value At Middle</button><br><br>
+        <button onclick="sort()">Sort</button><br><br>
+        <button onclick="reverse()">Reverse</button><br><br>
+    </div>
+    <div id="demo" style="float:left ;"></div>
+    <script>
+        var StudentNames = ["Aadil","Rihan","Aleena","Firdous","Wasifa",];
+        function displayallusers(){
+            var users = "";
+            StudentNames.forEach((user)=>{
+                users+=user+ "<br>";
+            });
+            document.getElementById("demo").innerHTML=users;
+        }
+        displayallusers();
+        function Addatthestart(){
+            StudentNames.unshift("Riyaz");
+            displayallusers()
+        }
+        function AddattheEnd(){
+            StudentNames.push("Basha");
+            displayallusers()
+        }
+        function AddattheMiddle(){
+            StudentNames.splice(2,0,"Chand");
+            displayallusers()
+        }
+        function DeleteattheStart(){
+            StudentNames.shift();
+            displayallusers()
+        }
+        function DeleteattheEnd(){
+            StudentNames.pop();
+            displayallusers()
+        }
+        function DeleteattheMiddle(){
+            StudentNames.splice(3,1);
+            displayallusers()
+        }
+        function sort(){
+            StudentNames.sort();
+            displayallusers()
+        }
+        function reverse(){
+            StudentNames.reverse();
+            displayallusers()
+        }
+
+    </script>
+</body>
+</html>

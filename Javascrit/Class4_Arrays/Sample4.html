@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Bikes=["HondaShine","Pulser","Activa","HFDeluxe","SpelenderPlus","Scooty","Fz"]
+        Bikes.forEach((val)=>{
+            document.write(val+ "<br>")
+        })
+        var check=Bikes.map((val)=>{
+            return val+"Is a Bikes"
+        })
+        console.log(check)
+        var char3=Bikes.find((val)=>{
+            return val.length==2
+        })
+        console.log(char3)
+        var char3=Bikes.filter((val)=>{
+            return val.length==6
+        })
+        console.log(char3)
+        var check=Bikes.some((val)=>{
+            return val.length >=4
+        })
+        console.log(check)
+        var check=Bikes.every((val)=>{
+            return val.length >=4
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

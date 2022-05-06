@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Friend={
+           Name:"Thulasidas",
+           Age:"28Years",
+           Occupation:"Employe",
+           Address:{
+               Hno:"5-25 A",
+               Street:"SKD Colony",
+               Town:"Adoni",
+               Pincode:518585,
+           },
+           MobileNo:9948747836,
+           Das:function (){
+               console.log(this)
+               console.log(this.Name + " " +this.Age + " " +this.Name + " " +this.Occupation + " " +this.MobileNo)
+               console.log(this.Address.Hno +" "+this.Address.Street +" "+this.Address.Town +" "+this.Address.Pincode);
+               
+           }
+       }
+       Friend.Das()
+   </script>
+</body>
+</html>

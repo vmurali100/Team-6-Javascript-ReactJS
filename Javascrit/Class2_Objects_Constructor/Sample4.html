@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Places(PlaceName){
+            this.State = "Andhrapradesh";
+            this.Dist = "Kurnool";
+            this.PlaceName = PlaceName;
+            this.PlaceDetails =function () {
+                return this.PlaceName + " " +this.Dist + " " +this.State
+            }
+        }
+        var Place1 = new Places ("Mantralayam");
+        var Place2 = new Places ("Adoni");
+        var Place3 = new Places ("Yemmiganur");
+        var Place4 = new Places ("Pattikonda");
+        var Place5 = new Places ("Alur");
+        console.log(Place1.PlaceDetails())
+        console.log(Place2.PlaceDetails())
+        console.log(Place3.PlaceDetails())
+        console.log(Place4.PlaceDetails())
+        console.log(Place5.PlaceDetails())
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+         var Bike={
+            Name:"Splenderplus",
+            Company:"Honda",
+            Model:2022,
+            Color:"Grey",
+            Price:{
+               Andhrapradesh:"85000 rs",
+               Karnataka:"82000",
+               Kerala:"90000",
+               Tamilnadu:"87000"
+            },
+            Milage:"60 Kmpl",
+            Amv:function (){
+                console.log(this)
+                console.log(this.Name + " " +this.Company + " " +this.Model + " " +this.Color + " " +this.Milage)
+                console.log(this.Price.Karnataka +" "+this.Price.Kerala +" "+this.Price.Tamilnadu +" "+this.Price.Andhrapradesh);
+                
+            }
+        }
+    Bike.Amv()
+    </script>
+</body>
+</html>

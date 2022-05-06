@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Vegetables=["Tomato","Potato","Benish","Radish","Chilly","Brinjal","CauliFlower","GreenPepper"]
+        Vegetables.forEach((val)=>{
+            document.write(val+ "<br>")
+        })
+        var check=Vegetables.map((val)=>{
+            return val+"Is a Vegetable"
+        })
+        console.log(check)
+        var char3=Vegetables.find((val)=>{
+            return val.length==6
+        })
+        console.log(char3)
+        var char3=Vegetables.filter((val)=>{
+            return val.length==6
+        })
+        console.log(char3)
+        var check=Vegetables.some((val)=>{
+            return val.length >=4
+        })
+        console.log(check)
+        var check=Vegetables.every((val)=>{
+            return val.length >=4
+        })
+        console.log(check)
+    </script>
+</body>
+</html>

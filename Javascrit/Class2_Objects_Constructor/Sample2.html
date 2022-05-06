@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function NetWorks(MobileNumber){
+            this.NetWork = "Airtel";
+            this.NetWorkType = "4G";
+            this.MobileNumber = MobileNumber;
+            this.NetWorkDetails = function(){
+                return this.NetWork + " " +this.NetWorkType + " " +this.MobileNumber
+            } 
+        }
+        var MobileNumber1 = new NetWorks ("9948747836");
+        var MobileNumber2 = new NetWorks ("6281748441");
+        var MobileNumber3 = new NetWorks ("6281748442");
+        var MobileNumber4 = new NetWorks ("6281748443");
+        var MobileNumber5 = new NetWorks ("6281748444");
+        console.log(MobileNumber1.NetWorkDetails())
+        console.log(MobileNumber2.NetWorkDetails())
+        console.log(MobileNumber3.NetWorkDetails())
+        console.log(MobileNumber4.NetWorkDetails())
+        console.log(MobileNumber5.NetWorkDetails())
+    </script>
+</body>
+</html>

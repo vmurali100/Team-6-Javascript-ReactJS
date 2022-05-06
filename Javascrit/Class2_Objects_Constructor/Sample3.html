@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Vehicles(VehicleName) {
+            this.VehicleType = "Two Wheeler";
+            this.VehicleColor = "White";
+            this.VehicleName = VehicleName;
+            this.VehicleDetails = function(){
+                return this.VehicleType + " " +this.VehicleColor + " " +this.VehicleName
+            }
+        }
+        var Vehicle1 = new Vehicles ("HondaShine");
+        var Vehicle2 = new Vehicles ("Suzuki");
+        var Vehicle3 = new Vehicles ("Activa");
+        var Vehicle4 = new Vehicles ("HfDeluxe");
+        var Vehicle5 = new Vehicles ("RoyalEnfield");
+        var Vehicle6 = new Vehicles ("Pulser");
+        console.log(Vehicle1.VehicleDetails())
+        console.log(Vehicle2.VehicleDetails())
+        console.log(Vehicle3.VehicleDetails())
+        console.log(Vehicle4.VehicleDetails())
+        console.log(Vehicle5.VehicleDetails())
+        console.log(Vehicle6.VehicleDetails())
+    </script>
+</body>
+</html>

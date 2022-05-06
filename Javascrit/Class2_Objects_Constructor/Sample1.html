@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student (StudentName){
+            this.Course = "HTML-CSS";
+            this.Institute = "Sunline It Solution";
+            this.Place = "Chittoor";
+            this.Insructor = "Leelavathi Mam";
+            this.StudentName = StudentName;
+            this.StudentDetails = function() {
+                return this.Course + " " +this.Institute + " " +this.StudentName
+            }
+        }
+        Student.prototype.TimePeriod= "3 Months"
+        var Student1 = new Student ("Mansur");
+        var Student2 = new Student ("Naveen");
+        var Student3 = new Student ("Santhosh");
+        console.log(Student1.StudentDetails());
+        console.log(Student2.StudentDetails());
+        console.log(Student3.StudentDetails());
+        console.log(Student1.TimePeriod)
+    </script>
+</body>
+</html>

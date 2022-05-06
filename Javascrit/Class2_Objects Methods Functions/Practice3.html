@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Places={
+            Andhrapradesh:"Kurnool",
+            Places:{
+                Place1:"Adoni",
+                Place2:"Pattikonda",
+                Place3:"Mantralayam",
+                Place4:"Thuggalli",
+                Place5:"Kodumuru"
+            },
+            Karnataka:"Bengalore",
+            Tamilnadu:"Chennai",
+            Kerala:"Thiruvananthapuram",
+            Telangana:"Hyderabad",
+            Amv:function (){
+                console.log(this)
+                console.log(this.Andhrapradesh +" "+this.Karnataka +" "+this.Kerala +" "+this.Tamilnadu +" "+this.Telangana);
+                console.log(this.Places.Place1 +" "+this.Places.Place2 +" ")
+                console.log(this.Places.Place3 +" "+this.Places.Place4 +" "+this.Places.Place5 +" ")
+            }
+        }
+        Places.Amv()
+        </script>
+</body>
+</html>

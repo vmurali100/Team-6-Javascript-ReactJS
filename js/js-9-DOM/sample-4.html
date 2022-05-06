@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <button onclick="set()">set</button>
+    <button onclick="change()">change</button><br><br>
+    <input type="text" name="myname" id="">
+    <button onclick="setByName()">set input</button>
+    <button onclick="changeByName()">change input</button>
+    <p></p>
+    <button onclick="setByTag()">set by tag</button>
+    <button onclick="changeByTag()">change by tag</button>
+    <ul class="my"></ul>
+    <button onclick="setByclass()">set by class</button>
+    <button onclick="changeByclass()">change by class</button>
+    <h5></h5>
+    <button onclick="setByQuerySelector()">set by queryselector</button>
+    <button onclick="changeByQuerySelector()">change by querySelector</button>
+    <h5></h5>
+    <button onclick="setByQuerySelectorAll()">set By QuerySelector All</button>
+    <button onclick="changeByQuerySelectorAll()">change By QuerySelector All</button>
+
+    <script>
+        // getElementById
+        function set() {
+            document.getElementById("demo").innerHTML = "hello"
+        }
+        function change() {
+            document.getElementById("demo").innerHTML = "helloooooo!!!!!"
+        }
+        //getElementsByName
+        function setByName() {
+            document.getElementsByName("myname")[0].value = "welcome to javascript"
+        }
+        function changeByName() {
+            document.getElementsByName("myname")[0].value = "javascript welcomes u all"
+        }
+        //getElementsByTagName
+        function setByTag() {
+            document.getElementsByTagName("p")[0].innerHTML = "america"
+        }
+        function changeByTag() {
+            document.getElementsByTagName("p")[0].innerHTML = "denmark"
+        }
+        //getElementsByClassName
+        function setByclass() {
+            document.getElementsByClassName("my")[0].innerHTML = "RADHA"
+        }
+        function changeByclass() {
+            document.getElementsByClassName("my")[0].innerHTML = "SRINU"
+        }
+        //querySelector
+        function setByQuerySelector() {
+            document.querySelector("h5").innerHTML = "india"
+        }
+        function changeByQuerySelector() {
+            document.querySelector("h5").innerHTML = "iam a indian"
+        }
+        //querySelectorAll
+        function setByQuerySelectorAll() {
+            document.querySelectorAll("h5")[1].innerHTML = "Vishnu"
+        }
+        function changeByQuerySelectorAll() {
+            document.querySelectorAll("h5")[1].innerHTML = "harideepthi boppana"
+        }
+    </script>
+</body>
+
+</html>

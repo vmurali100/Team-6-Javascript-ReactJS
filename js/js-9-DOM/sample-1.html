@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo1"> welcome</div>
+    <button onclick="setDivText()">set text</button>
+    <button onclick="changeDivText()">change text</button><br><br>
+    <input type="text" name="myname" id="">
+    <button onclick="setText()">set input</button>
+    <button onclick="changeText()">change input</button><br><hr>
+    <p></p>
+    <button onclick="setPText()">click to set</button>
+    <button onclick="changePText()">click to change</button>
+    <h3 class="my"></h3>
+    <button onclick="setByqs()"> set by querySelector</button>
+    <button onclick="changeByqs()">change by querySelector</button>
+    <h3 class="my"></h3>
+    <button onclick="setByClass()">click to set</button>
+    <button onclick="changeByClass()">click to change</button>
+    <h3></h3>
+    <button onclick="setByQsa()">click to set</button>
+    <button onclick="changeByQsa()">click to change</button>
+    <script>
+        //getElementById
+        function setDivText() {
+            document.getElementById("demo1").innerHTML = "Helloo  !!!"
+        }
+        function changeDivText() {
+            document.getElementById("demo1").innerHTML = "changed to Hellooo World !!!"
+        }
+        //  getElementsByName
+        function setText() {
+            document.getElementsByName("myname")[0].value = "set elements by name"
+        }
+        function changeText() {
+            document.getElementsByName("myname")[0].value = "click to change text"
+        }
+        //getElementsBtTagName
+        function setPText() {
+            document.getElementsByTagName("p")[0].innerHTML = "welcome to javascript"
+        }
+        function changePText() {
+            document.getElementsByTagName("p")[0].innerHTML = "welcome to DOM methods"
+        }
+        //getElementsByClassname
+        function setByClass() {
+            document.getElementsByClassName("my")[1].innerHTML = "click to see the text"
+        }
+        function changeByClass() {
+            document.getElementsByClassName("my")[1].innerHTML = "click to change the text"
+        }
+        //queryselector
+        function setByqs() {
+            document.querySelector("h3").innerHTML = "it adds text at index 0 position"
+        }
+        function changeByqs() {
+            document.querySelector("h3").innerHTML = "querySelector"
+        }
+        //querySelectorAll
+        function setByQsa() {
+            document.querySelectorAll("h3")[2].innerHTML = "set by queryselecto all"
+        }
+        function changeByQsa() {
+            document.querySelectorAll("h3")[2].innerHTML = "changed on click"
+        }
+
+            // document.write(" Welcome to javascript")
+        // document.getElementById("demo1").innerHTML="helloworld"
+        // document.getElementsByName("myname")[0].value="deepthi boppana"
+        // document.getElementsByTagName("p")[0].innerHTML="i'm from paragraph"
+        // document.getElementsByClassName("my")[1].innerHTML="i am from class h3"
+        // document.querySelector("h3").innerHTML="i'm from  first h3 qselector"
+        // document.querySelectorAll("h3")[2].innerHTML="I'm from querySelectorAll"
+
+    </script>
+</body>
+
+</html>

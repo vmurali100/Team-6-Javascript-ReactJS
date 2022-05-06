@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <button onclick="set()">click to set</button>
+    <button onclick="change()">click to change</button>
+    <br><hr>
+    <input type="text" name="myname" id="">
+    <button onclick="setByName()">click to set by name</button>
+    <button onclick="changeByName()">click to change by name</button>
+    <hr>
+    <ul></ul>
+    <button onclick="setByTag()">click to set</button>
+    <button onclick="changeByTag()">click to change</button>
+    <ul class="my"></ul>
+    <button onclick="setByClass()">click to set</button>
+    <button onclick="changeByClass()">click to change</button>
+    <h5></h5>
+    <button onclick="setByQuerySelector()">click</button>
+    <button onclick="changeByQuerySelector()">click to change</button>
+    <h5></h5>
+    <button onclick="setByQuerySelectorAll()">click</button>
+    <button onclick="changeByQuerySelectorAll()">click to change</button>
+    <script>
+        //getElementById
+        function set() {
+            document.getElementById("demo").innerHTML = "welcome to javascript"
+        }
+        function change() {
+            document.getElementById("demo").innerHTML = "Welcome to DOM"
+        }
+        //getElementsByName
+        function setByName() {
+            document.getElementsByName("myname")[0].value = "getElementsByName"
+        }
+        function changeByName() {
+            document.getElementsByName("myname")[0].value = "it is a dom method"
+        }
+        //getElementsByTagName
+        function setByTag() {
+            document.getElementsByTagName("ul")[0].innerHTML = "chair"
+        }
+        function changeByTag() {
+            document.getElementsByTagName("ul")[0].innerHTML = "table"
+        }
+        //getElementByClassName
+        function setByClass() {
+            document.getElementsByClassName("my")[0].innerHTML = "bike"
+        }
+        function changeByClass() {
+            document.getElementsByClassName("my")[0].innerHTML = "scooty"
+        }
+        //querySelector
+        function setByQuerySelector() {
+            document.querySelector("h5").innerHTML = "it adds in the 0 index"
+        }
+        function changeByQuerySelector() {
+            document.querySelector("h5").innerHTML = "it is like find method"
+        }
+        //querySelectorAll
+        function setByQuerySelectorAll(){
+            document.querySelectorAll("h5")[1].innerHTML="deepthi"
+        }
+        function changeByQuerySelectorAll(){
+            document.querySelectorAll("h5")[1].innerHTML="vishnu"
+        }
+    </script>
+
+</body>
+
+</html>

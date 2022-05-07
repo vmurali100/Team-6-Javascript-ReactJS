@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var laptops = ["Lg","Dell","Acer","Hp","Lenovo","Asus","Apple","MacBook"] 
+       laptops.forEach((value)=>{
+           var myUl = document.createElement("ul")
+           document.body.appendChild(myUl);
+           var myLi = document.createElement("li");
+           myLi.innerHTML = value
+           document.querySelector("ul").appendChild(myLi);           
+       })
+       var colours = ["Pink","Red","Yellow","Green","Orange","Black","Blue","Dark","white"]
+       colours.forEach((val)=>{
+           var myUl = document.createElement("ul");
+           document.body.appendChild(myUl);
+           var myLi = document.createElement("li");
+           myLi.innerHTML = val
+           document.querySelector("ul").appendChild(myLi);
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+        var colours = ["Pink","Red","Yellow","Green","Orange","Black","Blue","Dark","white"]
+
+        colours.forEach((value)=>{
+            var myUl = document.createElement("ul");
+            document.body.appendChild(myUl)
+            var myLi = document.createElement("li");
+            myLi.innerHTML = value 
+            document.querySelector("ul").appendChild(myLi);
+        })
+        var temples=["Tirupathi","Vijayawada","Kalasthi","Knipakam"]
+        temples.forEach((value)=>{
+            var myUl = document.createElement("ul");
+            document.body.appendChild(myUl);
+           var myLi = document.createElement("li");
+            myLi.innerHTML = value
+            document.querySelector("ul").appendChild(myLi)
+        })
+    </script>
+</body>
+</html>

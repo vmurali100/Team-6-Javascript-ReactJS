@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{border: 2px solid; padding: 10px; float: left; margin: 2px;}
+    </style>
+</head>
+<body>
+    <script>
+        var tablesNo = prompt("Enter No of Tables You Want");
+
+        var i=2;
+        while(i<tablesNo){
+            var myDiv = document.createElement("div");
+
+            var j=1;
+            var table = " "
+            while(j<=10){
+                table = table + i + " x " + j + " = " + i * j + "<br>"
+                j++;
+            }
+            
+            myDiv.innerHTML= table;
+            document.body.appendChild(myDiv);
+            i++;
+        }
+        console.log(tablesNo);
+    </script>    
+</body>
+</html>

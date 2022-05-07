@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var cars=["Innova","Swift","Ford","Honda","Dodge","Renault"]
+        cars.forEach((value)=>{
+            var myUl = document.createElement("ul");
+            document.body.appendChild(myUl);
+           var myLi = document.createElement("li");
+            myLi.innerHTML = value
+            document.querySelector("ul").appendChild(myLi)
+        })
+        var students = ["Srinivas","Srividya","Padhma","Sambhasiva Rao","RamMohan"]
+
+        students.forEach((val)=>{
+            var myUl = document.createElement("ul");
+            document.body.appendChild(myUl);
+            var myLi = document.createElement("li");
+            myLi.innerHTML = val
+            document.querySelector("ul").appendChild(myLi);
+        })
+    </script>
+</body>
+</html>

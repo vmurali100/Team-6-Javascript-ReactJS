@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+
+    </ul>
+    <script>
+        var Bike=["Rx100","R15","Royalenfiled","Yamaha","Duke","Ktm","Scooty","Splender","Fz","Apachi","Ns100"]
+        Bike.forEach((val)=>{
+            var myLi=document.createElement("li");
+            myLi.innerHTML= val            
+            document.querySelector("ul").appendChild(myLi)
+        })
+    </script>
+    <hr>
+    <ol>
+
+    </ol>
+    <script>
+        var tourist=["Ladak","Munnar","Goa","pandicherry","OOty","Andaman","coorag","Manali","Lakshadweep","Tajmahal"]
+        tourist.forEach((val)=>{
+            var myLi=document.createElement("li");
+            myLi.innerHTML= val            
+            document.querySelector("ol").appendChild(myLi)
+        })
+    </script>
+</body>
+</html>

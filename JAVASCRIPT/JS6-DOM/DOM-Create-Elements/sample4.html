@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+
+    </ul>
+    <script>
+        var ipl=["Royal challegers Bangalore","Mumbai Indians","Chenni Super KIngs","Sunrisers Hydrabad","GujaratTitans","LuknowSuperGaints","KolkataNightRiders","KIngs11Punjab","RajasthanRoyals","Delhli"];
+        ipl.forEach((val)=>{
+            var myLi=document.createElement("li");
+            myLi.innerHTML = val
+            document.querySelector("ul").appendChild(myLi)
+        })
+    </script>
+    <hr>
+    <ol>
+
+    </ol>
+    <script>
+        var Captains=["ViratKohli","FafDuplassis","RishabPant","RohitSharma","Jadeja","SanjuSamson","HardikPandiya","KLRahul","Kanewilliamson","ShreyasIyer","Mayankagrawal"];
+        Captains .forEach((val)=>{
+            myLi=document.createElement("li");
+            myLi .innerHTML = val
+            document.querySelector("ol").appendChild(myLi)           
+        })
+    </script>
+</body>
+</html>

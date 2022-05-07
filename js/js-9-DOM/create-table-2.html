@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 2px solid green;
+            float: left;
+            margin: 3px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var tableNo = prompt("Enter Number")
+        var i = 2;
+        while (i < tableNo) {
+            var mydiv = document.createElement("div")
+            var t = 1;
+            var table = "";
+            while (t <= 10) {
+                table = table + i + " X " + t + " = " + i * t + "<br>"
+                t++
+            }
+            mydiv.innerHTML = table
+            document.body.appendChild(mydiv)
+            i++
+        }
+    </script>
+</body>
+
+</html>

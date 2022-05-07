@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <ul></ul>
+</head>
+<body>
+    <script>
+        var Mobiles = ["Vivo","MI","Lenova","Samsang","Intel","Lava","Nokia","Oppo"];
+        Mobiles.forEach((val) => {
+            var models = document.createElement("li");
+            models.innerHTML = val
+            document.querySelector("ul").appendChild(models);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 25%;
+        }
+        .product {
+            border: 2px solid purple;
+            width: 25%;
+            margin: 2px;
+            padding: 10px;
+            float: left;
+            height: 300px;
+        }
+        p{
+            font-size: 10px;
+        }
+        h1{
+            color: red;
+            font-size: 15px;
+            margin: 5px;
+        }
+        h2{
+            color: rgb(26, 12, 231);
+            font-size: 15px;
+            margin: 5px;
+        }
+        h3{
+            color: rgb(243, 228, 20);
+            font-size: 10px;
+            margin: 5px;
+        }
+    </style>
+    <script src="./products.js"></script>
+</head>
+<body>
+    <div id="products"></div>
+    <img src="" alt="">
+    <script>
+        console.log(allProducts)
+        allProducts.forEach((product) => {
+            var myDressesDiv =document.createElement("div");
+            myDressesDiv.setAttribute("class","product")
+
+            var myImg = document.createElement("img");
+            myImg.setAttribute("src",product.image)
+
+            var title = document.createElement("p");
+            title.innerHTML = product.title
+
+            var id = document.createElement("h1");
+            id.innerHTML =  product.id
+
+            var price = document.createElement("h2");
+            price.innerHTML =  product.price
+
+            var category = document.createElement("h1");
+            category.innerHTML = product.category
+
+            var description = document.createElement("h3");
+            description.innerHTML =  product.description
+
+           
+            myDressesDiv.appendChild(myImg)
+            myDressesDiv.appendChild(title)
+            myDressesDiv.appendChild(id)
+            myDressesDiv.appendChild(price)
+            myDressesDiv.appendChild(category)
+            myDressesDiv.appendChild(description)
+         
+
+            document.getElementById("products").appendChild(myDressesDiv)
+        })
+    </script>
+</body>
+</html>

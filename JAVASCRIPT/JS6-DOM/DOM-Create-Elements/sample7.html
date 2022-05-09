@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol{
+            color: red;
+        }
+        ul{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+
+    </ol>
+    <script>
+        var States=["AndraPradesh","TamilNadu","Karnataka","Delhi","Maharastra","Kerala","Telangana","Goa","Bihar"]
+        States.forEach((val)=>{
+            var myLi=document.createElement("li");
+            myLi.innerHTML=val
+            document.querySelector("ol").appendChild(myLi)
+        })
+    </script>
+    <hr>
+     <ul>
+
+     </ul>
+    <script>
+        var capitals=["Amaravathi","Chennai","Bangalore","NewDelhi","Munmbai","Thiruvanthapuram","Hyderabad","panaji","patna"]
+        capitals.forEach((sai)=>{
+            var myLi=document.createElement("li");
+            myLi.innerHTML=sai
+            document.querySelector("ul").appendChild(myLi)
+        })
+    </script>
+</body>
+</html>

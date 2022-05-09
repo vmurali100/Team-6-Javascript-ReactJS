@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+
+    </ol>
+    <script>
+      var Teachers=["Giribabu","jayanthi","kalpana","Joshna","Ramamrutha","Ramesh","ambedhkar"]
+      Teachers.forEach((val)=>{
+          var myLi=document.createElement("li");
+          myLi.innerHTML=val
+          document.querySelector("ol").appendChild(myLi)
+      })
+    </script>
+    <hr>
+    <ul>
+
+    </ul>
+    <script>
+       var Subjects=["Telugu","English","Civics","Commerce","Economics","Urdu","Tamil"]
+       Subjects.forEach((val)=>{
+           var myLi=document.createElement("li");
+           myLi.innerHTML=val
+           document.querySelector("ul").appendChild(myLi)
+       })
+    </script>
+</body>
+</html>

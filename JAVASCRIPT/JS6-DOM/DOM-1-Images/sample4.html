@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 30%;
+        }
+        .product{
+            border:2px solid blue;
+            margin: 2px;
+            float: left;
+            height: 280px;
+            padding: 10px;
+            width: 20%;
+        }
+        h1{
+            font-size: 15px;
+            color: red;           
+        }
+        p{
+            font-size: 15px;           
+        }
+ 
+     </style>
+    <script src="./sample4.js"></script>
+</head>
+<body>
+    <div id="images"></div>
+    <img src="" alt="">
+    
+    <script>
+          console.log(allProducts)
+    allProducts.forEach((product)=>{
+        var myProductDiv = document.createElement("div");
+        myProductDiv.setAttribute("class","product")
+
+        var myImg=document.createElement("img")
+        myImg.setAttribute("src",product.image);
+
+        var title=document.createElement("p")
+        title.innerHTML = product.title
+
+        var id = document.createElement("h1")
+        id .innerHTML = product.id
+
+        var category = document.createElement("h1")
+        category.innerHTML= product.category
+
+        var price=document.createElement("h2")
+        price.innerHTML=product.price
+
+
+        myProductDiv.appendChild(myImg)
+        myProductDiv.appendChild(title)
+        myProductDiv.appendChild(id)
+        myProductDiv.appendChild(category)
+        myProductDiv.appendChild(price)
+        
+
+        document.getElementById("images").appendChild(myProductDiv)
+    })
+    </script>
+</body>
+</html>

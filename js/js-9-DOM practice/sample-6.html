@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         img{
+            width: 20%;
+        }
+       
+.product {
+    border: 2px solid azure;
+    width: 30%;
+    height: 372px;
+    float: left;
+    padding: 10px;
+    margin: 5px;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+}
+    </style>
+    <script src="./products.js"></script>
+</head>
+
+<body>
+    <script>
+        var mydiv = document.createElement("div")
+        mydiv.setAttribute("id","demo")
+        document.body.appendChild(mydiv)
+    
+        allProducts.forEach((product) => {
+            var myProductDiv=document.createElement("div")
+            myProductDiv.setAttribute("class","product")
+            //id
+            var myid=document.createElement("h2")
+            myid.innerHTML=product.id
+            //title
+            var mytitle=document.createElement("h2")
+            mytitle.innerHTML=product.title
+            //category
+            var mycategory=document.createElement("h1")
+            mycategory.innerHTML=product.category
+            //img
+            var myimg=document.createElement("img")
+            myimg.setAttribute("src",product.image)
+
+            mydiv.appendChild(myProductDiv)
+            myProductDiv.appendChild(myid)
+            myProductDiv.appendChild(mytitle)
+            myProductDiv.appendChild(mycategory)
+            myProductDiv.appendChild(myimg)
+        })
+    </script>
+</body>
+
+</html>

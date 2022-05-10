@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+tr {
+    text-align: center;
+}
+
+</style>
+<body>
+
+<h2>TH elements define table headers</h2>
+<input type="text" name="" id="userinput">
+ <button onclick="SearchUsers()" >SearchUsers</button>
+ <button onclick="ClearSearch()" >Clear Search</button><br><br>
+
+<table  style="width:100%" >
+  <tr>
+   <thead>
+    <th>Person</th>
+    <th>Email</th>
+    <th>Phone</th>
+   </thead>
+  </tr>
+<tbody></tbody>
+</table>
+
+
+
+<script>
+    var data =[
+        {
+            Person:"Ronaldo",
+            Email:"Cr7@gmail.com",
+            Phone:0405525556
+        },
+        {
+            Person:"Messi",
+            Email:"Messi@gmail.com",
+            Phone:1202510726
+        },
+        {
+            Person:"Viart",
+            Email:"Virat@gmail.com",
+            Phone:6301400247
+        },
+        {
+            Person:"Siraj",
+            Email:"Miya@gmail.com",
+            Phone:7013803433
+        },
+        {
+            Person:"sai",
+            Email:"saisiri@gmail.com",
+            Phone:8730800318
+        },
+    ]
+    function displayusers(data){
+        document.querySelector("tbody").innerHTML=""
+        data.forEach((user)=>{
+        var myTr=document.createElement("tr")
+         for(a in user){
+             var myTd=document.createElement("td")
+             myTd.innerHTML=user[a]
+             myTr.appendChild(myTd)
+         }
+        document.querySelector("tbody").appendChild(myTr)
+    })
+    
+    }
+    displayusers(data)
+
+    function SearchUsers(){
+        var usersearch = document.getElementById("userinput").value
+        console.log(usersearch)
+
+        var filteruser = data.filter((user)=>{
+            return user.Email.indexOf(usersearch) >-1
+        })
+
+        // var filteruser = data.filter((user)=>{
+        //     return user.Person.indexOf(usersearch) >-1
+        // })
+
+        displayusers(filteruser)
+    };
+
+    function ClearSearch(){
+       displayusers(data) 
+    }
+    
+</script>
+
+</body>
+</html>
+

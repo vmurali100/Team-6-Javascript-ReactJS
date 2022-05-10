@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        thead{
+    color: red;
+    background-color: yellow;
+}
+tr{
+    text-align: center;
+}
+td {          
+            background-color: darkkhaki;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Wolrd Best Cricket Players</h2>
+
+    <input type="text" name="" id="Cricket">
+    <button onclick="SerachUsers()">SearchUsers</button>
+    <button onclick="ClearSerach()">ClearSearch</button><br><br>
+   
+
+    <table border="1"  style="width:80%" >
+        <tr>
+            <thead>
+                <th>India</th>
+            <th>Australia</th>
+            <th>SouthAfrica</th>
+            <th>England</th>
+            <th>NewZeLand</th>
+            <th>SriLanka</th>
+            </thead>
+        </tr>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var Players=[
+            {
+                India:"ViratKohli", 
+                Australia:"GlenMaxiwel",
+                SouthAfrica:"FafDuplassis",
+                England:"JsonRoy",
+                NewZeLand:"Guptil",
+                SriLanka:"WaniduHasranga"
+            },
+            {
+                India:"Siraj", 
+                Australia:"Hazelwood",
+                SouthAfrica:"Ab.Devilliers",
+                England:"JodButtler",
+                NewZeLand:"Willamson",
+                SriLanka:"Chameera"
+            },
+            {
+                India:"DineshKarthik", 
+                Australia:"AronFinch",
+                SouthAfrica:"Markram",
+                England:"SamCurren",
+                NewZeLand:"Bolt",
+                SriLanka:"Mathews"
+            },
+            {
+                India:"Ms.Dhoni", 
+                Australia:"Starc",
+                SouthAfrica:"Rabada",
+                England:"DavidWilley",
+                NewZeLand:"Conway",
+                SriLanka:"malinga"
+            },
+            {
+                India:"RohitSharma", 
+                Australia:"Smith",
+                SouthAfrica:"Rasow",
+                England:"JonnyBairstow",
+                NewZeLand:"Southe",
+                SriLanka:"Chamika"
+            },          
+            {
+                India:"IshanKishan", 
+                Australia:"Chris Lynn",
+                SouthAfrica:"Davidmiller",
+                England:"LiamLivngstone",
+                NewZeLand:"Ross Taylor",
+                SriLanka:"Avishka"
+            }
+        ]
+       function displayusers(Players){
+        document.querySelector("tbody").innerHTML=""
+        Players.forEach((user)=>{
+            var myTr=document.createElement("tr");
+            for(a in user){
+                var myTd=document.createElement("td")
+                myTd.innerHTML = user[a]
+                myTr.appendChild(myTd)
+            }
+            document.querySelector("tbody").appendChild(myTr)
+        })
+       }
+       displayusers(Players)
+
+       function SerachUsers(){
+           var SearchUser=document.getElementById("Cricket").value 
+           console.log(SerachUsers)
+
+           var filteruser = Players.filter((user)=>{
+               return user.Australia.indexOf(SearchUser)>-1
+           })
+
+        //    var filteruser = Players.filter((user)=>{
+        //        return user.India.indexOf(SearchUser)>-1
+        //    })
+
+        //    var filteruser = Players.filter((user)=>{
+        //        return user.SriLanka.indexOf(SearchUser)>-1
+        //    })
+
+
+           displayusers(filteruser)           
+       };
+       function ClearSerach(){
+        displayusers(Players)      
+       }
+
+    </script>
+</body>
+</html>

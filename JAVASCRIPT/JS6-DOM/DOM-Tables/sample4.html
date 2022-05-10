@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }        ;
+        tr {
+            text-align: center;
+        }
+        td {
+            color: blue;
+            background-color: darkkhaki;
+        }
+        tr {
+            background-color: brown;
+            color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" , style="width: 100%;">
+
+        <h2>Movie Details</h2>
+        <input type="text" name="" id="Theliyaadhu">
+        <button onclick="Searchuser()">Searchuser</button>
+        <button onclick="ClearSearch()">ClearSearch</button><br><br>
+
+        <tr>
+            <thead>
+                <th>MovieName</th>
+                <th>Hero</th>
+                <th>Heroine</th>
+                <th>Director</th>
+                <th>Music</th>
+                <th>Producer</th>
+                <th>Budjet</th>
+            </thead>
+        </tr>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var movies = [
+            {
+                MovieName: "Beast",
+                Hero: "Vijay",
+                Heroine: "Poojsa",
+                Director: "Nelson",
+                Music: "Aniruth",
+                Producer: "Kalanithi Maran",
+                Budjet: "150cr"
+            },
+            {
+                MovieName: "RRR",
+                Hero: "Ram,Ntr",
+                Heroine: "Alia Bhatt",
+                Director: "SS Rajamouli",
+                Music: "MM.Keervani",
+                Producer: "DVV",
+                Budjet: "550cr"
+            },
+            {
+                MovieName: "KGF2",
+                Hero: "Yash",
+                Heroine: "Srinidhi",
+                Director: "PrasanthNeel",
+                Music: "Ravi Basrur",
+                Producer: "Vijay Kiragandur",
+                Budjet: "100cr"
+            },
+            {
+                MovieName: "Acharya",
+                Hero: "Chiranjeevi",
+                Heroine: "Pooja",
+                Director: "koratalaSiva",
+                Music: "ManiSharma",
+                Producer: "Niranjan",
+                Budjet: "100cr"
+            },
+            {
+                MovieName: "Bigil",
+                Hero: "Vijay",
+                Heroine: "Nayanathara",
+                Director: "Atlee",
+                Music: "AR.Rehman",
+                Producer: "S.Aghoram",
+                Budjet: "150cr"
+            },
+
+        ];
+        function displayusers(movies) {
+            document.querySelector("tbody").innerHTML = "";
+            movies.forEach((user) => {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        displayusers(movies)
+
+        function Searchuser() {
+            var SearchUser = document.getElementById("Theliyaadhu").value
+            console.log(SearchUser)
+
+            var filteruser = movies.filter((user) => {
+                return user.Music.indexOf(SearchUser) > -1
+            })
+            displayusers(filteruser)
+        }
+
+        function ClearSearch() {
+            displayusers(movies)
+        }
+    </script>
+</body>
+
+</html>

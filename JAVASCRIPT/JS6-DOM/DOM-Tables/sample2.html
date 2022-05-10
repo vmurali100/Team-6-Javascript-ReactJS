@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+th {
+    color: white;
+    background-color: black;
+}
+tr {
+    color: red;
+    background-color: yellow;
+    text-align: center;
+}
+</style>
+<body>
+
+<h2>TR elements define table rows</h2>
+
+<input type="text" name="" id="userinput"> 
+<button onclick="SearchUsers()">SearchUsers </button>
+<button onclick="ClearSearch()">ClearSearch</button><br><br>
+
+<table style="width:100%">
+  <tr>
+   <thead>
+    <th>FName</th>
+    <th>LName</th>
+    <th>Age</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+   </thead>
+  </tr>
+  <tbody></tbody>
+
+</table>
+
+
+</body>
+</html>
+<script>
+    var Detail=[
+        {
+            Fname:"JayaSankar",
+            Lname:"sai",
+            Age:21,
+            City:"Chittoor",
+            State:"AndraPradesh",
+            Zip:517001
+        },
+        {
+            Fname:"Raju",
+            Lname:"Jai",
+            Age:23,
+            City:"Chittoor",
+            State:"AndraPradesh",
+            Zip:517001
+        },
+        {
+            Fname:"Thala",
+            Lname:"Dheena",
+            Age:23,
+            City:"Chittoor",
+            State:"AndraPradesh",
+            Zip:517001
+        },
+        {
+            Fname:"Ronaldo",
+            Lname:"Cr7",
+            Age:38,
+            City:"goa",
+            State:"Goa",
+            Zip:800001
+        },
+        {
+            Fname:"Viart",
+            Lname:"Kohli",
+            Age:33,
+            City:"Delhi",
+            State:"Delhi",
+            Zip:685201
+        },
+        {
+            Fname:"Joseph",
+            Lname:"Vijay",
+            Age:46,
+            City:"Chennai",
+            State:"TamilNadu",
+            Zip:652874
+        }
+    ];
+  function displayusers(Detail){
+    document.querySelector("tbody").innerHTML="";
+
+    Detail.forEach((user)=>{
+        var myTr=document.createElement("tr")
+        for(a in user){
+            var myTd=document.createElement("td")
+            myTd.innerHTML = user[a]
+            myTr.append(myTd)
+        }
+        document.querySelector("tbody").appendChild(myTr)
+    })
+  }
+  displayusers(Detail)
+    
+  function SearchUsers(){
+       var SearchUsers = document.getElementById("userinput").value 
+       console.log(SearchUsers)
+
+       var filteruser = Detail.filter((user)=>{
+           return user . Fname.indexOf(SearchUsers)>-1
+       })
+       displayusers(filteruser)
+   }
+    function ClearSearch(){
+        displayusers(Detail)
+    }
+</script>
+
+</body>
+</html>

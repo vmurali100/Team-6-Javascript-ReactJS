@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+        }
+        thead {
+    color: red;
+    font-size: 39px;
+}
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: monospace;
+    color: rebeccapurple;
+    font-size: 22px;
+}
+        td,th{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="dispMovies">
+     <button onclick="search()">search</button> <button onclick="clear()">clear</button><br>
+    <table>
+        <tr>
+            <thead>
+                <th>Movie</th>
+                <th>Director</th>
+                <th>Hero</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var data=[
+            {
+                Movie:"RRR",
+                Director:"Rajmouli",
+                Hero:"NTR,RAMCHARAN"
+            },
+            {
+                Movie:"Sarkar vari paata",
+                Director:"Parsuram",
+                Hero:"Mahesh Babu"
+            },
+            {
+                Movie:"KGF",
+                Director:"Prashanth neel",
+                Hero:"Yash"
+            },
+            {
+                Movie:"Bahubali",
+                Director:"SS Rajmouli",
+                Hero:"Prabhas"
+            },
+            {
+                Movie:"Pushps",
+                Director:"Sukumar",
+                Hero:"Allu arjun"
+            }
+        ]
+        function displayMovies(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((movies)=>{
+                var mytr=document.createElement("tr")
+                for(a in movies){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=movies[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        displayMovies(data)
+        function search(){
+            var searchmovies=document.getElementById("dispMovies").value
+            var filtermovies=data.filter((movie)=>{
+                return movie.Movie.indexOf(searchmovies)>-1
+            })
+            displayMovies(filtermovies)
+        }
+        function clear(){
+            displayMovies(data)
+        }
+    </script>
+</body>
+</html>

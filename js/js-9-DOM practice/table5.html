@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        thead {
+            color: rgb(208, 255, 0);
+            font-size: 39px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: monospace;
+            color: rgb(107, 80, 134);
+            font-size: 22px;
+        }
+
+        td,
+        th {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="displayDetails"> 
+    <button onclick="search()">search</button> <button onclick="clear()">clear</button>
+    <table>
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Village</th>
+                <th>state</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var details = [
+            {
+                Name: "Deepthi Boppana",
+                Village: "lakshmipuram",
+                state: "Andhra pradesh"
+            },
+            {
+                Name: "Jyothi Boppana",
+                Village: "Akkapalem",
+                state: "Nellore"
+            },
+            {
+                Name: "Vishnu vardhan",
+                Village: "vamkuntla",
+                state: " Telangana"
+            },
+            {
+                Name: "Narendra Boppana",
+                Village: "Munukulla",
+                state: " Karnataka"
+            }
+        ]
+        function displaylist(details) {
+            document.querySelector("tbody").innerHTML=""
+            details.forEach((users) => {
+                var mytr = document.createElement("tr")
+                for (a in users) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = users[a]
+                    mytr.appendChild(mytd)
+
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        displaylist(details)
+        function search(){
+            var userSearch=document.getElementById("displayDetails").value
+
+            var filterSearch=details.filter((bio)=>{
+              return  bio.Name.indexOf(userSearch)>-1
+            })
+            displaylist(filterSearch)
+        }
+        function clear(){
+            displaylist(details)   
+        }
+    </script>
+</body>
+
+</html>

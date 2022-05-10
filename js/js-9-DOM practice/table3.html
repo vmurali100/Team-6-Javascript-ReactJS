@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="disDetails">
+     <button onclick="search()">search</button> <button onclick="clearSearch()">clear</button>
+     <button>search user name</button>
+    <table>
+        <tr>
+            <thead>
+                <th>id</th>
+                <th>e-mail</th>
+                <th>ussername</th>
+                <th>password</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+        <script>
+            var data = [
+                {
+                    "id": 1,
+                    "email": "SSlocum@aliquam.com",
+                    "username": "ECaruso",
+                    "password": "x3pnG"
+                },
+                {
+                    "id": 2,
+                    "email": "ASlocum@ante.net",
+                    "username": "MYork",
+                    "password": "kQNsb"
+                },
+                {
+                    "id": 3,
+                    "email": "EHickey@vitae.com",
+                    "username": "TKirshner",
+                    "password": "mYk43"
+                },
+                {
+                    "id": 4,
+                    "email": "JPatel@porta.gov",
+                    "username": "YTan",
+                    "password": "iFqQt"
+                },
+                {
+                    "id": 5,
+                    "email": "MHeilman@lectus.com",
+                    "username": "RTrenkelbach",
+                    "password": "ZX6Em"
+                },
+                {
+                    "id": 6,
+                    "email": "IBozzalla@mi.io",
+                    "username": "SBelleque",
+                    "password": "TChIa"
+                },
+                {
+                    "id": 7,
+                    "email": "JMontgomery@lacus.net",
+                    "username": "SMarks",
+                    "password": "1kcOb"
+                },
+            ]
+            function displayDetails(data){
+                document.querySelector("tbody").innerHTML=""
+                data.forEach((details)=>{
+                var mytr=document.createElement("tr")
+                for(a in details){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=details[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                })
+            }
+            displayDetails(data)
+            function search(){
+                var searchDetail=document.getElementById("disDetails").value
+                var filterDetails=data.filter((details)=>{
+                   return details.email.indexOf(searchDetail)>-1
+                })
+               
+                displayDetails(filterDetails)
+            }
+            function clearSearch(){
+                displayDetails(data)   
+            }
+
+        </script>
+    </table>
+</body>
+
+</html>

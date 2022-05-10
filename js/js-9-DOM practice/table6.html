@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        thead {
+            color: red;
+            font-size: 39px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: monospace;
+            color: rebeccapurple;
+            font-size: 22px;
+        }
+        td,
+        th {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="dispCountries">
+    <button onclick="search()">search</button> <button onclick="clear()">clear</button>
+    <table>
+        <tr>
+            <thead>
+                <th>country</th>
+                <th>capital</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var data = [
+            {
+                country: "Afganisthan",
+                capital: "kabul"
+            },
+            {
+                country: "Australia",
+                capital: "Canberra"
+            },
+            {
+                country: "Pakistan",
+                capital: "Islamabad"
+            },
+            {
+                country: "Spain",
+                capital: "Madrid"
+            },
+            {
+                country: "Thailand",
+                capital: "Bangkok"
+            },
+        ]
+        function displayCountries(data) {
+            document.querySelector("tbody").innerHTML = ""
+            data.forEach((capital) => {
+                var mytr = document.createElement("tr")
+                for (a in capital) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = capital[a]
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        displayCountries(data)
+        function search() {
+            var searchcaptial = document.getElementById("dispCountries").value
+            var filtercaptials = data.filter((captial) => {
+                return captial.country.indexOf(searchcaptial) > -1
+            })
+            displayCountries(filtercaptials)
+        }
+        function clear() {
+            displayCountries(data)
+        }
+    </script>
+</body>
+
+</html>

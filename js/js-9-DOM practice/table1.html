@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>HTML Table</h2>
+    <input type="text" name="" id="userinput"> 
+    <button onclick="searchUser()">search user</button> <button onclick="clearSearch()">clear search</button>
+    <table>
+        <tr>
+            <thead>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+
+    </table>
+    <script>
+        var data = [
+            {
+                company: "Alfreds Futterkiste",
+                contact: "Maria Anders",
+                country: "Germany"
+            },
+            {
+                company: "Centro comercial Moctezuma",
+                contact: "Francisco Chang ",
+                country: "Mexico"
+            },
+            {
+                company: "Ernst Handel",
+                contact: "Roland Mendel ",
+                country: "Austria"
+            },
+            {
+                company: "Island Trading",
+                contact: "Helen Bennett",
+                country: "UK"
+            },
+            {
+                company: "Laughing Bacchus Winecellars",
+                contact: "Yoshi Tannamuri",
+                country: "Canada"
+            },
+            {
+                company: "Magazzini Alimentari Riuniti",
+                contact: "Giovanni Rovelli",
+                country: "Italy"
+            },
+        ]
+
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+
+            })
+        }
+        displayUsers(data)
+        function searchUser() {
+            var userSearch = document.getElementById("userinput").value
+            console.log(userSearch)
+
+            var filterUsers = data.filter((user) => {
+               return user.contact.indexOf(userSearch) > -1
+            })
+ 
+            displayUsers(filterUsers)
+            
+        }
+        function clearSearch(){
+            displayUsers(data) 
+        }
+
+    </script>
+
+</body>
+
+</html>

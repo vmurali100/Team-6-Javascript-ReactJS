@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="studentInput"> 
+    <button onclick="searchstudent()">search student</button> <button onclick="clearSearch()">clear search</button><br>
+   
+    <table>
+        <tr>
+            <thead>
+                <th>fname</th>
+                <th>lname</th>
+                <th>address</th>
+                <th>city</th>
+                <th>state</th>
+                <th>zip</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var data = [
+            {
+                "fname": "Ken",
+                "lname": "Kirshner",
+                "address": "9493 Ipsum Ln",
+                "city": "Liberty",
+                "state": "MA",
+                "zip": 51420
+            },
+            {
+                "fname": "Melissa",
+                "lname": "Gupta",
+                "address": "3614 Aenean Ave",
+                "city": "Wellborn",
+                "state": "AR",
+                "zip": 75154
+            },
+            {
+                "fname": "Kristen",
+                "lname": "Monuteaux",
+                "address": "9634 Et Ln",
+                "city": "Florissant",
+                "state": "OK",
+                "zip": 27937
+            },
+            {
+                "fname": "Junjiang",
+                "lname": "Katz",
+                "address": "2361 Hendrerit Ct",
+                "city": "Kearney",
+                "state": "SD",
+                "zip": 26781
+            },
+            {
+                "fname": "Julia",
+                "lname": "Trim",
+                "address": "1616 Neque St",
+                "city": "Brodhead",
+                "state": "RI",
+                "zip": 49532
+            },
+            {
+                "fname": "Claudia",
+                "lname": "Hauler",
+                "address": "8413 Porttitor Rd",
+                "city": "Racine",
+                "state": "SD",
+                "zip": 49149
+            },
+            {
+                "fname": "Ammon",
+                "lname": "Ptacek",
+                "address": "8879 Mi Dr",
+                "city": "Hillsboro",
+                "state": "MD",
+                "zip": 99947
+            },
+            {
+                "fname": "Wichaya",
+                "lname": "Tupper",
+                "address": "1625 Elit Dr",
+                "city": "Laredo",
+                "state": "CA",
+                "zip": 33217
+            },
+            {
+                "fname": "Yvonne",
+                "lname": "Doiel",
+                "address": "2953 Convallis St",
+                "city": "Cambridge",
+                "state": "OR",
+                "zip": 65319
+            },
+            {
+                "fname": "Kam",
+                "lname": "Alvarez",
+                "address": "5909 Sed Ct",
+                "city": "San Gabriel Valley",
+                "state": "NH",
+                "zip": 71299
+            }
+        ];
+        function displayStudentData(data) {
+            document.querySelector("tbody").innerHTML = ""
+            data.forEach((student) => {
+                var mytr = document.createElement("tr")
+                for (a in student) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = student[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        displayStudentData(data)
+        function searchstudent() {
+            var studentSearch = document.getElementById("studentInput").value
+            console.log(studentSearch)
+
+            var filterstudents = data.filter((student) => {
+                return student.fname.indexOf(studentSearch) > -1
+            })
+            displayStudentData(filterstudents)
+        }
+        function clearSearch(){
+            displayStudentData(data)
+        }
+
+    </script>
+</body>
+
+</html>

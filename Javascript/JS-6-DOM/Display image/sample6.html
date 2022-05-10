@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+       img{
+        width: 40%;
+    }
+    .product{
+        border: 20px solid rgb(112, 5, 46);
+        margin: 10px;
+        width: 20%;
+        float: left;
+        height: 450px;
+        padding: 20px;
+        text-align: center;
+        color: rgb(242, 250, 242);
+        font-size: 35px;
+        font-style: fantasy;
+        background-color: rgb(72, 8, 175);
+    }
+    </style>
+     <script src="./product6.js"></script>
+</head>
+<body>
+    <div id="thin"></div>
+    <img src="" alt="">
+    <script>
+           console.log(things)
+        things.forEach((thing) => {
+           var mythingsdiv=document.createElement("div")
+           mythingsdiv.setAttribute("class","product")
+            var myimg=document.createElement("img")
+            myimg.setAttribute("src",thing.image)
+
+            var title=document.createElement("p")
+            title.innerHTML=thing.title
+
+           mythingsdiv.appendChild(title)
+           mythingsdiv.appendChild(myimg)
+
+           document.getElementById("thin").appendChild(mythingsdiv)
+          
+        });
+     
+    </script>
+</body>
+</html>

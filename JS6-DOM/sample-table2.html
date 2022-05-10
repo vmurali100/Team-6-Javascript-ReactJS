@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+    <h2>User Details</h2>
+    <input type="text" name="" id="userinput">
+    <button onclick="searchUser()">Search User</button>
+    <button onclick="clearsearch()">Clear Search</button><br><br>
+    <table>
+       <thead>
+           <tr>
+               <th>fname</th>
+               <th>lname</th>
+               <th>tel</th>
+               <th>address</th>
+               <th>city</th>
+               <th>state</th>
+           </tr>
+       </thead>
+       <tbody></tbody>
+    </table>
+    <script>
+        var details = [
+    {
+        fname: "Sandeep",
+        lname: "Marton",
+        tel: "(960)279-0257",
+        address: "974 Facilisis Dr",
+        city: "Walnut Creek",
+        state: "TX"
+    },
+    {
+        fname: "Margaret",
+        lname: "Stevenson",
+        tel: "(778)752-6811",
+        address: "4997 Molestie St",
+        city: "Peoria",
+        state: "IA"
+    },
+    {
+        fname: "Tilena",
+        lname: "Salguero",
+        tel: "(274)962-1102",
+        address: "8467 Nunc Ave",
+        city: "Wheeling",
+        state: "LA"
+    },
+    {
+        fname: "Bryon",
+        lname: "Saadeh",
+        tel: "(340)902-4615",
+        address: "5994 Curabitur Dr",
+        city: "Knightdale",
+        state: "FL"
+    },
+    {
+        fname: "LaRoyce",
+        lname: "Adams",
+        tel: "(543)963-7388",
+        address: "4814 Adipiscing St",
+        city: "Whitman",
+        state: "FL"
+    },
+]
+function displayUsers(details){
+    document.querySelector("tbody").innerHTML = ""    
+details.forEach((user)=>{
+    var myTr = document.createElement("tr");    
+    for(a in user){
+        var myTd = document.createElement("td");
+        myTd.innerHTML = user[a]
+        myTr.appendChild(myTd)
+    }
+    document.querySelector("tbody").appendChild(myTr);
+})
+}
+displayUsers(details)
+function searchUser(){
+    var userSearch = document.getElementById("userinput").value;
+    console.log(userSearch);
+
+    var filterUsers = details.filter((user)=>{
+        return user.fname.indexOf(userSearch) > -1
+    })
+    displayUsers(filterUsers);
+
+    // var filteratUsers = details.filter((user)=>{
+    //     return user.lname.indexOf(userSearch) > -1
+    // })
+    // displayUsers(filteratUsers)
+    
+}
+function clearsearch(){
+    displayUsers(details)
+}
+
+    </script>
+</body>
+</html>

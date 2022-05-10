@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h2>Student Details</h2>
+    <input type="text" name="" id="inputUser">
+    <button onclick="searchUser()">Search User</button>
+    <button onclick="clearSearch()">Clear Search</button>
+    <table>
+       <thead>
+           <tr>
+               <th>fname</th>
+               <th>lname</th>
+               <th>address</th>
+               <th>city</th>
+           </tr>
+       </thead>
+       <tbody></tbody>
+    </table>
+    <script>
+        var details = [
+        {
+        fname: "Jireh",
+        lname: "Seguin",
+        address: "9869 Adipiscing Dr",
+        city: "West Chester"
+    },
+    {
+        fname: "Gordon",
+        lname: "Simpson",
+        address: "7993 Sapien Ct",
+        city: "Smithers"
+    },
+    {
+        fname: "Richelle",
+        lname: "Gardner",
+        address: "2587 Tincidunt Rd",
+        city: "Spencer"
+    },
+    {
+        fname: "Heriberto",
+        lname: "Puglisi",
+        address: "1218 Risus Ln",
+        city: "Smithers"
+    },
+    {
+        fname: "Percy",
+        lname: "Hanks",
+        address: "1345 Convallis St",
+        city: "Tomball"
+    }
+]
+
+function displayUsers(details){
+    document.querySelector("tbody").innerHTML = ""
+    details.forEach((user)=>{
+        var myTr = document.createElement("tr");
+
+        for(a in user){
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a]
+            myTr.appendChild(myTd)
+        }
+        document.querySelector("tbody").appendChild(myTr)
+    })
+}
+displayUsers(details)
+
+function searchUser(){
+    var disPlay = document.getElementById("inputUser").value;
+    console.log(disPlay)
+
+    var filteratUsers = details.filter((user)=>{
+        return user.fname.indexOf(disPlay) > -1
+    })
+    displayUsers(filteratUsers)
+}
+function clearSearch(){
+    displayUsers(details)
+}
+
+    </script>
+</body>
+</html>

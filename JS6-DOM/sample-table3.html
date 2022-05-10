@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+    <h2>Some Details</h2>
+    <input type="text" name="" id="userinput">
+    <button onclick="searchUser()">Search User</button>
+    <button onclick="clearSerach()">Clear Search</button>
+    <table>
+       <thead>
+           <tr>
+               <th>fname</th>
+               <th>lname</th>
+               <th>address</th>
+               <th>city</th>
+           </tr>
+       </thead>
+       <tbody></tbody>
+    </table>
+    <script>
+        var data = [
+    {
+        fname: "Lavern",
+        lname: "Arreguin",
+        address: "8457 Vitae St",
+        city: "Brodhead"
+    },
+    {
+        fname: "Cassandra",
+        lname: "Pitts",
+        address: "131 Rutrum Rd",
+        city: "Beaumont"
+    },
+    {
+        fname: "Triandi",
+        lname: "Burton",
+        address: "7775 Malesuada St",
+        city: "Johnson County"
+    },
+    {
+        fname: "Ishna",
+        lname: "Loehfelm",
+        address: "7208 At St",
+        city: "Olive Branch"
+    },
+    {
+        fname: "Trang",
+        lname: "Chelette",
+        address: "8060 Adipiscing Dr",
+        city: "Fort Collins"
+    },
+    {
+        fname: "Jireh",
+        lname: "Seguin",
+        address: "9869 Adipiscing Dr",
+        city: "West Chester"
+    },
+    {
+        fname: "Gordon",
+        lname: "Simpson",
+        address: "7993 Sapien Ct",
+        city: "Smithers"
+    }
+]
+
+function displayUsers(data){
+    document.querySelector("tbody").innerHTML = ""
+    data.forEach((user)=>{
+        var myTr = document.createElement("tr");
+        for(a in user){
+            var myTd = document.createElement("td")
+            myTd.innerHTML = user[a]
+            myTr.appendChild(myTd)
+        }
+        document.querySelector("tbody").appendChild(myTr)
+    })
+}
+displayUsers(data)
+function searchUser(){
+    var disPlay = document.getElementById("userinput").value;
+    console.log(disPlay)
+
+    var filterUsers = data.filter((user)=>{
+        return user.fname.indexOf(disPlay) > 0
+    })
+    displayUsers(filterUsers)
+}
+function clearSerach(){
+    displayUsers(data)
+}
+    </script>
+</body>
+</html>

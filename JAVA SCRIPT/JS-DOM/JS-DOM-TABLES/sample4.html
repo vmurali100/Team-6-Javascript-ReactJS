@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2> create tables</h2>
+    <input type="text" name="" id="naveen">
+    <button onclick="searchuser()">searchusers</button>
+    <button onclick="clearsearch()">clearsearch</button>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>fname</th>
+                <th>lname</th>
+                <th>conutry</th>
+                
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var details = [
+            {
+                "fname": "kumar",
+                "lname": "bangalore",
+                "country":"india"
+            },
+
+            {
+                "fname": "chandhu",
+                "lname": "Assam",
+                "country":"	Algeria"
+            },
+            {
+                "fname": "sri",
+                "lname": "Bihar",
+                "country":"	Andorra"
+                
+            },
+            {
+                "fname": "hari",
+                "lname": "Chhattisgarh",
+                "country":"Bahrain"
+            },
+            {
+                "fname": "anna",
+                "lname": "Goa",
+                "country":"Belarus"
+            },
+            {
+                "fname": "roopa",
+                "lname": "Gujarat",
+                "country":"Bahamas"
+            },
+            {
+                "fname": "annapoorna",
+                "lname": "Haryana",
+                "country":"Bolivia"
+            },
+            {
+                "fname": "geetha",
+                "lname": "Himachal Pradesh",
+                "country":"	Côte d'Ivoire"
+            },
+            {
+                "fname": "anwar",
+                "lname": "Jammu and Kashmir",
+                "country":"Chile"
+            },
+
+            {
+                "fname": "ajay",
+                "lname": "Jharkhand",
+                "country":"	Chad"
+            },
+            {
+                "fname": "vijay",
+                "lname": "Karnataka",
+                "country":"	Cyprus"
+            },
+
+        ]
+        function displayusers(details) {
+            document.querySelector("tbody").innerHTML = ""
+            details.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        }
+        displayusers(details)
+
+        function searchuser() {
+            var usersearch = document.getElementById("naveen").value
+            console.log(searchuser)
+
+            var filteruser = details.filter((user) => {
+                return user.country.indexOf(usersearch) > -1
+            })
+            displayusers(filteruser)
+        }
+        function clearsearch() {
+            displayusers(details)
+        }
+    </script>
+</body>
+</html>

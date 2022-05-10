@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2> create tables</h2>
+    <input type="text" name="" id="naveen">
+    <button onclick="searchuser()">searchusers</button>
+    <button onclick="clearsearch()">clearsearch</button>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>fname</th>
+                <th>Company</th>
+                <th>state</th>
+                <th>City</th>
+                <th>Id</th>
+                
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var employee = [
+            {
+                fname: "chinna thambi",
+                Company: "bangalore",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"Sen12346"           
+                
+            },
+
+            {
+                fname: "chinna thambi",
+                Company: "bangalore",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"jun12586"           
+            },   
+            {
+                fname: "chinna thambi",
+                Company: "bangalore",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"exc12586"           
+            },   
+            {
+                fname: "chinna thambi",
+                Company: "bangalore",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"mang12586"           
+            },  
+            {    fname: "chinna thambi",
+                Company: "bangalore",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"laber12586"           
+            },    
+            {
+                fname: "chinna thambi",
+                Company: "bangalore",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"cash12586"           
+            },   
+            {
+                fname: "chinna thambi",
+                Company: "kerala",
+                state: "Karntaka",
+                City  :"Bangalora" ,
+                Id:"pack12586"           
+                
+            }
+            
+        ]
+        function displayusers(employee) {
+            document.querySelector("tbody").innerHTML = ""
+            employee.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        }
+        displayusers(employee)
+
+        function searchuser() {
+            var usersearch = document.getElementById("naveen").value
+            console.log(searchuser)
+
+            var filteruser = employee.filter((user) => {
+                return user.Id.indexOf(usersearch) > -1
+            })
+
+            // var filteruser = employee.filter((user) => {
+            //     return user.Company.indexOf(usersearch) > -1
+            // })
+
+            displayusers(filteruser)
+        }
+        function clearsearch() {
+            displayusers(employee)
+        }
+    </script>
+    
+</body>
+</html>

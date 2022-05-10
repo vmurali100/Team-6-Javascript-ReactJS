@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            table, th, td {
+                border : 1px solid blue;
+            }
+            th {
+                color: white;
+                background-color: rgb(241, 180, 180);
+            }
+            tr {
+                 background-color: bisque;
+                color: rgb(192, 57, 16);
+                text-align: center;
+                padding: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <h2>HTML Table</h2>
+        <input type="text" name="" id="userinput">
+        <button onclick="search()">Search</button>
+        <button onclick="clear()">Clear</button>
+        <br>
+        <table>
+            <tr>
+                <thead>
+                    <th>Empname</th>
+                    <th>Empage</th>
+                    <th>Emppackage</th>
+                    <th>Empgender</th>
+                    <th>Emprole</th>
+                    <th>Emplocation</th>
+                    <th>Empstatus</th>
+                    <th>Empqualification</th>
+                    <th>Empaccountno</th>
+                    <th>Empmobileno</th>
+                </thead>
+            </tr>
+            <tbody></tbody>
+        </table>
+        <script>
+            var empdetails = [
+                {
+                    Empname: "Sneha",
+                    Empage: 24,
+                    Emppackage: 500000,
+                    Empgender:"Female",
+                    Emprole:"system engineer role",
+                    Emplocation:"bangalore",
+                    Empstatus:"unmarried",
+                    Empqualification:"degree",
+                    Empaccountno:"32638493829",
+                    Empmobileno:"216546832",
+                },
+                {
+                    Empname: "ram",
+                    Empage: 29,
+                    Emppackage: 500000,
+                    Empgender:"male",
+                    Emprole:"system engineer role",
+                    Emplocation:"bangalore",
+                    Empstatus:"married",
+                    Empqualification:"pg",
+                    Empaccountno:"32638493829",
+                    Empmobileno:"216546832",
+                },
+                {
+                    Empname: "arun",
+                    Empage: 24,
+                    Emppackage: 600000,
+                    Empgender:"male",
+                    Emprole:"software",
+                    Emplocation:"hyd",
+                    Empstatus:"unmarried",
+                    Empqualification:"btech",
+                    Empaccountno:"32638493829",
+                    Empmobileno:"216546832",
+                },
+                {
+                    Empname: "hemanth",
+                    Empage: 24,
+                    Emppackage: 400000,
+                    Empgender:"male",
+                    Emprole:"data analyst",
+                    Emplocation:"chennai",
+                    Empstatus:"unmarried",
+                    Empqualification:"degree",
+                    Empaccountno:"32638493829",
+                    Empmobileno:"216546832",
+                },
+                {
+                    Empname: "akhila",
+                    Empage: 24,
+                    Emppackage: 300000,
+                    Empgender:"Female",
+                    Emprole:"data analyst",
+                    Emplocation:"pune",
+                    Empstatus:"unmarried",
+                    Empqualification:"degree",
+                    Empaccountno:"32638493829",
+                    Empmobileno:"216546832",
+                },
+                {
+                    Empname: "geethu",
+                    Empage: 24,
+                    Emppackage: 500000,
+                    Empgender:"Female",
+                    Emprole:"system engineer role",
+                    Emplocation:"bangalore",
+                    Empstatus:"married",
+                    Empqualification:"degree",
+                    Empaccountno:"32638493829",
+                    Empmobileno:"216546832",
+                },
+            ]
+            function display(empdetails) {
+                document.querySelector("tbody").innerHTML = ""
+                empdetails.forEach((form) => {
+                    var myTr = document.createElement("tr");
+                    for (a in form) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = form[a];
+                        myTr.appendChild(myTd);
+                    }
+                    document.querySelector("tbody").appendChild(myTr)
+                })
+            }
+            display(empdetails)
+            function search() {
+                var Search = document.getElementById("userinput").value
+                console.log(Search);
+
+                var filterform = empdetails.filter((form) => {
+                    return form.Emplocation.indexOf(Search)>-1
+                })
+                display(filterform);
+            }
+            function clear() {
+                display(empdetails);
+            }
+        </script>
+    </body>
+
+    </html>

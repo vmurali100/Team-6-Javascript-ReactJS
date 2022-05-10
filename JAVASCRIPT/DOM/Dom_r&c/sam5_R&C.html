@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            table, tr, td{
+               
+                border: 1px solid #f821d4;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr{
+                background-color: rgb(21, 196, 240);
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>HTML Table</h2>
+        <input type="text" name="" id="userinput">
+        <button onclick="searchUser()">Search user</button>
+        <button onclick="clearSearch()">Clear Search</button>
+        <br>
+        <table>
+            <tr>
+                <thead>
+                    <th>mvname</th>
+                    <th>mvhero</th>
+                    <th>mvheroin</th>
+                </thead>
+            </tr>
+            <tbody></tbody>
+        </table>
+        <script>
+            var movies = [
+                {
+                    mvname: "pushpa",
+                    mvhero: "alluarjun",
+                    mvheroin: "reshmika"
+                },
+                {
+                    mvname: "RRR",
+                    mvhero: "NTR,Ram",
+                    mvheroin: "Pooja"
+                },
+                {
+                    mvname: "bhahubali",
+                    mvhero: "prabhas",
+                    mvheroin: "thamanna"
+                },
+                {
+                    mvname: "mirchi",
+                    mvhero: "prabhas",
+                    mvheroin: "anushka"
+                },
+                {
+                    mvname: "local",
+                    mvhero: "nani",
+                    mvheroin: "sai"
+                },
+                
+            ];
+            function displayUsers(movies) {
+                document.querySelector("tbody").innerHTML = "";
+                movies.forEach((user) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+            displayUsers(movies);
+
+            function searchUser() {
+                var searchUser = document.getElementById("userinput").value;
+                console.log(searchUser);
+
+                var filterUsers = movies.filter((user) => {
+                    return user.mvheroin.indexOf(searchUser)>-1;
+                });
+                displayUsers(filterUsers);
+            }
+            function clearSearch() {
+                displayUsers(movies);
+            }
+        </script>
+    </body>
+
+    </html>

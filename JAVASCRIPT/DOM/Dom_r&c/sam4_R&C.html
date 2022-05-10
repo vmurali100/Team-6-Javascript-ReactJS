@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 1px solid #fd1aa6;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>HTML Table</h2>
+        <input type="text" name="" id="userinput">
+        <button onclick="searchUser()">Search user</button>
+        <button onclick="clearSearch()">Clear Search</button>
+        <br>
+        <table>
+            <tr>
+                <thead>
+                    <th>country</th>
+                    <th>state</th>
+                    <th>city</th>
+                    <th>pincode</th>
+                </thead>
+            </tr>
+            <tbody></tbody>
+        </table>
+        <script>
+            var countries = [
+                {
+                    country: "india",
+                    state: "andhrapradesh",
+                    city: "chittoor",
+                    pincode:517004
+                },
+                {
+                    country: "india",
+                    state: "karnataka",
+                    city: "bgr",
+                    pincode:525773
+                },
+                {
+                    country: "india",
+                    state: "tamilnadu",
+                    city: "chennai",
+                    pincode:357004
+                },
+                {
+                    country: "india",
+                    state: "Hyderabad",
+                    city: "nagar",
+                    pincode:567004
+                },
+                {
+                    country: "america",
+                    state: "montana",
+                    city: "nashville",
+                    pincode:517004
+                },
+                {
+                    country: "india",
+                    state: "florida",
+                    city: "baton rouge",
+                    pincode:517004
+                },
+                {
+                    country: "india",
+                    state: "hawaii",
+                    city: "des moines",
+                    pincode:517004
+                },
+                {
+                    country: "india",
+                    state: "washington",
+                    city: "indianpolis",
+                    pincode:517004
+                },
+                {
+                    country: "india",
+                    state: "texas",
+                    city: "boise",
+                    pincode:517004
+                },
+                {
+                    country: "india",
+                    state: "california",
+                    city: "sacramento",
+                    pincode:517004
+                },
+            ];
+            function displayUsers(countries) {
+                document.querySelector("tbody").innerHTML = "";
+                countries.forEach((user) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+            displayUsers(countries);
+
+            function searchUser() {
+                var searchUser = document.getElementById("userinput").value;
+                console.log(searchUser);
+
+                var filterUsers = countries.filter((user) => {
+                    return user.state.indexOf(searchUser)>-1;
+                });
+                displayUsers(filterUsers);
+            }
+            function clearSearch() {
+                displayUsers(countries);
+            }
+        </script>
+    </body>
+
+    </html>

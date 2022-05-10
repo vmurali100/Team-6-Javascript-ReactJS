@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 1px solid #f30808;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #9e5151;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>HTML Table</h2>
+        <input type="text" name="" id="userinput">
+        <button onclick="searchUser()">Search user</button>
+        <button onclick="clearSearch()">Clear Search</button>
+        <br>
+        <table>
+            <tr>
+                <thead>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                </thead>
+            </tr>
+            <tbody></tbody>
+        </table>
+        <script>
+            var data = [
+                {
+                    company: "TCS",
+                    contact: 3764287713,
+                    country: "India"
+                },
+                {
+                    company: "HCL",
+                    contact: 2748362803,
+                    country: "Germany"
+                },
+                {
+                    company: "Wipro",
+                    contact: 213828771,
+                    country: "Australia"
+                },
+                {
+                    company: "Infosys",
+                    contact: 376457890,
+                    country: "India"
+                },
+                {
+                    company: "Tech Mahindra",
+                    contact: 890428771,
+                    country: "UK"
+                },
+                {
+                    company: "mindtree",
+                    contact: 892345771,
+                    country: "england"
+                },
+            ];
+            function displayUsers(data) {
+                document.querySelector("tbody").innerHTML = "";
+                data.forEach((user) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+            displayUsers(data);
+
+            function searchUser() {
+                var searchUser = document.getElementById("userinput").value;
+                console.log(searchUser);
+
+                var filterUsers = data.filter((user) => {
+                    return user.country.indexOf(searchUser)>-1;
+                });
+                displayUsers(filterUsers);
+            }
+            function clearSearch() {
+                displayUsers(data);
+            }
+        </script>
+    </body>
+
+    </html>

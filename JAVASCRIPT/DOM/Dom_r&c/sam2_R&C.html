@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            table, th, td {
+                border : 1px solid blue;
+            }
+            th {
+                color: white;
+                background-color: black;
+            }
+            tr {
+                color: rgb(250, 14, 159);
+                text-align: center;
+                padding: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <h2>HTML Table</h2>
+        <input type="text" name="" id="userinput">
+        <button onclick="search()">Search</button>
+        <button onclick="clear()">Clear</button>
+        <br>
+        <table>
+            <tr>
+                <thead>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>height</th>
+                    <th>mail</th>
+                    <th>location</th>
+                </thead>
+            </tr>
+            <tbody></tbody>
+        </table>
+        <script>
+            var details = [
+                {
+                    name: "Padhu",
+                    age: 24,
+                    height: 5.0,
+                    mail:"padhu@gmail.com",
+                    location:"chittoor"
+                },
+                {
+                    name: "sandy",
+                    age: 23,
+                    height: 5.0,
+                    mail:"sandy@gmail.com",
+                    location:"chittoor"
+                },
+                {
+                    name: "neeraja",
+                    age: 25,
+                    height: 4.0,
+                    mail:"neeru@gmail.com",
+                    location:"chittoor"
+                },
+                {
+                    name: "mounika",
+                    age: 24,
+                    height: 5.0,
+                    mail:"mouni@gmail.com",
+                    location:"kanipakam"
+                },
+                {
+                    name: "deepa",
+                    age: 24,
+                    height: 4.0,
+                    mail:"deepa@gmail.com",
+                    location:"pugunur"
+                },
+                {
+                    name: "shalini",
+                    age: 24,
+                    height: 5.0,
+                    mail:"shalu@gmail.com",
+                    location:"palamaner"
+                },
+                {
+                    name: "sowmya",
+                    age: 24,
+                    height: 4.5,
+                    mail:"sowmya@gmail.com",
+                    location:"santhapet"
+                },
+                {
+                    name: "sita",
+                    age: 24,
+                    height: 4.8,
+                    mail:"sita@gmail.com",
+                    location:"ganganapalli"
+                }
+            ]
+            function display(details) {
+                document.querySelector("tbody").innerHTML = ""
+                details.forEach((form) => {
+                    var myTr = document.createElement("tr");
+                    for (a in form) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = form[a];
+                        myTr.appendChild(myTd);
+                    }
+                    document.querySelector("tbody").appendChild(myTr)
+                })
+            }
+            display(details)
+            function search() {
+                var Search = document.getElementById("userinput").value
+                console.log(Search);
+
+                var filterform = details.filter((form) => {
+                    return form.name.indexOf(Search)>-1
+                })
+                display(filterform);
+            }
+            function clear() {
+                display(details);
+            }
+        </script>
+    </body>
+
+    </html>

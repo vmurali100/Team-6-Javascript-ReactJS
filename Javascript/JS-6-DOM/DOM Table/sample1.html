@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-style: italic;
+  border: collapse 2px; 
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #4d0303;
+  text-align: left;
+  padding: 30px;
+  color: #4d0303;
+  font-size: 40px;
+}
+
+tr:nth-child(even) {
+  background-color: #09a309;
+}
+
+</style>
+</head>
+<body>
+    <h2>HTML Table</h2>
+<input type="text" name="" id="userinput"> <button onclick="searchuser()">search user</button>
+
+
+<table>
+    <tr>
+       <thead>
+        <th>States</th>
+        <th>food</th>
+       </thead>
+      </tr>
+      <tbody></tbody>
+</table>
+
+<script>
+    var data=[
+        {
+            States:"Tamil Nadu",
+           food:"Pongal",
+        },
+        {
+            States:"Maharashtra",
+           food:"Misal Pav",
+        },
+        {
+            States:"Gujarat",
+           food:"Dhokla",
+        },
+        {
+            States:"Kashmir",
+           food:"Rogan Josh",
+        },
+        {
+            States:"Assam",
+           food:"Papaya Khar",
+        },
+        {
+            States:"Bihar",
+           food:"Litti Chokha",
+        },
+    ]
+
+   function displayusers(data){
+    document.querySelector("tbody").innerHTML=""
+    data.forEach((user)=>{
+        var mytr=document.createElement("tr")
+        
+        for(a in user){
+            var mytd=document.createElement("td")
+            mytd.innerHTML=user[a]
+            mytr.appendChild(mytd)
+            document.querySelector("tbody").appendChild(mytr)
+        }
+    })
+   }
+   displayusers(data)
+   function  searchuser(){
+       var usersearch=document.getElementById("userinput").value
+       console.log(usersearch)
+
+       var filterusers=data.filter((user)=>{
+          return user.food.indexOf(usersearch) >-1
+       })
+       displayusers(filterusers)
+   }
+ 
+</script>
+</body>
+</html>
+

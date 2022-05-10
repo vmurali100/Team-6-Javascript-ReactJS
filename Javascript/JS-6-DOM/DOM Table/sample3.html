@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  background-color: rgb(6, 61, 6);
+  color: white;
+}
+
+td, th {
+  border: 1px solid #5cd63d;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #660606;
+}
+    </style>
+</head>
+<body>
+    <h1>Animal types</h1>
+    <input type="text" name="" id="userinput"> <button onclick="searchuser()">search user</button>
+   <table>
+       <tr>
+           <thead>
+            <th>Fish</th>
+            <th>Mammals</th>
+            <th>Birds</th>
+           </thead>
+       </tr>
+       <tbody></tbody>
+   </table>
+   <script>
+       var data=[
+           {
+            Fish:"Goldie",
+            Mammals:"Armadillo",
+            Birds:"Peacock",
+           },
+           {
+            Fish:" angelfish",
+            Mammals:"Cat",
+            Birds:"Sparrow",
+           },
+           {
+            Fish:"Dory",
+            Mammals:"dogs",
+            Birds:"Ostrich",
+           },
+           {
+            Fish:"Ariel",
+            Mammals:"dolphins",
+            Birds:"Pigeon",
+           },
+           {
+            Fish:"Jewel",
+            Mammals:"Bear",
+            Birds:"Turkey",
+           },
+           {
+            Fish:"Minnie",
+            Mammals:"Cow",
+            Birds:"Goose",
+           },
+       ]
+       function displayanimal(data){
+        document.querySelector("tbody").innerHTML=""
+        data.forEach((ani)=>{
+           var mytr=document.createElement("tr")
+
+           for (a in ani){
+               var mytd=document.createElement("td")
+               mytd.innerHTML=ani[a]
+               mytr.appendChild(mytd)
+           }
+           document.querySelector("tbody").appendChild(mytr)
+       })
+       }
+       displayanimal(data)
+       
+       function searchuser(){
+           var search=document.getElementById("userinput").value
+           console.log(search)
+
+           var filteruser=data.filter((ani)=>{
+              return ani.Mammals.indexOf(search) >-1
+           })
+           displayanimal(filteruser)
+       }
+       
+       
+   </script>
+</body>
+</html>
+

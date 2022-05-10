@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         table {
+  font-family:serif;
+  color: rgb(250, 244, 244);
+  border-collapse: 2collapse;
+  width: 200px;
+  font-size: 20px;
+  text-align: center;
+}
+
+td, th {
+  border: 4px solid #531010;
+  text-align: left;
+  padding: 8px;
+  background-color: rgb(49, 13, 134);
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+    <h1>Nutrition</h1>
+    <input type="text" name="" id="searchinput"> <button onclick="searchuser()">search user</button>
+   <table>
+       <tr>
+           <thead>
+               <th>Carbohydrates</th>
+               <th>Protein </th>
+               <th>Fat</th>
+           </thead>
+       </tr>
+       <tbody></tbody>
+   </table> 
+   <script>
+       var data=[
+       {
+        Carbohydrates:"bread",
+        Protein :"lean meats",
+        Fat:"butter",
+       },
+       {
+        Carbohydrates:"spaghetti",
+        Protein :"poultry",
+        Fat:"Dairy",
+       },
+       {
+        Carbohydrates:"cookies",
+        Protein :"fish and seafood",
+        Fat:"Coconut Oil.",
+       },
+       {
+        Carbohydrates:"potatoes",
+        Protein :"eggs",
+        Fat:"Dark Chocolate",
+       },
+       {
+        Carbohydrates:"popcorn",
+        Protein :"dairy products ",
+        Fat:"Nuts",
+       },
+       {
+        Carbohydrates:"corn",
+        Protein :"beans and lentils. ",
+        Fat:"Olive Oi",
+       },
+       ]
+      function disnutrition(data){
+        document.querySelector("tbody").innerHTML=""
+          data.forEach((user)=>{
+              var mytr=document.createElement("tr")
+              for(a in user){
+                  var mytd=document.createElement("td")
+                  mytd.innerHTML=user[a]
+                  mytr.appendChild(mytd)
+                  document.querySelector("tbody").appendChild(mytr)
+              }
+          })
+      }
+      disnutrition (data)
+
+      function searchuser(){
+          var usersearch=document.getElementById("searchinput").value
+          console.log(usersearch)
+
+          var filteruser=data.filter((user)=>{
+              return user.Fat.indexOf(usersearch)>-1
+          })
+          disnutrition(filteruser)
+      }
+   </script>
+</body>
+</html>

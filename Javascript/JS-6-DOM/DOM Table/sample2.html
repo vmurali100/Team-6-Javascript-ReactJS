@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: 2collapse;
+  width: 50%;
+  font-size: 20px;
+}
+
+td, th {
+  border: 4px solid #4acebc;
+  text-align: left;
+  padding: 20px;
+  background-color: rgb(102, 5, 34);
+  color: rgb(245, 242, 226);
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+    <h1>Vegetable</h1>
+    <input type="text" name="" id="userinput"> <button onclick="searchuser()">search</button>
+    <table>
+        <tr>
+            <thead>
+                <th>Leafy green</th>
+                <th>Cruciferous</th>
+                <th>Marrow</th>
+                <th>Root</th>
+                <th>Allium</th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        var data=[
+            {
+                Leafygreen:" lettuce",
+                Cruciferous:"cabbage",
+                Marrow:"pumpkin",
+                Root:"potato",
+                Allium:"onion"
+            },
+            {
+                Leafygreen:" Mustard greens",
+                Cruciferous:" broccoli",
+                Marrow:"cucumber",
+                Root:"Beet",
+                Allium:"garlic"
+            },
+            {
+                Leafygreen:"Dandelion greens",
+                Cruciferous:"Brussels sprouts",
+                Marrow:"squash",
+                Root:"Carrot",
+                Allium:"scallions"
+            },
+            {
+                Leafygreen:"silverbeet",
+                Cruciferous:"bok choy",
+                Marrow:"courgette",
+                Root:"Horseradish ",
+                Allium:"chives"
+            },
+            {
+                Leafygreen:" spinach",
+                Cruciferous:"cauliflower",
+                Marrow:"melon",
+                Root:"Parsnips",
+                Allium:"leeks"
+            }
+        ]
+        function disveg(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user)=>{
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                    document.querySelector("tbody").appendChild(mytr)
+                }
+            })
+        }
+        disveg(data)
+        function searchuser(){
+            var usersearch=document.getElementById("userinput").value
+            console.log(searchuser)
+
+            var filterusers=data.filter((user)=>{
+                return user.Root.indexOf(usersearch) > -1
+            })
+            disveg(filterusers)
+        }
+    </script>
+</body>
+</html>

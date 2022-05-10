@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family:initial;
+  color: black;
+  border-collapse: 2collapse;
+  width: 100%;
+  font-size: 20px;
+  color: #dddddd;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  background-color: rgb(9, 82, 15);
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+    <h1>book</h1>
+    <input type="text" name="" id="userinput"> <button onclick="searchuser()">search user</button>
+    <table>
+        <tr>
+            <thead>
+                <th>Joseph Murphy</th>
+                <th>Diane McIntosh</th>
+                <th>Paula Caplan</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var data=[
+        {
+            JosephMurphy:"Believe in Yourself",
+            DianeMcIntosh:"A Treasure Hunt for More" ,
+            PaulaCaplan:"How The World's Most Powerful " 
+        },
+        {
+            JosephMurphy:"The Power of Your Subconscious Mind",
+            DianeMcIntosh:"A Journey of Faith and Adventure" ,
+            PaulaCaplan:"Don't Blame Mother" 
+        },
+        {
+            JosephMurphy:"A motivational guide to transform your life",
+            DianeMcIntosh:"The Ultimate Treasure Hun" ,
+            PaulaCaplan:"A Woman's Guide for Surviving in the Academic World" 
+        },
+        {
+            JosephMurphy:"TELEPSYCHICS",
+            DianeMcIntosh:"Spiritual Treasure Hunt" ,
+            PaulaCaplan:"Barriers between women" 
+        },
+        {
+            JosephMurphy:"How To Use Your Healing Power",
+            DianeMcIntosh:"This Is Depression" ,
+            PaulaCaplan:"How All of Us Can Help Veterans" 
+        },
+        ]
+
+        function disbook(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user)=>{
+                var mytr=document.createElement("tr")
+
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                    document.querySelector("tbody").appendChild(mytr)
+                }
+            })
+        }
+        disbook(data)
+
+        function searchuser(){
+            var usersearch=document.getElementById("userinput").value
+            console.log(usersearch)
+
+            var filteruser=data.filter((user)=>{
+                return user.DianeMcIntosh.indexOf(usersearch) >-1
+            })
+            disbook(filteruser)
+        } 
+    </script>
+</body>
+</html>

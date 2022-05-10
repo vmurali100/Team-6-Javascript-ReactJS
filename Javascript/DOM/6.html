@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <input type="text" name="" id="userinput">
+      <button onclick="searchuser()">searchuser</button>
+      <button onclick="clearuser()">clearuser</button>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>date</th>
+                <th>duration</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var q=[
+            {
+                name:"avengers",
+                date:2012,
+                duration:"1 hour"
+            },
+            {
+                name:"ironman",
+                date:2006,
+                duration:"1 hour"
+            },
+            {
+                name:"hulk",
+                date:2007,
+                duration:"1 hour"
+            },
+            {
+                name:"thor",
+                date:2017,
+                duration:"1 hour"
+            },
+            {
+                name:"spiderman",
+                date:2016,
+                duration:"1 hour"
+            }
+
+        ]
+        function w(q){
+              document.querySelector("table").innerHTML=""
+              data.foreach((user)=>{
+                  var mytd =document.createElement("tr");
+                  for(a in user){
+                      var mytd=document.createElement("td")
+                      mytd.innerHTML=user[a]
+                      mytr.appendchild(mytd)
+                  }
+                  document.querySelector("table").appendChild(mytr)
+              })
+        }
+        w(q)
+        function searchuser(){
+            var usersearch= document.getElementById("userinput").value
+            console.log(usersearch);
+
+            var filterusers =data.filter(()=>{
+                return user.contact.indexof(usersearch) >-1;
+
+            });
+            w(filterusers);
+        }
+        function clearsearch(){
+            w[q];
+        }
+    </script>
+</body>
+</html>

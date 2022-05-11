@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="nithya"> 
+    <button onclick="searchdata()">searchdata</button>
+    <button onclick="removedata()">removedata</button>
+    <table border="1" style="width:800px ;">
+        <tr>
+           <thead>
+               <th>employeename</th>
+               <th>company</th>
+               <th>location</th>
+           </thead> 
+        </tr>
+           <tbody></tbody>
+           <!-- <tr>
+               <td>harish</td>
+               <td>TCS</td>
+               <td>bangalore</td>
+           </tr>
+           <tr>
+            <td>Gayathri</td>
+            <td>Wipro</td>
+            <td>chennai</td>
+        </tr>
+        <tr>
+            <td>nithya</td>
+            <td>wipro</td>
+            <td>hydrabad</td>
+        </tr>
+        <tr>
+            <td>vanitha</td>
+            <td>HDFC</td>
+            <td>thirupathi</td>
+        </tr>  -->
+        
+    </table>
+    <script>
+       var data=[
+            {employeename:"harish",
+            company:"TCS",
+            location:"bangalore",
+           },
+           {employeename:"gayathri",
+            company:"Wipro",
+            location:"chennai",
+          },
+           {employeename:"nithya",
+            company:"TCS",
+            location:"hydrabad",
+          },
+          {employeename:"vanitha",
+            company:"HDFC",
+            location:"thirupathi",
+          },
+        ]
+       function displayusers(data){
+           document.querySelector("tbody").innerHTML=""
+           data.forEach((user)=> {
+           var mytr=document.createElement("tr")
+           for(a in user){
+               var mytd=document.createElement("td")
+               mytd.innerHTML=user[a]
+               mytr.appendChild(mytd)
+           }
+           document.querySelector("tbody").appendChild(mytr)
+        });
+       }
+       displayusers(data)
+       function searchdata(){
+           var usersearch=document.getElementById("nithya").value
+           console.log(usersearch)
+          
+
+           var filteruser=data.filter((user)=>{
+               return user.company.indexOf(usersearch)> -1
+           })
+           displayusers(filteruser)
+           
+
+        //    var filtersuser=data.filter((user)=>{
+        //        return user.employeename.indexOf(usersearch)> -1
+        //    })
+        //    displayusers(filtersuser)
+        //    var filterusers=data.filter((user)=>{
+        //        return user.location.indexOf(usersearch)> -1
+        //    })
+        //    displayusers(filterusers)
+       }
+       function removedata(){
+           displayusers(data)
+       }
+    </script>
+</body>
+</html>

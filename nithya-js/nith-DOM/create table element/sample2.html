@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>table data</h1>
+    <input type="text" name="" id="studentinput">
+    <button onclick="searchstudents()">search student</button>
+    <button onclick="removestudents()">remove student</button>
+    <table border="1" style="width:800px ;">
+        <tr>
+            <thead>
+                <th>name</th>
+                <th>group</th>
+                <th>favouritesubject</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+            <!-- <tr>
+                <td>theja</td>
+                <td>BBA</td>
+                <td>business management</td>
+            </tr>
+            <tr>
+                <td>chandhini</td>
+                <td>BCCA</td>
+                <td>biology</td>
+            </tr>
+            <tr>
+                <td>gayathri</td>
+                <td>B.sc</td>
+                <td>chemestry</td>
+            </tr>
+            <tr>
+                <td>reddy</td>
+                <td>B.com</td>
+                <td>english</td>
+            </tr>
+            <tr>
+                <td>sandhya</td>
+                <td>B.com</td>
+                <td>accounts</td>
+            </tr> -->
+        
+
+        
+    </table>
+    <script>
+      var studentdata=[
+            {name:"teja",
+             group:"BBA",
+             favouritesubject:"business management"
+
+            },
+            {name:"chandhini",
+             group:"BCCA",
+             favouritesubject:"biology "
+
+            },
+            {name:"gayathri",
+             group:"B.sc",
+             favouritesubject:"chemestry "
+
+            },
+            {name:"reddy",
+             group:"B.com",
+             favouritesubject:"english "
+
+            },
+            {name:"sandhya",
+             group:"B.com",
+             favouritesubject:"accounts "
+            },
+        ]
+       
+           function displayusers(studentdata){
+               document.querySelector("tbody").innerHTML=""
+               studentdata.forEach((user)=>{
+               var mytr=document.createElement("tr")
+                  for(a in user){
+                      var mytd=document.createElement("td")
+                      mytd.innerHTML=user[a]
+                      mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+           }
+           displayusers(studentdata)
+           function searchstudents(){
+               var studesearch=document.getElementById("studentinput").value
+            //    console.log(studentsearch)
+            var filteruser=studentdata.filter((user)=>{
+               return user.name.indexOf(studesearch)>-1
+            })
+            displayusers(filteruser)
+            // var filtersuser=studentdata.filter((user)=>{
+            //     return user.group.indexOf(studesearch) > -1
+            // })
+            // // displayusers(filtersuser)
+            // var filtersearch=studentdata.filter((user)=>{
+            //     return user.favouritesubject.indexOf(studesearch)> -1
+            // })
+            // displayusers(filtersearch)
+               
+           }
+           function removestudents(){
+                displayusers(studentdata)
+           }
+    </script>
+</body>
+</html>+

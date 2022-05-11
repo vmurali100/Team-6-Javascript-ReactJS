@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <h1>html table</h1>
+    <input type="text" name="" id="userinput">
+    <button onclick="searchuser()">search user</button>
+    <button onclick="clearsearch()">clearsearch</button>
+
+    <table border="1" style="width:800px ;">
+        <tr>
+           <thead>
+                <th>name</th>
+            <th>email</th>
+            <th>address</th>
+           </thead>
+        </tr>
+        <tbody></tbody>
+        <!-- <tr>
+            <td>nithya</td>
+            <td>nithya@gmail.com</td>
+            <td>paradarami</td>
+        </tr>
+        <tr>
+            <td>jeeva</td>
+            <td>jeeva@gmail.com</td>
+            <td>kajoor</td>
+        </tr>
+        <tr>
+            <td>sandhya</td>
+            <td> sandhya@gmail.com</td>
+            <td>yadamari</td>
+        </tr>
+        <tr>
+            <td>sathya</td>
+            <td>sathya@gmail.com</td>
+            <td>chittoor</td>
+        </tr>
+        <tr>
+            <td>chandhini</td>
+            <td>chandhini@gmail.com</td>
+            <td>vellore</td>
+        </tr>
+        <tr>
+            <td>harish</td>
+            <td>harish@gmail.com</td>
+            <td>paradarami</td>
+        </tr>
+         -->
+    </table>
+    <script>
+        var data=[
+            {name:"nithya",
+            email:"nithya@gmail.com",
+            address:"paradarami"
+           },
+           {name:"jeeva",
+            email:"jeeva@gmail.com",
+            address:"kajoor"
+           },
+           {name:"sandhya",
+            email:"sandhya@gmail.com",
+            address:"yadhamari"
+           },
+           {name:"sathya",
+            email:"sathya@gmail.com",
+            address:"chittoor"
+           },
+           {name:"chandhini",
+            email:"chandhini@gmail.com",
+            address:"vellore"
+           },
+           {name:"harish",
+            email:"harish@gmail.com",
+            address:"paradarami"
+           }
+        ]
+        function displayallusers(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user)=>{
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                mytd.innerHTML=user[a]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+        })
+        }
+        displayallusers(data)
+        function searchuser(){
+            var usersearch=document.getElementById("userinput").value
+            console.log(usersearch)
+
+            var filteruser=data.filter((user)=>{
+               return user.address.indexOf(usersearch)>-1
+            })
+            // var filtersuser=data.filter((user)=>{
+            //    return user.name.indexOf(usersearch)>-1
+            // })
+            // var filterusers=data.filter((user)=>{
+            //    return user.email.indexOf(usersearch)>-1
+            // })
+            displayallusers(filteruser)
+            // displayallusers(filtersuser)
+            // displayallusers(filterusers)
+        }
+
+        function clearsearch(){
+            displayallusers(data)
+        }
+    </script>
+</body>
+</html>

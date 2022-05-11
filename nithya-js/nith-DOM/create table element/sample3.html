@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="hari">
+    <button onclick="studata()">search</button>
+    <button onclick="studentsata()">clear</button>
+    <table border="1" style="width:800px ;">
+        <tr>
+            <thead>
+                <th>fname</th>
+                <th>lname</th>
+                <th>location</th>
+            </thead>  
+        </tr>
+        <tbody></tbody>
+            
+               <!-- <tr>
+       
+                <td>harish</td>
+                <td>kumar</td>
+                <td>chittoor</td>
+            </tr>
+            <tr>
+                <td>chandhini</td>
+                <td>priya</td>
+                <td>vellore</td>
+            </tr>
+            <tr>
+                <td>sai</td>
+                <td>kiran</td>
+                <td>GDnellore</td>
+            </tr>
+            <tr>
+                <td>sai</td>
+                <td>supraja</td>
+                <td>karnool</td>
+            </tr> -->
+        
+        
+    </table>
+    <script>
+       var data=[
+           {fname:"harish",
+            lname:"kumar",
+            location:"chittoor"
+            },
+           {fname:"chandhini",
+            lname:"priya",
+            location:"vellore"
+           },
+           {fname:"sai",
+            lname:"kiran",
+            location:"GDnellore"
+           },
+           {fname:"sai",
+            lname:"suprija",
+            location:"karnool"
+           },
+        ]
+       function displayuser(){
+              document.querySelector("tbody").innerHTML=""
+               data.forEach((user)=>{
+               var mytr=document.createElement("tr")
+                   for (a in user){
+                       var mytd=document.createElement("td")
+                       mytd.innerHTML=user[a]
+                       mytr.appendChild(mytd)
+                   }
+
+           document.querySelector("tbody").appendChild(mytr)
+        })
+       }
+          
+        displayuser(data)
+        function studata(){
+                var getdata=document.getElementById("hari").value
+                console.log(getdata)
+
+                var filteruser=data.filter((user)=>{
+                    return user.fname.indexOf(getdata)> -1
+                })
+                // var filteruser=data.filter((user)=>{
+                //     return user.fname.indexOf(getdata)> -1
+                // })
+            displayuser(filteruser)
+        }
+        function studentsata(){
+               displayuser(data)
+        }
+      
+    </script>
+</body>
+</html>

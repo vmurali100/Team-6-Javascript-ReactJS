@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name"> <br>
+        <label for="fname">Fathername</label>
+        <input type="text" name="" id="fname"> <br>
+        <label for="mname">Mothername</label>
+        <input type="text" name="" id="mname"> <br>
+        <label for="bname">Brothername</label>
+        <input type="text" name="" id="bname"> <br>
+        <label for="sname">Sistername</label>
+        <input type="text" name="" id="sname"> <br>
+        <button type="button" onclick="user()">user</button>
+    </form>
+    <hr>
+    <table border="2">
+        <tr>
+            <thead>
+                <th>name</th>
+                <th>fname</th>
+                <th>mname</th>
+                <th>bname</th>
+                <th>sname</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allfamily = JSON.parse(localStorage.getItem("allfamily"))
+        if(allfamily == null){
+            allfamily=[]
+        }
+        function user(){
+            var family = {
+                name : document.getElementById("name").value,
+                fname : document.getElementById("fname").value,
+                mname : document.getElementById("mname").value,
+                bname : document.getElementById("bname").value,
+                sname : document.getElementById("sname").value
+            }
+            allfamily.push(family)
+
+            localStorage.setItem("allfamily",JSON.stringify(allfamily))
+            displayfamilies(allfamily);
+            clearform();
+            
+        }
+
+        function clearform(){
+            document.getElementById("name").value="";
+            document.getElementById("fname").value="";
+            document.getElementById("mname").value="";
+            document.getElementById("bname").value="";
+            document.getElementById("sname").value=""
+        }
+        function displayfamilies(family) {
+                document.querySelector("tbody").innerHTML = "";
+                family.forEach((user,i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+                    var editTd = document.createElement("td") 
+                    var editBtn = document.createElement("button")
+                    editBtn.setAttribute("onclick","edituser("+i+")")
+                    editBtn.innerHTML = "Edit"
+                    editTd.appendChild(editBtn)
+                    myTr.appendChild(editTd)
+
+                    var deleteTd = document.createElement("td") 
+                    var deleteBtn = document.createElement("button")
+                    deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                    deleteBtn.innerHTML = "Button"
+                    deleteTd.appendChild(deleteBtn)
+                    myTr.appendChild(deleteTd)
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+
+            function edituser(i){
+                console.log("edituser called" +i)
+            }
+
+            function deleteuser(i){
+                console.log("deleteuser called" +i)
+                allfamily.splice(i,1)
+                displayfamilies(allfamily)
+            }
+            displayfamilies(allfamily)
+    </script>
+</body>
+</html>

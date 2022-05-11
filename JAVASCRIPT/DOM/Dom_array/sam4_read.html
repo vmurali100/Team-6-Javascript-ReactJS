@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name"> <br>
+        <label for="age">AGe</label>
+        <input type="text" name="" id="age"> <br>
+        <label for="gender">Gender</label>
+        <input type="text" name="" id="gender"> <br>
+        <label for="qualification">Qualification</label>
+        <input type="text" name="" id="qualification"> <br>
+        <label for="location">Location</label>
+        <input type="text" name="" id="location"> <br>
+        <button type="button" onclick="user()">user</button>
+    </form>
+    <hr>
+    <table border="2">
+        <tr>
+            <thead>
+                <th>name</th>
+                <th>age</th>
+                <th>gender</th>
+                <th>qualification</th>
+                <th>location</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allstudent = JSON.parse(localStorage.getItem("allstudent"))
+        if(allstudent == null){
+            allstudent=[]
+        }
+        function user(){
+            var students = {
+                name : document.getElementById("name").value,
+                age : document.getElementById("age").value,
+                gender : document.getElementById("gender").value,
+                qualification : document.getElementById("qualification").value,
+                location : document.getElementById("location").value
+            }
+            allstudent.push(students)
+
+            localStorage.setItem("allguide",JSON.stringify(allstudent))
+            displayfamilies(allstudent);
+            clearform();
+            
+        }
+
+        function clearform(){
+            document.getElementById("name").value="";
+            document.getElementById("age").value="";
+            document.getElementById("gender").value="";
+            document.getElementById("qualification").value="";
+            document.getElementById("location").value=""
+        }
+        function displayfamilies(students) {
+                document.querySelector("tbody").innerHTML = "";
+                students.forEach((user,i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+                    var editTd = document.createElement("td") 
+                    var editBtn = document.createElement("button")
+                    editBtn.setAttribute("onclick","edituser("+i+")")
+                    editBtn.innerHTML = "Edit"
+                    editTd.appendChild(editBtn)
+                    myTr.appendChild(editTd)
+
+                    var deleteTd = document.createElement("td") 
+                    var deleteBtn = document.createElement("button")
+                    deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                    deleteBtn.innerHTML = "Button"
+                    deleteTd.appendChild(deleteBtn)
+                    myTr.appendChild(deleteTd)
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+
+            function edituser(i){
+                console.log("edituser called" +i)
+            }
+
+            function deleteuser(i){
+                console.log("deleteuser called" +i)
+                allstudent.splice(i,1)
+                displayfamilies(allstudent)
+            }
+            displayfamilies(allstudent)
+    </script>
+</body>
+</html>

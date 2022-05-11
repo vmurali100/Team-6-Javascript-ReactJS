@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="mobile">Mobile</label>
+        <input type="text" name="" id="mobile"> <br>
+        <label for="year">Year</label>
+        <input type="text" name="" id="year"> <br>
+        <label for="model">Model</label>
+        <input type="text" name="" id="model"> <br>
+        <label for="company">Company</label>
+        <input type="text" name="" id="company"> <br>
+        <label for="color">Color</label>
+        <input type="text" name="" id="color"> <br>
+        <button type="button" onclick="user()">user</button>
+    </form>
+    <hr>
+    <table border="2">
+        <tr>
+            <thead>
+                <th>mobile</th>
+                <th>year</th>
+                <th>model</th>
+                <th>company</th>
+                <th>color</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allphone = JSON.parse(localStorage.getItem("allphone"))
+        if(allphone == null){
+            allphone=[]
+        }
+        function user(){
+            var phones = {
+                mobile : document.getElementById("mobile").value,
+                year : document.getElementById("year").value,
+                model : document.getElementById("model").value,
+                company : document.getElementById("company").value,
+                color : document.getElementById("color").value
+            }
+            allphone.push(phones)
+
+            localStorage.setItem("allphone",JSON.stringify(allphone))
+            displaydetails(allphone);
+            clearform();
+            
+        }
+
+        function clearform(){
+            document.getElementById("mobile").value="";
+            document.getElementById("year").value="";
+            document.getElementById("model").value="";
+            document.getElementById("company").value="";
+            document.getElementById("color").value=""
+        }
+        function displaydetails(phones) {
+                document.querySelector("tbody").innerHTML = "";
+                phones.forEach((user,i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+                    var editTd = document.createElement("td") 
+                    var editBtn = document.createElement("button")
+                    editBtn.setAttribute("onclick","edituser("+i+")")
+                    editBtn.innerHTML = "Edit"
+                    editTd.appendChild(editBtn)
+                    myTr.appendChild(editTd)
+
+                    var deleteTd = document.createElement("td") 
+                    var deleteBtn = document.createElement("button")
+                    deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                    deleteBtn.innerHTML = "Button"
+                    deleteTd.appendChild(deleteBtn)
+                    myTr.appendChild(deleteTd)
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+
+            function edituser(i){
+                console.log("edituser called" +i)
+            }
+
+            function deleteuser(i){
+                console.log("deleteuser called" +i)
+                allphone.splice(i,1)
+                displaydetails(allphone)
+            }
+            displaydetails(allphone)
+    </script>
+</body>
+</html>

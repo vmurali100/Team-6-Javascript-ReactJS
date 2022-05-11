@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="fname">First Name</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="lname">Last Name</label>
+        <input type="text" name="" id="lname"><br><br>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br><br>
+        <label for="city">city</label>
+        <input type="text" name="" id="city"><br><br>
+        <button type="button" onclick="addUser()"> add user</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if(allUsers==null){
+            allUsers=[]
+        }
+        function addUser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("email").value,
+                city: document.getElementById("city").value
+            }
+            // console.log(user)
+            allUsers.push(user)
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers)
+            clearForm()
+        }
+        function clearForm(){
+            document.getElementById("fname").value=""
+            document.getElementById("lname").value=""
+            document.getElementById("email").value=""
+            document.getElementById("city").value=""
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user,i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                 //edit btn
+                 var editTd=document.createElement("td")
+                var editBtn=document.createElement("button")
+                editBtn.setAttribute("onclick","editUser("+i+")")
+                editBtn.innerHTML="Edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd=document.createElement("td")
+                var deleteBtn=document.createElement("button")
+                deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+                deleteBtn.innerHTML="Delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+    function editUser(i){
+           console.log("edit the user"+i)
+       }
+      function deleteUser(i){
+          allUsers.splice(i,1)
+          displayUsers(allUsers)
+
+      }
+          displayUsers(allUsers)
+      
+
+    </script>
+</body>
+
+</html>

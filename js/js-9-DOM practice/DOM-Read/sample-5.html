@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name"><br><br>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br><br>
+        <button type="button" onclick="addUsers()"> add users</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers =JSON.parse(localStorage.getItem("allUsers"))
+        if(allUsers==null){
+            allUsers=[]
+        }
+        function addUsers() {
+            var user = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+            }
+            console.log(user)
+            allUsers.push(user)
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayUsers(allUsers) 
+        }
+
+
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                }
+                //edit btn
+                var editTd=document.createElement("td")
+                var editBtn=document.createElement("button")
+                editBtn.setAttribute("onclick","editUser("+i+")")
+
+                editBtn.innerHTML="EDIT"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd=document.createElement("td")
+                var deleteBtn=document.createElement("button")
+                deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+
+                deleteBtn.innerHTML="DELETE"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function editUser(i){
+            console.log("edit user called"+i)
+        }
+        function deleteUser(i){
+            console.log("delete user called"+i)
+           allUsers.splice(i,1)
+           displayUsers(allUsers)
+        }
+        displayUsers(allUsers)
+    </script>
+</body>
+
+</html>

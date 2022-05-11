@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name"><br><br>
+        <label for="city">City</label>
+        <input type="text" name="" id="city"><br><br>
+        <label for="number">Number</label>
+        <input type="text" name="" id="number"><br><br>
+        <label for="pincode">Pincode</label>
+        <input type="text" name="" id="pincode"><br><br>
+        <button type="button" onclick="addDetails()"> add details</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>City</th>
+                <th>Number</th>
+                <th>Pincode</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        var allDetails = JSON.parse(localStorage.getItem("allDetails"))
+        if (allDetails == null) {
+            allDetails = []
+        }
+        function addDetails() {
+            var student = {
+                name: document.getElementById("name").value,
+                city: document.getElementById("city").value,
+                number: document.getElementById("number").value,
+                pincode: document.getElementById("pincode").value
+            }
+            // console.log(student)
+            allDetails.push(student)
+            localStorage.setItem("allDetails", JSON.stringify(allDetails))
+            displayDetails(allDetails)
+            clearDetails()
+        }
+        function clearDetails() {
+            document.getElementById("name").value = "";
+            document.getElementById("city").value = "";
+            document.getElementById("number").value = "";
+            document.getElementById("pincode").value = "";
+        }
+        function displayDetails(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((student,i) => {
+                var mytr = document.createElement("tr")
+                for (a in student) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = student[a]
+                    mytr.appendChild(mytd)
+                }
+                //edit btn
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editDetails("+i+")")
+                editBtn.innerHTML = "EDIT"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteDetails("+i+")")
+                deleteBtn.innerHTML = "DELETE"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function editDetails(i) {
+            console.log("edit user"+i)
+        }
+        function deleteDetails(i) {
+            allDetails.splice(i,1)
+            displayDetails(allDetails)
+        }
+
+        displayDetails(allDetails)
+    </script>
+</body>
+
+</html>

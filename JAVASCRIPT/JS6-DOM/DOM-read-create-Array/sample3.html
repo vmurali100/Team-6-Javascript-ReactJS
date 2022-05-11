@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">Name :</label>
+        <input type="text" name="" id="fname"> <br><br>
+        <label for="Country">Country:</label>
+        <input type="text" name="" id="Country"> <br><br>
+        <label for="Matches">Matches:</label>
+        <input type="text" name="" id="Matches"><br><br>
+        <label for="Team">Team:</label>
+        <input type="text" name="" id="Team"><br><br>
+        <label for="Bestscore">Bestscore :</label>
+        <input type="text" name="" id="Bestscore"><br><br>
+        <label for="StrikeRate">StrikeRate :</label>
+        <input type="text" name="" id="StrikeRate"><br><br>
+       
+        <button type="button" onclick="AddUser()">Add User</button>
+    </form>
+        <hr>
+        <table border="1" >
+            <tr>
+             <thead>
+              <th>Name</th>
+              <th>Country</th>
+              <th>Matches</th>
+              <th>Team</th>
+              <th>Bestscore</th>
+              <th>StrikeRate</th>            
+              <th>Edit</th>
+              <th>Delete</th>
+             </thead>
+            </tr>
+          <tbody></tbody>
+          </table>
+  
+    <script>
+         var allusers= JSON.parse(localStorage.getItem("allusers"))
+        if (allusers == null){
+            allusers = []
+        }
+        
+        function  AddUser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                Country:document.getElementById("Country").value,
+                Matches:document.getElementById("Matches").value,
+                Team:document.getElementById("Team").value, 
+                Bestscore:document.getElementById("Bestscore").value, 
+                StrikeRate:document.getElementById("StrikeRate").value, 
+                              
+            }
+            allusers.push(user)
+            // console.log(user)
+            // console.log(allusers)
+
+            displayusers(allusers)
+
+              //local storage
+              localStorage.setItem("allusers",JSON.stringify(allusers))
+
+            Clearform()
+        }
+
+        function Clearform(){
+            document.getElementById("fname").value="",
+            document.getElementById("Country").value="",
+            document.getElementById("Matches").value="",
+            document.getElementById("Age").value="", 
+            document.getElementById("Bestscore").value="" 
+            document.getElementById("StrikeRate").value=""
+            
+        }
+
+        function displayusers(data){
+        document.querySelector("tbody").innerHTML=""
+        data.forEach((user ,i)=>{
+        var myTr=document.createElement("tr")
+         for(a in user){
+             var myTd=document.createElement("td")
+             myTd.innerHTML=user[a]
+             myTr.appendChild(myTd)
+         }
+
+          //EditButton
+          var editTd=document.createElement("td")
+         var editbtn=document.createElement("button")
+         editbtn.setAttribute("onclick","edituser("+i+")")
+         editbtn.innerHTML="Edit"
+         editTd.appendChild(editbtn)
+         myTr.appendChild(editTd)
+         
+         //DeleteButton
+         var deleteTd=document.createElement("td")
+         var deletebtn=document.createElement("button")
+         deletebtn.setAttribute("onclick","deleteuser("+i+")")
+         deletebtn.innerHTML="Delete";
+         deleteTd.appendChild(deletebtn);
+         myTr.appendChild(deleteTd)
+        document.querySelector("tbody").appendChild(myTr)
+    })
+    
+    }
+    function eidtuser(i){
+        console.log("eidtuser called"+i)
+    }
+    function deleteuser(i){
+        // console.log("deleteuser called"+i)
+        allusers.splice(i,1)
+        displayusers(allusers)
+
+    }
+    displayusers(allusers)
+    </script>
+</body>
+</html>

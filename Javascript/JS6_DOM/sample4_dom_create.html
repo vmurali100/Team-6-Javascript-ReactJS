@@ -25,7 +25,8 @@
     <img src="" alt="">
     <script>
         console.log(allProducts)
-        allProducts.forEach((product)=>{
+        function displayUsers (){
+            allProducts.forEach((product)=>{
             var myProductDiv = document.createElement("div");
             myProductDiv.setAttribute("class","product")
             var myImg = document.createElement("img");
@@ -39,6 +40,9 @@
             
            document.getElementById("products").appendChild(myProductDiv)
         })
+        }
+
+        displayUsers()
     </script>
 </body>
 </html>

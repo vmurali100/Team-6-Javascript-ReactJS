@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="cricket">cricket:-</label>
+        <input type="text" name="" id="cricket"><br>
+
+        <label for="vollyball">vollyball:-</label>
+        <input type="text" name="" id="vollyball"><br>
+
+        <label for="basketball">basketball:-</label>
+        <input type="text" name="" id="basketball"><br>
+
+        <label for="throughball">throughball:-</label>
+        <input type="text" name="" id="throughball"><br>
+
+        <label for="handball">handball:-</label>
+        <input type="text" name="" id="handball"><br>
+
+        <label for="hocky">hocky:-</label>
+        <input type="text" name="" id="hocky">
+        <br><br>
+        <button type="button" onclick="adduser()">add user</button>
+
+    </form>
+    <hr>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>cricket</th>
+                <th>vollyball</th>
+                <th>basketball</th>
+                <th>throughball</th>
+                <th>handball</th>
+                <th>hocky</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+
+    <script>
+
+        var allusers = JSON.parse(localStorage.getItem("allusers"))
+        // var allusers = []
+        function adduser() {
+            var user = {
+                cricket: document.getElementById("cricket").value,
+                vollyball: document.getElementById("vollyball").value,
+                basketball: document.getElementById("basketball").value,
+                throughball: document.getElementById("throughball").value,
+                handball: document.getElementById("handball").value,
+                hocky: document.getElementById("hocky").value
+
+            }
+            allusers.push(user)
+
+            localStorage.setItem("allusers", JSON.stringify(allusers));
+
+            if (allusers == null) {
+                allusers = []
+            }
+            // console.log(user);
+            // console.log(allusers)
+            displayusers(allusers)
+            clearform();
+
+
+        }
+
+        function clearform() {
+            document.getElementById("cricket").value = "";
+            document.getElementById("vollyball").value = "";
+            document.getElementById("basketball").value = "";
+            document.getElementById("throughball").value = "";
+            document.getElementById("handball").value = "";
+            document.getElementById("hocky").value
+
+
+        }
+
+        function displayusers(details) {
+            document.querySelector("tbody").innerHTML = ""
+            details.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.innerHTML = "edit";
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd)
+
+
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deletebtn.innerHTML = "delete";
+                deleteTd.appendChild(deletebtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        } function edituser(i) {
+            console.log("edituser called" + i)
+        }
+
+        function deleteuser(i) {
+            console.log("deleteuser called" + i)
+            allusers.splice(i, 1);
+             
+        displayusers(allusers)
+
+        }
+        
+        displayusers(allusers)
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

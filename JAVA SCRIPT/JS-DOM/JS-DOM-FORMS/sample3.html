@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="state">state:-</label>
+        <input type="text" name="" id="state"><br>
+
+        <label for="district">district:-</label>
+        <input type="text" name="" id="district"><br>
+
+        <label for="mandal">mandal:-</label>
+        <input type="text" name="" id="mandal"><br>
+
+        <label for="taluk">taluk:-</label>
+        <input type="text" name="" id="taluk"><br>
+
+        <label for="village">village:-</label>
+        <input type="text" name="" id="village"><br>
+
+        <label for="pincode">pincode</label>
+        <input type="text" name="" id="pincode">
+        <br><br>
+        <button type="button" onclick="adduser()">add user</button>
+
+    </form>
+
+    <hr>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>state</th>
+                <th>district</th>
+                <th>mandal</th>
+                <th>taluk</th>
+                <th>village</th>
+                <th>pincode</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        // var allusers = []
+        var allusers=JSON.parse(localStorage.getItem("allusers"))
+
+        if (allusers==null){
+            allusers=[]
+        }
+        
+        function adduser() {
+            var user =
+            {
+                state: document.getElementById("state").value,
+                district: document.getElementById("district").value,
+                mandal: document.getElementById("mandal").value,
+                taluk: document.getElementById("taluk").value,
+                village: document.getElementById("village").value,
+                pincode: document.getElementById("pincode").value
+
+            }
+            allusers.push(user)
+            //  storing in local storage
+
+            localStorage.setItem("allusers",JSON.stringify(allusers))
+
+
+
+            // console.log(user);
+            // console.log(allusers)
+            displayusers(allusers);
+            clearform();
+        }
+        function clearform(){
+            document.getElementById("state").value="";
+            document.getElementById("district").value="",
+            document.getElementById("mandal").value="",
+            document.getElementById("taluk").value="",
+            document.getElementById("village").value="",
+            document.getElementById("pincode").value=""
+        }
+        
+        
+        function displayusers(details) {
+            document.querySelector("tbody").innerHTML = ""
+            details.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+
+
+
+                var editTd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick" ,"edituser("+i+"")
+                editbtn.innerHTML="Edit";
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd)
+
+
+
+                var deleteTd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick" ,"deleteuser("+i+")")
+                deletebtn.innerHTML="delete";
+                deleteTd.appendChild(deletebtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        }
+
+        function edituser(i){
+            console.log("edituser called")
+
+        }
+
+        function deleteuser(i){
+            console.log("deleteuser called")
+            allusers.splice(i,1);
+            displayusers(allusers)
+
+        }
+
+
+
+        displayusers(allusers)
+
+    </script>
+
+
+
+</body>
+
+</html>

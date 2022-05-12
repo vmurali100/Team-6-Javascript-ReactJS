@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">first name</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">last name</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <button type="button" onclick="adduser()">add user</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+             <th>first name</th>
+             <th>last name</th>
+             <th>email</th>
+             <th>edite</th>
+             <th>delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem("alluser"))
+        if(alluser==null){
+            alluser=[]
+        }
+        function adduser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                email:document.getElementById("email").value,
+                
+            }
+            alluser.push(user)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            displayanimal(alluser)
+            clearform()
+        }
+        function clearform(){
+            document.getElementById("fname").value="" 
+            document.getElementById("lname").value=""
+            document.getElementById("email").value=""
+        }
+
+
+        function displayanimal(data){
+        document.querySelector("tbody").innerHTML=""
+        data.forEach((ani ,i)=>{
+           var mytr=document.createElement("tr")
+
+           for (a in ani){
+               var mytd=document.createElement("td")
+               mytd.innerHTML=ani[a]
+               mytr.appendChild(mytd)
+           }
+           var edittd=document.createElement("td")
+           var editebutton=document.createElement("button")
+           editebutton.setAttribute("onclick","edituser("+i+")")
+           editebutton.innerHTML="edit"
+           edittd.appendChild(editebutton)
+           mytr.appendChild(edittd)
+
+           var deletetd=document.createElement("td")
+           var deletebutton=document.createElement("button")
+           deletebutton.setAttribute("onclick","deleteuser("+i+")")
+           deletebutton.innerHTML="delete"
+           deletetd.appendChild(deletebutton)
+           mytr.appendChild(deletetd)
+
+           document.querySelector("tbody").appendChild(mytr)
+       })
+       }
+       function edituser(i){
+        console.log("edituser called"+i)
+       }
+
+       function deleteuser(i){
+      
+        alluser.splice(i,1)
+        displayanimal(alluser)
+       }
+       displayanimal(alluser)
+    </script>
+</body>
+</html>

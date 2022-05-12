@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            color: rgb(243, 22, 214);            line-height: 25px;
+        }
+        input{
+            display: block;
+        }
+        table{
+            width: 100%;            border-collapse: collapse;            font-family: arial, sans-serif;
+        }
+        tr, th{            
+            border: 1px solid black;            text-align: center;            padding: 8px;            color: blue;
+        }
+        tr:nth-child(even) {
+           background-color: #da4a4a;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="name">Name :</label>
+        <input type="text" name="" id="name">
+        <label for="age">Age :</label>
+        <input type="number" name="" id="age">
+        <label for="state">State :</label>
+        <input type="text" name="" id="state">
+        <label for="address">Address :</label>
+        <input type="text" name="" id="address">
+        <label for="phoneNo">Phone No :</label>
+        <input type="number" name="" id="phoneNo">
+        <label for="email">Email Id :</label>
+        <input type="text" name="" id="email">
+        <button type="button" onclick="addUsers()">Add Users</button>
+    </form>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>State</th>
+                <th>Address</th>
+                <th>Phone No</th>
+                <th>Email Id</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("addUsers"));
+        if (allUsers == null){
+            allUsers = []
+        }
+        function addUsers(){
+            var user = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                state: document.getElementById("state").value,
+                address: document.getElementById("address").value,
+                phoneno: document.getElementById("phoneNo").value,
+                email: document.getElementById("email").value
+            }
+            allUsers.push(user);
+            // console.log(user);
+            // console.log(allUsers);
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers));
+
+            displayUsers(allUsers);
+            clearForm()
+        }
+        function clearForm(){
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("state").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("phoneNo").value = "";
+            document.getElementById("email").value = "";
+        }
+
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = " ";
+            data.forEach((user,i) => {
+                var myTr =  document.createElement("tr");
+                for (a in user){
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td");
+                var editBit = document.createElement("button");
+                editBit.setAttribute("onclick", "editUser("+i+")");
+                editBit.innerHTML = "Edit";
+                editTd.appendChild(editBit);
+                myTr.appendChild(editTd);
+
+                var deleteTd = document.createElement("td");
+                var deleteBit= document.createElement("button");
+                deleteBit.setAttribute("onclick","deleteUser("+i+")");
+                deleteBit.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBit);
+                myTr.appendChild(deleteTd);
+                document.querySelector("tbody").appendChild(myTr);
+            });
+        }
+
+        function editUser(i){
+            console.log("Edite User Called"+i);
+        }
+        function deleteUser(i){
+            allUsers.splice(i,1);
+            console.log("Delete User Called"+i);
+            displayUsers(allUsers)
+        }
+        displayUsers(allUsers)
+    </script>
+</body>
+</html>

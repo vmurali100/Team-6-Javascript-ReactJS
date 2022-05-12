@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            color: blue;
+        }
+        button{
+            color: blue;
+        }
+        th{
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="RollNo">RollNo :</label>
+        <input type="number" name="" id="RollNo"><br><br>
+        <label for="StudentName">StudentName :</label>
+        <input type="text" name="" id="StudentName"><br><br>
+        <label for="Class">Class :</label>
+        <input type="text" name="" id="Class"><br><br>
+        <label for="Group">Group :</label>
+        <input type="text" name="" id="Group"><br><br>
+        <label for="College">College :</label>
+        <input type="text" name="" id="College"><br><br>
+        <label for="city">city :</label>
+        <input type="text" name="" id="city"><br><br>
+        <button type="button" onclick="AddUser()">Submit</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+         <thead>
+          <th>RollNo</th>
+          <th>StudentName</th>
+          <th>Class</th>
+          <th>Group</th>
+          <th>College</th>
+          <th>city</th>
+          <th>Edit</th>
+          <th>Delete</th>
+         </thead>
+        </tr>
+        <tbody></tbody>
+      
+      </table>
+      
+    <script>
+
+        var allusers=JSON.parse(localStorage.getItem("allusers"))
+        if(allusers == null){
+            allusers =[]
+        }
+
+        function AddUser(){
+            var user={
+                RollNo:document.getElementById("RollNo").value,
+                StudentName:document.getElementById("StudentName").value,
+                Class:document.getElementById("Class").value,
+                Group:document.getElementById("Group").value,
+                College:document.getElementById("College").value,
+                city:document.getElementById("city").value,
+        }
+        allusers.push(user)
+        
+        localStorage.setItem("allusers",JSON.stringify(allusers))
+
+        displayusers(allusers)
+        Clearform()
+        }
+
+        function Clearform(){
+            document.getElementById("RollNo").value="",
+            document.getElementById("StudentName").value="",
+            document.getElementById("Class").value="",
+            document.getElementById("Group").value="",
+            document.getElementById("College").value="",
+            document.getElementById("city").value=""
+        }
+
+        function displayusers(Detail){
+    document.querySelector("tbody").innerHTML="";
+
+    Detail.forEach((user,i)=>{
+        var myTr=document.createElement("tr")
+        for(a in user){
+            var myTd=document.createElement("td")
+            myTd.innerHTML = user[a]
+            myTr.append(myTd)
+            
+        }
+        var editTd=document.createElement("td")
+        var editbtn = document.createElement("button")
+        editbtn.setAttribute("onclick","edituser("+i+")")
+        editbtn.innerHTML="Edit"
+        editTd.appendChild(editbtn)
+        myTr.appendChild(editTd)
+
+        var deleteTd=document.createElement("td")
+        var deletebtn = document.createElement("button")
+        deletebtn.setAttribute("onclick","deleteuser("+i+")")
+        deletebtn.innerHTML="Delete"
+        deleteTd.appendChild(deletebtn)
+        myTr.appendChild(deleteTd)
+
+        document.querySelector("tbody").appendChild(myTr)
+    })
+  }
+
+  function edituser(i){
+          console.log("Edituser called"+i)
+  }
+  function deleteuser(i){
+    // console.log("deleteuser called"+i)
+    allusers.splice(i,1)
+    displayusers(allusers)
+  }
+  displayusers(allusers)
+  
+    </script>
+</body>
+</html>

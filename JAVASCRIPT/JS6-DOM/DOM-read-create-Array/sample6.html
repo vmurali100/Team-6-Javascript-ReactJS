@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            color: red;
+        }
+        button{
+            color: red;
+        }
+        th{
+            border-color: rgb(30, 41, 199);
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="SlNo">SlNo :</label>
+        <input type="number" name="" id="SlNo"><br><br>
+        <label for="Name">MovieName :</label>
+        <input type="text" name="" id="Name"><br><br>
+        <label for="Hero">Hero :</label>
+        <input type="text" name="" id="Hero"><br><br>
+        <label for="Heroine">Heroine :</label>
+        <input type="text" name="" id="Heroine"><br><br>
+        <label for="Director">Director :</label>
+        <input type="text" name="" id="Director"><br><br>
+        <label for="Music">Music :</label>
+        <input type="text" name="" id="Music"><br><br>
+        <button type="button" onclick="AddUser()">Submit</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+         <thead>
+          <th>SlNo</th>
+          <th>MovieName</th>
+          <th>Hero</th>
+          <th>Heroine</th>
+          <th>Director</th>
+          <th>Music</th>
+          <th>Edit</th>
+          <th>Delete</th>
+         </thead>
+        </tr>
+        <tbody></tbody>
+      
+      </table>
+      
+    <script>
+
+        var allusers=JSON.parse(localStorage.getItem("allusers"))
+        if(allusers == null){
+            allusers =[]
+        }
+
+        function AddUser(){
+            var user={
+            SlNo:document.getElementById("SlNo").value,
+            MovieName:document.getElementById("Name").value,
+            Hero:document.getElementById("Hero").value,
+            Heroine:document.getElementById("Heroine").value,
+            Director:document.getElementById("Director").value,
+            Music:document.getElementById("Music").value,
+        }
+        allusers.push(user)
+        
+        localStorage.setItem("allusers",JSON.stringify(allusers))
+
+        displayusers(allusers)
+        Clearform()
+        }
+
+        function Clearform(){
+            document.getElementById("SlNo").value="",
+            document.getElementById("Name").value="",
+            document.getElementById("Hero").value="",
+            document.getElementById("Heroine").value="",
+            document.getElementById("Director").value="",
+            document.getElementById("Music").value=""
+        }
+
+        function displayusers(Detail){
+    document.querySelector("tbody").innerHTML="";
+
+    Detail.forEach((user,i)=>{
+        var myTr=document.createElement("tr")
+        for(a in user){
+            var myTd=document.createElement("td")
+            myTd.innerHTML = user[a]
+            myTr.append(myTd)
+            
+        }
+        var editTd=document.createElement("td")
+        var editbtn = document.createElement("button")
+        editbtn.setAttribute("onclick","edituser("+i+")")
+        editbtn.innerHTML="Edit"
+        editTd.appendChild(editbtn)
+        myTr.appendChild(editTd)
+
+        var deleteTd=document.createElement("td")
+        var deletebtn = document.createElement("button")
+        deletebtn.setAttribute("onclick","deleteuser("+i+")")
+        deletebtn.innerHTML="Delete"
+        deleteTd.appendChild(deletebtn)
+        myTr.appendChild(deleteTd)
+
+        document.querySelector("tbody").appendChild(myTr)
+    })
+  }
+
+  function edituser(i){
+          console.log("Edituser called"+i)
+  }
+  function deleteuser(i){
+    // console.log("deleteuser called"+i)
+    allusers.splice(i,1)
+    displayusers(allusers)
+  }
+  displayusers(allusers)
+  
+    </script>
+</body>
+</html>

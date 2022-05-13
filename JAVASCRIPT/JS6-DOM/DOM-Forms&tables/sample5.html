@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            color: blue;
+            background-color: rgb(195, 167, 157);
+        }
+
+        th {
+            color: red;
+            background-color: yellow;
+        }
+
+        form {
+            background-color: aqua;
+        }
+
+        div#sai {
+            width: 695px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sai">
+        <form action="">
+            <fieldset>
+                <legend>Registration Details</legend>
+
+                <label for="">University :</label>
+                <input type="text" name="" id="University"><br><br>
+
+                <label for=""> Institute :</label>
+                <input type="text" name="" id="Institute"><br><br>
+
+                <label for="">Branch</label>
+                <input type="text" name="" id="Branch"><br><br>
+
+                <label for="">Deegre</label>
+                <input type="text" name="" id="Deegre">
+                <input type="radio" name="" id=""> Pursuing
+                <input type="radio" name="" id=""> Completed <br><br>
+
+                <label for="">Average CPI :</label>
+                <input type="text" name="" id="AverageCPI">
+
+                <label for=""> Experirnce :</label>
+                <input type="text" name="" id="Experirnce"><br><br>
+
+                <label for=""> Your Website Or Blog :</label>
+                <input type="text" name="" id="Website" placeholder="http://"> <br><br>
+
+                <button type="button" onclick="DisplayUser()">Submit</button>
+
+            </fieldset>
+        </form>
+    </div>
+    <br><br><br>
+    <table border="1" style="width: 50%">
+        <thead>
+            <tr>
+                <th>University</th>
+                <th>Institute</th>
+                <th>Branch</th>
+                <th>Deegre</th>
+                <th>AverageCPI</th>
+                <th>Experirnce</th>
+                <th>Website</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table><br><br>
+    <script>
+        allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+
+        function DisplayUser() {
+            var users = {
+                University: document.getElementById("University").value,
+                Institute: document.getElementById("Institute").value,
+                Branch: document.getElementById("Branch").value,
+                Deegre: document.getElementById("Deegre").value,
+                AverageCPI: document.getElementById("AverageCPI").value,
+                Experirnce: document.getElementById("Experirnce").value,
+                Website: document.getElementById("Website").value
+
+            }
+            allUsers.push(users)
+            console.log(users)
+            displayusers()
+            Clearform(users)
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+        }
+
+        function Clearform(users) {
+            for (a in users) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+        function displayusers() {
+            document.querySelector('tbody').innerHTML = ""
+            allUsers.forEach((users, i) => {
+                var mytr = document.createElement('tr')
+                document.querySelector('tbody').appendChild(mytr)
+
+                for (a in users) {
+                    var mytd = document.createElement('td')
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = users[a]
+                }
+                var editTd = document.createElement('td')
+                var editBtn = document.createElement('button')
+                mytr.appendChild(editTd)
+                editTd.appendChild(editBtn)
+                editBtn.innerHTML = 'Edit'
+                editBtn.setAttribute("onclick", "EditUser(" + i + ")")
+
+                var DeleteTd = document.createElement('td')
+                var DeleteBtn = document.createElement('button')
+                mytr.appendChild(DeleteTd)
+                DeleteTd.appendChild(DeleteBtn)
+                DeleteBtn.innerHTML = 'Delete'
+                DeleteBtn.setAttribute("onclick", "DeleteUser(" + i + ")")
+            })
+        }
+
+
+        function EditUser(i) {
+            console.log("Edit user Called" + i)
+        }
+        function DeleteUser(i) {
+            // console.log("delete user Called"+i)
+            allUsers.splice(i, 1)
+            displayusers()
+
+        }
+        displayusers()
+    </script>
+</body>
+
+</html>

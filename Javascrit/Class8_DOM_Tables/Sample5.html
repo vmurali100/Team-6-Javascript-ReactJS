@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 1000px;
+            border: 2px solid rgb(0, 255, 8);
+            text-align: center;
+            margin-left: 200px;
+            margin-top: 15px;
+        }
+
+        input#Amv {
+            text-align: center;
+            margin-left: 550px;
+            margin-top: 10px;
+            background-color: rgb(255, 0, 102);
+        }
+
+        tr {
+            margin-right: 50px;
+            color: red;
+            background-color: darkturquoise;
+        }
+
+        th {
+            background-color: rgb(0, 255, 140);
+            color: rgb(118, 15, 15);
+        }
+
+        button {
+            color: rgb(113, 22, 10);
+            background-color: rgb(30, 255, 128);
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="Amv">
+    <button onclick="Searchme()">Search</button>
+    <button onclick="Clear()">Cleardata</button>
+    <table>
+        <tr>
+            <thead>
+                <th>SlNO</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Kms</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+        var Coursedata = [
+            {
+                SlNO: 1,
+                From: "Kurnool",
+                To: "Bengalore",
+                Kms:"360 Kms"
+
+            },
+            {
+                SlNO: 2,
+                From: "Adoni",
+                To: "Kadapa",
+                Kms:"235 Kms"
+            },
+            {
+                SlNO: 3,
+                From: "Kurnool",
+                To: "Hyderabad",
+                Kms:"220 Kms"
+            },
+            {
+                SlNO: 4,
+                From: "Kurnool",
+                To: "Tirupathi",
+                Kms:"340 Kms"
+            },
+            {
+                SlNO: 5,
+                From: "Adoni",
+                To: "Anantapur",
+                Kms:"125 Kms"
+            },
+        ]
+        function displayUsers(Coursedata) {
+            document.querySelector("tbody").innerHTML = ""
+            Coursedata.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        displayUsers(Coursedata)
+
+        function Searchme() {
+            var usersearch = document.getElementById("Amv").value
+            console.log(usersearch)
+
+            var filteruser=Coursedata.filter((user)=> {
+            return user.From.indexOf(usersearch) > -1
+        })
+        displayUsers(filteruser)
+
+        }
+        function Clear() {
+            displayUsers(Coursedata)
+        }
+        
+
+    </script>
+</body>
+</html>

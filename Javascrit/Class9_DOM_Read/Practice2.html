@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input#to {
+            margin-left: 18px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        th{
+            text-align: center;
+            /* width: 800px; */
+            margin: 0 auto;
+            background-color: brown;
+            color: gold;
+        }
+    table{
+        width: 800px;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="from">From:</label>
+        <input type="text" name="" id="from"><br><br>
+        <label for="to">To:</label>
+        <input type="text" name="" id="to"><br><br>
+        <button type="buttons" onclick="Check()">Check</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>From</th>
+                <th>To</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Check() {
+            var user = {
+                Email: document.getElementById("from").value,
+                Password: document.getElementById("to").value
+            }
+            allUsers.push(user);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearForm();
+        }
+        function clearsForm() {
+            document.getElementById("from").value = "";
+            document.getElementById("to").value = ""
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var EditTd = document.createElement("td")
+                var Editbutton = document.createElement("buttons");
+                Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+                Editbutton.innerHTML = "Edit";
+                EditTd.appendChild(Editbutton);
+                myTr.appendChild(EditTd)
+
+                var DeleteTd = document.createElement("td")
+                var Deletebutton = document.createElement("buttons");
+                Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+                Deletebutton.innerHTML = "Delete";
+                DeleteTd.appendChild(Deletebutton);
+                myTr.appendChild(DeleteTd)
+
+
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function Edit(i) {
+            console.log("editUser called" + i)
+
+        }
+        function Delete(i) {
+            console.log("deleteUser called" + i)
+            allUsers.splice(i, 1);
+            displayUsers(allUsers)
+
+        }
+        displayUsers(allUsers);
+    </script>
+</body>
+
+</html>

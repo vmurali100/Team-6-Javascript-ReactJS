@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 1000px;
+            border: 2px solid red;
+            text-align: center;
+            margin-left: 200px;
+            margin-top: 15px;
+        }
+
+        input#Amv {
+            text-align: center;
+            margin-left: 550px;
+            margin-top: 10px;
+        }
+
+        tr {
+            border: 2px solid gray;
+            margin-right: 50px;
+        }
+        th{
+            background-color: blue;
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="Amv"> 
+    <button onclick="Searchme()">Search User</button>
+    <button onclick="Clear()">Cleardata</button>
+
+    <br>
+    <table>
+        <tr>
+            <thead>
+                <th>SlNO</th>
+                <th>StudentName</th>
+                <th>Course</th>
+                <th>Place</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var Coursedata = [
+            {
+                SlNO: 1,
+                StudentName: "Balachandra",
+                Course: "B.Sc",
+                Place: "Kurnool"
+            },
+            {
+                SlNO: 2,
+                StudentName: "Raghuramudu",
+                Course: "B.A",
+                Place: "Kurnool"
+            },
+            {
+                SlNO: 3,
+                StudentName: "Nagarjuna",
+                Course: "B.Com",
+                Place: "Kurnool"
+            },
+            {
+                SlNO: 4,
+                StudentName: "Basha",
+                Course: "B.Zc",
+                Place: "Kurnool"
+            },
+            {
+                SlNO: 5,
+                StudentName: "Wazith",
+                Course: "B.Sc(MPCS)",
+                Place: "Kurnool"
+            }
+        ]
+        function displayUsers(Coursedata) {
+            document.querySelector("tbody").innerHTML = ""
+            Coursedata.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        displayUsers(Coursedata)
+
+        function Searchme() {
+            var usersearch = document.getElementById("Amv").value
+            console.log(usersearch)
+
+            var filteruser=Coursedata.filter((user)=> {
+            return user.StudentName.indexOf(usersearch) > -1
+        })
+        displayUsers(filteruser)
+
+        }
+        function Clear() {
+            displayUsers(Coursedata)
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input#name {
+    width: 600px;
+    height: 40px;
+}
+input#password {
+    width: 600px;
+    height: 40px;
+}
+input#email {
+    width: 600px;
+    height: 40px;
+}
+select#emai {
+    width: 608px;
+    height: 40px;
+}
+select#ids {
+    width: 608px;
+    height: 40px;
+}
+select {
+    width: 83px;
+    height: 30px;
+}
+
+    </style>
+</head>
+<body>
+   <form action="">
+       <label for="">Username</label><br><br>
+       <input type="text" id="name" placeholder="username"><br><br>
+       <label for="">password</label><br><br>
+       <input type="text" id="password" placeholder="password"><br><br>
+       <label for="">Emailaddress</label><br><br>
+       <input type="text" id="email" placeholder="Email address"><br><br>
+       <select name="" id="emai">
+        <option value="">i am a man</option>
+        <option value="">i am a woman</option>
+       </select><br><br>
+       <select name="" id="ids">
+        <option value="">i want to find women</option>
+        <option value="">i want to find man</option>
+        </select><br><br>
+       <label for="">Date Of Birth</label><br><br>
+       <select name="" id="">
+           <option value="">year</option>
+           <option value="">2001</option>
+       </select>
+       <select name="" id="">
+           <option value="">month</option>
+           <option value="">january</option>
+       </select>
+       <select name="" id="">
+           <option value="">day</option>
+           <option value="">sunday</option>
+
+       </select><br><br>
+       <label for="">Height/Weight</label><br><br>
+       <select name="" id="">
+           <option value="">Height</option>
+           <option value="">5.2</option>
+       </select>
+       <select name="" id="">
+           <option value="">Weight</option>
+           <option value="">45</option>
+       </select>
+       <button type="button" onclick="follow()">ok</button>
+   </form> 
+   <table border="1">
+    <tr>
+        <thead>
+            
+            <th>UserName</th>
+            <th>Password</th>
+            <th>email address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+           
+        </thead>
+    </tr>
+</table>
+<script>
+    var alluser=JSON.parse(localStorage.getItem("allusers"))
+    if(alluser==null){
+        alluser=[]
+    }
+    function follow(){
+        var users={
+            
+            username:document.getElementById("name").value,
+            password:document.getElementById("password").value,
+            email:document.getElementById("email").value,
+            
+            
+        }
+     alluser.push(users)
+     localStorage.setItem("allusers",JSON.stringify(alluser))
+     console.log(users)
+     console.log(alluser)
+     display(alluser)
+     clear()
+    }
+    function clear(){
+      
+        document.getElementById("name").value="";
+        document.getElementById("password").value="";
+        document.getElementById("email").value="";
+        
+    }
+    function display(){
+        document.querySelector("tbody").innerHTML="";
+        alluser.forEach((use)=>{
+           var mytr=document.createElement("tr")
+           for(a in use){
+               var mytd=document.createElement("td")
+               mytd.innerHTML=use[a]
+               mytr.appendChild(mytd)
+           }
+           var edittd=document.createElement("td")
+              var editbtn=document.createElement("button")
+              editbtn.innerHTML="edit"
+              edittd.appendChild(editbtn)
+              mytr.appendChild(edittd)
+
+              var deletetd=document.createElement("td")
+              var deletebtn=document.createElement("button")
+              deletebtn.innerHTML="delete"
+              deletetd.appendChild(deletebtn)
+              mytr.appendChild(deletetd)
+              document.querySelector("tbody").appendChild(mytr)
+           
+        })
+    }
+    display(alluser)
+</script>
+</body>
+</html>

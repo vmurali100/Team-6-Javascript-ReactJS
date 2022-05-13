@@ -58,65 +58,35 @@
                     <option value="">I want to find men</option>
                 </select><br><br>
                 <label for="Date of birth"><b>Date of birth</b></label><br><br>
-                <select name="" id="Dateofbirth">
+                <select name="" id="yearOfbirth">
                     <option value="">Year</option>
-                    <option value="">2015</option>
-                    <option value="">2016</option>
-                    <option value="">2017</option>
-                    <option value="">2018</option>
-                    <option value="">2019</option>
-                    <option value="">2020</option>
-                    <option value="">2021</option>
-                    <option value="">2022</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
                 </select>
-                <select name="" id="">
+                <select name="" id="monthOfBirth">
                     <option value="">MONTH</option>
-                    <option value="">jan</option>
-                    <option value="">feb</option>
-                    <option value="">mar</option>
-                    <option value="">april</option>
-                    <option value="">may</option>
-                    <option value="">june</option>
-                    <option value="">july</option>
-                    <option value="">aug</option>
-                    <option value="">sep</option>
-                    <option value="">oct</option>
-                    <option value="">nov</option>
-                    <option value="">dec</option>
+                    <option value="jan">jan</option>
+                    <option value="feb">feb</option>
+                    <option value="mar">mar</option>
+                    <option value="april">april</option>
+                    <option value="may">may</option>
+                    <option value="june">june</option>
+                    <option value="july">july</option>
+                    <option value="aug">aug</option>
+                    <option value="sep">sep</option>
+                    <option value="oct">oct</option>
+                    <option value="nov">nov</option>
+                    <option value="dec">dec</option>
                 </select>
-                <select name="" id="">
-                    <option value="">DAY</option>
-                    <option value="">01</option>
-                    <option value="">02</option>
-                    <option value="">03</option>
-                    <option value="">04</option>
-                    <option value="">05</option>
-                    <option value="">06</option>
-                    <option value="">07</option>
-                    <option value="">08</option>
-                    <option value="">09</option>
-                    <option value="">10</option>
-                    <option value="">11</option>
-                    <option value="">12</option>
-                    <option value="">13</option>
-                    <option value="">14</option>
-                    <option value="">15</option>
-                    <option value="">16</option>
-                    <option value="">17</option>
-                    <option value="">18</option>
-                    <option value="">19</option>
-                    <option value="">20</option>
-                    <option value="">21</option>
-                    <option value="">22</option>
-                    <option value="">23</option>
-                    <option value="">24</option>
-                    <option value="">25</option>
-                    <option value="">26</option>
-                    <option value="">27</option>
-                    <option value="">28</option>
-                    <option value="">29</option>
-                    <option value="">30</option>
-                    <option value="">31</option>
+                <select name="" id="dob">
+                   
+                   
                 </select><br><br>
                 <label for=""><b>Height / Weight</b></label><br><br>
                 <select name="HeightWeight" id="HeightWeight">
@@ -148,6 +118,7 @@
                 <th>Username</th>
                 <th>Password</th>
                 <th>Email address</th>
+                <th>dateOfBirth</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -157,6 +128,14 @@
         </tbody>
     </table>
     <script>
+        let i =1 ;
+        while(i<=31){
+            var opt = document.createElement("option")
+            opt.innerHTML = i
+            opt.setAttribute("value",i);
+            document.getElementById("dob").appendChild(opt)
+            i++
+        }
         allusers = JSON.parse(localStorage.getItem("allusers"))
         if (allusers == null) {
             allusers = []
@@ -169,6 +148,11 @@
                 Emailaddress: document.getElementById("Emailaddress").value,
 
             }
+
+            var dateOfBirth = document.getElementById("dob").value;
+            var yearOfBirth= document.getElementById("yearOfbirth").value
+            var monthOfBirth = document.getElementById("monthOfBirth").value
+            users.dob = dateOfBirth+"/"+yearOfBirth+"/"+monthOfBirth
 
             allusers.push(users)
             localStorage.setItem("allusers", JSON.stringify(allusers))

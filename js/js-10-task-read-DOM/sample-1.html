@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f8ebd1;
+        }
+        input,
+        button {
+            background: #d3c7c3;
+            border-radius: 6px
+        }
+        table {
+            margin: 0 auto;
+        }
+        table#demo {
+            line-height: 2;
+        }
+        h1 {
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML Form</h1>
+    <form action="">
+        <table id="demo">
+            <tr>
+                <td><label for="fname">First Name:</label></td>
+                <td> <input type="text" name="" id="fname"></td>
+            </tr>
+            <tr>
+                <td> <label for="lname">Last Name:</label></td>
+                <td> <input type="text" name="" id="lname"></td>
+            </tr>
+            <tr>
+                <td> <label for="dob">Date of Birth:</label></td>
+                <td><input type="text" name="" id="dob"></td>
+
+            </tr>
+            <tr>
+                <td> <label for="email">Email id :</label></td>
+                <td><input type="text" name="" id="email"></td>
+            </tr>
+            <tr>
+                <td><label for="number">Mobile Number :</label></td>
+                <td> <input type="text" name="" id="number"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="addUser()">SUBMIT</button>
+                    <button type="button" onclick="resetUser()">RESET</button>
+                </td>
+            </tr>
+
+        </table>
+
+
+    </form><br><br>
+    <table border="1" id="demo2">
+        <tr>
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Email id</th>
+                <th>Mobile Number</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = []
+        function addUser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                dob: document.getElementById("dob").value,
+                email: document.getElementById("email").value,
+                number: document.getElementById("number").value
+            }
+            console.log(allUsers)
+            allUsers.push(user)
+            displayUsers(allUsers)
+
+        }
+        function resetUser() {
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("number").value = "";
+        }
+        function displayUsers(data) {
+            document.querySelectorAll("tbody")[1].innerHTML = ""
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBtn.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelectorAll("tbody")[1].appendChild(mytr)
+            })
+        }
+        function editUser(i) {
+            console.log("edit user called" + i)
+        }
+        function deleteUser(i) {
+            // console.log("delete user called"+i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+
+    </script>
+</body>
+
+</html>

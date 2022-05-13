@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #2b65dd;
+            color: white;
+            font-family: monospace;
+        }
+
+        table#demo {
+            border: 1px solid;
+            width: 60%;
+        }
+        table {
+    line-height: 2;
+}
+        .container {
+            width: 650px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <fieldset>
+            <legend>Registration Details</legend>
+            <table>
+                <tr>
+                    <td> <label for="university">university :</label></td>
+                    <td> <input type="text" name="" id="university"></td>
+                </tr>
+                <tr>
+                    <td><label for="institute">Institute :</label></td>
+                    <td> <input type="text" name="" id="institute"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="branch">Branch :</label>
+                    </td>
+                    <td>
+                        <!-- <select name="branch" id="branch">
+                            <option value="">---select---</option>
+                            <option value="">CSE</option>
+                            <option value="">ECE</option>
+                            <option value="">Mechanical</option>
+                            <option value="">civil</option>
+                        </select> -->
+                        <input type="text" name="" id="branch">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="degree">Degree :</label></td>
+                    <td>
+                        <!-- <select name="branch" id="degree">
+                            <option value="">--select--</option>
+                            <option value="">msc</option>
+                            <option value="">MBA</option>
+                            <option value="">pg</option>
+                        </select> -->
+                        <input type="text" name="" id="degree">
+                    </td>
+                    <td>
+                        <input type="radio">Pursuing 
+                    </td>
+                    <td>  <input type="radio">completed</td>
+                </tr>
+                <tr>
+                    <td><label for="average">Average cpi :</label></td>
+                    <td><input type="number" name="" id="average"></td>
+                    <td><label for="semester">The semester :</label></td>
+                    <td><input type="number" name="" id="semester"></td>
+                </tr>
+                <tr>
+                    <td><label for="experience">experience :</label></td>
+                    <td><input type="number" name="" id="experience"></td>
+                </tr>
+                <tr>
+                    <td><label for="website">Your website or Blog :</label></td>
+                    <td><input type="text" name="" id="website"></td>
+                </tr>
+            </table>
+        </fieldset><br>
+        <button type="button" onclick="submitUser()">submit</button><br><br>
+        <table id="demo" border="1">
+            <tr>
+                <thead>
+                    <th>University</th>
+                    <th>Institute</th>
+                    <th>Branch</th>
+                    <th>Degree</th>
+                    <th>Average</th>
+                    <th>Semester</th>
+                    <th>Experience</th>
+                    <th>website</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </thead>
+            </tr>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        var allUsers = []
+        function submitUser(data) {
+            var user = {
+                university: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                average: document.getElementById("average").value,
+                semester: document.getElementById("semester").value,
+                experience: document.getElementById("experience").value,
+                website: document.getElementById("website").value,
+            }
+            console.log(user)
+            allUsers.push(user)
+            displayUsers(allUsers)
+        }
+        function displayUsers(data) {
+            document.querySelectorAll("tbody")[1].innerHTML = ""
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBtn.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelectorAll("tbody")[1].appendChild(mytr)
+            })
+        }
+        function editUser(i) {
+            console.log("edit user called" + i)
+        }
+        function deleteUser(i) {
+            console.log("delete user called" + i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ body {
+    background-color: #bfdced;
+    font-family: sans-serif;
+}
+    div {
+    width: 580px;
+    margin: 0 auto;
+}
+h1 {
+    color: orange;
+    border-bottom: 1px solid blue;
+    margin: 0 10px 5px;
+}
+label {
+    color: #2d3981;
+}
+input {
+    border: 2px solid#555;
+    width: 400px;
+    padding: 5px;
+    margin: 7px;
+}
+input#city {
+    width: 326px;
+}
+input#state {
+    width: 48px;
+    margin: 0;
+}
+button {
+    float: right;
+    margin: 7px;
+    color: orange;
+}
+table{
+    margin: 0 auto;
+    width: 580px;
+}
+    </style>
+</head>
+<body>
+<div>
+    <h1>Address</h1>
+    <table>
+        <tr>
+            <td><label for="street">Street :</label></td>
+            <td><input type="text" name="" id="street"></td>
+        </tr>
+        <tr>
+            <td><label for="street"></label></td>
+            <td><input type="text" name="" id="street"></td>
+        </tr>
+        <tr>
+            <td><label for="city">City, State :</label></td>
+            <td><input type="text" name="" id="city"> <input type="text" name="" id="state"> </td>
+        </tr>
+        <tr>
+            <td><label for="zipcode"> Zip Code:</label></td>
+            <td><input type="text" name="" id="zipcode"></td>
+        </tr>
+        <tr>
+            <td><label for="country"> Country :</label></td>
+            <td><input type="text" name="" id="country"></td>
+        </tr>
+    </table>
+    <button type="button" onclick="okUser()">OK</button>
+    <button type="button" onclick="cancelUser()"> CANCEl</button> 
+</div>
+<br><br><br>
+<table border="1">
+    <tr>
+        <thead>
+            <th>Street</th>
+            <th>City,state</th>
+            <th>zipcode</th>
+            <th>Country</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+    </tr>
+    <tbody></tbody>
+</table >
+
+<script>
+    var allUsers=[]
+    function okUser(){
+        document.querySelectorAll("tbody")[1].innerHTML=""
+        var user={
+            street:document.getElementById("street").value,
+            city:document.getElementById("city").value,
+            zipode:document.getElementById("zipcode").value,
+            country:document.getElementById("country").value
+        }
+        console.log(allUsers)
+        allUsers.push(user)
+        displayUsers(allUsers)
+    }
+    function cancelUser(){
+        document.getElementById("street").value=""
+        document.getElementById("city").value=""
+        document.getElementById("zipcode").value=""
+        document.getElementById("country").value=""
+    }
+    function displayUsers(data){
+        document.querySelectorAll("tbody")[1].innerHTML = ""
+        data.forEach((user,i)=>{
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                mytd.innerHTML=user[a]
+                mytr.appendChild(mytd)
+            }
+            var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBtn.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+            document.querySelectorAll("tbody")[1].appendChild(mytr)
+        })
+    }
+    function editUser(i) {
+            console.log("edit user called" + i)
+        }
+        function deleteUser(i) {
+            console.log("delete user called"+i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+        
+</script>
+</body>
+</html>

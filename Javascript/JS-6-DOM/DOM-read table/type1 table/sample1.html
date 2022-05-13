@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            color: rgb(234, 234, 241);
+            background-color: rgb(8, 8, 121);
+        }
+        button{
+            color: rgb(232, 233, 241);
+            background-color: rgb(8, 8, 121);
+        }
+        th{
+            color: rgb(232, 233, 241);
+            background-color: rgb(5, 7, 90);
+        }
+    </style>
+</head>
+<body>
+    <label for="fname">first name</label>
+    <input type="text" name="" id="fname"><br><br>
+    <label for="lname">last name</label>
+    <input type="text" name="" id="lname"><br><br>
+    <label for="date">date of birth</label>
+    <input type="number" name="" id="date"><br><br>
+    <label for="email">email id</label>
+    <input type="text" name="" id="email"><br><br>
+    <label for="mobile">mobile number</label>
+    <input type="number" name="" id="mobile"><br><br>
+    <button type="button" onclick="adduser()">submit</button>
+    <button type="button" onclick="adduser1()">reset</button>
+    <hr>
+    <table border="1" style="border: 1px;color: blue;">
+        <tr>
+            <thead>
+                <th>first name</th>
+                <th>last name</th>
+                <th>date of birth</th>
+                <th>email id</th>
+                <th>mobile number</th>
+                <th>edit</th>
+                <th>delete</th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem(alluser))
+        if(alluser==null){
+            alluser=[]
+        }
+        function adduser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,  
+                date:document.getElementById("date").value,  
+                email:document.getElementById("email").value,  
+                mobile:document.getElementById("mobile").value,      
+            }
+            alluser.push(user)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            console.log(user)
+            displayusers(alluser) 
+            clearform()
+        }
+        function clearform(){
+            document.getElementById("fname").value=""
+            document.getElementById("lname").value=""
+            document.getElementById("date").value=""
+            document.getElementById("email").value=""
+            document.getElementById("mobile").value=""
+        }
+   function displayusers(data){
+    document.querySelector("tbody").innerHTML=""
+    data.forEach((user,i)=>{
+        var mytr=document.createElement("tr")
+        
+        for(a in user){
+            var mytd=document.createElement("td")
+            mytd.innerHTML=user[a]
+            mytr.appendChild(mytd)
+        }
+        var edittd=document.createElement("td")
+        var editbtn=document.createElement("button")
+        editbtn.setAttribute("onclick","edituser("+i+")")
+        editbtn.innerHTML="edit"
+        edittd.appendChild(editbtn)
+        mytr.appendChild(edittd)
+
+        var deletetd=document.createElement("td")
+        var deletebtn=document.createElement("button")
+        deletebtn.setAttribute("onclick","deleteuser("+i+")")
+        deletebtn.innerHTML="delete"
+        deletetd.appendChild(deletebtn)
+        mytr.appendChild(deletetd)
+
+        document.querySelector("tbody").appendChild(mytr)
+    })
+   }
+   function edituser(i){
+    console.log("edituser called"+i)
+   }
+
+   function deleteuser(i){
+       alluser.splice(i,1)
+       displayusers(alluser) 
+    console.log("deleteuser called"+i)
+   }
+
+   displayusers(alluser) 
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            color: rgb(255, 245, 245);
+            background-color: rgb(5, 71, 32);
+        }
+        button{
+            color: rgb(242, 243, 250);
+            background-color: rgb(74, 6, 95);
+        }
+        th{
+            color: aliceblue;
+            background-color: rgb(110, 5, 40);
+        }
+    </style>
+</head>
+<body>
+    <form action="1">
+        <legend>Registration details</legend><br><br>
+        <label for="university">university</label>
+        <input type="text" name="" id="university"><br><br>
+        <label for="institute">institute</label>
+        <input type="text" name="" id="institute"><br><br>
+        <label for="branch">branch</label>
+        <input type="number" name="" id="branch"><br><br>
+        <label for="degree">degree</label>
+        <input type="number" name="" id="degree"><br><br>
+        <label for="avarageCPI">avarage CPI</label>
+        <input type="text" name="" id="avarageCPI"><br><br>
+        <label for="Experience">Experience</label>
+        <input type="number" name="" id="Experience"><br><br>
+        <label for="yourwebsite">your website or blog</label>
+        <input type="text" name="" id="yourwebsite"><br><br>
+        <button type="button" onclick="adduser()">step2</button>
+    </form>
+    <hr>
+    <table border="2">
+        <tr>
+            <thead>
+                <th>university</th>
+                <th>institute</th>
+                <th>branch</th>
+                <th>degree</th>
+                <th>avarage CPI</th>
+                <th>Experience</th>
+                <th>your website or blog</th>
+                <th>edit</th>
+                <th>delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem(alluser))
+        if(alluser==null){
+            alluser=[]
+        }
+        function adduser(){
+            var user={
+                university:document.getElementById("university").value,
+                institute:document.getElementById("institute").value,
+                branch:document.getElementById("branch").value,
+                degree:document.getElementById("degree").value,
+                avarageCPI:document.getElementById("avarageCPI").value,
+                Experience:document.getElementById("Experience").value,
+                yourwebsite:document.getElementById("yourwebsite").value,
+            }
+            alluser.push(user)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            console.log(user)
+            displayusers(alluser)
+            clearform()
+        }
+         function clearform(){
+                document.getElementById("university").value=""
+                document.getElementById("institute").value=""
+                document.getElementById("branch").value=""
+                document.getElementById("degree").value=""
+                document.getElementById("avarageCPI").value=""
+                document.getElementById("Experience").value=""
+                document.getElementById("yourwebsite").value=""
+        }
+        function displayusers(data){
+    document.querySelector("tbody").innerHTML=""
+    data.forEach((user,i)=>{
+        var mytr=document.createElement("tr")
+        
+        for(a in user){
+            var mytd=document.createElement("td")
+            mytd.innerHTML=user[a]
+            mytr.appendChild(mytd)
+        }
+        var edittd=document.createElement("td")
+        var editbtn=document.createElement("button")
+        editbtn.setAttribute("onclick","edituser("+i+")")
+        editbtn.innerHTML="edit"
+        edittd.appendChild(editbtn)
+        mytr.appendChild(edittd)
+
+        var deletetd=document.createElement("td")
+        var deletebtn=document.createElement("button")
+        deletebtn.setAttribute("onclick","deleteuser("+i+")")
+        deletebtn.innerHTML="delete"
+        deletetd.appendChild(deletebtn)
+        mytr.appendChild(deletetd)
+
+        document.querySelector("tbody").appendChild(mytr)
+    })
+   }
+   function edituser(i){
+       console.log("edituser called"+i)
+   }
+   function deleteuser(i){
+       alluser.splice(i,1)
+       displayusers(alluser)
+    console.log("deleteuser called"+i)
+   }
+   displayusers(alluser)
+    </script>
+</body>
+</html>

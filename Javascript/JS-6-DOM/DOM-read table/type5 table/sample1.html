@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          td{
+            color: rgb(236, 242, 247);
+            background-color: rgb(117, 7, 93);
+        }
+        button{
+            color: rgb(248, 242, 248);
+            background-color: rgb(117, 7, 93);
+        }
+        th{
+         color: aliceblue;
+            background-color: rgb(110, 8, 93);
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">username</label><br><br>
+        <input type="text" id="username" placeholder="username"><br><br>
+        <label for="">password</label><br><br>
+        <input type="text" id="password" placeholder="password"><br><br>
+        <label for="">emailaddress</label><br><br>
+        <input type="text" id="emailaddress" placeholder="emailaddress"><br><br>
+        <select name="" id="iam">
+            <option value="">I am man </option>
+            <option value="">I am woman </option>
+        </select><br><br>
+        <select name="" id="want">
+            <option value="">I want to find man </option>
+            <option value="">I want to find woman </option>
+        </select><br><br>
+        <label for="">Date Of Birth</label><br><br>
+        <select name="" id="">
+            <option value="">year</option>
+            <option value="">2000</option>
+        </select>
+        <select name="" id="">
+            <option value="">month</option>
+            <option value="">april</option>
+        </select>
+        <select name="" id="">
+            <option value="">day</option>
+            <option value="">friday</option>
+        </select><br><br>
+        <label for="">height/weight</label><br><br>
+        <select name="" id="">
+            <option value="">height</option>
+            <option value="">152</option>
+        </select>
+        <select name="" id="">
+            <option value="">weight</option>
+            <option value="">75</option>
+        </select><br>
+        <button type="button" onclick="adduser()">find</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>username</th>
+                <th>password</th>
+                <th>email address</th>
+                <th>edit</th>
+                <th>delete</th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem(alluser))
+        if(alluser==null){
+            alluser=[]
+        }
+        function adduser(){
+            var user={
+                username:document.getElementById("username").value, 
+                password:document.getElementById("password").value, 
+                emailaddress:document.getElementById("emailaddress").value, 
+            }
+            alluser.push(user)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            console.log(user)
+            displayusers(alluser)
+            clearform()
+        }
+        function clearform(){
+            document.getElementById("username").value=""
+            document.getElementById("password").value=""
+            document.getElementById("emailaddress").value=""
+        }
+        function displayusers(data){
+    document.querySelector("tbody").innerHTML=""
+    data.forEach((user,i)=>{
+        var mytr=document.createElement("tr")
+        
+        for(a in user){
+            var mytd=document.createElement("td")
+            mytd.innerHTML=user[a]
+            mytr.appendChild(mytd) 
+        }
+        var edittd=document.createElement("td")
+        var editbtn=document.createElement("button")
+        editbtn.setAttribute("onclick","edituser("+i+")")
+        editbtn.innerHTML="edit"
+        edittd.appendChild(editbtn)
+        mytr.appendChild(edittd)
+
+        var deletetd=document.createElement("td")
+        var deletebtn=document.createElement("button")
+        deletebtn.setAttribute("onclick","deleteuser("+i+")")
+        deletebtn.innerHTML="delete"
+        deletetd.appendChild(deletebtn)
+        mytr.appendChild(deletetd)
+        document.querySelector("tbody").appendChild(mytr)
+    })
+   }
+   function edituser(i){
+    console.log("edituser called"+i)
+   }
+
+   function deleteuser(i){
+       alluser.splice(i,1)
+       displayusers(alluser) 
+    console.log("deleteuser called"+i)
+   }
+
+   displayusers(alluser)
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            text-align: center;
+            background-color:darkcyan;
+            color:black;
+        }
+
+        h1 {
+            margin-left: -240px;
+            margin-top: 50px;
+        }
+
+        hr {
+            margin-top: -20px;
+            width: 350px;
+            background-color: brown;
+        }
+
+        input#Street {
+            margin-left: 25px;
+        }
+
+        input#Streets {
+            margin-left: 70px;
+        }
+
+        input#City {
+            margin-left: -3px;
+            width: 120px;
+        }
+
+        input#Citys {
+            width: 30px;
+        }
+
+        input#Country {
+            margin-left: 8px;
+        }
+
+        button {
+            margin-left: 50px;
+            margin-right: -40px;
+            border-radius: 5px;
+        }
+        input{
+            border-radius: 5px;
+        }
+        table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="">
+            <h1>Address</h1>
+        </label>
+        <label for="" id="hr">
+            <hr>
+        </label>
+        <label for="">Street:</label>
+        <input type="text" name="" id="Street"><br><br>
+        <input type="text" name="" id="Streets"><br><br>
+        <label for="">City, state:</label>
+        <input type="text" name="" id="City">
+        <input type="text" name="" id="Citys"><br><br>
+        <label for="">Zip Code:</label>
+        <input type="text" name="" id="Zip"><br><br>
+        <label for="">Country:</label>
+        <input type="text" name="" id="Country"><br><br>
+        <button>OK</button>
+        <button>Cancel</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Street</th>
+                <th>City, state</th>
+                <th>Zip Code</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Check() {
+            var user = {
+                Street: document.getElementById("Street").value,
+                Streets: document.getElementById("Streets").value,
+                City: document.getElementById("City").value,
+                Citys: document.getElementById("Citys").value,
+                Zip: document.getElementById("Zip").value,
+                Country: document.getElementById("Country").value,
+            }
+            allUsers.push(user);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearForm();
+        }
+        function clearsForm() {
+            document.getElementById("Street").value = "";
+            document.getElementById("Streets").value = "";
+            document.getElementById("City").value = "";
+            document.getElementById("Citys").value = "";
+            document.getElementById("Zip").value = "";
+            document.getElementById("Country").value = "";
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var EditTd = document.createElement("td")
+                var Editbutton = document.createElement("buttons");
+                Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+                Editbutton.innerHTML = "Edit";
+                EditTd.appendChild(Editbutton);
+                myTr.appendChild(EditTd)
+
+                var DeleteTd = document.createElement("td")
+                var Deletebutton = document.createElement("buttons");
+                Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+                Deletebutton.innerHTML = "Delete";
+                DeleteTd.appendChild(Deletebutton);
+                myTr.appendChild(DeleteTd)
+
+
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function Edit(i) {
+            console.log("editUser called" + i)
+
+        }
+        function Delete(i) {
+            console.log("deleteUser called" + i)
+            allUsers.splice(i, 1);
+            displayUsers(allUsers)
+
+        }
+        displayUsers(allUsers);
+    </script>
+    </script>
+</body>
+
+</html>

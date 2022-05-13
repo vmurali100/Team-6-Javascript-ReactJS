@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+        <th>company</th>
+        <th>contact</th> 
+        <th>country</th>       
+        </tr>
+      <!--  <tr>
+            <td>Alfredfutterkiste</td>
+            <td>Mariaanders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>centro comercial Moctezuma</td>
+            <td>Fransiscozang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Emsthandle</td>
+            <td>Rolandmendal</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Islandtrading</td>
+            <td>HelenBennet</td>
+            <td>Uk</td>
+        </tr>
+        <tr>
+            <td>Laughingbacheswinecellars</td>
+            <td>Yoshitannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>MagaziniAlimentaririuniti</td>
+            <td>Glovannirovelli</td>
+            <td>Italy</td>
+        </tr>-->
+    </table>
+    <script>
+        var data=[
+            {
+            company:"Alfredfutterkiste",
+            contact:"Mariaanders",
+            country:"Germany",
+        },
+        {
+            company:"centrocomercialMoctezuma",
+            contact:"Fransiscozang",
+            country:"Mexico",
+        },
+        {
+            company:"Emsthandle",
+            contact:"Rolandmendal",
+            country:"Austria",
+        },
+        {
+            company:"Islandtrading",
+            contact:"HelenBennet",
+            country:"Uk",
+        },
+        {
+            company:"Laughingbacheswinecellars",
+            contact:"Yoshitannamuri",
+            country:"Canada",
+        },
+        {
+            company:"MagaziniAlimentaririuniti",
+            contact:"Glovannirovelli",
+            country:"Italy",
+        }
+    ]
+
+    data.forEach((user)=>{
+var mytr=document.createElement("tr");
+for(a in user){
+var mytd=document.createElement("td")
+mytd.innerHTML=user[a]
+mytr.appendChild(mytd)
+}
+
+document.querySelector("table").appendChild(mytr)
+    })
+    </script>
+</body>
+</html>

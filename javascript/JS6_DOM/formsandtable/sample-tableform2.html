@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Firstname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="">Lastname</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="">Email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="">Conatactno</label>
+        <input type="text" name="" id="contactno"><br>
+        <button type="button" onclick="adduser()">Adduser</button>
+    </form>
+    <hr>
+    <table border="1">
+        
+        <tr>
+            <thead>
+            <th>FirstName</th>
+            <th>Lastname</th>
+            <th>ContactNo</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        </tr>
+   
+       <tbody></tbody>
+    </table>
+
+    <script>
+        var allUsers=JSON.parse(localStorage.getItem(allUsers))
+        if(allUsers==null){
+            allUsers=[]
+        }
+    function adduser(){
+        var user={
+            fname:document.getElementById("fname").value,
+            lname:document.getElementById("lname").value,
+            email:document.getElementById("email").value,
+            contactno:document.getElementById("contactno").value
+        }
+        allUsers.push(user)
+        localStorage.setItem("allUsers",JSON.stringify(allUsers))
+        displayUser(allUsers)
+       // console.log(user);
+       // console.log(allUsers);
+       clearform();
+    }
+
+    function clearform(){
+        document.getElementById("fname").value="",
+        document.getElementById("lname").value="",
+        document.getElementById("email").value="",
+        document.getElementById("contactno").value=""
+    }
+
+        function displayUser(data){
+       document.querySelector("tbody").innerHTML="";
+        data.forEach((user,i) => {
+           var myTr=document.createElement("tr"); 
+           for(a in user){
+            var myTd=document.createElement("td");
+            myTd.innerHTML=user[a]
+            myTr.appendChild(myTd)
+           }
+           var editTd=document.createElement("td");
+           var editBtn=document.createElement("button");
+           editBtn.innerHTML="Edit"
+           editBtn.setAttribute("onclick","edituser("+i+")")
+           editTd.appendChild(editBtn);
+           myTr.appendChild(editTd);
+
+           var deleteTd=document.createElement("td");
+           var deleteBtn=document.createElement("button");
+           deleteBtn.innerHTML="delete"
+           deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+           deleteTd.appendChild(deleteBtn);
+           myTr.appendChild(deleteTd);
+           
+           document.querySelector("tbody").appendChild(myTr);
+    });
+}
+function editUser(i){
+console.log("edit user called"+i);
+}
+function deleteUser(i){
+allUsers.splice(i,1);
+displayUser(allUsers)
+}
+displayUser(allUsers)
+</script>
+</body>
+</html>

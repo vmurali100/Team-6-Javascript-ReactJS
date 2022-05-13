@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">Firstname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">Lastname</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="email">Email</label>
+        <input type="email" name="" id="email"><br>
+        <label for="contactno">Contactno</label>
+        <input type="number" name="" id="contactno"><br>
+        <label for="city">City</label>
+        <input type="text" name="" id="city"><br>
+        <button type="button" onclick="adduser()">Adduser</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Contactno</th>
+                <th>City</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+
+       var allusers=JSON.parse(localStorage.getItem("allusers"));
+       if(allusers==null){
+        allusers=[]
+       }
+
+        function adduser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                email:document.getElementById("email").value,
+                contactno:document.getElementById("contactno").value,
+                city:document.getElementById("city").value
+            }
+            allusers.push();
+            localStorage.setItem("allusers",JSON.stringify(allusers))
+            displayalluser(allusers);
+            clearform();
+           // console.log(user);
+           // console.log(allusers);
+        }
+
+        function clearform(){
+            document.getElementById("fname").value="";
+            document.getElementById("lname").value="";
+            document.getElementById("email").value="";
+            document.getElementById("contactno").value="";
+            document.getElementById("city").value=""
+        }
+
+
+        function displayalluser(data){
+            document.querySelector("tbody").innerHTML="";
+            data.forEach((user)=>{
+                var myTr=document.createElement("tr");
+                for(a in user){
+                    var myTd=document.createElement("td");
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd);
+                }
+
+                var editTd=document.createElement("td");
+                var editbtn=document.createElement("button");
+                editbtn.setAttribute("onclicK","edituser("+i+")")
+                editbtn.innerHTML="Edit"
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd);
+
+                
+                vardeleteTd=document.createElement("td");
+                var deletetbtn=document.createElement("button");
+                deletetbtn.setAttribute("onclicl","deletuser("+i+")")
+                deletebtn.innerHTML="Delete"
+               deleteTd.appendChild(deletebtn);
+                myTr.appendChild(deleteTd);
+
+
+                document.querySelector("tbody").appendChild(myTr);
+            });
+        }
+
+           function edituser(i){
+            console.log("edit user called"+i)
+          }
+
+         function deleteuser(i){
+                allusers.splice(i,1);
+                displayalluser(allusers)
+        }
+        displayalluser(allusers);
+    </script>
+</body>
+</html>

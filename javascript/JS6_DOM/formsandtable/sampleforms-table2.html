@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="class">Class</label>
+        <input type="text" name="" id="class"><br>
+        <label for="age">Age</label>
+        <input type="number" name="" id="age"><br>
+        <label for="rollno">Rollno</label>
+        <input type="number" name="" id="rollno"><br>
+        <label for="state">State</label><br>
+        <input type="text" name="" id="state"><br>
+        <label for="school">School</label>
+        <input type="text" name="" id="school"><br>
+        <label for="country">country</label>
+        <input type="text" name="" id="country"><br>
+        <button type="button" onclick="addDetails()">AddDetails</button>
+    </form>
+    <table border="1" style="color: red;">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Age</th>
+                <th>RollNo</th>
+                <th>State</th>
+                <th>School</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem("alluser"));
+        if(alluser==null){
+            alluser=[]
+        }
+
+        function addDetails(){
+            var user={
+            name:document.getElementById("name").value,
+            class:document.getElementById("class").value,
+            age:document.getElementById("age").value,
+            rollno:document.getElementById("rollno").value,
+            state:document.getElementById("state").value,
+            school:document.getElementById("school").value,
+            country:document.getElementById("country").value
+            }
+            alluser.push()
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            display(alluser);
+            clearform();
+        }
+        function clearform(){
+            document.getElementById("name").value="";
+            document.getElementById("class").value="";
+            document.getElementById("age").value="";
+            document.getElementById("rollno").value="";
+            document.getElementById("state").value="";
+            document.getElementById("school").value="";
+            document.getElementById("country").value="";
+        }
+
+        function display(data){
+            document.querySelector("tbody").innerHTML="";
+            data.forEach((user)=>{
+                var myTr=document.createElement("tr");
+                for(a in user){
+                    var myTd=document.createElement("td");
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd);
+                }
+                var editTd=document.createElement("td");
+                var editbtn=document.createElement("button");
+                editbtn.setAttribute("onclick","edituser(+i+)")
+                editbtn.innerHTML="Edit"
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd);
+
+                
+                var deleteTd=document.createElement("td");
+                var deletebtn=document.createElement("button");
+               deletebtn.setAttribute("onclick","deleteuser(+i+)")
+                deletebtn.innerHTML="Delete"
+                deleteTd.appendChild(deletebtn);
+                myTr.appendChild(deleteTd);
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function edituser(i){
+            console.log("edit user called"+i);
+        }
+        function deleteuser(i){
+            alluser.splice(i,1);
+            display(alluser);
+        }
+        display(alluser);
+    </script>
+</body>
+</html>

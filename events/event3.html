@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="sayhello()">Clickme</button>
+    <input type="text" onblur="sayhello()" onfocus="focusfunction()" onchange="handleChange()">
+    <select name="" id="" onchange="handlechange()">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+        <option value="">4</option>
+    </select>
+    <br><br>
+    <input type="checkbox" name="" id="">HTML
+    <input type="checkbox" name="" id="">CSS
+    <input type="checkbox" name="" id="">JS
+    <br><br>
+    <input type="radio" name="" id="">Female
+    <input type="radio" name="" id="">Male
+    <script>
+        function sayhello(){
+            alert('Hello world')
+        }
+        function focusfunction(params){
+            console.log("You just focused")
+        }
+        function handleChange(){
+            console.log("You just changed the values")
+        }
+    </script>
+</body>
+</html>

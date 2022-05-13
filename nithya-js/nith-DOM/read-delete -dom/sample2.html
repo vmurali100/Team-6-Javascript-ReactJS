@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">FirstName</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="Lname">LaststName</label>
+        <input type="text" name="" id="Lname"><br><br>
+        <label for="address">Address</label>
+        <input type="text" name="" id="address"><br><br>
+        <label for="mobile">mobileNo</label>
+        <input type="number" name="" id="mobile"><br><br>
+        <button type="button" onclick="getdata()">add user</button>
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>FirstName</th>
+                <th>LaststName</th>
+                <th>Address</th>
+                <th>mobile</th>
+                <th>edit</th>
+                <th>delete</th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        var allusers=JSON.parse(localStorage.getItem("allusers"))
+        if(allusers==null){
+            allusers=[]
+        }
+        function getdata(){
+            var user={
+                fname:document.getElementById("fname").value,
+                Lname:document.getElementById("Lname").value,
+                address:document.getElementById("address").value,
+                mobile:document.getElementById("mobile").value
+            }
+            allusers.push(user)
+            localStorage.setItem("allusers",JSON.stringify(allusers))
+            // console.log(allusers)
+            // console.log(user)
+            displayusers(allusers)
+            clear()
+        }
+        function clear(){
+            document.getElementById("fname").value="";
+            document.getElementById("Lname").value="";
+            document.getElementById("address").value="";
+            document.getElementById("mobile").value="";
+
+        }
+         function displayusers(){
+            document.querySelector("tbody").innerHTML=""
+             allusers.forEach((use)=>{
+                var mytr=document.createElement("tr")
+                 for (a in use){
+                     var mytd=document.createElement("td")
+                     mytd.innerHTML=use[a]
+                     mytr.appendChild(mytd);
+                 }
+                 var edittd=document.createElement("td")
+                 var editbtn=document.createElement("button")
+                 editbtn.innerHTML="edit";
+                 edittd.appendChild(editbtn);
+                 mytr.appendChild(edittd)
+               
+                 var deletetd=document.createElement("td")
+                 var deletebtn=document.createElement("button")
+                 deletebtn.innerHTML="delete"
+                 deletetd.appendChild(deletebtn);
+                 mytr.appendChild(deletetd)
+                 document.querySelector("tbody").appendChild(mytr)
+             })
+         }
+         displayusers(allusers)
+    </script>
+
+</body>
+</html>

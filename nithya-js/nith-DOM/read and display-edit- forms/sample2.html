@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+    color: orange;
+}
+input#street {
+    margin-left: 42px;
+}
+input#ss {
+    margin-left: 96px;
+}
+input#lt {
+    width: 20px;
+}
+button#but1\ {
+    margin-left: 170px;
+    color: orange;
+}
+label {
+    color: blue;
+    font-size: larger;
+}
+body {
+    background-color: aqua;
+}
+
+    </style>
+</head>
+<body>
+   
+    <h1>Address</h1>
+    <hr>
+    <label action="">street : </label>
+    <input type="text" id="street"><br><br>
+    <input type="text" id="ss"><br><br>
+    <label action="">City,State : </label>
+    <input type="text" id="city">
+    <input type="text" id="lt"><br><br>
+    <label action="">Zip code : </label>
+    <input type="text" id="code"><br><br>
+    <label for="">Country : </label>
+    <input type="text" id="country"><br><br>
+    <button type="button" id="but1 " onclick="displaydata()" >Ok</button>
+    <button id="but2">Cancel</button>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>street</th>
+                <th>City,State</th>
+                <th>Zip code</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+
+    </table>
+    <tbody></tbody>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem("allusers"))
+        if(alluser==null){
+            alluser=[]
+        }
+        function displaydata(){
+            var users={
+                street:document.getElementById("street").value,
+                city:document.getElementById("city").value,
+                code:document.getElementById("code").value,
+                country:document.getElementById("country").value,
+            }
+         alluser.push(users)
+         localStorage.setItem("allusers",JSON.stringify(alluser))
+         console.log(users)
+         console.log(alluser)
+         display(alluser)
+         clear()
+        }
+        function clear(){
+            document.getElementById("street").value="";
+            document.getElementById("ss").value="";
+            document.getElementById("city").value="";
+            document.getElementById("lt").value="";
+            document.getElementById("code").value="";
+            document.getElementById("country").value="";
+        }
+        function display(){
+            document.querySelector("tbody").innerHTML="";
+            alluser.forEach((use)=>{
+               var mytr=document.createElement("tr")
+               for(a in use){
+                   var mytd=document.createElement("td")
+                   mytd.innerHTML=use[a]
+                   mytr.appendChild(mytd)
+               }
+               var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.innerHTML="edit"
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.innerHTML="delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+                  document.querySelector("tbody").appendChild(mytr)
+               
+            })
+        }
+        display(alluser)
+    </script>
+
+</body>
+</html>

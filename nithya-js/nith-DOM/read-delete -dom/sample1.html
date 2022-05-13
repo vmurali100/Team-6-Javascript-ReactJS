@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <form action="">
+        <label for="fname">First Name</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="lname">Last Name</label>
+        <input type="text" name="" id="lname"><br><br>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br><br>
+        <button type="button" onclick="adduser()">addd user</button>
+        
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        //read the values from form and create an object
+        //Add the object to the array
+        //display the array of objects in table
+
+        var allusers=JSON.parse(localStorage.getItem("allusers"))
+        if(allusers==null){
+            allusers=[]
+        }
+        function adduser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                email:document.getElementById("email").value
+            }
+            console.log(user)
+            allusers.push(user)
+            //storing in local storage
+            localStorage.setItem("allusers",JSON.stringify(allusers))
+            console.log(allusers);
+            displayall(allusers);
+            clear();
+        }
+        function clear(){
+
+            document.getElementById("fname").value="";
+            document.getElementById("lname").value="";
+            document.getElementById("email").value="";
+        }
+        function displayall(data){
+            document.querySelector("tbody").innerHTML="";
+            allusers.forEach((use)=>{
+               var mytr=document.createElement("tr")
+                  for(a in use){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=use[a]
+                    mytr.appendChild(mytd)
+                  }
+                  var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.innerHTML="edit"
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.innerHTML="delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+                  document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        displayall(allusers)
+    </script>
+</body>
+</html>

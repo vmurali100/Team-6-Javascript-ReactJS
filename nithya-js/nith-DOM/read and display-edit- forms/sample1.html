@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+    background-color: #bcb4b4;
+}
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="fname">First Name : </label>
+        <input type="text" id="fname"><br><br>
+        <label for="lname">Last Name : </label>
+        <input type="text" id="lname"><br><br>
+        <label for="birth">Date Of Birth : </label>
+        <input type="text" id="birth"><br><br>
+        <label for="email">Email id : </label>
+        <input type="text" id="email"><br><br>
+        <label for="mobile">Mobile No : </label>
+        <input type="number" id="mobile"><br><br>
+        <button type="button" onclick="displayall()">submit</button>
+        <button>Reset</button>
+    </form>
+    <table border="1" style="color: red;background-color: greenyellow; ">
+        <tr>
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </thead>
+
+        </tr>
+    </table>
+    <tbody></tbody>
+    <script>
+        var allusers=JSON.parse(localStorage.getItem("allusers"))
+        if(allusers==null){
+            allusers=[]
+        }
+      function displayall(){
+             var  user={
+                    fname:document.getElementById("fname").value,
+                    lname:document.getElementById("lname").value,
+                    birth:document.getElementById("birth").value,
+                    email:document.getElementById("email").value,
+                    mobile:document.getElementById("mobile").value,  
+               }
+             allusers.push(user)
+             localStorage.setItem("allusers",JSON.stringify(allusers))
+             console.log(user)
+             console.log(allusers)
+             displayuser(allusers)
+             clear()
+       }
+       function clear(){
+            document.getElementById("fname").value="",
+            document.getElementById("lname").value="",
+            document.getElementById("birth").value="",
+            document.getElementById("email").value="",
+            document.getElementById("mobile").value=""
+       }
+       function displayuser(){
+           document.querySelector("tbody").innerHTML="";
+           allusers.forEach((use)=>{
+              var mytr=document.createElement("tr")
+               for(a in use){
+                     var mytd=document.createElement("td")
+                     mytd.innerHTML=use[a]
+                     mytr.appendChild(mytd)
+               }
+               var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.innerHTML="edit"
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.innerHTML="delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+               document.querySelector("tbody").appendChild(mytr)
+           })
+       }
+       displayuser(allusers)
+          
+    
+        </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input#name {
+    width: 675px;
+    height: 42px;
+}
+   input#UserName {
+    width: 673px;
+    height: 42px;
+}
+input#email {
+    width: 673px;
+    height: 42px;
+}
+  input#Password {
+    width: 673px;
+    height: 42px;
+}
+input#Confirm {
+    width: 673px;
+    height: 42px;
+}
+input#sms {
+    width: 673px;
+    height: 42px;
+}
+button#btn {
+    background: aqua;
+    width: 679px;
+    height: 42px;
+    font-size: 30px;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Bootstrap 4 form validation Demo</h1>
+    <form action="">
+        <label for="">Name</label><br><br>
+        <input type="text" id="name" placeholder="name"><br><br>
+        <label for="">UserName</label><br><br>
+        <input type="text" id="UserName" placeholder="UserName"><br><br>
+        <label for="">Email</label><br><br>
+        <input type="text" id="email" placeholder="email"><br><br>
+        <label for="">Password</label><br><br>
+        <input type="text" id="Password" placeholder="password"><br><br>
+        <label for="">Confirm Password</label><br><br>
+        <input type="text" id="Confirm" placeholder="confirm password"><br><br>
+        <label for="">Message</label><br><br>
+        <input type="text" id="sms" placeholder="message"><br><br>
+    </form>
+    <button id="btn" type="button"  onclick="displayinfo()">send</button>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>UserName</th>
+                <th>email</th>
+                <th>Password</th>
+                <th>confirmpassword</th>
+                <th>message</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem("allusers"))
+        if(alluser==null){
+            alluser=[]
+        }
+        function displayinfo(){
+            var users={
+                name:document.getElementById("name").value,
+                username:document.getElementById("UserName").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("Password").value,
+                confirmpassword:document.getElementById("Confirm").value,
+                message:document.getElementById("sms").value,
+            }
+         alluser.push(users)
+         localStorage.setItem("allusers",JSON.stringify(alluser))
+         console.log(users)
+         console.log(alluser)
+         display(alluser)
+         clear()
+        }
+        function clear(){
+            document.getElementById("name").value="";
+            document.getElementById("UserName").value="";
+            document.getElementById("email").value="";
+            document.getElementById("Password").value="";
+            document.getElementById("Confirm").value="";
+            document.getElementById("sms").value="";
+        }
+        function display(){
+            document.querySelector("tbody").innerHTML="";
+            alluser.forEach((use)=>{
+               var mytr=document.createElement("tr")
+               for(a in use){
+                   var mytd=document.createElement("td")
+                   mytd.innerHTML=use[a]
+                   mytr.appendChild(mytd)
+               }
+               var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.innerHTML="edit"
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.innerHTML="delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+                  document.querySelector("tbody").appendChild(mytr)
+               
+            })
+        }
+        display(alluser)
+    </script>
+</body>
+</html>

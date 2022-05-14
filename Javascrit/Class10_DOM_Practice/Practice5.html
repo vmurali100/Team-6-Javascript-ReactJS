@@ -28,20 +28,20 @@
 </head>
 
 <body>
-    <form action="">
+    <form >
         <label for="UserName">UserName</label><br>
         <input type="text" placeholder="UserName" id="UserName"><br><br>
         <label for="Password">Password</label><br>
         <input type="text" placeholder="Password" id="Password"><br><br>
-        <label for="Email Address">Email Address</label><br>
-        <input type="text" placeholder="Email Address" id="Email Address"><br><br>
+        <label for="EmailAddress">Email Address</label><br>
+        <input type="text" placeholder="EmailAddress" id="EmailAddress"><br><br>
         <select name="">
             <option value="">Iam A Man</option>
         </select><br><br>
         <select name="">
             <option value="">I Want to find A Women</option>
         </select><br><br>
-        <label for="Date Of Birth">Date Of Birth</label><br>
+        <label for="DateOfBirth">Date Of Birth</label><br>
         <select name="" id="YearOfBirth">
             <option value="">Year</option>
             <option value="2022">2022</option>
@@ -67,7 +67,7 @@
         </select>
         <select name="" id="DOB">
         </select><br><br>
-        <label for="Height/Weight">Height/Weight</label><br>
+        <label for="Height/Weight" id="Height">Height/Weight</label><br>
         <select name="">
             <option value="">Height</option>
             <option value="">5.1 Feets</option>
@@ -84,7 +84,7 @@
             <option value="">64 Kgs</option>
             <option value="">65 Kgs</option>
         </select><br><br>
-        <button type="buttons" onclick="Send()">Submit</button><br><br>
+        <button type="button" onclick="Submit()">Click</button><br><br>
     </form>
     <hr>
     <table border="1">
@@ -93,8 +93,8 @@
                 <th>UserName</th>
                 <th>Password</th>
                 <th>Email Address</th>
-                <th>Date Of Birth</th>
                 <th>Height/Weight</th>
+                <th>Date Of Birth</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -116,12 +116,12 @@
         if (allUsers == null) {
             allUsers = []
         }
-        function Send() {
+        function Submit() {
             var user = {
                 UserName: document.getElementById("UserName").value,
                 Password: document.getElementById("Password").value,
-                EmailAddress: document.getElementById("Email Address").value,
-                HeightWeight: document.getElementById("Height/Weight").value,
+                EmailAddress: document.getElementById("EmailAddress").value,
+                HeightWeight: document.getElementById("Height").value,
             }
             var DateOfBirth = document.getElementById("DOB").value;
             var YearOfBirth = document.getElementById("YearOfBirth").value;
@@ -132,13 +132,13 @@
             allUsers.push(user);
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
             displayUsers(allUsers);
-            clearForm(users);
+            clearsForm(user);
         }
         function clearsForm() {
             document.getElementById("UserName").value = "";
             document.getElementById("Password").value = "";
             document.getElementById("Email Address").value = "";
-            document.getElementById("Height/Weight").value = "";
+            document.getElementById("Height").value = "";
             document.getElementById("DOB").value = "";
 
         }
@@ -152,14 +152,14 @@
                     myTr.appendChild(myTd);
                 }
                 var EditTd = document.createElement("td")
-                var Editbutton = document.createElement("buttons");
+                var Editbutton = document.createElement("button");
                 Editbutton.setAttribute("onclick", "Edit(" + i + ")")
                 Editbutton.innerHTML = "Edit";
                 EditTd.appendChild(Editbutton);
                 myTr.appendChild(EditTd)
 
                 var DeleteTd = document.createElement("td")
-                var Deletebutton = document.createElement("buttons");
+                var Deletebutton = document.createElement("button");
                 Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
                 Deletebutton.innerHTML = "Delete";
                 DeleteTd.appendChild(Deletebutton);

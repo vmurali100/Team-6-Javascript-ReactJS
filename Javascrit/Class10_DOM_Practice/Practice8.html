@@ -33,10 +33,10 @@
 <body>
     <form action="">
         <label for="from">From:</label>
-        <input type="text" name="" id="from"><br><br>
+        <input type="text" name="" id="from" onkeyup="validate()"><br><br>
         <label for="to">To:</label>
-        <input type="text" name="" id="to"><br><br>
-        <button type="buttons" onclick="Check()">Check</button>
+        <input type="text" name="" id="to" onkeyup="validate()"><br><br>
+        <button type="buttons" onclick="Check()" disabled = "true" id="A">Check</button>
     </form>
     <hr>
     <table border="1">
@@ -110,6 +110,24 @@
 
         }
         displayUsers(allUsers);
+
+        function validate(){
+        var user = {
+            From:document.getElementById("from").value,
+           To:document.getElementById("to").value,
+        };
+        var Check = false;
+        for(a in user){
+            if(user[a] == ""){
+                Check = true
+            }
+        }
+        if (Check == true){
+            document.getElementById("A").setAttribute("disabled",true)
+        }else{
+            document.getElementById("A").removeAttribute("disabled")
+        }
+    }
     </script>
 </body>
 

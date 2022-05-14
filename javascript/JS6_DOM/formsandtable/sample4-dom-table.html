@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        form{
+            color: red;  line-height: 25px;
+        }
+        input{
+            display: block;
+        }
+        table{
+            width: 100%; border: 1px solid ; font-family: Arial,  sans-serif;
+        }
+        tr,th{
+            border: 1px solid green;
+            text-align: center;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" name="" id="name" onkeyup="validate()"><br>
+        <label for="class">Class</label>
+        <input type="text" name="" id="class" onkeyup="validate()"><br>
+        <label for="age">Age</label>
+        <input type="number" name="" id="age" onkeyup="validate()"><br>
+        <label for="rollno">Rollno</label>
+        <input type="number" name="" id="rollno" onkeyup="validate()"><br>
+        <label for="state">State</label><br>
+        <input type="text" name="" id="state" onkeyup="validate()"><br>
+        <label for="school">School</label>
+        <input type="text" name="" id="school" onkeyup="validate()"><br>
+        <label for="country">country</label>
+        <input type="text" name="" id="country" onkeyup="validate()"><br>
+        <button type="button" id="details" onclick="addDetails()" disabled>AddDetails</button>
+    </form>
+
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Age</th>
+                <th>RollNo</th>
+                <th>State</th>
+                <th>School</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem("alluser"))
+        if(alluser==null){
+            alluser=[]
+        }
+
+        function addDetails(){
+            var user={
+            name:document.getElementById("name").value,
+            class:document.getElementById("class").value,
+            age:document.getElementById("age").value,
+            rollno:document.getElementById("rollno").value,
+            state:document.getElementById("state").value,
+            school:document.getElementById("school").value,
+            country:document.getElementById("country").value,
+            }
+            alluser.push(user)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            display(alluser);
+            clearform();
+        }
+        function clearform(){
+            document.getElementById("name").value="";
+            document.getElementById("class").value="";
+            document.getElementById("age").value="";
+            document.getElementById("rollno").value="";
+            document.getElementById("state").value="";
+            document.getElementById("school").value="";
+            document.getElementById("country").value="";
+        }
+
+        function display(data){
+            document.querySelector("tbody").innerHTML="";
+            data.forEach((user,i)=>{
+                var myTr=document.createElement("tr");
+                for(a in user){
+                    var myTd=document.createElement("td");
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd=document.createElement("td");
+                var editbtn=document.createElement("button");
+                editbtn.setAttribute("onclick","editUser("+i+")")
+                editbtn.innerHTML="Edit"
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd);
+
+                
+                var deleteTd=document.createElement("td");
+                var deletebtn=document.createElement("button");
+               deletebtn.setAttribute("onclick","deleteUser("+i+")");
+                deletebtn.innerHTML="Delete"
+                deleteTd.appendChild(deletebtn);
+                myTr.appendChild(deleteTd);
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function editUser(i){
+            console.log("edit user called"+i);
+        }
+        function deleteUser(i){
+            alluser.splice(i,1);
+            display(alluser);
+        }
+        display(alluser)
+
+        
+    function validate(){
+        var user={
+            name:document.getElementById("name").value,
+            class:document.getElementById("class").value,
+            age:document.getElementById("age").value,
+            rollno:document.getElementById("rollno").value,
+            state:document.getElementById("state").value,
+            school:document.getElementById("school").value,
+            country:document.getElementById("country").value,
+            }
+        var check =false;
+        for(a in user){
+            if(user[a] ==""){
+                check = true
+            }
+        }
+        if(check==true){
+        document.getElementById("details").setAttribute("disabled",true);
+    }else{
+        document.getElementById("details").removeAttribute("disabled");
+    }
+    }
+    </script>
+</body>
+</html>

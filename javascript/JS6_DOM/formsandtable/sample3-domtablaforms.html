@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        form{
+            color: red;  line-height: 25px;
+        }
+        input{
+            display: block;
+        }
+        table{
+            width: 100%; border: 1px solid ; font-family: Arial,  sans-serif;
+        }
+        tr,th{
+            border: 1px solid green;
+            text-align: center;
+            padding: 8px;
+            color: blue;
+        }
+      
+    
+    </style>
+</head>
+<body>
+    
+    <form action="">
+        <label for="firstname">FirstName</label>
+        <input type="text" name="" id="fname" onkeyup="validate()"><br>
+        <label for="lastname">LastName</label>
+        <input type="text" name="" id="lname" onkeyup="validate()"><br>
+        <label for="email">Email</label>
+        <input type="email" name="" id="email" onkeyup="validate()"><br>
+        <label for="password">Password</label>
+        <input type="text" name="" id="pword" onkeyup="validate()"><br>
+        <label for="cpassword">Confirmpassword</label>
+        <input type="text" name="" id="cpword" onkeyup="validate()"><br>
+        <button type="button" id="aduser" onclick="adduser()" disabled>Submit</button>
+    </form>
+    <table border="1" style="color: red;">
+        <tr>
+            <thead>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Confirmpassword</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        
+    var alldom=JSON.parse(localStorage.getItem("alldom"))
+    if(alldom==null){
+        alldom=[]
+    }
+    function adduser(){
+        var user={
+           Firstname:document.getElementById("fname").value,
+            Lastname:document.getElementById("lname").value,
+            Email:document.getElementById("email").value,
+           Password:document.getElementById("pword").value,
+            Confirmpassword:document.getElementById("cpword").value,
+        }
+        alldom.push(user);
+       // console.log(allUsers);
+       // console.log(user);
+       localStorage.setItem("allUsers",JSON.stringify(alldom))
+       display(alldom);
+       clearform();
+    }
+    function clearform(){
+        document.getElementById("fname").value="";
+        document.getElementById("lname").value="";
+        document.getElementById("email").value="";
+        document.getElementById("pword").value="";
+        document.getElementById("cpword").value="";
+    }
+
+   function display(data){
+   document.querySelector("tbody").innerHTML=" ";
+    data.forEach((user,i) => {
+       var myTr=document.createElement("tr"); 
+       for(a in user){
+        var myTd=document.createElement("td");
+        myTd.innerHTML=user [a]
+        myTr.appendChild(myTd)
+       }
+
+       var editTd=document.createElement("td");
+       var editBtn=document.createElement("button");
+       editBtn.setAttribute("onclick","editUser("+i+")");
+       editBtn.innerHTML="Edit"
+       editTd.appendChild(editBtn);
+       myTr.appendChild(editTd);
+
+       var deleteTd=document.createElement("td");
+       var deleteBtn=document.createElement("button");
+       deleteBtn.setAttribute("onclick","deleteUser("+i+")");
+       deleteBtn.innerHTML="Delete"
+       deleteTd.appendChild(deleteBtn);
+       myTr.appendChild(deleteTd);
+       
+       document.querySelector("tbody").appendChild(myTr);
+
+    });
+   }
+    function editUser(i){
+        console.log("Edit user called"+i);
+    }
+    function deleteUser(i){
+        console.log("Delete user called"+i);
+        alldom.splice(i,1);
+        display(alldom);
+    }
+    display(alldom)
+
+    function validate(){
+      // console.log("Just you entered some value");
+       var user={
+           Firstname:document.getElementById("fname").value,
+            Lastname:document.getElementById("lname").value,
+            Email:document.getElementById("email").value,
+           Password:document.getElementById("pword").value,
+            Confirmpassword:document.getElementById("cpword").value,
+        }
+        var check =false;
+        for(a in user){
+            if(user[a] == ""){
+                check = true
+            }
+        }
+        if(check == true){
+        document.getElementById("aduser").setAttribute("disabled",true);
+    }else{
+        document.getElementById("aduser").removeAttribute("disabled");
+    }
+    }
+    </script>
+</body>
+</html>

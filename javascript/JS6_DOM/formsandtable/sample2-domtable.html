@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    
+    form{
+        color: red;  line-height: 25px;
+    }
+    input{
+        display: block;
+    }
+    table{
+        width: 100%; border: 1px solid ; font-family: Arial,  sans-serif;
+    }
+    tr,th{
+        border: 1px solid green;
+        text-align: center;
+        color: blue;
+    }
+  
+
+</style>
+</head>
+<body>
+<form action="">
+    <label for="entername">Name</label>
+    <input type="text" name="" id="name" onkeyup="validate()">
+    <label for="password">Password</label>
+    <input type="password" name="" id="password" onkeyup="validate()">
+    <label for="confirmpassword">ConfirmPassword</label>
+    <input type="text" name="" id="confirmpassword" onkeyup="validate()">
+    <label for="contactno">Contactno</label>
+    <input type="number" name="" id="contactno" onkeyup="validate()">
+    <label for="Email">EmailAddress</label>
+    <input type="email" name="" id="email" onkeyup="validate()"><br>
+    <label for="dateofbirth">DateofBirth</label><br>
+    <select name="" id="dob">
+    <option value="Date">Date</option>
+    </select>
+    <select name="" id="mob">
+        
+     <option value="Date">Month</option>
+    <option value="">January</option>
+    <option value="">February</option>
+    <option value="March">March</option>
+    <option value="">April</option>
+    <option value="">May</option>
+    <option value="">June</option>
+    <option value="">July</option>
+    <option value="">august</option>
+    
+    </select>
+    <select name="year" id="yob">
+    
+    <option value="Date">Year</option>
+    <option value="">2001</option>
+    <option value="">2002</option>
+    <option value="2003">2003</option>
+    <option value="">2004</option>
+    <option value="">2005</option>
+    <option value="">2006</option>
+    <option value="">2007</option>
+    <option value="">2008</option>
+    </select>
+    <button type="button" id="adding" onclick="adduser()" disabled>Adduser</button>
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Confirmpassword</th>
+        <th>Contactno</th>
+        <th>EmailAddress</th>
+        <th>Dateofbirth</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+   <tbody></tbody>
+</table>
+<script>
+     let i=0;
+    while(i<31){
+        var opt=document.createElement("option");
+        opt.innerHTML=i
+        opt.setAttribute("value",i);
+        document.getElementById("dob").appendChild(opt)
+        i++
+    }
+
+    var allUsers=JSON.parse(localStorage.getItem("allUsers"))
+    if(allUsers==null){
+        allUsers=[]
+    }
+    function adduser(){
+        var user={
+            name:document.getElementById("name").value,
+           password:document.getElementById("password").value,
+           confirmpassword:document.getElementById("confirmpassword").value,
+           contactno:document.getElementById("contactno").value,
+            emailaddress:document.getElementById("email").value,
+        }
+        
+        var dateofbirth=document.getElementById("dob").value;
+        var monthofbirth=document.getElementById("mob").value;
+        var yearofbirth=document.getElementById("yob").value
+        user.dob=dateofbirth+"/"+monthofbirth+"/"+yearofbirth
+        allUsers.push(user);
+       // console.log(allUsers);
+       // console.log(user);
+       localStorage.setItem("allUsers",JSON.stringify(allUsers))
+       displayUser(allUsers);
+       clearform();
+    }
+    function clearform(){
+        document.getElementById("name").value="";
+        document.getElementById("age").value="";
+        document.getElementById("address").value="";
+        document.getElementById("phoneno").value="";
+        document.getElementById("email").value="";
+    }
+   function displayUser(data){
+   document.querySelector("tbody").innerHTML=" ";
+    data.forEach((user,i) => {
+       var myTr=document.createElement("tr"); 
+       for(a in user){
+        var myTd=document.createElement("td");
+        myTd.innerHTML=user [a]
+        myTr.appendChild(myTd)
+       }
+
+       var editTd=document.createElement("td");
+       var editBtn=document.createElement("button");
+       editBtn.setAttribute("onclick","editUser("+i+")");
+       editBtn.innerHTML="Edit"
+       editTd.appendChild(editBtn);
+       myTr.appendChild(editTd);
+
+       var deleteTd=document.createElement("td");
+       var deleteBtn=document.createElement("button");
+       deleteBtn.setAttribute("onclick","deleteUser("+i+")");
+       deleteBtn.innerHTML="Delete"
+       deleteTd.appendChild(deleteBtn);
+       myTr.appendChild(deleteTd);
+       
+       document.querySelector("tbody").appendChild(myTr);
+
+    });
+   }
+
+    function editUser(i){
+        console.log("Edit user called"+i);
+    }
+
+    function deleteUser(i){
+        console.log("Delete user called"+i);
+        allUsers.splice(i,1);
+        displayUser(allUsers);
+    }
+    displayUser(allUsers)
+
+    function validate(){
+        var user={
+            name:document.getElementById("name").value,
+           password:document.getElementById("password").value,
+           confirmpassword:document.getElementById("confirmpassword").value,
+           contactno:document.getElementById("contactno").value,
+            emailaddress:document.getElementById("email").value,
+        }
+        var check =false;
+        for(a in user){
+            if(user[a] ==""){
+                check = true
+            }
+        }
+        if(check==true){
+        document.getElementById("adding").setAttribute("disabled",true);
+    }else{
+        document.getElementById("adding").removeAttribute("disabled");
+    }
+    }
+   
+    </script>
+</body>
+</html>

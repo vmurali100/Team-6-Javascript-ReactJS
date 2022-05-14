@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        form{
+            color: red;  line-height: 25px;
+        }
+        input{
+            display: block;
+        }
+        table{
+            width: 100%; border: 1px solid ; font-family: Arial,  sans-serif;
+        }
+        tr,th{
+            border: 1px solid green;
+            text-align: center;
+            padding: 8px;
+            color: blue;
+        }
+      
+    
+    </style>
+</head>
+<body>
+    
+    
+    <form action="">
+        <label for="company">Company</label>
+        <input type="text" name="" id="company" onkeyup="validate()"><br>
+        <label for="contact">Contact</label>
+        <input type="text" name="" id="contact" onkeyup="validate()"><br>
+        <label for="country">Country</label>
+        <input type="text" name="" id="country" onkeyup="validate()"><br>
+        <label for="state">State</label><br>
+        <input type="text" name="" id="state" onkeyup="validate()"><br>
+        <label for="city">City</label>
+        <input type="text" name="" id="city" onkeyup="validate()"><br>
+        <label for="branch">Branch</label>
+        <input type="text" name="" id="branch" onkeyup="validate()"><br>
+        <label for="role">Role</label>
+        <input type="text" name="" id="role" onkeyup="validate()"><br>
+        <button type="button" id="detailed" onclick="addDetails()" disabled>AddDetails</button>
+    </form>
+
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Branch</th>
+                <th>Roll</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluser=JSON.parse(localStorage.getItem("alluser"))
+        if(alluser==null){
+            alluser=[]
+        }
+
+        function addDetails(){
+            var user={
+         company:document.getElementById("company").value,
+           contact:document.getElementById("contact").value,
+           country:document.getElementById("country").value,
+            state:document.getElementById("state").value,
+           city:document.getElementById("city").value,
+           branch:document.getElementById("branch").value,
+           role:document.getElementById("role").value,
+            }
+            alluser.push(user)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            display(alluser);
+            clearform();
+        }
+        function clearform(){
+            document.getElementById("company").value="";
+            document.getElementById("contact").value="";
+            document.getElementById("country").value="";
+            document.getElementById("state").value="";
+            document.getElementById("city").value="";
+            document.getElementById("branch").value="";
+            document.getElementById("role").value="";
+        }
+
+        function display(data){
+            document.querySelector("tbody").innerHTML="";
+            data.forEach((user,i)=>{
+                var myTr=document.createElement("tr");
+                for(a in user){
+                    var myTd=document.createElement("td");
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd=document.createElement("td");
+                var editbtn=document.createElement("button");
+                editbtn.setAttribute("onclick","editUser("+i+")")
+                editbtn.innerHTML="Edit"
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd);
+
+                
+                var deleteTd=document.createElement("td");
+                var deletebtn=document.createElement("button");
+               deletebtn.setAttribute("onclick","deleteUser("+i+")");
+                deletebtn.innerHTML="Delete"
+                deleteTd.appendChild(deletebtn);
+                myTr.appendChild(deleteTd);
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+
+        function editUser(i){
+            console.log("edit user called"+i);
+        }
+
+        function deleteUser(i){
+            alluser.splice(i,1);
+            display(alluser);
+        }
+        display(alluser)
+
+        function validate(){
+            var user={
+            name:document.getElementById("company").value,
+            class:document.getElementById("contact").value,
+            age:document.getElementById("country").value,
+            rollno:document.getElementById("state").value,
+            state:document.getElementById("city").value,
+            school:document.getElementById("branch").value,
+            country:document.getElementById("role").value,
+            }
+        var check =false;
+        for(a in user){
+            if(user[a]==""){
+                check = true
+            }
+        }
+        if(check == true){
+        document.getElementById("detailed").setAttribute("disabled",true);
+    }else{
+        document.getElementById("detailed").removeAttribute("disabled");
+    }
+    }
+    </script>
+</body>
+</html>

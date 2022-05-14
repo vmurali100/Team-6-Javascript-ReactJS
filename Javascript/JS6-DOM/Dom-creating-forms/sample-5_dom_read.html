@@ -40,21 +40,21 @@
         <div class="mydiv">
             <form action="">
                 <label for="Username">Username</label><br>
-                <input type="text" name="Username" id="Username"> <br><br>
+                <input type="text" name="Username" id="Username" onkeyup="validate()"> <br><br>
                 <label for="Password">Password</label><br>
-                <input type="text" placeholder="Password" name="Password" id="Password"> <br><br>
+                <input type="text" placeholder="Password" name="Password" id="Password" onkeyup="validate()"> <br><br>
                 <label for="">Email address</label><br>
-                <input type="text" placeholder="Email address" name="Emailaddress" id="Emailaddress"><br><br>
-                <select name="" id="">
+                <input type="text" placeholder="Email address" name="Emailaddress" id="Emailaddress" onkeyup="validate()"><br><br>
+                <select name="" id="" onkeyup="validate()">
                     <option value="">I am a Man</option>
                     <option value="">I am a Girl</option>
                 </select><br><br>
-                <select name="" id="">
+                <select name="" id="" onkeyup="validate()">
                     <option value="">I Want to Find Women</option>
                     <option value="">I Want to Find Men</option>
                 </select><br><br>
                 <label for="Date of birth"><b>Date of birth</b></label><br><br>
-                <select name="" id="Dateofbirth">
+                <select name="" id="Dateofbirth" onkeyup="validate()">
                     <option value="">Year</option>
                     <option value="">2015</option>
                     <option value="">2016</option>
@@ -65,7 +65,7 @@
                     <option value="">2021</option>
                     <option value="">2022</option>
                 </select>
-                <select name="" id="">
+                <select name="" id="" onkeyup="validate()">
                     <option value="">MONTH</option>
                     <option value="">Jan</option>
                     <option value="">Feb</option>
@@ -80,7 +80,7 @@
                     <option value="">Nov</option>
                     <option value="">Dec</option>
                 </select>
-                <select name="" id="">
+                <select name="" id="" onkeyup="validate()">
                     <option value="">DAY</option>
                     <option value="">01</option>
                     <option value="">02</option>
@@ -115,7 +115,7 @@
                     <option value="">31</option>
                 </select><br><br>
                 <label for=""><b>Height / Weight</b></label><br><br>
-                <select name="HeightWeight" id="HeightWeight">
+                <select name="HeightWeight" id="HeightWeight" onkeyup="validate()">
                     <option value="">Height</option>
                     <option value="">1.0m</option>
                     <option value="">2.0m</option>
@@ -124,7 +124,7 @@
                     <option value="">5.0m</option>
 
                 </select>
-                <select name="HeightWeight" id="HeightWeight">
+                <select name="HeightWeight" id="HeightWeight" onkeyup="validate()">
                     <option value="">Weight</option>
                     <option value="">20kg</option>
                     <option value="">30kg</option>
@@ -133,7 +133,7 @@
                     <option value="">60kg</option>
                 </select>
 
-                <button type="button" onclick="pressenter()">Enter</button>
+                <button type="button" onclick="pressenter()" id="userEnter" disabled>Enter</button>
 
             </form>
         </div>
@@ -216,7 +216,28 @@
             allusers.splice(i, 1)
             displayusers()
         }
-        displayusers()
+        displayusers();
+
+        function pressenter(){
+            var users = {
+                Username: document.getElementById("Username").value,
+                Password: document.getElementById("Password").value,
+                Emailaddress: document.getElementById("Emailaddress").value,
+
+            }
+
+            var check = false;
+            for(a in user){
+                if(user [a] == ""){
+                    check = true
+                }
+            }
+            if(check == true){
+                document.getElementById("userEnter").setAttribute("disable", true);
+            }else{
+                document.getElementById("userEnter").removeAttribute("disable")
+            }
+        }
     </script>
 </body>
 

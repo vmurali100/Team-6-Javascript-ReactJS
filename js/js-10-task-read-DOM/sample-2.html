@@ -52,7 +52,7 @@ table{
     <table>
         <tr>
             <td><label for="street">Street :</label></td>
-            <td><input type="text" name="" id="street"></td>
+            <td><input type="text" name="" id="street" onkeyup="validate()"></td>
         </tr>
         <tr>
             <td><label for="street"></label></td>
@@ -60,18 +60,18 @@ table{
         </tr>
         <tr>
             <td><label for="city">City, State :</label></td>
-            <td><input type="text" name="" id="city"> <input type="text" name="" id="state"> </td>
+            <td><input type="text" name="" id="city" onkeyup="validate()"> <input type="text" name="" id="state"> </td>
         </tr>
         <tr>
             <td><label for="zipcode"> Zip Code:</label></td>
-            <td><input type="text" name="" id="zipcode"></td>
+            <td><input type="text" name="" id="zipcode" onkeyup="validate()"></td>
         </tr>
         <tr>
             <td><label for="country"> Country :</label></td>
-            <td><input type="text" name="" id="country"></td>
+            <td><input type="text" name="" id="country" onkeyup="validate()"></td>
         </tr>
     </table>
-    <button type="button" onclick="okUser()">OK</button>
+    <button type="button" id="okButton" onclick="okUser()" disabled >OK</button>
     <button type="button" onclick="cancelUser()"> CANCEl</button> 
 </div>
 <br><br><br>
@@ -102,6 +102,7 @@ table{
         console.log(allUsers)
         allUsers.push(user)
         displayUsers(allUsers)
+        cancelUser()
     }
     function cancelUser(){
         document.getElementById("street").value=""
@@ -141,6 +142,25 @@ table{
             console.log("delete user called"+i)
             allUsers.splice(i, 1)
             displayUsers(allUsers)
+        }
+        function validate(){
+            var user={
+            street:document.getElementById("street").value,
+            city:document.getElementById("city").value,
+            zipode:document.getElementById("zipcode").value,
+            country:document.getElementById("country").value
+        }
+        var check=false;
+        for(a in user){
+            if(user[a]==""){
+                check=true
+            }
+        }
+        if(check==true){
+            document.getElementById("okButton").setAttribute("disabled",true)
+        }else{
+            document.getElementById("okButton").removeAttribute("disabled")
+        }
         }
         
 </script>

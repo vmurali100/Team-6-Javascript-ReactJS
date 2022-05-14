@@ -37,24 +37,24 @@
         <div id="demo1">
             <form action="">
                 <label for="name">Name </label><br>
-                <input type="text" name="" placeholder="Name" id="name"><br>
+                <input type="text" name="" placeholder="Name" id="name" onkeyup="validate()"><br>
 
                 <label for="username">Username</label><br>
-                <input type="text" name="" placeholder="username" id="username"><br>
+                <input type="text" name="" placeholder="username" id="username"  onkeyup="validate()"><br>
 
                 <label for="email">Email</label><br>
-                <input type="text" name="" placeholder="Email" id="email"><br>
+                <input type="text" name="" placeholder="Email" id="email"  onkeyup="validate()"><br>
 
                 <label for="password"> Password</label><br>
-                <input type="password" name="" placeholder="password" id="password"><br>
+                <input type="password" name="" placeholder="password" id="password"  onkeyup="validate()"><br>
 
                 <label for="confirmpassword"> Confirm Password</label><br>
-                <input type="text" name="" placeholder="confirm" id="confirmpassword"><br>
+                <input type="text" name="" placeholder="confirm" id="confirmpassword"  onkeyup="validate()"><br>
 
                 <label for="message"> Message</label><br>
-                <input type="text" name="" placeholder="message" id="message"><br>
+                <input type="text" name="" placeholder="message" id="message"  onkeyup="validate()"><br>
 
-                <button style="width: 300px;" type="button" onclick="addUser()">SEND</button>
+                <button style="width: 300px;" type="button" id="adduser" onclick="addUser()" disabled>SEND</button>
             </form>
         </div>
     </div><br>
@@ -86,6 +86,16 @@
             }
             allUsers.push(user)
             displayUsers(allUsers)
+            clearForm()
+        }
+        function clearForm(){
+            document.getElementById("name").value="";
+            document.getElementById("username").value="";
+            document.getElementById("email").value="";
+            document.getElementById("password").value="";
+            document.getElementById("confirmpassword").value="";
+            document.getElementById("message").value="";
+
         }
 
         function displayUsers(data) {
@@ -120,6 +130,27 @@
             // console.log("delete user called"+i)
             allUsers.splice(i, 1)
             displayUsers(allUsers)
+        }
+        function validate(){
+            var user = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                confirmpassword: document.getElementById("confirmpassword").value,
+                message: document.getElementById("message").value
+            }
+            var check=false
+            for(a in user){
+                if(user[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+                document.getElementById("adduser").setAttribute("disabled",true)
+            }else{
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
         }
 
     </script>

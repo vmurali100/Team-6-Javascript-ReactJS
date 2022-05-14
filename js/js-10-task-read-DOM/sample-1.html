@@ -106,13 +106,7 @@
         document.getElementById("email").value = "";
         document.getElementById("number").value="";
        }
-    //     function resetUser() {
-    //         document.getElementById("fname").value = "";
-    //         document.getElementById("lname").value = "";
-    //         document.getElementById("dob").value = "";
-    //         document.getElementById("email").value = "";
-    //         document.getElementById("number").value = "";
-    //     }
+    
         function displayUsers(data) {
             document.querySelectorAll("tbody")[1].innerHTML = ""
             data.forEach((user, i) => {
@@ -138,12 +132,12 @@
                 document.querySelectorAll("tbody")[1].appendChild(mytr)
             })
         }
-        function editUser(i) {
-            console.log("edit user called" + i)
-        }
+        // function editUser(i) {
+        //     console.log("edit user called" + i);
+        // }
         function deleteUser(i) {
-            // console.log("delete user called"+i)
-            allUsers.splice(i, 1)
+            console.log("delete user called"+i)
+            allUsers.splice(i, 1);
             displayUsers(allUsers)
         }
         function validate() {

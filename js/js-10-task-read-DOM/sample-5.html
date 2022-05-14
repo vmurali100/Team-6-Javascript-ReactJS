@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="container">
+        <form style="width: 450px; border: 2px solid; background-color: cornflowerblue;">
+            <fieldset>
+                <legend>Registration Details</legend><br>
+
+                <label for="university">Univarsity: </label>
+                <input type="text" name="" id="university" onkeyup="validate()">
+                <br><br>
+
+                <label for="institute">Institute: </label>
+                <input type="text" name="" id="institute"  onkeyup="validate()">
+                <br><br>
+
+                <label for="branch">Branch: </label>
+                <input type="text" name="" id="branch"  onkeyup="validate()">
+                <br><br>
+
+                <label for="degree">Degree: </label>
+                <input type="text" id="degree"  onkeyup="validate()">
+                <input type="radio" onkeyup="validate()">Pursuing
+                <input type="radio"  onkeyup="validate()">Completed
+                <br><br>
+
+                <label for="average">Average CPI: </label>
+                <input type="number" id="average"  onkeyup="validate()">
+                <br><br>
+
+                <label for="upto">Upto</label>
+                <input type="text" name="" id="upto"  onkeyup="validate()">Th Semester  
+                <br><br>
+
+                <label for="experience">Experince: </label>
+                <input type="number" name="" id="experience" onkeyup="validate()"> Years                
+                <br><br>
+
+                <label for="yourwebsite">Your Website Or Blog: </label>
+                <input type="text" name="" id="yourwebsite" placeholder="http://" onkeyup="validate()"><br>
+
+            </fieldset>
+            <button type="button" id="usersubmit"  onclick="userSubmit()" disabled>Submit</button>
+        </form>        
+    </div>
+    <hr>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Univarsity</th>
+                    <th>Institute</th>
+                    <th>Branch</th>
+                    <th>Degree</th>
+                    <th>Average CPI</th>
+                    <th>Upto</th>
+                    <th>Experince</th>
+                    <th>Your Website Or Blog</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+
+            var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+            if (allUsers == null){
+                allUsers = []
+            }
+            function userSubmit(){
+               var user = {
+                univarsity: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                averagecpi: document.getElementById("average").value,
+                upto: document.getElementById("upto").value,
+                experince: document.getElementById("experience").value,
+                yourwebsiteorblog: document.getElementById("yourwebsite").value
+               }
+                allUsers.push(user);
+
+                localStorage.setItem("allUsers", JSON.stringify(allUsers))
+
+            //    console.log(user);
+                // console.log(allUsers)
+                displayUsers(allUsers);
+                userCancel();
+
+            }
+            function userCancel(){
+                document.getElementById("university").value = "";
+                document.getElementById("institute").value = "";
+                document.getElementById("branch").value = "";
+                document.getElementById("degree").value = "";
+                document.getElementById("average").value = "";
+                document.getElementById("upto").value = "";
+                document.getElementById("experience").value = "";
+                document.getElementById("yourwebsite").value = "";
+            }
+            function displayUsers(data){
+                document.querySelector("tbody").innerHTML =""
+                data.forEach((user, i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user){
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+                    var editTd = document.createElement("td");
+                    var editBit = document.createElement("button");
+                    editBit.setAttribute("onclick", "editUser("+i+")");
+                    editBit.innerHTML = "Edit";
+                    editTd.appendChild(editBit);
+                    myTr.appendChild(editTd);
+
+                    var deleteTd = document.createElement("td");
+                    var deleteBit= document.createElement("button");
+                    deleteBit.setAttribute("onclick","deleteUser("+i+")");
+                    deleteBit.innerHTML = "Delete";
+                    deleteTd.appendChild(deleteBit);
+                    myTr.appendChild(deleteTd);
+                    document.querySelector("tbody").appendChild(myTr)                
+                });                
+            }
+            function editUser(i){
+                console.log("Edite User Called" + i);
+            }
+            function deleteUser(i){            
+                console.log("Delete User Called" + i);
+                allUsers.splice(i,1);
+                displayUsers(allUsers)
+            }
+            displayUsers(allUsers)
+
+            function validate(){
+                var user={
+                    univarsity: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                averagecpi: document.getElementById("average").value,
+                upto: document.getElementById("upto").value,
+                experince: document.getElementById("experience").value,
+                yourwebsiteorblog: document.getElementById("yourwebsite").value
+                }
+                var check=false
+                for(a in user){
+                    if(user[a]==""){
+                        check=true
+                    }
+                }
+                if(check==true){
+                    document.getElementById("usersubmit").setAttribute("disabled",true)
+                }else{
+                    document.getElementById("usersubmit").removeAttribute("disabled")
+                }
+            }
+            
+     
+        </script>
+</body>
+</html> 

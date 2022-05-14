@@ -26,7 +26,7 @@
         <label for="country">country:</label>
         <input type="text" name="" id="country"><br><br>
 
-        <button type="button" onclick="adduser()">ok</button>
+        <button type="button" id="adduser" onclick="adduser()" disabled>ok</button>
         <button>cancel</button>
     </form>
     <br>
@@ -54,7 +54,7 @@
         var allusers = JSON.parse(localStorage.getItem("allusers"))
 
         if (allusers == null) {
-            index=i
+            index = i
             allusers = []
         }
 
@@ -80,8 +80,8 @@
         }
         function clearsearch() {
             document.getElementById("street").value = "";
-            document.getElementById("city").value="";
-            document.getElementById("state").value="";
+            document.getElementById("city").value = "";
+            document.getElementById("state").value = "";
             document.getElementById("zipcode").value = "",
                 document.getElementById("country").value = ""
         }
@@ -89,10 +89,10 @@
         function displayusers() {
             document.querySelector("tbody").innerHTML = ""
 
-            
 
-            allusers.forEach((users, i) => { 
-                var mytr = document.createElement("tr")       
+
+            allusers.forEach((users, i) => {
+                var mytr = document.createElement("tr")
                 for (a in users) {
 
                     var myTd = document.createElement("td")
@@ -117,23 +117,44 @@
 
                 document.querySelector("tbody").appendChild(mytr)
 
-            })      
+            })
 
-           
+
 
         }
         displayusers()
-       
+
 
         function edituser(i) {
-                console.log("edit user called" + i)
+            console.log("edit user called" + i)
+        }
+
+        function deleteuser(i) {
+            console.log("delete user called" + i)
+            allusers.splice(i, 1)
+            displayusers(allusers)
+        }
+
+
+        function validate() {
+            var users = {
+                street: document.getElementById("street").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value
+
+
+            };
+
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
             }
 
-            function deleteuser(i) {
-                console.log("delete user called" + i)
-                allusers.splice(i, 1)
-                displayusers(allusers)
-            }
+
+        }
 
 
     </script>

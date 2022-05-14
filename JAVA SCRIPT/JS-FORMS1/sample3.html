@@ -52,7 +52,7 @@
         <textarea name="" id="messege" cols="30" rows="10" placeholder="messegee"></textarea>
         <br>
         <br>
-        <button type="button" onclick="displayuser()">send</button>
+        <button type="button" id="adduser" onclick="displayuser()" disabled>send</button>
     </form>
 
     <table border="1">
@@ -153,6 +153,26 @@
             console.log("delete user called" + i)
             allusres.splice(i, 1)
             displayusers()
+        }
+
+
+        function validate(){
+            var users = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("password").value,
+                ConfirmPassword: document.getElementById("confirmpassword").value,
+                Message: document.getElementById("messege").value
+            };
+            
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+
+
         }
         
         

@@ -14,7 +14,8 @@
       <input type="text" name="" id="lname" onkeyup="validate()"/> <br />
       <label for="email">Email</label>
       <input type="text" name="" id="email" onkeyup="validate()"/> <br />
-      <button type="button" id="addUser" onclick="addUser()" disabled>Add User</button>
+      <button type="button" id="addUser" onclick="addUsers()" disabled>Add User</button>
+      <button type="button" id="updateUser" onclick="updateUsers()" style="display:none">Update User</button>
     </form>
     <hr />
     <table border="1">
@@ -38,10 +39,11 @@
       // 3. Display the Array of Object in Table
 
       var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+      var index = null
       if (allUsers == null) {
         allUsers = [];
       }
-      function addUser() {
+      function addUsers() {
         var user = {
           fname: document.getElementById("fname").value,
           lname: document.getElementById("lname").value,
@@ -93,8 +95,13 @@
 
 
       function editUser(i){
-        console.log("editUser called "+i)
-
+        console.log(allUsers[i])
+        index = i
+        document.getElementById("fname").value = allUsers[i].fname
+        document.getElementById("lname").value = allUsers[i].lname
+        document.getElementById("email").value = allUsers[i].email
+        document.getElementById("addUser").style.display = "none"
+        document.getElementById("updateUser").style.display = "block"
       }
 
       function deleteUser(i){
@@ -125,6 +132,29 @@
         }
   
       }
+
+      function updateUsers(){
+        console.log("Update User Called")
+        var user = {
+          fname: document.getElementById("fname").value,
+          lname: document.getElementById("lname").value,
+          email: document.getElementById("email").value,
+        };
+
+        allUsers[index] = user
+
+        localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+        displayUsers(allUsers);
+        clearForm();
+        document.getElementById("addUser").style.display = "block"
+        document.getElementById("updateUser").style.display = "none"
+      }
     </script>
   </body>
 </html>
+
+<!-- Create 
+Read
+Update
+Delete -->

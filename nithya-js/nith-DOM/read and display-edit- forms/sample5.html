@@ -17,25 +17,25 @@
         <fieldset>
             <legend>Registration Details</legend>
             <label for="">University : </label>
-            <input type="text" id="univer"><br><br>
+            <input type="text" id="univer" onkeyup="validate()"><br><br>
             <label for="">Institute : </label>
-            <input type="text" id="institute"><br><br>
+            <input type="text" id="institute"  onkeyup="validate()"><br><br>
             <label for="">Branch : </label>
-            <input type="text" id="branch"><br><br>
+            <input type="text" id="branch"  onkeyup="validate()"><br><br>
             <label for="">Degree : </label>
-            <input type="text" id="degree">
+            <input type="text" id="degree"  onkeyup="validate()">
             <input type="radio">Pursuing
             <input type="radio">Completed <br><br>
             <label for="">Average CPI : </label>
-            <input type="number" id="avg" >
+            <input type="number" id="avg"  onkeyup="validate()">
             <label for="">UPto : </label>
-            <input type="number" id="up" >the semester <br><br>
+            <input type="number" id="up"  onkeyup="validate()">the semester <br><br>
             <label for="">Experience : </label>
-            <input type="number" id="exp">Years<br><br>
+            <input type="number" id="exp"  onkeyup="validate()">Years<br><br>
             <label for="">Your Website Or Blog : </label>
-            <input type="text" id="blog">
+            <input type="text" id="blog"  onkeyup="validate()">
         </fieldset>
-        <button type="button" onclick="getdata()">ok</button>
+        <button type="button" id="adduser" onclick="getdata()" disabled>ok</button>
     </form>
     <table border="1">
         <tr>
@@ -88,7 +88,7 @@
        }
        function displayuser(){
            document.querySelector("tbody").innerHTML="";
-           alluser.forEach((use)=>{
+           alluser.forEach((use,i)=>{
               var mytr=document.createElement("tr")
                for(a in use){
                      var mytd=document.createElement("td")
@@ -97,19 +97,53 @@
                }
                var edittd=document.createElement("td")
                   var editbtn=document.createElement("button")
+                  editbtn.setAttribute("onclick","editUser("+i+")")
                   editbtn.innerHTML="edit"
                   edittd.appendChild(editbtn)
                   mytr.appendChild(edittd)
 
                   var deletetd=document.createElement("td")
                   var deletebtn=document.createElement("button")
+                  deletebtn.setAttribute("onclick","deleteUser("+i+")")
                   deletebtn.innerHTML="delete"
                   deletetd.appendChild(deletebtn)
                   mytr.appendChild(deletetd)
                document.querySelector("tbody").appendChild(mytr)
            })
        }
+       function editUser(i){
+
+  }
+  function deleteUser(i){
+    alluser.splice(i,1)
+    displayuser(alluser)
+  } 
        displayuser(alluser)
+
+       function  validate(){
+            var data={
+                University:document.getElementById("univer").value,
+                Institute:document.getElementById("institute").value,
+                Branch:document.getElementById("branch").value,
+                Degree:document.getElementById("degree").value,
+                Average:document.getElementById("avg").value, 
+                UPto:document.getElementById("up").value,
+                Experience:document.getElementById("exp").value,
+                YourWebsite :document.getElementById("blog").value,  
+            }
+            var check=false;
+            for(a in data){
+                if(data[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+                document.getElementById("adduser").setAttribute("disabled",true);
+
+            }else{
+                document.getElementById("adduser").removeAttribute("disabled");
+            }
+        }
         </script>  
 </body>
 </html>

@@ -44,19 +44,20 @@ button#btn {
     <h1>Bootstrap 4 form validation Demo</h1>
     <form action="">
         <label for="">Name</label><br><br>
-        <input type="text" id="name" placeholder="name"><br><br>
+        <input type="text" id="name" placeholder="name" onkeyup="validate()"><br><br>
         <label for="">UserName</label><br><br>
-        <input type="text" id="UserName" placeholder="UserName"><br><br>
+        <input type="text" id="UserName" placeholder="UserName" onkeyup="validate()"><br><br>
         <label for="">Email</label><br><br>
-        <input type="text" id="email" placeholder="email"><br><br>
+        <input type="text" id="email" placeholder="email" onkeyup="validate()"><br><br>
         <label for="">Password</label><br><br>
-        <input type="text" id="Password" placeholder="password"><br><br>
+        <input type="text" id="Password" placeholder="password" onkeyup="validate()"><br><br>
         <label for="">Confirm Password</label><br><br>
-        <input type="text" id="Confirm" placeholder="confirm password"><br><br>
+        <input type="text" id="Confirm" placeholder="confirm password" onkeyup="validate()"><br><br>
         <label for="">Message</label><br><br>
-        <input type="text" id="sms" placeholder="message"><br><br>
+        <input type="text" id="sms" placeholder="message" onkeyup="validate()"><br><br>
+        <button  type="button" id="adduser" onclick="displayinfo()" disabled>send</button>
     </form>
-    <button id="btn" type="button"  onclick="displayinfo()">send</button>
+   
     <table border="1">
         <tr>
             <thead>
@@ -102,7 +103,7 @@ button#btn {
         }
         function display(){
             document.querySelector("tbody").innerHTML="";
-            alluser.forEach((use)=>{
+            alluser.forEach((use,i)=>{
                var mytr=document.createElement("tr")
                for(a in use){
                    var mytd=document.createElement("td")
@@ -111,20 +112,52 @@ button#btn {
                }
                var edittd=document.createElement("td")
                   var editbtn=document.createElement("button")
+                  editbtn.setAttribute("onclick","editUser("+i+")")
                   editbtn.innerHTML="edit"
                   edittd.appendChild(editbtn)
                   mytr.appendChild(edittd)
 
                   var deletetd=document.createElement("td")
                   var deletebtn=document.createElement("button")
+                  deletebtn.setAttribute("onclick","deleteUser("+i+")")
                   deletebtn.innerHTML="delete"
                   deletetd.appendChild(deletebtn)
                   mytr.appendChild(deletetd)
                   document.querySelector("tbody").appendChild(mytr)
                
             })
+          
+        }
+        function editUser(i){
+            
+        }
+        function deleteUser(i){
+            alluser.splice(i,1)
+            display(alluser)
         }
         display(alluser)
+        function validate(){
+            var users={
+                name:document.getElementById("name").value,
+                username:document.getElementById("UserName").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("Password").value,
+                confirmpassword:document.getElementById("Confirm").value,
+                message:document.getElementById("sms").value,
+            };
+            var check=false;
+            for(a in users){
+                if(users[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+                document.getElementById("adduser").setAttribute("disabled",true);
+
+            }else{
+                document.getElementById("adduser").removeAttribute("disabled");
+            }
+           }
     </script>
 </body>
 </html>

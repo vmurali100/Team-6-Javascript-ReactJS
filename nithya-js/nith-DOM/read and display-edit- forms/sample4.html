@@ -50,17 +50,23 @@ select {
         <option value="">i want to find man</option>
         </select><br><br>
        <label for="">Date Of Birth</label><br><br>
-       <select name="" id="">
+       <select name="" id="yea">
            <option value="">year</option>
-           <option value="">2001</option>
+           <option value="2001">2001</option>
+           <option value="2002">2002</option>
+           <option value="2003">2003</option>
+           <option value="2004">2004</option>
        </select>
-       <select name="" id="">
+       <select name="" id="mon">
            <option value="">month</option>
-           <option value="">january</option>
+           <option value="january">january</option>
+           <option value="february">february</option>
+           <option value="march">march</option>
+           <option value="april">april</option>
        </select>
-       <select name="" id="">
+       <select name="" id="dob">
            <option value="">day</option>
-           <option value="">sunday</option>
+           <option value="">1</option>
 
        </select><br><br>
        <label for="">Height/Weight</label><br><br>
@@ -81,6 +87,7 @@ select {
             <th>UserName</th>
             <th>Password</th>
             <th>email address</th>
+            <th>date of birth</th>
             <th>Edit</th>
             <th>Delete</th>
            
@@ -88,6 +95,14 @@ select {
     </tr>
 </table>
 <script>
+    var i=1;
+    while(i<32){
+        var opt=document.createElement("option")
+        opt.innerHTML=i
+        opt.setAttribute("value",i)
+        document.getElementById("dob").appendChild(opt)
+        i++
+    }
     var alluser=JSON.parse(localStorage.getItem("allusers"))
     if(alluser==null){
         alluser=[]
@@ -101,6 +116,11 @@ select {
             
             
         }
+        var dateofbirth=document.getElementById("dob").value;
+        var monthofbirth=document.getElementById("mon").value;
+        var yearofbirth=document.getElementById("yea").value;
+        users.dob=dateofbirth+"/"+monthofbirth+"/"+yearofbirth
+
      alluser.push(users)
      localStorage.setItem("allusers",JSON.stringify(alluser))
      console.log(users)
@@ -113,11 +133,11 @@ select {
         document.getElementById("name").value="";
         document.getElementById("password").value="";
         document.getElementById("email").value="";
-        
+      
     }
     function display(){
         document.querySelector("tbody").innerHTML="";
-        alluser.forEach((use)=>{
+        alluser.forEach((use,i)=>{
            var mytr=document.createElement("tr")
            for(a in use){
                var mytd=document.createElement("td")
@@ -127,17 +147,26 @@ select {
            var edittd=document.createElement("td")
               var editbtn=document.createElement("button")
               editbtn.innerHTML="edit"
+              editbtn.setAttribute("onclick","editUser("+i+")")
               edittd.appendChild(editbtn)
               mytr.appendChild(edittd)
 
               var deletetd=document.createElement("td")
               var deletebtn=document.createElement("button")
+              deletebtn.setAttribute("onclick","deleteUser("+i+")")
               deletebtn.innerHTML="delete"
               deletetd.appendChild(deletebtn)
               mytr.appendChild(deletetd)
               document.querySelector("tbody").appendChild(mytr)
            
         })
+    }
+    function editUser(i){
+
+    }
+    function deleteUser(i){
+        alluser.splice(i,1)
+        display(alluser)
     }
     display(alluser)
 </script>

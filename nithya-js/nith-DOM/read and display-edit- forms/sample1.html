@@ -14,16 +14,16 @@
 <body>
     <form action="">
         <label for="fname">First Name : </label>
-        <input type="text" id="fname"><br><br>
+        <input type="text" id="fname" onkeyup="validate()"><br><br>
         <label for="lname">Last Name : </label>
-        <input type="text" id="lname"><br><br>
+        <input type="text" id="lname" onkeyup="validate()"><br><br>
         <label for="birth">Date Of Birth : </label>
-        <input type="text" id="birth"><br><br>
+        <input type="text" id="birth" onkeyup="validate()"><br><br>
         <label for="email">Email id : </label>
-        <input type="text" id="email"><br><br>
+        <input type="text" id="email" onkeyup="validate()"><br><br>
         <label for="mobile">Mobile No : </label>
-        <input type="number" id="mobile"><br><br>
-        <button type="button" onclick="displayall()">submit</button>
+        <input type="number" id="mobile" onkeyup="validate()"><br><br>
+        <button type="button" id="adduser" onclick="displayall()" disabled>submit</button>
         <button>Reset</button>
     </form>
     <table border="1" style="color: red;background-color: greenyellow; ">
@@ -70,7 +70,7 @@
        }
        function displayuser(){
            document.querySelector("tbody").innerHTML="";
-           allusers.forEach((use)=>{
+           allusers.forEach((use,i)=>{
               var mytr=document.createElement("tr")
                for(a in use){
                      var mytd=document.createElement("td")
@@ -78,22 +78,53 @@
                      mytr.appendChild(mytd)
                }
                var edittd=document.createElement("td")
-                  var editbtn=document.createElement("button")
+                  var editbtn=document.createElement("button");
+                  editbtn.setAttribute("onclick","editUser("+i+")")
                   editbtn.innerHTML="edit"
                   edittd.appendChild(editbtn)
                   mytr.appendChild(edittd)
 
                   var deletetd=document.createElement("td")
-                  var deletebtn=document.createElement("button")
-                  deletebtn.innerHTML="delete"
-                  deletetd.appendChild(deletebtn)
+                  var deleteBtn=document.createElement("button")
+                  deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+                  deleteBtn.innerHTML="delete"
+                  deletetd.appendChild(deleteBtn)
                   mytr.appendChild(deletetd)
                document.querySelector("tbody").appendChild(mytr)
            })
        }
+       function editUser(i){
+           console.log("editUser called "+i)
+            
+       }
+       function deleteUser(i){
+        
+        allusers.splice(i,1);
+        displayuser(allusers)
+       }
        displayuser(allusers)
           
-    
+    function validate(){
+        var user={
+            fname:document.getElementById("fname").value,
+            lname:document.getElementById("lname").value,
+            birth:document.getElementById("birth").value,
+            email:document.getElementById("email").value,
+            mobile:document.getElementById("mobile").value,
+        };
+        var check=false;
+        for(a in user){
+            if(user[a]==""){
+                check=true
+            }
+        }
+        if(check==true){
+            document.getElementById("adduser").setAttribute("disabled",true);
+
+        }else{
+            document.getElementById("adduser").removeAttribute("disabled");
+        }
+    }
         </script>
 </body>
 </html>

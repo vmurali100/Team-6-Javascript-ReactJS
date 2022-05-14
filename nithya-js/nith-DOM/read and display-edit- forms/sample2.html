@@ -18,7 +18,7 @@ input#ss {
 input#lt {
     width: 20px;
 }
-button#but1\ {
+button#addUser\ {
     margin-left: 170px;
     color: orange;
 }
@@ -36,18 +36,21 @@ body {
    
     <h1>Address</h1>
     <hr>
-    <label action="">street : </label>
-    <input type="text" id="street"><br><br>
-    <input type="text" id="ss"><br><br>
-    <label action="">City,State : </label>
-    <input type="text" id="city">
-    <input type="text" id="lt"><br><br>
-    <label action="">Zip code : </label>
-    <input type="text" id="code"><br><br>
-    <label for="">Country : </label>
-    <input type="text" id="country"><br><br>
-    <button type="button" id="but1 " onclick="displaydata()" >Ok</button>
-    <button id="but2">Cancel</button>
+    <form action="">
+        <label action="">street : </label>
+        <input type="text" id="street" onkeyup="validate()"><br><br>
+        <input type="text" id="ss" onkeyup="validate()"><br><br>
+        <label action="">City,State : </label>
+        <input type="text" id="city"  onkeyup="validate()">
+        <input type="text" id="lt" onkeyup="validate()"><br><br>
+        <label action="">Zip code : </label>
+        <input type="text" id="code"  onkeyup="validate()"><br><br>
+        <label for="">Country : </label>
+        <input type="text" id="country"  onkeyup="validate()"><br><br>
+        <button type="button" id="adduser " onclick="displaydata()" disabled>Ok</button>
+        <button id="but2">Cancel</button>
+    </form>
+    
     <table border="1">
         <tr>
             <thead>
@@ -70,7 +73,9 @@ body {
         function displaydata(){
             var users={
                 street:document.getElementById("street").value,
+                streeet:document.getElementById("ss").value,
                 city:document.getElementById("city").value,
+                ciity:document.getElementById("lt").value,
                 code:document.getElementById("code").value,
                 country:document.getElementById("country").value,
             }
@@ -91,29 +96,64 @@ body {
         }
         function display(){
             document.querySelector("tbody").innerHTML="";
-            alluser.forEach((use)=>{
+            alluser.forEach((use,i)=>{
                var mytr=document.createElement("tr")
                for(a in use){
                    var mytd=document.createElement("td")
                    mytd.innerHTML=use[a]
                    mytr.appendChild(mytd)
                }
-               var edittd=document.createElement("td")
+                  var edittd=document.createElement("td")
                   var editbtn=document.createElement("button")
+                  editbtn.setAttribute("onclick","editUser("+i+")")
                   editbtn.innerHTML="edit"
                   edittd.appendChild(editbtn)
                   mytr.appendChild(edittd)
 
                   var deletetd=document.createElement("td")
                   var deletebtn=document.createElement("button")
+                  deletebtn.setAttribute("onclick","deleteUser("+i+")")
                   deletebtn.innerHTML="delete"
                   deletetd.appendChild(deletebtn)
                   mytr.appendChild(deletetd)
                   document.querySelector("tbody").appendChild(mytr)
                
             })
+         
+        }
+        function editUser(i){
+            console.log("editUser called")
+        }
+        function deleteUser(i){
+             alluser.splice(i,1);
+             display(alluser)
         }
         display(alluser)
+        function validate(){
+            var users={
+                street:document.getElementById("street").value,
+                streeet:document.getElementById("ss").value,
+                city:document.getElementById("city").value,
+                ciity:document.getElementById("lt").value,
+                code:document.getElementById("code").value,
+                country:document.getElementById("country").value,
+                
+                
+
+            };
+            var check=false;
+            for(a in users){
+                if(users[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+            document.getElementById("adduser").setAttribute("disabled",true);
+
+            }else{
+            document.getElementById("adduser").removeAttribute("disabled");
+           }
+    }
     </script>
 
 </body>

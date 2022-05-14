@@ -20,7 +20,7 @@
         <label for="place">place</label><br>
         <input type="text" name="" id="place" onclick="validate()">
         <br><br>
-        <button type="button" id="addUser" onclick="addUser()" disabled>Add User</button>
+        <button type="button" id="addUser" onclick="data()" disabled>Add User</button>
       </form>
       <hr />
       <table border="1">
@@ -43,7 +43,7 @@
         if (allUsers == null) {
           allUsers = [];
         }
-        function addUser() {
+        function data() {
           var user = {
             name: document.getElementById("name").value,
             date: document.getElementById("date").value,

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        .container{
+            width: 500px;margin: 0 auto;padding: 50px;
+        }
+        input{
+            background: #A6A6A6;
+            padding: 8px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            font-size: 15px;
+        }
+        input:hover{
+            background-color: #A6A6A6;
+            border: none;
+        }
+        button.myButton{
+            background-color: #A6A6A6;
+            color: black;
+            padding: 8px;
+            width: 20%;           
+            border-radius: 5px;
+            border: none;
+            float:left;
+        }
+        .mytable{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">        
+    <form action="" >
+        <table>
+            <tr>
+                <td><label for="fname">First Name</label></td>
+                <td><input type="text" name="" id="fname"></td>
+            </tr>
+            <tr>
+                <td><label for="lname">Last Name</label></td>
+                <td><input type="text" name="" id="lname"></td>
+            </tr>
+            <tr>
+                <td><label for="dateofbirth">Date of Birth</label></td>
+                <td><input type="text" name="" id="dateofbirth"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email id</label></td>
+                <td><input type="text" name="" id="email"></td>
+            </tr>
+            <tr>
+                <td><label for="mobileNo">Mobile No</label></td>
+                <td><input type="text" name="" id="mobileNo"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="userSubmit()" id="myButton">SUBMIT</button>
+        <button type="button" onclick="reserUser()" id="myButton">RESET</button>
+    </form>    
+    </div>
+    <br><hr>
+    <table border="1" class="mytable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Email id</th>
+                <th>Mobile No</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+        if (allUsers == null){
+            allUsers = []
+        }
+        function userSubmit(){
+           var user = {
+            fname: document.getElementById("fname").value,
+            lname: document.getElementById("lname").value,
+            dateofbirth: document.getElementById("dateofbirth").value,
+            email: document.getElementById("email").value,
+            mobileno: document.getElementById("mobileNo").value,
+           }
+            allUsers.push(user);
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+
+        //    console.log(user);
+            // console.log(allUsers)
+            displayUsers(allUsers);
+            reserUser();
+            
+        }
+        function reserUser(){
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("dateofbirth").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("mobileNo").value = ""
+        }
+        function displayUsers(data){
+            document.querySelectorAll("tbody")[1].innerHTML ="";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user){
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var editTd = document.createElement("td");
+                var editBit = document.createElement("button");
+                editBit.setAttribute("onclick", "editUser("+i+")");
+                editBit.innerHTML = "Edit";
+                editTd.appendChild(editBit);
+                myTr.appendChild(editTd);
+
+                var deleteTd = document.createElement("td");
+                var deleteBit= document.createElement("button");
+                deleteBit.setAttribute("onclick","deleteUser("+i+")");
+                deleteBit.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBit);
+                myTr.appendChild(deleteTd);
+                document.querySelectorAll("tbody")[1].appendChild(myTr)                
+            });                
+        }
+        function editUser(i){
+            console.log("Edite User Called" + i);
+        }
+        function deleteUser(i){            
+            console.log("Delete User Called"+i);
+            allUsers.splice(i,1);
+            displayUsers(allUsers)
+        }
+        displayUsers(allUsers)
+    </script>
+</body>
+</html>

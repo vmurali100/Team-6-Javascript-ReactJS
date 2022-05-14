@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+           background-color: aqua;
+        }
+        .container{
+            width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        h2{
+            text-align: center;
+            color: blue;
+        }
+        input{
+            width: 400px;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        input#citys{
+            width: 310px;
+            margin-right: 0;
+        }
+        input#states{
+            width: 60px;
+            font-size: 15px;
+        }
+        button#userbutton {
+            float: right;
+            margin: 10px;
+            padding: 8px;
+            width: 20%;
+            background-color: bisque;
+            border-radius: 5px;
+        }
+        table#mytable {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        tr.mytr {
+            padding: 20px;
+            font-size: 19px;
+            margin: 10px;
+        }        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <h2>Address</h2>
+            <hr>
+            <table>
+                <tr>
+                    <td><label for="street">Street: </label></td>
+                    <td><input type="text" name="" id="street"></td>                    
+                </tr>
+                <tr>
+                    <td><label for="street"></label></td>
+                    <td><input type="text" name="" id="street"></td>                    
+                </tr>
+                <tr>
+                    <td><label for="citystate">City,State: </label></td>
+                    <td><input type="text" name="" id="citys">
+                    <input type="text" name="" id="states"></td>
+                </tr>
+                <tr>
+                    <td><label for="zipCode">Zip code: </label></td>
+                    <td><input type="text" name="" id="zipCode"></td>
+                </tr>
+                <tr>
+                    <td><label for="country">Country: </label></td>
+                    <td><input type="text" name="" id="country"></td>
+                </tr>
+            </table>
+            <button type="button" id="userbutton" onclick="userOk()">Ok</button>
+            <button type="button" id="userbutton" onclick="userCancel()">Cancel</button>
+        </form>
+    </div>
+    <hr>
+    <table border="1" id="mytable">
+        <thead id="deom">
+            <tr class="mytr">
+                <th>Street</th>
+                <th>City,State</th>
+                <th>Zip code</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody> 
+    </table>    
+    <script>
+        
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+        if (allUsers == null){
+            allUsers = []
+        }
+        function userOk(){
+           var user = {
+            street: document.getElementById("street").value,
+            city: document.getElementById("citys").value,
+            state: document.getElementById("states").value,
+            zipcode: document.getElementById("zipCode").value,
+            country: document.getElementById("country").value,
+           }
+            allUsers.push(user);
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+
+        //    console.log(user);
+            // console.log(allUsers)
+            displayUsers(allUsers);
+            userCancel();
+            
+        }
+        function userCancel(){
+            document.getElementById("street").value = "";
+            document.getElementById("citys").value = "";
+            document.getElementById("states").value = "";
+            document.getElementById("zipCode").value = "";
+            document.getElementById("country").value = "";
+        }
+        function displayUsers(data){
+            document.querySelectorAll("tbody")[1].innerHTML =""
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user){
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var editTd = document.createElement("td");
+                var editBit = document.createElement("button");
+                editBit.setAttribute("onclick", "editUser("+i+")");
+                editBit.innerHTML = "Edit";
+                editTd.appendChild(editBit);
+                myTr.appendChild(editTd);
+
+                var deleteTd = document.createElement("td");
+                var deleteBit= document.createElement("button");
+                deleteBit.setAttribute("onclick","deleteUser("+i+")");
+                deleteBit.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBit);
+                myTr.appendChild(deleteTd);
+                document.querySelectorAll("tbody")[1].appendChild(myTr)                
+            });                
+        }
+        function editUser(i){
+            console.log("Edite User Called" + i);
+        }
+        function deleteUser(i){            
+            console.log("Delete User Called" + i);
+            allUsers.splice(i,1);
+            displayUsers(allUsers)
+        }
+        displayUsers(allUsers)
+    </script>
+
+</body>
+</html>

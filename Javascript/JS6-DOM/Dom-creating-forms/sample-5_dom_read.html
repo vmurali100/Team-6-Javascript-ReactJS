@@ -46,12 +46,12 @@
                 <label for="">Email address</label><br>
                 <input type="text" placeholder="Email address" name="Emailaddress" id="Emailaddress"><br><br>
                 <select name="" id="">
-                    <option value="">I am a man</option>
-                    <option value="">I am a girl</option>
+                    <option value="">I am a Man</option>
+                    <option value="">I am a Girl</option>
                 </select><br><br>
                 <select name="" id="">
-                    <option value="">I want to find Women</option>
-                    <option value="">I want to find men</option>
+                    <option value="">I Want to Find Women</option>
+                    <option value="">I Want to Find Men</option>
                 </select><br><br>
                 <label for="Date of birth"><b>Date of birth</b></label><br><br>
                 <select name="" id="Dateofbirth">
@@ -67,18 +67,18 @@
                 </select>
                 <select name="" id="">
                     <option value="">MONTH</option>
-                    <option value="">jan</option>
-                    <option value="">feb</option>
-                    <option value="">mar</option>
-                    <option value="">april</option>
-                    <option value="">may</option>
-                    <option value="">june</option>
-                    <option value="">july</option>
-                    <option value="">aug</option>
-                    <option value="">sep</option>
-                    <option value="">oct</option>
-                    <option value="">nov</option>
-                    <option value="">dec</option>
+                    <option value="">Jan</option>
+                    <option value="">Feb</option>
+                    <option value="">Mar</option>
+                    <option value="">April</option>
+                    <option value="">May</option>
+                    <option value="">June</option>
+                    <option value="">July</option>
+                    <option value="">Aug</option>
+                    <option value="">Sep</option>
+                    <option value="">Oct</option>
+                    <option value="">Nov</option>
+                    <option value="">Dec</option>
                 </select>
                 <select name="" id="">
                     <option value="">DAY</option>
@@ -143,7 +143,7 @@
             <thead>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Email address</th>
+                <th>Email Address</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -166,12 +166,12 @@
 
             }
 
-            allusers.push(users)
+            allusers.push(users);
             localStorage.setItem("allusers", JSON.stringify(allusers))
-            console.log(users)
-            console.log(allusers)
-            displayusers()
-            Clearform(users)
+            // console.log(users)
+            // console.log(allusers)
+            displayusers(allusers);
+            Clearform(users);
         }
 
         function Clearform(users) {
@@ -180,10 +180,10 @@
             }
         }
 
-        function displayusers() {
+        function displayusers(data) {
             document.querySelector('tbody').innerHTML = ""
 
-            allusers.forEach((users, i) => {
+            data.forEach((users, i) => {
 
                 var mytr = document.createElement('tr')
                 document.querySelector('tbody').appendChild(mytr)
@@ -198,20 +198,20 @@
                 mytr.appendChild(edittd)
                 edittd.appendChild(editBtn)
                 editBtn.innerHTML = "Edit"
-                editBtn.setAttribute("onclick", "Edituser(" + i + ")")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
 
                 var Deletetd = document.createElement('td')
                 var Deletebtn = document.createElement('button')
                 mytr.appendChild(Deletetd)
                 Deletetd.appendChild(Deletebtn)
                 Deletebtn.innerHTML = "Delete"
-                Deletebtn.setAttribute("onclick", "Deleteuser(" + i + ")")
+                Deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
             })
         }
-        function EditUser(i) {
+        function editUser(i) {
             console.log("edit user called" + i)
         }
-        function DeleteUser(i) {
+        function deleteUser(i) {
             console.log("Delete user called"+i)
             allusers.splice(i, 1)
             displayusers()

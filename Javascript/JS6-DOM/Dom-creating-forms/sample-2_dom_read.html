@@ -33,7 +33,7 @@
             width: 60px;
             font-size: 15px;
         }
-        button#userbutton {
+        button.userbutton {
             float: right;
             margin: 10px;
             padding: 8px;
@@ -60,28 +60,28 @@
             <table>
                 <tr>
                     <td><label for="street">Street: </label></td>
-                    <td><input type="text" name="" id="street"></td>                    
+                    <td><input type="text" name="" id="street" onkeyup="userbutton()"></td>                    
                 </tr>
                 <tr>
                     <td><label for="street"></label></td>
-                    <td><input type="text" name="" id="street"></td>                    
+                    <td><input type="text" name="" id="street" onkeyup="userbutton()"></td>                    
                 </tr>
                 <tr>
                     <td><label for="citystate">City,State: </label></td>
                     <td><input type="text" name="" id="citys">
-                    <input type="text" name="" id="states"></td>
+                    <input type="text" name="" id="states" onkeyup="userbutton()"></td>
                 </tr>
                 <tr>
                     <td><label for="zipCode">Zip code: </label></td>
-                    <td><input type="text" name="" id="zipCode"></td>
+                    <td><input type="text" name="" id="zipCode" onkeyup="userbutton()"></td>
                 </tr>
                 <tr>
                     <td><label for="country">Country: </label></td>
-                    <td><input type="text" name="" id="country"></td>
+                    <td><input type="text" name="" id="country" onkeyup="userbutton()"></td>
                 </tr>
             </table>
-            <button type="button" id="userbutton" onclick="userOk()">Ok</button>
-            <button type="button" id="userbutton" onclick="userCancel()">Cancel</button>
+            <button type="button" class="userbutton"  id="mybutton" onclick="userOk()">Ok</button>
+            <button type="button" class="userbutton" onclick="userCancel()">Cancel</button>
         </form>
     </div>
     <hr>
@@ -162,7 +162,32 @@
             allUsers.splice(i,1);
             displayUsers(allUsers)
         }
-        displayUsers(allUsers)
+        displayUsers(allUsers);
+
+
+        function userbutton(){
+        var user = {
+            street: document.getElementById("street").value,
+            city: document.getElementById("citys").value,
+            state: document.getElementById("states").value,
+            zipcode: document.getElementById("zipCode").value,
+            country: document.getElementById("country").value,
+        };
+
+        var check = false;
+        for(a in user){
+          if(user[a] == ""){
+            check = true
+          }
+        }
+
+        if(check == true){
+          document.getElementById("mybutton").setAttribute("disabled",true);
+        }else{
+          document.getElementById("mybutton").removeAttribute("disabled");
+        }
+  
+      }
     </script>
 
 </body>

@@ -14,37 +14,37 @@
                 <legend>Registration Details</legend><br>
 
                 <label for="university">Univarsity: </label>
-                <input type="text" name="" id="university">
+                <input type="text" name="" id="university" onkeyup="mybutton()">
                 <br><br>
 
                 <label for="institute">Institute: </label>
-                <input type="text" name="" id="institute">
+                <input type="text" name="" id="institute" onkeyup="mybutton()">
                 <br><br>
 
                 <label for="branch">Branch: </label>
-                <input type="text" name="" id="branch">
+                <input type="text" name="" id="branch" onkeyup="mybutton()">
                 <br><br>
 
                 <label for="degree">Degree: </label>
-                <input type="text" id="degree">
-                <input type="radio">Pursuing
-                <input type="radio">Completed
+                <input type="text" id="degree" onkeyup="mybutton()">
+                <input type="radio" onkeyup="mybutton()">Pursuing
+                <input type="radio" onkeyup="mybutton()">Completed
                 <br><br>
 
                 <label for="average">Average CPI: </label>
-                <input type="number" id="average">
+                <input type="number" id="average" onkeyup="mybutton()">
                 <br><br>
 
                 <label for="upto">Upto</label>
-                <input type="text" name="" id="upto">Th Semester  
+                <input type="text" name="" id="upto" onkeyup="mybutton()">Th Semester  
                 <br><br>
 
                 <label for="experience">Experince: </label>
-                <input type="number" name="" id="experience"> Years                
+                <input type="number" name="" id="experience" onkeyup="mybutton()"> Years                
                 <br><br>
 
                 <label for="yourwebsite">Your Website Or Blog: </label>
-                <input type="text" name="" id="yourwebsite" placeholder="http://"><br>
+                <input type="text" name="" id="yourwebsite" placeholder="http://" onkeyup="mybutton()"><br>
                 
             </fieldset>
             <button type="button" onclick="userSubmit()">Submit</button>
@@ -137,6 +137,34 @@
                 displayUsers(allUsers)
             }
             displayUsers(allUsers)
+
+
+            function mybutton(){
+        var user = {
+                univarsity: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                averagecpi: document.getElementById("average").value,
+                upto: document.getElementById("upto").value,
+                experince: document.getElementById("experience").value,
+                yourwebsiteorblog: document.getElementById("yourwebsite").value
+        };
+
+        var check = false;
+        for(a in user){
+          if(user[a] == ""){
+            check = true
+          }
+        }
+
+        if(check == true){
+          document.getElementById("userSubmit").setAttribute("disabled",true);
+        }else{
+          document.getElementById("userSubmit").removeAttribute("disabled");
+        }
+  
+      } 
         </script>
 </body>
 </html>

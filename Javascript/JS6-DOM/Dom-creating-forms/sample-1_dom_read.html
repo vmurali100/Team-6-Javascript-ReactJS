@@ -44,27 +44,27 @@
         <table>
             <tr>
                 <td><label for="fname">First Name</label></td>
-                <td><input type="text" name="" id="fname"></td>
+                <td><input type="text" name="" id="fname" onkeyup="validate()"></td>
             </tr>
             <tr>
                 <td><label for="lname">Last Name</label></td>
-                <td><input type="text" name="" id="lname"></td>
+                <td><input type="text" name="" id="lname" onkeyup="validate()"></td>
             </tr>
             <tr>
                 <td><label for="dateofbirth">Date of Birth</label></td>
-                <td><input type="text" name="" id="dateofbirth"></td>
+                <td><input type="text" name="" id="dateofbirth" onkeyup="validate()"></td>
             </tr>
             <tr>
                 <td><label for="email">Email id</label></td>
-                <td><input type="text" name="" id="email"></td>
+                <td><input type="text" name="" id="email" onkeyup="validate()"></td>
             </tr>
             <tr>
                 <td><label for="mobileNo">Mobile No</label></td>
-                <td><input type="text" name="" id="mobileNo"></td>
+                <td><input type="text" name="" id="mobileNo" onkeyup="validate()"></td>
             </tr>
         </table>
-        <button type="button" onclick="userSubmit()" id="myButton">SUBMIT</button>
-        <button type="button" onclick="reserUser()" id="myButton">RESET</button>
+        <button type="button" onclick="userSubmit()" class="myButton" id="userbutton">SUBMIT</button>
+        <button type="button" onclick="reserUser()" class="myButton">RESET</button>
     </form>    
     </div>
     <br><hr>
@@ -146,6 +146,30 @@
             displayUsers(allUsers)
         }
         displayUsers(allUsers)
+        
+        function validate(){
+        var user = {
+            fname: document.getElementById("fname").value,
+            lname: document.getElementById("lname").value,
+            dateofbirth: document.getElementById("dateofbirth").value,
+            email: document.getElementById("email").value,
+            mobileno: document.getElementById("mobileNo").value,
+        };
+
+        var check = false;
+        for(a in user){
+          if(user[a] == ""){
+            check = true
+          }
+        }
+
+        if(check == true){
+          document.getElementById("userbutton").setAttribute("disabled",true);
+        }else{
+          document.getElementById("userbutton").removeAttribute("disabled");
+        }
+  
+      }
     </script>
 </body>
 </html>

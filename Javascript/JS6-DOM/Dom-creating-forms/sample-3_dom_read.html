@@ -40,22 +40,22 @@
         <h2>Bootstrap 4 Form Validation Demo</h2>
     <form action="">
         <label for="name">Name</label>
-        <input type="text" name="" id="name" placeholder="Name">
+        <input type="text" name="" id="name" placeholder="Name" onkeyup="surchbutton()">
 
         <label for="username">Username</label>
-        <input type="text" name="" id="username" placeholder="Username">
+        <input type="text" name="" id="username" placeholder="Username" onkeyup="surchbutton()">
 
         <label for="email">Email</label>
-        <input type="text" name="" id="email" placeholder="Email">
+        <input type="text" name="" id="email" placeholder="Email" onkeyup="surchbutton()">
 
         <label for="Password">Password</label>
-        <input type="password" name="" id="Password" placeholder="Password">
+        <input type="password" name="" id="Password" placeholder="Password" onkeyup="surchbutton()">
 
         <label for="confirm">Confirm Password</label>
-        <input type="password" name="" id="confirm" placeholder="Confirm">
+        <input type="password" name="" id="confirm" placeholder="Confirm" onkeyup="surchbutton()">
 
         <label for="massage">Massage</label><br>
-        <textarea name="" id="massage" cols="30" rows="3" placeholder="Massage"></textarea> <br>
+        <textarea name="" id="massage" cols="30" rows="3" placeholder="Massage" onkeyup="surchbutton()"></textarea> <br>
 
         <button type="button" onclick="userSend()" id="userbutton">Send</button>
     </form>
@@ -141,7 +141,33 @@
             allUsers.splice(i,1);
             displayUsers(allUsers)
         }
-        displayUsers(allUsers)
+        displayUsers(allUsers);
+
+
+        function surchbutton(){
+        var user = {
+            name: document.getElementById("name").value,
+            username: document.getElementById("username").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("Password").value,
+            confirm: document.getElementById("confirm").value,
+            masserge: document.getElementById("massage").value
+        };
+
+        var check = false;
+        for(a in user){
+          if(user[a] == ""){
+            check = true
+          }
+        }
+
+        if(check == true){
+          document.getElementById("userbutton").setAttribute("disabled",true);
+        }else{
+          document.getElementById("userbutton").removeAttribute("disabled");
+        }
+  
+      }
     </script>
 </body>
 </html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        body {
+            background: #e6addd;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Registration Details</legend>
+            <label for="">University :</label>
+            <input type="text" id="university"><br><br>
+
+            <label for="">Institute :</label>
+            <input type="text" id="institute"><br><br>
+
+            <label for="">Branch :</label>
+            <input type="text" id="branch"><br><br>
+
+            <label for="">Degree :</label>
+            <input type="text" id="degree">
+            <select>
+                <option>----select----</option>
+                <option>BSC</option>
+                <option>BCA</option>
+                <option>BCOM</option>
+            </select>
+            <input type="radio">Pursuing
+            <input type="radio">Completed <br><br>
+
+            <label for="">Average CGPI :</label>
+            <input type="number" id="average"><br><br>
+
+            <label for="">Upto :</label>
+            <input type="number" id="upto">Semester<br><br>
+
+            <label for="">Experience :</label>
+            <input type="number" id="exp">Years<br><br>
+
+            <label for="">Your Website Or Blog :</label>
+            <input type="text" id="blog"><br><br>
+        </fieldset>
+        <button type="button" onclick="okdata()">OK</button>
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>University</th>
+                <th>Institute</th>
+                <th>Branch</th>
+                <th>Degree</th>
+                <th>Average CGPI</th>
+                <th>Upto</th>
+                <th>Experience</th>
+                <th>Your Website Or Blog</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers")) 
+        if(allUsers==null){
+            allUsers=[]
+        }
+        function okdata() {
+            var user = {
+                University: document.getElementById("university").value,
+                Institute: document.getElementById("institute").value,
+                Branch: document.getElementById("branch").value,
+                Degree: document.getElementById("degree").value,
+                Average: document.getElementById("average").value,
+                Upto: document.getElementById("upto").value,
+                Experience: document.getElementById("exp").value,
+                YourWebsiteOrBlog: document.getElementById("blog").value,
+            }
+            console.log(allUsers)
+            allUsers.push(user)
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayUsers(allUsers)
+
+        }
+
+        function clear(){
+            document.getElementById("university").value="";
+            document.getElementById("institute").value="";
+            document.getElementById("branch").value="";
+            document.getElementById("degree").value="";
+            document.getElementById("average").value="";
+            document.getElementById("upto").value="";
+            document.getElementById("exp").value="";
+            document.getElementById("blog").value=""
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.innerHTML = "Button"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+
+        function editUser(i) {
+            console.log("edituser called" + i)
+        }
+
+        function deleteUser(i) {
+            console.log("deleteuser called" +i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+
+
+    </script>
+
+</body>
+
+</html>

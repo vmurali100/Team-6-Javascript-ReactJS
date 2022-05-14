@@ -13,8 +13,8 @@
         border-radius: 10px;
         border: 2px solid;
         }
-        td {
-             display: flex;
+        table {
+            margin: auto;
         }
         body {
     background: #e6addd;
@@ -28,32 +28,116 @@
         <table>
             <tr>
                 <td><label for="name">Name</label></td><br/>
-                <td><input type="text" placeholder="Name" id="" step="3"></td>
+                <td><input type="text" placeholder="Name" id="name"></td>
             </tr>
             <tr></tr>
-                <td><label for="username">username</label></td>
-                <td><input type="text" placeholder="Username" id="" step="3"></td>
+                <td><label for="username">Username</label></td>
+                <td><input type="text" placeholder="Username" id="username"></td>
             </tr>
             <tr>
                 <td><label for="email">Email</label></td>
-                <td><input type="email" placeholder="Email"></td>
+                <td><input type="email" placeholder="Email" id="email"></td>
             </tr>
             <tr>
                 <td><label for="password">Password</label></td>
-                <td><input type="password" placeholder="Password"></td>
+                <td><input type="password" placeholder="Password" id="password"></td>
             </tr>
             <tr>
                 <td><label for="password">Confirm Password</label></td>
-                <td><input type="password" placeholder="Confirm"></td>
+                <td><input type="password" placeholder="Confirm" id="password"></td>
             </tr>
             <tr>
                 <td><label for="message">Message</label></td>
-                <td><textarea id="" name="" placeholder="Message"></textarea></td>
-            </tr>
-            <tr>
-                <td><button type="button">send</button></td>
+                <td><input type="message" placeholder="Message" id="message"></td>
             </tr>
         </table>
+            <tr>
+                <td>
+                    <button type="button" onclick="sendUser()">SEND</button>
+                </td>
+            </tr>
+        
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = []
+        function sendUser(){
+            var user = {
+                name : document.getElementById("name").value,
+                username : document.getElementById("username").value,
+                email : document.getElementById("email").value,
+                password : document.getElementById("password").value,
+                password : document.getElementById("password").value,
+                message : document.getElementById("message").value,
+            }
+            console.log(allUsers)
+            allUsers.push(user)
+            displayUsers(allUsers)
+            
+        }
+
+        // function resetUser(){
+        //     document.getElementById("name").value="";
+        //     document.getElementById("username").value="";
+        //     document.getElementById("email").value="";
+        //     document.getElementById("password").value="";
+        //     document.getElementById("password").value="";
+        //     document.getElementById("message").value=""
+        // }
+        function displayUsers(data) {
+                document.querySelectorAll("tbody")[1].innerHTML = "";
+                data.forEach((user,i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+                    var editTd = document.createElement("td") 
+                    var editBtn = document.createElement("button")
+                    editBtn.setAttribute("onclick","edituser("+i+")")
+                    editBtn.innerHTML = "Edit"
+                    editTd.appendChild(editBtn)
+                    myTr.appendChild(editTd)
+
+                    var deleteTd = document.createElement("td") 
+                    var deleteBtn = document.createElement("button")
+                    deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                    deleteBtn.innerHTML = "Button"
+                    deleteTd.appendChild(deleteBtn)
+                    myTr.appendChild(deleteTd)
+
+
+                    document.querySelectorAll("tbody")[1].appendChild(myTr)
+                })
+            }
+
+            function editUser(i){
+                console.log("edituser called" +i)
+            }
+
+            function deleteUser(i){
+                console.log("deleteuser called" +i)
+                allUsers.splice(i,1)
+                displayUsers(allUsers)
+            }
+
+          
+        </script>
 
 </body>
 </html>

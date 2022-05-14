@@ -24,20 +24,20 @@
     <form action="1">
         <legend>Registration details</legend><br><br>
         <label for="university">university</label>
-        <input type="text" name="" id="university"><br><br>
+        <input type="text" name="" id="university" onkeyup="validate()"><br><br>
         <label for="institute">institute</label>
-        <input type="text" name="" id="institute"><br><br>
+        <input type="text" name="" id="institute" onkeyup="validate()"><br><br>
         <label for="branch">branch</label>
-        <input type="number" name="" id="branch"><br><br>
+        <input type="number" name="" id="branch" onkeyup="validate()"><br><br>
         <label for="degree">degree</label>
-        <input type="number" name="" id="degree"><br><br>
+        <input type="number" name="" id="degree" onkeyup="validate()"><br><br>
         <label for="avarageCPI">avarage CPI</label>
-        <input type="text" name="" id="avarageCPI"><br><br>
+        <input type="text" name="" id="avarageCPI" onkeyup="validate()"><br><br>
         <label for="Experience">Experience</label>
-        <input type="number" name="" id="Experience"><br><br>
+        <input type="number" name="" id="Experience" onkeyup="validate()"><br><br>
         <label for="yourwebsite">your website or blog</label>
-        <input type="text" name="" id="yourwebsite"><br><br>
-        <button type="button" onclick="adduser()">step2</button>
+        <input type="text" name="" id="yourwebsite" onkeyup="validate()" ><br><br>
+        <button type="button" id="getdata" onclick="adduser()" disabled>step2</button>
     </form>
     <hr>
     <table border="2">
@@ -122,6 +122,31 @@
     console.log("deleteuser called"+i)
    }
    displayusers(alluser)
+
+   function validate(){
+    console.log("entered some value")
+    var user={
+                university:document.getElementById("university").value,
+                institute:document.getElementById("institute").value,
+                branch:document.getElementById("branch").value,
+                degree:document.getElementById("degree").value,
+                avarageCPI:document.getElementById("avarageCPI").value,
+                Experience:document.getElementById("Experience").value,
+                yourwebsite:document.getElementById("yourwebsite").value,
+            }
+            var check=false
+            for (a in user){
+                if(user[a]==""){
+                    check=true
+                }
+              
+            }
+            if(check==true){
+                document.getElementById("getdata").setAttribute("disabled",true)
+            }else{
+                document.getElementById("getdata").removeAttribute("disabled")
+            }
+   }
     </script>
 </body>
 </html>

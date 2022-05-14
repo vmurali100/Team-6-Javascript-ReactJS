@@ -25,18 +25,18 @@
     <hr>
     <form>
         <label for="name">name</label><br><br>
-        <input type="text" name="" id="name" placeholder="name"><br><br>
+        <input type="text" name="" id="name" placeholder="name" onkeyup="validate()"><br><br>
         <label for="username">username</label><br><br>
-        <input type="text" name="" id="username" placeholder="username"><br><br>
+        <input type="text" name="" id="username" placeholder="username" onkeyup="validate()"><br><br>
         <label for="email">email</label><br><br>
-        <input type="text" name="" id="email" placeholder="email"><br><br>
+        <input type="text" name="" id="email" placeholder="email" onkeyup="validate()"><br><br>
         <label for="password">password</label><br><br>
-        <input type="text" name="" id="password" placeholder="password"><br><br>
+        <input type="text" name="" id="password" placeholder="password" onkeyup="validate()"><br><br>
         <label for="confirmpassword">confirmpassword</label><br><br>
-        <input type="text" name="" id="confirmpassword" placeholder="confirmpassword"><br><br>
+        <input type="text" name="" id="confirmpassword" placeholder="confirmpassword" onkeyup="validate()"><br><br>
         <label for="message">message</label><br><br>
-        <input type="text" name="" id="message" placeholder="message"><br><br>
-        <button type="button" onclick="adduser()">send</button>
+        <input type="text" name="" id="message" placeholder="message" onkeyup="validate()"><br><br>
+        <button type="button" id="getdata" onclick="adduser()" disabled>send</button>
     </form>
     <hr>
     <table border="1">
@@ -118,6 +118,29 @@ function deleteuser(i){
     console.log("edituser called"+i)
 }
    displayusers(alluser)
+
+  function validate(){
+      console.log("some value")
+      var user={
+                name:document.getElementById("name").value,
+                username:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("password").value,
+                confirmpassword:document.getElementById("confirmpassword").value,
+                message:document.getElementById("message").value,
+            }
+            var cheak=false
+            for(a in user){
+                if(user[a]==""){
+                    cheak=true
+                }
+            }
+            if(cheak==true){
+                document.getElementById("getdata").setAttribute("disabled",true)
+            }else{
+                document.getElementById("getdata").removeAttribute("disabled")
+            }
+  }
 
     </script>
 </body>

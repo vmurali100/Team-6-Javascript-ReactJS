@@ -21,14 +21,14 @@
     </style>
 </head>
 <body>
-    <form action="">
+    <form>
         <label for="">username</label><br><br>
-        <input type="text" id="username" placeholder="username"><br><br>
+        <input type="text" id="username" placeholder="username" onkeyup="validate()"><br><br>
         <label for="">password</label><br><br>
-        <input type="text" id="password" placeholder="password"><br><br>
+        <input type="text" id="password" placeholder="password" onkeyup="validate()"><br><br>
         <label for="">emailaddress</label><br><br>
-        <input type="text" id="emailaddress" placeholder="emailaddress"><br><br>
-        <select name="" id="iam">
+        <input type="text" id="emailaddress" placeholder="emailaddress" onkeyup="validate()"><br><br>
+        <select name="" id="iam" >
             <option value="">I am man </option>
             <option value="">I am woman </option>
         </select><br><br>
@@ -39,7 +39,7 @@
         <label for="">Date Of Birth</label><br><br>
         <select name="" id="">
             <option value="">year</option>
-            <option value="">2000</option>
+            <option value="2000">2000</option>
         </select>
         <select name="" id="">
             <option value="">month</option>
@@ -58,7 +58,7 @@
             <option value="">weight</option>
             <option value="">75</option>
         </select><br>
-        <button type="button" onclick="adduser()">find</button>
+        <button type="button" id="getdata" onclick="adduser()" disabled>find</button>
     </form>
     <hr>
     <table border="1">
@@ -131,6 +131,25 @@
    }
 
    displayusers(alluser)
+   function validate(){
+    var user={
+                username:document.getElementById("username").value, 
+                password:document.getElementById("password").value, 
+                emailaddress:document.getElementById("emailaddress").value, 
+            }
+            var check=false
+            for(a in user){
+                if(user[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+                document.getElementById("getdata").setAttribute("disabled",true)
+            }else{
+                document.getElementById("getdata").removeAttribute("disabled") 
+            }
+   }
+
     </script>
 </body>
 </html>

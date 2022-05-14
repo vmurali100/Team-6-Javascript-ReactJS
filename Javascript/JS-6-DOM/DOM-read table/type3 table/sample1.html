@@ -25,13 +25,13 @@
     <hr>
     <form action="">
         <label for="street">street</label>
-        <input type="text" name="" id="street"><br>
-        <input type="text" name="" id="street"><br><br>
+        <input type="text" name="" id="street" onkeyup="validate()"><br>
+        <input type="text" name="" id="street" onkeyup="validate()"><br><br>
         <label for="city">city</label>
-        <input type="text" name="" id="city"><br><br>
+        <input type="text" name="" id="city" onkeyup="validate()"><br><br>
         <label for="country">country</label>
-        <input type="text" name="" id="country"><br><br>
-        <button type="button" onclick="adduser()">OK</button>
+        <input type="text" name="" id="country" onkeyup="validate()"><br><br>
+        <button type="button" id="getdata" onclick="adduser()" disabled >OK</button>
         <button type="button">Cancel</button>
     </form>
     <hr>
@@ -105,6 +105,26 @@
        console.log("deleteuser called"+i)
    }
    displayusers(alluser)
+
+   function validate(){
+       console.log("entered some value")
+       var user={
+                street:document.getElementById("street").value,
+                city:document.getElementById("city").value,
+                country:document.getElementById("country").value,
+            }
+            var check=false
+            for(a in user){
+                if(user[a]=="")
+               { check=true}
+            }
+            if(check==true){
+                document.getElementById("getdata").setAttribute("disabled",true)
+            }else{
+                document.getElementById("getdata").removeAttribute("disabled")
+            }
+   }
+
     </script>
 </body>
 </html>

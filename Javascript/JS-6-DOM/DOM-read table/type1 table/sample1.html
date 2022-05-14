@@ -22,16 +22,16 @@
 </head>
 <body>
     <label for="fname">first name</label>
-    <input type="text" name="" id="fname"><br><br>
+    <input type="text" name="" id="fname" onkeyup="validate()"><br><br>
     <label for="lname">last name</label>
-    <input type="text" name="" id="lname"><br><br>
+    <input type="text" name="" id="lname" onkeyup="validate()"><br><br>
     <label for="date">date of birth</label>
-    <input type="number" name="" id="date"><br><br>
+    <input type="number" name="" id="date" onkeyup="validate()"><br><br>
     <label for="email">email id</label>
-    <input type="text" name="" id="email"><br><br>
+    <input type="text" name="" id="email" onkeyup="validate()"><br><br>
     <label for="mobile">mobile number</label>
-    <input type="number" name="" id="mobile"><br><br>
-    <button type="button" onclick="adduser()">submit</button>
+    <input type="number" name="" id="mobile" onkeyup="validate()"><br><br>
+    <button type="button" id="country"  onclick="adduser()" disabled>submit</button>
     <button type="button" onclick="adduser1()">reset</button>
     <hr>
     <table border="1" style="border: 1px;color: blue;">
@@ -111,6 +111,29 @@
    }
 
    displayusers(alluser) 
+
+   function validate(){
+       console.log("just you entered some value")
+       var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,  
+                date:document.getElementById("date").value,  
+                email:document.getElementById("email").value,  
+                mobile:document.getElementById("mobile").value,      
+            }
+            var cheak=false
+            for(a in user){
+                if(user[a]==""){
+                    cheak=true
+                }
+            }
+            if(cheak==true){
+                document.getElementById("country").setAttribute("disabled",true)
+            }else{
+                document.getElementById("country").removeAttribute("disabled")
+            }
+            }
+   
     </script>
 </body>
 </html>

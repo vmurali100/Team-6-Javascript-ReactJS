@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>     
+
+        .mydiv {
+            border: 2px solid;
+            width: 310px;
+            margin-left: 500px;
+            background-color: whitesmoke;
+        }
+
+        form {
+            margin: 10px;
+        }
+
+        th {
+            background-color: rgb(0, 255, 21);
+        }
+
+        td {
+            color: blue;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    
+        <div class="mydiv">
+            <form action="">
+                <label for="Username">Username</label><br>
+                <input type="text" name="Username" id="Username"> <br><br>
+                <label for="Password">Password</label><br>
+                <input type="text" placeholder="Password" name="Password" id="Password"> <br><br>
+                <label for="">Email address</label><br>
+                <input type="text" placeholder="Email address" name="Emailaddress" id="Emailaddress"><br><br>
+                <select name="" id="">
+                    <option value="">I am a man</option>
+                    <option value="">I am a girl</option>
+                </select><br><br>
+                <select name="" id="">
+                    <option value="">I want to find Women</option>
+                    <option value="">I want to find men</option>
+                </select><br><br>
+                <label for="Date of birth"><b>Date of birth</b></label><br><br>
+                <select name="" id="Dateofbirth">
+                    <option value="">Year</option>
+                    <option value="">2015</option>
+                    <option value="">2016</option>
+                    <option value="">2017</option>
+                    <option value="">2018</option>
+                    <option value="">2019</option>
+                    <option value="">2020</option>
+                    <option value="">2021</option>
+                    <option value="">2022</option>
+                </select>
+                <select name="" id="">
+                    <option value="">MONTH</option>
+                    <option value="">jan</option>
+                    <option value="">feb</option>
+                    <option value="">mar</option>
+                    <option value="">april</option>
+                    <option value="">may</option>
+                    <option value="">june</option>
+                    <option value="">july</option>
+                    <option value="">aug</option>
+                    <option value="">sep</option>
+                    <option value="">oct</option>
+                    <option value="">nov</option>
+                    <option value="">dec</option>
+                </select>
+                <select name="" id="">
+                    <option value="">DAY</option>
+                    <option value="">01</option>
+                    <option value="">02</option>
+                    <option value="">03</option>
+                    <option value="">04</option>
+                    <option value="">05</option>
+                    <option value="">06</option>
+                    <option value="">07</option>
+                    <option value="">08</option>
+                    <option value="">09</option>
+                    <option value="">10</option>
+                    <option value="">11</option>
+                    <option value="">12</option>
+                    <option value="">13</option>
+                    <option value="">14</option>
+                    <option value="">15</option>
+                    <option value="">16</option>
+                    <option value="">17</option>
+                    <option value="">18</option>
+                    <option value="">19</option>
+                    <option value="">20</option>
+                    <option value="">21</option>
+                    <option value="">22</option>
+                    <option value="">23</option>
+                    <option value="">24</option>
+                    <option value="">25</option>
+                    <option value="">26</option>
+                    <option value="">27</option>
+                    <option value="">28</option>
+                    <option value="">29</option>
+                    <option value="">30</option>
+                    <option value="">31</option>
+                </select><br><br>
+                <label for=""><b>Height / Weight</b></label><br><br>
+                <select name="HeightWeight" id="HeightWeight">
+                    <option value="">Height</option>
+                    <option value="">1.0m</option>
+                    <option value="">2.0m</option>
+                    <option value="">3.0m</option>
+                    <option value="">4.0m</option>
+                    <option value="">5.0m</option>
+
+                </select>
+                <select name="HeightWeight" id="HeightWeight">
+                    <option value="">Weight</option>
+                    <option value="">20kg</option>
+                    <option value="">30kg</option>
+                    <option value="">40kg</option>
+                    <option value="">50kg</option>
+                    <option value="">60kg</option>
+                </select>
+
+                <button type="button" onclick="pressenter()">Enter</button>
+
+            </form>
+        </div>
+    
+    <table border="1" style="width: 60%">
+        <tr>
+            <thead>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        allusers = JSON.parse(localStorage.getItem("allusers"))
+        if (allusers == null) {
+            allusers = []
+        }
+
+        function pressenter() {
+            var users = {
+                Username: document.getElementById("Username").value,
+                Password: document.getElementById("Password").value,
+                Emailaddress: document.getElementById("Emailaddress").value,
+
+            }
+
+            allusers.push(users)
+            localStorage.setItem("allusers", JSON.stringify(allusers))
+            console.log(users)
+            console.log(allusers)
+            displayusers()
+            Clearform(users)
+        }
+
+        function Clearform(users) {
+            for (a in users) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+        function displayusers() {
+            document.querySelector('tbody').innerHTML = ""
+
+            allusers.forEach((users, i) => {
+
+                var mytr = document.createElement('tr')
+                document.querySelector('tbody').appendChild(mytr)
+                for (a in users) {
+                    var mytd = document.createElement('td')
+                    mytd.innerHTML = users[a]
+                    mytr.appendChild(mytd)
+
+                }
+                var edittd = document.createElement('td')
+                var editBtn = document.createElement('button')
+                mytr.appendChild(edittd)
+                edittd.appendChild(editBtn)
+                editBtn.innerHTML = "Edit"
+                editBtn.setAttribute("onclick", "Edituser(" + i + ")")
+
+                var Deletetd = document.createElement('td')
+                var Deletebtn = document.createElement('button')
+                mytr.appendChild(Deletetd)
+                Deletetd.appendChild(Deletebtn)
+                Deletebtn.innerHTML = "Delete"
+                Deletebtn.setAttribute("onclick", "Deleteuser(" + i + ")")
+            })
+        }
+        function EditUser(i) {
+            console.log("edit user called" + i)
+        }
+        function DeleteUser(i) {
+            console.log("Delete user called"+i)
+            allusers.splice(i, 1)
+            displayusers()
+        }
+        displayusers()
+    </script>
+</body>
+
+</html> 

@@ -7,93 +7,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        form {
-            width: 400px;
-            height: 300px;
+        /* body {
+            width: 500px;
+            margin: 0 auto;
+        } */
+
+        h4#Heading {
+            width: 300px;
             margin: 0 auto;
             text-align: center;
-            background-color:darkcyan;
-            color:black;
+            /* margin-top: 50px; */
+            
         }
 
-        h1 {
-            margin-left: -240px;
-            margin-top: 50px;
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: rgb(219, 233, 233);
+            border: 25px solid rgb(0, 136, 255);
+            margin-top: 100px;
         }
 
-       hr {
-            margin-top: -20px;
-            width: 350px;
-            background-color: brown;
-        }
-
-        input#Street {
+        label {
             margin-left: 25px;
         }
 
-        input#Streets {
-            margin-left: 70px;
+        input {
+            margin-left: 25px;
+            width: 250px;
         }
 
-        input#City {
-            margin-left: -3px;
-            width: 120px;
+        textarea {
+            margin-left: 25px;
+            width: 253px;
         }
 
-        input#Citys {
-            width: 30px;
-        }
-
-        input#Country {
-            margin-left: 8px;
-        }
-
-        button {
-            margin-left: 50px;
-            margin-right: -40px;
-            border-radius: 5px;
-        }
-        input{
-            border-radius: 5px;
+        #AAA {
+            width: 260px;
+            margin-left: 25px;
+            background-color: cornflowerblue;
         }
         table {
             margin: 0 auto;
             text-align: center;
             width: 1000px;
-            margin-top: 50px;
+            margin-top: 15px;
         }
     </style>
 </head>
 
 <body>
     <form action="">
-        <label for="">
-            <h1>Address</h1>
-        </label>
-        <label for="" id="hr">
-            <hr>
-        </label>
-        <label for="Street">Street:</label>
-        <input type="text" name="" id="Street"><br><br>
-        <input type="text" name="" id="Streets"><br><br>
-        <label for="City">City, state:</label>
-        <input type="text" name="" id="City">
-        <input type="text" name="" id="Citys"><br><br>
-        <label for="Zip">Zip Code:</label>
-        <input type="text" name="" id="Zip"><br><br>
-        <label for="Country">Country:</label>
-        <input type="text" name="" id="Country"><br><br>
-        <button type="buttons" id="" onclick="Check()">OK</button>
-        <button type="buttons">Cancel</button>
+        <h4 id="Heading">Bootstrap 4 Form Validation Demo</h4>
+        <hr>
+        <label for="Name">Name</label><br>
+        <input type="text" placeholder="Name" id="Name"><br>
+        <label for="Username">Username</label><br>
+        <input type="text" placeholder="Username" id="Username"><br>
+        <label for="Email">Email</label><br>
+        <input type="text" placeholder="Email" id="Email"><br>
+        <label for="Password">Password</label><br>
+        <input type="text" placeholder="Password" id="Password"><br>
+        <label for="Confirm Password">Confirm Password</label><br>
+        <input type="text" placeholder="Confirm Password" id="Confirm Password"><br>
+        <label for="">Message</label><br>
+        <textarea name="" id="Message" cols="" rows="" placeholder="Message"></textarea><br>
+        <button type="buttons" id="AAA" onclick="Send()">Send</button>
     </form>
-     
     <table border="1">
         <tr>
             <thead>
-                <th>Street</th>
-                <th>City, state</th>
-                <th>Zip Code</th>
-                <th>Country</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Message</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -105,14 +94,14 @@
         if (allUsers == null) {
             allUsers = []
         }
-        function Check() {
+        function Send() {
             var user = {
-                Street: document.getElementById("Street").value,
-                // Streets: document.getElementById("Streets").value,
-                City: document.getElementById("City").value,
-                // Citys: document.getElementById("Citys").value,
-                Zip: document.getElementById("Zip").value,
-                Country: document.getElementById("Country").value,
+                Name: document.getElementById("Name").value,
+                Username: document.getElementById("Username").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("Password").value,
+                ConfirmPassword: document.getElementById("Confirm Password").value,
+                Message: document.getElementById("Message").value,
             }
             allUsers.push(user);
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
@@ -120,12 +109,12 @@
             clearForm();
         }
         function clearsForm() {
-            document.getElementById("Street").value = "";
-            document.getElementById("Streets").value = "";
-            document.getElementById("City").value = "";
-            document.getElementById("Citys").value = "";
-            document.getElementById("Zip").value = "";
-            document.getElementById("Country").value = "";
+            document.getElementById("Name").value = "";
+            document.getElementById("Username").value = "";
+            document.getElementById("Email").value = "";
+            document.getElementById("Password").value = "";
+            document.getElementById("Confirm Password").value = "";
+            document.getElementById("Message").value = "";
         }
         function displayUsers(data) {
             document.querySelector("tbody").innerHTML = "";
@@ -168,7 +157,6 @@
 
         }
         displayUsers(allUsers);
-    </script>
     </script>
 </body>
 

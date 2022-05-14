@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+            margin-top: 15px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: rgb(23, 96, 205);
+            border: 25px solid rgb(255, 140, 0);
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+    <label for="First Name">First Name:</label>
+    <input type="text" id="First Name" onkeyup="validate()"><br><br>
+    <label for="Last Name">Last Name:</label>
+    <input type="text" id="Last Name" onkeyup="validate()"><br><br>
+    <label for="Email">Email:</label>
+    <input type="text" id="Email" onkeyup="validate()"><br><br>
+    <label for="Password">Password:</label>
+    <input type="text" id="Password" onkeyup="validate()"><br><br>
+    <button type="buttons" onclick="Check()" disabled = "true" id="Click">Click</button>
+</form>
+<hr>
+<table border="1">
+    <tr>
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+    </tr>
+    <tbody></tbody>
+</table>
+<script>
+    var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+    if (allUsers == null) {
+        allUsers = []
+    }
+    function Check() {
+        var user = {
+            FirstName: document.getElementById("First Name").value,  
+            LastName: document.getElementById("Last Name").value,
+            Email: document.getElementById("Email").value,
+            Password: document.getElementById("Password").value,
+        }
+        allUsers.push(user);
+        localStorage.setItem("allUsers", JSON.stringify(allUsers))
+        displayUsers(allUsers);
+        clearForm();
+    }
+    function clearsForm() {
+        document.getElementById("First Name").value = "";
+        document.getElementById("Last Name").value = "";
+        document.getElementById("Email").value = "";
+        document.getElementById("Password").value = "";
+    }
+    function displayUsers(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user, i) => {
+            var myTr = document.createElement("tr");
+            for (a in user) {
+                var myTd = document.createElement("td");
+                myTd.innerHTML = user[a];
+                myTr.appendChild(myTd);
+            }
+            var EditTd = document.createElement("td")
+            var Editbutton = document.createElement("buttons");
+            Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+            Editbutton.innerHTML = "Edit";
+            EditTd.appendChild(Editbutton);
+            myTr.appendChild(EditTd)
+
+            var DeleteTd = document.createElement("td")
+            var Deletebutton = document.createElement("buttons");
+            Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+            Deletebutton.innerHTML = "Delete";
+            DeleteTd.appendChild(Deletebutton);
+            myTr.appendChild(DeleteTd)
+
+
+
+
+            document.querySelector("tbody").appendChild(myTr);
+
+        });
+    }
+    function Edit(i) {
+        console.log("editUser called" + i)
+
+    }
+    function Delete(i) {
+        console.log("deleteUser called" + i)
+        allUsers.splice(i, 1);
+        displayUsers(allUsers)
+
+    }
+    displayUsers(allUsers);
+    function validate(){
+        var user = {
+            FirstName:document.getElementById("First Name").value,
+            LastName:document.getElementById("Last Name").value,
+            Email:document.getElementById("Email").value,
+            Password:document.getElementById("Password").value,
+        };
+        var Check = false;
+        for(a in user){
+            if(user[a] == ""){
+                Check = true
+            }
+        }
+        if (Check == true){
+            document.getElementById("Click").setAttribute("disabled",true)
+        }else{
+            document.getElementById("Click").removeAttribute("disabled")
+        }
+    }
+</script>
+</script>
+</body>
+</html>

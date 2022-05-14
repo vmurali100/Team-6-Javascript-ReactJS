@@ -27,8 +27,8 @@
 
                 <label for="degree">Degree: </label>
                 <input type="text" id="degree" onkeyup="mybutton()">
-                <input type="radio" onkeyup="mybutton()">Pursuing
-                <input type="radio" onkeyup="mybutton()">Completed
+                <input type="radio" >Pursuing
+                <input type="radio">Completed
                 <br><br>
 
                 <label for="average">Average CPI: </label>
@@ -47,7 +47,7 @@
                 <input type="text" name="" id="yourwebsite" placeholder="http://" onkeyup="mybutton()"><br>
                 
             </fieldset>
-            <button type="button" onclick="userSubmit()" disabled>Submit</button>
+            <button type="button" onclick="userSubmit()" id="userbit" disabled > Submit</button>
         </form>        
     </div>
     <hr>
@@ -159,9 +159,9 @@
         }
 
         if(check == true){
-          document.getElementById("userSubmit").setAttribute("disabled",true);
+          document.getElementById("userbit").setAttribute("disabled",true);
         }else{
-          document.getElementById("userSubmit").removeAttribute("disabled");
+          document.getElementById("userbit").removeAttribute("disabled");
         }
   
       } 

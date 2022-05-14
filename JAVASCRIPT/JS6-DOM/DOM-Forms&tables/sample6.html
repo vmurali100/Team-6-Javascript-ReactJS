@@ -46,16 +46,16 @@ th{
             
     
             <label for="CityState">City,State :</label><br><br>
-            <input type="text" name="" id="CityState"  onkeyup="validate()"><br><br>
+            <input type="text" name="" id="CityState" onkeyup="validate()"><br><br>
             
     
             <label for="ZipCode ">Zip Code :</label><br><br>
-            <input type="number" name="" id="ZipCode"  onkeyup="validate()"><br><br>
+            <input type="number" name="" id="ZipCode" onkeyup="validate()"><br><br>
     
             <label for="Country">Country:</label><br><br>
-            <input type="text" name="Country" id="Country"  onkeyup="validate()"><br><br>
+            <input type="text" name="Country" id="Country" onkeyup="validate()"><br><br>
 
-            <button type="button" id="Adduser" onclick="AddUser()" disabled>Ok</button>
+            <button type="button" id="adduser" onclick="AddUser()"  disabled>Ok</button>
             <Button type="button" onclick=" clearsearch()">Cancel</Button>        
         </form>
     </div><br><br>
@@ -145,6 +145,7 @@ function deleteuser(i){
 displayusers()
 
 function validate(){
+    console.log("Just you entered Some Value")
     var users={
             Street:document.getElementById("Street").value,
             CityState:document.getElementById("CityState").value,
@@ -153,20 +154,19 @@ function validate(){
         }
 
         var cheak=false;
-        for( a in users){
-            if(users[a] ==""){
+        for(a in users){
+            if(users[a] == ""){
                 cheak=true
             }
         }
 
-        if(cheak==true){
-            document.getElementById("Adduser").setAttribute("disabled",true)
-        }
-        else{
-            document.getElementById("Adduser").removeAttribute("disabled")
+        if (cheak == true){
+            document.getElementById("adduser").setAttribute("disabled",true)
+        }else {
+            document.getElementById("adduser").removeAttribute("disabled")
+
         }
 }
-
     </script>
 </body>
 </html>

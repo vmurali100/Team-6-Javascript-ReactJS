@@ -70,24 +70,24 @@ th{
         <h4><Strong>Bootstrap 4 Form Validation Demo</Strong></h4>
         <form action="">
             <label for="Name">Name</label><br><br>
-            <input type="text" name="" id="Name" placeholder="Name"><br><br>
+            <input type="text" name="" id="Name" placeholder="Name" onkeyup="validate()"><br><br>
 
             <label for=""></label>UserName<br>
-            <input type="text" name="" id="UserName" placeholder="Username"><br><br>
+            <input type="text" name="" id="UserName" placeholder="Username" onkeyup="validate()"><br><br>
 
             <label for="">Email</label><br>
-            <input type="email" name="" id="Email" placeholder="Email"><br><br>
+            <input type="email" name="" id="Email" placeholder="Email" onkeyup="validate()" ><br><br>
 
             <label for="">Password</label><br>
-            <input type="password" name="" id="Password" placeholder="password"><br><br>
+            <input type="password" name="" id="Password" placeholder="password"  onkeyup="validate()"><br><br>
 
             <label for="">Confirm Password</label><br>
-            <input type="email" name="" id="ConfirmPassword" placeholder="Confirm Password"><br><br>
+            <input type="email" name="" id="ConfirmPassword" placeholder="Confirm Password"  onkeyup="validate()"><br><br>
 
             <label for="">Message</label><br>
-            <textarea name="" id="Message" cols="30" rows="10"></textarea>
+            <textarea name="" id="Message" cols="30" rows="10"  onkeyup="validate()"></textarea>
 
-            <button type="button" onclick="DisplayUser()">Send</button>
+            <button type="button" id="Raju" onclick="DisplayUser()" disabled >Send</button>
 
         </form>
     </div>
@@ -175,6 +175,28 @@ th{
 
         }
         displayusers()
+
+        function validate(){
+            var users = {
+                Name: document.getElementById("Name").value,
+                UserName: document.getElementById("UserName").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("Password").value,
+                ConfirmPassword: document.getElementById("ConfirmPassword").value,
+                Message: document.getElementById("Message").value
+            }
+            var cheak=false;
+            for(a in users){
+                if(users[a]== ""){
+                    cheak=true
+                }
+            }
+            if(cheak==true){
+                document.getElementById("Raju").setAttribute("disabled",true)
+            }else{
+                document.getElementById("Raju").removeAttribute("disabled")
+            }
+        }
     </script>
 
 </body>

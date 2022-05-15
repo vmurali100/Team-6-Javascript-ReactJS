@@ -92,7 +92,8 @@
         <tr>
             <div class="btn">
                 <button type="button" id="Adduser" onclick="adduser()" disabled>SUBMIT</button>
-                <button type="button" onclick="clearsearch()">RESET</button>
+                <!-- <button type="button" onclick="clearsearch()">RESET</button> -->
+                <button type="button" id="updateuser" onclick="updateusers()" style="display: none">updateuser</button>
             </div>
 
     </form> <br><br><br>
@@ -118,6 +119,7 @@
 
     <script>
         var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var index = null
         if (allUsers == null) {
             allUsers = []
         }
@@ -133,6 +135,8 @@
 
             }
             allUsers.push(user)
+            document.getElementById("Adduser").setAttribute("disabled",true)
+
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
             console.log(allUsers)
             // console.log(user)
@@ -183,7 +187,15 @@
             })
         }
         function edituser(i) {
-            console.log("edit user called" + i)
+         console.log(allUsers[i])
+         index = i
+         document.getElementById("fname").value = allUsers[i].fname
+         document.getElementById("lname").value =  allUsers[i].lname
+         document.getElementById("DateofBirth").value = allUsers[i].DateofBirth 
+         document.getElementById("email").value = allUsers[i].email
+         document.getElementById("MobileNumber").value = allUsers[i].MobileNumber
+         document.getElementById("Adduser").style.display="none"
+            document.getElementById("updateuser").style.display="block"
         }
         function deleteuser(i) {
             // console.log("delete user called"+i)
@@ -214,6 +226,26 @@
                 document.getElementById("Adduser").removeAttribute("disabled")
             }
         }
+
+          function updateusers(){
+            console.log("Update user called")
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                DateofBirth: document.getElementById("DateofBirth").value,
+                email: document.getElementById("email").value,
+                MobileNumber: document.getElementById("MobileNumber").value
+            }
+            allUsers[index]=user
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+
+            displayusers(allUsers)
+            Clearform(user)
+            document.getElementById("Adduser").style.display="block"
+            document.getElementById("updateuser").style.display="none"
+
+          }
 
 
 

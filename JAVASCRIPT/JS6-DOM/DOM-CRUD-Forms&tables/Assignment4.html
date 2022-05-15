@@ -88,6 +88,8 @@ th{
             <textarea name="" id="Message" cols="30" rows="10"  onkeyup="validate()"></textarea>
 
             <button type="button" id="Raju" onclick="DisplayUser()" disabled >Send</button>
+            <button type="button" id="updateuser" onclick="updateusers()" style="display: none" >updateuser</button>
+
 
         </form>
     </div>
@@ -111,6 +113,7 @@ th{
 
     <script>
         allUsers=JSON.parse(localStorage.getItem("allUsers"))
+        var index = null
             if(allUsers==null){
                 allUsers=[]
             }
@@ -126,6 +129,7 @@ th{
             }
             allUsers.push(users)
             console.log(users)
+            document.getElementById("Raju").setAttribute("disabled",true)
             displayusers()
             Clearform(users)
             localStorage.setItem("allUsers",JSON.stringify(allUsers))
@@ -166,7 +170,17 @@ th{
         
 
         function EditUser(i){
-            console.log("Edit user Called"+i)
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("Name").value = allUsers[i].Name
+            document.getElementById("UserName").value = allUsers[i].UserName
+            document.getElementById("Email").value = allUsers[i].Email
+            document.getElementById("Password").value = allUsers[i].Password
+            document.getElementById("ConfirmPassword").value = allUsers[i].ConfirmPassword
+            document.getElementById("Message").value = allUsers[i].Message
+            document.getElementById("Raju").style.display="none"
+            document.getElementById("updateuser").style.display="block"
+
         }
         function DeleteUser(i){
             // console.log("delete user Called"+i)
@@ -196,6 +210,27 @@ th{
             }else{
                 document.getElementById("Raju").removeAttribute("disabled")
             }
+        }
+        function updateusers(){
+            console.log("Update user called")
+
+            var users = {
+                Name: document.getElementById("Name").value,
+                UserName: document.getElementById("UserName").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("Password").value,
+                ConfirmPassword: document.getElementById("ConfirmPassword").value,
+                Message: document.getElementById("Message").value
+            }
+            allUsers[index] = users
+
+            displayusers()
+            Clearform(users)
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+
+            document.getElementById("Raju").style.display="block"
+            document.getElementById("updateuser").style.display="none"
+
         }
     </script>
 

@@ -111,6 +111,8 @@
                 </select>
 
                 <button type="button" id="sai" onclick="display()" disabled>Enter</button>
+                <button type="button" id="updateuser" onclick="updateusers()" style="display: none">updateuser</button>
+
 
             </form>
         </div>
@@ -140,6 +142,7 @@
             i++
         }
         allusers = JSON.parse(localStorage.getItem("allusers"))
+        var index = null
         if (allusers == null) {
             allusers = []
         }
@@ -161,6 +164,7 @@
             localStorage.setItem("allusers", JSON.stringify(allusers))
             console.log(users)
             console.log(allusers)
+            document.getElementById("sai").setAttribute("disabled",true)
             displayusers()
             Clearform(users)
         }
@@ -199,10 +203,19 @@
                 Deletebtn.setAttribute("onclick", "Deleteuser(" + i + ")")
             })
         }
-        function EditUser(i) {
-            console.log("edit user called" + i)
+
+        function Edituser(i) {
+            console.log(allusers[i])
+            index=i
+            document.getElementById("Username").value = allusers[i].Username 
+            document.getElementById("Password").value  = allusers[i].Password
+            document.getElementById("Emailaddress").value  = allusers[i].Emailaddress
+            document.getElementById("sai").style.display="none"
+            document.getElementById("updateuser").style.display="block"
+
         }
-        function DeleteUser(i) {
+
+        function Deleteuser(i) {
             // console.log("Delete user called"+i)
             allusers.splice(i, 1)
             displayusers()
@@ -214,8 +227,10 @@
                 Username: document.getElementById("Username").value,
                 Password: document.getElementById("Password").value,
                 Emailaddress: document.getElementById("Emailaddress").value,
+                
 
             }
+            
 
             var cheak=false;
             for( a in users){
@@ -228,6 +243,28 @@
             }else{
                 document.getElementById("sai").removeAttribute("disabled")
             }
+        }
+
+        function updateusers(){
+            console .log("updatebuser called")
+            var users = {
+                Username: document.getElementById("Username").value,
+                Password: document.getElementById("Password").value,
+                Emailaddress: document.getElementById("Emailaddress").value,                
+
+            }
+            var dateOfBirth = document.getElementById("dob").value;
+            var yearOfBirth= document.getElementById("yearOfbirth").value
+            var monthOfBirth = document.getElementById("monthOfBirth").value
+            users.dob = dateOfBirth+"/"+yearOfBirth+"/"+monthOfBirth
+            allusers [index]=users
+
+            localStorage.setItem("allusers", JSON.stringify(allusers))
+            displayusers()
+            Clearform(users)
+
+            document.getElementById("sai").style.display="block"
+            document.getElementById("updateuser").style.display="none"
         }
     </script>
 </body>

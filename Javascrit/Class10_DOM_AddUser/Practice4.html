@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body {
+            width: 500px;
+            margin: 0 auto;
+        } */
+
+        h4#Heading {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            /* margin-top: 50px; */
+            
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: rgb(219, 233, 233);
+            border: 25px solid rgb(0, 136, 255);
+            margin-top: 100px;
+        }
+
+        label {
+            margin-left: 25px;
+        }
+
+        input {
+            margin-left: 25px;
+            width: 250px;
+        }
+
+        textarea {
+            margin-left: 25px;
+            width: 253px;
+        }
+
+        #AAA {
+            width: 260px;
+            margin-left: 25px;
+            background-color: cornflowerblue;
+        }
+        table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <h4 id="Heading">Bootstrap 4 Form Validation Demo</h4>
+        <hr>
+        <label for="Name">Name</label><br>
+        <input type="text" placeholder="Name" id="Name"><br>
+        <label for="Username">Username</label><br>
+        <input type="text" placeholder="Username" id="Username"><br>
+        <label for="Email">Email</label><br>
+        <input type="text" placeholder="Email" id="Email"><br>
+        <label for="Password">Password</label><br>
+        <input type="text" placeholder="Password" id="Password"><br>
+        <label for="Confirm Password">Confirm Password</label><br>
+        <input type="text" placeholder="Confirm Password" id="Confirm Password"><br>
+        <label for="">Message</label><br>
+        <textarea name="" id="Message" cols="" rows="" placeholder="Message"></textarea><br>
+        <button type="button" id="AAA" onclick="Send()">Send</button>
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Message</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Send() {
+            var user = {
+                Name: document.getElementById("Name").value,
+                Username: document.getElementById("Username").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("Password").value,
+                ConfirmPassword: document.getElementById("Confirm Password").value,
+                Message: document.getElementById("Message").value,
+            }
+            allUsers.push(user);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearForm();
+        }
+        function clearsForm() {
+            document.getElementById("Name").value = "";
+            document.getElementById("Username").value = "";
+            document.getElementById("Email").value = "";
+            document.getElementById("Password").value = "";
+            document.getElementById("Confirm Password").value = "";
+            document.getElementById("Message").value = "";
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var EditTd = document.createElement("td")
+                var Editbutton = document.createElement("button");
+                Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+                Editbutton.innerHTML = "Edit";
+                EditTd.appendChild(Editbutton);
+                myTr.appendChild(EditTd)
+
+                var DeleteTd = document.createElement("td")
+                var Deletebutton = document.createElement("button");
+                Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+                Deletebutton.innerHTML = "Delete";
+                DeleteTd.appendChild(Deletebutton);
+                myTr.appendChild(DeleteTd)
+
+
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function Edit(i) {
+            console.log("editUser called" + i)
+
+        }
+        function Delete(i) {
+            console.log("deleteUser called" + i)
+            allUsers.splice(i, 1);
+            displayUsers(allUsers)
+
+        }
+        displayUsers(allUsers);
+    </script>
+</body>
+
+</html>

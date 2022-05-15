@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       form {
+    width: 600px;
+    margin: 0 auto;
+    overflow: auto;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #9c27b0;
+    color: white;
+    height: 320px;
+    border-radius: 10px;
+}
+
+        input {
+            border-radius: 5px;
+        }
+
+        input#FirstName {
+            margin-left: 50px;
+            margin-top: 5px;
+        }
+
+        input#LastName {
+            margin-left: 52px;
+        }
+
+        input#Dateofbirth {
+            margin-left: 35px;
+        }
+
+        input#Email {
+            margin-left: 67px;
+        }
+
+        input#Mobile {
+            margin-left: 20px;
+        }
+
+        button#A {
+            margin-left: 135px;
+            margin-right: 30px;
+        }
+
+        button {
+            border-radius: 5px;
+        }
+
+        table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="HtmlForm" id="Html">
+            <h1>HTML Form</h1>
+        </label>
+        <label for="FirstName">First Name :</label>
+        <input type="text" name="" id="FirstName" onkeyup="validate()"><br><br>
+        <label for="LastName">Last Name :</label>
+        <input type="text" name="" id="LastName" onkeyup="validate()"><br><br>
+        <label for="Dateofbirth">Date Of Birth :</label>
+        <input type="text" name="" id="Dateofbirth" onkeyup="validate()"><br><br>
+        <label for="Email">Email Id :</label>
+        <input type="text" name="" id="Email" onkeyup="validate()"><br><br>
+        <label for="Mobile">Mobile Number :</label>
+        <input type="text" name="" id="Mobile" onkeyup="validate()"><br><br>
+        <button type="button" id="SUBMIT" onclick="Check()" disabled = "true">SUBMIT</button>
+        <button type="button" id="AA" onclick="clearsForm()">RESET</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>DateOfBirth</th>
+                <th>EmailId</th>
+                <th>MobileNumber</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Check() {
+            var user = {
+                FirstName: document.getElementById("FirstName").value,
+                LastName: document.getElementById("LastName").value,
+                DateOfBirth: document.getElementById("Dateofbirth").value,
+                EmailId: document.getElementById("Email").value,
+                MobileNumber: document.getElementById("Mobile").value
+            }
+            allUsers.push(user);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearForm();
+        }
+        function clearsForm() {
+            document.getElementById("FirstName").value = "";
+            document.getElementById("LastName").value = "";
+            document.getElementById("Dateofbirth").value = "";
+            document.getElementById("Email").value = "";
+            document.getElementById("Mobile").value = "";
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var EditTd = document.createElement("td")
+                var Editbutton = document.createElement("button");
+                Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+                Editbutton.innerHTML = "Edit";
+                EditTd.appendChild(Editbutton);
+                myTr.appendChild(EditTd)
+
+                var DeleteTd = document.createElement("td")
+                var Deletebutton = document.createElement("button");
+                Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+                Deletebutton.innerHTML = "Delete";
+                DeleteTd.appendChild(Deletebutton);
+                myTr.appendChild(DeleteTd)
+
+
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function Edit(i) {
+            console.log("editUser called" + i)
+
+        }
+        function Delete(i) {
+            console.log("deleteUser called" + i)
+            allUsers.splice(i, 1);
+            displayUsers(allUsers)
+
+        }
+        displayUsers(allUsers);
+
+        function validate(){
+        var user = {
+            FirstName:document.getElementById("FirstName").value,
+            LastName:document.getElementById("LastName").value,
+            Dateofbirth:document.getElementById("Dateofbirth").value,
+            Email:document.getElementById("Email").value,
+            Mobile:document.getElementById("Mobile").value,
+        };
+        var Check = false;
+        for(a in user){
+            if(user[a] == ""){
+                Check = true
+            }
+        }
+        if (Check == true){
+            document.getElementById("SUBMIT").setAttribute("disabled",true)
+        }else{
+            document.getElementById("SUBMIT").removeAttribute("disabled")
+        }
+    }
+    </script>
+</body>
+
+</html>

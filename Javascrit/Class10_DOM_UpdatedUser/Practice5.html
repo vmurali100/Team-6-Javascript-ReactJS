@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input#to {
+            margin-left: 18px;
+        }
+
+        form {
+            width: 500px;
+            text-align: center;
+            margin-top: 50px;
+            background-color: rgb(0, 139, 93);
+            color: azure;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="PersonName">PersonName:</label>
+        <input type="text" name="" id="PersonName" onkeyup="validate()"><br><br>
+        <label for="BankName">BankName:</label>
+        <input type="text" name="" id="BankName" onkeyup="validate()"><br><br>
+        <label for="AccountNumber">AccountNumber</label>
+        <input type="text" name="" id="AccountNumber" onkeyup="validate()"><br><br>
+        <label for="MobileNumber">MobileNumber</label>
+        <input type="text" name="" id="MobileNumber" onkeyup="validate()"><br><br>
+        <button type="button" id="A" onclick="Check()" disabled>Check</button>
+        <button type="button" id="updateUser" onclick="updateUsers()" style="display:none;">UpdateUser</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>PersonName</th>
+                <th>BankName</th>
+                <th>AccountNumber</th>
+                <th>MobileNumber</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var index = null
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Check() {
+            var user = {
+                PersonName: document.getElementById("PersonName").value,
+                BankName: document.getElementById("BankName").value,
+                AccountNumber: document.getElementById("AccountNumber").value,
+                MobileNumber: document.getElementById("MobileNumber").value
+
+            }
+            allUsers.push(user);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearsForm();
+        }
+        function clearsForm() {
+            document.getElementById("PersonName").value = "";
+            document.getElementById("BankName").value = "";
+            document.getElementById("AccountNumber").value = "";
+            document.getElementById("MobileNumber").value = ""
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var EditTd = document.createElement("td")
+                var Editbutton = document.createElement("button");
+                Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+                Editbutton.innerHTML = "Edit";
+                EditTd.appendChild(Editbutton);
+                myTr.appendChild(EditTd)
+
+                var DeleteTd = document.createElement("td")
+                var Deletebutton = document.createElement("button");
+                Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+                Deletebutton.innerHTML = "Delete";
+                DeleteTd.appendChild(Deletebutton);
+                myTr.appendChild(DeleteTd)
+
+
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function Edit(i) {
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("PersonName").value = allUsers[i].PersonName
+            document.getElementById("BankName").value = allUsers[i].BankName
+            document.getElementById("AccountNumber").value = allUsers[i].AccountNumber
+            document.getElementById("MobileNumber").value = allUsers[i].MobileNumber
+            document.getElementById("A").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
+
+
+        }
+        function Delete(i) {
+            console.log("deleteUser called" + i)
+            allUsers.splice(i, 1);
+            displayUsers(allUsers)
+
+        }
+        displayUsers(allUsers);
+
+        function validate() {
+            var user = {
+                PersonName: document.getElementById("PersonName").value,
+                BankName: document.getElementById("BankName").value,
+                AccountNumber: document.getElementById("AccountNumber").value,
+                MobileNumber: document.getElementById("MobileNumber").value
+            };
+            var Check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    Check = true
+                }
+            }
+            if (Check == true) {
+                document.getElementById("A").setAttribute("disabled", true)
+            } else {
+                document.getElementById("A").removeAttribute("disabled")
+            }
+        }
+
+        function updateUsers() {
+            console.log("Update User Called")
+            var user = {
+                PersonName: document.getElementById("PersonName").value,
+                BankName: document.getElementById("BankName").value,
+                AccountNumber: document.getElementById("AccountNumber").value,
+                MobileNumber: document.getElementById("MobileNumber").value
+
+            };
+
+            allUsers[index] = user
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+            displayUsers(allUsers);
+            clearsForm();
+
+            document.getElementById("A").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
+        }
+    </script>
+</body>
+
+</html>

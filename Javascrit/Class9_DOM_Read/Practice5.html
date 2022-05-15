@@ -55,8 +55,8 @@
         }
         function Check() {
             var user = {
-                Email: document.getElementById("Account").value,
-                Password: document.getElementById("Mobile").value
+                Account: document.getElementById("Account").value,
+                Mobile: document.getElementById("Mobile").value
             }
             allUsers.push(user);
             localStorage.setItem("allUsers", JSON.stringify(allUsers))

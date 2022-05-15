@@ -11,18 +11,13 @@
         }
 
         form {
+            width: 500px;
             text-align: center;
             margin-top: 50px;
-        }
-
-        th{
-            text-align: center;
-            /* width: 800px; */
+            background-color: darkcyan;
             margin: 0 auto;
-            background-color: brown;
-            color: gold;
         }
-    table{
+        table{
         width: 800px;
         margin: 0 auto;
     }
@@ -30,18 +25,21 @@
 </head>
 <body>
     <form action="">
-        <label for="Person">PersonName:</label>
-        <input type="text" name="" id="Person"><br><br>
-        <label for="Aadhaar">AadhaarNo:</label>
-        <input type="text" name="" id="Aadhaar"><br><br>
-        <button type="buttons" onclick="Check()">Check</button>
+        <label for="PersonName">PersonName:</label>
+        <input type="text" name="" id="PersonName" onkeyup="validate()"><br><br>
+        <label for="MobileNumber">MobileNumber:</label>
+        <input type="text" name="" id="MobileNumber" onkeyup="validate()"><br><br>
+        <label for="AadhaarNumber">AadhaarNumber</label>
+        <input type="text" name="" id="AadhaarNumber" onkeyup="validate()"><br><br>
+        <button type="button" onclick="Check()" disabled = "true" id="A">Check</button>
     </form>
     <hr>
     <table border="1">
         <tr>
             <thead>
                 <th>PersonName</th>
-                <th>AadhaarNo</th>
+                <th>MobileNumber</th>
+                <th>AadhaarNumber</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -55,8 +53,10 @@
         }
         function Check() {
             var user = {
-                Person: document.getElementById("Person").value,
-                Aadhaar: document.getElementById("Aadhaar").value
+                PersonName: document.getElementById("PersonName").value,
+                MobileNumber: document.getElementById("MobileNumber").value,
+                AadhaarNumber: document.getElementById("AadhaarNumber").value
+                
             }
             allUsers.push(user);
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
@@ -64,8 +64,9 @@
             clearForm();
         }
         function clearsForm() {
-            document.getElementById("Person").value = "";
-            document.getElementById("Aadhaar").value = ""
+            document.getElementById("PersonName").value = "";
+            document.getElementById("MobileNumber").value = "";
+            document.getElementById("AadhaarNumber").value = ""
         }
         function displayUsers(data) {
             document.querySelector("tbody").innerHTML = "";
@@ -77,14 +78,14 @@
                     myTr.appendChild(myTd);
                 }
                 var EditTd = document.createElement("td")
-                var Editbutton = document.createElement("buttons");
+                var Editbutton = document.createElement("button");
                 Editbutton.setAttribute("onclick", "Edit(" + i + ")")
                 Editbutton.innerHTML = "Edit";
                 EditTd.appendChild(Editbutton);
                 myTr.appendChild(EditTd)
 
                 var DeleteTd = document.createElement("td")
-                var Deletebutton = document.createElement("buttons");
+                var Deletebutton = document.createElement("button");
                 Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
                 Deletebutton.innerHTML = "Delete";
                 DeleteTd.appendChild(Deletebutton);
@@ -108,6 +109,25 @@
 
         }
         displayUsers(allUsers);
+
+        function validate(){
+        var user = {
+            PersonName:document.getElementById("PersonName").value,
+            MobileNumber:document.getElementById("MobileNumber").value,
+           AadhaarNumber:document.getElementById("AadhaarNumber").value
+        };
+        var Check = false;
+        for(a in user){
+            if(user[a] == ""){
+                Check = true
+            }
+        }
+        if (Check == true){
+            document.getElementById("A").setAttribute("disabled",true)
+        }else{
+            document.getElementById("A").removeAttribute("disabled")
+        }
+    }
     </script>
 </body>
 </html>

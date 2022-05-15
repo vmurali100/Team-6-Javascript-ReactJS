@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            margin-top: 100px;
+        }
+
+        form {
+            width: 500px;
+            margin: 0 auto;
+            background-color: cornflowerblue;
+            padding: 20px;
+        }
+        input{
+            border-radius: 5px;
+        }
+        select{
+            border-radius: 5px;
+        }
+
+        button#Amv1 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50px;
+            /* color: green; */
+            background-color: green;
+            margin-left: 145px;
+            margin-top: 15px;
+        }
+
+        button#Amv2 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50px;
+            /* color: green; */
+            background-color: green;
+            margin-left: 10px;
+        }
+        span {
+    margin-left: 15px;
+    color: white;
+}
+table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" style="width:500px;">
+        <fieldset>
+            <legend>Registration Details</legend>
+            <label for="">University:</label>
+            <input type="text"><br><br>
+            <label for="">Institute:</label>
+            <input type="text"><br><br>
+            <label for="">Branch:</label>
+            <select name="" id="">
+                <option value="">---Select---</option>
+                <option value="">B.A</option>
+                <option value="">B.Com</option>
+                <option value="">B.Com(Computers)</option>
+                <option value="">B.Sc(MPC)</option>
+                <option value="">B.Sc(MPCS)</option>
+            </select>
+            <br><br>
+            <label for="">Degree:</label>
+            <select name="" id="">
+                <option value="">---Select---</option>
+                <option value="">1st Year</option>
+                <option value="">2nd Year</option>
+                <option value="">3rd Year</option>
+                <option value="">4th Year</option>
+            </select>
+            <input type="radio" name="" value="" />Pursuing
+            <input type="radio" name="" value="" />Completed
+            <br><br>
+            <label for="">Average CPI:</label>
+            <input type="number" value="Average CPI" Autofocus style="width: 50px;">
+            <label for="">Upto</label>
+            <input type="number" value="Th SemesterI" Autofocus style="width: 50px;">
+            <label for="">Th Semester</label><br><br>
+            <label for="">Experience:</label>
+            <input type="number" value="Experience" autofocus style="width: 50px;">
+            <label for="">Years</label><br><br>
+            <label for="">Your Website Or Blog:</label>
+            <input type="text" placeholder="http://">
+        </fieldset>
+        <button id="Amv1"></button>
+        <span>Step 2</span>
+        <button id="Amv2"></button>
+    </form>
+    <!-- <hr> -->
+    <!-- <table border="1">
+        <tr>
+            <thead>
+                <th>University</th>
+                <th>Institute</th>
+                <th>Branch</th>
+                <th>Degree</th>
+                <th>Average CPI</th>
+                <th>Experience</th>
+                <th>Your Website Or Blog</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table> -->
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Check() {
+            var user = {
+                University: document.getElementById("University").value,
+                Institute: document.getElementById("Institute").value,
+                Branch: document.getElementById("Branch").value,
+                Degree: document.getElementById("Degree").value,
+                AverageCPI: document.getElementById("AverageCPI").value,
+                Experience: document.getElementById("Experience").value,
+                YourWebsiteOrBlog: document.getElementById("Your Website Or Blog").value
+            }
+            allUsers.push(user);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearForm();
+        }
+        function clearsForm() {
+            document.getElementById("University").value = "";
+            document.getElementById("Institute").value = "";
+            document.getElementById("Branch").value = "";
+            document.getElementById("Degree").value = "";
+            document.getElementById("Average CPI").value = "";
+            document.getElementById("Experience").value = "";
+            document.getElementById("Your Website Or Blog").value
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+                var EditTd = document.createElement("td")
+                var Editbutton = document.createElement("buttons");
+                Editbutton.setAttribute("onclick", "Edit(" + i + ")")
+                Editbutton.innerHTML = "Edit";
+                EditTd.appendChild(Editbutton);
+                myTr.appendChild(EditTd)
+
+                var DeleteTd = document.createElement("td")
+                var Deletebutton = document.createElement("buttons");
+                Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
+                Deletebutton.innerHTML = "Delete";
+                DeleteTd.appendChild(Deletebutton);
+                myTr.appendChild(DeleteTd)
+
+
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function Edit(i) {
+            console.log("editUser called" + i)
+
+        }
+        function Delete(i) {
+            console.log("deleteUser called" + i)
+            allUsers.splice(i, 1);
+            displayUsers(allUsers)
+
+        }
+        displayUsers(allUsers);
+    </script>
+</body>
+
+</html>

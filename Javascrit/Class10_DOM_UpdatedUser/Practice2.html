@@ -31,10 +31,11 @@
 <body>
     <form action="">
         <label for="Person">PersonName:</label>
-        <input type="text" name="" id="Person"><br><br>
+        <input type="text" name="" id="Person" onkeyup="validate()"><br><br>
         <label for="Aadhaar">AadhaarNo:</label>
-        <input type="text" name="" id="Aadhaar"><br><br>
-        <button type="buttons" onclick="Check()">Check</button>
+        <input type="text" name="" id="Aadhaar" onkeyup="validate()"><br><br>
+        <button type="buttons" id="A" onclick="Check()" disabled>Check</button>
+        <button type="button" id="updateUser" onclick="updateUsers()" style="display:none;">UpdateUser</button>
     </form>
     <hr>
     <table border="1">
@@ -50,6 +51,7 @@
     </table>
     <script>
         var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var index = null
         if (allUsers == null) {
             allUsers = []
         }
@@ -65,7 +67,7 @@
         }
         function clearsForm() {
             document.getElementById("Person").value = "";
-            document.getElementById("Aadhaar").value = ""
+            document.getElementById("Aadhaar").value = "";
         }
         function displayUsers(data) {
             document.querySelector("tbody").innerHTML = "";
@@ -98,7 +100,12 @@
             });
         }
         function Edit(i) {
-            console.log("editUser called" + i)
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("Person").value = allUsers[i].Person
+            document.getElementById("Aadhaar").value = allUsers[i].Aadhaar
+            document.getElementById("A").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
 
         }
         function Delete(i) {
@@ -108,6 +115,43 @@
 
         }
         displayUsers(allUsers);
+
+        function validate() {
+            var user = {
+                Person: document.getElementById("Person").value,
+                Aadhaar: document.getElementById("Aadhaar").value,
+
+            };
+            var Check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    Check = true
+                }
+            }
+            if (Check == true) {
+                document.getElementById("A").setAttribute("disabled", true);
+            } else {
+                document.getElementById("A").removeAttribute("disabled");
+            }
+        }
+        function updateUsers() {
+            console.log("Update User Called")
+            var user = {
+                Person: document.getElementById("Person").value,
+                Aadhaar: document.getElementById("Aadhaar").value,
+
+            };
+
+            allUsers[index] = user
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+            displayUsers(allUsers);
+            clearsForm();
+
+            document.getElementById("A").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
+        }
     </script>
 </body>
 </html>

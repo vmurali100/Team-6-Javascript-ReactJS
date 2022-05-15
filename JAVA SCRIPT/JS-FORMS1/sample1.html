@@ -9,183 +9,199 @@
 </head>
 
 <body>
-    <h1>HTML form</h1>
+
 
     <form action="">
+        <h1>HTML Form</h1>
 
-        <label for="">firstname:</label>
-        <input type="text" name="" id="fname" onkeyup="validate()"><br><br>
-
-        <label for="">last name:</label>
-        <input type="text" name="" id="lname" onkeyup="validate()"><br><br>
-
-        <label for="">date of birth:</label>
-        <input type="text" name="" id="birth" onkeyup="validate()"><br><br>
-
-        <label for="">Email id:</label>
-        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
-
-        <label for="">mobile no:</label>
-        <input type="text" name="" id="mobile" onkeyup="validate()"><br><br>
-
-        <button type="button" id="adduser" onclick="displayall()" disabled>submit</button>
-       
-        <!-- <button>reset</button> -->
-
+        <label for="firstname">First Name:</label>
+        <input type="text" name="" id="firstname" onkeyup="validate">
+        <br><br>
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="" id="lastname" onkeyup="validate">
+        <br><br>
+        <label for="dateofbirth">Date of Birth:</label>
+        <input type="text" name="" id="dateofbirth" onkeyup="validate">
+        <br><br>
+        <label for="emailid">Email id:</label>
+        <input type="text" name="" id="emailid" onkeyup="validate">
+        <br><br>
+        <label for="mobilenumber:">MobileNumber:</label>
+        <input type="text" name="" id="mobilenumber" onkeyup="validate">
+        <br><br>
+        <div class="btn">
+            <button type="button" id="adduser" onclick="adduser()" disabled>SUBMIT</button>
+            <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button>
+            <button type="button" id="" onclick="clearsearch()">RESET</button>
+        </div>
     </form>
-    <br>
-
-    <table border="1" style="color:blue; background-color:gold">
-
-        <thead>
-
-            <th>firstname</th>
-            <th>last name</th>
-            <th>date of birth</th>
-            <th>Email</th>
-            <th>mobile</th>
-            <th>Edit</th>
-            <th>delete</th>
-
-        </thead>
-        <tbody>
-
-        </tbody>
+    <hr>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Email id</th>
+                <th>MobileNumber</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
     </table>
 
-
     <script>
+        
 
         var allusers = JSON.parse(localStorage.getItem("allusers"))
+        var index=null
         if (allusers == null) {
-            // index = i
             allusers = []
-
         }
-
-        function displayall() {
+        // var allusers = []
+        function adduser() {
             var user = {
-                fname: document.getElementById("fname").value,
-                lname: document.getElementById("lname").value,
-                birth: document.getElementById("birth").value,
-                email: document.getElementById("email").value,
-                mobile: document.getElementById("mobile").value
+                firstname: document.getElementById("firstname").value,
+                lastname: document.getElementById("lastname").value,
+                dateofbirth: document.getElementById("dateofbirth").value,
+                emailid: document.getElementById("emailid").value,
+                mobilenumber: document.getElementById("mobilenumber").value,
 
             }
-
             allusers.push(user)
 
             localStorage.setItem("allusers", JSON.stringify(allusers))
-            console.log(user)
-            console.log(allusers)
-            displayusers()
-            clear()
-
-
+            // console.log(user);
+            // console.log(allusers)
+            displayusers(allusers);
+            clearForm();
         }
 
+        function clearForm() {
+            document.getElementById("firstname").value = "";
+            document.getElementById("lastname").value = "";
+            document.getElementById("dateofbirth").value = "";
+            document.getElementById("emailid").value = "";
+            document.getElementById("mobilenumber").value = "";
+        }
 
-        function displayusers() {
+        function displayusers(details) {
             document.querySelector("tbody").innerHTML = ""
-
-            allusers.forEach((user, i) => {
-
-                var mytr = document.createElement("tr")
-
+            details.forEach((user, i) => {
+                var myTr = document.createElement("tr");
 
                 for (a in user) {
-                    var mytd = document.createElement("td")
-                    mytd.innerHTML = user[a]
-                    mytr.appendChild(mytd)
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
                 }
 
-                var edittd = document.createElement("td")
-                var editbtn = document.createElement("button")
-                editbtn.setAttribute("onclick", "editusers(" + i + ")")
-                editbtn.innerHTML = "edit"
-                edittd.appendChild(editbtn)
-                mytr.appendChild(edittd)
+                // edit button
 
 
-                var deletetd = document.createElement("td")
-                var deletebtn = document.createElement("button")
+
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button");
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.innerHTML = "Edit";
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd)
+
+
+                // delete button
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button");
                 deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
-                deletebtn.innerHTML = " delete"
-                deletetd.appendChild(deletebtn)
-                mytr.appendChild(deletetd)
-
-                document.querySelector("tbody").appendChild(mytr)
+                deletebtn.innerHTML = "Delete";
+                deleteTd.appendChild(deletebtn)
+                myTr.appendChild(deleteTd)
 
 
+                document.querySelector("tbody").appendChild(myTr)
 
-
-
-
-            });
-        }
-        displayusers()
-
-
-        function clear() {
-            document.getElementById("fname").value = "",
-                document.getElementById("lname").value = "",
-                document.getElementById("birth").value = "",
-                document.getElementById("email").value = "",
-                document.getElementById("mobile").value = ""
-
+            })
         }
 
 
         function edituser(i) {
-            console.log("edituser called" + i)
+            // displayusers(allusers)
+            // console.log("edituser called" + i)
+
+            console.log(allusers[i])
+            index=i
+            document.getElementById("firstname").value=allusers[i].firstname
+            document.getElementById("lastname").value=allusers[i].lastname
+            document.getElementById("dateofbirth").value=allusers[i].fname
+            document.getElementById("emailid").value=allusers[i].dateofbirth
+            document.getElementById("mobilenumber").value=allusers[i].mobilenumber
+            document.getElementById("adduser").style.display="none"
         }
 
 
-
         function deleteuser(i) {
-            console.log("deleteuser called" + i)
-            allusers.splice(i, 1);
-            localStorage.setItem("allusers", JSON.stringify(allusers))
+            // displayusers(allusers);
+            console.log("delete called" + i)
+            allusers.splice(i, 1)
             displayusers(allusers)
 
         }
 
+        displayusers(allusers);
 
-        function validate(){
-            // console.log("just u entered  some value")
+
+
+        function validate() {
+
             var user = {
-                fname: document.getElementById("fname").value,
-                lname: document.getElementById("lname").value,
-                birth: document.getElementById("birth").value,
-                email: document.getElementById("email").value,
-                mobile: document.getElementById("mobile").value
+                firstname: document.getElementById("firstname").value,
+                lastname: document.getElementById("lastname").value,
+                dateofbirth: document.getElementById("dateofbirth").value,
+                emailid: document.getElementById("emailid").value,
+                mobilenumber: document.getElementById("mobilenumber").value
 
             };
-            var check=false;
-            for(a in user){
-                if(user[a]==""){
-                    check=true
+            // console.log("just u entered some value")
+            var check = false;
 
+            for (a in user) {
+                if (user[a] == "") {
+                    check = true
                 }
             }
 
-            if (check==true){
-                document.getElementById("adduser").setAttribute("disabled",true)
-            }else{
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
                 document.getElementById("adduser").removeAttribute("disabled")
             }
 
         }
 
+        function UpdateUser() {
+            console.log("Update User Called")
+
+            var user = {
+                firstname: document.getElementById("firstname").value,
+                lastname: document.getElementById("lastname").value,
+                dateofbirth: document.getElementById("dateofbirth").value,
+                emailid: document.getElementById("emailid").value,
+                mobilenumber: document.getElementById("mobilenumber").value
+
+            };
+            allusers[index] = user
+            localStorage.setItem("allUsers", JSON.stringify(allusers));
+
+            displayusers(allusers);
+            clearForm();
+            document.getElementById("addUser").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
+        }
+
+
 
 
     </script>
-
-
-
-
-
-
 
 
 </body>

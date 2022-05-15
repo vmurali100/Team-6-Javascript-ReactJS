@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        body {
+            background: #e6addd;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Registration Details</legend>
+            <label for="">University :</label>
+            <input type="text" id="university" onkeyup="validate()"/><br><br>
+
+            <label for="">Institute :</label>
+            <input type="text" id="institute" onkeyup="validate()"/><br><br>
+
+            <label for="">Branch :</label>
+            <input type="text" id="branch" onkeyup="validate()"/><br><br>
+
+            <label for="">Degree :</label>
+            <input type="text" id="degree" onkeyup="validate()"/>
+            <select>
+                <option>----select----</option>
+                <option>BSC</option>
+                <option>BCA</option>
+                <option>BCOM</option>
+            </select>
+            <input type="radio" onkeyup="validate()"/>Pursuing
+            <input type="radio" onkeyup="validate()"/>Completed <br><br>
+
+            <label for="">Average CGPI :</label>
+            <input type="number" id="average" onkeyup="validate()"/><br><br>
+
+            <label for="">Upto :</label>
+            <input type="number" id="upto" onkeyup="validate()"/>Semester<br><br>
+
+            <label for="">Experience :</label>
+            <input type="number" id="exp" onkeyup="validate()"/>Years<br><br>
+
+            <label for="">Your Website Or Blog :</label>
+            <input type="text" id="blog" onkeyup="validate()"/><br><br>
+        </fieldset>
+        <button type="button" id="inform" onclick="okdata()" disabled>ok data</button>
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>University</th>
+                <th>Institute</th>
+                <th>Branch</th>
+                <th>Degree</th>
+                <th>Average CGPI</th>
+                <th>Upto</th>
+                <th>Experience</th>
+                <th>Your Website Or Blog</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers")) 
+        if(allUsers==null){
+            allUsers=[]
+        }
+        function okdata() {
+            var user = {
+                University: document.getElementById("university").value,
+                Institute: document.getElementById("institute").value,
+                Branch: document.getElementById("branch").value,
+                Degree: document.getElementById("degree").value,
+                Average: document.getElementById("average").value,
+                Upto: document.getElementById("upto").value,
+                Experience: document.getElementById("exp").value,
+                YourWebsiteOrBlog: document.getElementById("blog").value,
+            }
+            allUsers.push(user)
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearform();
+        }
+
+        function clearform(){
+            document.getElementById("university").value="";
+            document.getElementById("institute").value="";
+            document.getElementById("branch").value="";
+            document.getElementById("degree").value="";
+            document.getElementById("average").value="";
+            document.getElementById("upto").value="";
+            document.getElementById("exp").value="";
+            document.getElementById("blog").value=""
+        }
+        function displayUsers(data) {
+            document.querySelectorAll("tbody")[1].innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser("+i+")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser("+i+")")
+                deleteBtn.innerHTML = "Button"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelectorAll("tbody")[1].appendChild(myTr)
+            });
+        }
+
+        function edituser(i) {
+            console.log("edituser called" +i)
+        }
+
+        function deleteuser(i) {
+            console.log("deleteuser called" +i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+            displayUsers(allUsers);
+        function validate(){
+                var user = {
+                name : document.getElementById("univeristy").value,
+                username : document.getElementById("institute").value,
+                email : document.getElementById("branch").value,
+                password : document.getElementById("degree").value,
+                password : document.getElementById("average").value,
+                message : document.getElementById("upto").value,
+                message : document.getElementById("exp").value,
+                message : document.getElementById("blog").value,
+            };
+                var check = false;
+                for(a in user){
+                    if(user[a] == ""){
+                    check = true
+                }
+            }
+            if(check == true){
+                document.getElementById("inform").setAttribute("disabled",true)
+            }else{
+                document.getElementById("inform").removeAttribute("disabled")
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

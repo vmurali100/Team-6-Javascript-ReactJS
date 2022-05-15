@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid;
+        }
+        table {
+            margin: auto;
+        }
+        body {
+    background: #e6addd;
+}
+    </style>
+</head>
+<body>
+    <form>
+        <h3>Bootstrap 4 Form Validation Demo</h3>
+        <hr/>
+        <table>
+            <tr>
+                <td><label for="name">Name</label></td><br/>
+                <td><input type="text" placeholder="Name" id="name" onkeyup="validate()"/></td>
+            </tr>
+            <tr></tr>
+                <td><label for="username">Username</label></td>
+                <td><input type="text" placeholder="Username" id="username" onkeyup="validate()"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email</label></td>
+                <td><input type="email" placeholder="Email" id="email" onkeyup="validate()"/></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="password" placeholder="Password" id="password" onkeyup="validate()"/></td>
+            </tr>
+            <tr>
+                <td><label for="password">Confirm Password</label></td>
+                <td><input type="password" placeholder="Confirm" id="password" onkeyup="validate()"/></td>
+            </tr>
+            <tr>
+                <td><label for="message">Message</label></td>
+                <td><input type="message" placeholder="Message" id="message" onkeyup="validate()"/></td>
+            </tr>
+        </table>
+            <tr>
+                <td>
+                    <button type="button" id="sends" onclick="send()" disabled>SEND</button>
+                </td>
+            </tr>
+        
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = []
+        function send(){
+            var user = {
+                name : document.getElementById("name").value,
+                username : document.getElementById("username").value,
+                email : document.getElementById("email").value,
+                password : document.getElementById("password").value,
+                password : document.getElementById("password").value,
+                message : document.getElementById("message").value,
+            }
+            console.log(allUsers)
+            allUsers.push(user)
+            displayUsers(allUsers)
+            
+        }
+
+        // function resetUser(){
+        //     document.getElementById("name").value="";
+        //     document.getElementById("username").value="";
+        //     document.getElementById("email").value="";
+        //     document.getElementById("password").value="";
+        //     document.getElementById("password").value="";
+        //     document.getElementById("message").value=""
+        // }
+        function displayUsers(data) {
+                document.querySelectorAll("tbody")[1].innerHTML = "";
+                data.forEach((user,i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+                    var editTd = document.createElement("td") 
+                    var editBtn = document.createElement("button")
+                    editBtn.setAttribute("onclick","edituser("+i+")")
+                    editBtn.innerHTML = "Edit"
+                    editTd.appendChild(editBtn)
+                    myTr.appendChild(editTd)
+
+                    var deleteTd = document.createElement("td") 
+                    var deleteBtn = document.createElement("button")
+                    deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                    deleteBtn.innerHTML = "Button"
+                    deleteTd.appendChild(deleteBtn)
+                    myTr.appendChild(deleteTd)
+
+
+                    document.querySelectorAll("tbody")[1].appendChild(myTr)
+                });
+            }
+
+            function edituser(i){
+                console.log("edituser called" +i)
+            }
+
+            function deleteuser(i){
+                console.log("deleteuser called" +i)
+                allUsers.splice(i,1)
+                displayUsers(allUsers);
+            }
+            displayUsers(allUsers);
+
+            function validate(){
+                var user = {
+                name : document.getElementById("name").value,
+                username : document.getElementById("username").value,
+                email : document.getElementById("email").value,
+                password : document.getElementById("password").value,
+                password : document.getElementById("password").value,
+                message : document.getElementById("message").value,
+            };
+                var check = false;
+                for(a in user){
+                    if(user[a] == ""){
+                    check = true
+                }
+            }
+            if(check == true){
+                document.getElementById("sends").setAttribute("disabled",true)
+            }else{
+                document.getElementById("sends").removeAttribute("disabled")
+            }
+        }
+
+          
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    margin: 0 auto;
+    width: 311px;
+}
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">Username</label>
+        <input type="text" placeholder="username" id="username" onkeyup="validate()"/><br><br>
+
+        <label for="">Password</label>
+        <input type="text" placeholder="password" id="password" onkeyup="validate()"/><br><br>
+
+        <label for="">Email</label>
+        <input type="text" placeholder="email" id="email" onkeyup="validate()"/><br><br>
+        <select name="" id="email">
+            <option value="">Iam a men</option>
+            <option value="">Iam a woman</option>
+        </select> <br> <br>
+        <select name="" id="ids">
+            <option value="">I want to find women</option>
+            <option value="">I want to find man</option>
+        </select><br><br>
+
+        <label for="">Date Of Birth</label>
+        <select name="" id="">
+            <option value="">year</option>
+            <option value="">1999</option>
+        </select>
+        <select name="" id="">
+            <option value="">month</option>
+            <option value="">april</option>
+        </select>
+        <select name="" id="">
+            <option value="">day</option>
+            <option value="">tuesday</option>
+        </select><br><br>
+
+        <label for="">Height/Weight</label>
+        <select name="" id="">
+            <option value="">Height</option>
+            <option value="">5.2</option>
+        </select>
+        <select name="" id="">
+            <option value="">Weight</option>
+            <option value="">50</option>
+        </select><br><br>
+        <button type="button" id="addUsers" onclick="addUser()" disabled>addUser</button>
+    </form>
+    <hr>
+    <table border="2">
+        <tr>
+            <thead>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allstudent = JSON.parse(localStorage.getItem("allstudent"))
+        if(allstudent == null){
+            allstudent=[]
+        }
+        function addUser(){
+            var students = {
+                username : document.getElementById("username").value,
+                password : document.getElementById("password").value,
+                email : document.getElementById("email").value,
+               
+            }
+            allstudent.push(students)
+
+            localStorage.setItem("allguide",JSON.stringify(allstudent))
+            displayfamilies(allstudent);
+            clearform();
+            
+        }
+
+        function clearform(){
+            document.getElementById("username").value="";
+            document.getElementById("password").value="";
+            document.getElementById("email").value="";
+       
+        }
+        function displayfamilies(students) {
+                document.querySelector("tbody").innerHTML = "";
+                students.forEach((user,i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+                    var editTd = document.createElement("td") 
+                    var editBtn = document.createElement("button")
+                    editBtn.setAttribute("onclick","edituser("+i+")")
+                    editBtn.innerHTML = "Edit"
+                    editTd.appendChild(editBtn)
+                    myTr.appendChild(editTd)
+
+                    var deleteTd = document.createElement("td") 
+                    var deleteBtn = document.createElement("button")
+                    deleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                    deleteBtn.innerHTML = "Button"
+                    deleteTd.appendChild(deleteBtn)
+                    myTr.appendChild(deleteTd)
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+            }
+
+            function edituser(i){
+                console.log("edituser called" +i)
+            }
+
+            function deleteuser(i){
+                console.log("deleteuser called" +i)
+                allstudent.splice(i,1)
+                displayfamilies(allstudent);
+            }
+            displayfamilies(allstudent);
+
+            function validate(){
+                var students = {
+                username : document.getElementById("username").value,
+                password : document.getElementById("password").value,
+                email : document.getElementById("email").value,
+               
+            };
+                var check = false;
+                for(a in students){
+                    if(students[a] == ""){
+                    check = true
+                }
+            }
+            if(check == true){
+                document.getElementById("addUsers").setAttribute("disabled",true)
+            }else{
+                document.getElementById("addUsers").removeAttribute("disabled")
+            }
+        }
+    </script>
+</body>
+</html>

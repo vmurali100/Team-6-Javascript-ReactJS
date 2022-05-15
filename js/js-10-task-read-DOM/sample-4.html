@@ -86,6 +86,7 @@
             }
             allUsers.push(user)
             displayUsers(allUsers)
+            document.getElementById("adduser").setAttribute("disabled",true)
             clearForm()
         }
         function clearForm(){
@@ -97,7 +98,7 @@
             document.getElementById("message").value="";
 
         }
-
+        
         function displayUsers(data) {
             document.querySelector("tbody").innerHTML = ""
             data.forEach((user, i) => {

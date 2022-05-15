@@ -61,7 +61,8 @@
             <label for="">Your Website Or Blog :</label>
             <input type="text" id="blog" onkeyup="validate()"/><br><br>
         </fieldset>
-        <button type="button" id="inform" onclick="okdata()" disabled>ok data</button>
+        <button type="button" id="inform" onclick="okdata()" disabled>okdata</button>
+        <button type="button" id="updates" onclick="update()" disabled>update</button>
     </form>
     <table border="1">
         <tr>
@@ -81,7 +82,8 @@
         <tbody></tbody>
     </table>
     <script>
-        var allUsers = JSON.parse(localStorage.getItem("allUsers")) 
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var index = null 
         if(allUsers==null){
             allUsers=[]
         }
@@ -143,7 +145,19 @@
         }
 
         function edituser(i) {
-            console.log("edituser called" +i)
+            console.log(allUsers[i])
+            index = 1
+            document.getElementById("university").value = allUsers[i].university
+            document.getElementById("institute").value = allUsers[i].institute
+            document.getElementById("branch").value = allUsers[i].branch
+            document.getElementById("degree").value = allUsers[i].degree
+            document.getElementById("average").value = allUsers[i].average
+            document.getElementById("upto").value = allUsers[i].upto
+            document.getElementById("exp").value = allUsers[i].exp
+            document.getElementById("blog").value = allUsers[i].blog
+            document.getElementById("inform").style.display = "none"
+            document.getElementById("updates").style.display = "block"
+
         }
 
         function deleteuser(i) {
@@ -154,14 +168,14 @@
             displayUsers(allUsers);
         function validate(){
                 var user = {
-                name : document.getElementById("univeristy").value,
-                username : document.getElementById("institute").value,
-                email : document.getElementById("branch").value,
-                password : document.getElementById("degree").value,
-                password : document.getElementById("average").value,
-                message : document.getElementById("upto").value,
-                message : document.getElementById("exp").value,
-                message : document.getElementById("blog").value,
+                university : document.getElementById("university").value,
+                institute : document.getElementById("institute").value,
+                branch : document.getElementById("branch").value,
+                degree : document.getElementById("degree").value,
+                average : document.getElementById("average").value,
+                upto : document.getElementById("upto").value,
+                exp : document.getElementById("exp").value,
+                blog : document.getElementById("blog").value,
             };
                 var check = false;
                 for(a in user){
@@ -174,6 +188,26 @@
             }else{
                 document.getElementById("inform").removeAttribute("disabled")
             }
+        }
+        function update(){
+            console.log("update user called")
+            var user = {
+                university : document.getElementById("university").value,
+                institute : document.getElementById("institute").value,
+                branch : document.getElementById("branch").value,
+                degree : document.getElementById("degree").value,
+                average : document.getElementById("average").value,
+                upto : document.getElementById("upto").value,
+                exp : document.getElementById("exp").value,
+                blog : document.getElementById("blog").value,
+            }
+            allUsers[index]  = user
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayUsers(allUsers);
+            clearform();
+
+            document.getElementById("inform").style.display = "block"
+            document.getElementById("updates").style.display = "none"
         }
 
     </script>

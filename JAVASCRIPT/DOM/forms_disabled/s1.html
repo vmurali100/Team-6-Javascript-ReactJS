@@ -55,6 +55,7 @@
             <option value="">50</option>
         </select><br><br>
         <button type="button" id="addUsers" onclick="addUser()" disabled>addUser</button>
+        <button type="button" id="update" onclick="updateUser()" style="display:none">updateUser</button>
     </form>
     <hr>
     <table border="2">
@@ -71,6 +72,7 @@
     </table>
     <script>
         var allstudent = JSON.parse(localStorage.getItem("allstudent"))
+        var index = null
         if(allstudent == null){
             allstudent=[]
         }
@@ -125,7 +127,13 @@
             }
 
             function edituser(i){
-                console.log("edituser called" +i)
+                console.log(allstudent[i])
+                index = 1
+                document.getElementById("username").value = allstudent[i].username
+                document.getElementById("password").value = allstudent[i].password
+                document.getElementById("email").value = allstudent[i].email
+                document.getElementById("addUsers").style.display = "none"
+                document.getElementById("update").style.display = "block"
             }
 
             function deleteuser(i){
@@ -154,6 +162,23 @@
                 document.getElementById("addUsers").removeAttribute("disabled")
             }
         }
+        function updateUser(){
+            console.log("update user called")
+            var students = {
+                username : document.getElementById("username").value,
+                password : document.getElementById("password").value,
+                email : document.getElementById("email").value,
+               
+            }
+            allstudent[index] = students
+
+            localStorage.setItem("allguide",JSON.stringify(allstudent))
+            displayfamilies(allstudent);
+            clearform();
+        
+        document.getElementById("addUsers").style.display = "none"
+        document.getElementById("update").style.display = "block"
+    }
     </script>
 </body>
 </html>

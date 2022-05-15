@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        form{
+        form {
             width: 500px;
             margin: 2px;
             border-radius: 10px;
             align-content: center;
         }
+
         input[type="text"] {
             background: rgb(238, 232, 232);
         }
+
         input[type="number"] {
             background: rgb(228, 224, 224);
         }
+
         body {
-        width: 430px;
-        margin: 0 auto;
-        background-color: lightblue;
-    }
+            width: 430px;
+            margin: 0 auto;
+            background-color: lightblue;
+        }
     </style>
 </head>
+
 <body>
     <h3>HTML FORM</h3>
     <form action="">
-        <table id="demo">
+        <table>
             <tr>
                 <td><label for="fname">First Name :</label></td>
-                <td><input type="text" id="fname" name="" onkeyup="validate()"/></td>
+                <td><input type="text" id="fname" name="" onkeyup="validate()" /></td>
             </tr>
             <tr></tr>
-                <td><label for="lname">Last Name :</label></td>
-                <td><input type="text" id="lname" name="" onkeyup="validate()"/></td>
+            <td><label for="lname">Last Name :</label></td>
+            <td><input type="text" id="lname" name="" onkeyup="validate()" /></td>
             </tr>
             <tr>
                 <td><label for="dob">Date of Birth :</label></td>
-                <td><input type="text" id="dob" name="" onkeyup="validate()"/></td>
+                <td><input type="text" id="dob" name="" onkeyup="validate()" /></td>
             </tr>
             <tr>
                 <td><label for="email">Email id :</label></td>
-                <td><input type="text" id="email" name="" onkeyup="validate()"/></td>
+                <td><input type="text" id="email" name="" onkeyup="validate()" /></td>
             </tr>
             <tr>
                 <td><label for="number">Mobile Number :</label></td>
-                <td><input type="text" id="number" onkeyup="validate()"/></td>
+                <td><input type="text" id="number" onkeyup="validate()" /></td>
             </tr>
             <tr>
+            </table>
                 <td>
-                    <button type="button" id="addusers" onclick="addUser()" disabled>SUBMIT</button>
-                    <button type="button" id="addusers" onclick="resetUser()" >RESET</button>
+                    <button type="button" id="addUser" onclick="addUsers()" disabled>Add User</button>
+                    <button type="button" id="updateUser" onclick="updateUsers()" style="display:none">Update User</button>
                 </td>
             </tr>
-        </form>
-        </table>
-   <br><br>
-    <table border="1" id="demo2">
+    </form>
+    
+    <br><br>
+    <table border="1">
         <tr>
             <thead>
                 <th>First Name</th>
@@ -72,91 +78,128 @@
         </tr>
         <tbody></tbody>
     </table>
-        <script>
-            var allUsers = []
-            function addUser(){
-                var user = {
-                    fname : document.getElementById("fname").value,
-                    lname : document.getElementById("lname").value,
-                    email : document.getElementById("dob").value,
-                    dob : document.getElementById("email").value,
-                    number : document.getElementById("number").value,
-                }
-                console.log(allUsers)
-                allUsers.push(user)
-                displayUsers(allUsers)
-                
-            }
-    
-            function resetUser(){
-                document.getElementById("fname").value="";
-                document.getElementById("lname").value="";
-                document.getElementById("dob").value="";
-                document.getElementById("email").value="";
-                document.getElementById("number").value=""
-            }
-            function displayUsers(data) {
-                    document.querySelectorAll("tbody")[1].innerHTML = "";
-                    data.forEach((user,i) => {
-                        var myTr = document.createElement("tr");
-                        for (a in user) {
-                            var myTd = document.createElement("td");
-                            myTd.innerHTML = user[a];
-                            myTr.appendChild(myTd);
-                        }
-    
-                        var editTd = document.createElement("td") 
-                        var editBtn = document.createElement("button")
-                        editBtn.setAttribute("onclick","editUser("+i+")")
-                        editBtn.innerHTML = "Edit"
-                        editTd.appendChild(editBtn)
-                        myTr.appendChild(editTd)
-    
-                        var deleteTd = document.createElement("td") 
-                        var deleteBtn = document.createElement("button")
-                        deleteBtn.setAttribute("onclick","deleteUser("+i+")")
-                        deleteBtn.innerHTML = "Button"
-                        deleteTd.appendChild(deleteBtn)
-                        myTr.appendChild(deleteTd)
-    
-    
-                        document.querySelectorAll("tbody")[1].appendChild(myTr)
-                    });
-                }
-    
-                function editUser(i){
-                    console.log("edituser called" +i)
-                }
-    
-                function deleteUser(i){
-                    console.log("deleteuser called" +i)
-                    allUsers.splice(i,1)
-                    displayUsers(allUsers);
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+        var index = null
+        if(allUsers == null){
+            allUsers=[];
+        }
+        function addUsers() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("dob").value,
+                dob: document.getElementById("email").value,
+                number: document.getElementById("number").value,
+            };
+            allUsers.push(user);
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers));
+            displayUsers(allUsers);
+            clearform();
+
+        }
+
+        function clearform() {
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("number").value = ""
+        }
+        function displayUsers(data) {
+            document.querySelectorAll("tbody")[1].innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
                 }
 
-              displayUsers(allUsers);
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser("+i+")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
 
-              function validate(){
-                var user = {
-                    fname : document.getElementById("fname").value,
-                    lname : document.getElementById("lname").value,
-                    email : document.getElementById("dob").value,
-                    dob : document.getElementById("email").value,
-                    number : document.getElementById("number").value,
-                };
-                var check = false;
-                for(a in user){
-                    if(user[a] == ""){
-                        check = true
-                    }
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser("+i+")")
+                deleteBtn.innerHTML = "Button"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelectorAll("tbody")[1].appendChild(myTr)
+            });
+        }
+
+        function edituser(i) {
+            console.log(allUsers[i])
+            index = 1
+    
+                document.getElementById("fname").value = allUsers[i].fname
+                document.getElementById("lname").value = allUsers[i].lname
+                document.getElementById("dob").value = allUsers[i].dob
+                document.getElementById("email").value = allUsers[i].email
+                document.getElementById("number").value = allUsers[i].number
+                document.getElementById("addUser").style.display = "none"
+                document.getElementById("updateUser").style.display = "block"
+           
+        }
+
+        function deleteuser(i) {
+            console.log("deleteuser called" + i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+
+        displayUsers(allUsers);
+
+        function validate() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("dob").value,
+                dob: document.getElementById("email").value,
+                number: document.getElementById("number").value,
+            };
+            var check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    check = true
                 }
-                if(check == true){
-                    document.getElementById("addusers").setAttribute("disabled",true)
-                }else{
-                    document.getElementById("addusers").removeAttribute("disabled")   
-                }
-              }
-            </script>
+            }
+            if (check == true) {
+                document.getElementById("addUser").setAttribute("disabled", true);
+            } else {
+                document.getElementById("addUser").removeAttribute("disabled");
+            }
+        }
+        function updateUsers() {
+            console.log("update user called")
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("dob").value,
+                dob: document.getElementById("email").value,
+                number: document.getElementById("number").value,
+            };
+            allUsers[index] = user
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+
+            displayUsers(allUsers);
+            clearform();
+
+            document.getElementById("addUser").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
+
+        }
+    </script>
 
 </body>
+
 </html>

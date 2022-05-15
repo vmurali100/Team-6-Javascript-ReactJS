@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,44 +13,47 @@
             border: 2px solid;
             background-color: lavender;
         }
+
         table {
             width: 430px;
             margin: 0 auto;
         }
     </style>
 </head>
+
 <body>
     <div>
-    <h3>Address</h3>
-    <hr/>
-    <form>
-        <table>
-            <tr>
-                <td><label for="street">Street :</label></td>
-                <td><input type="text" id="street" name="" onkeyup="validate()"/></td>
-            </tr>
-            <tr></tr>
+        <h3>Address</h3>
+        <hr />
+        <form>
+            <table>
+                <tr>
+                    <td><label for="street">Street :</label></td>
+                    <td><input type="text" id="street" name="" onkeyup="validate()" /></td>
+                </tr>
+                <tr></tr>
                 <td><label for="street"></label></td>
-                <td><input type="text" id="street" name="" onkeyup="validate()"/></td>
-            </tr>
-            <tr>
-                <td><label for="city">City, State :</label></td>
-                <td><input type="text" id="city" name=""> <input type="text" name="" id="state" onkeyup="validate()"/></td>
-            </tr>
-            <tr>
-                <td><label for="zipcode">Zip Code :</label></td>
-                <td><input type="text" id="zipcode" name="" onkeyup="validate()"/></td>
-            </tr>
-            <tr>
-                <td><label for="country">Country :</label></td>
-                <td><input type="text" id="country" onkeyup="validate()"/></td>
-            </tr>
-        </table>
-        <button type="button" id="hello" onclick="ok()" disabled>OK</button>
-        <button type="button" onclick="cancel()">CANCEL</button>
-    </form>
-    </div>         
-     <br><br>
+                <td><input type="text" id="street" name="" onkeyup="validate()" /></td>
+                </tr>
+                <tr>
+                    <td><label for="city">City, State :</label></td>
+                    <td><input type="text" id="city" name=""> <input type="text" name="" id="state"
+                            onkeyup="validate()" /></td>
+                </tr>
+                <tr>
+                    <td><label for="zipcode">Zip Code :</label></td>
+                    <td><input type="text" id="zipcode" name="" onkeyup="validate()" /></td>
+                </tr>
+                <tr>
+                    <td><label for="country">Country :</label></td>
+                    <td><input type="text" id="country" onkeyup="validate()" /></td>
+                </tr>
+            </table>
+            <button type="button" id="adduser" onclick="addusers()" disabled>add users</button>
+            <button type="button" id="updateuser" onclick="updateusers()" style="display:none">update users</button>
+        </form>
+    </div>
+    <br><br>
     <table border="1">
         <tr>
             <thead>
@@ -63,88 +67,120 @@
         </tr>
         <tbody></tbody>
     </table>
-        <script>
-            var allfunction = []
-            function ok(){
-                var user = {
-                    street : document.getElementById("street").value,
-                    city : document.getElementById("city").value,
-                    zipcode : document.getElementById("zipcode").value,
-                    country : document.getElementById("country").value,
-                }
-                console.log(allfunction)
-                allfunction.push(user)
-                displayUsers(allfunction);
-                
+    <script>
+        var allfunction = JSON.parse(localStorage.getItem("allfunction"))
+        var index = null
+        if (allfunction == null) {
+            allfunction = []
+        }
+        function addusers() {
+            var user = {
+                street: document.getElementById("street").value,
+                city: document.getElementById("city").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value,
             }
-    
-            function cancel(){
-                document.getElementById("street").value="";
-                document.getElementById("city").value="";
-                document.getElementById("zipcode").value="";
-                document.getElementById("country").value=""
-            }
-            function displayUsers(data) {
-                    document.querySelectorAll("tbody")[1].innerHTML = "";
-                    data.forEach((user,i) => {
-                        var myTr = document.createElement("tr");
-                        for (a in user) {
-                            var myTd = document.createElement("td");
-                            myTd.innerHTML = user[a];
-                            myTr.appendChild(myTd);
-                        }
-    
-                        var editTd = document.createElement("td") 
-                        var editBtn = document.createElement("button")
-                        editBtn.setAttribute("onclick","edituser("+i+")")
-                        editBtn.innerHTML = "Edit"
-                        editTd.appendChild(editBtn)
-                        myTr.appendChild(editTd)
-    
-                        var deleteTd = document.createElement("td") 
-                        var deleteBtn = document.createElement("button")
-                        deleteBtn.setAttribute("onclick","deleteuser("+i+")")
-                        deleteBtn.innerHTML = "Button"
-                        deleteTd.appendChild(deleteBtn)
-                        myTr.appendChild(deleteTd)
-    
-    
-                        document.querySelectorAll("tbody")[1].appendChild(myTr)
-                    });
-                }
-    
-                function edituser(i){
-                    console.log("edituser called" +i)
-                }
-    
-                function deleteuser(i){
-                    console.log("deleteuser called" +i)
-                    allfunction.splice(i,1)
-                    displayUsers(allfunction);
-                }
-                displayUsers(allfunction);
+            console.log(allfunction)
+            allfunction.push(user)
 
-                function validate(){
-                    var user = {
-                        street : document.getElementById("street").value,
-                        city : document.getElementById("city").value,
-                        zipcode : document.getElementById("zipcode").value,
-                        country : document.getElementById("country").value,
-                        };
-                        var check = false;
-                        for(a in user){
-                            if(user[a] == ""){
-                                check = true
-                            }
-                        }
-                        if(check == true){
-                    document.getElementById("hello").setAttribute("disabled",true)
-                    }else{
-                        document.getElementById("hello").removeAttribute("disabled")   
-                    }
+            localStorage.setItem("allfunction", JSON.stringify(allfunction))
+
+            displayUsers(allfunction);
+            clearform();
+
+        }
+
+        function clearform() {
+            document.getElementById("street").value = "";
+            document.getElementById("city").value = "";
+            document.getElementById("zipcode").value = "";
+            document.getElementById("country").value = ""
+        }
+        function displayUsers(data) {
+            document.querySelectorAll("tbody")[1].innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
                 }
-              
-            </script>
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.innerHTML = "Button"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelectorAll("tbody")[1].appendChild(myTr)
+            });
+        }
+
+        function edituser(i) {
+            console.log(allfunction[i])
+            index = 1
+            document.getElementById("street").value = allfunction[i].street
+                document.getElementById("city").value = allfunction[i].city
+                document.getElementById("zipcode").value = allfunction[i].zipcode
+                document.getElementById("country").value = allfunction[i].country
+                document.getElementById("adduser").style.display = "none"
+                document.getElementById("updateuser").style.display = "block"
+                }
+
+        function deleteuser(i) {
+            console.log("deleteuser called" + i)
+            allfunction.splice(i, 1)
+            displayUsers(allfunction);
+        }
+        displayUsers(allfunction);
+
+        function validate() {
+            var user = {
+                street: document.getElementById("street").value,
+                city: document.getElementById("city").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value,
+            };
+            var check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    check = true
+                }
+            }
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+        }
+        function updateusers(){
+            console.log("update user called")
+            var user = {
+                street: document.getElementById("street").value,
+                city: document.getElementById("city").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value,
+            }
+            allfunction[index] = user
+            localStorage.setItem("allfunction", JSON.stringify(allfunction))
+
+            displayUsers(allfunction)
+            clearform();
+            document.getElementById("adduser").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
+        }
+
+    </script>
 
 </body>
+
 </html>

@@ -41,6 +41,8 @@
         <label for="country">country</label>
         <input type="text" name="" id="country" onkeyup="validate()"><br>
         <button type="button" id="details" onclick="addDetails()" disabled>AddDetails</button>
+        
+        <button type="button" id="update" onclick="updateusers()" style="display:none;">Updateuser</button>
     </form>
 
     <hr>
@@ -62,6 +64,9 @@
     </table>
     <script>
         var alluser=JSON.parse(localStorage.getItem("alluser"))
+
+        var index = null
+
         if(alluser==null){
             alluser=[]
         }
@@ -119,7 +124,18 @@
             });
         }
         function editUser(i){
-            console.log("edit user called"+i);
+            console.log(alluser[i]);
+            index = i
+            document.getElementById("name").value=alluser[i].name
+            document.getElementById("class").value=alluser[i].class
+            document.getElementById("age").value=alluser[i].age
+            document.getElementById("rollno").value=alluser[i].rollno
+            document.getElementById("state").value=alluser[i].state
+            document.getElementById("school").value=alluser[i].school
+            document.getElementById("country").value=alluser[i].country
+            document.getElementById("details").style.display="none"
+            
+            document.getElementById("update").style.display="block"
         }
         function deleteUser(i){
             alluser.splice(i,1);
@@ -149,6 +165,26 @@
     }else{
         document.getElementById("details").removeAttribute("disabled");
     }
+    }
+    function updateusers(){
+        console.log("update user called")
+        var user={
+            name:document.getElementById("name").value,
+            class:document.getElementById("class").value,
+            age:document.getElementById("age").value,
+            rollno:document.getElementById("rollno").value,
+            state:document.getElementById("state").value,
+            school:document.getElementById("school").value,
+            country:document.getElementById("country").value,
+            };
+            alluser[index] = user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            display(alluser);
+            clearform();
+            
+            document.getElementById("details").style.display="block"
+            
+            document.getElementById("update").style.display="none"
     }
     </script>
 </body>

@@ -67,7 +67,9 @@
     <option value="">2007</option>
     <option value="">2008</option>
     </select>
-    <button type="button" id="adding" onclick="adduser()" disabled>Adduser</button>
+    <button type="button" id="adding" onclick="addusers()" disabled>Adduser</button>
+    
+    <button type="button" id="updateuser" onclick="updateusers()" style="display:none">UpdateUser</button>
 </form>
 <table border="1">
     <thead>
@@ -95,16 +97,19 @@
     }
 
     var allUsers=JSON.parse(localStorage.getItem("allUsers"))
+
+    var index = null
+
     if(allUsers==null){
         allUsers=[]
     }
-    function adduser(){
+    function addusers(){
         var user={
             name:document.getElementById("name").value,
            password:document.getElementById("password").value,
            confirmpassword:document.getElementById("confirmpassword").value,
            contactno:document.getElementById("contactno").value,
-            emailaddress:document.getElementById("email").value,
+            email:document.getElementById("email").value,
         }
         
         var dateofbirth=document.getElementById("dob").value;
@@ -120,9 +125,9 @@
     }
     function clearform(){
         document.getElementById("name").value="";
-        document.getElementById("age").value="";
-        document.getElementById("address").value="";
-        document.getElementById("phoneno").value="";
+        document.getElementById("password").value="";
+        document.getElementById("confirmpassword").value="";
+        document.getElementById("contactno").value="";
         document.getElementById("email").value="";
     }
    function displayUser(data){
@@ -155,7 +160,18 @@
    }
 
     function editUser(i){
-        console.log("Edit user called"+i);
+        console.log(allUsers[i]);
+        index = i
+        document.getElementById("name").value=allUsers[i].name
+        document.getElementById("password").value=allUsers[i].password
+        document.getElementById("confirmpassword").value=allUsers[i].confirmpassword
+        document.getElementById("contactno").value=allUsers[i].contactno
+         document.getElementById("email").value=allUsers[i].email
+         
+         document.getElementById("adding").style.display="none"
+        
+        document.getElementById("updateuser").style.display="block"
+         
     }
 
     function deleteUser(i){
@@ -171,7 +187,7 @@
            password:document.getElementById("password").value,
            confirmpassword:document.getElementById("confirmpassword").value,
            contactno:document.getElementById("contactno").value,
-            emailaddress:document.getElementById("email").value,
+            email:document.getElementById("email").value
         }
         var check =false;
         for(a in user){
@@ -184,6 +200,24 @@
     }else{
         document.getElementById("adding").removeAttribute("disabled");
     }
+    }
+    function updateusers(){
+        console.log("update user called")
+        var user={
+            name:document.getElementById("name").value,
+           password:document.getElementById("password").value,
+           confirmpassword:document.getElementById("confirmpassword").value,
+           contactno:document.getElementById("contactno").value,
+            email:document.getElementById("email").value,
+        };
+        allUsers[index] = user
+        localStorage.setItem("allUsers",JSON.stringify(allUsers))
+       displayUser(allUsers);
+       clearform();
+       
+       document.getElementById("adding").style.display="block"
+        
+        document.getElementById("updateuser").style.display="none"
     }
    
     </script>

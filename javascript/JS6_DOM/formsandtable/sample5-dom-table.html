@@ -45,6 +45,8 @@
         <label for="role">Role</label>
         <input type="text" name="" id="role" onkeyup="validate()"><br>
         <button type="button" id="detailed" onclick="addDetails()" disabled>AddDetails</button>
+        
+        <button type="button" id="updateuser" onclick="updateusers()" style="display: none;">Updateuser</button>
     </form>
 
     <hr>
@@ -66,6 +68,7 @@
     </table>
     <script>
         var alluser=JSON.parse(localStorage.getItem("alluser"))
+        var index=null
         if(alluser==null){
             alluser=[]
         }
@@ -124,7 +127,19 @@
         }
 
         function editUser(i){
-            console.log("edit user called"+i);
+            console.log(alluser[i]);
+            index=i
+            document.getElementById("company").value=alluser[i].company
+            document.getElementById("contact").value=alluser[i].contact
+            document.getElementById("country").value=alluser[i].country
+            document.getElementById("state").value=alluser[i].state
+            document.getElementById("city").value=alluser[i].city
+            document.getElementById("branch").value=alluser[i].branch
+            document.getElementById("role").value=alluser[i].role
+
+            document.getElementById("detailed").style.display="none"
+            
+            document.getElementById("updateuser").style.display="block"
         }
 
         function deleteUser(i){
@@ -135,13 +150,13 @@
 
         function validate(){
             var user={
-            name:document.getElementById("company").value,
-            class:document.getElementById("contact").value,
-            age:document.getElementById("country").value,
-            rollno:document.getElementById("state").value,
-            state:document.getElementById("city").value,
-            school:document.getElementById("branch").value,
-            country:document.getElementById("role").value,
+            company:document.getElementById("company").value,
+            contact:document.getElementById("contact").value,
+            country:document.getElementById("country").value,
+            state:document.getElementById("state").value,
+            city:document.getElementById("city").value,
+            branch:document.getElementById("branch").value,
+            role:document.getElementById("role").value,
             }
         var check =false;
         for(a in user){
@@ -154,6 +169,26 @@
     }else{
         document.getElementById("detailed").removeAttribute("disabled");
     }
+    }
+    function updateusers(){
+        console.log("update user called")
+        var user={
+            company:document.getElementById("company").value,
+            contact:document.getElementById("contact").value,
+            country:document.getElementById("country").value,
+            state:document.getElementById("state").value,
+            city:document.getElementById("city").value,
+            branch:document.getElementById("branch").value,
+            role:document.getElementById("role").value,
+            };
+            alluser[index] = user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            display(alluser);
+            clearform();
+            
+            document.getElementById("detailed").style.display="block"
+            
+            document.getElementById("updateuser").style.display="none"
     }
     </script>
 </body>

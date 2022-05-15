@@ -68,6 +68,8 @@
     <option value="">2008</option>
     </select>
     <button type="button" id="addinguser" onclick="adduser()" disabled>Adduser</button>
+    
+    <button type="button" id="updateuser" onclick="updateusers()" style="display:none">Updateuser</button>
 </form>
 <table border="1">
     <thead>
@@ -95,6 +97,9 @@
     }
 
     var allUsers=JSON.parse(localStorage.getItem("allUsers"))
+    
+    var index=null
+
     if(allUsers==null){
         allUsers=[]
     }
@@ -155,7 +160,17 @@
    }
 
     function editUser(i){
-        console.log("Edit user called"+i);
+        console.log(allUsers[i]);
+        index=i
+        document.getElementById("name").value=allUsers[i].name
+        document.getElementById("age").value=allUsers[i].age
+        document.getElementById("address").value=allUsers[i].address
+        document.getElementById("phoneno").value=allUsers[i].phoneno
+        document.getElementById("email").value=allUsers[i].email
+
+        document.getElementById("addinguser").style.display="none"
+        
+        document.getElementById("updateuser").style.display="block"
     }
 
     function deleteUser(i){
@@ -185,6 +200,28 @@
         document.getElementById("addinguser").removeAttribute("disabled");
     }
     }
+    function updateusers(){
+        console.log("update user called")
+        var user={
+            name:document.getElementById("name").value,
+            age:document.getElementById("age").value,
+            address:document.getElementById("address").value,
+            phoneno:document.getElementById("phoneno").value,
+            email:document.getElementById("email").value,
+        };
+        allUsers[index]=user
+         localStorage.setItem("allUsers",JSON.stringify(allUsers))
+       displayUser(allUsers);
+       clearform();  
+     
+       
+
+       document.getElementById("addinguser").style.display="block"
+        
+        document.getElementById("updateuser").style.display="none"
+
+    }
+
    
     </script>
 </body>

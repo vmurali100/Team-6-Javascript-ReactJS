@@ -39,7 +39,11 @@
         <input type="text" name="" id="pword" onkeyup="validate()"><br>
         <label for="cpassword">Confirmpassword</label>
         <input type="text" name="" id="cpword" onkeyup="validate()"><br>
-        <button type="button" id="aduser" onclick="adduser()" disabled>Submit</button>
+        <button type="button" id="aduser" onclick="displayed()" disabled>Addvalue</button>
+        
+        <button type="button" id="updateuser" onclick="updateusers()" style="display: none;">Updateuser</button>
+        
+       
     </form>
     <table border="1" style="color: red;">
         <tr>
@@ -58,21 +62,23 @@
     <script>
         
     var alldom=JSON.parse(localStorage.getItem("alldom"))
+
+    var index = null
+
     if(alldom==null){
         alldom=[]
     }
-    function adduser(){
+    function displayed(){
         var user={
-           Firstname:document.getElementById("fname").value,
-            Lastname:document.getElementById("lname").value,
-            Email:document.getElementById("email").value,
-           Password:document.getElementById("pword").value,
-            Confirmpassword:document.getElementById("cpword").value,
+           fname:document.getElementById("fname").value,
+            lname:document.getElementById("lname").value,
+            email:document.getElementById("email").value,
+           pword:document.getElementById("pword").value,
+            cpword:document.getElementById("cpword").value,
         }
         alldom.push(user);
-       // console.log(allUsers);
        // console.log(user);
-       localStorage.setItem("allUsers",JSON.stringify(alldom))
+       localStorage.setItem("alldom",JSON.stringify(alldom))
        display(alldom);
        clearform();
     }
@@ -113,7 +119,17 @@
     });
    }
     function editUser(i){
-        console.log("Edit user called"+i);
+        console.log(alldom[i]);
+        index = i
+        document.getElementById("fname").value=alldom[i].fname
+        document.getElementById("lname").value=alldom[i].lname
+        document.getElementById("email").value=alldom[i].email
+        document.getElementById("pword").value=alldom[i].pword
+        document.getElementById("cpword").value=alldom[i].cpword
+        document.getElementById("aduser").style.display="none"
+        
+        document.getElementById("updateuser").style.display="block"
+
     }
     function deleteUser(i){
         console.log("Delete user called"+i);
@@ -125,11 +141,11 @@
     function validate(){
       // console.log("Just you entered some value");
        var user={
-           Firstname:document.getElementById("fname").value,
-            Lastname:document.getElementById("lname").value,
-            Email:document.getElementById("email").value,
-           Password:document.getElementById("pword").value,
-            Confirmpassword:document.getElementById("cpword").value,
+           fname:document.getElementById("fname").value,
+            lname:document.getElementById("lname").value,
+            email:document.getElementById("email").value,
+           pword:document.getElementById("pword").value,
+           cpword:document.getElementById("cpword").value,
         }
         var check =false;
         for(a in user){
@@ -142,6 +158,25 @@
     }else{
         document.getElementById("aduser").removeAttribute("disabled");
     }
+    }
+    function updateusers(){
+        console.log("update user called")
+        var user={
+           fname:document.getElementById("fname").value,
+            lname:document.getElementById("lname").value,
+            email:document.getElementById("email").value,
+           pword:document.getElementById("pword").value,
+            cpword:document.getElementById("cpword").value,
+        };
+        alldom[index] = user
+        localStorage.setItem("alldom",JSON.stringify(alldom))
+       display(alldom);
+       clearform();
+       
+       document.getElementById("aduser").style.display="block"
+        
+        document.getElementById("updateuser").style.display="none"
+
     }
     </script>
 </body>

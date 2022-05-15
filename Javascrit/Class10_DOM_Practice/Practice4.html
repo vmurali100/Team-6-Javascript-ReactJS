@@ -72,7 +72,7 @@
         <input type="text" placeholder="Confirm Password" id="Confirm Password"><br>
         <label for="">Message</label><br>
         <textarea name="" id="Message" cols="" rows="" placeholder="Message"></textarea><br>
-        <button type="buttons" id="AAA" onclick="Send()">Send</button>
+        <button type="button" id="AAA" onclick="Send()">Send</button>
     </form>
     <table border="1">
         <tr>
@@ -126,14 +126,14 @@
                     myTr.appendChild(myTd);
                 }
                 var EditTd = document.createElement("td")
-                var Editbutton = document.createElement("buttons");
+                var Editbutton = document.createElement("button");
                 Editbutton.setAttribute("onclick", "Edit(" + i + ")")
                 Editbutton.innerHTML = "Edit";
                 EditTd.appendChild(Editbutton);
                 myTr.appendChild(EditTd)
 
                 var DeleteTd = document.createElement("td")
-                var Deletebutton = document.createElement("buttons");
+                var Deletebutton = document.createElement("button");
                 Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
                 Deletebutton.innerHTML = "Delete";
                 DeleteTd.appendChild(Deletebutton);

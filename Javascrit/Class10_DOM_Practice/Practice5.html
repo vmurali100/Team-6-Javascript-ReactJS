@@ -21,14 +21,11 @@
             border: 25px solid rgb(255, 140, 0);
             margin-top: 100px;
         }
-        
-     
-     
     </style>
 </head>
 
 <body>
-    <form >
+    <form>
         <label for="UserName">UserName</label><br>
         <input type="text" placeholder="UserName" id="UserName"><br><br>
         <label for="Password">Password</label><br>
@@ -67,22 +64,22 @@
         </select>
         <select name="" id="DOB">
         </select><br><br>
-        <label for="Height/Weight" id="Height">Height/Weight</label><br>
-        <select name="">
+        <label for="Height/Weight" id="">Height/Weight</label><br>
+        <select name="" id="Height">
             <option value="">Height</option>
-            <option value="">5.1 Feets</option>
-            <option value="">5.2 Feets</option>
-            <option value="">5.3 Feets</option>
-            <option value="">5.4 Feets</option>
-            <option value="">5.5 Feets</option>
+            <option value="5.1 Feets">5.1 Feets</option>
+            <option value="5.2 Feets">5.2 Feets</option>
+            <option value="5.3 Feets">5.3 Feets</option>
+            <option value="5.4 Feets">5.4 Feets</option>
+            <option value="5.5 Feets">5.5 Feets</option>
         </select>
-        <select name="">
+        <select name="" id="Weight">
             <option value="">Weight</option>
-            <option value="">61 Kgs</option>
-            <option value="">62 Kgs</option>
-            <option value="">63 Kgs</option>
-            <option value="">64 Kgs</option>
-            <option value="">65 Kgs</option>
+            <option value="61 Kgs">61 Kgs</option>
+            <option value="62 Kgs">62 Kgs</option>
+            <option value="63 Kgs">63 Kgs</option>
+            <option value="64 Kgs">64 Kgs</option>
+            <option value="65 Kgs">65 Kgs</option>
         </select><br><br>
         <button type="button" onclick="Submit()">Click</button><br><br>
     </form>
@@ -93,8 +90,8 @@
                 <th>UserName</th>
                 <th>Password</th>
                 <th>Email Address</th>
-                <th>Height/Weight</th>
                 <th>Date Of Birth</th>
+                <th>Height/Weight</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -121,13 +118,17 @@
                 UserName: document.getElementById("UserName").value,
                 Password: document.getElementById("Password").value,
                 EmailAddress: document.getElementById("EmailAddress").value,
-                HeightWeight: document.getElementById("Height").value,
+                // Height:document.getElementById("Height").value,
+                // Weight:document.getElementById("Weight").value
             }
             var DateOfBirth = document.getElementById("DOB").value;
             var YearOfBirth = document.getElementById("YearOfBirth").value;
             var MonthOfBirth = document.getElementById("MonthOfBirth").value;
-            user.DOB = DateOfBirth + "/" + YearOfBirth + "/" + MonthOfBirth
-
+            user.DOB = DateOfBirth + "/" + MonthOfBirth + "/" + YearOfBirth
+            
+            var Height = document.getElementById("Height").value;
+            var Weight = document.getElementById("Weight").value;
+            user.HeightWeight = Height + "/" + Weight
 
             allUsers.push(user);
             localStorage.setItem("allUsers", JSON.stringify(allUsers))

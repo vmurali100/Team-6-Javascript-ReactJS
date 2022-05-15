@@ -36,7 +36,7 @@
         <input type="text" name="" id="from" onkeyup="validate()"><br><br>
         <label for="to">To:</label>
         <input type="text" name="" id="to" onkeyup="validate()"><br><br>
-        <button type="buttons" onclick="Check()" disabled = "true" id="A">Check</button>
+        <button type="button" onclick="Check()" disabled = "true" id="A">Check</button>
     </form>
     <hr>
     <table border="1">
@@ -79,14 +79,14 @@
                     myTr.appendChild(myTd);
                 }
                 var EditTd = document.createElement("td")
-                var Editbutton = document.createElement("buttons");
+                var Editbutton = document.createElement("button");
                 Editbutton.setAttribute("onclick", "Edit(" + i + ")")
                 Editbutton.innerHTML = "Edit";
                 EditTd.appendChild(Editbutton);
                 myTr.appendChild(EditTd)
 
                 var DeleteTd = document.createElement("td")
-                var Deletebutton = document.createElement("buttons");
+                var Deletebutton = document.createElement("button");
                 Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
                 Deletebutton.innerHTML = "Delete";
                 DeleteTd.appendChild(Deletebutton);

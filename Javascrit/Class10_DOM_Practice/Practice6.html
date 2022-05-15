@@ -32,7 +32,7 @@
     <input type="text" id="Email" onkeyup="validate()"><br><br>
     <label for="Password">Password:</label>
     <input type="text" id="Password" onkeyup="validate()"><br><br>
-    <button type="buttons" onclick="Check()" disabled = "true" id="Click">Click</button>
+    <button type="button" onclick="Check()" disabled = "true" id="Click">Click</button>
 </form>
 <hr>
 <table border="1">
@@ -81,14 +81,14 @@
                 myTr.appendChild(myTd);
             }
             var EditTd = document.createElement("td")
-            var Editbutton = document.createElement("buttons");
+            var Editbutton = document.createElement("button");
             Editbutton.setAttribute("onclick", "Edit(" + i + ")")
             Editbutton.innerHTML = "Edit";
             EditTd.appendChild(Editbutton);
             myTr.appendChild(EditTd)
 
             var DeleteTd = document.createElement("td")
-            var Deletebutton = document.createElement("buttons");
+            var Deletebutton = document.createElement("button");
             Deletebutton.setAttribute("onclick", "Delete(" + i + ")")
             Deletebutton.innerHTML = "Delete";
             DeleteTd.appendChild(Deletebutton);

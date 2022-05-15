@@ -36,6 +36,7 @@
             <input type="text" id="blog"  onkeyup="validate()">
         </fieldset>
         <button type="button" id="adduser" onclick="getdata()" disabled>ok</button>
+        <button type="button" id="updateuser" onclick="update()" style="display: none;">update</button>
     </form>
     <table border="1">
         <tr>
@@ -55,6 +56,7 @@
     </table>
     <script>
          var alluser=JSON.parse(localStorage.getItem("alluser"))
+         var index=null
         if(alluser==null){
             alluser=[]
         }
@@ -112,6 +114,22 @@
            })
        }
        function editUser(i){
+           console.log("editUsercalled"+alluser[i])
+           index=i
+           document.getElementById("univer").value=alluser[i].University
+           document.getElementById("institute").valu=alluser[i].Institute
+           document.getElementById("branch").value=alluser[i].Branch
+           document.getElementById("degree").value=alluser[i].Degree
+           document.getElementById("avg").valu=alluser[i].Average
+           document.getElementById("up").value=alluser[i].UPto
+           document.getElementById("exp").value=alluser[i].Experience
+           document.getElementById("blog").value=alluser[i].YourWebsite
+           document.getElementById("adduser").style.display="none"
+          document.getElementById("updateuser").style.display="block"
+
+           
+           
+
 
   }
   function deleteUser(i){
@@ -144,6 +162,25 @@
                 document.getElementById("adduser").removeAttribute("disabled");
             }
         }
+       function update(){
+        var data={
+                University:document.getElementById("univer").value,
+                Institute:document.getElementById("institute").value,
+                Branch:document.getElementById("branch").value,
+                Degree:document.getElementById("degree").value,
+                Average:document.getElementById("avg").value, 
+                UPto:document.getElementById("up").value,
+                Experience:document.getElementById("exp").value,
+                YourWebsite :document.getElementById("blog").value,  
+            }
+            alluser[index]=data
+        localStorage.setItem("alluser",JSON.stringify(alluser))
+        displayuser(alluser)
+     clear()
+     document.getElementById("adduser").style.display="block"
+          document.getElementById("updateuser").style.display="none"
+    }
+       
         </script>  
 </body>
 </html>

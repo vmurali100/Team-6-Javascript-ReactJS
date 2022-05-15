@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Username</label><br><br>
+        <input type="text" id="name" placeholder="username" onkeyup="validate()"><br><br>
+        <label for="">password</label><br><br>
+        <input type="text" id="password" placeholder="password" onkeyup="validate()"><br><br>
+        <label for="">Emailaddress</label><br><br>
+        <input type="text" id="email" placeholder="Email address" onkeyup="validate()"><br><br>
+        <select name="" id="emai">
+         <option value="">i am a man</option>
+         <option value="">i am a woman</option>
+        </select><br><br>
+        <select name="" id="ids">
+         <option value="">i want to find women</option>
+         <option value="">i want to find man</option>
+         </select><br><br>
+        <label for="">Date Of Birth</label><br><br>
+        <select name="" id="yea">
+            <option value="">year</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+        </select>
+        <select name="" id="mon">
+            <option value="">month</option>
+            <option value="january">january</option>
+            <option value="february">february</option>
+            <option value="march">march</option>
+            <option value="april">april</option>
+        </select>
+        <select name="" id="dob">
+            <option value="">day</option>
+            <option value="1">1</option>
+ 
+        </select><br><br>
+        <label for="">Height/Weight</label><br><br>
+        <select name="" id="">
+            <option value="">Height</option>
+            <option value="">5.2</option>
+        </select>
+        <select name="" id="">
+            <option value="">Weight</option>
+            <option value="">45</option>
+        </select>
+        <button type="button" id="addUser" onclick="displayall()" disabled>ok</button>
+        <button type="button" id="updateuser" onclick="update()" style="display:none ;">update</button>
+    </form> 
+    <table border="1">
+     <tr>
+         <thead>
+             
+             <th>UserName</th>
+             <th>Password</th>
+             <th>email address</th>
+             <th>date of birth</th>
+             <th>Edit</th>
+             <th>Delete</th>
+            
+         </thead>
+     </tr>
+     <script>
+        var i=1;
+        while(i<32){
+            var opt=document.createElement("option")
+            opt.innerHTML=i
+            opt.setAttribute("value",i)
+            document.getElementById("dob").appendChild(opt)
+            i++
+        }
+        var alluser=JSON.parse(localStorage.getItem("alluser"))
+        var index=null
+        if(alluser==null){
+            alluser=[]
+        }
+        function displayall(){
+            var users={
+                
+                username:document.getElementById("name").value,
+                password:document.getElementById("password").value,
+                email:document.getElementById("email").value,
+                
+                
+            }
+            var dateofbirth=document.getElementById("dob").value;
+            var monthofbirth=document.getElementById("mon").value;
+            var yearofbirth=document.getElementById("yea").value;
+            users.dob=dateofbirth+"/"+monthofbirth+"/"+yearofbirth
+    
+         alluser.push(users)
+         localStorage.setItem("alluser",JSON.stringify(alluser))
+         console.log(users)
+         console.log(alluser)
+         display(alluser)
+         clear()
+        }
+        function clear(){
+          
+            document.getElementById("name").value="";
+            document.getElementById("password").value="";
+            document.getElementById("email").value="";
+          
+        }
+        function display(){
+            document.querySelector("tbody").innerHTML="";
+            alluser.forEach((use,i)=>{
+               var mytr=document.createElement("tr")
+               for(a in use){
+                   var mytd=document.createElement("td")
+                   mytd.innerHTML=use[a]
+                   mytr.appendChild(mytd)
+               }
+               var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.innerHTML="edit"
+                  editbtn.setAttribute("onclick","editUser("+i+")")
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+    
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.setAttribute("onclick","deleteUser("+i+")")
+                  deletebtn.innerHTML="delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+                  document.querySelector("tbody").appendChild(mytr)
+               
+            })
+        }
+        function editUser(i){
+            console.log("edituser called"+alluser[i])
+            index=i
+            document.getElementById("name").value=alluser[i].username
+            document.getElementById("password").value=alluser[i].password
+            document.getElementById("email").value=alluser[i].email
+            document.getElementById("addUser").style.display="none"
+            document.getElementById("updateuser").style.display="block"
+    
+        }
+        function deleteUser(i){
+            alluser.splice(i,1)
+            display(alluser)
+        }
+        display(alluser)
+        function validate(){
+            var users={
+                username:document.getElementById("name").value,
+                password:document.getElementById("password").value,
+                email:document.getElementById("email").value,
+            }
+            var check=false;
+            for (a in users){
+                if(users[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+                document.getElementById("addUser").setAttribute("disabled",true)
+            }else{
+                document.getElementById("addUser").removeAttribute("disabled")
+            }
+        }
+        function update(){
+            var users={
+                username:document.getElementById("name").value,
+                password:document.getElementById("password").value,
+                email:document.getElementById("email").value,
+            };
+            alluser[index]=users
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            clear()
+            display(alluser)
+            document.getElementById("addUser").style.display="block"
+            document.getElementById("updateuser").style.display="none"
+        }
+    </script>
+ </table>
+</body>
+</html>

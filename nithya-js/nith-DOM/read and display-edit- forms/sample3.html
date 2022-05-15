@@ -56,6 +56,7 @@ button#btn {
         <label for="">Message</label><br><br>
         <input type="text" id="sms" placeholder="message" onkeyup="validate()"><br><br>
         <button  type="button" id="adduser" onclick="displayinfo()" disabled>send</button>
+        <button  type="button" id="updateuser" onclick="update()" style="display: none;">update</button>
     </form>
    
     <table border="1">
@@ -74,6 +75,7 @@ button#btn {
     </table>
     <script>
         var alluser=JSON.parse(localStorage.getItem("allusers"))
+        var index=null
         if(alluser==null){
             alluser=[]
         }
@@ -129,6 +131,18 @@ button#btn {
           
         }
         function editUser(i){
+            console.log("editUsercalled"+alluser[i])
+            index=i
+            document.getElementById("name").value=alluser[i].name
+            document.getElementById("UserName").value=alluser[i].username
+            document.getElementById("email").value=alluser[i].email
+            document.getElementById("Password").value=alluser[i].password
+            document.getElementById("Confirm").value=alluser[i].confirmpassword
+            document.getElementById("sms").value=alluser[i].message
+            document.getElementById("adduser").style.display="none"
+            document.getElementById("updateuser").style.display="block"
+            
+
             
         }
         function deleteUser(i){
@@ -158,6 +172,24 @@ button#btn {
                 document.getElementById("adduser").removeAttribute("disabled");
             }
            }
+           function update(){
+            var users={
+                name:document.getElementById("name").value,
+                username:document.getElementById("UserName").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("Password").value,
+                confirmpassword:document.getElementById("Confirm").value,
+                message:document.getElementById("sms").value,
+            }
+           
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            alluser[index]=users
+            display(alluser)
+            clear()
+            document.getElementById("adduser").style.display="block"
+            document.getElementById("updateuser").style.display="none"
+           }
+
     </script>
 </body>
 </html>

@@ -36,11 +36,11 @@ select {
 <body>
    <form action="">
        <label for="">Username</label><br><br>
-       <input type="text" id="name" placeholder="username"><br><br>
+       <input type="text" id="name" placeholder="username" onkeyup="validate()"><br><br>
        <label for="">password</label><br><br>
-       <input type="text" id="password" placeholder="password"><br><br>
+       <input type="text" id="password" placeholder="password" onkeyup="validate()"><br><br>
        <label for="">Emailaddress</label><br><br>
-       <input type="text" id="email" placeholder="Email address"><br><br>
+       <input type="text" id="email" placeholder="Email address" onkeyup="validate()"><br><br>
        <select name="" id="emai">
         <option value="">i am a man</option>
         <option value="">i am a woman</option>
@@ -78,7 +78,8 @@ select {
            <option value="">Weight</option>
            <option value="">45</option>
        </select>
-       <button type="button" onclick="follow()">ok</button>
+       <button id="addUser" type="button" onclick="follow()" disabled>ok</button>
+       <button id="update" type="button" onclick="updateuser()" style="display: none;">update</button>
    </form> 
    <table border="1">
     <tr>
@@ -103,7 +104,8 @@ select {
         document.getElementById("dob").appendChild(opt)
         i++
     }
-    var alluser=JSON.parse(localStorage.getItem("allusers"))
+    var alluser=JSON.parse(localStorage.getItem("alluser"))
+    var index=null
     if(alluser==null){
         alluser=[]
     }
@@ -122,7 +124,7 @@ select {
         users.dob=dateofbirth+"/"+monthofbirth+"/"+yearofbirth
 
      alluser.push(users)
-     localStorage.setItem("allusers",JSON.stringify(alluser))
+     localStorage.setItem("alluser",JSON.stringify(alluser))
      console.log(users)
      console.log(alluser)
      display(alluser)
@@ -162,6 +164,13 @@ select {
         })
     }
     function editUser(i){
+          console.log("editusercalled"+alluser[i])
+          index=i
+          document.getElementById("name").value=alluser[i].username
+          document.getElementById("password").value=alluser[i].password
+          document.getElementById("email").value=alluser[i].email
+          document.getElementById("addUser").style.display="none"
+          document.getElementById("update").style.display="block"
 
     }
     function deleteUser(i){
@@ -169,6 +178,41 @@ select {
         display(alluser)
     }
     display(alluser)
+    function validate(){
+        var users={
+            
+            username:document.getElementById("name").value,
+            password:document.getElementById("password").value,
+            email:document.getElementById("email").value,
+            
+            
+        }
+        var check=false
+        for(a in users){
+            if(users[a]=="")
+            check=true
+        }
+        if(check==true){
+            document.getElementById("addUser").setAttribute("disabled",true)
+        }else{
+            document.getElementById("addUser").removeAttribute("disabled")
+        }
+    }
+    function updateuser(){
+        console.log("updateusercalled")
+        var users={
+            username:document.getElementById("name").value,
+            password:document.getElementById("password").value,
+            email:document.getElementById("email").value,
+            
+        };
+        alluser[index]=users
+        localStorage.setItem("alluser",JSON.stringify(alluser))
+        display(alluser)
+     clear()
+     document.getElementById("addUser").style.display="block"
+          document.getElementById("update").style.display="none"
+    }
 </script>
 </body>
 </html>

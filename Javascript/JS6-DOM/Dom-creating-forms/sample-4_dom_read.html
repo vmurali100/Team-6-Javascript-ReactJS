@@ -48,10 +48,13 @@
                 
             </fieldset>
             <button type="button" onclick="userSubmit()" id="userbit" disabled > Submit</button>
+            
+
+            <button type="button" onclick="updateSubmit()" id="updateUser" style="display: none;" > Update User</button>
         </form>        
     </div>
     <hr>
-        <table border="1">
+        <table border="1" style="width: 100%;">
             <thead>
                 <tr>
                     <th>Univarsity</th>
@@ -62,6 +65,8 @@
                     <th>Upto</th>
                     <th>Experince</th>
                     <th>Your Website Or Blog</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -73,22 +78,24 @@
                 allUsers = []
             }
             function userSubmit(){
-               var user = {
-                univarsity: document.getElementById("university").value,
-                institute: document.getElementById("institute").value,
-                branch: document.getElementById("branch").value,
-                degree: document.getElementById("degree").value,
-                averagecpi: document.getElementById("average").value,
-                upto: document.getElementById("upto").value,
-                experince: document.getElementById("experience").value,
-                yourwebsiteorblog: document.getElementById("yourwebsite").value
+                var user = {
+                    univarsity: document.getElementById("university").value,
+                    institute: document.getElementById("institute").value,
+                    branch: document.getElementById("branch").value,
+                    degree: document.getElementById("degree").value,
+                    averagecpi: document.getElementById("average").value,
+                    upto: document.getElementById("upto").value,
+                    experince: document.getElementById("experience").value,
+                    yourwebsiteorblog: document.getElementById("yourwebsite").value
                }
                 allUsers.push(user);
     
                 localStorage.setItem("allUsers", JSON.stringify(allUsers))
     
-            //    console.log(user);
+                // console.log(user);
                 // console.log(allUsers)
+                var index = null;
+                document.getElementById("userbit").setAttribute("disabled",true);
                 displayUsers(allUsers);
                 userCancel();
                 
@@ -129,7 +136,21 @@
                 });                
             }
             function editUser(i){
-                console.log("Edite User Called" + i);
+                //console.log("Edite User Called" + i);
+                console.log(allUsers[i])
+
+                index= i
+
+                document.getElementById("university").value = allUsers[i].univarsity
+                document.getElementById("institute").value = allUsers[i].institute
+                document.getElementById("branch").value = allUsers[i].branch
+                document.getElementById("degree").value = allUsers[i].degree
+                document.getElementById("average").value = allUsers[i].averagecpi
+                document.getElementById("upto").value = allUsers[i].upto
+                document.getElementById("experience").value = allUsers[i].experince
+                document.getElementById("yourwebsite").value = allUsers[i].yourwebsiteorblog
+                document.getElementById("userbit").style.display = "none";
+                document.getElementById("updateUser").style.display = "block";
             }
             function deleteUser(i){            
                 console.log("Delete User Called" + i);
@@ -140,31 +161,56 @@
 
 
             function mybutton(){
-        var user = {
-                univarsity: document.getElementById("university").value,
-                institute: document.getElementById("institute").value,
-                branch: document.getElementById("branch").value,
-                degree: document.getElementById("degree").value,
-                averagecpi: document.getElementById("average").value,
-                upto: document.getElementById("upto").value,
-                experince: document.getElementById("experience").value,
-                yourwebsiteorblog: document.getElementById("yourwebsite").value
-        };
+                var user = {
+                    univarsity: document.getElementById("university").value,
+                    institute: document.getElementById("institute").value,
+                    branch: document.getElementById("branch").value,
+                    degree: document.getElementById("degree").value,
+                    averagecpi: document.getElementById("average").value,
+                    upto: document.getElementById("upto").value,
+                    experince: document.getElementById("experience").value,
+                    yourwebsiteorblog: document.getElementById("yourwebsite").value
+                };
 
-        var check = false;
-        for(a in user){
-          if(user[a] == ""){
-            check = true
-          }
-        }
+                var check = false;
+                for(a in user){
+                    if(user[a] == ""){
+                        check = true
+                    }
+                }
 
-        if(check == true){
-          document.getElementById("userbit").setAttribute("disabled",true);
-        }else{
-          document.getElementById("userbit").removeAttribute("disabled");
-        }
+                if(check == true){
+                document.getElementById("userbit").setAttribute("disabled",true);
+                }else{
+                document.getElementById("userbit").removeAttribute("disabled");
+                }
   
-      } 
+            } 
+
+            function updateSubmit(){
+            console.log("Update User Called");
+
+                var user = {
+                    univarsity: document.getElementById("university").value,
+                    institute: document.getElementById("institute").value,
+                    branch: document.getElementById("branch").value,
+                    degree: document.getElementById("degree").value,
+                    averagecpi: document.getElementById("average").value,
+                    upto: document.getElementById("upto").value,
+                    experince: document.getElementById("experience").value,
+                    yourwebsiteorblog: document.getElementById("yourwebsite").value
+                }
+                allUsers[index] = user
+                document.getElementById("userbit").setAttribute("disabled",true);
+                displayUsers(allUsers);
+                userCancel();
+
+                document.getElementById("userbit").style.display = "block";
+                document.getElementById("updateUser").style.display = "none";
+
+            }
+
+
         </script>
 </body>
 </html>

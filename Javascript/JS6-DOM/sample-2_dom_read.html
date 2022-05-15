@@ -26,16 +26,22 @@
 <body>
     <form action="">
         <label for="enterName">Name : </label>
-        <input type="text" name="" id="enterName">
+        <input type="text" name="" id="enterName" onkeyup="validate()">
+
         <label for="age">Age : </label>
-        <input type="number" name="" id="age">
+        <input type="number" name="" id="age" onkeyup="validate()">
+
         <label for="address">Address : </label>
-        <input type="text" name="" id="address">
+        <input type="text" name="" id="address" onkeyup="validate()">
+
         <label for="phoneNo">Phone No : </label>
-        <input type="number" name="" id="phoneNo">
+        <input type="number" name="" id="phoneNo" onkeyup="validate()">
+
         <label for="email">Email Id : </label>
-        <input type="text" name="" id="email">
-        <button type="button" onclick="AddUser()">Add User</button>
+        <input type="text" name="" id="email" onkeyup="validate()">
+
+        <button type="button" onclick="AddUser()" id="userAdd" disabled>Add User</button>
+        <button type="button" onclick="updateUser()" id="userUpdate" style="display: none;" >Update User</button>
     </form>
     <hr>
     <table border="1">
@@ -68,7 +74,8 @@
             allUsers.push(user);
             // console.log(user);
             // console.log(allUsers);
-
+            document.getElementById("userAdd").setAttribute("disabled",true)
+            var index = null
             localStorage.setItem("allUsers",JSON.stringify(allUsers))
 
             displayUsers(allUsers);
@@ -109,7 +116,18 @@
             });
         }
         function editUser(i){
-            console.log("Edit User Called"+i)
+            //console.log("Edit User Called"+i)
+            console.log(allUsers[i])
+            index = i
+
+            document.getElementById("enterName").value = allUsers[i].name
+            document.getElementById("age").value = allUsers[i].age
+            document.getElementById("address").value = allUsers[i].address
+            document.getElementById("phoneNo").value = allUsers[i].phoneno
+            document.getElementById("email").value =allUsers[i].email
+
+            document.getElementById("userAdd").style.display = "none";
+            document.getElementById("userUpdate").style.display = "block";
         }
         function deleteUser(i){
             console.log("Delete User Called"+i)
@@ -117,6 +135,46 @@
             displayUsers(allUsers);
         }
         displayUsers(allUsers);
+        
+        function validate(){
+            var user = {
+                name: document.getElementById("enterName").value,
+                age: document.getElementById("age").value,
+                address: document.getElementById("address").value,
+                phoneno: document.getElementById("phoneNo").value,
+                email: document.getElementById("email").value,
+            }
+            var check = false
+            for(a in user){
+                if(user[a] == ""){
+                    check = true
+                }
+            }
+            if (check == true){
+                document.getElementById("userAdd").setAttribute("disabled",true)
+            }else{
+                document.getElementById("userAdd").removeAttribute("disabled")
+            }
+        }
+        function updateUser(){
+            console.log("Update User Called")
+            var user = {
+                name: document.getElementById("enterName").value,
+                age: document.getElementById("age").value,
+                address: document.getElementById("address").value,
+                phoneno: document.getElementById("phoneNo").value,
+                email: document.getElementById("email").value,
+            }
+            allUsers[index] = user
+
+            document.getElementById("userAdd").style.display = "none";
+            document.getElementById("userUpdate").style.display = "block";
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+
+            displayUsers(allUsers);
+            clearForm();
+        }
     </script>
 </body>
 </html>

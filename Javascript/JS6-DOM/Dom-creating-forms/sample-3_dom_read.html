@@ -13,7 +13,7 @@
             color: red;            line-height: 25px; width: 500px; margin: 0 auto;
         }
         input{
-            display: block; font-size: 15px; width: 500px; padding: 10px;
+            display: block; font-size: 15px; width: 500px; padding: 10px; border-radius: 5px;
         }
         table{
             width: 100%;            border-collapse: collapse;            font-family: arial, sans-serif;
@@ -25,10 +25,11 @@
            background-color: #f0a2a2;
         }
         textarea{
-            width: 500px; font-size: 15Px;
+            width: 500px; font-size: 15Px; border-radius: 5px;
         }
-        button{
-            width: 500px; padding: 10px; font-size: 15Px; background-color: rgb(121, 121, 230); color: white;
+        button.sendButton{
+            width: 530px; padding: 10px; font-size: 15Px; background-color: rgb(121, 121, 230); color: white;
+            border-radius: 5px;
         }
         h2 #userbutton{
             width: 500px; text-align: center; margin: 0 auto;
@@ -55,11 +56,13 @@
         <input type="password" name="" id="confirm" placeholder="Confirm" onkeyup="surchbutton()">
 
         <label for="massage">Massage</label><br>
-        <textarea name="" id="massage" cols="30" rows="3" placeholder="Massage" onkeyup="surchbutton()"></textarea> <br>
+        <textarea name="" id="massage" cols="70" rows="3" placeholder="Massage" onkeyup="surchbutton()"></textarea> <br>
 
-        <button type="button" onclick="userSend()" id="userbutton" disabled>Send</button>
+        <button type="button" class="sendButton" onclick="userSend()" id="userbutton" disabled>Send</button>
+        <button type="button" class="sendButton" onclick="userUpdate()" id="uptadeUser" style="display: none;">Update User</button>
     </form>
-    </div>   
+    </div>  
+    <hr> 
     <table border="1">
         <thead>
             <tr>
@@ -83,22 +86,24 @@
         }
         function userSend(){
            var user = {
-            name: document.getElementById("name").value,
-            username: document.getElementById("username").value,
-            email: document.getElementById("email").value,
-            password: document.getElementById("Password").value,
-            confirm: document.getElementById("confirm").value,
-            masserge: document.getElementById("massage").value
-           }
-            allUsers.push(user);
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("Password").value,
+                confirm: document.getElementById("confirm").value,
+                massege: document.getElementById("massage").value
+            }
+                allUsers.push(user);
 
-            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+                localStorage.setItem("allUsers", JSON.stringify(allUsers))
 
-        //    console.log(user);
-            // console.log(allUsers)
-            displayUsers(allUsers);
-            userCancel();
-            
+            //  console.log(user);
+                //console.log(allUsers)
+                var index = null;
+                document.getElementById("userbutton").setAttribute("disabled",true);
+                displayUsers(allUsers);
+                userCancel();
+                
         }
         function userCancel(){
             document.getElementById("name").value = "";
@@ -134,7 +139,18 @@
             });                
         }
         function editUser(i){
-            console.log("Edite User Called" + i);
+            //console.log("Edite User Called" + i);
+            console.log(allUsers[i]);
+            index = i
+            
+            document.getElementById("name").value = allUsers[i].name
+            document.getElementById("username").value = allUsers[i].username
+            document.getElementById("email").value = allUsers[i].email
+            document.getElementById("Password").value = allUsers[i].password
+            document.getElementById("confirm").value = allUsers[i].confirm
+            document.getElementById("massage").value = allUsers[i].massege
+            document.getElementById("userbutton").style.display = "none";
+            document.getElementById("uptadeUser").style.display = "block";
         }
         function deleteUser(i){            
             console.log("Delete User Called" + i);
@@ -145,29 +161,49 @@
 
 
         function surchbutton(){
-        var user = {
-            name: document.getElementById("name").value,
-            username: document.getElementById("username").value,
-            email: document.getElementById("email").value,
-            password: document.getElementById("Password").value,
-            confirm: document.getElementById("confirm").value,
-            masserge: document.getElementById("massage").value
-        };
+            var user = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("Password").value,
+                confirm: document.getElementById("confirm").value,
+                massege: document.getElementById("massage").value
+            };
 
-        var check = false;
-        for(a in user){
-          if(user[a] == ""){
-            check = true
-          }
-        }
+            var check = false;
+            for(a in user){
+            if(user[a] == ""){
+                check = true
+            }
+            }
 
-        if(check == true){
-          document.getElementById("userbutton").setAttribute("disabled",true);
-        }else{
-          document.getElementById("userbutton").removeAttribute("disabled");
-        }
+            if(check == true){
+            document.getElementById("userbutton").setAttribute("disabled",true);
+            }else{
+            document.getElementById("userbutton").removeAttribute("disabled");
+            }
   
-      }
+         }
+        function userUpdate(){
+          console.log("Update User Called");
+
+            var user = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("Password").value,
+                confirm: document.getElementById("confirm").value,
+                massege: document.getElementById("massage").value
+           }
+           allUsers[index] = user
+
+            document.getElementById("userbutton").setAttribute("disabled",true);
+            displayUsers(allUsers);
+            userCancel();
+
+            document.getElementById("userbutton").style.display = "block";
+            document.getElementById("uptadeUser").style.display = "none";
+        }
     </script>
 </body>
 </html>

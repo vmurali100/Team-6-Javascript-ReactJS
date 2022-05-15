@@ -60,15 +60,12 @@
             <table>
                 <tr>
                     <td><label for="street">Street: </label></td>
-                    <td><input type="text" name="" id="street" onkeyup="userbutton()"></td>                    
-                </tr>
-                <tr>
-                    <td><label for="street"></label></td>
-                    <td><input type="text" name="" id="street" onkeyup="userbutton()"></td>                    
-                </tr>
+                    <td><input type="text" name="" id="street" onkeyup="userbutton()">
+                        <input type="text" name="" id="streets" onkeyup="userbutton()"></td>                    
+                </tr>               
                 <tr>
                     <td><label for="citystate">City,State: </label></td>
-                    <td><input type="text" name="" id="citys">
+                    <td><input type="text" name="" id="citys" onkeyup="userbutton()">
                     <input type="text" name="" id="states" onkeyup="userbutton()"></td>
                 </tr>
                 <tr>
@@ -81,6 +78,7 @@
                 </tr>
             </table>
             <button type="button" class="userbutton"  id="mybutton" onclick="userOk()" disabled>Ok</button>
+            <button type="button" class="userbutton"  id="updateOk" onclick="updateUser()" style="display: none;">Update User</button>
             <button type="button" class="userbutton" onclick="userCancel()">Cancel</button>
         </form>
     </div>
@@ -89,7 +87,9 @@
         <thead id="deom">
             <tr class="mytr">
                 <th>Street</th>
-                <th>City,State</th>
+                <th>Streets</th>
+                <th>City</th>
+                <th>State</th>
                 <th>Zip code</th>
                 <th>Country</th>
                 <th>Edit</th>
@@ -107,6 +107,7 @@
         function userOk(){
            var user = {
             street: document.getElementById("street").value,
+            streets: document.getElementById("streets").value,
             city: document.getElementById("citys").value,
             state: document.getElementById("states").value,
             zipcode: document.getElementById("zipCode").value,
@@ -118,12 +119,16 @@
 
         //    console.log(user);
             // console.log(allUsers)
+            var index = null;
+            document.getElementById("mybutton").setAttribute("disabled",true);
+            
             displayUsers(allUsers);
             userCancel();
             
         }
         function userCancel(){
             document.getElementById("street").value = "";
+            document.getElementById("streets").value = "";
             document.getElementById("citys").value = "";
             document.getElementById("states").value = "";
             document.getElementById("zipCode").value = "";
@@ -155,19 +160,33 @@
             });                
         }
         function editUser(i){
-            console.log("Edite User Called" + i);
+            //console.log("Edite User Called" + i);
+            console.log(allUsers[i]);
+
+            index = i
+            document.getElementById("street").value = allUsers[i].street
+            document.getElementById("streets").value = allUsers[i].streets
+            document.getElementById("citys").value = allUsers[i].citys
+            document.getElementById("states").value = allUsers[i].states
+            document.getElementById("zipCode").value = allUsers[i].zipcode
+            document.getElementById("country").value = allUsers[i].country
+            document.getElementById("mybutton").style.display = "none";
+            document.getElementById("updateOk").style.display = "block";
         }
+
         function deleteUser(i){            
             console.log("Delete User Called" + i);
             allUsers.splice(i,1);
             displayUsers(allUsers)
         }
+
         displayUsers(allUsers);
 
 
         function userbutton(){
         var user = {
             street: document.getElementById("street").value,
+            streets: document.getElementById("streets").value,
             city: document.getElementById("citys").value,
             state: document.getElementById("states").value,
             zipcode: document.getElementById("zipCode").value,
@@ -188,6 +207,28 @@
         }
   
       }
+
+      function updateUser(){
+          console.log("Update User Called");
+          var user = {
+            street: document.getElementById("street").value,
+            streets: document.getElementById("streets").value,
+            city: document.getElementById("citys").value,
+            state: document.getElementById("states").value,
+            zipcode: document.getElementById("zipCode").value,
+            country: document.getElementById("country").value,
+           }
+           allUsers[index] = user
+            
+           document.getElementById("mybutton").setAttribute("disabled",true);
+            
+            displayUsers(allUsers);
+            userCancel();
+
+            document.getElementById("mybutton").style.display = "block";
+            document.getElementById("updateOk").style.display = "none";
+      }
+
     </script>
 
 </body>

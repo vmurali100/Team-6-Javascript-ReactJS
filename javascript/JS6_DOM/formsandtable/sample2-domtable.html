@@ -39,33 +39,33 @@
     <label for="Email">EmailAddress</label>
     <input type="email" name="" id="email" onkeyup="validate()"><br>
     <label for="dateofbirth">DateofBirth</label><br>
-    <select name="" id="dob">
+    <select name="" id="dob" onkeyup="validate()">
     <option value="Date">Date</option>
     </select>
-    <select name="" id="mob">
+    <select name="" id="mob" onkeyup="validate()">
         
-     <option value="Date">Month</option>
-    <option value="">January</option>
-    <option value="">February</option>
+     <option value="Month">Month</option>
+    <option value="January">January</option>
+    <option value="February">February</option>
     <option value="March">March</option>
-    <option value="">April</option>
-    <option value="">May</option>
-    <option value="">June</option>
-    <option value="">July</option>
-    <option value="">august</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="august">august</option>
     
     </select>
-    <select name="year" id="yob">
+    <select name="year" id="yob" onkeyup="validate()">
     
-    <option value="Date">Year</option>
-    <option value="">2001</option>
-    <option value="">2002</option>
+    <option value="Year">Year</option>
+    <option value="2001">2001</option>
+    <option value="2002">2002</option>
     <option value="2003">2003</option>
-    <option value="">2004</option>
-    <option value="">2005</option>
-    <option value="">2006</option>
-    <option value="">2007</option>
-    <option value="">2008</option>
+    <option value="2004">2004</option>
+    <option value="2005">2005</option>
+    <option value="2006">2006</option>
+    <option value="2007">2007</option>
+    <option value="2008">2008</option>
     </select>
     <button type="button" id="adding" onclick="addusers()" disabled>Adduser</button>
     
@@ -112,10 +112,11 @@
             email:document.getElementById("email").value,
         }
         
-        var dateofbirth=document.getElementById("dob").value;
-        var monthofbirth=document.getElementById("mob").value;
-        var yearofbirth=document.getElementById("yob").value
-        user.dob=dateofbirth+"/"+monthofbirth+"/"+yearofbirth
+        var dob=document.getElementById("dob").value;
+        var mob=document.getElementById("mob").value;
+        var yob=document.getElementById("yob").value;
+        user.dob= dob +"/"+mob+"/"+yob
+        
         allUsers.push(user);
        // console.log(allUsers);
        // console.log(user);
@@ -129,6 +130,10 @@
         document.getElementById("confirmpassword").value="";
         document.getElementById("contactno").value="";
         document.getElementById("email").value="";
+        
+        document.getElementById("dob").value="";
+        document.getElementById("mob").value="";
+       document.getElementById("yob").value="";
     }
    function displayUser(data){
    document.querySelector("tbody").innerHTML=" ";
@@ -167,6 +172,11 @@
         document.getElementById("confirmpassword").value=allUsers[i].confirmpassword
         document.getElementById("contactno").value=allUsers[i].contactno
          document.getElementById("email").value=allUsers[i].email
+
+         
+        document.getElementById("dob").value=allUsers[i].dob
+        document.getElementById("mob").value=allUsers[i].mob
+       document.getElementById("yob").value=allUsers[i].yob
          
          document.getElementById("adding").style.display="none"
         
@@ -187,7 +197,12 @@
            password:document.getElementById("password").value,
            confirmpassword:document.getElementById("confirmpassword").value,
            contactno:document.getElementById("contactno").value,
-            email:document.getElementById("email").value
+            email:document.getElementById("email").value,
+
+            
+      dob:document.getElementById("dob").value,
+        mob:document.getElementById("mob").value,
+       yob:document.getElementById("yob").value
         }
         var check =false;
         for(a in user){
@@ -209,6 +224,11 @@
            confirmpassword:document.getElementById("confirmpassword").value,
            contactno:document.getElementById("contactno").value,
             email:document.getElementById("email").value,
+
+            
+      dob:document.getElementById("dob").value,
+        mob:document.getElementById("mob").value,
+       yob:document.getElementById("yob").value
         };
         allUsers[index] = user
         localStorage.setItem("allUsers",JSON.stringify(allUsers))

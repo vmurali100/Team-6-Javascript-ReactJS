@@ -8,6 +8,102 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="">
+        <label for="fname">Firstname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">Lastname</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="email">Email</label>
+        <input type="email" name="" id="email"><br>
+        <button type="button" onclick="addUser()">Addvalues</button>
+    </form>
+    <hr>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+       <tbody></tbody>
+    </table>
+  <!-- 1.Read the values from form and create an object
+    2.Add the object to the array
+    3.Display the  array of object in table--> 
+    <script>
+      
+        var allUsers=JSON.parse(localStorage.getItem("allUsers"))
+
+        if(allUsers==null){
+            allUsers=[]
+        }
+
+        function addUser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                email:document.getElementById("email").value
+            }
+            //console.log(user)
+           // console.log(allUsers)
+            allUsers.push(user);
+            
+        localStorage.setItem("allUsers",JSON.stringify(allUsers))
+           displayUsers(allUsers);
+           clearform();
+         
+        }
+        function clearform(){
+        document.getElementById("fname").value="";
+        document.getElementById("lname").value="";
+        document.getElementById("email").value=""
+    }
+
+                function displayUsers(data){
+
+                 document.querySelector("tbody").innerHTML=" ";
+                    data.forEach((user,i) => {
+                 var myTr=document.createElement("tr"); 
+            for(a in user){
+                var myTd=document.createElement("td");
+                myTd.innerHTML=user [a]
+                myTr.appendChild(myTd)
+             }
+             var editTd=document.createElement("td");
+           var editBtn=document.createElement("button");
+           editBtn.setAttribute("onclick","editUser("+i+")");
+           editBtn.innerHTML="Edit"
+           editTd.appendChild(editBtn);
+           myTr.appendChild(editTd);
+
+           
+           var deleteTd=document.createElement("td");
+           var deleteBtn=document.createElement("button");
+           deleteBtn.setAttribute("onclick","deleteUser("+i+")");
+           deleteBtn.innerHTML="Delete"
+           deleteTd.appendChild(deleteBtn);
+           myTr.appendChild(deleteTd);
+           document.querySelector("tbody").appendChild(myTr);
+             
+         document.querySelector("tbody").appendChild(myTr);
+            });
     
+         }
+         function editUser(i){
+            console.log("Edit user called"+i);
+        }
+        function deleteUser(i){
+            console.log("Delete user called"+i);
+            allUsers.splice(i,1);
+            displayUser(allUsers);
+        }
+        
+         displayUsers();
+      
+
+    </script>
 </body>
 </html>

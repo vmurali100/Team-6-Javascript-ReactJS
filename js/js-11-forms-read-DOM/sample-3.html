@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: peachpuff;
+        }
+
+        div#demo1 {
+            width: 300px;
+            margin: 0 auto;
+            background: white;
+            padding: 15px;
+            box-shadow: 5px 5px 5px rosybrown;
+        }
+
+        input {
+
+            width: 90%;
+            padding: 2px;
+            margin: 7px;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+       #demo1 button{
+            width:300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="demo1">
+            <form action="">
+                <label for="name">Name </label><br>
+                <input type="text" name="" placeholder="Name" id="name" onkeyup="validate()"><br>
+
+                <label for="username">Username</label><br>
+                <input type="text" name="" placeholder="username" id="username"  onkeyup="validate()"><br>
+
+                <label for="email">Email</label><br>
+                <input type="text" name="" placeholder="Email" id="email"  onkeyup="validate()"><br>
+
+                <label for="password"> Password</label><br>
+                <input type="password" name="" placeholder="password" id="password"  onkeyup="validate()"><br>
+
+                <label for="confirmpassword"> Confirm Password</label><br>
+                <input type="text" name="" placeholder="confirm" id="confirmpassword"  onkeyup="validate()"><br>
+
+                <label for="message"> Message</label><br>
+                <input type="text" name="" placeholder="message" id="message"  onkeyup="validate()"><br>
+
+                <button type="button" id="adduser" onclick="addUser()" disabled>SEND</button>
+                <button type="button" id="update" onclick="updateuser()" style="display:none;">update</button>
+
+            </form>
+        </div>
+    </div><br>
+    <table border="1" id="demo2">
+        <tr>
+            <thead>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>password</th>
+                <th>Confirm Password</th>
+                <th> Message</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var index=null
+        if(allUsers==null){
+            allUsers=[]
+        }
+        function addUser() {
+            var user = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                confirmpassword: document.getElementById("confirmpassword").value,
+                message: document.getElementById("message").value
+            }
+            allUsers.push(user)
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayUsers(allUsers)
+            document.getElementById("adduser").setAttribute("disabled",true)
+            clearForm()
+        }
+        function clearForm(){
+            document.getElementById("name").value="";
+            document.getElementById("username").value="";
+            document.getElementById("email").value="";
+            document.getElementById("password").value="";
+            document.getElementById("confirmpassword").value="";
+            document.getElementById("message").value="";
+
+        }
+        
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = ""
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editUser(" + i + ")")
+                editBtn.innerHTML = "Edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete btn
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBtn.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function editUser(i) {
+            console.log(allUsers[i])
+            index=i
+            document.getElementById("name").value=allUsers[i].name
+            document.getElementById("username").value=allUsers[i].username
+            document.getElementById("email").value=allUsers[i].email
+            document.getElementById("password").value=allUsers[i].password
+            document.getElementById("confirmpassword").value=allUsers[i].confirmpassword
+            document.getElementById("message").value=allUsers[i].message
+
+            document.getElementById("adduser").style.display="none"
+            document.getElementById("update").style.display="block"
+
+
+
+        }
+        function deleteUser(i) {
+            // console.log("delete user called"+i)
+            allUsers.splice(i, 1)
+            displayUsers(allUsers)
+        }
+        displayUsers(allUsers)
+        function validate(){
+            var user = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                confirmpassword: document.getElementById("confirmpassword").value,
+                message: document.getElementById("message").value
+            }
+            var check=false
+            for(a in user){
+                if(user[a]==""){
+                    check=true
+                }
+            }
+            if(check==true){
+                document.getElementById("adduser").setAttribute("disabled",true)
+            }else{
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+        }
+        function updateuser(){
+            console.log("update")
+
+            var user = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                confirmpassword: document.getElementById("confirmpassword").value,
+                message: document.getElementById("message").value
+            }
+            allUsers[index]=user
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayUsers(allUsers)
+            clearForm()
+            document.getElementById("adduser").style.display="block"
+            document.getElementById("update").style.display="none"
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -9,7 +9,8 @@
 </head>
 <body>
     <div id="container">
-        <form style="width: 450px; border: 2px solid; background-color: cornflowerblue;">
+        <form style="width: 600px; border: 2px solid; background-color: cornflowerblue; margin: 0 auto;">
+            
             <fieldset>
                 <legend>Registration Details</legend><br>
 
@@ -33,7 +34,7 @@
 
                 <label for="average">Average CPI: </label>
                 <input type="number" id="average"  onkeyup="validate()">
-                <br><br>
+                
 
                 <label for="upto">Upto</label>
                 <input type="text" name="" id="upto"  onkeyup="validate()">Th Semester  
@@ -48,13 +49,14 @@
 
             </fieldset>
             <button type="button" id="usersubmit"  onclick="userSubmit()" disabled>Submit</button>
+            <button type="button" id="updateuser"  onclick="updateusers()" style="display:none;">update user</button>
         </form>        
     </div>
     <hr>
-        <table border="1">
+        <table border="1" style="margin:0 auto;">
             <thead>
                 <tr>
-                    <th>Univarsity</th>
+                    <th>University</th>
                     <th>Institute</th>
                     <th>Branch</th>
                     <th>Degree</th>
@@ -62,6 +64,8 @@
                     <th>Upto</th>
                     <th>Experince</th>
                     <th>Your Website Or Blog</th>
+                    <th>edit</th>
+                    <th>delete</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -69,19 +73,20 @@
         <script>
 
             var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+            var index=null
             if (allUsers == null){
                 allUsers = []
             }
             function userSubmit(){
                var user = {
-                univarsity: document.getElementById("university").value,
+                university: document.getElementById("university").value,
                 institute: document.getElementById("institute").value,
                 branch: document.getElementById("branch").value,
                 degree: document.getElementById("degree").value,
-                averagecpi: document.getElementById("average").value,
+                average: document.getElementById("average").value,
                 upto: document.getElementById("upto").value,
                 experince: document.getElementById("experience").value,
-                yourwebsiteorblog: document.getElementById("yourwebsite").value
+                yourwebsite: document.getElementById("yourwebsite").value
                }
                 allUsers.push(user);
 
@@ -90,6 +95,7 @@
             //    console.log(user);
                 // console.log(allUsers)
                 displayUsers(allUsers);
+                document.getElementById("usersubmit").setAttribute("disabled",true)
                 userCancel();
 
             }
@@ -129,7 +135,21 @@
             })
             }
             function editUser(i){
-                console.log("Edite User Called" + i);
+                // console.log("Edite User Called" + i);
+                console.log(allUsers[i])
+                index=i
+                document.getElementById("university").value=allUsers[i].university
+                document.getElementById("institute").value=allUsers[i].institute
+                document.getElementById("branch").value=allUsers[i].branch
+                document.getElementById("degree").value=allUsers[i].degree
+                document.getElementById("average").value=allUsers[i].average
+                document.getElementById("upto").value=allUsers[i].upto
+                document.getElementById("experience").value=allUsers[i].experince
+                document.getElementById("yourwebsite").value=allUsers[i].yourwebsite
+
+                document.getElementById("usersubmit").style.display="none"
+                document.getElementById("updateuser").style.display="block"
+                document.getElementById("usersubmit").setAttribute("disabled",true)
             }
             function deleteUser(i){            
                 console.log("Delete User Called" + i);
@@ -140,14 +160,14 @@
 
             function validate(){
                 var user={
-                    univarsity: document.getElementById("university").value,
+                university: document.getElementById("university").value,
                 institute: document.getElementById("institute").value,
                 branch: document.getElementById("branch").value,
                 degree: document.getElementById("degree").value,
-                averagecpi: document.getElementById("average").value,
+                average: document.getElementById("average").value,
                 upto: document.getElementById("upto").value,
                 experince: document.getElementById("experience").value,
-                yourwebsiteorblog: document.getElementById("yourwebsite").value
+                yourwebsite: document.getElementById("yourwebsite").value
                 }
                 var check=false
                 for(a in user){
@@ -160,6 +180,27 @@
                 }else{
                     document.getElementById("usersubmit").removeAttribute("disabled")
                 }
+            }
+            function updateusers(){
+                console.log("update user")
+                
+                var user={
+                university: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                average: document.getElementById("average").value,
+                upto: document.getElementById("upto").value,
+                experince: document.getElementById("experience").value,
+                yourwebsite: document.getElementById("yourwebsite").value
+                }
+                allUsers[index]=user
+                localStorage.setItem("allUsers", JSON.stringify(allUsers))
+                 displayUsers(allUsers);
+                 userCancel()
+                 document.getElementById("usersubmit").style.display="block"
+                document.getElementById("updateuser").style.display="none"
+                document.getElementById("usersubmit").setAttribute("disabled",true)
             }
             
      

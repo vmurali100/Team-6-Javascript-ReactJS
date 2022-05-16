@@ -30,42 +30,33 @@
             margin: 0 auto;
             text-align: center;
         }
+        form{
+            width: 345px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
 <body>
     <h1>HTML Form</h1>
     <form action="">
-        <table id="demo">
-            <tr>
-                <td><label for="fname">First Name:</label></td>
-                <td> <input type="text" name="" id="fname" onkeyup="validate()"></td>
-            </tr>
-            <tr>
-                <td> <label for="lname">Last Name:</label></td>
-                <td> <input type="text" name="" id="lname" onkeyup="validate()"></td>
-            </tr>
-            <tr>
-                <td> <label for="dob">Date of Birth:</label></td>
-                <td><input type="text" name="" id="dob" onkeyup="validate()"></td>
 
-            </tr>
-            <tr>
-                <td> <label for="email">Email id :</label></td>
-                <td><input type="text" name="" id="email" onkeyup="validate()"></td>
-            </tr>
-            <tr>
-                <td><label for="number">Mobile Number :</label></td>
-                <td> <input type="text" name="" id="number" onkeyup="validate()"></td>
-            </tr>
-            <tr>
+        <label for="fname">First Name:</label>
+        <input type="text" name="" id="fname" onkeyup="validate()"> <br><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" name="" id="lname" onkeyup="validate()"><br><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="text" name="" id="dob" onkeyup="validate()"><br><br>
+        <label for="email">Email id :</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+        <label for="number">Mobile Number :</label>
+        <input type="text" name="" id="number" onkeyup="validate()"><br><br>
+        <button type="button" id="submitUser" onclick="addUser()" disabled>SUBMIT</button>
+        <!-- <button type="button" onclick="resetUser()">RESET</button> -->
 
-                <td> <button type="button" id="submitUser" onclick="addUser()" disabled>SUBMIT</button>
-                    <!-- <button type="button" onclick="resetUser()">RESET</button> -->
-                </td>
-            </tr>
+
     </form>
-    </table>
+
 
 
     <br><br>
@@ -85,8 +76,8 @@
     </table>
     <script>
         var allUsers = JSON.parse(localStorage.getItem("allUsers"))
-        if(allUsers==null){
-            allUsers=[]
+        if (allUsers == null) {
+            allUsers = []
         }
         function addUser() {
             var user = {
@@ -99,22 +90,22 @@
             console.log(allUsers)
             allUsers.push(user)
             clearForm()
-            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
             displayUsers(allUsers)
             document.getElementById("submitUser").setAttribute("disabled", true)
-           
+
 
         }
         function clearForm() {
-        document.getElementById("fname").value = "";
-        document.getElementById("lname").value = "";
-        document.getElementById("dob").value="";
-        document.getElementById("email").value = "";
-        document.getElementById("number").value="";
-       }
-    
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("number").value = "";
+        }
+
         function displayUsers(data) {
-            document.querySelectorAll("tbody")[1].innerHTML = ""
+            document.querySelector("tbody").innerHTML = ""
             data.forEach((user, i) => {
                 var mytr = document.createElement("tr")
                 for (a in user) {
@@ -135,15 +126,15 @@
                 deleteBtn.innerHTML = "Delete"
                 deleteTd.appendChild(deleteBtn)
                 mytr.appendChild(deleteTd)
-                document.querySelectorAll("tbody")[1].appendChild(mytr)
+                document.querySelector("tbody").appendChild(mytr)
             });
         }
-      
-       function edituser(i){
-           console.log(allUsers[i])
-       }
+
+        function edituser(i) {
+            console.log(allUsers[i])
+        }
         function deleteUser(i) {
-            console.log("delete user called"+i)
+            console.log("delete user called" + i)
             allUsers.splice(i, 1);
             displayUsers(allUsers)
         }

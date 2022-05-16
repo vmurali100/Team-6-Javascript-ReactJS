@@ -10,8 +10,8 @@
 
 <body>
 
-    <label for="username">Userame</label><br><br>
-    <input type="text" placeholder="UserName" id="UserName" onkeyup="validate()"><br><br>
+    <label for="username">username</label><br><br>
+    <input type="text" placeholder="username" id="username" onkeyup="validate()"><br><br>
 
 
     <label for="Password">Password</label><br>
@@ -31,7 +31,7 @@
     <br><br>
 
     <label for="Dateofbirth">Date of birth</label><br><br>
-    <select name="" id="yearofbirth">
+    <select name="" id="yearofbirth" onkeyup="validate()">
         <option value="">year</option>
         <option value="2015">2015</option>
         <option value="2016">2016</option>
@@ -42,7 +42,7 @@
         <option value="2021">2021</option>
         <option value="2022">2022</option>
     </select>
-    <select name="" id="monthofbirth">
+    <select name="" id="monthofbirth" onkeyup="validate()">
         <option value="">month</option>
         <option value="jan">jan</option>
         <option value="feb">feb</option>
@@ -57,31 +57,31 @@
         <option value="nov">nov</option>
         <option value="dec">dec</option>
     </select>
-    <select name="" id="dob">
+    <select name="" id="dob" onkeyup="validate()">
 
     </select><br><br>
 
     <label for="heightweight">height/weight</label><br><br>
-    <select name="" id="height">
+    <select name="" id="height" onkeyup="validate()">
         <option value="">height</option>
-        <option value="">1.0m</option>
-        <option value="">2.0m</option>
-        <option value="">3.0m</option>
-        <option value="">4.0m</option>
-        <option value="">5.0m</option>
+        <option value="1.0m">1.0m</option>
+        <option value="2.0m">2.0m</option>
+        <option value="3.0m">3.0m</option>
+        <option value="4.0m">4.0m</option>
+        <option value="5.0m">5.0m</option>
     </select>
-    <select name="" id="weight">
+    <select name="" id="weight" onkeyup="validate()">
         <option value="">weight</option>
-        <option value="">10k</option>
-        <option value="">20kg</option>
-        <option value="">30kg</option>
-        <option value="">40kg</option>
-        <option value="">50kg</option>
-        <option value="">60kg</option>
-        <option value="">70kg</option>
-        <option value="">80kg</option>
-        <option value="">90kg</option>
-        <option value="">100kg</option>
+        <option value="10k">10k</option>
+        <option value="20kg">20kg</option>
+        <option value="30kg">30kg</option>
+        <option value="40kg">40kg</option>
+        <option value="50kg">50kg</option>
+        <option value="60kg">60kg</option>
+        <option value="70kg">70kg</option>
+        <option value="80kg">80kg</option>
+        <option value="90kg">90kg</option>
+        <option value="100kg">100kg</option>
     </select>
     <br><br>
     <button type="button" id="BB" onclick="data()" disabled>submit</button>
@@ -125,47 +125,53 @@
         }
 
 
-        function submit() {
+        function data() {
             var users = {
-                Username: document.getElementById("UserName").value,
+                username: document.getElementById("username").value,
                 Password: document.getElementById("Password").value,
-                Emailaddress: document.getElementById("EmailAddress").value,
+                EmailAddress: document.getElementById("EmailAddress").value,
                 // height:document.getElementById("height").value,
                 // weight:document.getElementById("weight").value
 
             }
-            var dateOfBirth = document.getElementById("dob").value;
-            var yearOfBirth = document.getElementById("yearOfbirth").value;
-            var monthOfBirth = document.getElementById("monthOfBirth").value;
-            users.dob = dateOfBirth + "/" + monthOfBirth + "/" + yearOfBirth
+            var dob = document.getElementById("dob").value;
+            var yearofbirth = document.getElementById("yearofbirth").value;
+            var monthofbirth = document.getElementById("monthofbirth").value;
+            users.dob = dob + "/" + monthofbirth + "/" + yearofbirth
+            var height = document.getElementById("height").value;
+            var weight = document.getElementById("weight").value;
+            users.heightweight = height + "/" + weight
+
+
+            allUsers.push(users)
+            document.getElementById("BB").setAttribute("disabled", true)
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            // console.log(users);
+            // console.log(allUsers)
+            displayusers(allUsers);
+            clearform(users);
         }
 
 
-        var height = document.getElementById("height").value;
-        var weight = document.getElementById("weight").value;
-        user.heightweight = height + "/" + weight
 
 
 
-        allUsers.push(users)
-        localStorage.setItem("allUsers", JSON.stringify(allUsers))
-        // console.log(users);
-        // console.log(allUsers)
-        displayusers(allUsers);
-        clearform(users);
+
+
 
         function clearform() {
             document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-            document.getElementById("emailaddress").value;
+            document.getElementById("Password").value = "";
+            document.getElementById("EmailAddress").value;
             document.getElementById("height").value = "";
+            document.getElementById("weight").value = "";
             document.getElementById("dob").value = "";
         }
 
 
         function displayusers(data) {
             document.querySelector("tbody").innerHTML = "";
-            details.forEach((user, i) => {
+            data.forEach((user, i) => {
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td");
@@ -177,13 +183,13 @@
                 var editbtn = document.createElement("button");
                 editbtn.setAttribute("onclick", "edit(" + i + ")")
                 editbtn.innerHTML = "edit";
-                deleteTd.appendChild(editbtn)
+                editTd.appendChild(editbtn)
                 myTr.appendChild(editTd)
 
 
                 var deleteTd = document.createElement("td")
                 var deletetbtn = document.createElement("button");
-                deletetbtn.setAttribute("onclick", "delete(" + i + ")")
+                deletetbtn.setAttribute("onclick", "deleteuser(" + i + ")")
                 deletetbtn.innerHTML = "delete";
                 deleteTd.appendChild(deletetbtn);
                 myTr.appendChild(deleteTd)
@@ -197,14 +203,20 @@
         function edit(i) {
             console.log(allUsers + i)
             index = i
-            document.getElementById("UserName").value = allUsers[i].UserName
-            document.getElementById("Password").value = allUsers[i].allUsers
-            document.getElementById("Emailaddress").value = allUsers[i].Emailaddress
+            document.getElementById("username").value = allUsers[i].username
+            document.getElementById("Password").value = allUsers[i].Password
+            document.getElementById("EmailAddress").value = allUsers[i].EmailAddress
+            document.getElementById("yearofbirth").value = allUsers[i].yearofbirth
+            document.getElementById("monthofbirth").value = allUsers[i].monthofbirth
+            document.getElementById("dob").value = allUsers[i].dob
+
+            document.getElementById("height").value = allUsers[i].height
+            document.getElementById("weight").value = allUsers[i].weight
             document.getElementById("BB").style.display = "none"
             document.getElementById("updateuser").style.display = "block"
         }
 
-        function Delete(i) {
+        function deleteuser(i) {
             console.log("deleteuser called" + allUsers[i])
             allUsers.splice(i, 1);
             displayusers(allUsers)
@@ -212,53 +224,58 @@
         displayusers(allUsers)
 
         function validate() {
-            var user = {
-                Username: document.getElementById("UserName").value,
+            var users = {
+                username: document.getElementById("username").value,
                 Password: document.getElementById("Password").value,
-                Emailaddress: document.getElementById("Emailaddress").value,
+                EmailAddress: document.getElementById("EmailAddress").value,
                 // height:document.getElementById("height").value,
                 // weight:document.getElementById("weight").value
 
             }
-            var dateOfBirth = document.getElementById("dob").value;
-            var yearOfBirth = document.getElementById("yearOfbirth").value;
-            var monthOfBirth = document.getElementById("monthOfBirth").value;
-            users.dob = dateOfBirth + "/" + monthOfBirth + "/" + yearOfBirth
+            var dob = document.getElementById("dob").value;
+            var yearofbirth = document.getElementById("yearofbirth").value;
+            var monthofbirth = document.getElementById("monthofbirth").value;
+            users.dob = dob + "/" + monthofbirth + "/" + yearofbirth
+
+            var check = false;
+            for (a in users) {
+                if (users[a] == "") {
+                    check = true
+                }
+                if (check == true) {
+                    document.getElementById("BB").setAttribute("disabled", true)
+                } else {
+                    document.getElementById("BB").removeAttribute("disabled")
+                }
+            }
         }
 
-        var check = false;
-        for (a in user) {
-            if (user[a] == "") {
-                check = true
-            }
-            if (check == true) {
-                document.getElementById("BB").setAttribute("disabled", true)
-            } else {
-                document.getElementById("BB").removeAttribute("disabled")
-            }
-        }
 
-        function updateuser() {
+
+        function updateusers() {
             console.log("update user called")
-            var user = {
-                Username: document.getElementById("UserName").value,
+            var users = {
+                username: document.getElementById("username").value,
                 Password: document.getElementById("Password").value,
-                Emailaddress: document.getElementById("Emailaddress").value,
+                EmailAddress: document.getElementById("EmailAddress").value,
                 // height:document.getElementById("height").value,
                 // weight:document.getElementById("weight").value
 
             }
-            var dateOfBirth = document.getElementById("dob").value;
-            var yearOfBirth = document.getElementById("yearOfbirth").value;
-            var monthOfBirth = document.getElementById("monthOfBirth").value;
-            users.dob = dateOfBirth + "/" + monthOfBirth + "/" + yearOfBirth
+            var dob = document.getElementById("dob").value;
+            var yearofbirth = document.getElementById("yearofbirth").value;
+            var monthofbirth = document.getElementById("monthofbirth").value;
+            users.dob = dob + "/" + monthofbirth + "/" + yearofbirth
+
+
+            allUsers[index] = users
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayusers(allUsers);
+            clearform(users);
+            document.getElementById("BB").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
         }
-        allUsers[index] = user
-        localStorage.setItem("allUsers", JSON.stringify(allUsers))
-        displayusers(allUsers);
-        clearform(users);
-        document.getElementById("BB").style.display = "block"
-        document.getElementById("updateuser").style.display = "none"
+
 
 
 

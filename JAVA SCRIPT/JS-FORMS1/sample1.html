@@ -30,8 +30,8 @@
         <input type="text" name="" id="mobilenumber" onkeyup="validate">
         <br><br>
         <div class="btn">
-            <button type="button" id="adduser" onclick="adduser()" >SUBMIT</button>
-            <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button>
+            <button type="button" id="adduser" onclick="addusers()" >SUBMIT</button>
+            <!-- <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button> -->
             <!-- <button type="button" id="" onclick="clearsearch()">RESET</button> -->
         </div>
     </form>
@@ -60,7 +60,7 @@
             allusers = []
         }
         // var allusers = []
-        function adduser(){
+        function addusers(){
             var user = {
                 firstname: document.getElementById("firstname").value,
                 lastname: document.getElementById("lastname").value,

@@ -21,6 +21,7 @@
         <input type="text" name="" id="branch" onclick="validate()">
         <br><br>
         <button type="button" id="addUser" onclick="addUser()" disabled>Add User</button>
+        <button type="button" id="updateUser" onclick="updateUsers()" style="display:none">Update User</button>
       </form>
       <hr />
       <table border="1">
@@ -40,6 +41,7 @@
      <script>
     
         var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+        var index=null
         if (allUsers == null) {
           allUsers = [];
         }
@@ -97,6 +99,18 @@
           console.log("editUser called "+i)
     
         }
+        function editUser(i){
+        console.log(allUsers[i])
+        index = i
+        document.getElementById("name").value= allUsers[i].name
+        document.getElementById("date").value= allUsers[i].date
+        document.getElementById("salary").value= allUsers[i].salary
+       document.getElementById("branch").value= allUsers[i].branch
+       document.getElementById("addUser").style.display = "none"
+        document.getElementById("updateUser").style.display = "block"
+        
+       
+      }
     
         function deleteUser(i){
           allUsers.splice(i,1);
@@ -127,6 +141,24 @@
           }
     
         }
+        function updateUsers(){
+        console.log("Update User Called")
+        var user = {
+          name: document.getElementById("name").value,
+          date: document.getElementById("date").value,
+          salary: document.getElementById("salary").value,
+          branch: document.getElementById("branch").value,
+        };
+
+        allUsers[index] = user
+
+        localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+        displayUsers(allUsers);
+        clearForm();
+        document.getElementById("addUser").style.display = "block"
+        document.getElementById("updateUser").style.display = "none"
+      }
       </script>
 </body>
 </html>

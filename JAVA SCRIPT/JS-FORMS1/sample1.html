@@ -30,9 +30,9 @@
         <input type="text" name="" id="mobilenumber" onkeyup="validate">
         <br><br>
         <div class="btn">
-            <button type="button" id="adduser" onclick="addusers()" >SUBMIT</button>
-            <!-- <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button> -->
-            <!-- <button type="button" id="" onclick="clearsearch()">RESET</button> -->
+            <button type="button" id="adduser" onclick="addusers()">SUBMIT</button>
+            <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button>
+            <button type="button" id="" onclick="clearsearch()">RESET</button>
         </div>
     </form>
     <hr>
@@ -52,15 +52,15 @@
     </table>
 
     <script>
-        
+
 
         var allusers = JSON.parse(localStorage.getItem("allusers"))
-        var index=null
+        var index = null
         if (allusers == null) {
             allusers = []
         }
         // var allusers = []
-        function addusers(){
+        function addusers() {
             var user = {
                 firstname: document.getElementById("firstname").value,
                 lastname: document.getElementById("lastname").value,
@@ -129,12 +129,12 @@
             // console.log("edituser called" + i)
 
             console.log(allusers[i])
-            index=i
-            document.getElementById("firstname").value=allusers[i].firstname
-            document.getElementById("lastname").value=allusers[i].lastname
-            document.getElementById("dateofbirth").value=allusers[i].dateofbirth
-            document.getElementById("emailid").value=allusers[i].emailid
-            document.getElementById("mobilenumber").value=allusers[i].mobilenumber
+            index = i
+            document.getElementById("firstname").value = allusers[i].firstname
+            document.getElementById("lastname").value = allusers[i].lastname
+            document.getElementById("dateofbirth").value = allusers[i].dateofbirth
+            document.getElementById("emailid").value = allusers[i].emailid
+            document.getElementById("mobilenumber").value = allusers[i].mobilenumber
             document.getElementById("addUser").style.display = "none"
             document.getElementById("updateUser").style.display = "block"
         }

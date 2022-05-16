@@ -54,9 +54,10 @@
                 <input type="text" name="" id="Experirnce" onkeyup="validate()"><br><br>
 
                 <label for=""> Your Website Or Blog :</label>
-                <input type="text" name="" id="Website" placeholder="http://" onkeyup="validate()"> <br><br>
+                <input type="text" name="" id="Website" placeholder="http://" onkeyup="validate()" > <br><br>
 
-                <button type="button" id="sai" onclick="DisplayUser()" disabled>Submit</button>
+                <button type="button" id="saikiran" onclick="CreateUser()" disabled>Submit</button>
+                <button type="button" id="updateuser" onclick="updateusers()" style="display: none">updateuser</button>
 
             </fieldset>
         </form>
@@ -82,11 +83,12 @@
     </table><br><br>
     <script>
         allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var index = null
         if (allUsers == null) {
             allUsers = []
         }
 
-        function DisplayUser() {
+        function CreateUser() {
             var users = {
                 University: document.getElementById("University").value,
                 Institute: document.getElementById("Institute").value,
@@ -99,9 +101,10 @@
             }
             allUsers.push(users)
             console.log(users)
-            Displayusers()
-            Clearform(users)
+            document.getElementById("sai").setAttribute("disabled", true)
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayusers()
+            Clearform(users)
         }
 
         function Clearform(users) {
@@ -136,10 +139,22 @@
                 DeleteBtn.setAttribute("onclick", "DeleteUser(" + i + ")")
             })
         }
-
+        displayusers()
 
         function EditUser(i) {
-            console.log("Edit user Called" + i)
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("University").value = allUsers[i].University,
+            document.getElementById("Institute").value = allUsers[i].Institute
+            document.getElementById("Branch").value = allUsers[i].Branch
+            document.getElementById("Deegre").value = allUsers[i].Deegre
+            document.getElementById("AverageCPI").value = allUsers[i].AverageCPI
+            document.getElementById("Experirnce").value = allUsers[i].Experirnce
+            document.getElementById("Website").value = allUsers[i].Website
+            document.getElementById("saikiran").style.display="none"
+            document.getElementById("updateuser").style.display="block"
+
+
         }
         function DeleteUser(i) {
             // console.log("delete user Called"+i)
@@ -167,10 +182,31 @@
                 }
             }
             if (cheak == true) {
-                document.getElementById("sai").setAttribute("disabled", true)
+                document.getElementById("saikiran").setAttribute("disabled", true)
             } else
-                document.getElementById("sai").removeAttribute("disabled")
+                document.getElementById("saikiran").removeAttribute("disabled")
         }
+
+         function updateusers(){
+             console.log("update user called")
+             var users = {
+                University: document.getElementById("University").value,
+                Institute: document.getElementById("Institute").value,
+                Branch: document.getElementById("Branch").value,
+                Deegre: document.getElementById("Deegre").value,
+                AverageCPI: document.getElementById("AverageCPI").value,
+                Experirnce: document.getElementById("Experirnce").value,
+                Website: document.getElementById("Website").value
+
+            }
+            allUsers[index]=users
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayusers()
+            Clearform(users)
+            document.getElementById("saikiran").style.display="block"
+            document.getElementById("updateuser").style.display="none"
+         }
     </script>
 </body>
 

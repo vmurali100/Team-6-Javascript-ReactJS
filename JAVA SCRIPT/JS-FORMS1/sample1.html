@@ -30,9 +30,9 @@
         <input type="text" name="" id="mobilenumber" onkeyup="validate">
         <br><br>
         <div class="btn">
-            <button type="button" id="adduser" onclick="adduser()" disabled>SUBMIT</button>
+            <button type="button" id="adduser" onclick="adduser()" >SUBMIT</button>
             <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button>
-            <button type="button" id="" onclick="clearsearch()">RESET</button>
+            <!-- <button type="button" id="" onclick="clearsearch()">RESET</button> -->
         </div>
     </form>
     <hr>
@@ -60,7 +60,7 @@
             allusers = []
         }
         // var allusers = []
-        function adduser() {
+        function adduser(){
             var user = {
                 firstname: document.getElementById("firstname").value,
                 lastname: document.getElementById("lastname").value,
@@ -72,8 +72,8 @@
             allusers.push(user)
 
             localStorage.setItem("allusers", JSON.stringify(allusers))
-            // console.log(user);
-            // console.log(allusers)
+            console.log(user);
+            console.log(allusers)
             displayusers(allusers);
             clearForm();
         }
@@ -135,7 +135,8 @@
             document.getElementById("dateofbirth").value=allusers[i].dateofbirth
             document.getElementById("emailid").value=allusers[i].emailid
             document.getElementById("mobilenumber").value=allusers[i].mobilenumber
-            document.getElementById("adduser").style.display="none"
+            document.getElementById("addUser").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
         }
 
 

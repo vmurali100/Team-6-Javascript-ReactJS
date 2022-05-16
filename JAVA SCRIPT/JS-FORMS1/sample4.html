@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action=""></form>
+    <h4>ADDRESS</h4>
+    <label for="street">street</label>
+    <input type="text" name="" id="street" onkeyup="validate()"><br><br>
+
+    <label for="city,state">city,state</label>
+    <input type="text" name="" id="citystate" onkeyup="validate()">
+    <input type="text" name="" id=""><br><br>
+
+    <label for="zipcode">zipcode</label>
+    <input type="text" name="" id="zipcode" onkeyup="validate()"><br><br>
+
+    <label for="country">country</label>
+    <input type="text" name="" id="country" onkeyup="validate()"><br><br>
+
+    <button type="button" id="click" onclick="addusers()" disabled>ok</button>
+    <button type="button" id="click" onclick="adduser()">cancel</button>
+    <button type="button" id="updateuser" onclick="updateusers()" style="display:none;">updateuser</button>
+    </form>
+
+    <hr>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>street</th>
+                <th>citystate</th>
+                <th>zipcode</th>
+                <th>country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+
+        if (allUsers == null) {
+            allUsers = []
+        }
+
+
+        // var allUsers=[]
+        var allUsers = JSON.parse(localStorage.getItem(allUsers))
+        var index = null
+        function addusers() {
+            var user = {
+                street: document.getElementById("street").value,
+                citystate: document.getElementById("citystate").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value
+
+
+            }
+            allUsers.push(user)
+            localStorage.setItem("allusers", JSON.stringify(allUsers));
+
+
+            // console.log(user);
+            // console.log(allUsers);
+            displayusers(allUsers)
+            clearform();
+        }
+
+        function clearform() {
+            document.getElementById("street").value = "";
+            document.getElementById("citystate").value = "";
+            document.getElementById("zipcode").value = "";
+            document.getElementById("country").value = "";
+        }
+
+        function displayusers(employee) {
+            document.querySelector("tbody").innerHTML = ""
+            employee.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        }
+
+
+        var editTd = document.createElement("td")
+        editbtn = document.createElement("button")
+        editbtn.setAttribute("onclick", "edituser(" + i + ")")
+        editbtn.innerHTML = "Edit";
+        editTd.appendChild(editbtn);
+        myTr.appendChild(editTd)
+
+
+        var deleteTd = document.createElement("td")
+        deletebtn = document.createElement("button")
+        deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+        deletebtn.innerHTML = "delete"
+        deletebtd.appendChild(deletebtn)
+        myTr.appendChild(deleteTd)
+
+        document.querySelector("tbody").appendChild(myTr)
+
+
+
+        displayusers(allUsers)
+
+
+        function edituser(i) {
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("street").value = allUsers[i].street
+            document.getElementById("citystate").value = allUsers[i].citystate
+            document.getElementById("zipcode").value = allUsers[i].zipcode
+            document.getElementById("country").value = allUsers[i].country
+            document.getElementById("adduser").style.display = "none"
+            document.getElementById("updateuser").style.display = "block"
+
+        }
+
+
+        function deleteuser(i) {
+            console.log("deleteuser called" + i)
+            allUsers.splice(i, 1);
+            displayusers(allUsers)
+
+        }
+
+
+        displayusers(allUsers);
+
+
+        function validate() {
+            var user = {
+
+                street: document.getElementById("street").value,
+                citystate: document.getElementById("citystate").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value
+            };
+
+
+            var check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    check = true
+                }
+            }
+
+            if (check == true) {
+                document.getElementById("updateuser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("updateuser").setAttribute("disabled")
+            }
+
+
+        }
+
+
+        function updateusers() {
+            console.log("update user called")
+            var user = {
+                street: document.getElementById("street").value,
+                citystate: document.getElementById("citystate").value,
+                zipcode: document.getElementById("zipcode").value,
+                country: document.getElementById("country").value
+            };
+            allUsers = [i] = user
+
+            localStorage.setItem("allusers", JSON.stringify(allUsers));
+
+            displayusers(allUsers)
+            clearform();
+
+            document.getElementById("adduser").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

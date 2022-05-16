@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <label for="username">Userame</label><br><br>
+    <input type="text" placeholder="UserName" id="UserName" onkeyup="validate()"><br><br>
+
+
+    <label for="Password">Password</label><br>
+    <input type="text" placeholder="Password" id="Password" onkeyup="validate()"><br><br>
+
+    <label for="EmailAddress">Email address</label><br><br>
+    <input type="text" placeholder="EmailAddress" id="EmailAddress" onkeyup="validate()"><br><br>
+
+    <select name="" id="">
+        <option value="">I am a man</option>
+        <option value="">I am a girl</option>
+    </select><br><br>
+    <select name="" id="">
+        <option value="">I want to find Women</option>
+        <option value="">I want to find men</option>
+    </select>
+    <br><br>
+
+    <label for="Dateofbirth">Date of birth</label><br><br>
+    <select name="" id="yearofbirth">
+        <option value="">year</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+    </select>
+    <select name="" id="monthofbirth">
+        <option value="">month</option>
+        <option value="jan">jan</option>
+        <option value="feb">feb</option>
+        <option value="mar">mar</option>
+        <option value="apr">apr</option>
+        <option value="may">may</option>
+        <option value="jun">jun</option>
+        <option value="jul">jul</option>
+        <option value="aug">aug</option>
+        <option value="sep">sep</option>
+        <option value="oct">oct</option>
+        <option value="nov">nov</option>
+        <option value="dec">dec</option>
+    </select>
+    <select name="" id="dob">
+
+    </select><br><br>
+
+    <label for="heightweight">height/weight</label><br><br>
+    <select name="" id="height">
+        <option value="">height</option>
+        <option value="">1.0m</option>
+        <option value="">2.0m</option>
+        <option value="">3.0m</option>
+        <option value="">4.0m</option>
+        <option value="">5.0m</option>
+    </select>
+    <select name="" id="weight">
+        <option value="">weight</option>
+        <option value="">10k</option>
+        <option value="">20kg</option>
+        <option value="">30kg</option>
+        <option value="">40kg</option>
+        <option value="">50kg</option>
+        <option value="">60kg</option>
+        <option value="">70kg</option>
+        <option value="">80kg</option>
+        <option value="">90kg</option>
+        <option value="">100kg</option>
+    </select>
+    <br><br>
+    <button type="button" id="BB" onclick="data()" disabled>submit</button>
+    <button type="button" id="updateuser" onclick="updateusers()" style="display: none">updateuser</button>
+    </form>
+    <br>
+
+    <table border="1" ,>
+        <tr>
+            <thead>
+                <th>Username</th>
+                <th>password</th>
+                <th>Email address</th>
+                <th>dateofbirth</th>
+                <th>heightweight</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+
+        let i = 1;
+        while (i <= 31) {
+            var opt = document.createElement("option")
+            opt.innerHTML = i
+            opt.setAttribute("value", i);
+            document.getElementById("dob").appendChild(opt)
+            i++
+        }
+
+        var index = null
+
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+
+
+        function submit() {
+            var users = {
+                Username: document.getElementById("UserName").value,
+                Password: document.getElementById("Password").value,
+                Emailaddress: document.getElementById("EmailAddress").value,
+                // height:document.getElementById("height").value,
+                // weight:document.getElementById("weight").value
+
+            }
+            var dateOfBirth = document.getElementById("dob").value;
+            var yearOfBirth = document.getElementById("yearOfbirth").value;
+            var monthOfBirth = document.getElementById("monthOfBirth").value;
+            users.dob = dateOfBirth + "/" + monthOfBirth + "/" + yearOfBirth
+        }
+
+
+        var height = document.getElementById("height").value;
+        var weight = document.getElementById("weight").value;
+        user.heightweight = height + "/" + weight
+
+
+
+        allUsers.push(users)
+        localStorage.setItem("allUsers", JSON.stringify(allUsers))
+        // console.log(users);
+        // console.log(allUsers)
+        displayusers(allUsers);
+        clearform(users);
+
+        function clearform() {
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("emailaddress").value;
+            document.getElementById("height").value = "";
+            document.getElementById("dob").value = "";
+        }
+
+
+        function displayusers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            details.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button");
+                editbtn.setAttribute("onclick", "edit(" + i + ")")
+                editbtn.innerHTML = "edit";
+                deleteTd.appendChild(editbtn)
+                myTr.appendChild(editTd)
+
+
+                var deleteTd = document.createElement("td")
+                var deletetbtn = document.createElement("button");
+                deletetbtn.setAttribute("onclick", "delete(" + i + ")")
+                deletetbtn.innerHTML = "delete";
+                deleteTd.appendChild(deletetbtn);
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+
+            });
+        }
+
+        function edit(i) {
+            console.log(allUsers + i)
+            index = i
+            document.getElementById("UserName").value = allUsers[i].UserName
+            document.getElementById("Password").value = allUsers[i].allUsers
+            document.getElementById("Emailaddress").value = allUsers[i].Emailaddress
+            document.getElementById("BB").style.display = "none"
+            document.getElementById("updateuser").style.display = "block"
+        }
+
+        function Delete(i) {
+            console.log("deleteuser called" + allUsers[i])
+            allUsers.splice(i, 1);
+            displayusers(allUsers)
+        }
+        displayusers(allUsers)
+
+        function validate() {
+            var user = {
+                Username: document.getElementById("UserName").value,
+                Password: document.getElementById("Password").value,
+                Emailaddress: document.getElementById("Emailaddress").value,
+                // height:document.getElementById("height").value,
+                // weight:document.getElementById("weight").value
+
+            }
+            var dateOfBirth = document.getElementById("dob").value;
+            var yearOfBirth = document.getElementById("yearOfbirth").value;
+            var monthOfBirth = document.getElementById("monthOfBirth").value;
+            users.dob = dateOfBirth + "/" + monthOfBirth + "/" + yearOfBirth
+        }
+
+        var check = false;
+        for (a in user) {
+            if (user[a] == "") {
+                check = true
+            }
+            if (check == true) {
+                document.getElementById("BB").setAttribute("disabled", true)
+            } else {
+                document.getElementById("BB").removeAttribute("disabled")
+            }
+        }
+
+        function updateuser() {
+            console.log("update user called")
+            var user = {
+                Username: document.getElementById("UserName").value,
+                Password: document.getElementById("Password").value,
+                Emailaddress: document.getElementById("Emailaddress").value,
+                // height:document.getElementById("height").value,
+                // weight:document.getElementById("weight").value
+
+            }
+            var dateOfBirth = document.getElementById("dob").value;
+            var yearOfBirth = document.getElementById("yearOfbirth").value;
+            var monthOfBirth = document.getElementById("monthOfBirth").value;
+            users.dob = dateOfBirth + "/" + monthOfBirth + "/" + yearOfBirth
+        }
+        allUsers[index] = user
+        localStorage.setItem("allUsers", JSON.stringify(allUsers))
+        displayusers(allUsers);
+        clearform(users);
+        document.getElementById("BB").style.display = "block"
+        document.getElementById("updateuser").style.display = "none"
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>registration details</legend>
+
+        <label for="university">university</label>
+        <input type="text" name="" id="university" onkeyup="validate()"><br><br>
+
+        <label for="institute">institute</label>
+        <input type="text" name="" id="institute" onkeyup="validate()"><br><br>
+
+        <label for="branch">branch</label>
+        <input type="text" name="" id="branch" onkeyup="validate()"><br><br>
+
+        <label for="degree">degree</label>
+        <input type="text" name="" id="degree" onkeyup="validate()"><br><br>
+
+        <label for="Averagecpi"> average cpi</label>
+        <input type="text" name="" id="Averagecpi" onkeyup="validate()"><br><br>
+
+        <label for="experience">experience</label>
+        <input type="text" name="" id="experience" onkeyup="validate()"><br><br>
+
+        <label for="yourwebsiteorblog">your website or blog</label>
+        <input type="text" name="" id="yourwebsiteorblog" onkeyup="validate()">
+        <br><br>
+
+        <button type="button" id="adduser" onclick="addusers()" disabled>submit</button>
+
+        <button type="button" id="updateuser" onclick="updateusers()" style="display:none">updateuser</button>
+    </fieldset>
+
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>university</th>
+                <th>institute</th>
+                <th>branch</th>
+                <th>degree</th>
+                <th>Averagecpi</th>
+                <th>experience</th>
+                <th>yourwebsiteorblog</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+
+    <script>
+
+        var index = null
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+
+        function addusers() {
+            var user = {
+                university: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                Averagecpi: document.getElementById("Averagecpi").value,
+                experience: document.getElementById("experience").value,
+                yourwebsiteorblog: document.getElementById("yourwebsiteorblog").value,
+
+            }
+            allUsers.push(user)
+            // console.log(user);
+            // console.log(allUsers);
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+
+            displayusers(allUsers);
+            clearform();
+        }
+
+        function clearform() {
+            document.getElementById("university").value = "";
+            document.getElementById("institute").value = "";
+            document.getElementById("branch").value = "";
+            document.getElementById("degree").value = "";
+            document.getElementById("Averagecpi").value = "";
+            document.getElementById("experience").value = "";
+            document.getElementById("yourwebsiteorblog").value = ""
+        }
+
+
+        function displayusers(details) {
+            document.querySelector("tbody").innerHTML = ""
+            details.forEach((users, i) => {
+                var myTr = document.createElement("tr");
+                for (a in users) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = users[a]
+                    myTr.appendChild(myTd)
+                }
+
+                // edit button
+
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.innerHTML = "edit"
+                editTd.appendChild(editbtn)
+                myTr.appendChild(editTd)
+
+                //   delete button
+
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deletebtn.innerHTML = "delete"
+                deleteTd.appendChild(deletebtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        }
+
+
+        function edituser(i) {
+            console.log(allUsers[i])
+            index = i
+
+            university: document.getElementById("university").value = allUsers[i].university
+            institute: document.getElementById("institute").value = allUsers[i].institute
+            branch: document.getElementById("branch").value = allUsers[i].branch
+            degree: document.getElementById("degree").value = allUsers[i].degree
+            Averagecpi: document.getElementById("Averagecpi").value = allUsers[i].Averagecpi
+            experience: document.getElementById("experience").value = allUsers[i].experience
+            yourwebsiteorblog: document.getElementById("yourwebsiteorblog").value = allUsers[i].yourwebsiteorblog
+            document.getElementById("adduser").style.display = "none"
+            document.getElementById("updateuser").style.display = "block"
+
+        }
+
+
+        function deleteuser(i) {
+            console.log("deleteuser called" + i)
+            allUsers.splice(i, 1);
+            displayusers(allUsers)
+
+        }
+
+        displayusers(allUsers);
+
+        function validate() {
+            var user = {
+                university: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                Averagecpi: document.getElementById("Averagecpi").value,
+                experience: document.getElementById("experience").value,
+                yourwebsiteorblog: document.getElementById("yourwebsiteorblog").value,
+
+            };
+
+            var check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    check = true
+                }
+
+            }
+
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+
+
+
+        }
+
+        function updateusers() {
+            console.log("update user called")
+            var user = {
+                university: document.getElementById("university").value,
+                institute: document.getElementById("institute").value,
+                branch: document.getElementById("branch").value,
+                degree: document.getElementById("degree").value,
+                Averagecpi: document.getElementById("Averagecpi").value,
+                experience: document.getElementById("experience").value,
+                yourwebsiteorblog: document.getElementById("yourwebsiteorblog").value,
+
+
+            }
+            allUsers[index] = user
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+
+            displayusers(allUsers);
+            clearform();
+
+            document.getElementById("adduser").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

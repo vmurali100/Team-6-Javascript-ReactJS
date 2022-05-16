@@ -37,7 +37,8 @@
         <input type="number" name="" id="Experience" onkeyup="validate()"><br><br>
         <label for="yourwebsite">your website or blog</label>
         <input type="text" name="" id="yourwebsite" onkeyup="validate()" ><br><br>
-        <button type="button" id="getdata" onclick="adduser()" disabled>step2</button>
+        <button type="button" id="getdata" onclick="adduser()" disabled>step1</button>
+        <button type="button" id="Updateuser" onclick="updateuser()" style="display: none;">step2</button>
     </form>
     <hr>
     <table border="2">
@@ -61,6 +62,7 @@
         if(alluser==null){
             alluser=[]
         }
+        var index=null
         function adduser(){
             var user={
                 university:document.getElementById("university").value,
@@ -73,8 +75,9 @@
             }
             alluser.push(user)
             localStorage.setItem("alluser",JSON.stringify(alluser))
-            console.log(user)
+           
             displayusers(alluser)
+            document.getElementById("getdata").setAttribute("disabled",true)
             clearform()
         }
          function clearform(){
@@ -114,8 +117,20 @@
     })
    }
    function edituser(i){
-       console.log("edituser called"+i)
+       index=i
+       console.log(alluser[i])
+                document.getElementById("university").value=alluser[i].university
+                document.getElementById("institute").value=alluser[i].institute
+                document.getElementById("branch").value=alluser[i].branch
+                document.getElementById("degree").value=alluser[i].degree
+                document.getElementById("avarageCPI").value=alluser[i].avarageCPI
+                document.getElementById("Experience").value=alluser[i].Experience
+                document.getElementById("yourwebsite").value=alluser[i].yourwebsite
+                document.getElementById("getdata").style.display="none"
+                document.getElementById("Updateuser").style.display="block"
    }
+           
+
    function deleteuser(i){
        alluser.splice(i,1)
        displayusers(alluser)
@@ -146,6 +161,23 @@
             }else{
                 document.getElementById("getdata").removeAttribute("disabled")
             }
+   }
+
+   function updateuser(){
+       console.log("update user called")
+       var user={
+                university:document.getElementById("university").value,
+                institute:document.getElementById("institute").value,
+                branch:document.getElementById("branch").value,
+                degree:document.getElementById("degree").value,
+                avarageCPI:document.getElementById("avarageCPI").value,
+                Experience:document.getElementById("Experience").value,
+                yourwebsite:document.getElementById("yourwebsite").value,
+            }
+            alluser[index]=user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            displayusers(alluser)
+            clearform()
    }
     </script>
 </body>

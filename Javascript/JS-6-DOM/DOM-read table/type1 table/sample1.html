@@ -32,7 +32,7 @@
     <label for="mobile">mobile number</label>
     <input type="number" name="" id="mobile" onkeyup="validate()"><br><br>
     <button type="button" id="country"  onclick="adduser()" disabled>submit</button>
-    <button type="button" onclick="adduser1()">reset</button>
+    <button type="button" id="Updateuser" onclick="updateuser()" style="display:none">reset</button>
     <hr>
     <table border="1" style="border: 1px;color: blue;">
         <tr>
@@ -52,6 +52,7 @@
         if(alluser==null){
             alluser=[]
         }
+        var index=null
         function adduser(){
             var user={
                 fname:document.getElementById("fname").value,
@@ -64,6 +65,7 @@
             localStorage.setItem("alluser",JSON.stringify(alluser))
             console.log(user)
             displayusers(alluser) 
+            document.getElementById("country").setAttribute("disabled",true)
             clearform()
         }
         function clearform(){
@@ -104,6 +106,18 @@
     console.log("edituser called"+i)
    }
 
+   function edituser(i){
+       console.log(alluser[i])
+       index=i
+       document.getElementById("fname").value=alluser[i].fname
+       document.getElementById("lname").value=alluser[i].lname
+       document.getElementById("date").value=alluser[i].date
+       document.getElementById("email").value=alluser[i].email
+       document.getElementById("mobile").value=alluser[i].mobile
+       document.getElementById("country").style.display="none"
+       document.getElementById("Updateuser").style.display="block"
+   }
+
    function deleteuser(i){
        alluser.splice(i,1)
        displayusers(alluser) 
@@ -132,6 +146,21 @@
             }else{
                 document.getElementById("country").removeAttribute("disabled")
             }
+            }
+
+            function updateuser(){
+                console.log("update user called")
+                var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,  
+                date:document.getElementById("date").value,  
+                email:document.getElementById("email").value,  
+                mobile:document.getElementById("mobile").value,      
+            }
+            alluser[index]=user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            displayusers(alluser) 
+            clearform()
             }
    
     </script>

@@ -32,7 +32,7 @@
         <label for="country">country</label>
         <input type="text" name="" id="country" onkeyup="validate()"><br><br>
         <button type="button" id="getdata" onclick="adduser()" disabled >OK</button>
-        <button type="button">Cancel</button>
+        <button type="button" id="updateuser" onclick="Updateuser()" style="display: none;">update</button>
     </form>
     <hr>
     <table border="1">
@@ -48,9 +48,13 @@
     </table>
     <script>
         var alluser=JSON.parse(localStorage.getItem(alluser))
+        var index=null
         if(alluser==null){
             alluser=[]
         }
+
+        var index=null
+
         function adduser(){
             var user={
                 street:document.getElementById("street").value,
@@ -59,8 +63,9 @@
             }
             alluser.push(user)
             localStorage.setItem("alluser",JSON.stringify(alluser))
-            console.log(user)
+          
             displayusers(alluser)
+            document.getElementById("getdata").setAttribute("disabled",true)
             clearform()
         }
        function clearform(){
@@ -97,8 +102,15 @@
    }
 
    function edituser(i){
-       console.log("edituser called"+i)
+    console.log(alluser[i])
+       index=i
+       document.getElementById("street").value=alluser[i].street
+        document.getElementById("city").value=alluser[i].city
+        document.getElementById("country").value=alluser[i].country
+        document.getElementById("getdata").style.display="none"
+        document.getElementById("updateuser").style.display="block"
    }
+
    function deleteuser(i){
        alluser.splice(i,1)
        displayusers(alluser)
@@ -124,7 +136,18 @@
                 document.getElementById("getdata").removeAttribute("disabled")
             }
    }
-
+            function Updateuser(){
+                console.log("update user called")
+                var user={
+                street:document.getElementById("street").value,
+                city:document.getElementById("city").value,
+                country:document.getElementById("country").value,
+            }
+            alluser[index]=user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            displayusers(alluser)
+            clearform()
+            }
     </script>
 </body>
 </html>

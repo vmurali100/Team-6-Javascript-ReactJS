@@ -59,6 +59,7 @@
             <option value="">75</option>
         </select><br>
         <button type="button" id="getdata" onclick="adduser()" disabled>find</button>
+        <button type="button" id="Updateuser" onclick="updateuser()" style="display:none ;">find</button>
     </form>
     <hr>
     <table border="1">
@@ -77,6 +78,7 @@
         if(alluser==null){
             alluser=[]
         }
+        var index=null
         function adduser(){
             var user={
                 username:document.getElementById("username").value, 
@@ -87,6 +89,7 @@
             localStorage.setItem("alluser",JSON.stringify(alluser))
             console.log(user)
             displayusers(alluser)
+            document.getElementById("getdata").setAttribute("disabled",true)
             clearform()
         }
         function clearform(){
@@ -121,7 +124,13 @@
     })
    }
    function edituser(i){
-    console.log("edituser called"+i)
+    console.log(alluser[i])
+    index=i
+    document.getElementById("username").value=alluser[i].username
+    document.getElementById("password").value=alluser[i].password
+    document.getElementById("emailaddress").value=alluser[i].emailaddress
+    document.getElementById("getdata").style.display="none"
+    document.getElementById("Updateuser").style.display="block"
    }
 
    function deleteuser(i){
@@ -150,6 +159,17 @@
             }
    }
 
+        function updateuser(){
+            var user={
+                username:document.getElementById("username").value, 
+                password:document.getElementById("password").value, 
+                emailaddress:document.getElementById("emailaddress").value, 
+            }
+            alluser[index]=user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            displayusers(alluser)
+            clearform()
+        }
     </script>
 </body>
 </html>

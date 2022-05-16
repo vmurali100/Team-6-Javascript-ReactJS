@@ -37,6 +37,7 @@
         <label for="message">message</label><br><br>
         <input type="text" name="" id="message" placeholder="message" onkeyup="validate()"><br><br>
         <button type="button" id="getdata" onclick="adduser()" disabled>send</button>
+        <button type="button" id="updateuser" onclick="Updateuser()" style="display:none ;">change</button>
     </form>
     <hr>
     <table border="1">
@@ -58,6 +59,9 @@
         if(alluser==null){
             alluser=[]
         }
+
+        var index=null
+
         function adduser(){
             var user={
                 name:document.getElementById("name").value,
@@ -70,6 +74,7 @@
             alluser.push(user)
             localStorage.setItem("alluser",JSON.stringify(alluser))
             displayusers(alluser)
+            document.getElementById("getdata").setAttribute("disabled",true)
             clearform()
         }
         function clearform(){
@@ -109,7 +114,16 @@
    }
 
    function edituser(i){
-       console.log("edituser called"+i)
+       console.log(alluser[i])
+       index=i
+            document.getElementById("name").value=alluser[i].name
+            document.getElementById("username").value=alluser[i].username
+            document.getElementById("email").value=alluser[i].email
+            document.getElementById("password").value=alluser[i].password
+            document.getElementById("confirmpassword").value=alluser[i].confirmpassword
+            document.getElementById("message").value=alluser[i].message
+            document.getElementById("getdata").style.display="none"
+            document.getElementById("updateuser").style.display="block"
    }
 
 function deleteuser(i){
@@ -141,7 +155,21 @@ function deleteuser(i){
                 document.getElementById("getdata").removeAttribute("disabled")
             }
   }
-
+            function Updateuser(){
+                console.log("update user called")
+                var user={
+                name:document.getElementById("name").value,
+                username:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("password").value,
+                confirmpassword:document.getElementById("confirmpassword").value,
+                message:document.getElementById("message").value,
+            }
+            alluser[index]=user
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            displayusers(alluser)
+            clearform()
+            }
     </script>
 </body>
  

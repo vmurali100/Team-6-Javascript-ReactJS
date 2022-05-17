@@ -52,7 +52,7 @@
         <label for="number">Mobile Number :</label>
         <input type="text" name="" id="number" onkeyup="validate()"><br><br>
         <button type="button" id="submitUser" onclick="addUser()" disabled>SUBMIT</button>
-        <!-- <button type="button" onclick="resetUser()">RESET</button> -->
+        <button type="button" id="update" onclick="updateuser()" style="display: none;">update</button>
 
 
     </form>
@@ -76,6 +76,7 @@
     </table>
     <script>
         var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        index=null
         if (allUsers == null) {
             allUsers = []
         }
@@ -86,7 +87,7 @@
                 dob: document.getElementById("dob").value,
                 email: document.getElementById("email").value,
                 number: document.getElementById("number").value
-            }
+            }   
             console.log(allUsers)
             allUsers.push(user)
             clearForm()
@@ -132,7 +133,19 @@
 
         function edituser(i) {
             console.log(allUsers[i])
-        }
+           index=i
+                 document.getElementById("fname").value=allUsers[i].fname
+                 document.getElementById("lname").value= allUsers[i].lname
+                 document.getElementById("dob").value=allUsers[i].dob
+                 document.getElementById("email").value=allUsers[i].email
+                 document.getElementById("number").value=allUsers[i].email
+
+                 document.getElementById("submitUser").style.display="none"
+                 document.getElementById("update").style.display="block"
+
+            }
+
+        
         function deleteUser(i) {
             console.log("delete user called" + i)
             allUsers.splice(i, 1);
@@ -159,6 +172,24 @@
             } else {
                 document.getElementById("submitUser").removeAttribute("disabled")
             }
+
+        }
+        function updateuser(){
+            console.log("update user")
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                dob: document.getElementById("dob").value,
+                email: document.getElementById("email").value,
+                number: document.getElementById("number").value
+            }  
+            allUsers[index]=user 
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayUsers(allUsers)
+            clearForm()
+            document.getElementById("submitUser").setAttribute("disabled", true)
+            document.getElementById("submitUser").style.display="block"
+                 document.getElementById("update").style.display="none"
 
         }
     </script>

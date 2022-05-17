@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-         
+        input#PersonName {
+            margin-left: 18px;
+        }
+
         form {
             text-align: center;
             margin-top: 50px;
         }
 
-        th{
+        th {
             text-align: center;
             /* width: 800px; */
             margin: 0 auto;
-            background-color: brown;
-            color: gold;
+            background-color: blue;
+            color: azure;
         }
-    table{
-        width: 800px;
-        margin: 0 auto;
-    }
+
+        input#DateOfBirth {
+            width: 165px;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
+
 <body>
     <form action="">
         <label for="Person">PersonName:</label>
         <input type="text" name="" id="Person" onkeyup="validate()"><br><br>
+        <label for="DateOfBirth">DateOfBirth:</label>
+        <input type="date" name="" id="DateOfBirth" onkeyup="validate()"><br><br>
         <label for="Aadhaar">AadhaarNo:</label>
         <input type="text" name="" id="Aadhaar" onkeyup="validate()"><br><br>
         <button type="buttons" id="A" onclick="Check()" disabled>Check</button>
@@ -40,6 +52,7 @@
             <thead>
                 <th>PersonName</th>
                 <th>AadhaarNo</th>
+                <th>DateOfBirth</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -55,6 +68,7 @@
         function Check() {
             var user = {
                 Person: document.getElementById("Person").value,
+                DateOfBirth: document.getElementById("DateOfBirth").value,
                 Aadhaar: document.getElementById("Aadhaar").value
             }
             allUsers.push(user);
@@ -64,6 +78,7 @@
         }
         function clearsForm() {
             document.getElementById("Person").value = "";
+            document.getElementById("DateOfBirth").value = "";
             document.getElementById("Aadhaar").value = "";
         }
         function displayUsers(data) {
@@ -100,6 +115,7 @@
             console.log(allUsers[i])
             index = i
             document.getElementById("Person").value = allUsers[i].Person
+            document.getElementById("DateOfBirth").value = allUsers[i].DateOfBirth
             document.getElementById("Aadhaar").value = allUsers[i].Aadhaar
             document.getElementById("A").style.display = "none"
             document.getElementById("updateUser").style.display = "block"
@@ -116,6 +132,7 @@
         function validate() {
             var user = {
                 Person: document.getElementById("Person").value,
+                DateOfBirth: document.getElementById("DateOfBirth").value,
                 Aadhaar: document.getElementById("Aadhaar").value,
 
             };
@@ -135,6 +152,7 @@
             console.log("Update User Called")
             var user = {
                 Person: document.getElementById("Person").value,
+                DateOfBirth: document.getElementById("DateOfBirth").value,
                 Aadhaar: document.getElementById("Aadhaar").value,
 
             };
@@ -151,4 +169,5 @@
         }
     </script>
 </body>
+
 </html>

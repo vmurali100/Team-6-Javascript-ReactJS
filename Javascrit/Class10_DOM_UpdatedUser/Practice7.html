@@ -17,8 +17,8 @@
         form {
             width: 300px;
             margin: 0 auto;
-            background-color: rgb(23, 96, 205);
-            border: 25px solid rgb(255, 140, 0);
+            background-color :turquoise;
+            border: 25px solid tomato;
             margin-top: 100px;
         }
     </style>
@@ -29,7 +29,7 @@
         <label for="UserName">UserName</label><br>
         <input type="text" placeholder="UserName" id="UserName"><br><br>
         <label for="Password">Password</label><br>
-        <input type="text" placeholder="Password" id="Password" ><br><br>
+        <input type="text" placeholder="Password" id="Password"><br><br>
         <label for="EmailAddress">Email Address</label><br>
         <input type="text" placeholder="EmailAddress" id="EmailAddress"><br><br>
         <select name="">
@@ -39,13 +39,7 @@
             <option value="">I Want to find A Women</option>
         </select><br><br>
         <label for="DateOfBirth">Date Of Birth</label><br>
-        <select name="" id="YearOfBirth">
-            <option value="">Year</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
+        <select name="" id="DateOfBirth"   >
         </select>
         <select name="" id="MonthOfBirth">
             <option value="">Month</option>
@@ -62,9 +56,15 @@
             <option value="November">November</option>
             <option value="December">December</option>
         </select>
-        <select name="" id="DOB">
+        <select name="" id="YearOfBirth">
+            <option value="">Year</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
         </select><br><br>
-        <label for="Height/Weight" >Height/Weight</label><br>
+        <label for="HeightWeight">Height/Weight</label><br>
         <select name="" id="Height">
             <option value="">Height</option>
             <option value="5.1 Feets">5.1 Feets</option>
@@ -81,7 +81,8 @@
             <option value="64 Kgs">64 Kgs</option>
             <option value="65 Kgs">65 Kgs</option>
         </select><br><br>
-        <button type="button" onclick="Submit()">Click</button><br><br>
+        <button type="button" onclick="Submit()" id="A">Click</button><br><br>
+        <button type="button" id="updateUser" onclick="updateUsers()" style="display:none;">UpdateUser</button>
     </form>
     <hr>
     <table border="1">
@@ -104,7 +105,7 @@
             var opt = document.createElement("option")
             opt.innerHTML = i
             opt.setAttribute("value", i);
-            document.getElementById("DOB").appendChild(opt)
+            document.getElementById("DateOfBirth").appendChild(opt)
             i++
         }
 
@@ -118,12 +119,13 @@
                 UserName: document.getElementById("UserName").value,
                 Password: document.getElementById("Password").value,
                 EmailAddress: document.getElementById("EmailAddress").value,
+                 
             }
-            var DateOfBirth = document.getElementById("DOB").value;
-            var YearOfBirth = document.getElementById("YearOfBirth").value;
+            var DateOfBirth = document.getElementById("DateOfBirth").value;
             var MonthOfBirth = document.getElementById("MonthOfBirth").value;
+            var YearOfBirth = document.getElementById("YearOfBirth").value;
             user.DOB = DateOfBirth + "/" + MonthOfBirth + "/" + YearOfBirth
-            
+
             var Height = document.getElementById("Height").value;
             var Weight = document.getElementById("Weight").value;
             user.HeightWeight = Height + "/" + Weight
@@ -137,8 +139,11 @@
             document.getElementById("UserName").value = "";
             document.getElementById("Password").value = "";
             document.getElementById("EmailAddress").value = "";
+            document.getElementById("DateOfBirth").value = "";
+            document.getElementById("MonthOfBirth").value = "";
+            document.getElementById("YearOfBirth").value = "";
             document.getElementById("Height").value = "";
-            document.getElementById("DOB").value = "";
+            document.getElementById("Weight").value = "";
 
         }
         function displayUsers(data) {
@@ -172,7 +177,18 @@
             });
         }
         function Edit(i) {
-            console.log("editUser called" + i)
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("UserName").value = allUsers[i].UserName
+            document.getElementById("Password").value = allUsers[i].Password
+            document.getElementById("EmailAddress").value = allUsers[i].EmailAddress
+            document.getElementById("DateOfBirth").value = allUsers[i].DateOfBirth
+            document.getElementById("MonthOfBirth").value = allUsers[i].MonthOfBirth
+            document.getElementById("YearOfBirth").value = allUsers[i].YearOfBirth
+            document.getElementById("Height").value = allUsers[i].Height
+            document.getElementById("Weight").value = allUsers[i].Weight
+            document.getElementById("A").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
 
         }
         function Delete(i) {
@@ -182,6 +198,58 @@
 
         }
         displayUsers(allUsers);
+
+        function validate() {
+            var user = {
+                UserName: document.getElementById("UserName").value,
+                Password: document.getElementById("Password").value,
+                EmailAddress: document.getElementById("EmailAddress").value,
+                DOB: document.getElementById("DOB").value,
+                HeightWeight: document.getElementById("HeightWeight").value,
+                DateOfBirth: document.getElementById("DateOfBirth").value,
+                MonthOfBirth: document.getElementById("MonthOfBirth").value,
+                YearOfBirth: document.getElementById("YearOfBirth").value,
+                Height: document.getElementById("Height").value,
+                Weight: document.getElementById("Weight").value,
+                
+                 
+            };
+            var Check = false;
+            for (a in user) {
+                if (user[a] == "") {
+                    Check = true
+                }
+            }
+            if (Check == true) {
+                document.getElementById("A").setAttribute("disabled", true)
+            } else {
+                document.getElementById("A").removeAttribute("disabled")
+            }
+        }
+
+        function updateUsers() {
+            console.log("Update User Called")
+            var user = {
+                UserName: document.getElementById("UserName").value,
+                Password: document.getElementById("Password").value,
+                EmailAddress: document.getElementById("EmailAddress").value,
+                DateOfBirth: document.getElementById("DateOfBirth").value,
+                MonthOfBirth: document.getElementById("MonthOfBirth").value,
+                YearOfBirth: document.getElementById("YearOfBirth").value,
+                Height: document.getElementById("Height").value,
+                Weight: document.getElementById("Weight").value,
+            };
+
+            allUsers[index] = user
+
+            localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+            displayUsers(allUsers);
+            clearForm();
+
+            document.getElementById("A").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
+        }
 
     </script>
 </body>

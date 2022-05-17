@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        input#to {
-            margin-left: 18px;
-        }
+         
 
         form {
             text-align: center;
@@ -39,7 +37,7 @@
         <label for="HallTicket">HallTicketNo:</label>
         <input type="text" name="" id="HallTicket" onkeyup="validate()"><br><br>
         <label for="Date">DOB:</label>
-        <input type="text" name="" id="Date" onkeyup="validate()"><br><br>
+        <input type="date" name="" id="Date" onkeyup="validate()"><br><br>
         <button type="button" id="A" onclick="Check()" disabled>Check</button>
         <button type="button" id="updateUser" onclick="updateUsers()" style="display:none;">UpdateUser</button>
     </form>
@@ -144,7 +142,7 @@
             console.log("Update User Called")
             var user = {
                 HallTicket: document.getElementById("HallTicket").value,
-                Date: document.getElementById(" ").value,
+                Date: document.getElementById("Date").value,
             };
 
             allUsers[index] = user

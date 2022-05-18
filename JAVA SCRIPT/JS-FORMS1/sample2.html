@@ -11,6 +11,11 @@
             width: 200px;
             margin-left: 35px;
         }
+
+        textarea#Message {
+            width: 170px;
+            height: 20px;
+        }
     </style>
 </head>
 
@@ -33,8 +38,8 @@
         <label for="confirmpassword">Confirm Password</label><br><br>
         <input type="text" name="" id="Confirm" placeholder="Confirm" onkeyup="validate()"><br><br>
 
-        <label for="message">Message</label>
-        <input type="text" name="" id="Message" placeholder="Message" onkeyup="validate()">
+        <textarea name="" id="Message" cols="10" rows="10">Message</textarea>
+
         <br><br>
         <button type="button" id="addUser" onclick="addUsers()" disabled>send</button>
         <button type="button" id="updateUser" onclick="updateUsers()" style="display:none">updateUsers</button>
@@ -61,7 +66,7 @@
     <script>
         // var allUsers=[]
         var allUsers = JSON.parse(localStorage.getItem("allUsers"));
-        var index=null
+        var index = null
 
         if (allUsers == null) {
             allUsers = []
@@ -82,7 +87,7 @@
             // console.log(user);
             // console.log(allUsers);/
             displayusers(allUsers);
-            document.getElementById("addUser").setAttribute("disabled",true)
+            document.getElementById("addUser").setAttribute("disabled", true)
 
 
             clearform();
@@ -111,7 +116,7 @@
 
                 var editTd = document.createElement("td")
                 var editbtn = document.createElement("button")
-                editbtn.setAttribute("onclick","edituser("+i+")")
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
                 editbtn.innerHTML = "Edit";
                 editTd.appendChild(editbtn)
                 myTr.appendChild(editTd)
@@ -120,7 +125,7 @@
 
                 var deleteTd = document.createElement("td")
                 var deletebtn = document.createElement("button")
-                deletebtn.setAttribute("onclick","deleteuser("+i+")")
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
                 deletebtn.innerHTML = "Delete";
                 deleteTd.appendChild(deletebtn)
                 myTr.appendChild(deleteTd)
@@ -132,31 +137,31 @@
 
         function edituser(i) {
             console.log(allUsers[i])
-            index=i
-            document.getElementById("name").value=allUsers[i].name
-            document.getElementById("username").value=allUsers[i].username
-            document.getElementById("email").value=allUsers[i].email
-            document.getElementById("password").value=allUsers[i].password
-            document.getElementById("Confirm").value=allUsers[i].Confirm
-            document.getElementById("Message").value=allUsers[i].Message
-            document.getElementById("addUser").style.display="none"
-            document.getElementById("updateUser").style.display="block"
+            index = i
+            document.getElementById("name").value = allUsers[i].name
+            document.getElementById("username").value = allUsers[i].username
+            document.getElementById("email").value = allUsers[i].email
+            document.getElementById("password").value = allUsers[i].password
+            document.getElementById("Confirm").value = allUsers[i].Confirm
+            document.getElementById("Message").value = allUsers[i].Message
+            document.getElementById("addUser").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
 
         }
 
 
         function deleteuser(i) {
             console.log("deleteuser called" + i)
-            allUsers.splice(i,1)
+            allUsers.splice(i, 1)
             displayusers(allUsers)
 
 
         }
-        
+
         displayusers(allUsers)
 
 
-        function validate(){
+        function validate() {
 
             var user = {
                 name: document.getElementById("name").value,
@@ -167,26 +172,26 @@
                 Message: document.getElementById("Message").value
             };
             // console.log("just u entered some value")
-            var check=false;
-            for(a in user){
-                if(user[a]=="")
-                check=true
+            var check = false;
+            for (a in user) {
+                if (user[a] == "")
+                    check = true
             }
 
-            if (check==true){
-                document.getElementById("addUser").setAttribute("disabled",true);
-            }else{
+            if (check == true) {
+                document.getElementById("addUser").setAttribute("disabled", true);
+            } else {
                 document.getElementById("addUser").removeAttribute("disabled");
             }
 
-            
+
         }
 
 
-        function updateUsers(){
+        function updateUsers() {
             console.log("update user called")
 
-            var user={
+            var user = {
                 name: document.getElementById("name").value,
                 username: document.getElementById("username").value,
                 email: document.getElementById("email").value,
@@ -195,14 +200,14 @@
                 Message: document.getElementById("Message").value
 
             };
-            allUsers[index]=user
+            allUsers[index] = user
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
             displayusers(allUsers);
             clearform();
-            document.getElementById("addUser").style.display="block"
-            document.getElementById("updateUser").style.display="none"
+            document.getElementById("addUser").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
 
-           
+
         }
     </script>
 </body>

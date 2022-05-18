@@ -15,24 +15,24 @@
         <h1>HTML Form</h1>
 
         <label for="firstname">First Name:</label>
-        <input type="text" name="" id="firstname" onkeyup="validate">
+        <input type="text" name="" id="firstname" onkeyup="validate()">
         <br><br>
         <label for="lastname">Last Name:</label>
-        <input type="text" name="" id="lastname" onkeyup="validate">
+        <input type="text" name="" id="lastname" onkeyup="validate()">
         <br><br>
         <label for="dateofbirth">Date of Birth:</label>
-        <input type="text" name="" id="dateofbirth" onkeyup="validate">
+        <input type="text" name="" id="dateofbirth" onkeyup="validate()">
         <br><br>
         <label for="emailid">Email id:</label>
-        <input type="text" name="" id="emailid" onkeyup="validate">
+        <input type="text" name="" id="emailid" onkeyup="validate()">
         <br><br>
         <label for="mobilenumber:">MobileNumber:</label>
-        <input type="text" name="" id="mobilenumber" onkeyup="validate">
+        <input type="text" name="" id="mobilenumber" onkeyup="validate()">
         <br><br>
         <div class="btn">
-            <button type="button" id="adduser" onclick="addusers()">SUBMIT</button>
-            <button type="button" id="updateUser" onclick="UpdateUsers()"style="display:none">UpdateUser</button>
-            <button type="button" id="" onclick="clearsearch()">RESET</button>
+            <button type="button" id="adduser" onclick="addusers()" disabled>SUBMIT</button>
+            <button type="button" id="updateUser" onclick="updateusers()"style="display:none">UpdateUser</button>
+            <!-- <button type="button" id="" onclick="clearsearch()">RESET</button> -->
         </div>
     </form>
     <hr>
@@ -135,7 +135,7 @@
             document.getElementById("dateofbirth").value = allusers[i].dateofbirth
             document.getElementById("emailid").value = allusers[i].emailid
             document.getElementById("mobilenumber").value = allusers[i].mobilenumber
-            document.getElementById("addUser").style.display = "none"
+            document.getElementById("adduser").style.display = "none"
             document.getElementById("updateUser").style.display = "block"
         }
 
@@ -179,7 +179,7 @@
 
         }
 
-        function UpdateUser() {
+        function updateusers() {
             console.log("Update User Called")
 
             var user = {
@@ -195,7 +195,7 @@
 
             displayusers(allusers);
             clearForm();
-            document.getElementById("addUser").style.display = "block"
+            document.getElementById("adduser").style.display = "block"
             document.getElementById("updateUser").style.display = "none"
         }
 

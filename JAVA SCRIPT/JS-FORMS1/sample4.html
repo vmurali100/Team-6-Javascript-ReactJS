@@ -25,7 +25,7 @@
     <input type="text" name="" id="country" onkeyup="validate()"><br><br>
 
     <button type="button" id="click" onclick="addusers()" disabled>ok</button>
-    <button type="button" id="click" onclick="adduser()">cancel</button>
+    <!-- <button type="button" id="click" onclick="adduser()">cancel</button> -->
     <button type="button" id="updateuser" onclick="updateusers()" style="display:none;">updateuser</button>
     </form>
 
@@ -45,14 +45,17 @@
     </table>
     <script>
 
-        if (allUsers == null) {
-            allUsers = []
-        }
+       
 
 
         // var allUsers=[]
         var allUsers = JSON.parse(localStorage.getItem(allUsers))
         var index = null
+
+        if (allUsers == null) {
+            allUsers = []
+        }
+       
         function addusers() {
             var user = {
                 street: document.getElementById("street").value,
@@ -88,12 +91,9 @@
                     myTd.innerHTML = user[a]
                     myTr.appendChild(myTd)
                 }
-                document.querySelector("tbody").appendChild(myTr)
-
-            })
-        }
 
 
+                
         var editTd = document.createElement("td")
         editbtn = document.createElement("button")
         editbtn.setAttribute("onclick", "edituser(" + i + ")")
@@ -106,10 +106,19 @@
         deletebtn = document.createElement("button")
         deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
         deletebtn.innerHTML = "delete"
-        deletebtd.appendChild(deletebtn)
+        deleteTd.appendChild(deletebtn)
         myTr.appendChild(deleteTd)
 
         document.querySelector("tbody").appendChild(myTr)
+
+                // document.querySelector("tbody").appendChild(myTr)
+
+            });
+
+
+        }
+
+
 
 
 
@@ -123,7 +132,7 @@
             document.getElementById("citystate").value = allUsers[i].citystate
             document.getElementById("zipcode").value = allUsers[i].zipcode
             document.getElementById("country").value = allUsers[i].country
-            document.getElementById("adduser").style.display = "none"
+            document.getElementById("click").style.display = "none"
             document.getElementById("updateuser").style.display = "block"
 
         }
@@ -155,12 +164,12 @@
                 if (user[a] == "") {
                     check = true
                 }
-            }
+            };
 
             if (check == true) {
-                document.getElementById("updateuser").setAttribute("disabled", true)
+                document.getElementById("click").setAttribute("disabled", true);
             } else {
-                document.getElementById("updateuser").setAttribute("disabled")
+                document.getElementById("click").removeAttribute("disabled");
             }
 
 
@@ -175,14 +184,14 @@
                 zipcode: document.getElementById("zipcode").value,
                 country: document.getElementById("country").value
             };
-            allUsers = [i] = user
+            allUsers  [index] = user
 
             localStorage.setItem("allusers", JSON.stringify(allUsers));
 
             displayusers(allUsers)
             clearform();
 
-            document.getElementById("adduser").style.display = "block"
+            document.getElementById("click").style.display = "block"
             document.getElementById("updateuser").style.display = "none"
 
 

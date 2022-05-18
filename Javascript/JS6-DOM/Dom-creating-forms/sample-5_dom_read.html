@@ -39,18 +39,18 @@
     
         <div class="mydiv">
             <form action="">
-                <label for="Username">Username</label><br>
-                <input type="text" name="" id="Username"> <br><br>
+                <label for="Username">User Name</label><br>
+                <input type="text" name="" placeholder="Username" id="username" onkeyup="validate()"> <br><br>
 
                 <label for="Password">Password</label><br>
-                <input type="text" placeholder="Password" name="" id="Password"> <br><br>
+                <input type="text" placeholder="Password" name="" id="password" onkeyup="validate()"> <br><br>
 
-                <label for="">Email address</label><br>
-                <input type="text" placeholder="Email Address" name="" id="Emailaddress"><br><br>
-
+                <label for="">Email Address</label><br>
+                <input type="text" placeholder="Email Address" name="" id="emailaddress" onkeyup="validate()"><br><br>
+               
                 <select name="" id="myname">
-                    <option value="">I am a Man</option>
                     <option value="">I am a Girl</option>
+                    <option value="">I am a Man</option>
                 </select><br><br>
 
                 <select name="" id="gender">
@@ -58,9 +58,8 @@
                     <option value="">I Want to Find Men</option>
                 </select><br><br>
 
-                <label for="Date of birth"><b>Date of birth</b></label><br><br>
-
-                <select name="" id="year">
+                <label for="Date of birth"><b>Date of birth</b></label><br>
+                <select name="" id="year" onkeyup="validate()">
                     <option value="Year">Year</option>
                     <option value="2015">2015</option>
                     <option value="2016">2016</option>
@@ -72,14 +71,14 @@
                     <option value="2022">2022</option>
                 </select>
 
-                <select name="" id="month">
+                <select name="" id="month" onkeyup="validate()">
                     <option value="MONTH">MONTH</option>
                     <option value="Jan">Jan</option>
                     <option value="Feb">Feb</option>
                     <option value="Mar">Mar</option>
-                    <option value="April">April</option>
+                    <option value="Apr">Apr</option>
                     <option value="May">May</option>
-                    <option value="June">June</option>
+                    <option value="Jun">Jun</option>
                     <option value="July">July</option>
                     <option value="Aug">Aug</option>
                     <option value="Sep">Sep</option>
@@ -88,44 +87,12 @@
                     <option value="Dec">Dec</option>
                 </select>
 
-                <select name="" id="days">
-                    <option value="DAY">DAY</option>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
+                <select name="" id="dob" onkeyup="validate()">
                 </select><br><br>                
 
-                <label for="heightweight" id="heightweight"><b>Height / Weight</b></label><br><br>
+                <label for="heightweight"><b>Height / Weight</b></label><br>
 
-                <select name="" id="">
+                <select name="" id="height" onkeyup="validate()">
                     <option value="Height">Height</option>
                     <option value="4.0m">4.0m</option>
                     <option value="4.2m">4.2m</option>
@@ -140,7 +107,7 @@
                     <option value="6.2m">6.2m</option>
                 </select>
 
-                <select name="" id="weight">
+                <select name="" id="weight" onkeyup="validate()">
                     <option value="Weight">Weight</option>
                     <option value="20kg">20kg</option>
                     <option value="30kg">30kg</option>
@@ -149,7 +116,8 @@
                     <option value="60kg">60kg</option>
                 </select><br><br>
 
-                <button type="button" onclick="pressenter()" id="userEnter" >Enter</button>
+                <button type="button" onclick="pressenter()" id="userEnter" disabled>Enter</button>
+                <button type="button" onclick="updateUser()" id="userUpdate" style="display: none;">Update User</button>
 
             </form>
         </div>
@@ -158,11 +126,11 @@
     <table border="1">
         <tr>
             <thead>
-                <th>Username</th>
+                <th>User Name</th>
                 <th>Password</th>
                 <th>Email Address</th>
-                <th>Height/Weight</th>
                 <th>Date Of Birth</th>
+                <th>Height/Weight</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -176,11 +144,11 @@
         var opt = document.createElement("option")
         opt.innerHTML = i;
         opt.setAttribute("value",i);
-        document.getElementById("dOB").appendChild(opt)
+        document.getElementById("dob").appendChild(opt)
         i++
         }
 
-        allusers = JSON.parse(localStorage.getItem("allusers"))
+        var allusers = JSON.parse(localStorage.getItem("allusers"))
         if (allusers == null) {
             allusers = []
         }
@@ -188,33 +156,41 @@
         function pressenter() {
             var user = {
                 username: document.getElementById("username").value,
-                Password: document.getElementById("Password").value,
-                emailaddress: document.getElementById("Emailaddress").value,
-                heightWeight: document.getElementById("heightweight").value,
+                password: document.getElementById("password").value,
+                emailaddress: document.getElementById("emailaddress").value,                
             }
-            var dob = document.getElementById("dOB").value;
-            var year = document.getElementById("year").value;
-            var month = document.getElementById("month").value;
-            var day = document.getElementById("days").value;
-            user.dateofbirth= year + "/" + month + "/" + day
+                var dateofbirth = document.getElementById("dob").value; 
+                var month = document.getElementById("month").value;        
+                var year = document.getElementById("year").value;            
+                
+                user.dob = dateofbirth + "/" + month + "/" + year
 
-            allusers.push(user);
-            localStorage.setItem("allusers", JSON.stringify(allusers))
-            // console.log(users)
-            // console.log(allusers)
-            displayusers(allusers);
-            Clearform();
+                var height = document.getElementById("height").value;
+                var weight = document.getElementById("weight").value;
+                user.heightweight = height + "/" + weight
+
+                allusers.push(user);
+                var index = null
+                document.getElementById("userEnter").setAttribute("disabled", true);
+                localStorage.setItem("allusers", JSON.stringify(allusers))
+                // console.log(users)
+                // console.log(allusers)
+                displayusers(allusers);
+                clearForm();
         }
 
-        function Clearform() {
+        function clearForm() {
             document.getElementById("username").value = "";
-            document.getElementById("Password").value = "";
-            document.getElementById("Emailaddress").value = "";
-            document.getElementById("heightweight").value = "";
-            document.getElementById("dOB").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("emailaddress").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("month").value = "";
+            document.getElementById("year").value = "";
+            document.getElementById("height").value = "";
+            document.getElementById("weight").value = "";
 
         }
-            function displayUsers(data){
+            function displayusers(data){
                 document.querySelector("tbody").innerHTML =""
                 data.forEach((user, i) => {
                     var myTr = document.createElement("tr");
@@ -240,35 +216,69 @@
                 });                
             }
         function editUser(i) {
-            console.log("edit user called" + i)
+            //console.log("edit user called" + i)
+            console.log(allusers[i])
+            index = i
+            document.getElementById("username").value = allusers[i].username
+            document.getElementById("password").value = allusers[i].password
+            document.getElementById("emailaddress").value = allusers[i].emailaddress
+            document.getElementById("dob").value = allusers[i].dob
+            document.getElementById("month").value = allusers[i].month
+            document.getElementById("year").value = allusers[i].year
+            document.getElementById("height").value = allusers[i].height
+            document.getElementById("weight").value = allusers[i].weight
+            document.getElementById("userEnter").style.display = "none"
+            document.getElementById("userUpdate").style.display = "block"
         }
         function deleteUser(i) {
-            console.log("Delete user called"+i)
+            console.log("Delete User called"+i)
             allusers.splice(i, 1)
             displayusers(allusers)
         }
         displayusers(allusers);
 
-        // function pressenter(){
-        //     var users = {
-        //         username: document.getElementById("uisername").value,
-        //         Password: document.getElementById("Password").value,
-        //         Emailaddress: document.getElementById("Emailaddress").value,                
-        //         heightWeight: document.getElementById("heightweight").value,
-        //     }
+        function validate(){
+            var user = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                emailaddress: document.getElementById("emailaddress").value,                
+                dob: document.getElementById("dob").value, 
+                month: document.getElementById("month").value,
+                year: document.getElementById("year").value, 
+                height: document.getElementById("height").value, 
+                weight: document.getElementById("weight").value,
+            }
+            var check = false;
+            for(a in user){
+                if(user [a] == ""){
+                    check = true
+                }
+            }
+            if(check == true){
+                document.getElementById("userEnter").setAttribute("disabled", true);
+            }else{
+                document.getElementById("userEnter").removeAttribute("disabled")
+            }
+        }
+        function updateUser(){
+            console.log("Update User Called")
+            var user = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                emailaddress: document.getElementById("emailaddress").value,
+                dob: document.getElementById("dob").value, 
+                month: document.getElementById("month").value,
+                year: document.getElementById("year").value, 
+                height: document.getElementById("height").value, 
+                weight: document.getElementById("weight").value,
+            }
+                localStorage.setItem("allusers", JSON.stringify(allusers))
+                displayusers(allusers);
+                Clearform();
 
-        //     var check = false;
-        //     for(a in user){
-        //         if(user [a] == ""){
-        //             check = true
-        //         }
-        //     }
-        //     if(check == true){
-        //         document.getElementById("userEnter").setAttribute("disable", true);
-        //     }else{
-        //         document.getElementById("userEnter").removeAttribute("disable")
-        //     }
-        // }
+                document.getElementById("userEnter").style.display = "block"
+                document.getElementById("userUpdate").style.display = "none"
+        }
     </script>
 </body>
 

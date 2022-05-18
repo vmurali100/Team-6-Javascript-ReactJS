@@ -26,18 +26,25 @@
 <body>
     <form action="">
         <label for="name">Name :</label>
-        <input type="text" name="" id="name">
+        <input type="text" name="" id="name" onkeyup="vaidate()">
+
         <label for="age">Age :</label>
-        <input type="number" name="" id="age">
+        <input type="number" name="" id="age" onkeyup="vaidate()">
+
         <label for="state">State :</label>
-        <input type="text" name="" id="state">
+        <input type="text" name="" id="state" onkeyup="vaidate()">
+
         <label for="address">Address :</label>
-        <input type="text" name="" id="address">
+        <input type="text" name="" id="address" onkeyup="vaidate()">
+
         <label for="phoneNo">Phone No :</label>
-        <input type="number" name="" id="phoneNo">
+        <input type="text" name="" id="phoneNo" onkeyup="vaidate()">
+
         <label for="email">Email Id :</label>
-        <input type="text" name="" id="email">
-        <button type="button" onclick="addUsers()">Add Users</button>
+        <input type="text" name="" id="email" onkeyup="vaidate()">
+
+        <button type="button" onclick="addUsers()" id="userAdding" disabled>Add Users</button>
+        <button type="button" onclick="usersUpdate()" id="updateUser" style="display: none;">Update Users</button>
     </form>
     <hr>
     <table border="1">
@@ -72,7 +79,8 @@
             allUsers.push(user);
             // console.log(user);
             // console.log(allUsers);
-
+            var index = null
+            document.getElementById("userAdding").setAttribute("disabled",true)
             localStorage.setItem("allUsers",JSON.stringify(allUsers));
 
             displayUsers(allUsers);
@@ -114,7 +122,17 @@
         }
 
         function editUser(i){
-            console.log("Edite User Called"+i);
+            //console.log("Edite User Called"+i);
+            console.log(allUsers[i])
+            index = i
+            document.getElementById("name").value = allUsers[i].name
+            document.getElementById("age").value = allUsers[i].age
+            document.getElementById("state").value = allUsers[i].state
+            document.getElementById("address").value = allUsers[i].address
+            document.getElementById("phoneNo").value = allUsers[i].phoneno
+            document.getElementById("email").value = allUsers[i].email
+            document.getElementById("userAdding").style.display = "none"
+            document.getElementById("updateUser").style.display = "block"
         }
         function deleteUser(i){
             allUsers.splice(i,1);
@@ -122,6 +140,48 @@
             displayUsers(allUsers)
         }
         displayUsers(allUsers)
+
+        function vaidate(){
+            var user = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                state: document.getElementById("state").value,
+                address: document.getElementById("address").value,
+                phoneno: document.getElementById("phoneNo").value,
+                email: document.getElementById("email").value
+            }
+            var check = false
+            for (a in user){
+                if(user[a]== ""){
+                    check = true
+                }
+            }
+            
+            if(check == true){
+                document.getElementById("userAdding").setAttribute("disabled",true)   
+            }else{
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }
+        }
+        function usersUpdate(){
+            console.log("Update User Called")
+            var user = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                state: document.getElementById("state").value,
+                address: document.getElementById("address").value,
+                phoneno: document.getElementById("phoneNo").value,
+                email: document.getElementById("email").value
+            }
+            allUsers[index] = user
+             
+            localStorage.setItem("allUsers",JSON.stringify(allUsers));
+
+            displayUsers(allUsers);
+            clearForm()
+            document.getElementById("userAdding").style.display = "block"
+            document.getElementById("updateUser").style.display = "none"
+        }
     </script>
 </body>
 </html>

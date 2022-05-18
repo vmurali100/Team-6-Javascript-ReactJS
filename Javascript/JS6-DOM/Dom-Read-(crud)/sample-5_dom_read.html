@@ -9,17 +9,16 @@
 <body>
     <form action="">
         <label for="fname">First Name</label>
-        <input type="text" name="" id="fname" onkeyup="validation()"><br><br>
+        <input type="text" name="" id="fname" onkeyup="validate()"><br><br>
 
         <label for="lname">Last Name</label>
-        <input type="text" name="" id="lname" onkeyup="validation()"><br><br>
+        <input type="text" name="" id="lname" onkeyup="validate()"><br><br>
 
         <label for="email">Email</label>
-        <input type="text" name="" id="email" onkeyup="validation()"><br><br>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
 
-        <button type="button" onclick="addUser()" id="userAdd" disabled>Add User</button>
-
-        <button type="button" onclick="userUpdate()" id="updateUser" style="display: none;" >Update User</button>
+        <button type="button" onclick="addUser()" id="userAdding" disabled>Add User</button>
+        <button type="button" onclick="userUpdate()" id="updateUser" style="display: none;">Add User</button>
     </form>
     <hr>
     <table border="1">
@@ -50,21 +49,22 @@
                 email: document.getElementById("email").value
             }
             allUsers.push(user);
+            //console.log(user);
+            //console.log(allUsers);
+            
             //Storing in local Storage
-            document.getElementById("userAdd").setAttribute("disabled",true);
             var index = null
+            document.getElementById("userAdding").setAttribute("disabled",true)
             localStorage.setItem("allUsers",JSON.stringify(allUsers))
 
             displayUsers(allUsers);
             clearForm(); 
-        }
-        
+        }        
         function clearForm(){
             document.getElementById("fname").value = "";
             document.getElementById("lname").value = "";
             document.getElementById("email").value = ""; 
         }
-
         function displayUsers(data) {
             document.querySelector("tbody").innerHTML = " ";
             data.forEach((user,i) => {
@@ -93,15 +93,15 @@
         }
         function editUser(i){
             //console.log("Edit User Called"+i)
+
             console.log(allUsers[i])
-
             index = i
-
             document.getElementById("fname").value = allUsers[i].fname
             document.getElementById("lname").value = allUsers[i].lname
             document.getElementById("email").value = allUsers[i].email
-            document.getElementById("userAdd").style.display = "none"
-            document.getElementById("updateUser").style.display = "block"
+            document.getElementById("userAdding").style.display = "none";
+            document.getElementById("updateUser").style.display = "block";
+
         }
         function deleteUser(i){
             console.log("Delete User Called"+i)
@@ -109,7 +109,7 @@
             displayUsers(allUsers);
         }
         displayUsers(allUsers)
-        function validation(){
+        function validate(){
             var user = {
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
@@ -122,26 +122,27 @@
                 }
             }
             if(check == true){
-                document.getElementById("userAdd").setAttribute("disabled",true)
+                document.getElementById("userAdding").setAttribute("disabled",true)
             }else{
-                document.getElementById("userAdd").removeAttribute("disabled")
-            }            
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }
         }
 
         function userUpdate(){
+            console.log("Update User Called")
             var user = {
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
                 email: document.getElementById("email").value
             }
             allUsers[index] = user
-            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+
+            localStorage.setItem("allUsers",JSON.stringify(allUsers));
 
             displayUsers(allUsers);
             clearForm();
-
-            document.getElementById("userAdd").style.display = "block"
-            document.getElementById("updateUser").style.display = "none"
+            document.getElementById("userAdding").style.display = "block";
+            document.getElementById("updateUser").style.display = "none";
         }
     </script>
 </body>

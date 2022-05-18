@@ -80,7 +80,7 @@
     </table>
     <script>
         var allUsers = JSON.parse(localStorage.getItem("allUsers"))
-        var index=null
+        var index = null
         if (allUsers == null) {
             allUsers = []
         }
@@ -142,17 +142,21 @@
             })
 
         }
+//edituser
+
         function edituser(i) {
             console.log(allUsers[i])
             index = i
             document.getElementById("Street").value = allUsers[i].Street
             document.getElementById("CityState").value = allUsers[i].CityState
             document.getElementById("ZipCode").value = allUsers[i].ZipCode
-            document.getElementById("Country").value = allUsers[i]. Country 
-            document.getElementById("Adduser").style.display="none"
-            document.getElementById("updateuser").style.display="block"
-            
-}
+            document.getElementById("Country").value = allUsers[i].Country
+            document.getElementById("Adduser").style.display = "none"
+            document.getElementById("updateuser").style.display = "block"
+
+        }
+//deleteuser
+
         function deleteuser(i) {
             // console.log("Edit user Called"+i)
             allUsers.splice(i, 1)
@@ -182,7 +186,10 @@
                 document.getElementById("Adduser").removeAttribute("disabled")
             }
         }
-        function updateusers(){
+
+        // updateusers
+
+        function updateusers() {
             console.log("Update user called")
             var users = {
                 Street: document.getElementById("Street").value,
@@ -190,14 +197,14 @@
                 ZipCode: document.getElementById("ZipCode").value,
                 Country: document.getElementById("Country").value
             }
-            allUsers[index]=users
+            allUsers[index] = users
 
             localStorage.setItem("allUsers", JSON.stringify(allUsers))
 
             displayusers(allUsers)
             Clearform(users)
-            document.getElementById("Adduser").style.display="block"
-            document.getElementById("updateuser").style.display="none"
+            document.getElementById("Adduser").style.display = "block"
+            document.getElementById("updateuser").style.display = "none"
         }
     </script>
 </body>

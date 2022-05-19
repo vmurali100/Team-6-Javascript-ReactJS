@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getDataFromAPI()" type="button">Get Data</button>
+
+    <script>
+      function getDataFromAPI() {
+          
+         var getData = new XMLHttpRequest();
+
+        getData.onreadystatechange = function (){
+            if(getData.status == 200 && getData.readyState == 4){
+                console.log(this.response)
+            }
+        }
+        //   e-mail...etc
+        getData.open("GET","http://www.filltext.com/?rows=10&id=%7Bindex%7D&email=%7Bemail%7D&username=%7Busername%7D&password=%7BrandomString%7C5%7D&pretty=true");
+        getData.send()
+
+       
+         }
+    </script> 
+</body>
+</html>

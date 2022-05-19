@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .product{
+            border: 2px solid blue;
+            margin: 2px;
+            width: 30%;
+            float: left;
+            height: 250px;
+            padding: 10px;
+        }
+       
+        
+    </style>
+    
+</head>
+<body>
+    <button onclick="getDataFromAPI()">Get Data From API</button>
+    <div id="products"></div>
+    <img src="" alt="">
+    <script>
+        function getDataFromAPI(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                    console.log(getData.response)
+                    let allComments = JSON.parse(getData.response)
+                    displayUsers(allComments)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/comments")
+            getData.send()
+        }
+        function displayUsers(allComments){
+            allComments.forEach((comment)=> {
+            var myProductDiv = document.createElement("div");
+            myProductDiv.setAttribute("class","product")
+
+            var postId=document.createElement("h4");
+            postId.innerHTML = comment.postId
+
+            var id=document.createElement("h4");
+            id.innerHTML = comment.id
+
+            var name=document.createElement("h4");
+            name.innerHTML = comment.name
+
+            var email=document.createElement("h4");
+            email.innerHTML = comment.email
+
+            var body=document.createElement("h5");
+            body.innerHTML = comment.body
+
+            myProductDiv.appendChild(postId)
+           
+            myProductDiv.appendChild(id)
+
+            myProductDiv.appendChild(name)
+
+            myProductDiv.appendChild(email)
+            
+            myProductDiv.appendChild(body)
+
+            document.getElementById("products").appendChild(myProductDiv)
+        })
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .product{
+            border: 2px solid blue;
+            margin: 2px;
+            width: 30%;
+            float: left;
+            height: 250px;
+            padding: 10px;
+        }
+       
+        
+    </style>
+    
+</head>
+<body>
+    <button onclick="getDataFromAPI()">Get Data From API</button>
+    <div id="products"></div>
+    <img src="" alt="">
+    <script>
+        function getDataFromAPI(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                    console.log(getData.response)
+                    let allCarts = JSON.parse(getData.response)
+                    displayUsers(allCarts)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/carts")
+            getData.send()
+        }
+        function displayUsers(allCarts){
+            allCarts.forEach((cart)=> {
+            var myProductDiv = document.createElement("div");
+            myProductDiv.setAttribute("class","product")
+
+            var id=document.createElement("h4");
+            id.innerHTML = cart.id
+
+            var userId=document.createElement("h4");
+            userId.innerHTML = cart.userId
+
+            var date=document.createElement("h4");
+            date.innerHTML = cart.date
+
+            var productId=document.createElement("h5");
+            productId.innerHTML = cart.products.productId
+
+            var quantity=document.createElement("h5");
+            quantity.innerHTML = cart.products.quantity
+
+            
+
+            myProductDiv.appendChild(id)
+           
+            myProductDiv.appendChild(userId)
+
+            myProductDiv.appendChild(date)
+            
+            myProductDiv.appendChild(productId)
+
+            myProductDiv.appendChild(quantity)
+
+            document.getElementById("products").appendChild(myProductDiv)
+        })
+    }
+    </script>
+</body>
+</html>

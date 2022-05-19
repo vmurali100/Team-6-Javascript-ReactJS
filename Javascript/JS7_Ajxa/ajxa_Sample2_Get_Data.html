@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         img{
+            width:40%;
+        }
+        .product{
+            border:1px solid red;
+            margin:2px;
+            width:20%;
+            float:left;
+            height:300px;
+            padding:10px;
+        }
+        p{
+            font-size: 12px;
+        }
+        h2{
+            margin: 5px;
+            font-size: 15px;
+        }
+        h3{
+            margin: 5px;
+            font-size: 15px;
+            
+        }       
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GetProductsFromAPI()">Get Data From API</button>
+    <div id="products"></div>
+    <img src="" alt="">
+    <script>
+        function GetProductsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allProducts = JSON.parse(this.response)
+                    displayUsers(allProducts)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/products")
+            getData.send()
+        }
+        function displayUsers(allProducts){
+            allProducts.forEach((product)=>{
+            var myProductDiv = document.createElement("div");
+            myProductDiv.setAttribute("class","product")
+
+            var myImg = document.createElement("img");
+            myImg.setAttribute("src",product.image);
+
+            var title= document.createElement("p")
+            title.innerHTML = product.title;
+            
+            var id= document.createElement("h2");
+            id.innerHTML = product.id
+
+            var price = document.createElement("h3")
+            price.innerHTML = product.price
+
+            var category= document.createElement("h3")
+            category.innerHTML = product.category
+
+            
+            myProductDiv.appendChild(id)
+            myProductDiv.appendChild(myImg)
+            myProductDiv.appendChild(price)
+            myProductDiv.appendChild(category)  
+            myProductDiv.appendChild(title)
+                
+            
+           document.getElementById("products").appendChild(myProductDiv)
+        })
+        }
+    </script>
+</body>
+</html>

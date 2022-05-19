@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GetusersFromAPI()">Get Data From API</button>
+    <div id="mycomments"></div>
+    <img src="" alt="">
+    <script>
+        function GetusersFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allphotos = JSON.parse(this.response)
+                    displayUsers(allphotos)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getData.send()
+        }
+        function displayUsers(allphotos){
+            allphotos.forEach((photos)=>{
+            var myphotosDiv = document.createElement("div");
+            myphotosDiv.setAttribute("class","usersDiv")            
+            
+            var albumId= document.createElement("h4");
+            albumId.innerHTML = photos.albumId
+
+            var id = document.createElement("h4")
+            id.innerHTML = photos.id
+
+            var title= document.createElement("h4")
+            title.innerHTML = photos.title
+
+            var url= document.createElement("h4")
+            url.innerHTML = photos.url            
+
+            var thumbnailUrl= document.createElement("h4")
+            thumbnailUrl.innerHTML = photos.thumbnailUrl
+            
+            myphotosDiv.appendChild(albumId)
+            myphotosDiv.appendChild(id)  
+            myphotosDiv.appendChild(title) 
+            myphotosDiv.appendChild(url)            
+            myphotosDiv.appendChild(thumbnailUrl)
+                
+            
+           document.getElementById("mycomments").appendChild(myphotosDiv)
+        })
+        }
+    </script>
+</body>
+</html>

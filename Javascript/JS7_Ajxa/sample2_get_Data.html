@@ -14,11 +14,11 @@
             var getData = new XMLHttpRequest();
 
             getData.onreadystatechange = function(){
-                if(getData.status == 200 && getData.readyState == 4){
-                    console.log(this.response)
+                if (getData.status ==200 && getData.readyState == 4){
+                    console.log(getData.response)
                 }
             }
-            getData.open("GET","https://fakestoreapi.com/carts");
+            getData.open("GET","https://fakestoreapi.com/carts")
             getData.send
         }
     </script>

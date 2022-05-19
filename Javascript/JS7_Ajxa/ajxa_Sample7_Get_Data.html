@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GetalbumsFromAPI()">Get Data From API</button>
+    <div id="myalbums"></div>
+    <img src="" alt="">
+    <script>
+        function GetalbumsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allalbums = JSON.parse(this.response)
+                    displayUsers(allalbums)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/albums")
+            getData.send()
+        }
+        function displayUsers(allalbums){
+            allalbums.forEach((albums)=>{
+            var myalbumDiv = document.createElement("div");
+            myalbumDiv.setAttribute("class","usersDiv")            
+            
+            var userId= document.createElement("p");
+            userId.innerHTML = albums.userId
+
+            var id = document.createElement("p")
+            id.innerHTML = albums.id
+
+            var title= document.createElement("p")
+            title.innerHTML = albums.title
+            
+            myalbumDiv.appendChild(userId)
+            myalbumDiv.appendChild(id) 
+            myalbumDiv.appendChild(title)
+                
+            
+           document.getElementById("myalbums").appendChild(myalbumDiv)
+        })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GetusersFromjsonp()">Get Data From API</button>
+    <div id="myusers"></div>
+    <img src="" alt="">
+    <script>
+        function GetusersFromjsonp(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allusers = JSON.parse(this.response)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/users")
+            getData.send()
+        }
+        function displayUsers(allusers){
+            allusers.forEach((users)=>{
+            var myusersDiv = document.createElement("div");
+            myusersDiv.setAttribute("class","usersDiv")
+
+            var id = document.createElement("p")
+            id.innerHTML = users.id  
+
+            var name= document.createElement("p")
+            name.innerHTML = users.name
+            
+            var username= document.createElement("p")
+            username.innerHTML = users.username
+
+            var email= document.createElement("p")
+            email.innerHTML = users.email
+                        
+            var postId= document.createElement("p");
+            postId.innerHTML = users.postId
+
+            var street= document.createElement("p")
+            street.innerHTML = users.street
+
+            var suite= document.createElement("p")
+            suite.innerHTML = users.suite
+
+            var city= document.createElement("p")
+            city.innerHTML = users.city
+
+            var zipcode= document.createElement("p")
+            zipcode.innerHTML = users.zipcode
+
+            var geo= document.createElement("p")
+            geo.innerHTML = users.geo
+
+            var lat= document.createElement("p")
+            lat.innerHTML = users.lat
+
+            var lng= document.createElement("p")
+            lng.innerHTML = users.lng
+            
+            myusersDiv.appendChild(id)
+            myusersDiv.appendChild(name)  
+            myusersDiv.appendChild(username) 
+            myusersDiv.appendChild(email) 
+            myusersDiv.appendChild(postId)            
+            myusersDiv.appendChild(street) 
+            myusersDiv.appendChild(suite) 
+            myusersDiv.appendChild(city) 
+            myusersDiv.appendChild(zipcode) 
+            myusersDiv.appendChild(geo) 
+            myusersDiv.appendChild(lat) 
+            myusersDiv.appendChild(lng)
+                
+            
+           document.getElementById("myusers").appendChild(myusersDiv)
+        })
+        }
+    </script>
+</body>
+</html>

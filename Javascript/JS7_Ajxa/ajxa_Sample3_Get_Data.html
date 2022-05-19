@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GetpostsFromAPI()">Get Data From API</button>
+    <div id="myposts"></div>
+    <img src="" alt="">
+    <script>
+        function GetpostsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allposts = JSON.parse(this.response)
+                    displayUsers(allposts)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/posts")
+            getData.send()
+        }
+        function displayUsers(allposts){
+            allposts.forEach((posts)=>{
+            var mypostsDiv = document.createElement("div");
+            mypostsDiv.setAttribute("class","postsDiv")            
+            
+            var userId= document.createElement("p");
+            userId.innerHTML = posts.userId
+
+            var myid = document.createElement("p")
+            myid.innerHTML = posts.myid
+
+            var title= document.createElement("p")
+            title.innerHTML = posts.title;
+
+            
+            mypostsDiv.appendChild(userId)
+            mypostsDiv.appendChild(myid) 
+            mypostsDiv.appendChild(title)
+                
+            
+           document.getElementById("myposts").appendChild(mypostsDiv)
+        })
+        }
+    </script>
+</body>
+</html>

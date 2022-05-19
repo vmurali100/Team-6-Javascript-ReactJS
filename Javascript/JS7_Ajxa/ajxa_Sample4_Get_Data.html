@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button type="button" onclick="GetCartsFromAPI()">Get Data From API</button>
+    <div id="myCarts"></div>
+    <img src="" alt="">
+    <script>
+        function GetCartsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allCarts = JSON.parse(this.response)
+                    displayUsers(allCarts)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/carts")
+            getData.send()
+        }
+        function displayUsers(allCarts){
+            allCarts.forEach((carts)=>{
+            var mycartsDiv = document.createElement("div");
+            mycartsDiv.setAttribute("class","cartsDiv")
+
+            var id= document.createElement("p")
+            id.innerHTML = carts.id
+            
+            var userId= document.createElement("p");
+            userId.innerHTML = carts.userId
+
+            var date = document.createElement("p")
+            date.innerHTML = carts.date
+
+            
+            mycartsDiv.appendChild(id)
+            mycartsDiv.appendChild(userId)
+            mycartsDiv.appendChild(date)  
+                
+            
+           document.getElementById("myCarts").appendChild(mycartsDiv)
+        })
+        }
+    </script>
+</body>
+</html>

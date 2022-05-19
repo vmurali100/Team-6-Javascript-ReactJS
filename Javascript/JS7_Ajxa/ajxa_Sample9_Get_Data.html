@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GettodosFromAPI()">Get Data From API</button>
+    <div id="mycomments"></div>
+    <img src="" alt="">
+    <script>
+        function GettodosFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let alltodos = JSON.parse(this.response)
+                    displayUsers(alltodos)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/todos")
+            getData.send()
+        }
+        function displayUsers(alltodos){
+            alltodos.forEach((todos)=>{
+            var mytodosDiv = document.createElement("div");
+            mytodosDiv.setAttribute("class","usersDiv")            
+            
+            var userId= document.createElement("h4");
+            userId.innerHTML = todos.userId
+
+            var id = document.createElement("h4")
+            id.innerHTML = todos.id
+
+            var title= document.createElement("h4")
+            title.innerHTML = todos.title
+
+            var completed= document.createElement("h4")
+            completed.innerHTML = todos.completed  
+            
+            mytodosDiv.appendChild(userId)
+            mytodosDiv.appendChild(id)  
+            mytodosDiv.appendChild(title) 
+            mytodosDiv.appendChild(completed)   
+                
+            
+           document.getElementById("mycomments").appendChild(mytodosDiv)
+        })
+        }
+    </script>
+</body>
+</html>

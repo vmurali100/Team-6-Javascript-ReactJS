@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GetusersFromAPI()">Get Data From API</button>
+    <div id="mycomments"></div>
+    <img src="" alt="">
+    <script>
+        function GetusersFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allcomments = JSON.parse(this.response)
+                    displayUsers(allcomments)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/comments")
+            getData.send()
+        }
+        function displayUsers(allcomments){
+            allcomments.forEach((comments)=>{
+            var mycommentsDiv = document.createElement("div");
+            mycommentsDiv.setAttribute("class","usersDiv")            
+            
+            var postId= document.createElement("p");
+            postId.innerHTML = comments.postId
+
+            var id = document.createElement("p")
+            id.innerHTML = comments.id
+
+            var name= document.createElement("p")
+            name.innerHTML = comments.name
+
+            var email= document.createElement("p")
+            email.innerHTML = comments.email
+
+            var body= document.createElement("p")
+            body.innerHTML = comments.body
+            
+            mycommentsDiv.appendChild(postId)
+            mycommentsDiv.appendChild(id) 
+            mycommentsDiv.appendChild(name) 
+            mycommentsDiv.appendChild(email)             
+            mycommentsDiv.appendChild(body)
+                
+            
+           document.getElementById("mycomments").appendChild(mycommentsDiv)
+        })
+        }
+    </script>
+</body>
+</html>

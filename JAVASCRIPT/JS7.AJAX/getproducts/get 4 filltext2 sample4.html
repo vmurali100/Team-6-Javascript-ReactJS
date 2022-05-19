@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+
+        .product {
+            border: 1px solid red;
+            margin: 2px;
+            width: 15%;
+            height: 200px;
+            padding: 10px;
+            float: left;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <button type="button" onclick="getDataFromAPI()">
+        GetDataFormApi
+    </button>
+    <div id="products"></div>
+    
+    <script>
+
+        function getDataFromAPI() {
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    console.log(getData.response)
+                    let allProducts = JSON.parse(getData.response)
+                    Displayusers(allProducts)
+                }
+            }
+            getData.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+            getData.send()
+        }
+        function Displayusers(allProducts) {
+
+            allProducts.forEach((product) => {
+
+                var myProductDiv = document.createElement("div");
+                myProductDiv.setAttribute("class", "product");
+
+
+                var myfname = document.createElement("fname")
+                myfname.innerHTML = product.fname;
+
+                var mylname = document.createElement("lname")
+                mylname.innerHTML = product.lname;
+
+                var mytel = document.createElement("number")
+                mytel.innerHTML = product.tel;
+
+                var myaddress = document.createElement("p")
+                myaddress.innerHTML = product.address;
+
+                var mycity = document.createElement("p")
+                mycity.innerHTML = product.city;
+
+                var mystate = document.createElement("p")
+                mystate.innerHTML = product.state;
+
+                var myzip = document.createElement("number")
+                myzip.innerHTML = product.zip;
+
+                myProductDiv.appendChild(myfname);
+                myProductDiv.appendChild(mylname);
+                myProductDiv.appendChild(mytel);
+                myProductDiv.appendChild(myaddress)
+                myProductDiv.appendChild(mycity)
+                myProductDiv.appendChild(mystate)
+                myProductDiv.appendChild(myzip)
+
+                document.getElementById("products").appendChild(myProductDiv)
+            })
+        }
+    </script>
+</body>
+
+</html>

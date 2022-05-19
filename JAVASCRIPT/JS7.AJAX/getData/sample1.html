@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="getDataFromAPI()">Get Data</button>
+
+    <script>
+        function getDataFromAPI(){
+            //1. It Should Give Status Code 200
+            //2. It Should Complete Ready State 4
+             
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if( getData.readyState == 4 && getData. status == 200 ){
+                    console.log(getData.response)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/users")
+            getData.send()
+        }
+    </script>
+</body>
+</html>

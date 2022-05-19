@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   
+    .product {
+        border: 1px solid red;
+        margin: 2px;
+        width: 15%;
+        height: 200px;
+        padding: 10px;
+        float: left;
+
+    }
+</style>
+<body>
+    <button type="button" onclick="Getdata()">
+        getdata form api
+    </button>
+    <div id="products"></div>
+    <!-- <img src="" alt=""> -->
+    <script>
+        function Getdata() {
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    console.log(getData.response)
+                    let allposts=JSON.parse(getData.response)
+                    display(allposts) 
+                }
+            }
+            getData.open("GET", "https://jsonplaceholder.typicode.com/posts")
+            getData.send()
+        }
+
+        function display(allposts) {
+            allposts.forEach((post)=>{
+            var myProductDiv = document.createElement("div");
+            myProductDiv.setAttribute("class","product");
+           
+          
+            var title = document.createElement("p");
+            title.innerHTML = post.title;
+          
+            var id = document.createElement("h2");
+            id.innerHTML = post.id           
+           
+            myProductDiv.appendChild(title)
+            myProductDiv.appendChild(id)
+          
+            
+            
+            document.getElementById("products").appendChild(myProductDiv)
+        })
+        }
+    </script>
+</body>
+
+</html>

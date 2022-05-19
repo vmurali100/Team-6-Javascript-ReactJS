@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .product {
+        border: 2px solid #d9579f;
+        margin: 5px;
+        padding: 10px;
+        float: left;
+        width: 30%;
+        height: 200px;
+     }
+        </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()"> get data</button>
+    <div id="products"></div>
+   <script>
+       function getDataFromAPI(){
+           var getData=new XMLHttpRequest();
+           getData.onreadystatechange=function(){
+               if(getData.status==200 &&getData.readyState==4){
+                   console.log(getData.response)
+                   var userrows=JSON.parse(getData.response)
+                   displayUsers(userrows)
+               }
+           }
+           getData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+           getData.send()
+       }
+       function displayUsers(userrows){
+           userrows.forEach((rows)=>{
+            var myProductDiv = document.createElement("div")
+                myProductDiv.setAttribute("class", "product")  
+                var myid=document.createElement("h3")
+                myid.innerHTML=rows.id
+                var myemail = document.createElement("h4")
+                myemail.innerHTML = rows.email
+                var myusername = document.createElement("h4")
+                myusername.innerHTML = rows.username
+                var mypassword = document.createElement("h4")
+                mypassword.innerHTML = rows.password 
+
+                document.getElementById("products").appendChild(myProductDiv)
+                myProductDiv.appendChild(myid)
+                myProductDiv.appendChild(myemail)
+                myProductDiv.appendChild(myusername)
+                myProductDiv.appendChild(mypassword)
+
+           })
+       }
+   </script>
+</body>
+</html>

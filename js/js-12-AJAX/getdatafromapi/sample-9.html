@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .product {
+        border: 2px solid #d9579f;
+        margin: 5px;
+        padding: 10px;
+        float: left;
+        width: 30%;
+        height: 275px;
+     }
+        </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()"> get data</button>
+    <div id="products"></div>
+   <script>
+       function getDataFromAPI(){
+           var getData=new XMLHttpRequest();
+           getData.onreadystatechange=function(){
+               if(getData.status==200 &&getData.readyState==4){
+                   console.log(getData.response)
+                   var userrows=JSON.parse(getData.response)
+                   displayUsers(userrows)
+               }
+           }    
+                  getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+
+           getData.send()
+       }
+       function displayUsers(userrows){
+           userrows.forEach((rows)=>{
+            var myProductDiv = document.createElement("div")
+                myProductDiv.setAttribute("class", "product")  
+                var myfname=document.createElement("h3")
+                myfname.innerHTML=rows.fname
+                var mylname = document.createElement("h4")
+                mylname.innerHTML = rows.lname
+                var mytel = document.createElement("h4")
+                mytel.innerHTML = rows.tel
+                var myaddress = document.createElement("h4")
+                myaddress.innerHTML = rows.address
+                var mycity = document.createElement("h4")
+                mycity.innerHTML = rows.city
+                var mystate = document.createElement("h4")
+                mystate.innerHTML = rows.state
+                var myzip = document.createElement("h4")
+                myzip.innerHTML = rows.zip
+                document.getElementById("products").appendChild(myProductDiv)
+                myProductDiv.appendChild(myfname)
+                myProductDiv.appendChild(mylname)
+                myProductDiv.appendChild(mytel)
+                myProductDiv.appendChild(myaddress)
+                myProductDiv.appendChild(mycity)
+                myProductDiv.appendChild(mystate)
+                myProductDiv.appendChild(myzip)
+
+           })
+       }
+   </script>
+</body>
+</html>

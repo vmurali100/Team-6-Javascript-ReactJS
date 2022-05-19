@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product {
+            border: 2px solid #d9579f;
+            margin: 5px;
+            padding: 10px;
+            float: left;
+            width: 18%;
+            height: 400px;
+         }
+            </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()" type="button"> get data</button>
+    <div id="products"></div>
+    <script>
+        function getDataFromAPI(){
+            var getData= new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status==200 &&getData.readyState==4){
+                    console.log(getData.response)
+                    var allusers=JSON.parse(getData.response)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/users");
+            getData.send()
+        }
+        function displayUsers(allusers){
+            allusers.forEach((user)=>{
+                var myProductDiv = document.createElement("div")
+                myProductDiv.setAttribute("class", "product")
+                //lat  
+                var mylat=document.createElement("h4")
+                mylat.innerHTML=user.address.geolocation.lat
+                //long
+                var mylong=document.createElement("h4")
+                mylong.innerHTML=user.address.geolocation.long
+                //city
+                var mycity=document.createElement("h4")
+                mycity.innerHTML=user.address.city
+                //street
+                var mystreet=document.createElement("h4")
+                mystreet.innerHTML=user.address.street
+                //num
+                var mynumber=document.createElement("h4")
+                mynumber.innerHTML=user.address.number
+                //zipcode
+                var myzipcode=document.createElement("h4")
+                myzipcode.innerHTML=user.address.zipcode
+                //id
+                var myid=document.createElement("h3")
+                myid.innerHTML=user.id
+                //email
+                var myemail = document.createElement("h4")
+                myemail.innerHTML = user.email
+                //username
+                var myusername = document.createElement("h4")
+                myusername.innerHTML = user.username
+                //password
+                var mypassword = document.createElement("h4")
+                mypassword.innerHTML = user.password 
+                //fname
+                var myfname=document.createElement("h3")
+                myfname.innerHTML=user.name.firstname
+                //lname
+                var mylname = document.createElement("h4")
+                mylname.innerHTML = user.name.lastname
+                //phone
+                var myphone = document.createElement("h4")
+                myphone.innerHTML = user.phone
+
+                document.getElementById("products").appendChild(myProductDiv)
+                myProductDiv.appendChild(mylat)
+                myProductDiv.appendChild(mylong)
+                myProductDiv.appendChild(mycity)
+                myProductDiv.appendChild(mystreet)
+                myProductDiv.appendChild(mynumber)
+                myProductDiv.appendChild(myzipcode)
+                myProductDiv.appendChild(myid)
+                myProductDiv.appendChild(myemail)
+                myProductDiv.appendChild(myusername)
+                myProductDiv.appendChild(mypassword)
+                myProductDiv.appendChild(myfname)
+                myProductDiv.appendChild(mylname)
+                myProductDiv.appendChild(myphone)
+      
+
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .product {
+        border: 2px solid #d9ca2a;
+        margin: 5px;
+        padding: 10px;
+        float: left;
+        width: 30%;
+        height: 215px;
+    }
+</style>
+</head>
+<body>
+    <button onclick="getdatafromapi()">get data</button>
+    <div id="products"></div>
+     <script>
+        function getdatafromapi(){
+           var getData=new XMLHttpRequest();
+           getData.onreadystatechange=function(){
+               if(getData.status==200 &&getData.readyState==4){
+                   console.log(getData.response)
+                   let allposts=JSON.parse(getData.response)
+                   displayUsers(allposts)
+               }
+           } 
+           getData.open("GET","https://jsonplaceholder.typicode.com/posts")
+           getData.send()
+        }
+        function displayUsers(allposts){
+           allposts.forEach((post)=>{
+            var myProductDiv=document.createElement("div")
+            myProductDiv.setAttribute("class","product")  
+            //userid
+            var myuserId=document.createElement("h4")
+            myuserId.innerHTML=post.userId
+            //id
+            var myid=document.createElement("h4")
+            myid.innerHTML=post.id
+            //title
+            var mytitle=document.createElement("h4")
+            mytitle.innerHTML=post.title
+            //body
+            var mybody=document.createElement("h5")
+            mybody.innerHTML=post.body
+
+            document.getElementById("products").appendChild(myProductDiv)
+           myProductDiv.appendChild(myuserId) 
+           myProductDiv.appendChild(myid) 
+           myProductDiv.appendChild(mytitle) 
+           myProductDiv.appendChild(mybody) 
+
+           }) 
+        }
+    </script>
+</body>
+</html>

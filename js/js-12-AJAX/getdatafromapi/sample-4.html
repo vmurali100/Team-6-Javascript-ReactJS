@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .product {
+    border: 2px solid #d9579f;
+    margin: 5px;
+    padding: 10px;
+    float: left;
+    width: 30%;
+    height: 171px;
+}
+    </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()" type="button"> get data</button>
+    <div id="products"></div>
+    <script>
+        function getDataFromAPI(){
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 &&getData.readyState==4){
+                    console.log(getData.response)
+                    let useralbums=JSON.parse(getData.response)
+                    displayUsers(useralbums)
+                }
+            }
+           getData.open("GET","https://jsonplaceholder.typicode.com/albums") 
+           getData.send()
+        }
+        function displayUsers(useralbums){
+            useralbums.forEach((album)=>{
+              
+            var myProductDiv = document.createElement("div")
+                myProductDiv.setAttribute("class", "product") 
+                //userId
+                var myuserId=document.createElement("h3")
+                myuserId.innerHTML=album.userId
+                //id
+                var myid=document.createElement("h3")
+                myid.innerHTML=album.id
+                //title
+                var mytitle=document.createElement("h3")
+                mytitle.innerHTML=album.title
+                myProductDiv.appendChild(myuserId)
+                myProductDiv.appendChild(myid)
+                myProductDiv.appendChild(mytitle)
+
+                document.getElementById("products").appendChild(myProductDiv)
+           }) 
+        }
+    </script>
+</body>
+</html>

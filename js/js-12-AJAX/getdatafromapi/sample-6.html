@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product {
+   border: 2px solid #d9579f;
+   margin: 5px;
+   padding: 10px;
+   float: left;
+   width: 30%;
+   height: 170px;
+}
+   </style>
+</head>
+<body>
+    <button  onclick="getDataFromAPI()" type="button">get data</button>
+    <diV id="products"></diV>
+    <script>
+        function getDataFromAPI(){
+            var getData=new XMLHttpRequest();
+             getData.onreadystatechange=function(){
+                 if(getData.status==200 &&getData.readyState==4){
+                     console.log(getData.response)
+                     var usertodos=JSON.parse(getData.response)
+                     displayUsers(usertodos)
+                 }
+             }
+             getData.open("GET","https://jsonplaceholder.typicode.com/todos")
+             getData.send()
+        }
+        function displayUsers(usertodos){
+            usertodos.forEach((todos)=>{
+                var myProductDiv = document.createElement("div")
+                myProductDiv.setAttribute("class", "product")  
+                     //userId
+                     var myuserId=document.createElement("h3")
+                     myuserId.innerHTML=todos.userId
+                //id
+                var myid=document.createElement("h3")
+                myid.innerHTML=todos.id
+                //title
+                var mytitle=document.createElement("h3")
+                mytitle.innerHTML=todos.title
+
+               var usercompleted=document.createElement("h3")
+               usercompleted.innerHTML=todos.completed
+
+               myProductDiv.appendChild(myuserId)
+                myProductDiv.appendChild(myid)
+                myProductDiv.appendChild(mytitle)
+                myProductDiv.appendChild(mytitle)
+                myProductDiv.appendChild(usercompleted)
+
+                
+
+                document.getElementById("products").appendChild(myProductDiv)
+            })
+        }
+    </script>
+</body>
+</html>

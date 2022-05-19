@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         img{
+        width: 30%;
+    }
+    .product {
+     border: 1px solid red;
+    margin: 2px;
+    width: 30%;
+    float: left;
+    height: 250px;
+    padding: 10px;
+
+    }
+    </style>
+   
+
+</head>
+<body>
+    <button type="button" onclick="getDataapi()">GETDATA</button>
+    <div id="products"></div>
+    <img src="" alt="">
+    <script>
+        function getDataapi(){
+            var getdata = new XMLHttpRequest();
+
+            getdata.readyState = function(){
+                if(getdata.status == 200 && getdata.readyState == 4){
+                    let allfashions=JSON.parse(this.response)
+                    display(allfashions)
+                }
+            };
+            getdata.open("GET","https://jsonplaceholder.typicode.com/photos");
+        }
+
+        function display(allfashions){
+            allfashions.forEach((product)=>{
+                
+         
+                var myProductDiv=document.createElement("div");
+            myProductDiv.setAttribute("class","product");
+
+            var myImg=document.createElement("url");
+            myImg.setAttribute("src", product.url);
+
+            var title=document.createElement("p");
+            title.innerHTML=product.title;
+
+            myProductDiv.appendChild(title);
+            myProductDiv.appendChild(myImg);
+
+            document.getElementById("products").appendChild(myProductDiv)
+            });
+        }
+    </script>
+</body>
+</html>

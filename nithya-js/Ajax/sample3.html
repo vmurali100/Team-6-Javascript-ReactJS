@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getdatafromAPI()">get data from API</button>
+    <div id="products"></div>
+   
+    <script>
+        function getdatafromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange =function (){
+                if (getData.status == 200 && getData.readyState == 4){
+                    let allProducts =JSON.parse(this.response)
+                    displayall(allProducts)
+                }
+            };
+            getData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true");
+            getData.send();
+        }
+
+        function displayall(allProducts){
+            allProducts.forEach(products => {
+                var myproductsdiv=document.createElement("div")
+                myproductsdiv.setAttribute("class","products")
+
+                var email=document.createElement("email")
+                email.innerHTML=products.email; 
+
+                var myid=document.createElement("p")
+                myid.innerHTML=products.id;
+
+                var myusername=document.createElement("p")
+                myusername.innerHTML=products.username;
+
+                myproductsdiv.appendChild(email);
+                myproductsdiv.appendChild(myid);
+                myproductsdiv.appendChild(myusername)
+
+                document.getElementById("products").appendChild(myproductsdiv);
+                
+            });
+        }
+    </script>
+</body>
+</html>

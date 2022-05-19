@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="data()">data</button>
+    <div id="info"></div>
+    <script>
+        function data(){
+            var getdata=new XMLHttpRequest();
+
+            getdata.onreadystatechange=function(){
+                if(getdata.status==200 && getdata.readyState==4){
+                    let alldetails=JSON.parse(this.response)
+                    display(alldetails)
+                }
+            };
+            getdata.open("GET","https://jsonplaceholder.typicode.com/comments")
+            getdata.send();
+        }
+        function display(alldetails){
+            alldetails.forEach((info) => {
+                var mydiv=document.createElement("div")
+                mydiv.setAttribute("class","info")
+
+                 var mypostid=document.createElement("p")
+                mypostid.innerHTML=info.postId
+
+                var mybody=document.createElement("p")
+                mybody.innerHTML=info.body
+
+                var myname=document.createElement("p")
+                myname.innerHTML=info.name
+
+                var mymail=document.createElement("p")
+                mymail.innerHTML=info.email
+
+                mydiv.appendChild(mypostid)
+                mydiv.appendChild(mybody)
+                mydiv.appendChild(myname)
+                mydiv.appendChild(mymail)
+                
+                document.getElementById("info").appendChild(mydiv)
+            });
+        }
+
+    </script>
+</body>
+</html>

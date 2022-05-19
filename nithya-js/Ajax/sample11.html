@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getusers()">data</button>
+    <div id="row"></div>
+    <script>
+        function getusers(){
+            var getdata=new XMLHttpRequest();
+
+            getdata.onreadystatechange=function (){
+                if(getdata.status==200 && getdata.readyState==4){
+                    let allphotos=JSON.parse(this.response)
+                    display(allphotos)
+                }
+            };
+            getdata.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getdata.send();
+        }
+        function display(allphotos){
+            allphotos.forEach((row) => {
+                var mydiv=document.createElement("div")
+                mydiv.setAttribute("class","row")
+
+                 var myalbumId=document.createElement("p")
+                 myalbumId.innerHTML=row.albumId
+
+                
+
+                var myid=document.createElement("p")
+                myid.innerHTML=row.id
+               
+                var mytitle=document.createElement("p")
+                mytitle.innerHTML=row.title
+
+                var myurl=document.createElement("p")
+                myurl.innerHTML=row.url
+                    
+                var mythumbnailUrl=document.createElement("p")
+                mythumbnailUrl.innerHTML=row.thumbnailUrl
+
+                mydiv.appendChild(myalbumId)
+                mydiv.appendChild(myid)
+                mydiv.appendChild(mytitle)
+                mydiv.appendChild(myurl)
+                mydiv.appendChild(mythumbnailUrl)
+                
+                document.getElementById("row").appendChild(mydiv)
+            });
+        }
+</script>
+</body>
+</html>

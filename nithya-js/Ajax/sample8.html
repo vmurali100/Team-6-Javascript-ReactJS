@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getusers()">getusers</button>
+    <div id="data"></div>
+    <script>
+        function getusers(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status == 200 && getData.readyState==4){
+                    let alldetails=JSON.parse(this.response)
+                    displayall(alldetails)
+                }
+
+            };
+            getData.open("GET","https://fakestoreapi.com/users");
+            getData.send();
+        }
+        function displayall(alldetails){
+            alldetails.forEach(data => {
+                var mydiv=document.createElement("div")
+                mydiv.setAttribute("class","data")
+
+                 var myfname=document.createElement("p")
+                 myfname.innerHTML=data.firstname
+
+                // var myname=document.createElement("p")
+                // myname.innerHTML=data.name
+
+                // var myuser=document.createElement("p")
+                // myuser.innerHTML=data.username
+
+                mydiv.appendChild(myfname)
+                document.getElementById("data").appendChild(mydiv)
+            });
+        }
+    </script>
+</body>
+</html>

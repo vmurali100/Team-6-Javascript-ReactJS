@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="mydata()">mydata</button>
+    <div id="moto"></div>
+    <script>
+        function mydata(){
+            var getdata=new XMLHttpRequest();
+
+            getdata.onreadystatechange=function (){
+                if(getdata.status==200 && getdata.readyState==4){
+                    let alldata=JSON.parse(this.response)
+                    display(alldata)
+                }
+            };
+            getdata.open("GET","https://jsonplaceholder.typicode.com/albums")
+            getdata.send();
+        }
+        function display(alldata){
+            alldata.forEach((moto) => {
+                var mydiv=document.createElement("div")
+                mydiv.setAttribute("class","moto")
+
+                 var myuserId=document.createElement("p")
+                 myuserId.innerHTML=moto.userId
+
+                var mytitle=document.createElement("p")
+                mytitle.innerHTML=moto.title
+
+                var myid=document.createElement("p")
+                myid.innerHTML=moto.id
+
+               
+
+                mydiv.appendChild(myuserId)
+                mydiv.appendChild(mytitle)
+                mydiv.appendChild(myid)
+             
+                
+                document.getElementById("moto").appendChild(mydiv)
+            });
+        }
+
+
+    </script>
+</body>
+</html>

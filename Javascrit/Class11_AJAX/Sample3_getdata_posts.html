@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            text-align: center;
+             width: 1000px;
+            border: 2px solid red;
+        }
+        th{
+            background-color: aquamarine;
+            border: 2px solid green;
+        }
+        button{
+            margin-left: 700px;
+            color: white;
+            background-color: cornflowerblue;
+        }
+         
+    </style>
+</head>
+
+<body>
+    <button onclick="GetDataFromAPI()" type="button">GET DATA</button>
+    <hr>
+    <table>
+        <tr>
+            <thead>
+                <th>userId</th>
+                <th>id</th>
+                <th>title</th>
+                <th>body</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    let Coursedata = JSON.parse(this.response)
+                    displayUsers(Coursedata)
+                }
+            }
+            getData.open("GET", "https://jsonplaceholder.typicode.com/posts");
+            getData.send()
+        }
+
+        function displayUsers(Coursedata) {
+            document.querySelector("tbody").innerHTML = ""
+            Coursedata.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+         
+    </script>
+</body>
+
+</html>

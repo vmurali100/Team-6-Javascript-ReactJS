@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+             color: rgb(43, 226, 125);
+        }
+        button{
+           margin-left: 700px;
+           background-color: rgb(212, 255, 0);
+        }
+         
+    </style>
+</head>
+<body>
+     <button onclick="GetDataFromAPI()">GET DATA</button>
+    <div id="products"></div>
+   <img src="" alt="" id="url">
+  
+<script>
+    function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    let allProducts = JSON.parse(this.response)
+                    displayUsers(allProducts)
+                }
+            };
+            getData.open("GET", "https://jsonplaceholder.typicode.com/photos");
+            getData.send();
+        }
+
+        function displayUsers(allProducts){
+            allProducts.forEach((product) => {
+            var myproductDiv = document.createElement("div");
+            myproductDiv.setAttribute("class","Product")
+            var url = document.createElement("img");
+            url.setAttribute("src",product.url);
+
+            var thumbnailUrl = document.createElement("img");
+            thumbnailUrl.setAttribute("src",product.thumbnailUrl);
+
+            var title = document.createElement("p")
+            title.innerHTML = product.title
+
+            var id = document.createElement("h1")
+            id.innerHTML = product.id
+
+            var albumId = document.createElement("h1")
+            albumId.innerHTML = product.albumId
+
+            
+
+            myproductDiv.appendChild(url)
+            myproductDiv.appendChild(thumbnailUrl)
+            myproductDiv.appendChild(title)
+            myproductDiv.appendChild(id)
+            myproductDiv.appendChild(albumId)
+
+            document.getElementById("products").appendChild(myproductDiv);
+            
+        });
+        }
+</script>
+         
+</body>
+
+</html>

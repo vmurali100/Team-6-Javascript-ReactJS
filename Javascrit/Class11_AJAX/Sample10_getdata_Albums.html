@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+             color: rgb(43, 226, 125);
+        }
+        button{
+           margin-left: 700px;
+           background-color: rgb(212, 255, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="GetDataFromAPI()" type="button">GET DATA</button>
+    <hr>
+    <table border="1" id="div">
+        <tr>
+            <thead>
+                <th>userId</th>
+                <th>id</th>
+                <th>title</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+
+    <script>
+
+
+        function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    let allProducts = JSON.parse(this.response)
+                    displayUsers(allProducts)
+                }
+            }
+            getData.open("GET", "https://jsonplaceholder.typicode.com/albums");
+            getData.send()
+        }
+        function displayUsers(Coursedata) {
+            document.querySelector("tbody").innerHTML = ""
+            Coursedata.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+    </script>
+</body>
+
+</html>

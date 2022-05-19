@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GetusersFromjsonp()">Get Data From API</button>
+    <div id="myusers"></div>
+    <script>
+        function GetusersFromjsonp(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allusers = JSON.parse(this.response)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true")
+            getData.send()
+        }
+        function displayUsers(allusers){
+            allusers.forEach((mytrue)=>{
+            var myusersDiv = document.createElement("div");
+            myusersDiv.setAttribute("class","usersDiv")
+
+            var fname = document.createElement("p")
+            fname.innerHTML = mytrue.fname  
+
+            var lname= document.createElement("h4")
+            lname.innerHTML = mytrue.lname
+            
+            var tel= document.createElement("p")
+            tel.innerHTML = mytrue.tel
+
+            var address= document.createElement("h4")
+            address.innerHTML = mytrue.address
+                        
+            var city= document.createElement("p");
+            city.innerHTML = mytrue.city
+
+            var state= document.createElement("h4")
+            state.innerHTML = mytrue.state
+
+            var zip= document.createElement("p")
+            zip.innerHTML = mytrue.zip
+            
+            myusersDiv.appendChild(fname)
+            myusersDiv.appendChild(lname)  
+            myusersDiv.appendChild(tel) 
+            myusersDiv.appendChild(address) 
+            myusersDiv.appendChild(city) 
+            myusersDiv.appendChild(state) 
+            myusersDiv.appendChild(zip)                
+            
+           document.getElementById("myusers").appendChild(myusersDiv)
+        })
+        }
+    </script>
+</body>
+</html>

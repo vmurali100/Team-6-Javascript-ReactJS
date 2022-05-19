@@ -37,20 +37,15 @@
             id.innerHTML = photos.id
 
             var title= document.createElement("h4")
-            title.innerHTML = photos.title
+            title.innerHTML = photos.title           
 
-            var url= document.createElement("h4")
-            url.innerHTML = photos.url            
-
-            var thumbnailUrl= document.createElement("h4")
-            thumbnailUrl.innerHTML = photos.thumbnailUrl
+            var thumbnailUrl = document.createElement("img");
+            thumbnailUrl.setAttribute("src",photos.thumbnailUrl);
             
             myphotosDiv.appendChild(albumId)
             myphotosDiv.appendChild(id)  
             myphotosDiv.appendChild(title) 
-            myphotosDiv.appendChild(url)            
             myphotosDiv.appendChild(thumbnailUrl)
-                
             
            document.getElementById("mycomments").appendChild(myphotosDiv)
         })

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <button type="button" onclick="GettureFromfilltext()">Get Data From API</button>
+    <div id="mytrue"></div>
+    <script>
+        function GettureFromfilltext(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let alltrue = JSON.parse(this.response)
+                    displayUsers(alltrue)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+            getData.send()
+        }
+        function displayUsers(alltrue){
+            alltrue.forEach((ture)=>{
+            var mytrueDiv = document.createElement("div");
+            mytrueDiv.setAttribute("class","usersDiv")
+
+            var id = document.createElement("p")
+            id.innerHTML = ture.id
+
+            var email= document.createElement("p")
+            email.innerHTML = ture.email
+                        
+            var username= document.createElement("p")
+            username.innerHTML = ture.username
+
+            var password= document.createElement("p")
+            password.innerHTML = ture.password
+            
+            mytrueDiv.appendChild(id)
+            mytrueDiv.appendChild(email) 
+            mytrueDiv.appendChild(username) 
+            mytrueDiv.appendChild(password)
+                
+            
+           document.getElementById("mytrue").appendChild(mytrueDiv)
+        })
+        }
+    </script>
+</body>
+</html>

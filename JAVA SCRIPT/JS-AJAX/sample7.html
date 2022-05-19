@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product{
+            border: 2px solid yellow;
+            margin: 3px;
+            padding: 5px;
+            float: left;
+            width: 30%;
+            height: 215px;
+        }
+        
+    </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()" type="button">get data</button>
+    <div id="products"></div>
+
+    <script>
+        function getDataFromAPI(){
+             var getData=new XMLHttpRequest();
+
+             getData.onreadystatechange=function(){
+                 if( getData.readyState==4&& getData.status==200){
+                     console.log(getData.response)
+                     let allposts=JSON.parse(getData.response)
+                     displayusers(allposts)
+                 }
+             }
+             
+             getData.open("GET","https://jsonplaceholder.typicode.com/comments");
+              getData.send()
+            
+            }
+
+            function displayusers(allposts){
+                allposts.forEach((post) => {
+                    var myproductdiv=document.createElement("div")
+                    myproductdiv.setAttribute("class","product")
+
+                  
+                    var mypostedid=document.createElement("p")
+                    mypostedid.innerHTML=post.postedId ;
+
+                    
+                    var email=document.createElement("email")
+                    email.innerHTML=post.email ;
+
+                    var myid=document.createElement("p")
+                    myid.innerHTML=post.id;                  
+
+
+                    
+                    var myname=document.createElement("p")
+                    myname.innerHTML=post.name ;
+
+                    var mybody=document.createElement("p")
+                    mybody.innerHTML=post.body ;
+
+                    
+                    myproductdiv.appendChild(mypostedid)
+                    myproductdiv.appendChild(email)
+                    myproductdiv.appendChild(myid)
+                    myproductdiv.appendChild(myname)
+                    myproductdiv.appendChild(mybody)                   
+
+                    document.getElementById("products").appendChild(myproductdiv)
+                    
+                })
+            }
+
+    </script>
+</body>
+</html>

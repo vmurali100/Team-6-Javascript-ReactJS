@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product{
+            border: 2px solid yellow;
+            margin: 3px;
+            padding: 5px;
+            float: left;
+            width: 30%;
+            height: 215px;
+        }
+        
+    </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()" type="button">get data</button>
+    <div id="products"></div>
+
+    <script>
+        function getDataFromAPI(){
+             var getData=new XMLHttpRequest();
+
+             getData.onreadystatechange=function(){
+                 if( getData.readyState==4&& getData.status==200){
+                     console.log(getData.response)
+                     let allposts=JSON.parse(getData.response)
+                     displayusers(allposts)
+                 }
+             }
+             
+             getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true");
+              getData.send()
+            
+            }
+
+            function displayusers(allposts){
+                allposts.forEach((post) => {
+                    var myproductdiv=document.createElement("div")
+                    myproductdiv.setAttribute("class","product")
+
+                    // fname
+                    var myfname=document.createElement("fname")
+                    myfname.innerHTML=post.fname;
+
+                    // lname
+
+
+                    var mylname=document.createElement("lname")
+                    mylname.innerHTML=post.lname
+
+                    // telnumber
+
+                    var mytel=document.createElement("number")
+                    mytel.innerHTML=post.tel
+
+                    // address
+
+                    var myaddress=document.createElement("p")
+                    myaddress.innerHTML=post.address      
+                    
+                     // city
+
+                     var mycity=document.createElement("p")
+                     mycity.innerHTML=post.city      
+
+                     
+                     //state
+
+                     var mystate=document.createElement("p")
+                     mystate.innerHTML=post.state  
+                     
+                     
+                     //zip
+
+                     var myzip=document.createElement("number")
+                     myzip.innerHTML=post.zip  
+                    
+                    myproductdiv.appendChild(myfname)
+                    myproductdiv.appendChild(mylname)
+                    myproductdiv.appendChild(mytel)
+                    myproductdiv.appendChild(myaddress)
+                    myproductdiv.appendChild(mycity)
+                    myproductdiv.appendChild(mystate)
+                    myproductdiv.appendChild(myzip)
+
+                    document.getElementById("products").appendChild(myproductdiv)
+                    
+                })
+            }
+
+    </script>
+</body>
+</html>

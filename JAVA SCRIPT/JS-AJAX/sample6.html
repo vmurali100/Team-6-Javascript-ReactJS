@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product{
+            border: 2px solid yellow;
+            margin: 3px;
+            padding: 5px;
+            float: left;
+            width: 30%;
+            height: 215px;
+        }
+        
+    </style>
+</head>
+<body>
+    <button onclick="getDataFromAPI()" type="button">get data</button>
+    <div id="products"></div>
+
+    <script>
+        function getDataFromAPI(){
+             var getData=new XMLHttpRequest();
+
+             getData.onreadystatechange=function(){
+                 if( getData.readyState==4&& getData.status==200){
+                     console.log(getData.response)
+                     let allposts=JSON.parse(getData.response)
+                     displayusers(allposts)
+                 }
+             }
+             
+             getData.open("GET","https://fakestoreapi.com/users");
+              getData.send()
+            
+            }
+
+            function displayusers(allposts){
+                allposts.forEach((post) => {
+                    var myproductdiv=document.createElement("div")
+                    myproductdiv.setAttribute("class","product")
+
+                  
+                    var myid=document.createElement("p")
+                    myid.innerHTML=post.id;                  
+
+
+                    var myuser=document.createElement("p")
+                    myuser.innerHTML=post.username ;
+                    
+                    var mymail=document.createElement("email")
+                    mymail.innerHTML=post.email ;
+
+                    var myphone=document.createElement("number")
+                    myphone.innerHTML=post.phone ;
+
+                    
+                    myproductdiv.appendChild(myid)
+                    myproductdiv.appendChild(myuser)
+                    myproductdiv.appendChild(mymail)
+                    myproductdiv.appendChild(myphone)
+                   
+
+                    document.getElementById("products").appendChild(myproductdiv)
+                    
+                })
+            }
+
+    </script>
+</body>
+</html>

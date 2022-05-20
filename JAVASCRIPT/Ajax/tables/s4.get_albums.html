@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getDataFromAPI()">getData</button>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>userId</th>
+                <th>id</th>
+                <th>title</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getDataFromAPI(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                    console.log(getData.response)
+                    let allAlbums = JSON.parse(getData.response)
+                    displayUsers(allAlbums)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/albums")
+            getData.send()
+        }
+        function displayUsers(allAlbums) {
+            allAlbums.forEach((user) => {
+                console.log(user)
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    
+                        myTd.innerHTML = user[a]
+                    
+                        myTd.innerHTML = JSON.stringify(user[a])
+                    
+                    
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+    </script>
+</body>
+</html>

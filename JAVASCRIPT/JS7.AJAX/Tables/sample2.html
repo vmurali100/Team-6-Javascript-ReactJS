@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="getdatauser()"> GetDataUser</button>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Email</th>
+            <th>UserName</th>
+            <th>Password</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function getdatauser(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange= function(){
+                if(getData.status==200 && getData.readyState ==4){
+                    let alluser = JSON.parse(getData.response)
+                    console.log(alluser)
+                    displaydata(alluser)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+            getData.send()
+        }
+        function displaydata(alluser){
+            alluser.forEach((user,i)=>{
+                console.log(user)
+                var myTr=document.createElement("tr")
+                for(a in user){
+                    var myTd=document.createElement("td")
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd)
+                }                
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+    </script>
+</body>
+</html>

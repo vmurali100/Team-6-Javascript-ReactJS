@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="getdatafromcarts()">GetDataCarts</button>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>UserId</th>
+            <th>date</th>
+            <th>products</th>
+            <th>productId</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getdatafromcarts(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status == 200 && getData.readyState==4){
+                    let allcarts=JSON.parse(getData.response)
+                    console.log(allcarts)
+                    saikiran(allcarts)
+            
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/carts")
+            getData.send()
+        }
+        function saikiran(allcarts){
+            allcarts.forEach((sai,i)=>{
+                console.log(sai)
+                var myTr=document.createElement("tr")
+                for(a in sai){
+                    var myTd=document.createElement("td")
+                    if(a !=="products"){
+                        myTd.innerHTML=sai[a]
+                    }else{
+                        myTd.innerHTML=JSON.stringify(sai[a])
+                    }
+                    
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+            
+        }
+    </script>
+</body>
+</html>

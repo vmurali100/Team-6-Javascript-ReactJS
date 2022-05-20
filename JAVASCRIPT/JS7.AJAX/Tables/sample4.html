@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="Getuserdata()">Getuserdata</button>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function Getuserdata(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function (){
+               if(getData.status == 200 && getData.readyState == 4){
+                   let alluser = JSON.parse(getData.response)
+                   console.log(alluser)
+                   displayusers(alluser)  
+               } 
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+            getData.send()
+        }
+
+        function displayusers(alluser){
+            alluser.forEach((sai,i)=>{
+                console.log(sai)
+                var myTr=document.createElement("tr")
+                document.querySelector("tbody").appendChild(myTr)
+                for(a in sai){
+                    var myTd =document.createElement("td")
+                    myTd.innerHTML=sai[a]
+                    myTr.appendChild(myTd)
+                }
+            })
+        }
+    </script>
+</body>
+</html>

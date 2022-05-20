@@ -8,9 +8,11 @@
     <style>
         table {
             margin: 0 auto;
-            text-align: center;
             width: 1000px;
-             color: rgb(43, 226, 125);
+        }
+        th{
+            background-color: darkcyan;
+            color: white;
         }
         button{
            margin-left: 700px;
@@ -41,6 +43,7 @@
                 if (getData.status == 200 && getData.readyState == 4) {
                     let allProducts = JSON.parse(this.response)
                     displayUsers(allProducts)
+                    console.log(allProducts)
                 }
             };
             getData.open("GET", "https://jsonplaceholder.typicode.com/photos");

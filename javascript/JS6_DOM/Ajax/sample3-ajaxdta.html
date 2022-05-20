@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-         img{
+      img {
         width: 30%;
-    }
-    .product {
-     border: 1px solid red;
-    margin: 2px;
-    width: 30%;
-    float: left;
-    height: 250px;
-    padding: 10px;
-
-    }
+      }
+      .product {
+        border: 1px solid red;
+        margin: 2px;
+        width: 30%;
+        float: left;
+        height: 250px;
+        padding: 10px;
+      }
     </style>
-   
-
-</head>
-<body>
-    <button type="button" onclick="getDataapi()">GETDATA</button>
+  </head>
+  <body>
+    <button type="button" onclick="getDataFromAPI()">GETDATA</button>
     <div id="products"></div>
-    <img src="" alt="">
+    <img src="" alt="" id="url"/>
     <script>
-        function getDataapi(){
-            var getdata = new XMLHttpRequest();
+      function getDataFromAPI(){
+          var getData = new XMLHttpRequest();
 
-            getdata.readyState = function(){
-                if(getdata.status == 200 && getdata.readyState == 4){
-                    let allfashions=JSON.parse(this.response)
-                    display(allfashions)
-                }
-            };
-            getdata.open("GET","https://jsonplaceholder.typicode.com/photos");
-        }
+          getData.onreadystatechange = function(){
+              if(getData.status == 200 && getData.readyState == 4){
+                  console.log(this.response);
+                  let allproducts=JSON.parse(this.response)
+                 displayUsers(allproducts)
+              }
+          };
+          getData.open("GET","https://jsonplaceholder.typicode.com/photos");
+          getData.send();
+      }
 
-        function display(allfashions){
-            allfashions.forEach((product)=>{
-                
-         
-                var myProductDiv=document.createElement("div");
-            myProductDiv.setAttribute("class","product");
+      function displayUsers(allproducts){
 
-            var myImg=document.createElement("url");
-            myImg.setAttribute("src", product.url);
+       allproducts.forEach((product)=>{
 
-            var title=document.createElement("p");
-            title.innerHTML=product.title;
 
-            myProductDiv.appendChild(title);
-            myProductDiv.appendChild(myImg);
+              var myProductDiv = document.createElement("div");
+               myProductDiv.setAttribute("class","product");
 
-            document.getElementById("products").appendChild(myProductDiv)
-            });
-        }
+          var myurl = document.createElement("img");
+              myurl.setAttribute("src",product.myurl);
+
+              var thumbnailurl = document.createElement("img");
+              thumbnailurl.setAttribute("src",product.thumbnailurl);
+
+          var title = document.createElement("p");
+          title.innerHTML = product.title
+
+          var id = document.createElement("h1");
+          id.innerHTML = product.id
+
+          var albumId = document.createElement("h1");
+         albumId.innerHTML = product.albumId
+
+
+
+          myProductDiv.appendChild(title);
+          myProductDiv.appendChild(myurl);
+          myProductDiv.appendChild(thumbnailurl);
+          myProductDiv.appendChild(id);
+          myProductDiv.appendChild(albumId);
+
+          document.getElementById("products").appendChild(myProductDiv);
+          });
+      }
     </script>
-</body>
+  </body>
 </html>

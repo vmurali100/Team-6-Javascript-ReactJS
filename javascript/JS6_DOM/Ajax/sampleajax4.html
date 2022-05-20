@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>UserID</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>body</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <button type="button" onclick="getdataFromAPI()">GetData</button>
+    <div id="Posts"></div>
+    <script>
+        function getdataFromAPI(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allPosts= JSON.parse(this.response)
+                    displayUsers(allPosts)
+                }
+            };
+            getData.open("GET","https://jsonplaceholder.typicode.com/posts");
+            getData.send();
+        }
+
+      function displayUsers(allPosts){
+
+            allPosts.forEach((product)=>{
+
+         var myProductDiv=document.createElement("div");
+         myProductDiv.setAttribute("class","product");
+
+  var userId=document.createElement("h1");
+  userId.innerHTML=product.userId
+  
+  var myId=document.createElement("h1");
+ myId.innerHTML=product.myId
+
+  var title=document.createElement("p");
+  title.innerHTML=product.title
+  
+  var mybody=document.createElement("h1");
+  mybody.innerHTML=product.mybody
+
+  myProductDiv.appendChild(userId);
+  myProductDiv.appendChild(myId);
+  myProductDiv.appendChild(title);
+  myProductDiv.appendChild(mybody);
+
+  document.getElementById("Posts").appendChild(myProductDiv);
+
+});
+        }
+    </script>
+</body>
+</html>

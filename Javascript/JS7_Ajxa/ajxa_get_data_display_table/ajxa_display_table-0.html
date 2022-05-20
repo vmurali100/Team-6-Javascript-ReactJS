@@ -7,7 +7,8 @@
     <title>Document</title>
     <style>
         img{
-            width: 10%;
+            width: 50px;
+            height: 50px;
         }
         body{
             width: 100%;
@@ -65,18 +66,22 @@
             getData.open("GET","https://fakestoreapi.com/products")
             getData.send()
         }
-        function displayUsers(allProducts){
-            allProducts.forEach((products, i) => {
-                console.log(products)
-                var myTr = document.createElement('tr');
-                for (a in products){
-                    var myTd = document.createElement("td");  
-                    var myImg = document.createElement("img");
-                    myImg.setAttribute("src",products.image);  
-                    myTd.innerHTML = products[a]                
-                    myTr.appendChild(myTd)
-                    myTd.appendChild(myImg)
-                }
+        function displayUsers(allPhotos){
+            allPhotos.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for(a in user){
+                    if(a !=="image"){
+                        var myTd = document.createElement("td")                    
+                        myTd.innerHTML= user[a]
+                        myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src", user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+                    }
+                }      
                 document.querySelector("tbody").appendChild(myTr)
             });
         }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(0, 255, 106);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: rgb(104, 127, 190);
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 109, 164);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GetCartsFromAPI()">Get Data</button><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User Id</th>
+                <th>Date</th>
+                <th>Products</th>
+                <th>__V</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+        function GetCartsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    //console.log(this.response)
+                    let allCarts = JSON.parse(this.response)
+                    console.log(allCarts)
+                    displayUsers(allCarts)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/carts")
+            getData.send()
+        }
+        function displayUsers(allCarts){
+            allCarts.forEach((carts, i) => {
+                console.log(carts)
+                var myTr = document.createElement("tr");
+                    for (a in carts){
+                        var myTd = document.createElement("td")
+                        if(a !== "products"){
+                            myTd.innerHTML = carts[a]
+                        }else{
+                            myTd.innerHTML=JSON.stringify(carts[a])
+                            // var details = ""
+                            // for (b in carts[a]){
+                            //     details = details + b + " : " + carts[a][b] + "<br>"
+                            // }
+                            // myTd.innerHTML = details
+                        }
+                        myTr.appendChild(myTd)
+                    }
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+    </script>
+</body>
+</html>

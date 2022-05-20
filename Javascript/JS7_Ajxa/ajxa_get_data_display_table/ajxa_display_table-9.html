@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(255, 136, 0);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: aqua;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 109, 164);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GettureFromfilltext()">Get Data From API</button><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>User Name</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+        function GettureFromfilltext(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    //console.log(this.response)
+                    let alltrue = JSON.parse(this.response)
+                    console.log(alltrue)
+                    displayUsers(alltrue)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+            getData.send()
+        }
+        function displayUsers(alltrue){
+            alltrue.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for(a in user){
+                    var myTd = document.createElement("td")                    
+                    myTd.innerHTML= user[a]
+                    myTr.appendChild(myTd)
+                }      
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+    </script>
+</body>
+</html>

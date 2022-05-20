@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(255, 136, 0);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: aqua;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 109, 164);
+        }
+    </style>
+   
+</head>
+<body>
+    <button type="button" onclick="GetpostsFromAPI()">Get Data</button><br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function GetpostsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    //console.log(this.response)
+                    let allposts = JSON.parse(this.response)
+                    console.log(allposts)
+                    displayUsers(allposts)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/posts")
+            getData.send()
+        }
+        function displayUsers(allposts){
+            allposts.forEach((posts, i) => {
+                var myTr = document.createElement("tr");
+                for(a in posts){
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = posts[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+    </script>
+</body>
+</html>

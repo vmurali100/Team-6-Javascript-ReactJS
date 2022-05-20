@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(116, 218, 141);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: rgb(228, 47, 155);
+        }
+        tr:nth-child(even) {
+            background-color: rgb(149, 233, 153);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GetphotosFromAPI()">Get Data From API</button>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>AlbumId</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Url</th>
+                <th>ThumbnailUrl</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <img src="" alt="">
+    <script>
+        function GetphotosFromAPI(){
+            var getData = new XMLHttpRequest(); 
+
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                    //console.log(this.response)
+                let allPhotos = JSON.parse(this.response);
+                console.log(allPhotos)
+                displayUsers(allPhotos)
+                }                
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getData.send()
+        }
+
+        function displayUsers(allPhotos){
+            allPhotos.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for(a in user){
+                    var myTd = document.createElement("td")                    
+                    myTd.innerHTML= user[a]
+                    myTr.appendChild(myTd)
+                }      
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+    </script>
+</body>
+</html>

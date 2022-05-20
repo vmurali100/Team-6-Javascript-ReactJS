@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(224, 168, 142);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: rgb(224, 161, 199);
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 109, 164);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GetusersFromAPI()">Get Data</button><br>
+    <table border="1">
+        <thead>
+            <th>Address</th>
+            <th>Id</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Phone No</th>
+            <th>__V</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function GetusersFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function (){
+                if(getData.status == 200 && getData.readyState == 4){
+                    //console.log(this.response)
+                    let allUsers = JSON.parse(this.response)
+                    console.log(allUsers)
+                    displayUsers(allUsers)
+                }
+            };
+            getData.open("GET","https://fakestoreapi.com/users")
+            getData.send()
+        }
+        function displayUsers(allUsers){
+            allUsers.forEach((users, i) => {
+                console.log(users)
+                var myTr = document.createElement("tr")
+                for (a in users){
+                    var myTd = document.createElement("td")
+                    if(a !== "address" && a !== "name"){
+                        myTd.innerHTML = users[a]
+                    }else{
+                        myTd.innerHTML = JSON.stringify(users[a])
+                        // var details = ""
+                        // for(b in users){
+                        //     details = details + b + " : "  + users[a][b] + "<br>"
+                        // } 
+                        // myTd.innerHTML = details
+                    }
+                    
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)                
+            });
+        }
+    </script>
+    
+         
+</body>
+</html>

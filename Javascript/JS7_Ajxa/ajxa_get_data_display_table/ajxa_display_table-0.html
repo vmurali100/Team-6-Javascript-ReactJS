@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 10%;
+        }
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(255, 136, 0);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: aqua;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 109, 164);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GetProductsFromAPI()">Get Data</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Description</th>                
+                <th>Category</th>
+                <th>Image</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <img src="" alt="">
+    <script>
+        function GetProductsFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    //console.log(this.response)
+                    let allProducts = JSON.parse(this.response)
+                    console.log(allProducts)
+                    displayUsers(allProducts)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/products")
+            getData.send()
+        }
+        function displayUsers(allProducts){
+            allProducts.forEach((products, i) => {
+                console.log(products)
+                var myTr = document.createElement('tr');
+                for (a in products){
+                    var myTd = document.createElement("td");  
+                    var myImg = document.createElement("img");
+                    myImg.setAttribute("src",products.image);  
+                    myTd.innerHTML = products[a]                
+                    myTr.appendChild(myTd)
+                    myTd.appendChild(myImg)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+    </script>
+</body>
+</html>

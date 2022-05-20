@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+        button{
+            background-color: rgb(255, 136, 0);
+            margin: 20px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: aqua;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 109, 164);
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="GetusersFromjsonp()">Get Data From API</button><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>fname</th>
+                <th>lname</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function GetusersFromjsonp(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    console.log(this.response)
+                    let allusers = JSON.parse(this.response)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+            getData.send()
+        }
+        function displayUsers(allusers){
+            allusers.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for(a in user){
+                    var myTd = document.createElement("td")                    
+                    myTd.innerHTML= user[a]
+                    myTr.appendChild(myTd)
+                }      
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        } 
+    </script>
+</body>
+</html>

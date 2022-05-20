@@ -8,6 +8,16 @@
 </head>
 <body>
     <button onclick="getusers()">data</button>
+    <table border="1">
+        <thead>
+            <th>albumId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Url</th>
+            <th>thumbnailUrl</th>
+        </thead>
+        <tbody></tbody>
+    </table>
     <div id="row"></div>
     <script>
         function getusers(){
@@ -23,34 +33,41 @@
             getdata.send();
         }
         function display(allphotos){
-            allphotos.forEach((row) => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","row")
+            allphotos.forEach((row,i) => {
+                var mytr=document.createElement("tr")
+                for(a in row){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=row[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","row")
 
-                 var myalbumId=document.createElement("p")
-                 myalbumId.innerHTML=row.albumId
+                //  var myalbumId=document.createElement("p")
+                //  myalbumId.innerHTML=row.albumId
 
                 
 
-                var myid=document.createElement("p")
-                myid.innerHTML=row.id
+                // var myid=document.createElement("p")
+                // myid.innerHTML=row.id
                
-                var mytitle=document.createElement("p")
-                mytitle.innerHTML=row.title
+                // var mytitle=document.createElement("p")
+                // mytitle.innerHTML=row.title
 
-                var myurl=document.createElement("p")
-                myurl.innerHTML=row.url
+                // var myurl=document.createElement("p")
+                // myurl.innerHTML=row.url
                     
-                var mythumbnailUrl=document.createElement("p")
-                mythumbnailUrl.innerHTML=row.thumbnailUrl
+                // var mythumbnailUrl=document.createElement("p")
+                // mythumbnailUrl.innerHTML=row.thumbnailUrl
 
-                mydiv.appendChild(myalbumId)
-                mydiv.appendChild(myid)
-                mydiv.appendChild(mytitle)
-                mydiv.appendChild(myurl)
-                mydiv.appendChild(mythumbnailUrl)
+                // mydiv.appendChild(myalbumId)
+                // mydiv.appendChild(myid)
+                // mydiv.appendChild(mytitle)
+                // mydiv.appendChild(myurl)
+                // mydiv.appendChild(mythumbnailUrl)
                 
-                document.getElementById("row").appendChild(mydiv)
+                // document.getElementById("row").appendChild(mydiv)
             });
         }
 </script>

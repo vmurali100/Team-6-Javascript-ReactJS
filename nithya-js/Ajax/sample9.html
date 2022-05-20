@@ -8,6 +8,16 @@
 </head>
 <body>
     <button onclick="data()">data</button>
+    <table border="1">
+        <thead>
+            <th>postId</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+        </thead>
+        <tbody></tbody>
+    </table>
     <div id="info"></div>
     <script>
         function data(){
@@ -23,28 +33,35 @@
             getdata.send();
         }
         function display(alldetails){
-            alldetails.forEach((info) => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","info")
+            alldetails.forEach((info,i) => {
+                var mytr=document.createElement("tr")
+                for(a in info){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=info[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","info")
 
-                 var mypostid=document.createElement("p")
-                mypostid.innerHTML=info.postId
+                //  var mypostid=document.createElement("p")
+                // mypostid.innerHTML=info.postId
 
-                var mybody=document.createElement("p")
-                mybody.innerHTML=info.body
+                // var mybody=document.createElement("p")
+                // mybody.innerHTML=info.body
 
-                var myname=document.createElement("p")
-                myname.innerHTML=info.name
+                // var myname=document.createElement("p")
+                // myname.innerHTML=info.name
 
-                var mymail=document.createElement("p")
-                mymail.innerHTML=info.email
+                // var mymail=document.createElement("p")
+                // mymail.innerHTML=info.email
 
-                mydiv.appendChild(mypostid)
-                mydiv.appendChild(mybody)
-                mydiv.appendChild(myname)
-                mydiv.appendChild(mymail)
+                // mydiv.appendChild(mypostid)
+                // mydiv.appendChild(mybody)
+                // mydiv.appendChild(myname)
+                // mydiv.appendChild(mymail)
                 
-                document.getElementById("info").appendChild(mydiv)
+                // document.getElementById("info").appendChild(mydiv)
             });
         }
 

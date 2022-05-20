@@ -9,6 +9,14 @@
 <body>
     <button onclick="mydata()">mydata</button>
     <div id="moto"></div>
+    <table border="1">
+        <thead>
+            <th>userId</th>
+            <th>Id</th>
+            <th>Title</th>
+        </thead>
+        <tbody></tbody>
+    </table>
     <script>
         function mydata(){
             var getdata=new XMLHttpRequest();
@@ -23,27 +31,34 @@
             getdata.send();
         }
         function display(alldata){
-            alldata.forEach((moto) => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","moto")
+            alldata.forEach((moto,i) => {
+                var mytr=document.createElement("tr")
+                for(a in moto){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=moto[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","moto")
 
-                 var myuserId=document.createElement("p")
-                 myuserId.innerHTML=moto.userId
+                //  var myuserId=document.createElement("p")
+                //  myuserId.innerHTML=moto.userId
 
-                var mytitle=document.createElement("p")
-                mytitle.innerHTML=moto.title
+                // var mytitle=document.createElement("p")
+                // mytitle.innerHTML=moto.title
 
-                var myid=document.createElement("p")
-                myid.innerHTML=moto.id
+                // var myid=document.createElement("p")
+                // myid.innerHTML=moto.id
 
                
 
-                mydiv.appendChild(myuserId)
-                mydiv.appendChild(mytitle)
-                mydiv.appendChild(myid)
+                // mydiv.appendChild(myuserId)
+                // mydiv.appendChild(mytitle)
+                // mydiv.appendChild(myid)
              
                 
-                document.getElementById("moto").appendChild(mydiv)
+                // document.getElementById("moto").appendChild(mydiv)
             });
         }
 

@@ -8,7 +8,16 @@
 </head>
 <body>
     <button onclick="getinfo()">getinfo</button>
-    <div id="data"></div>
+    <table border="1" style="color: blue; background: red;">
+    <thead>
+        <th>Id</th>
+        <th>UserId</th>
+        <th>Date</th>
+        <th>products</th>
+    </thead>
+    <tbody></tbody>
+</table>
+    <!-- <div id="data"></div> -->
     <script>
         function getinfo(){
             var getdata= new XMLHttpRequest();
@@ -17,28 +26,47 @@
                 if(getdata.status == 200 && getdata.readyState==4){
                     let alldetails=JSON.parse(this.response)
                     displaydata(alldetails)
+                    console.log(alldetails)
                 }
             }
             getdata.open("GET","https://fakestoreapi.com/carts");
             getdata.send();
         }
         function displaydata(alldetails){
-            alldetails.forEach(data => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","data")
+            alldetails.forEach((data,i) => {
+                console.log(data)
+                var mytr=document.createElement("tr")
+                for(b in data){
+                    var mytd=document.createElement("td")
+                    if(b !== "products"){
+                        mytd.innerHTML=data[b]
+                    }else{
+                        mytd.innerHTML=JSON.stringify(data[b])
+                        // var info=""
+                        // for(c in data[b] ){
+                        //     info=info+c+":"+data[b][c]+"</br>"
+                        // }
+                        // mytd.innerHTML=info
+                    }
+                   
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","data")
 
-                var myid=document.createElement("p")
-                myid.innerHTML=data.id
+                // var myid=document.createElement("p")
+                // myid.innerHTML=data.id
 
-                var mydate=document.createElement("p")
-                mydate.innerHTML=data.date
+                // var mydate=document.createElement("p")
+                // mydate.innerHTML=data.date
 
                 
 
-                mydiv.appendChild(myid)
-                mydiv.appendChild(mydate)
+                // mydiv.appendChild(myid)
+                // mydiv.appendChild(mydate)
                 
-                document.getElementById("data").appendChild(mydiv)
+                // document.getElementById("data").appendChild(mydiv)
                 
             });
         }

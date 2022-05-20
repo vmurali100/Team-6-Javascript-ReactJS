@@ -8,7 +8,17 @@
 </head>
 <body>
     <button onclick="getproducts()">getdata</button>
-    <div id="products"></div>
+    <table border="1">
+        <thead>
+            <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            
+        </thead>
+        <tbody></tbody>
+    </table>
+    
     <script>
         function getproducts(){
             var getdata =new XMLHttpRequest();
@@ -16,6 +26,7 @@
             getdata.onreadystatechange=function (){
                 if(getdata.status == 200 && getdata.readyState ==4){
                     let allProducts = JSON.parse(this.response)
+                    
                     displaydata(allProducts)
                 }
             };
@@ -24,19 +35,22 @@
         }
 
         function displaydata(allProducts){
-             allProducts.forEach(products => {
-                 var myproductdiv= document.createElement("div")
-                 myproductdiv.setAttribute("class","products");
+        
+             allProducts.forEach((user,i) => {
+                 console.log(user)
+                 var mytr= document.createElement("tr")
+                 for(a in user){
+                     var mytd=document.createElement("td")
+                     mytd.innerHTML=user[a]
+                     mytr.appendChild(mytd)
+                 }
+                document.querySelector("tbody").appendChild(mytr)
 
-                 var title=document.createElement("p");
-                 title.innerHTML=products.title;
-
-                 myproductdiv.appendChild(title);
-            
-                 document.getElementById("products").appendChild(myproductdiv);
-                 
+               
              });
         }
+
+       
     </script>
 </body>
 </html>

@@ -8,6 +8,15 @@
 </head>
 <body>
     <button onclick="gettodos()">data</button>
+    <table border="1">
+        <thead>
+            <th>userId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>completed</th>
+        </thead>
+        <tbody></tbody>
+    </table>
     <div id="todos"></div>
     <script>
         function gettodos(){
@@ -23,29 +32,36 @@
             getdata.send();
         }
         function display(alltodos){
-            alltodos.forEach((todos) => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","todos")
+            alltodos.forEach((todos,i) => {
+                var mytr=document.createElement("tr")
+                for(a in todos){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=todos[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","todos")
 
-                 var myuserId=document.createElement("p")
-                 myuserId.innerHTML=todos.userId
+                //  var myuserId=document.createElement("p")
+                //  myuserId.innerHTML=todos.userId
 
-                var mytitle=document.createElement("p")
-                mytitle.innerHTML=todos.title
+                // var mytitle=document.createElement("p")
+                // mytitle.innerHTML=todos.title
                
-                var myid=document.createElement("p")
-                myid.innerHTML=todos.id
+                // var myid=document.createElement("p")
+                // myid.innerHTML=todos.id
 
-                var mycompleted=document.createElement("p")
-                mycompleted.innerHTML=todos.completed
+                // var mycompleted=document.createElement("p")
+                // mycompleted.innerHTML=todos.completed
 
-                mydiv.appendChild(myuserId)
-                mydiv.appendChild(mytitle)
-                mydiv.appendChild(myid)
-                mydiv.appendChild(myid)
-                mydiv.appendChild(mycompleted)
+                // mydiv.appendChild(myuserId)
+                // mydiv.appendChild(mytitle)
+                // mydiv.appendChild(myid)
+                // mydiv.appendChild(myid)
+                // mydiv.appendChild(mycompleted)
                 
-                document.getElementById("todos").appendChild(mydiv)
+                // document.getElementById("todos").appendChild(mydiv)
             });
         }
         </script>

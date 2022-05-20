@@ -8,7 +8,16 @@
 </head>
 <body>
     <button onclick="getdatafromAPI()">get data from API</button>
-    <div id="products"></div>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Email</th>
+            <th>UserName</th>
+            <th>password</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <!-- <div id="products"></div> -->
    
     <script>
         function getdatafromAPI(){
@@ -25,24 +34,32 @@
         }
 
         function displayall(allProducts){
-            allProducts.forEach(products => {
-                var myproductsdiv=document.createElement("div")
-                myproductsdiv.setAttribute("class","products")
+            allProducts.forEach((products,i) => {
+                var mytr=document.createElement("tr")
+                for(a in products){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=products[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
 
-                var email=document.createElement("email")
-                email.innerHTML=products.email; 
+                // var myproductsdiv=document.createElement("div")
+                // myproductsdiv.setAttribute("class","products")
 
-                var myid=document.createElement("p")
-                myid.innerHTML=products.id;
+                // var email=document.createElement("email")
+                // email.innerHTML=products.email; 
 
-                var myusername=document.createElement("p")
-                myusername.innerHTML=products.username;
+                // var myid=document.createElement("p")
+                // myid.innerHTML=products.id;
 
-                myproductsdiv.appendChild(email);
-                myproductsdiv.appendChild(myid);
-                myproductsdiv.appendChild(myusername)
+                // var myusername=document.createElement("p")
+                // myusername.innerHTML=products.username;
 
-                document.getElementById("products").appendChild(myproductsdiv);
+                // myproductsdiv.appendChild(email);
+                // myproductsdiv.appendChild(myid);
+                // myproductsdiv.appendChild(myusername)
+
+                // document.getElementById("products").appendChild(myproductsdiv);
                 
             });
         }

@@ -8,6 +8,18 @@
 </head>
 <body>
     <button onclick="getdatafromAPI()">get data from API</button>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <th>tel</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip</th>
+        </thead>
+        <tbody></tbody>
+    </table>
     <div id="products"></div>
     <script>
        function  getdatafromAPI(){
@@ -24,24 +36,31 @@
        }
 
        function displayusers(allproducts){
-        allproducts.forEach(products => {
-                 var myProductDiv=document.createElement("div")
-                 myProductDiv.setAttribute("class","products")
+        allproducts.forEach((products,i) => {
+            var mytr=document.createElement("tr")
+            for(c in products){
+                var mytd=document.createElement("td")
+                mytd.innerHTML=products[c]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+                //  var myProductDiv=document.createElement("div")
+                //  myProductDiv.setAttribute("class","products")
 
-                 var myfname=document.createElement("p")
-                myfname.innerHTML=products.fname;
+                //  var myfname=document.createElement("p")
+                // myfname.innerHTML=products.fname;
 
-                var mylname=document.createElement("p")
-                mylname.innerHTML=products.lname
+                // var mylname=document.createElement("p")
+                // mylname.innerHTML=products.lname
 
-                var mytel=document.createElement("p")
-                mytel.innerHTML=products.tel
+                // var mytel=document.createElement("p")
+                // mytel.innerHTML=products.tel
 
-                myProductDiv.appendChild(myfname);
-                myProductDiv.appendChild(mylname);
-                myProductDiv.appendChild(mytel);
+                // myProductDiv.appendChild(myfname);
+                // myProductDiv.appendChild(mylname);
+                // myProductDiv.appendChild(mytel);
 
-                document.getElementById("products").appendChild(myProductDiv);
+                // document.getElementById("products").appendChild(myProductDiv);
             });
        }
     </script>

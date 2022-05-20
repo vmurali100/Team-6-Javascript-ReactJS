@@ -8,7 +8,14 @@
 </head>
 <body>
     <button onclick="getdata()">getdata</button>
-    <div id="details"></div>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <!-- <div id="details"></div> -->
     <script>
         function getdata(){
             var getdata = new XMLHttpRequest();
@@ -24,20 +31,27 @@
 
         }
         function display(productdetails){
-            productdetails.forEach(details => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","details")
+            productdetails.forEach((details,i)=> {
+                var mytr=document.createElement("tr")
+                for(a in details ){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=details[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","details")
 
-                var myfname=document.createElement("p")
-                myfname.innerHTML=details.fname
+                // var myfname=document.createElement("p")
+                // myfname.innerHTML=details.fname
 
-                var mylname=document.createElement("p")
-                mylname.innerHTML=details.lname   
+                // var mylname=document.createElement("p")
+                // mylname.innerHTML=details.lname   
                 
-                mydiv.appendChild(myfname);
-                mydiv.appendChild(mylname);
+                // mydiv.appendChild(myfname);
+                // mydiv.appendChild(mylname);
 
-                document.getElementById("details").appendChild(mydiv);
+                // document.getElementById("details").appendChild(mydiv);
                });
         }
     </script>

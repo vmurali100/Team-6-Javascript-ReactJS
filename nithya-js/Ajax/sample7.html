@@ -8,13 +8,28 @@
 </head>
 <body>
     <button onclick="getdatafromapi()">getdatafromapi</button>
-    <div id="data"></div>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Company</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+   
+    
     <script>
         function getdatafromapi(){
             var getData=new XMLHttpRequest();
             getData.onreadystatechange=function(){
                 if(getData.status == 200 && getData.readyState==4){
                     let allProducts=JSON.parse(this.response)
+                    console.log(allProducts)
                     display(allProducts)
                 }
             };
@@ -22,28 +37,24 @@
             getData.send();
         }
         function display(allProducts){
-            allProducts.forEach((data) => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","data")
-
-                 var myid=document.createElement("p")
-                myid.innerHTML=data.id
-
-                var myname=document.createElement("p")
-                myname.innerHTML=data.name
-
-                var myuser=document.createElement("p")
-                myuser.innerHTML=data.username
-
-                var mymail=document.createElement("p")
-                mymail.innerHTML=data.email
-
-                mydiv.appendChild(myid)
-                mydiv.appendChild(myname)
-                mydiv.appendChild(myuser)
-                mydiv.appendChild(mymail)
-                
-                document.getElementById("data").appendChild(mydiv)
+            allProducts.forEach((user,i) => {
+                console.log(user)
+                    var mytr=document.createElement("tr")
+                    for(a in user){
+                        var mytd=document.createElement("td")
+                        if(a !== "address" && a !== "company"){
+                            mytd.innerHTML=user[a]
+                        }else{
+                            mytd.innerHTML=JSON.stringify(user[a])
+                            var details=""
+                            for(b in user[a]){
+                                details=details+b+":"+user[a][b]+"</br>"
+                            }
+                            mytd.innerHTML=details
+                        }
+                        mytr.appendChild(mytd)
+                    }
+                    document.querySelector("tbody").appendChild(mytr)
             });
         }
     </script>

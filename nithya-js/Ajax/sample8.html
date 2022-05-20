@@ -8,7 +8,22 @@
 </head>
 <body>
     <button onclick="getusers()">getusers</button>
-    <div id="data"></div>
+    <table border="1" style="color: red; background-color: yellow;">
+    <thead>
+   
+        <th>address</th>
+    <th>Id</th>
+    
+     <th>email</th> 
+     <th>username</th>
+     <th>password</th>
+     <th></th>
+     <th>phone</th>
+    
+</thead>
+<tbody></tbody>
+</table>
+    <!-- <div id="data"></div> -->
     <script>
         function getusers(){
             var getData=new XMLHttpRequest();
@@ -23,21 +38,27 @@
             getData.send();
         }
         function displayall(alldetails){
-            alldetails.forEach(data => {
-                var mydiv=document.createElement("div")
-                mydiv.setAttribute("class","data")
+            alldetails.forEach((data,i) => {
+                var mytr=document.createElement("tr")
+                for(a in data){
+                    var mytd=document.createElement("td")
+                     if(a !== "address" ){
+                        mytd.innerHTML=data[a]
+                    }else{
+                        mytd.innerHTML=JSON.stringify(data[a])
+                    }
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                // var mydiv=document.createElement("div")
+                // mydiv.setAttribute("class","data")
 
-                 var myfname=document.createElement("p")
-                 myfname.innerHTML=data.firstname
+                //  var myfname=document.createElement("p")
+                //  myfname.innerHTML=data.firstname
 
-                // var myname=document.createElement("p")
-                // myname.innerHTML=data.name
 
-                // var myuser=document.createElement("p")
-                // myuser.innerHTML=data.username
-
-                mydiv.appendChild(myfname)
-                document.getElementById("data").appendChild(mydiv)
+                // mydiv.appendChild(myfname)
+                // document.getElementById("data").appendChild(mydiv)
             });
         }
     </script>

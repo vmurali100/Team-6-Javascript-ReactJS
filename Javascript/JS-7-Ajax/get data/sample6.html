@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img{
+       width: 60%;
+   }
+   .product{
+       border: 5px solid rgb(114, 4, 22);
+       margin: 10px;
+       width: 30%;
+       float: left;
+       height: 450px;
+       padding: 10px;
+       text-align: center;
+       color: rgb(10, 6, 1);
+       background-color: rgb(14, 190, 73);
+       font-size: 30px;
+   }
+   </style>
+</head>
+<body>
+   <button onclick="getproductAPI()" type="button">get data</button>
+   <table border="1">
+    <tr>
+        <thead>
+            <th>id</th>
+            <th>userId</th>
+            <th>date</th>
+            <th>products</th>
+        </thead>
+    </tr>
+    <tbody></tbody>
+</table>
+   <div id="products"></div>
+   <script>
+       function getproductAPI(){
+           var getdata=new XMLHttpRequest()
+
+           getdata.onreadystatechange=function(){
+               if(getdata.status==200 && getdata.readyState==4){
+                   let allpro=JSON.parse(this.response)
+                   displayuser(allpro)
+               }
+           }
+           getdata.open("GET","https://jsonplaceholder.typicode.com/posts")
+           getdata.send()
+       }
+
+       function displayUser(){
+           document.querySelector("tbody").innerHTML=""
+           display.forEach((user,i)=>{
+               var mytr=document.createElement("tr")
+               for(a in user){
+                   var mytd=document.createElement("td")
+                   mytd.innerHTML=user[a]
+                   mytr.appendChild(mytd)
+               }
+               document.querySelector("tbody").appendChild(mytr)
+           })
+       }
+
+       function displayuser(allpro){
+           allpro.forEach((product) => {
+               var myproductdiv=document.createElement("div")
+               myproductdiv.setAttribute("class","product")
+               var fname=document.createElement("p")
+               fname.setAttribute("src",product.image)
+
+               var id=document.createElement("p")
+               id.innerHTML=product.id
+
+               var userId=document.createElement("p")
+               userId.innerHTML=product.userId
+
+               var date=document.createElement("h2")
+               date.innerHTML=product.date
+
+               var products=document.createElement("h3")
+               products.innerHTML=product.products
+
+            //    var state=document.createElement("h4")
+            //    state.innerHTML=product.state
+
+            //    var zip=document.createElement("h5")
+            //    zip.innerHTML=product.zip
+
+               myproductdiv.appendChild(id)
+               myproductdiv.appendChild(userId)
+               myproductdiv.appendChild(date)
+               myproductdiv.appendChild(products)
+            //    myproductdiv.appendChild(state)
+            //    myproductdiv.appendChild(zip)
+
+               document.getElementById("products").appendChild(myproductdiv)
+           });
+       }
+   </script>
+</body>
+</html>
+    {"id":1,"userId":1,"date":"2020-03-02T00:00:02.000Z","products":[{"productId":1,"quantity":4},
+    {"productId":2,"quantity":1},{"productId":3,"quantity":6}],"__v":0}

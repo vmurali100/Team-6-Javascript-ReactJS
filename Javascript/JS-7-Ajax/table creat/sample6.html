@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getproductAPI()" type="button">get data</button>
+    <table border="1">
+     <tr>
+         <thead>
+             <th>id</th>
+             <th>userId</th>
+             <th>date</th>
+             <th>products</th>
+         </thead>
+     </tr>
+     <tbody></tbody>
+ </table>
+    <script>
+        function getproductAPI(){
+            var getdata=new XMLHttpRequest()
+ 
+            getdata.onreadystatechange=function(){
+                if(getdata.status==200 && getdata.readyState==4){
+                    let display=JSON.parse(getdata.response)
+                    displayUser(display)
+                }
+            }
+            getdata.open("GET","https://jsonplaceholder.typicode.com/posts")
+            getdata.send()
+        }
+ 
+        function displayUser(display){
+            document.querySelector("tbody").innerHTML=""
+            display.forEach((user,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    if(a !=="products"){
+                        mytd.innerHTML=user[a]
+                     
+                    }else{
+                        mytd.innerHTML=JSON.stringify(user[a])
+                    }
+                   
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        </script>
+</body>
+</html>
+<!-- {"id":1,"userId":1,"date":"2020-03-02T00:00:02.000Z","products":[{"productId":1,"quantity":4},
+{"productId":2,"quantity":1},{"productId":3,"quantity":6}],"__v":0} -->

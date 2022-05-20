@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img{
+       width: 60%;
+   }
+   .product{
+       border: 5px solid rgb(13, 94, 6);
+       margin: 10px;
+       width: 20%;
+       float: left;
+       height: 250px;
+       padding: 10px;
+       text-align: center;
+       color: rgb(155, 11, 11);
+       background-color: rgb(250, 253, 251);
+       font-size: 20px;
+   }
+   </style>
+</head>
+<body>
+   <button onclick="getproductAPI()" type="button">get data</button>
+   <table border="1">
+    <tr>
+        <thead>
+            <th>userId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>completed</th>
+        </thead>
+    </tr>
+    <tbody></tbody>
+</table>
+   <div id="products"></div>
+   <script>
+       function getproductAPI(){
+           var getdata=new XMLHttpRequest()
+
+           getdata.onreadystatechange=function(){
+               if(getdata.status==200 && getdata.readyState==4){
+                   let allpro=JSON.parse(this.response)
+                   displayuser(allpro)
+                   let display=JSON.parse(getdata.response)
+                   displayUser(display)
+               }
+           }
+           getdata.open("GET","https://jsonplaceholder.typicode.com/todos")
+           getdata.send()
+       }
+
+       function displayUser(display){
+           document.querySelector("tbody").innerHTML=""
+           display.forEach((user,i)=>{
+               var mytr=document.createElement("tr")
+               for(a in user){
+                   var mytd=document.createElement("td")
+                   mytd.innerHTML=user[a]
+                   mytr.appendChild(mytd)
+               }
+               document.querySelector("tbody").appendChild(mytr)
+           })
+       }
+
+       function displayuser(allpro){
+           allpro.forEach((product) => {
+               var myproductdiv=document.createElement("div")
+               myproductdiv.setAttribute("class","product")
+               var fname=document.createElement("p")
+               fname.setAttribute("src",product.image)
+
+               var userId=document.createElement("p")
+               userId.innerHTML=product.userId
+
+               var id=document.createElement("h2")
+               id.innerHTML=product.id
+
+               var title=document.createElement("h3")
+               title.innerHTML=product.title
+
+               var completed=document.createElement("h4")
+               completed.innerHTML=product.completed
+
+               myproductdiv.appendChild(userId)
+               myproductdiv.appendChild(id)
+               myproductdiv.appendChild(title)
+               myproductdiv.appendChild(completed)
+
+               document.getElementById("products").appendChild(myproductdiv)
+           });
+       }
+   </script>
+</body>
+</html>
+{
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },

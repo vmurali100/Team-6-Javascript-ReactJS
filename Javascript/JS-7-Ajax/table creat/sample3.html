@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <button onclick="getproductAPI()" type="button">get data</button>
+        <table border="1">
+         <tr>
+             <thead>
+                 <th>id</th>
+                 <th>email</th>
+                 <th>username</th>
+                 <th>password</th>
+             </thead>
+         </tr>
+         <tbody></tbody>
+     </table>
+        <div id="products"></div>
+        <script>
+            function getproductAPI(){
+                var getdata=new XMLHttpRequest()
+     
+                getdata.onreadystatechange=function(){
+                    if(getdata.status==200 && getdata.readyState==4){
+                        let alluser=JSON.parse(getdata.response)
+                        displayUser(alluser)
+                    }
+                }
+                getdata.open("GET","http://www.filltext.com/?rows=10&id=%7Bindex%7D&email=%7Bemail%7D&username=%7Busername%7D&password=%7BrandomString%7C5%7D&pretty=true")
+                getdata.send()
+            }
+     
+            function displayUser(alluser){
+                document.querySelector("tbody").innerHTML=""
+                alluser.forEach((user,i)=>{
+                   var mytr=document.createElement("tr")
+                   for(b in user){
+                       var mytd=document.createElement("td")
+                       mytd.innerHTML=user[b]
+                       mytr.appendChild(mytd)
+                   }
+                   document.querySelector("tbody").appendChild(mytr)
+                })
+            }
+            </script>
+</body>
+</html>

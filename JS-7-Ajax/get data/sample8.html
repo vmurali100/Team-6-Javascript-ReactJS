@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img{
+       width: 60%;
+   }
+   .product{
+       border: 5px solid rgb(114, 4, 70);
+       margin: 10px;
+       width: 40%;
+       float: left;
+       height: 650px;
+       padding: 10px;
+       text-align: center;
+       color: rgb(17, 17, 16);
+       background-color: rgb(10, 180, 223);
+       font-size: 30px;
+   }
+   </style>
+</head>
+<body>
+   <button onclick="getproductAPI()" type="button">get data</button>
+   <table border="1">
+       <tr>
+           <thead>
+               <th>postId</th>
+               <th>id</th>
+               <th>name</th>
+               <th>email</th>
+               <th>body</th>
+           </thead>
+       </tr>
+   </table>
+   <div id="products"></div>
+   <script>
+       function getproductAPI(){
+           var getdata=new XMLHttpRequest()
+
+           getdata.onreadystatechange=function(){
+               if(getdata.status==200 && getdata.readyState==4){
+                   let allpro=JSON.parse(this.response)
+                   displayuser(allpro)
+                   let display=JSON.parse(getdata.response)
+                   displayUser(display)
+               }
+           }
+           getdata.open("GET","https://jsonplaceholder.typicode.com/comments")
+           getdata.send()
+       }
+
+       function displayUser(display){
+           document.querySelector("tbody").innerHTML=""
+           display.forEach((user,i)=>{
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                mytd.innerHTML=user[a]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+           })
+       }
+
+       function displayuser(allpro){
+           allpro.forEach((product) => {
+               var myproductdiv=document.createElement("div")
+               myproductdiv.setAttribute("class","product")
+               var fname=document.createElement("p")
+               fname.setAttribute("src",product.image)
+
+               var postId=document.createElement("p")
+               postId.innerHTML=product.postId
+
+               var id=document.createElement("p")
+               id.innerHTML=product.id
+
+               var name=document.createElement("h2")
+               name.innerHTML=product.name
+
+               var email=document.createElement("h3")
+               email.innerHTML=product.email
+
+               var body=document.createElement("h4")
+               body.innerHTML=product.body
+
+               myproductdiv.appendChild(postId)
+               myproductdiv.appendChild(id)
+               myproductdiv.appendChild(name)
+               myproductdiv.appendChild(email)
+               myproductdiv.appendChild(body)
+
+               document.getElementById("products").appendChild(myproductdiv)
+           });
+       }
+   </script>
+</body>
+</html>
+<!-- {
+    "postId": 1,
+    "id": 1,
+    "name": "id labore ex et quam laborum",
+    "email": "Eliseo@gardner.biz",
+    "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+  }, -->
+  

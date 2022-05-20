@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img{
+       width: 60%;
+   }
+   .product{
+       border: 5px solid rgb(12, 10, 10);
+       margin: 10px;
+       width: 40%;
+       float: left;
+       height: 450px;
+       padding: 10px;
+       text-align: center;
+       color: rgb(243, 208, 10);
+       background-color: rgb(126, 26, 9);
+       font-size: 30px;
+   }
+   </style>
+</head>
+<body>
+   <button onclick="getproductAPI()" type="button">get data</button>
+   <table border="1">
+    <tr>
+        <thead>
+            <th>albumId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>url</th>
+            <th>thumbnailUrl</th>
+        </thead>
+    </tr>
+</table>
+   <div id="products"></div>
+   <script>
+       function getproductAPI(){
+           var getdata=new XMLHttpRequest()
+
+           getdata.onreadystatechange=function(){
+               if(getdata.status==200 && getdata.readyState==4){
+                   let allpro=JSON.parse(this.response)
+                   displayuser(allpro)
+                   let display=JSON.parse(getdata.response)
+                   displayUser(display)
+               }
+           }
+           getdata.open("GET","https://jsonplaceholder.typicode.com/photos")
+           getdata.send()
+       }
+
+       function displayUser(display){
+           document.querySelector("tbody").innerHTML=""
+           display.forEach((user,i)=>{
+               var mytr=document.createElement("tr")
+              for(a in user){
+                  var mytd=document.createElement("td")
+                  mytd.innerHTML=user[a]
+                  mytr.appendChild(mytd)
+              }
+              document.querySelector("tbody").appendChild(mytr)
+           })
+       }
+
+       function displayuser(allpro){
+           allpro.forEach((product) => {
+               var myproductdiv=document.createElement("div")
+               myproductdiv.setAttribute("class","product")
+               var albumId=document.createElement("p")
+               albumId.setAttribute("src",product.image)
+
+               var tel=document.createElement("p")
+               tel.innerHTML=product.tel
+
+               var id=document.createElement("h2")
+               id.innerHTML=product.id
+
+               var title=document.createElement("h3")
+               title.innerHTML=product.title
+
+               var url=document.createElement("h4")
+               url.innerHTML=product.url
+
+               var thumbnailUrl=document.createElement("h5")
+               thumbnailUrl.innerHTML=product.thumbnailUrl
+
+               myproductdiv.appendChild(albumId)
+               myproductdiv.appendChild(id)
+               myproductdiv.appendChild(title)
+               myproductdiv.appendChild(url)
+               myproductdiv.appendChild(thumbnailUrl)
+
+               document.getElementById("products").appendChild(myproductdiv)
+           });
+       }
+   </script>
+</body>
+</html>
+<!-- {
+    "albumId": 1,
+    "id": 1,
+    "title": "accusamus beatae ad facilis cum similique qui sunt",
+    "url": "https://via.placeholder.com/600/92c952",
+    "thumbnailUrl": "https://via.placeholder.com/150/92c952"
+  }, -->
+  

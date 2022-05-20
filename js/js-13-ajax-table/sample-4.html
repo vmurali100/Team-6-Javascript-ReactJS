@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getdatafromapi()" type="button">get data</button>
+    <table border="1"> 
+        <tr>
+            <thead>
+                <th>fname</th>
+                <th>lname</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getdatafromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    console.log(getData.response)
+                    var allusers=JSON.parse(this.response)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
+            getData.send()
+        }
+        function displayUsers(allusers){
+        allusers.forEach((user,i)=>{
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                mytd.innerHTML=user[a]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+        })
+        }
+    </script>
+</body>
+</html>

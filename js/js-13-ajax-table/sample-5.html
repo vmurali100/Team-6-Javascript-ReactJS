@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getdatafromapi()" type="button">get data</button>
+    <table border="1"> 
+        <tr>
+            <thead>
+                <th>id</th>
+                <th>userid</th>
+                <th>date</th>
+                <th>products</th>
+                <th>_v </th>
+            </thead>
+        </tr>
+    </table>
+    <script>
+        function getdatafromapi(){
+            var getData= new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    var allusers=JSON.parse(this.response)
+                    console.log(allusers)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/carts")
+            getData.send()
+        }
+        function displayUsers(allusers){
+        allusers.forEach((user,i)=>{
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                if(a!=="product"){
+                    mytd.innerHTML=user[a]
+                }else{
+                    var details=""
+                    for(b in user[a][b]){
+                        details=details+b+":"+user[a][b]+"<br>"
+                    }
+                    mytd.innerHTML=details
+                }
+                
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+        })
+        }
+    </script>
+</body>
+</html>

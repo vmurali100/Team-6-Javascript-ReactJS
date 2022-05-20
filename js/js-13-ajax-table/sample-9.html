@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="getdatafromapi()" type="button">get ddata</button>
+    <table border="1"> 
+        <tr>
+            <thead>
+                <th>albumId</th>
+                <th>Id</th>
+                <th>title</th>
+                <th id="myurl">url</th>
+                <th>thumbnail url</th>
+
+             
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getdatafromapi(){
+            var getData= new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    var allusers=JSON.parse(getData.response)
+                    console.log(allusers)
+                    displayUsers(allusers)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getData.send()
+        }
+        function displayUsers(allusers){
+            // document.querySelector("tbody").innerHTML=""
+        allusers.forEach((user,i)=>{
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                // var url=document.createElement("img")
+                // url.setAttribute("src",user.url)
+               mytd.innerHTML=user[a]
+                mytr.appendChild(mytd)
+                //  mytd.appendChild(url)
+                //  document.getElementById("myurl").appendChild(url)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+        })
+        }
+    </script>
+</body>
+</html>

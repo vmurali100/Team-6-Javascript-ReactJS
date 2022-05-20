@@ -8,9 +8,13 @@
     <style>
         table {
             margin: 0 auto;
-            /* text-align: center; */
-            width: 1000px;
-             color: rgb(43, 226, 125);
+            text-align: center;
+            width: 500px;
+             color:orangered;
+        }
+        th{
+            background-color: rebeccapurple;
+            color: white;
         }
         button{
            margin-left: 700px;
@@ -24,14 +28,8 @@
     <table border="1" id="div">
         <tr>
             <thead>
-                <th>address</th>
-                <th>id</th>
-                <th>email</th>
-                <th>username</th>
-                <th>password</th>
-                <th>name</th>
-                <th>phone</th>
-                <th>__v</th>
+                <th>fname</th>
+                <th>lname</th>
             </thead>
         </tr>
         <tbody></tbody>
@@ -39,7 +37,7 @@
     
     <script>
         
-        
+         
         function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
@@ -48,28 +46,21 @@
                     displayUsers(allProducts)
                 }
             }
-            getData.open("GET", "https://fakestoreapi.com/users");
+            getData.open("GET", "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true");
             getData.send()
         }
-        function displayUsers(allProducts) {
-            allProducts.forEach((user, i) => {
-                console.log(user)
+        function displayUsers(Coursedata) {
+            document.querySelector("tbody").innerHTML = ""
+            Coursedata.forEach((user) => {
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td")
-                    if (a !== "address" && a !== "name") {
-                        myTd.innerHTML = user[a]
-                    } else {
-                         var details = ""
-                        for(b in user[a]){
-                            details = details + b + " : " + user[a][b] + "<br>"
-                        }
-                        myTd.innerHTML = details
-                    }
+                    myTd.innerHTML = user[a]
                     myTr.appendChild(myTd)
                 }
+
                 document.querySelector("tbody").appendChild(myTr)
-            });
+            })
         }
     </script>
 </body>

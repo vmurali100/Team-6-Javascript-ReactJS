@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,18 @@
     <style>
         table {
             margin: 0 auto;
-            text-align: center;
-            width: 1000px;
-             color: blueviolet;
+            /* text-align: center; */
+            /* width: 1000px;
+            color: blueviolet; */
         }
-        button{
-           margin-left: 700px;
-           background-color: aqua;
+
+        button {
+            margin-left: 700px;
+            background-color: aqua;
         }
     </style>
 </head>
+
 <body>
     <button onclick="GetDataFromAPI()" type="button">GET DATA</button>
     <hr>
@@ -29,38 +32,50 @@
                 <th>username</th>
                 <th>email</th>
                 <th>address</th>
+                <th>phone</th>
+                <th>website</th>
+                <th>company</th>
             </thead>
         </tr>
         <tbody></tbody>
     </table>
-    
+
     <script>
-        
-        
+
+
         function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    let allProducts = JSON.parse(this.response)
-                    displayUsers(allProducts)
+                    let allUsers = JSON.parse(this.response)
+                    displayUsers(allUsers)
+                    console.log(allUsers)
                 }
             }
-            getData.open("GET", "https://fakestoreapi.com/users");
+            getData.open("GET", "https://jsonplaceholder.typicode.com/users");
             getData.send()
         }
-        function displayUsers(Coursedata) {
-            document.querySelector("tbody").innerHTML = ""
-            Coursedata.forEach((user) => {
+        function displayUsers(allUsers) {
+            allUsers.forEach((user, i) => {
+                console.log(user)
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td")
-                    myTd.innerHTML = user[a]
+                    if (a !== "address" && a !== "company") {
+                        myTd.innerHTML = user[a]
+                    } else {
+                         var details = ""
+                        for(b in user[a]){
+                            details = details + b + " : " + user[a][b] + "<br>"
+                        }
+                        myTd.innerHTML = details
+                    }
                     myTr.appendChild(myTd)
                 }
-
                 document.querySelector("tbody").appendChild(myTr)
-            })
+            });
         }
     </script>
 </body>
+
 </html>

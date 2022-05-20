@@ -8,9 +8,13 @@
     <style>
         table {
             margin: 0 auto;
-            /* text-align: center; */
+            text-align: center;
             width: 1000px;
-             color: rgb(43, 226, 125);
+             color:darkturquoise;
+        }
+        th{
+            background-color: coral;
+            color: white;
         }
         button{
            margin-left: 700px;
@@ -24,13 +28,10 @@
     <table border="1" id="div">
         <tr>
             <thead>
-                <th>address</th>
                 <th>id</th>
-                <th>email</th>
-                <th>username</th>
-                <th>password</th>
-                <th>name</th>
-                <th>phone</th>
+                <th>userId</th>
+                <th>date</th>
+                <th>products</th>
                 <th>__v</th>
             </thead>
         </tr>
@@ -48,7 +49,7 @@
                     displayUsers(allProducts)
                 }
             }
-            getData.open("GET", "https://fakestoreapi.com/users");
+            getData.open("GET", "https://fakestoreapi.com/carts");
             getData.send()
         }
         function displayUsers(allProducts) {
@@ -57,15 +58,21 @@
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td")
-                    if (a !== "address" && a !== "name") {
+                    if (a !== "products") {
                         myTd.innerHTML = user[a]
-                    } else {
-                         var details = ""
-                        for(b in user[a]){
-                            details = details + b + " : " + user[a][b] + "<br>"
-                        }
-                        myTd.innerHTML = details
+                    }else{
+                        myTd.innerHTML = JSON.stringify(user[a])
+                        // var details = ""
+                        // for(b in user[a]){
+                        //     details = details + b + " : " + user[a][b] + "<br>"
+                        // }
+                        // var details = ""
+                        // for(c in user[a]){
+                        //     details = details + c + " : " + user[a][b][c] + "<br>"
+                        // }
+                        // myTd.innerHTML = details
                     }
+                    
                     myTr.appendChild(myTd)
                 }
                 document.querySelector("tbody").appendChild(myTr)

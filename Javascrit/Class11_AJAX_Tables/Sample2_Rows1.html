@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table {
+        input#to {
+            margin-left: 18px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        th {
+            text-align: center;
+            /* width: 800px; */
             margin: 0 auto;
-            /* text-align: center; */
+            background-color: brown;
+            color: gold;
+        }
+
+        table {
             width: 1000px;
-             color: rgb(43, 226, 125);
+            margin: 0 auto;
         }
         button{
-           margin-left: 700px;
-           background-color: rgb(212, 255, 0);
+            margin-left: 700px;
         }
     </style>
 </head>
+
 <body>
     <button onclick="GetDataFromAPI()" type="button">GET DATA</button>
     <hr>
     <table border="1" id="div">
         <tr>
             <thead>
-                <th>address</th>
                 <th>id</th>
                 <th>email</th>
                 <th>username</th>
                 <th>password</th>
-                <th>name</th>
-                <th>phone</th>
-                <th>__v</th>
             </thead>
         </tr>
         <tbody></tbody>
@@ -39,7 +51,7 @@
     
     <script>
         
-        
+         
         function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
@@ -48,29 +60,23 @@
                     displayUsers(allProducts)
                 }
             }
-            getData.open("GET", "https://fakestoreapi.com/users");
+            getData.open("GET", "http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true");
             getData.send()
         }
-        function displayUsers(allProducts) {
-            allProducts.forEach((user, i) => {
-                console.log(user)
+        function displayUsers(Coursedata) {
+            document.querySelector("tbody").innerHTML = ""
+            Coursedata.forEach((user) => {
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td")
-                    if (a !== "address" && a !== "name") {
-                        myTd.innerHTML = user[a]
-                    } else {
-                         var details = ""
-                        for(b in user[a]){
-                            details = details + b + " : " + user[a][b] + "<br>"
-                        }
-                        myTd.innerHTML = details
-                    }
+                    myTd.innerHTML = user[a]
                     myTr.appendChild(myTd)
                 }
+
                 document.querySelector("tbody").appendChild(myTr)
-            });
+            })
         }
     </script>
 </body>
+
 </html>

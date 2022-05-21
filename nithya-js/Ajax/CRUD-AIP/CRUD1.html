@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">firstName</label>
+        <input type="text" name="" id="fname">
+        <label for="">LastName</label>
+        <input type="text" name="" id="lname">
+        <input type="text" name="" id="id" hidden>
+        <button type="button" onclick="adduser()">adduser</button>
+    </form>
+    <table border="1"> 
+        <thead>
+            <th>firstName</th>
+            <th>LastName</th>
+            <th>id</th>
+            <th>Edit</th>
+            <th>delete</th>
+        </thead>
+    </table>
+    <script>
+        var allusers=[]
+        function adduser(){
+            var user ={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                id:document.getElementById("id").value
+            }
+            var sendData= new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("user added successfully")
+                    getallusersfromapi()
+                }
+            }
+            sendData.open("post","http://localhost:3000/users");
+            sendData.setRequestHeader("content-type","application/json");
+            sendData.send(JSON.stringify(user))
+        }
+        function getallusersfromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange =function(){
+                if(getData.status == 200 && getData.readyState ==4){
+                    allusers=JSON.parse(getData.response)
+               console.log(getData.response)
+           } 
+            }
+            getData.open("GET","http://localhost:3000/users")
+            getData.send()
+          
+        }
+        getallusersfromapi()
+    </script>
+</body>
+</html>

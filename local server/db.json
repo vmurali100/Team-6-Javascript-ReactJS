@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "fname": "nithya",
+      "lname": "reddy",
+      "id": 1
+    },
+    {
+      "fname": "nithya",
+      "lname": "reddy",
+      "id": 2
+    },
+    {
+      "fname": "chandhini",
+      "lname": "sathya",
+      "id": 3
+    }
+  ]
+}

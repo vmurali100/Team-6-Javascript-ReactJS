@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>UserID</th>
+                <th>Id</th>
+                <th>Title</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <button type="button" onclick="getdataFromapi()">GetData</button>
+    <img src="" alt="">
+    <div id="album"></div>
+    <script>
+        function getdataFromapi(){
+            var getdata = new XMLHttpRequest();
+                getdata.onreadystatechange = function(){
+                    if(getdata.status == 200 && getdata.readyState == 4){
+                        console.log(this.response)
+                        let allAlbums=JSON.parse(this.response)
+                        displayUsers(allAlbums)
+                    }
+                };
+                getdata.open("GET","https://jsonplaceholder.typicode.com/albums");
+                getdata.send();  
+        }
+
+           function displayUsers(allAlbums){
+                allAlbums.forEach((user)=>{
+                    var myalbumDiv=document.createElement("div");
+                    myalbumDiv.setAttribute("class","user");
+
+                    var myalbumID=document.createElement("id");
+                    myalbumID.innerHTML=user.id
+
+                    var title=document.createElement("p");
+                    title.innerHTML=user.title
+
+                
+                    myalbumDiv.appendChild(myalbumID);
+                    myalbumDiv.appendChild(title);
+
+                    document.getElementById("album").appendChild(myalbumDiv);
+                })
+            }
+    </script>
+</body>
+</html>

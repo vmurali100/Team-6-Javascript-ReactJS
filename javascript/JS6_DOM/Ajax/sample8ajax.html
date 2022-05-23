@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>Address</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Number</th>
+                <th>Zipcode</th>
+              
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <button type="button" onclick="getdataFromAPI()">GETDATA</button>
+    <script>
+         function getdataFromAPI(){
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+
+                if(getData.status == 200 && getData.readyState == 4){
+                   
+                    let allusers = JSON.parse(this.response)
+                    console.log(allusers)
+                    displayUsers(allusers)
+                }
+            };
+            getData.open("GET","https://fakestoreapi.com/users"); 
+            getData.send();
+        }
+        function displayUsers(allusers){
+            allusers.forEach((user,i)=>{
+                var myTr = document.createElement("tr");
+                for(a in user){
+                    var myTd = document.createElement("td");
+                  if(a !== "address" && a !=="geolocation"){
+                    myTd.innerHTML=user[a]
+                  }else{
+                      myTd.innerHTML=JSON.stringify(user[a])
+                     // var details=""
+                     // for(b in user[a]){
+                      //  details=details+b+":"+user[a][b]+"<br>"
+                     // }
+                     // myTd.innerHTML=details
+                //  }
+                 myTr.appendChild(myTd);
+                }
+                document.querySelector("tbody").appendChild(myTr);
+            })
+        }
+    </script>
+</body>
+</html>

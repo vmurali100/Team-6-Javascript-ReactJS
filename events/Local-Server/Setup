@@ -1,0 +1,4 @@
+1.Install json-server globally
+2.Install json-server in requred project
+3.create a file called db.json
+4.run local server json -server --watch db.json

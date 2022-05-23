@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="postId">postId</label>
+        <input type="text" name="" id="postId"><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="body">body</label>
+        <input type="text" name="" id="body"><br>
+        <input type="text" name="" id="id" hidden>
+        <button onclick="GetDataFromAPI()" type="button" id="add">GET DATA</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>postId</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var allalbums = []
+        function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allalbums = JSON.parse(getData.response)
+                    console.log(allalbums)
+                    displayUsers(allalbums)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/comments");
+            getData.send()
+        }
+
+        function displayUsers(Data) {
+            document.querySelector("tbody").innerHTML = "";
+
+            Data.forEach((user, i) => {
+
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a];
+                    myTr.appendChild(myTd);
+                }
+
+                var editTd = document.createElement("td")
+                var editbutton = document.createElement("button");
+                editbutton.setAttribute("onclick", "editUser(" + i + ")")
+                editbutton.innerHTML = "Edit";
+                editTd.appendChild(editbutton);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deletebutton = document.createElement("button");
+                deletebutton.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebutton.innerHTML = "Delete";
+                deleteTd.appendChild(deletebutton);
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function deleteUser(i) {
+            console.log(allalbums[i])
+            var delUser = new XMLHttpRequest()
+            delUser.onreadystatechange == function () {
+                if (delUser.status == 200 && delUser.readyState == 4) {
+                    console.log("User Deleted Successfully")
+                }
+            }
+            delUser.open("DELETE", "http://localhost:3000/comments/" + allcomments[i].id);
+            delUser.setRequestHeader("Content-type", "application/json");
+            delUser.send();
+
+        }
+        function editUser(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("postId").value = allalbums[i].postId;
+            document.getElementById("id").value = allalbums[i].id;
+            document.getElementById("name").value = allalbums[i].name;
+            document.getElementById("email").value = allalbums[i].email;
+            document.getElementById("body").value = allalbums[i].body;
+
+        }
+        function updateUser() {
+            var Data = {
+                postId: document.getElementById("postId").value,
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                body: document.getElementById("body").value,
+            };
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("Form Added Successfully");
+                    GetDataFromAPI()
+
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            sendData.open("PUT", "http://localhost:3000/comments/" + Data.id);
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(Data))
+        }
+        GetDataFromAPI()
+
+
+    </script>
+
+
+</body>
+
+</html>

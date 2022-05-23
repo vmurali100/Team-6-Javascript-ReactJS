@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 28,
+      "email": "HHudgens@ac.gov",
+      "username": "HCarnevale",
+      "password": "Ab1Cj"
+    },
+    {
+      "id": 33,
+      "email": "JPtacek@magna.ly",
+      "username": "SGage",
+      "password": "87JIa"
+    },
+    {
+      "id": "123",
+      "email": "pratheepkumarb2@gmail.com",
+      "username": "naveen kumar",
+      "password": "987123"
+    },
+    {
+      "id": "335",
+      "email": "SFuller@sollicitudin.com",
+      "username": "BReddick",
+      "password": "2129123"
+    }
+  ]
+}

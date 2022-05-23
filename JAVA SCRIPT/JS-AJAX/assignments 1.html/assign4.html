@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br><br>
+
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br><br>
+
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br><br>
+
+        <label for="password">password</label>
+        <input type="text" name="" id="password">
+
+        <input type="text" name="" id="id" hidden><br><br>
+
+        <button type="button" onclick="adduser()" id="add">add user</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>Email</th>
+            <th>username</th>
+            <th>password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+
+        var datausers = []
+
+        function adduser() {
+            var user = {
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value
+
+            };
+            // console.log(user)
+
+            var sendData = new XMLHttpRequest();
+
+
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("user added successfully")
+                    getdataUsersfromAPI()
+                }
+            }
+            sendData.open("POST", " http://localhost:3000/users");
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user));
+
+        }
+        function getdataUsersfromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    datausers = JSON.parse(getData.response)
+                    console.log(datausers)
+                    displayusers(datausers)
+                }
+            }
+
+            getData.open("GET", "http://localhost:3000/users");
+            getData.send();
+        }
+
+
+        function displayusers(data) {
+            document.querySelector("tbody").innerHTML = "",
+                data.forEach((user, i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+
+                    // edit button
+
+                    var editTd = document.createElement("td")
+                    var editbtn = document.createElement("button");
+                    editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                    editbtn.innerHTML = "Edit";
+                    editTd.appendChild(editbtn);
+                    myTr.appendChild(editTd)
+
+
+                    // delete button.
+
+                    var deleteTd = document.createElement("td")
+                    var deletebtn = document.createElement("button");
+                    deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                    deletebtn.innerHTML = "Delete";
+                    deleteTd.appendChild(deletebtn)
+                    myTr.appendChild(deleteTd)
+
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+
+        }
+
+
+        function deleteuser(i) {
+            console.log(datausers[i])
+
+            var deleteuser = new XMLHttpRequest()
+
+            deleteuser.onreadystatechange = function () {
+                if (deleteuser.status == 200 && deleteuser.readyState == 4) {
+                    console.log("user deleted success fully")
+                }
+
+            }
+
+            deleteuser.open("delete", "http://localhost:3000/users/" + datausers[i].id);
+            deleteuser.setRequestHeader("Content-type", "application/json");
+
+            deleteuser.send();
+        }
+
+        function edituser(i) {
+            document.getElementById("id").value = datausers[i].id;
+            document.getElementById("email").value = datausers[i].email;
+            document.getElementById("username").value = datausers[i].username;
+            document.getElementById("password").value = datausers[i].password
+
+
+            document.getElementById("add").style.display = "none";
+            document.getElementById("update").style.display = "block";
+
+        }
+
+        function updateUser() {
+
+            var user = {
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value
+
+            };
+            var sendData = new XMLHttpRequest();
+
+
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("user added successfully")
+                    getdataUsersfromAPI()
+
+
+
+                    document.getElementById("add").style.display = "block";
+                    document.getElementById("update").style.display = "none";
+
+                }
+            }
+            sendData.open("PUT", " http://localhost:3000/users/" + user.id);
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user));
+        }
+
+        getdataUsersfromAPI()
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
+</body>
+</html>

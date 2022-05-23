@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="postId">PostId</label>
+        <input type="text" name="" id="postId"><br><br>
+        <label for="Id">Id</label>
+        <input type="text" name="" id="Id" readonly><br><br>
+        <label for="name">Name</label>
+        <input type="text" name="" id="name"><br><br>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br><br>
+        <label for="body">Body</label>
+        <input type="text" name="" id="body"><br><br>
+        <button onclick="addUser()" type="button" id="add">Add Users</button>
+        <button onclick="updateUser()" type="button" id="upDate" style="display: none;">Update User</button>
+    </form>
+    <br><hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>postId</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Body</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = []
+        function addUser(){
+            var user = {
+                postId: document.getElementById("postId").value,
+                id: document.getElementById("Id").value,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                body: document.getElementById("body").value
+            }
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function (){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("User Added Successfully")
+                    getallUsersFromAPI()
+                }
+            }
+            sendData.open("POST","http://localhost:3000/comments");
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        function getallUsersFromAPI(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function (){
+                if(getData.status == 200 && getData.readyState == 4){
+                    allUsers = JSON.parse(getData.response)
+                    console.log(allUsers)
+                    displayUsers(allUsers)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/comments")
+            getData.send()
+        }
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr")        
+                for (a in user){
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var editBit = document.createElement("button")
+                editBit.setAttribute("onclick","editUsers("+i+")")
+                editBit.innerHTML = "Edit"
+                editTd.appendChild(editBit)
+                myTr.appendChild(editTd)
+                
+                var deleteTd = document.createElement("td")
+                var deleteBit = document.createElement("button")
+                deleteBit.setAttribute("onclick","deleteUsers("+i+")")
+                deleteBit.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBit)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        } 
+        
+        function deleteUsers(i){
+            console.log(allUsers[i])
+
+            var delUser = new XMLHttpRequest();
+            delUser.onreadystatechange = function(){
+                if(delUser.status == 200 && delUser.readyState == 4){
+                    console.log("User Deleted Success Fully")
+                }
+            }
+            delUser.open("DELETE","http://localhost:3000/comments/"+allUsers[i].id)
+            delUser.send();
+        }
+        function editUsers(i){
+            document.getElementById("add").style.display = "none"
+            document.getElementById("upDate").style.display = "block"
+
+            document.getElementById("postId").value = allUsers[i].postId
+            document.getElementById("Id").value = allUsers[i].id
+            document.getElementById("name").value = allUsers[i].name
+            document.getElementById("email").value = allUsers[i].email
+            document.getElementById("body").value = allUsers[i].body
+        }
+        
+        function updateUser(){
+            var user = {
+                postId: document.getElementById("postId").value,
+                id: document.getElementById("Id").value,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                body: document.getElementById("body").value
+            }
+            var sendData = new XMLHttpRequest();
+
+            sendData.onreadystatechange = function (){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("User Added Successfully")
+                    getallUsersFromAPI();
+
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("upDate").style.display = "none"
+                }               
+            }
+            sendData.open("PUT","http://localhost:3000/comments/"+user.id);
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getallUsersFromAPI();
+    </script>
+</body>
+</html>

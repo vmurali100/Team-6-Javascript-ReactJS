@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "fname": "srividya",
+      "lname": "srinivas",
+      "id": 9
+    },
+    {
+      "fname": "vidya",
+      "lname": "vasu",
+      "id": 10
+    },
+    {
+      "fname": "vidya",
+      "lname": "vasu",
+      "id": 11
+    },
+    {
+      "fname": "srividya K",
+      "lname": "srinivas",
+      "id": 12
+    }
+  ]
+}

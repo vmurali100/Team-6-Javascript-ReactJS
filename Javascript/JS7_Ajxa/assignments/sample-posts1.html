@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="userId">User Id : </label>
+        <input type="text" name="" id="userId"><br><br>
+        <label for="id">Id : </label>
+        <input type="text" name="" id="id" readonly><br><br>
+        <label for="title">Title : </label>
+        <input type="text" name="" id="title"><br><br>
+        <label for="body">Body : </label>
+        <input type="text" name="" id="body"><br><br>
+        <button type="button" onclick="addUsers()" id="add">Add User</button>
+        <button type="button" onclick="usersUpdate()" id="update" style="display: none;">Update User</button>
+    </form>
+    <br><hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Body</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>  
+    <script>
+        var allUsers = [] 
+        function addUsers(){
+            var user = {
+                userId:document.getElementById("userId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                body: document.getElementById("body").value
+            }
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function (){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("User Added Successfully")
+                    getallUsersFromApi()
+                }
+            }
+            sendData.open("POST","http://localhost:3000/posts");
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }       
+        function getallUsersFromApi(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function (){
+                if(getData.status == 200 && getData.readyState == 4){
+                    allUsers = JSON.parse(getData.response)
+                    console.log(allUsers)
+                    displayUsers(allUsers)
+                }
+            }
+            getData.open("GET","http://localhost:3000/posts")
+            getData.send()
+        }
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = ""
+            data.forEach((users, i) => {
+                var myTr = document.createElement("tr")         
+                for(a in users){
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = users[a]
+                    myTr.appendChild(myTd)
+                }       
+                //Edit
+                var editTd = document.createElement("td")
+                var editBit = document.createElement("button")
+                editBit.setAttribute("onclick", "editUser("+i+")")
+                editBit.innerHTML = "Edit"
+                editTd.appendChild(editBit)
+                myTr.appendChild(editTd)
+                //Delete
+                var deletTd = document.createElement("td")
+                var deletBit = document.createElement("button")
+                deletBit.setAttribute("onclick", "deletUser("+i+")")
+                deletBit.innerHTML = "Delete"
+                deletTd.appendChild(deletBit)
+                myTr.appendChild(deletTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function deletUser(i){
+            console.log(allUsers[i])
+            var delUsers = new XMLHttpRequest();
+            delUsers.onreadystatechange = function(){
+                if(delUsers.status == 200 && delUsers == 4){
+                    console.log("User Added Success Fully")
+                }
+            }
+            delUsers.open("DELETE","http://localhost:3000/posts/"+allUsers[i].id)
+            delUsers.send();
+        }
+        function editUser(i){
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("userId").value = allUsers[i].userId;
+            document.getElementById("id").value = allUsers[i].id;
+            document.getElementById("title").value = allUsers[i].title;
+            document.getElementById("body").value = allUsers[i].body
+        }
+        function usersUpdate(){
+            var user = {
+                userId:document.getElementById("userId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                body: document.getElementById("body").value
+            }
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function (){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("User Added Success Fully")
+                    getallUsersFromApi()
+
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/posts/"+ user.id);
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getallUsersFromApi()
+    </script>  
+</body>
+</html>

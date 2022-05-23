@@ -1,0 +1,40 @@
+{
+  "true": [
+    {
+      "id": 126,
+      "email": "WLopez@lorem.org",
+      "username": "GDeos",
+      "password": "a0VZI"
+    },
+    {
+      "id": 128,
+      "email": "EWillett@convallis.ly",
+      "username": "PDjs",
+      "password": "bkYnnn"
+    },
+    {
+      "id": 129,
+      "email": "ASoto@molestie.io",
+      "username": "AHorowitz",
+      "password": "cCcgJ"
+    },
+    {
+      "id": 130,
+      "email": "ASjaardema@lorem.ly",
+      "username": "GAbundo",
+      "password": "BI8f"
+    },
+    {
+      "id": 131,
+      "email": "LAresti@libero.ly",
+      "username": "GLyn",
+      "password": "jha"
+    },
+    {
+      "id": 132,
+      "email": "NDavid@vel.io",
+      "username": "MCosta",
+      "password": "gTs0x"
+    }
+  ]
+}

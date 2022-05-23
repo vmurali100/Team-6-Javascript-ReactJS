@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "fname": "padmaja",
+      "lname": "munaswamy",
+      "id": 1
+    },
+    {
+      "fname": "geethu",
+      "lname": "naga",
+      "id": 2
+    },
+    {
+      "fname": "sneha",
+      "lname": "bhaskar",
+      "id": 3
+    },
+    {
+      "fname": "Munaswamy",
+      "lname": "reddy",
+      "id": 4
+    },
+    {
+      "fname": "harshitha",
+      "lname": "reddy",
+      "id": 5
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form>
+            <label for="postid">PostId</label>
+            <input type="text" name="" id="postid"><br><br>
+            <label for="id">Id</label>
+            <input type="text" name="" id="id"><br><br>
+            <label for="name">Name</label>
+            <input type="text" name="" id="name"><br><br>
+            <label for="email">Email</label>
+            <input type="text" name="" id="email"><br><br>
+            <label for="body">Body</label>
+            <input type="text" name="" id="body"><br><br>
+            <button type="button" onclick="getallcomments()" id="get">get all comments</button>
+            <button type="button" onclick="updateallcomments()" id="update" style="display:none">update all comments</button>
+        </form>
+        <br />
+        <table border="2">
+            <thead>
+                <th>PostId</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Body</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+            var allcomments = []
+            function getallcomments() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allcomments = JSON.parse(getdata.response)
+                    console.log(allcomments)
+                    displayUsers(allcomments)
+                }
+            }
+            getdata.open("GET", "http://localhost:3000/comments");
+            getdata.send()
+        }
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user,i) =>{
+                var  mytr = document.createElement("tr")
+                for(a in user){
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr);
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editcomment("+i+")")
+                editBtn.innerHTML = "Edit";
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deletecomment("+i+")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function deletecomment(i) {
+            console.log(allcomments[i])
+            var delcomment = new XMLHttpRequest()
+            delcomment.onreadystatechange = function () {
+                if (delcomment.status == 200 && delcomment.readyState == 4) {
+                    console.log("post deleted successfully")
+                }
+            }
+            delcomment.open("DELETE", "  http://localhost:3000/comments/" + allcomments[i].id);
+            delcomment.setRequestHeader("Content-type", "application/json");
+            delcomment.send();
+        }
+        function deletecomment(i) {
+            console.log(allcomments[i])
+            var delcomment = new XMLHttpRequest()
+            delcomment.onreadystatechange = function () {
+                if (delcomment.status == 200 && delcomment.readyState == 4) {
+                    console.log("album deleted successfully")
+                }
+            }
+            delcomment.open("DELETE", "  http://localhost:3000/comments/" + allcomments[i].id);
+            delcomment.setRequestHeader("Content-type", "application/json");
+            delcomment.send();
+        }
+        function editcomment(i) {
+            document.getElementById("get").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("postid").value = allcomments[i].postId;
+            document.getElementById("id").value = allcomments[i].id;
+            document.getElementById("name").value = allcomments[i].name;
+            document.getElementById("email").value = allcomments[i].email;
+            document.getElementById("body").value = allcomments[i].body;
+        }
+        function updateallcomments() {
+            var data = {
+                userid: document.getElementById("postid").value,
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                body: document.getElementById("body").value
+            };
+            var senddata = new XMLHttpRequest()
+            senddata.onreadystatechange = function () {
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("get added successfully");
+                    getallcomments();
+                    document.getElementById("get").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            senddata.open("PUT", "http://localhost:3000/comments/"+data.id);
+            senddata.setRequestHeader("Content-type", "application/json");
+            senddata.send(JSON.stringify(data));
+        }
+        getallcomments()
+        </script>
+    </body>
+    </html>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br><br>
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br><br>
+        <label for="price">price</label>
+        <input type="text" name="" id="price"><br><br>
+        <label for="description">description</label>
+        <input type="text" name="" id="description"><br><br>
+        <label for="category">category</label>
+        <input type="text" name="" id="category"><br><br>
+        <label for="image">image</label>
+        <input type="text" name="" id="image"><br><br>
+        <label for="rating">rating</label>
+        <input type="text" name="" id="rating"><br><br>
+    
+        <button type="button" onclick="getproducts()" id="get">get products</button>
+        <button type="button" onclick="updateproducts()" id="update" style="display:none">update products</button>
+    </form>
+    <br />
+    <table border="2">
+        <thead>
+            <th>id</th>
+            <th>title</th>
+            <th>price</th>
+            <th>description</th>
+            <th>category</th>
+            <th>image</th>
+            <th>rating</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+     var allproducts = []
+            function getproducts() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allproducts = JSON.parse(getdata.response)
+                    console.log(allproducts)
+                    displayUsers(allproducts)
+                }
+            }
+            getdata.open("GET", "http://localhost:3000/products");
+            getdata.send()
+        }
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user,i) =>{
+                var  mytr = document.createElement("tr")
+                for(a in user){
+                    if(a!=="rating"){
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }else{
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML= JSON.stringify(user[a])
+                    mytr.appendChild(mytd)
+                }
+                }
+                document.querySelector("tbody").appendChild(mytr);
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editproduct("+i+")")
+                editBtn.innerHTML = "Edit";
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteproduct("+i+")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function deleteproduct(i) {
+            console.log(allproducts[i])
+            var delproduct = new XMLHttpRequest()
+            delproduct.onreadystatechange = function () {
+                if (delproduct.status == 200 && delproduct.readyState == 4) {
+                    console.log("products deleted successfully")
+                }
+            }
+            delproduct.open("DELETE", "  http://localhost:3000/products/" + allproducts[i].id);
+            delproduct.setRequestHeader("Content-type", "application/json");
+            delproduct.send();
+        }
+        function editproduct(i) {
+            document.getElementById("get").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("id").value = allproducts[i].id
+            document.getElementById("title").value = allproducts[i].title
+            document.getElementById("price").value = allproducts[i].price
+            document.getElementById("description").value = allproducts[i].description
+            document.getElementById("category").value = allproducts[i].category
+            document.getElementById("image").value = allproducts[i].image
+            document.getElementById("rating").value = allproducts[i].rating
+            
+        }
+        function updateproducts() {
+            var data = {
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                price: document.getElementById("price").value,
+                description: document.getElementById("description").value,
+                category: document.getElementById("category").value,
+                image: document.getElementById("image").value,
+                rating: document.getElementById("rating").value,
+               
+            };
+            var senddata = new XMLHttpRequest()
+            senddata.onreadystatechange = function () {
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("get added successfully");
+                    getproducts();
+                    document.getElementById("get").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            senddata.open("PUT", "http://localhost:3000/products/"+data.id);
+            senddata.setRequestHeader("Content-type", "application/json");
+            senddata.send(JSON.stringify(data));
+        }
+        getproducts()
+</script>
+</html>

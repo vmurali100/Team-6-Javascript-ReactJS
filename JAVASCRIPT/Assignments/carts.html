@@ -24,7 +24,7 @@
             <label for="date">Date</label>
             <input type="text" name="" id="date"><br><br>
             <label for="products">Products</label>
-            <input type="text" name="" id="product"><br><br>
+            <input type="text" name="" id="products"><br><br>
             <label for="__v">__v</label>
             <input type="text" name="" id="__v"><br><br>
         
@@ -99,9 +99,9 @@
                     console.log("carts deleted successfully")
                 }
             }
-            delcomment.open("DELETE", "  http://localhost:3000/carts/" + allcarts[i].id);
-            delcomment.setRequestHeader("Content-type", "application/json");
-            delcomment.send();
+            delcart.open("DELETE", "  http://localhost:3000/carts/" + allcarts[i].id);
+            delcart.setRequestHeader("Content-type", "application/json");
+            delcart.send();
         }
         function editcart(i) {
             document.getElementById("get").style.display = "none"
@@ -116,10 +116,10 @@
         }
         function updateallcarts() {
             var data = {
-                userid: document.getElementById("id").value,
-                id: document.getElementById("userid").value,
-                name: document.getElementById("date").value,
-                email: document.getElementById("products").value,
+                id: document.getElementById("id").value,
+                userid: document.getElementById("userid").value,
+                date: document.getElementById("date").value,
+                products: document.getElementById("products").value,
                 __v: document.getElementById("__v").value,
                
             };

@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -84,15 +90,21 @@
                 console.log(user)
                 var myTr = document.createElement("tr");
                 for (a in user) {
-                    var myTd = document.createElement("td")
-                    if (a !== "rating") {
-                        myTd.innerHTML = user[a]
-                    } else {
-                         var details = ""
+                    if(a !== "image"){
+                        var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src",user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+                        var details = ""
                         for(b in user[a]){
                             details = details + b + " : " + user[a][b] + "<br>"
                         }
-                        myTd.innerHTML = details
+
                     }
                     myTr.appendChild(myTd)
                 }

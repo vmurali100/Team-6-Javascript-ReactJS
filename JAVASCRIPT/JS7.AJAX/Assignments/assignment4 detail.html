@@ -26,6 +26,7 @@
         <label for="state">zip</label>
         <input type="number" name="" id="zip"><br>
         <label for="Id">Id</label>
+        <input type="text" name="" id="Id">
 
         <button type="button" id="add" onclick="GetdatefromAPI()">GetData</button>
         <button type="button" id="update" onclick="Upadateuser()" style="display: none">UpdateUser</button>
@@ -34,8 +35,7 @@
         <thead>
             
             <th>fname</th>
-            <th>lname</th>
-            <!-- <th>Id</th> -->
+            <th>lname</th>            
             <th>tel</th>
             <th>address</th>
             <th>city</th>
@@ -117,7 +117,8 @@
             document.getElementById("address").value = allusers[i].address,
             document.getElementById("city").value = allusers[i].city,
             document.getElementById("state").value = allusers[i].state,
-            document.getElementById("zip").value = allusers[i].zip
+            document.getElementById("zip").value = allusers[i].zip,
+            // document.getElementById("id").value = allusers[i].id
             
         }
 
@@ -134,6 +135,7 @@
             city:document.getElementById("city").value,
             state: document.getElementById("state").value,
             zip: document.getElementById("zip").value,
+            // id: document.getElementById("id").value
             
           }
           var sendData = new XMLHttpRequest();
@@ -146,7 +148,7 @@
                 document.getElementById("update").style.display = "none"
               }
           }
-          sendData.open("DELETE","http://localhost:3000/detail/"+ user.id)
+          sendData.open("PUT","http://localhost:3000/detail/"+ user.id)
           sendData.setRequestHeader("Content-type", "application/json")
           sendData.send(JSON.stringify(user))
         }

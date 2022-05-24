@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="phone">phone</label>
+        <input type="text" name="" id="phone"><br>
+        <label for="website">website</label>
+        <input type="text" name="" id="website"><br>
+        <label for="company">company</label>
+        <input type="text" name="" id="company"><br>
+
+        <button type="button" id="add" onclick="GetdatafromAPI()">Getdata</button>
+        <button type="button" id="Update" onclick="Updateuser()" style="display: none"> UpdateUser</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>username</th>
+            <th>email</th>
+            <th>address</th>
+            <th>phone</th>
+            <th>website</th>
+            <th>company</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allausers = []
+        function GetdatafromAPI() {
+            var Getdata = new XMLHttpRequest();
+            Getdata.onreadystatechange = function () {
+                if (Getdata.status == 200 && Getdata.readyState == 4) {
+                    allausers = JSON.parse(Getdata.response)
+                    console.log(allausers)
+                    displayallusers(allausers)
+                }
+
+            }
+            Getdata.open("GET","http://localhost:3000/products")
+            Getdata.send()
+        }
+
+        function displayallusers(allausers){
+            allausers.forEach((user,i)=>{
+                var myTr=document.createElement("tr")
+                for(a in user){
+                    var myTd=document.createElement("td")
+                    if(a !=="address"&& a !=="name"){
+                        myTd.innerHTML=user[a]
+                    }else{
+                        var details=""
+                        for(b in user[a]){
+                            details=details + b + " : " + user[a][b]+ "<br>"
+                        }
+                        myTd.innerHTML=details
+                    }
+                    myTr.appendChild(myTd)
+                }
+                //edit
+
+                var editTd=document.createElement("td")
+                var editbtn =document.createElement("button")
+                editbtn.setAttribute("onclick","edituser("+i+")")
+                editbtn.innerHTML="Edit"
+                editTd.appendChild(editbtn)
+                myTr.appendChild(editTd)
+        //delete
+                var deleteTd=document.createElement("td")
+                var deltebtn =document.createElement("button")
+                deltebtn.setAttribute("onclick","edituser("+i+")")
+                deltebtn.innerHTML="Delete"
+                deleteTd.appendChild(deltebtn)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

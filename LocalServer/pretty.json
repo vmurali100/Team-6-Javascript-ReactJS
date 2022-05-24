@@ -1,0 +1,40 @@
+{
+  "pretty": [
+    {
+      "id": 3,
+      "email": "sai@gmail.com",
+      "username": "vk sai sai",
+      "password": "111"
+    },
+    {
+      "id": 4,
+      "email": "SaiChinnoda@malesuada.net",
+      "username": "Saikiran",
+      "password": "2222"
+    },
+    {
+      "id": 6,
+      "email": "sasiri@sed.gov",
+      "username": "Jayasankar",
+      "password": "262626"
+    },
+    {
+      "id": 8,
+      "email": "JZeigler@curabitur.io",
+      "username": "OWebster",
+      "password": "sQTay"
+    },
+    {
+      "id": 9,
+      "email": "NDoiel@lacus.com",
+      "username": "DMclaughlin",
+      "password": "5NXXh"
+    },
+    {
+      "id": 10,
+      "email": "SBednarsh@eros.ly",
+      "username": "AHoffman",
+      "password": "UhgFY"
+    }
+  ]
+}

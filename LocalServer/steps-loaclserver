@@ -1,0 +1,10 @@
+1.open comment prompt
+2.installed node-js
+3.open terminal panel
+4.create a new foleder as a loaclserver
+5.cd lovalserver
+6.npm init --yes             (install node-modules)
+7.npm install json-server -g (this is using to package.json)
+8.npm install json-server    (this is using to package-lock.json)
+9.create file as db.json     
+9.json-server --watch db.json

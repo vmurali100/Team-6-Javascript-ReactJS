@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <label for="postId">postId</label>
+        <input type="text" name="" id="postId"><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="email">email</label>
+        <input type="email" name="" id="email"><br>
+        <label for="body">body</label>
+        <input type="text" name="" id="body"><br>
+
+        <button id="add" type="button" onclick="getdatacomments()">GetDatauser</button>
+        <button id="update" type="button" onclick="updateuser()" style="display: none">updateuser</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>postId</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+   <script>
+       var allcomments =[]
+       function getdatacomments(){
+           var getdata = new XMLHttpRequest();
+           getdata.onreadystatechange= function (){
+               if(getdata.status ==200 && getdata.readyState ==4){
+                allcomments=JSON.parse(getdata.response)
+                   console.log(allcomments)
+                   displaycommentsdata(allcomments)
+               }
+           }
+           getdata.open("GET","http://localhost:3000/comments")
+           getdata.send()
+       }
+
+       function displaycommentsdata(Data){
+        document.querySelector("tbody").innerHTML=""
+
+           Data.forEach((user,i)=>{
+               var myTr=document.createElement("tr")
+               for(a in user){
+                   var myTd=document.createElement("td")
+                   myTd.innerHTML=user[a]
+                   myTr.appendChild(myTd)
+               }
+               //edituser
+               var editTd=document.createElement("td")
+               var editbtn=document.createElement("button")
+               editbtn.setAttribute("onclick","edituser("+i+")")
+               editbtn.innerHTML="Edit"
+               editTd.appendChild(editbtn)
+               myTr.appendChild(editTd)
+
+               var deleteTd=document.createElement("td")
+               var deletebtn=document.createElement("button")
+               deletebtn.setAttribute("onclick","deleteuser("+i+")")
+               deletebtn.innerHTML="Delete"
+               deleteTd.appendChild(deletebtn)
+               myTr.appendChild(deleteTd)
+
+               document.querySelector("tbody").appendChild(myTr)
+           })
+       }
+       function deleteuser(i){
+           console.log(allcomments[i])
+           var deluser = new XMLHttpRequest();
+           deluser.onreadystatechange=function(){
+               if(deluser.status == 200 && deluser.readyState ==4){
+                   console.log("user deleted successfully")
+               }
+           }
+           deluser.open("DELETE","http://localhost:3000/comments/"+allcomments[i].id)
+           deluser.setRequestHeader("Content-type", "application/json")
+           deluser.send()
+       }
+
+       function edituser(i){
+
+        document.getElementById("add").style.display="none"
+        document.getElementById("update").style.display="block"
+
+           document.getElementById("postId").value =allcomments[i].postId;
+           document.getElementById("id").value =allcomments[i].id;
+           document.getElementById("name").value =allcomments[i].name;
+           document.getElementById("email").value =allcomments[i].email;
+           document.getElementById("body").value =allcomments[i].body;
+       }
+       function updateuser(){
+           data={
+            postId:document.getElementById("postId").value,
+            id:document.getElementById("id").value,
+            name:document.getElementById("name").value,
+            email:document.getElementById("email").value,
+            body:document.getElementById("body").value
+           }
+           var sendData = new XMLHttpRequest();
+           sendData.onreadystatechange=function(){
+               if(sendData.status==201 && sendData.readyState==4){
+                   console.log("update user successfully")
+                   displaycommentsdata()
+               }
+           }
+           sendData.open("PUT","http://localhost:3000/comments/" +data.id)
+           sendData.setRequestHeader("Content-type","application/json")
+           sendData.send(JSON.stringify(data))
+       } 
+
+   </script>
+</body>
+</html>

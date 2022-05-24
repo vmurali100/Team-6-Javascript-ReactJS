@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="userId">userId</label>
+        <input type="text" name="" id="userId"><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br>
+
+        <button type="button" id="add" onclick="getdatafromAlbums()">GetData</button>
+        <button type="button" id="update" onclick="Updateuser()" style="display: none">Updateuser</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>userId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allausers = []
+        function getdatafromAlbums() {
+            var user = {
+                userId: document.getElementById("userId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+            }
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("userr added successfully")
+                    getdatafromAlbums()
+                }
+            }
+            sendData.open("POST", " http://localhost:3000/albums")
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+
+        }
+        function getdatafromAlbums() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allausers = JSON.parse(getData.response)
+                    console.log(allausers)
+                    displayUsers(allausers)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/albums")
+            getData.send()
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                //Edit
+                var editTd = document.createElement("td")
+                var editBit = document.createElement("button")
+                editBit.setAttribute("onclick", "editUser(" + i + ")")
+                editBit.innerHTML = "Edit"
+                editTd.appendChild(editBit)
+                myTr.appendChild(editTd)
+                //Delete
+                var deleteTd = document.createElement("td")
+                var deleteBit = document.createElement("button")
+                deleteBit.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBit.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBit)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+
+        function deleteUser(i) {
+            console.log(allausers[i])
+            var deluser = new XMLHttpRequest();
+            deluser.onreadystatechange = function () {
+                if (deluser.status == 200 && deluser.readyState == 4) {
+                    console.log("user delete succussfully")
+                }
+            }
+            deluser.open("DELETE", "http://localhost:3000/albums/" + allausers[i].id)
+            deluser.send()
+        }
+        function editUser(i) {
+
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+
+            document.getElementById("userId").value = allausers[i].userId,
+                document.getElementById("id").value = allausers[i].id,
+                document.getElementById("title").value = allausers[i].title
+
+        }
+        function Updateuser() {
+            var user = {
+                userId: document.getElementById("userId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+            }
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function (){
+                if(sendData.status ==201 && sendData.readyState ==4){
+                console.log("Update user successfully")
+                getdatafromAlbums()     
+                
+                document.getElementById("add").style.display = "block"
+            document.getElementById("update").style.display = "none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/albums/"+user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+
+        }
+    </script>
+</body>
+
+</html>

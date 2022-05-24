@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    img{
+        width: 70px;
+        height: 40px;
+    }
+</style>
+
 <body>
     <button type="button" onclick="getDataphoto()">getDataphoto</button>
     <table border="1">
@@ -19,29 +27,42 @@
         <tbody></tbody>
     </table>
     <script>
-        function getDataphoto(){
+        function getDataphoto() {
             var getData = new XMLHttpRequest();
-            getData.onreadystatechange = function(){
-                if(getData.status ==200 && getData.readyState == 4){
-                    var allusers=JSON.parse(getData.response)
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    var allusers = JSON.parse(getData.response)
                     console.log(allusers)
                     displayuser(allusers)
                 }
             }
-            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getData.open("GET", "https://jsonplaceholder.typicode.com/photos")
             getData.send()
         }
-        function displayuser(allusers){
-            allusers.forEach((sai,i) => {
-               var myTr=document.createElement("tr")
-               for(a in sai){
-                   var myTd=document.createElement("td")
-                   myTd.innerHTML=sai[a]
-                   myTr.appendChild(myTd)
-               }
-               document.querySelector("tbody").appendChild(myTr)
+        function displayuser(allusers) {
+            allusers.forEach((sai, i) => {
+                var myTr = document.createElement("tr")
+                for (a in sai) {
+                    if (a !== "url" && a !== "thumbnailUrl") {
+                        var myTd = document.createElement("td")
+                        myTd.innerHTML = sai[a]
+                        myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg=document.createElement("img")
+                        myImg.setAttribute("src",sai[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+                    }
+                    //    console.log(a)
+                    //    var myTd=document.createElement("td")
+                    //    myTd.innerHTML=sai[a]
+                    //    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
             });
         }
     </script>
 </body>
+
 </html>

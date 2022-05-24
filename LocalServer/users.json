@@ -1,0 +1,24 @@
+{
+  "user": [
+    {
+      "fname": "jayasankar",
+      "lname": "JSK",
+      "id": 1
+    },
+    {
+      "fname": "sai",
+      "lname": "kiran",
+      "id": 2
+    },
+    {
+      "fname": "jayasankar",
+      "lname": "Raju",
+      "id": 3
+    },
+    {
+      "fname": "sai",
+      "lname": "chinna",
+      "id": 4
+    }
+  ]
+}

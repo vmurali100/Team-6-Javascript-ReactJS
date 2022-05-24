@@ -1,0 +1,74 @@
+{
+  "detail": [
+    {
+      "fname": "Annette",
+      "lname": "Diaz",
+      "tel": "(900)432-1970",
+      "address": "4679 Pretium Ct",
+      "city": "Piedmont",
+      "state": "SC",
+      "zip": 29994,
+      "id": 3
+    },
+    {
+      "fname": "Pete",
+      "lname": "Kim",
+      "tel": "(174)711-5192",
+      "address": "316 At Dr",
+      "city": "Maricopa",
+      "state": "MS",
+      "zip": 23424,
+      "id": 4
+    },
+    {
+      "fname": "Nick",
+      "lname": "Glean",
+      "tel": "(309)493-1705",
+      "address": "2230 Amet Ave",
+      "city": "Newburg",
+      "state": "RI",
+      "zip": 25714,
+      "id": 5
+    },
+    {
+      "fname": "Aisha",
+      "lname": "Fielack",
+      "tel": "(304)011-8693",
+      "address": "7764 Tincidunt Dr",
+      "city": "Camden",
+      "state": "IA",
+      "zip": 73391,
+      "id": 6
+    },
+    {
+      "fname": "Mohammed",
+      "lname": "Schuster",
+      "tel": "(700)214-2003",
+      "address": "371 Facilisis Ave",
+      "city": "Larimore",
+      "state": "AK",
+      "zip": 11488,
+      "id": 7
+    },
+    {
+      "fname": "Christel",
+      "lname": "Mccracken",
+      "tel": "(338)720-2435",
+      "address": "7497 Tortor Ct",
+      "city": "Mansfield",
+      "state": "UT",
+      "zip": 71070,
+      "id": 8
+    },
+    {
+      "fname": "Narendra",
+      "lname": "Packard",
+      "tel": "(561)003-7637",
+      "address": "2806 Odio Ct",
+      "city": "Neenah",
+      "state": "AZ",
+      "zip": 34840,
+      "id": 10
+    }
+  ]
+}

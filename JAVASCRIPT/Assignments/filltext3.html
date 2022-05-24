@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="lname">lname</label>
+        <label for="fname">fname</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="lname">lname</label>
+        <input type="text" name="" id="lname"><br><br>
+        <label for="tel">tel</label>
+        <input type="text" name="" id="tel"><br><br>
+        <label for="address">address</label>
+        <input type="text" name="" id="address"><br><br>
+        <label for="city">city</label>
+        <input type="text" name="" id="city"><br><br>
+        <label for="state">state</label>
+        <input type="text" name="" id="state"><br><br>
+        <label for="zip">zip</label>
+        <input type="text" name="" id="zip"><br><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br><br>
+
+        <button type="button" onclick="getallfilltext()" id="get">get all filltext</button>
+        <button type="button" onclick="updateallfilltext()" id="update" style="display:none">update all filltext</button>
+    </form>
+    <br />
+    <table border="2">
+        <thead>
+            
+            <th>fname</th>
+            <th>lname</th>
+            <th>tel</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip</th>
+            <th>id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allfilltext = []
+        function getallfilltext() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allfilltext = JSON.parse(getdata.response)
+                    console.log(allfilltext)
+                    displayUsers(allfilltext)
+                }
+            }
+            getdata.open("GET", "http://localhost:3000/filltext3");
+            getdata.send()
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr");
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a];
+                    mytr.appendChild(mytd);
+                }
+                document.querySelector("tbody").appendChild(mytr);
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editfill("+i+")")
+                editBtn.innerHTML = "Edit";
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deletefill("+i+")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function deletefill(i) {
+            console.log(allfilltext[i])
+            var delfill= new XMLHttpRequest()
+            delfill.onreadystatechange = function () {
+                if (delfill.status == 200 && delfill.readyState == 4) {
+                    console.log("filltext deleted successfully")
+                }
+            }
+            delfill.open("DELETE", " http://localhost:3000/filltext3/" + allfilltext[i].id);
+            delfill.setRequestHeader("Content-type", "application/json");
+            delfill.send();
+        }
+        function editfill(i) {
+            document.getElementById("get").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("fname").value = allfilltext[i].fname;
+            document.getElementById("lname").value = allfilltext[i].lname;
+            document.getElementById("tel").value = allfilltext[i].tel;
+            document.getElementById("address").value = allfilltext[i].address;
+            document.getElementById("city").value = allfilltext[i].city;
+            document.getElementById("state").value = allfilltext[i].state;
+            document.getElementById("zip").value = allfilltext[i].zip;
+            document.getElementById("id").value = allfilltext[i].id;
+        }
+        function updateallfilltext() {
+            var data = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                tel: document.getElementById("tel").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zip: document.getElementById("zip").value,
+                id: document.getElementById("id").value,
+            };
+            var senddata = new XMLHttpRequest()
+            senddata.onreadystatechange = function () {
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("get added successfully");
+                    getallfilltext();
+                    document.getElementById("get").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            senddata.open("PUT", "http://localhost:3000/filltext3/"+data.id);
+            senddata.setRequestHeader("Content-type", "application/json");
+            senddata.send(JSON.stringify(data));
+        }
+        getallfilltext();
+    </script>
+</body>
+
+</html>

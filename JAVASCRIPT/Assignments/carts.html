@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form>
+            <label for="id">Id</label>
+            <input type="text" name="" id="id"><br><br>
+            <label for="userid">UserId</label>
+            <input type="text" name="" id="userid"><br><br>
+            <label for="date">Date</label>
+            <input type="text" name="" id="date"><br><br>
+            <label for="products">Products</label>
+            <input type="text" name="" id="product"><br><br>
+            <label for="__v">__v</label>
+            <input type="text" name="" id="__v"><br><br>
+        
+            <button type="button" onclick="getallcarts()" id="get">get all carts</button>
+            <button type="button" onclick="updateallcarts()" id="update" style="display:none">update all carts</button>
+        </form>
+        <br />
+        <table border="2">
+            <thead>
+                <th>Id</th>
+                <th>UserId</th>
+                <th>Date</th>
+                <th>Products</th>
+                <th>value</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+            var allcarts = []
+            function getallcarts() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allcarts = JSON.parse(getdata.response)
+                    console.log(allcarts)
+                    displayUsers(allcarts)
+                }
+            }
+            getdata.open("GET", "http://localhost:3000/carts");
+            getdata.send()
+        }
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user,i) =>{
+                var  mytr = document.createElement("tr")
+                for(a in user){
+                    if(a!=="products"){
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }else{
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML= JSON.stringify(user[a])
+                    mytr.appendChild(mytd)
+                }
+                }
+                document.querySelector("tbody").appendChild(mytr);
+
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editcart("+i+")")
+                editBtn.innerHTML = "Edit";
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deletecart("+i+")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function deletecart(i) {
+            console.log(allcarts[i])
+            var delcart = new XMLHttpRequest()
+            delcart.onreadystatechange = function () {
+                if (delcart.status == 200 && delcart.readyState == 4) {
+                    console.log("carts deleted successfully")
+                }
+            }
+            delcomment.open("DELETE", "  http://localhost:3000/carts/" + allcarts[i].id);
+            delcomment.setRequestHeader("Content-type", "application/json");
+            delcomment.send();
+        }
+        function editcart(i) {
+            document.getElementById("get").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("id").value = allcarts[i].id
+            document.getElementById("userid").value = allcarts[i].userId
+            document.getElementById("date").value = allcarts[i].date
+            document.getElementById("products").value = allcarts[i].products
+            document.getElementById("__v").value = allcarts[i].__v
+            
+        }
+        function updateallcarts() {
+            var data = {
+                userid: document.getElementById("id").value,
+                id: document.getElementById("userid").value,
+                name: document.getElementById("date").value,
+                email: document.getElementById("products").value,
+                __v: document.getElementById("__v").value,
+               
+            };
+            var senddata = new XMLHttpRequest()
+            senddata.onreadystatechange = function () {
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("get added successfully");
+                    getallcarts();
+                    document.getElementById("get").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            senddata.open("PUT", "http://localhost:3000/carts/"+data.id);
+            senddata.setRequestHeader("Content-type", "application/json");
+            senddata.send(JSON.stringify(data));
+        }
+        getallcarts()
+        </script>
+    </body>
+    </html>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="address">address</label>
+        <input type="text" name="" id="address"><br><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br><br>
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br><br>
+        <label for="password">password</label>
+        <input type="text" name="" id="password"><br><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br><br>
+        <label for="phone">phone</label>
+        <input type="text" name="" id="phone"><br><br>
+        <label for="__v">__v</label>
+        <input type="text" name="" id="__v"><br><br>
+
+        <button type="button" onclick="getallusers()" id="get">get all users</button>
+        <button type="button" onclick="updateallusers()" id="update" style="display:none">update all users</button>
+    </form>
+    <br />
+    <table border="2">
+        <thead>
+            
+            <th>address</th>
+            <th>id</th>
+            <th>email</th>
+            <th>username</th>
+            <th>password</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>__v</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluser = []
+        function getallusers() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    alluser = JSON.parse(getdata.response)
+                    console.log(alluser)
+                    displayUsers(alluser)
+                }
+            }
+            getdata.open("GET", "http://localhost:3000/users");
+            getdata.send()
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr");
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    if(a!=="address" && a!=="geolocation" && a!=="name"){
+                        mytd.innerHTML=user[a]    
+                    }else{
+                        var details=""
+                        for(b in user[a]){
+                           details=details+b+":"+user[a][b]+"<br>" 
+                        }
+                        mytd.innerHTML=details
+                    }  
+                    mytr.appendChild(mytd);
+                }
+                document.querySelector("tbody").appendChild(mytr);
+              
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser("+i+")")
+                editBtn.innerHTML = "Edit";
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser("+i+")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+                
+            })
+        }
+          
+            
+        function deleteuser(i) {
+            console.log(alluser[i])
+            var deluser= new XMLHttpRequest()
+            deluser.onreadystatechange = function () {
+                if (deluser.status == 200 && deluser.readyState == 4) {
+                    console.log("users deleted successfully")
+                }
+            }
+            deluser.open("DELETE", " http://localhost:3000/users/" + alluser[i].id);
+            deluser.setRequestHeader("Content-type", "application/json");
+            deluser.send();
+        }
+        function edituser(i) {
+            document.getElementById("get").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("address").value = alluser[i].address;
+            document.getElementById("id").value = alluser[i].id;
+            document.getElementById("email").value = alluser[i].email;
+            document.getElementById("username").value = alluser[i].username;
+            document.getElementById("password").value = alluser[i].password;
+            document.getElementById("name").value = alluser[i].name;
+            document.getElementById("phone").value = alluser[i].phone;
+            document.getElementById("__v").value = alluser[i].__v;
+        }
+        function updateallusers() {
+            var data = {
+                address: document.getElementById("address").value,
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                __v: document.getElementById("__v").value,
+            };
+            var senddata = new XMLHttpRequest()
+            senddata.onreadystatechange = function () {
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("get added successfully");
+                    getallusers();
+                    document.getElementById("get").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            senddata.open("PUT", "http://localhost:3000/users/"+data.id);
+            senddata.setRequestHeader("Content-type", "application/json");
+            senddata.send(JSON.stringify(data));
+        }
+        getallusers();
+    </script>
+</body>
+
+</html>

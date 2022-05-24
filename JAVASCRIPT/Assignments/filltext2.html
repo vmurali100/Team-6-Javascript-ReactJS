@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br><br>
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br><br>
+        <label for="password">password</label>
+        <input type="text" name="" id="password"><br><br>
+        <button type="button" onclick="getallfilltext()" id="get">get all filltext</button>
+        <button type="button" onclick="updateallfilltext()" id="update" style="display:none">update all filltext</button>
+    </form>
+    <br />
+    <table border="2">
+        <thead>
+            <th>id</th>
+            <th>email</th>
+            <th>username</th>
+            <th>password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allfilltext = []
+        function getallfilltext() {
+            var getdata = new XMLHttpRequest()
+            getdata.onreadystatechange = function () {
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allfilltext = JSON.parse(getdata.response)
+                    console.log(allfilltext)
+                    displayUsers(allfilltext)
+                }
+            }
+            getdata.open("GET", "http://localhost:3000/filltext2");
+            getdata.send()
+        }
+        function displayUsers(data) {
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr");
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a];
+                    mytr.appendChild(mytd);
+                }
+                document.querySelector("tbody").appendChild(mytr);
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "editfill("+i+")")
+                editBtn.innerHTML = "Edit";
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deletefill("+i+")")
+                deleteBtn.innerHTML = "Delete";
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function deletefill(i) {
+            console.log(allfilltext[i])
+            var delfill= new XMLHttpRequest()
+            delfill.onreadystatechange = function () {
+                if (delfill.status == 200 && delfill.readyState == 4) {
+                    console.log("filltext deleted successfully")
+                }
+            }
+            delfill.open("DELETE", "  http://localhost:3000/filltext2/" + allfilltext[i].id);
+            delfill.setRequestHeader("Content-type", "application/json");
+            delfill.send();
+        }
+        function editfill(i) {
+            document.getElementById("get").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("id").value = allfilltext[i].id;
+            document.getElementById("email").value = allfilltext[i].email;
+            document.getElementById("username").value = allfilltext[i].username;
+            document.getElementById("password").value = allfilltext[i].password;
+        }
+        function updateallfilltext() {
+            var data = {
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+            };
+            var senddata = new XMLHttpRequest()
+            senddata.onreadystatechange = function () {
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("get added successfully");
+                    getallfilltext();
+                    document.getElementById("get").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            senddata.open("PUT", "http://localhost:3000/filltext2/"+data.id);
+            senddata.setRequestHeader("Content-type", "application/json");
+            senddata.send(JSON.stringify(data));
+        }
+        getallfilltext();
+    </script>
+</body>
+
+</html>

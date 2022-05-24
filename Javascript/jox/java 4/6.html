@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">user id</label><br>
+        <input type="text" name="" id="user"><br>
+        <label for="">title</label><br>
+        <input type="text" name="" id="title"><br>
+        <label for="">completed</label><br>
+        <input type="text" name="" id="c"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button onclick="getdatafromapi()" type="button" id="add">getdata</button>
+        <button onclick="updateuser()" type="button" id="update" style="display:none ;">getdata</button>
+    </form>
+    <table border="1">
+       <thead>
+           <th>user</th>
+           <th>id</th>
+           <th>title</th>
+           <th>completed</th>
+           <th>edit</th>
+           <th>delete</th>
+           
+
+       </thead>
+       <tbody></tbody>
+    </table>
+    <script>
+        var allposts=[]
+        function getdatafromapi (){
+            var getdata=new XMLHttpRequest();
+            getdata.onreadystatechange= function(){
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allposts= JSON.parse(getdata.response)
+                    console.log(allposts)
+                    displayusers(allposts)
+                }
+            }
+            getdata.open("GET","https://jsonplaceholder.typicode.com/todos");
+            getdata.send()
+        }
+        function displayusers(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+
+          var editTd = document.createElement("td")
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editUser("+i+")")
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd)
+
+          var deleteTd = document.createElement("td")
+          var deleteBtn = document.createElement("button")
+          deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+
+          deleteBtn.innerHTML="Delete";
+          deleteTd.appendChild(deleteBtn)
+          myTr.appendChild(deleteTd)
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+       
+      function deleteuser(i){
+          console.log(allposts[i])
+
+          var deluser= new XMLHttpRequest()
+          deluser.onreadystatechange= function(){
+                if (deluser.status == 200 && deluser.readyState == 4) {
+                    console.log("user delete sucess")
+                }
+            }
+            deluser.open("DELETE","https://jsonplaceholder.typicode.com/todos"+ allposts[i].id);
+            deluser.setRequestHeader("content-type","application/json");
+            deluser.send();
+
+
+      }
+      function edituser(i){
+        
+        document.getElementById("user").value = allUsers[i].user
+        document.getElementById("id").value = allUsers[i].id
+        document.getElementById("title").value = allUsers[i].title
+        document.getElementById("c").value = allUsers[i].c
+        document.getElementById("add").style.display = "none"
+        document.getElementById("update").style.display = "block"
+      }
+      function updateusers(){
+        console.log("Update User Called")
+        var data = {
+          user: document.getElementById("user").value,
+          id: document.getElementById("id").value,
+          title: document.getElementById("title").value,
+          c: document.getElementById("c").value,
+        };
+
+        var senddata= new XMLHttpRequest()
+          senddata.onreadystatechange= function(){
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("form added sucess");
+                    getdatafromapi()
+                    document.getElementById("add").style.display = "block"
+                     document.getElementById("update").style.display = "none"
+                }
+          };
+        senddata.  open("PUT","https://jsonplaceholder.typicode.com/todos"+ data.id);
+        senddata.setRequestHeader("content-type","application/json");
+        senddata.send(JSON.stringify(data));
+      }
+       getdatafromapi()
+    </script>
+</body>
+</html>

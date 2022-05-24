@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form> 
+        <label for="id">Id : </label>
+        <input type="text" name="" id="id" readonly><br><br>
+        <label for="userId">userId : </label>
+        <input type="text" name="" id="userId"><br><br>
+        <label for="date">Date : </label>
+        <input type="text" name="" id="date"><br><br>
+        <label for="products">Products : </label>
+        <input type="text" name="" id="products"><br><br>
+        <label for="__v">__v : </label>
+        <input type="text" name="" id="__v"><br><br>
+        <button type="button" onclick="addUser()" id="add">Add User</button>
+        <button type="button" onclick="update()" id="userUpdate" style="display: none;">Update User</button>
+    </form>
+    <br><hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User Id</th>
+                <th>date</th>
+                <th>products</th>
+                <th>__v</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allUsers = []
+        function addUser(){
+            var user = {
+                id: document.getElementById("id").value,
+                userId:document.getElementById("userId").value,
+                date: document.getElementById("date").value,
+                products: document.getElementById("products").value,
+                __v: document.getElementById("__v").value
+            }
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("User Added Success Fully")
+                    getallUserFromAPI()
+                }
+            }
+            sendData.open("POST","http://localhost:3000/cart")
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        function getallUserFromAPI(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                    allUsers = JSON.parse(getData.response)
+                    console.log(allUsers)
+                    displayUsers(allUsers)
+                }
+            }
+            getData.open("GET","http://localhost:3000/cart")
+            getData.send()
+        }
+        function displayUsers(data){
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr")   
+                for(a in user){
+                    if(a !=="products"){                        
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        myTd.innerHTML= user[a][0].quantity
+                        myTr.appendChild(myTd)
+                    }
+                }                             
+                //edit
+                var editTd = document.createElement("td")
+                var editBit = document.createElement("button")
+                editBit.setAttribute("onclick", "editUser("+i+")")
+                editBit.innerHTML = "Edit"
+                editTd.appendChild(editBit)
+                myTr.appendChild(editTd)
+                //Delete
+                var deletTd = document.createElement("td")
+                var deletBit = document.createElement("button")
+                deletBit.setAttribute("onclick", "deletUser("+i+")")
+                deletBit.innerHTML = "Delete"
+                deletTd.appendChild(deletBit)
+                myTr.appendChild(deletTd)
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function deletUser(i){
+            console.log(allUsers[i])
+
+            var delUsers = new XMLHttpRequest();
+            delUsers.onreadystatechange = function(){
+                if(delUsers.status == 200 && delUsers.readyState == 4){
+                    console.log("User Deleted Success Fully")
+                }
+            }
+            delUsers.open("DELETE","http://localhost:3000/cart/"+allUsers[i].id)
+            delUsers.send()
+        }
+        function editUser(i){
+            document.getElementById("add").style.display = "none"
+            document.getElementById("userUpdate").style.display = "block"
+
+            document.getElementById("id").value = allUsers[i].id
+            document.getElementById("userId").value = allUsers[i].userId
+            document.getElementById("date").value = allUsers[i].date
+            document.getElementById("products").value = allUsers[i].products[0].quantity
+            document.getElementById("__v").value = allUsers[i].__v
+        }
+        function update(){
+            var user = {
+                id: document.getElementById("id").value,
+                userId:document.getElementById("userId").value,
+                date: document.getElementById("date").value,
+                //products: document.getElementById("products").value,
+                __v: document.getElementById("__v").value
+            }
+            user.products = [{quantity:document.getElementById("products").value}]
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("User Added Success Fully")
+                    getallUserFromAPI()
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/cart/"+user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getallUserFromAPI()
+    </script>
+</body>
+</html>

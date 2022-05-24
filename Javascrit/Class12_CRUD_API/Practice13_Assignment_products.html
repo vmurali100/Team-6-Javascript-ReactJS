@@ -6,84 +6,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        table {
-            margin: 0 auto;
-            width: 1000px;
-        }
-    </style>
 </head>
 
 <body>
     <form>
-        <label for="userId">userId</label>
-        <input type="text" name="" id="userId"><br>
         <label for="title">title</label>
         <input type="text" name="" id="title"><br>
+        <label for="price">price</label>
+        <input type="text" name="" id="price"><br>
+        <label for="description">description</label>
+        <input type="text" name="" id="description"><br>
+        <label for="category">category</label>
+        <input type="text" name="" id="category"><br>
+        <label for="image">image</label>
+        <input type="text" name="" id="image"><br>
+        <label for="rating">rating</label>
+        <input type="text" name="" id="rating"><br>
         <input type="text" name="" id="id" hidden>
-        <button onclick="AddUser()" type="button" id="add">Add User</button>
+        <button type="button" onclick="AddUser()" id="add">Add User</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
         <thead>
-            <th>userId</th>
             <th>id</th>
             <th>title</th>
+            <th>price</th>
+            <th>description</th>
+            <th>category</th>
+            <th>image</th>
+            <th>rating</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
         <tbody></tbody>
     </table>
-
     <script>
-        var allalbums = []
+        var allproducts = []
         function AddUser() {
             var user = {
-                userId: document.getElementById("userId").value,
-                id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                price: document.getElementById("price").value,
+                description: document.getElementById("description").value,
+                category: document.getElementById("category").value,
+                image: document.getElementById("image").value,
+                rating: document.getElementById("rating").value,
+                id: document.getElementById("id").value
             }
-            // console.log(user)
-
-
 
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
                 if (sendData.status == 201 && sendData.readyState == 4) {
-                    console.log("Form Added Successfully");
+                    console.log("Data Added Successfully")
                     GetDataFromAPI()
-
                 }
             }
-            sendData.open("POST", "http://localhost:3000/albums/");
+            sendData.open("POST", "http://localhost:3000/products");
             sendData.setRequestHeader("Content-type", "application/json");
-            sendData.send(JSON.stringify(user))
+            sendData.send(JSON.stringify(user));
         }
+
         function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    allalbums = JSON.parse(getData.response)
-                    console.log(allalbums)
-                    displayUsers(allalbums)
+                    allproducts = JSON.parse(getData.response)
+                    console.log(allproducts)
+                    displayUsers(allproducts)
+
                 }
             }
-            getData.open("GET", "http://localhost:3000/albums");
-            getData.send()
+            getData.open("GET", "http://localhost:3000/products");
+            getData.send();
         }
 
-        function displayUsers(Data) {
-            document.querySelector("tbody").innerHTML = "";
-
-            Data.forEach((user, i) => {
-
+        function displayUsers(allProducts) {
+            allProducts.forEach((user, i) => {
+                console.log(user)
                 var myTr = document.createElement("tr");
                 for (a in user) {
-                    var myTd = document.createElement("td");
-                    myTd.innerHTML = user[a];
-                    myTr.appendChild(myTd);
+                    var myTd = document.createElement("td")
+                    if (a !== "rating") {
+                        myTd.innerHTML = user[a]
+                    } else {
+                         var details = ""
+                        for(b in user[a]){
+                            details = details + b + " : " + user[a][b] + "<br>"
+                        }
+                        myTd.innerHTML = details
+                    }
+                    myTr.appendChild(myTd)
                 }
-
                 var editTd = document.createElement("td")
                 var editbutton = document.createElement("button");
                 editbutton.setAttribute("onclick", "editUser(" + i + ")")
@@ -98,20 +110,20 @@
                 deleteTd.appendChild(deletebutton);
                 myTr.appendChild(deleteTd)
 
-
                 document.querySelector("tbody").appendChild(myTr);
 
             });
         }
+        
         function deleteUser(i) {
-            console.log(allalbums[i])
+            console.log(allproducts[i])
             var delUser = new XMLHttpRequest()
             delUser.onreadystatechange == function () {
                 if (delUser.status == 200 && delUser.readyState == 4) {
                     console.log("User Deleted Successfully")
                 }
             }
-            delUser.open("DELETE", "http://localhost:3000/albums/" + allalbums[i].id);
+            delUser.open("DELETE", "http://localhost:3000/products/" + allproducts[i].id);
             delUser.setRequestHeader("Content-type", "application/json");
             delUser.send();
 
@@ -120,16 +132,25 @@
             document.getElementById("add").style.display = "none"
             document.getElementById("update").style.display = "block"
 
-            document.getElementById("userId").value = allalbums[i].userId;
-            document.getElementById("id").value = allalbums[i].id;
-            document.getElementById("title").value = allalbums[i].title;
+            document.getElementById("title").value = allproducts[i].title;
+            document.getElementById("price").value = allproducts[i].price;
+            document.getElementById("description").value = allproducts[i].description;
+            document.getElementById("category").value = allproducts[i].category;
+            document.getElementById("image").value = allproducts[i].image;
+            document.getElementById("rating").value = allproducts[i].rating;
+            document.getElementById("id").value = allproducts[i].id
+
 
         }
         function updateUser() {
             var Data = {
-                userId: document.getElementById("userId").value,
-                id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                price: document.getElementById("price").value,
+                description: document.getElementById("description").value,
+                category: document.getElementById("category").value,
+                image: document.getElementById("image").value,
+                rating: document.getElementById("rating").value,
+                id: document.getElementById("id").value
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -141,16 +162,16 @@
                     document.getElementById("update").style.display = "none"
                 }
             };
-            sendData.open("PUT", "http://localhost:3000/albums/" + Data.id);
+            sendData.open("PUT", "http://localhost:3000/products/" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
         }
         GetDataFromAPI()
 
 
+
+
     </script>
-
-
 </body>
 
 </html>

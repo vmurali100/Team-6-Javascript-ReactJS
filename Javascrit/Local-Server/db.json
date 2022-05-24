@@ -1,3 +1,46 @@
 {
-  "users": []
+  "users": [
+    {
+      "FirstName": "A Mansur",
+      "LastName": "Vali",
+      "Email": "amansurvali77@gmail.com",
+      "Password": "123456",
+      "id": 1
+    },
+    {
+      "FirstName": "Naveen",
+      "LastName": "Kumar",
+      "Email": "naveen@gmail.com",
+      "Password": "123456",
+      "id": 2
+    },
+    {
+      "FirstName": "santhosh",
+      "LastName": "Kumar",
+      "Email": "santhosh@gmail.com",
+      "Password": "123456",
+      "id": 3
+    },
+    {
+      "FirstName": "",
+      "LastName": "",
+      "Email": "",
+      "Password": "",
+      "id": 4
+    },
+    {
+      "FirstName": "",
+      "LastName": "",
+      "Email": "",
+      "Password": "",
+      "id": 5
+    },
+    {
+      "FirstName": "",
+      "LastName": "",
+      "Email": "",
+      "Password": "",
+      "id": 6
+    }
+  ]
 }

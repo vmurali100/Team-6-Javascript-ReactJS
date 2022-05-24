@@ -29,7 +29,7 @@
         <label for="thumbnailUrl">thumbnailUrl</label>
         <input type="text" name="" id="thumbnailUrl"><br>
         <input type="text" name="" id="id" hidden>
-        <button onclick="GetDataFromAPI()" type="button" id="add">GET DATA</button>
+        <button onclick="AddUser()" type="button" id="add">Add User</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
@@ -47,6 +47,32 @@
 
     <script>
         var allphotos = []
+        function AddUser() {
+            var user = {
+                albumId: document.getElementById("albumId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                url: document.getElementById("url").value,
+                thumbnailUrl: document.getElementById("thumbnailUrl").value,
+            }
+            // console.log(user)
+
+
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("Form Added Successfully");
+                    GetDataFromAPI()
+
+                }
+            }
+            sendData.open("POST", "http://localhost:3000/photos/");
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user))
+        }
+
+
         function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {

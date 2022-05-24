@@ -16,36 +16,35 @@
 
 <body>
     <form>
-        <label for="name">name</label>
-        <input type="text" name="" id="name"><br>
-        <label for="username">username</label>
-        <input type="text" name="" id="username"><br>
-        <label for="email">email</label>
-        <input type="text" name="" id="email"><br>
         <label for="address">address</label>
         <input type="text" name="" id="address"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br>
+        <label for="password">password</label>
+        <input type="text" name="" id="password"><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
         <label for="phone">phone</label>
         <input type="text" name="" id="phone"><br>
-        <label for="website">website</label>
-        <input type="text" name="" id="website"><br>
-        <label for="company">company</label>
-        <input type="text" name="" id="company"><br>
-        <label for="id">id</label>
-        <input type="text" name="" id="id"><br>
+        <label for="__v">__v</label>
+        <input type="text" name="" id="__v"><br>
+        <input type="text" name="" id="id" hidden>
         <button onclick="AddUser()" type="button" id="add">Add User</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
         <tr>
             <thead>
-                <th>id</th>
-                <th>name</th>
-                <th>username</th>
-                <th>email</th>
                 <th>address</th>
+                <th>id</th>
+                <th>email</th>
+                <th>username</th>
+                <th>password</th>
+                <th>name</th>
                 <th>phone</th>
-                <th>website</th>
-                <th>company</th>
+                <th>__v</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -54,17 +53,17 @@
     </table>
 
     <script>
-        var allusers2 = []
+        var allusers1 = []
         function AddUser() {
             var user = {
-                id: document.getElementById("id").value,
-                name: document.getElementById("name").value,
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
                 address: document.getElementById("address").value,
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                name: document.getElementById("name").value,
                 phone: document.getElementById("phone").value,
-                website: document.getElementById("website").value,
-                company: document.getElementById("company").value,
+                __v: document.getElementById("__v").value,
             }
             // console.log(user)
 
@@ -78,7 +77,7 @@
 
                 }
             }
-            sendData.open("POST", "http://localhost:3000/users2/");
+            sendData.open("POST", "http://localhost:3000/users1/");
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user))
         }
@@ -86,26 +85,26 @@
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    allusers2 = JSON.parse(getData.response)
-                    console.log(allusers2)
-                    displayUsers(allusers2)
+                    allusers1 = JSON.parse(getData.response)
+                    console.log(allusers1)
+                    displayUsers(allusers1)
                 }
             }
-            getData.open("GET", "http://localhost:3000/users2/");
+            getData.open("GET", "http://localhost:3000/users1");
             getData.send()
         }
 
-        function displayUsers(allusers2) {
-            allusers2.forEach((user, i) => {
+        function displayUsers(allusers1) {
+            allusers1.forEach((user, i) => {
                 console.log(user)
                 var myTr = document.createElement("tr");
                 for (a in user) {
                     var myTd = document.createElement("td")
-                    if (a !== "address" && a !== "company") {
+                    if (a !== "address" && a !== "name") {
                         myTd.innerHTML = user[a]
                     } else {
-                        var details = ""
-                        for (b in user[a]) {
+                         var details = ""
+                        for(b in user[a]){
                             details = details + b + " : " + user[a][b] + "<br>"
                         }
                         myTd.innerHTML = details
@@ -133,14 +132,14 @@
             });
         }
         function deleteUser(i) {
-            console.log(allusers2[i])
+            console.log(allusers1[i])
             var delUser = new XMLHttpRequest()
             delUser.onreadystatechange == function () {
                 if (delUser.status == 200 && delUser.readyState == 4) {
                     console.log("User Deleted Successfully")
                 }
             }
-            delUser.open("DELETE", "http://localhost:3000/users2/" + allusers2[i].id);
+            delUser.open("DELETE", "http://localhost:3000/users1/" + allusers1[i].id);
             delUser.setRequestHeader("Content-type", "application/json");
             delUser.send();
 
@@ -149,26 +148,26 @@
             document.getElementById("add").style.display = "none"
             document.getElementById("update").style.display = "block"
 
-            document.getElementById("id").value = allusers2[i].id;
-            document.getElementById("name").value = allusers2[i].name;
-            document.getElementById("username").value = allusers2[i].username;
-            document.getElementById("email").value = allusers2[i].email;
-            document.getElementById("address").value = allusers2[i].address;
-            document.getElementById("phone").value = allusers2[i].phone;
-            document.getElementById("website").value = allusers2[i].website;
-            document.getElementById("company").value = allusers2[i].company;
+            document.getElementById("address").value = allusers1[i].address;
+            document.getElementById("id").value = allusers1[i].id;
+            document.getElementById("email").value = allusers1[i].email;
+            document.getElementById("username").value = allusers1[i].username;
+            document.getElementById("password").value = allusers1[i].password;
+            document.getElementById("name").value = allusers1[i].name;
+            document.getElementById("phone").value = allusers1[i].phone;
+            document.getElementById("__v").value = allusers1[i].__v;
 
         }
         function updateUser() {
             var Data = {
-                id: document.getElementById("id").value,
-                name: document.getElementById("name").value,
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
                 address: document.getElementById("address").value,
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                name: document.getElementById("name").value,
                 phone: document.getElementById("phone").value,
-                website: document.getElementById("website").value,
-                company: document.getElementById("company").value,
+                __v: document.getElementById("__v").value,
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -180,7 +179,7 @@
                     document.getElementById("update").style.display = "none"
                 }
             };
-            sendData.open("PUT", "http://localhost:3000/users2/" + Data.id);
+            sendData.open("PUT", "http://localhost:3000/users1" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
         }

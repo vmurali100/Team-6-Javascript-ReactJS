@@ -6,35 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        table {
-            margin: 0 auto;
-            width: 1000px;
-        }
-    </style>
 </head>
 
 <body>
     <form>
-        <label for="postId">postId</label>
-        <input type="text" name="" id="postId"><br>
-        <label for="name">name</label>
-        <input type="text" name="" id="name"><br>
-        <label for="email">email</label>
-        <input type="text" name="" id="email"><br>
-        <label for="body">body</label>
-        <input type="text" name="" id="body"><br>
-        <input type="text" name="" id="id" hidden>
-        <button onclick="AddUser()" type="button" id="add">Add User</button>
+        <label for="fname">fname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">lname</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="tel">tel</label>
+        <input type="text" name="" id="tel"><br>
+        <label for="address">address</label>
+        <input type="text" name="" id="address"><br>
+        <label for="city">city</label>
+        <input type="text" name="" id="city"><br>
+        <label for="state">state</label>
+        <input type="text" name="" id="state"><br>
+        <label for="zip">zip</label>
+        <input type="text" name="" id="zip"><br>
+        <input type="text" name="" id="id"><br>
+        <button type="button" onclick="AddUser()" id="add">Add User</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
         <thead>
-            <th>postId</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>tel</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip</th>
             <th>id</th>
-            <th>name</th>
-            <th>email</th>
-            <th>body</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -42,14 +45,18 @@
     </table>
 
     <script>
-        var allalbums = []
+        var allfilltext2 = []
+
         function AddUser() {
             var user = {
-                postId: document.getElementById("postId").value,
-                id: document.getElementById("id").value,
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                body: document.getElementById("body").value,
+                id:document.getElementById("id").value,
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                tel: document.getElementById("tel").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zip: document.getElementById("zip").value,
             }
             // console.log(user)
 
@@ -63,20 +70,22 @@
 
                 }
             }
-            sendData.open("POST", "http://localhost:3000/comments/");
+            sendData.open("POST", "http://localhost:3000/filltext2");
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user))
         }
+
+
         function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    allalbums = JSON.parse(getData.response)
-                    console.log(allalbums)
-                    displayUsers(allalbums)
+                    allfilltext2 = JSON.parse(getData.response)
+                    console.log(allfilltext2)
+                    displayUsers(allfilltext2)
                 }
             }
-            getData.open("GET", "http://localhost:3000/comments");
+            getData.open("GET", "http://localhost:3000/filltext2");
             getData.send()
         }
 
@@ -112,14 +121,14 @@
             });
         }
         function deleteUser(i) {
-            console.log(allalbums[i])
+            console.log(allfilltext2[i])
             var delUser = new XMLHttpRequest()
             delUser.onreadystatechange == function () {
                 if (delUser.status == 200 && delUser.readyState == 4) {
                     console.log("User Deleted Successfully")
                 }
             }
-            delUser.open("DELETE", "http://localhost:3000/comments/" + allalbums[i].id);
+            delUser.open("DELETE", "http://localhost:3000/filltext2/" + allfilltext2[i].id);
             delUser.setRequestHeader("Content-type", "application/json");
             delUser.send();
 
@@ -128,20 +137,28 @@
             document.getElementById("add").style.display = "none"
             document.getElementById("update").style.display = "block"
 
-            document.getElementById("postId").value = allalbums[i].postId;
-            document.getElementById("id").value = allalbums[i].id;
-            document.getElementById("name").value = allalbums[i].name;
-            document.getElementById("email").value = allalbums[i].email;
-            document.getElementById("body").value = allalbums[i].body;
+            document.getElementById("id").value = allfilltext2[i].id;
+            document.getElementById("fname").value = allfilltext2[i].fname;
+            document.getElementById("lname").value = allfilltext2[i].lname;
+            document.getElementById("tel").value = allfilltext2[i].tel;
+            document.getElementById("address").value = allfilltext2[i].address;
+            document.getElementById("city").value = allfilltext2[i].city;
+            document.getElementById("state").value = allfilltext2[i].state;
+            document.getElementById("zip").value = allfilltext2[i].zip;
 
         }
         function updateUser() {
             var Data = {
-                postId: document.getElementById("postId").value,
-                id: document.getElementById("id").value,
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                body: document.getElementById("body").value,
+                id:document.getElementById("id").value,
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                tel: document.getElementById("tel").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zip: document.getElementById("zip").value,
+               
+                
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -153,7 +170,7 @@
                     document.getElementById("update").style.display = "none"
                 }
             };
-            sendData.open("PUT", "http://localhost:3000/comments/" + Data.id);
+            sendData.open("PUT", "http://localhost:3000/filltext2/" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
         }

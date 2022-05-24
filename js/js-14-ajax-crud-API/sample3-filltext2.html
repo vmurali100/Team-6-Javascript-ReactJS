@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="fname">fname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">lname</label>
+        <input type="text" name="" id="lname"><br>
+        <input type="text" name="" id="id" hidden>
+        <label for="tel">tel</label>
+        <input type="text" name="" id="tel"><br>
+        <label for="address">address</label>
+        <input type="text" name="" id="address"><br>
+        <label for="city">city</label>
+        <input type="text" name="" id="city"><br>
+        <label for="state">state</label>
+        <input type="text" name="" id="state"><br>
+        <label for="zip">zip</label>
+        <input type="text" name="" id="zip"><br>
+        <button onclick="getdatafromapi()" type="button" id="add">get data</button>
+        <button onclick="updateuser()" type="button" id="update" style="display: none;">update user</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <!-- <th>id</th> -->
+            <th>tel</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip</th>
+            <th>id</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allusers = []
+        // var index=null
+        function getdatafromapi() {
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allusers = JSON.parse(getData.response)
+                    displayusers(allusers)
+                    console.log(allusers)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/filltext2")
+            getData.send()
+        }
+        function displayusers(data) {
+            document.querySelector("tbody").innerHTML = ""
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                //edit
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.innerHTML = "edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.innerHTML = "delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+
+        function deleteuser(i) {
+            console.log(allusers[i])
+            var deluser = new XMLHttpRequest()
+            deluser.onreadystatechange = function () {
+                if (deluser == 200 && deluser == 4) {
+                    console.log("user deleted successfully")
+
+                }
+            }
+            deluser.open("DELETE", "http://localhost:3000/filltext2/" + allusers[i].id)
+            deluser.setRequestHeader("Content-type", "application/json")
+            deluser.send()
+
+        }
+        function edituser(i) {
+            // index=i
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("fname").value = allusers[i].fname
+            document.getElementById("lname").value = allusers[i].lname
+            document.getElementById("tel").value = allusers[i].tel
+            document.getElementById("address").value = allusers[i].address
+            document.getElementById("city").value = allusers[i].city
+            document.getElementById("state").value = allusers[i].state
+            document.getElementById("zip").value = allusers[i].zip
+            document.getElementById("id").value = allusers[i].id
+        }
+        function updateuser() {
+            var user = {
+
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+
+             
+
+                tel: document.getElementById("tel").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zip: document.getElementById("zip").value,
+                id: document.getElementById("id").value,
+            }
+            // allusers[index]=user
+            var sendData = new XMLHttpRequest()
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("added successfully")
+                    getdatafromapi()
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+
+                }
+            }
+            sendData.open("PUT", "http://localhost:3000/filltext2/"+user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getdatafromapi()
+
+    </script>
+</body>
+
+</html>

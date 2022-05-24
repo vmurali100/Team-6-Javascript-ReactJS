@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        img{
+            width: 70px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form >
+        <label for="albumId">albumId</label>
+        <input type="text" name="" id="albumId"><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br>
+        <label for="url">url</label>
+        <input type="text" name="" id="url"><br>
+        <label for="thumbnailUrl">thumbnailUrl</label>
+        <input type="text" name="" id="thumbnailUrl"><br>
+
+        <button onclick="GetDataFromAPI()" type="button" id="add">GET DATA</button>
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">Update User</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>albumId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>url</th>
+            <th>thumbnailUrl</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+        <script>
+            var allphotos=[]
+            function GetDataFromAPI(){
+                var getData=new XMLHttpRequest()
+                getData.onreadystatechange=function(){
+                    if(getData.status==200 && getData.readyState==4){
+                        allphotos=JSON.parse(getData.response)
+                        displayusers(allphotos)
+                        console.log(allphotos)
+                    }
+                }
+                getData.open("GET","http://localhost:3000/photos")
+                getData.send()
+            }
+            function displayusers(allphotos){
+                document.querySelector("tbody").innerHTML=""
+                allphotos.forEach((user,i)=>{
+                    var mytr=document.createElement("tr")
+                    for(a in user){
+                        
+                        if(a!=="url" && a!=="thumbnailUrl"){
+                            var mytd=document.createElement("td")
+                            mytd.innerHTML=user[a]
+                            mytr.appendChild(mytd)
+                        }else{
+                            var mytd=document.createElement("td")
+                            var myimg=document.createElement("img")
+                            myimg.setAttribute("src",user[a])
+                            mytd.appendChild(myimg)
+                            mytr.appendChild(mytd)
+
+                        }
+                    }
+                      //edit
+             var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.innerHTML = "edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.innerHTML = "delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                    document.querySelector("tbody").appendChild(mytr)
+                })
+            }
+            function deleteuser(i){
+                console.log(allphotos[i])
+                var delphotos=new XMLHttpRequest()
+                delphotos.onreadystatechange=function(){
+                    if(delphotos.status==200 && delphotos.readdy==4){
+                        console.log("user deleted successfully")
+                    }
+                }
+                delphotos.open("DELETE","http://localhost:3000/photos/"+allphotos[i].id)
+                delphotos.setRequestHeader("Content-type", "application/json")
+                delphotos.send()
+
+            }
+            function edituser(i){
+                document.getElementById("add").style.display="none";
+                document.getElementById("update").style.display="block"
+                document.getElementById("albumId").value=allphotos[i].albumId
+                document.getElementById("id").value=allphotos[i].id
+                document.getElementById("title").value=allphotos[i].title
+                document.getElementById("url").value=allphotos[i].url
+                document.getElementById("thumbnailUrl").value=allphotos[i].thumbnailUrl
+                
+            }
+            function updateuser(){
+                var user={
+                    albumId:document.getElementById("albumId").value,
+                    id:document.getElementById("id").value,
+                    title:document.getElementById("title").value,
+                    url: document.getElementById("url").value,
+                    thumbnailUrl:document.getElementById("thumbnailUrl").value
+                }
+                var sendphoto=new XMLHttpRequest()
+                sendphoto.onreadystatechange=function(){
+                    if(sendphoto.status==201 && sendphoto.readyState==4){
+                        console.log("user added successfully")
+                        document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                    getdatafromapi()
+                    }
+                }
+                sendphoto.open("PUT","http://localhost:3000/photos/"+user.id)
+                sendphoto.setRequestHeader("Content-type", "application/json")
+                sendphoto.send(JSON.stringify(user))
+            }
+            GetDataFromAPI()
+        </script>
+    </table>
+</body>
+</html>

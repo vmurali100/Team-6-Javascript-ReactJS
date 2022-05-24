@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "fname": "hari deepthi",
+      "lname": "boppana",
+      "id": 1
+    },
+    {
+      "fname": "jyothi",
+      "lname": "boppana",
+      "id": 2
+    },
+    {
+      "fname": "vishnu vardhan",
+      "lname": "boppana",
+      "id": 4
+    }
+  ]
+}

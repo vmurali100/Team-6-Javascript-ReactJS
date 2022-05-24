@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            text-align: center;
+            width: 80%;
+            font-size: 13px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="postId">postId</label>
+        <input type="text" name="" id="postId"><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="body">body</label>
+        <input type="text" name="" id="body"><br>
+        <button onclick="getdatafromapi()" id="add" type="button">get data</button>
+        <button onclick="updateuser()" id="update" type="button" style="display: none;">update user</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>postId</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allusers = []
+        function getdatafromapi() {
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allusers = JSON.parse(getData.response)
+                    console.log(allusers)
+                    displayusers(allusers)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/comments")
+            getData.send()
+        }
+        function displayusers(data) {
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                //edit
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.innerHTML = "edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.innerHTML = "delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function deleteuser(i) {
+            console.log(allusers[i])
+            var deluser = new XMLHttpRequest()
+            deluser.onreadystatechange = function () {
+                if (deluser.status == 200 && deluser.readyState == 4) {
+                    console.og("deleted successfully")
+                }
+            }
+            deluser.open("DELETE", "http://localhost:3000/comments/" + allusers[i].id)
+            deluser.setRequestHeader("Content-type", "application/json")
+            deluser.send()
+        }
+        function edituser(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+            document.getElementById("postId").value = allusers[i].postId;
+            document.getElementById("id").value = allusers[i].id;
+            document.getElementById("name").value = allusers[i].name;
+            document.getElementById("email").value = allusers[i].email;
+            document.getElementById("body").value = allusers[i].body;
+
+        }
+
+        function updateuser() {
+            var user = {
+
+                posterid: document.getElementById("postId").value,
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                body: document.getElementById("body").value,
+            }
+            var sendData = new XMLHttpRequest()
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 200 && sendData.readyState == 4) {
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                    console.log("added successfully")
+                    getdatafromapi()
+                }
+            }
+            sendData.open("PUT", "http://localhost:3000/comments/" + user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getdatafromapi()
+    </script>
+</body>
+
+</html>

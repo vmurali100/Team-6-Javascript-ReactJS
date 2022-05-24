@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="userid">UserId</label>
+        <input type="text" name="" id="userid"><br>
+        <label for="id">Id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">Title</label>
+        <input type="text" name="" id="title"><br>
+        <button type="button" onclick="getallbumsFromAPI()" id="add">Adduser</button>
+        
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+          <thead>
+              <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+        </tr>
+      </table>
+    <script>
+            var allbums=[]
+        function getallbumsFromAPI(){
+          var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () {
+          if (getData.status == 200 && getData.readyState == 4) {
+          allbums=JSON.parse(getData.response);
+            console.log(allbums);
+            displayUser(allbums);
+          }
+        };
+        getData.open("GET","http://localhost:3000/Albums");
+        getData.send();
+        }
+
+        function displayUser(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editalbums("+i+")");
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd);
+
+          var deleteTd = document.createElement("td");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.setAttribute("onclicK","deletealbums("+i+")");
+          deleteBtn.innerHTML = "Delete";
+          deleteTd.appendChild(deleteBtn);
+          myTr.appendChild(deleteTd);
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+      
+      function deletealbums(i) {
+
+console.log(allbums[i])
+var delalbums = new XMLHttpRequest()
+delalbums.onreadystatechange = function(){
+  if (delalbums.status == 200 && delalbums.readyState == 4) {
+    console.log("Albums deleted successfully")
+  }
+  delalbums.open( "DELETE","http://localhost:3000/posts" +allbums[i].id);
+   delalbums.setRequestHeader("Content-type","application/json");
+    delalbums.send();
+}
+  
+}
+
+        function editalbums(i){
+  
+         document.getElementById("add").style.display="none"
+        document.getElementById("update").style.display="block"
+
+         document.getElementById("userid").value=allbums[i].userid;   
+        document.getElementById("id").value=allbums[i].id;
+        document.getElementById("title").value=allbums[i].title;
+      }
+
+      function updateuser(){
+        var data={
+                userid:document.getElementById("userid").value,
+              id:document.getElementById("id").value,
+              title:document.getElementById("title").value
+            };
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("allbums added succesfully")
+                    getallbumsFromAPI();
+                  
+        document.getElementById("add").style.display="block"
+        document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/posts"+data.id);
+            sendData.setRequestHeader("Content-type","application/json");
+            sendData.send(JSON.stringify(data));
+
+      }
+      getallbumsFromAPI()
+          
+    </script>
+</body>
+</html>

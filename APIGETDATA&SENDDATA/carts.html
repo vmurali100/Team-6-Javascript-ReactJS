@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="id">ID</label>
+        <input type="text" name="" id="id"><br>
+        <label for="userid">UserID</label>
+        <input type="text" name="" id="userid"><br>
+        <label for="date">Date</label>
+        <input type="text" name="" id="date"><br>
+        <label for="products">Products</label>
+        <input type="text" name="" id="products">
+        
+        <button type="button" onclick="getallcartsFromAPI()" id="add">Adduser</button>
+        
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>ID</th>
+                <th>UserID</th>
+                <th>Date</th>
+                <th>Products</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+                var allcarts=[]
+        function getallcartsFromAPI(){
+          var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () {
+          if (getData.status == 200 && getData.readyState == 4) {
+          allcarts=JSON.parse(getData.response);
+            console.log(allcarts);
+            displayUser(allcarts);
+          }
+        };
+        getData.open("GET","http://localhost:3000/carts");
+        getData.send();
+        }
+
+        function displayUser(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editalcarts("+i+")");
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd);
+
+          var deleteTd = document.createElement("td");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.setAttribute("onclicK","deletealcarts("+i+")");
+          deleteBtn.innerHTML = "Delete";
+          deleteTd.appendChild(deleteBtn);
+          myTr.appendChild(deleteTd);
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+
+function deletealcarts(i) {
+
+    console.log(allcarts[i])
+    var delalcarts = new XMLHttpRequest()
+    delalcarts.onreadystatechange = function(){
+  if (delalcarts.status == 200 && delalcarts.readyState == 4) {
+    console.log("Alcarts deleted successfully")
+  }
+     delalcarts.open("DELETE","http://localhost:3000/carts"+allcarts[i].id);
+    delalcarts.setRequestHeader("Content-type","application/json");
+    delalcarts.send();
+}
+  
+}
+function editalcarts(i){
+  
+  document.getElementById("add").style.display="none"
+    document.getElementById("update").style.display="block"
+
+ document.getElementById("id").value=allcarts[i].id;
+  document.getElementById("userid").value=allcarts[i].userid;   
+  document.getElementById("date").value=allcarts[i].date;
+ document.getElementById("products").value=allcarts[i].products;
+}
+
+function updateuser(){
+        var data={
+                 id:document.getElementById("id").value,
+                userid:document.getElementById("userid").value,
+              date:document.getElementById("date").value,
+              products:document.getElementById("products").value
+            };
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("allcarts added succesfully")
+                    getallcartsFromAPI();
+                  
+        document.getElementById("add").style.display="block"
+        document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/carts"+data.id);
+            sendData.setRequestHeader("Content-type","application/json");
+            sendData.send();
+
+      }
+      getallcartsFromAPI()
+    </script>
+</body>
+</html>

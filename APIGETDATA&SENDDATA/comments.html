@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="postid">POSTID</label>
+        <input type="text" name="" id="postid"><br>
+        <label for="id">Id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">NAME</label>
+        <input type="text" name="" id="name"><br>
+        
+        <label for="title">EMAIL</label>
+        <input type="text" name="" id="email"><br>
+        
+        <label for="title">BODY</label>
+        <input type="text" name="" id="body"><br>
+        <button type="button" onclick="getallcommentsFromAPI()" id="add">Adduser</button>
+        
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+          <thead>
+              <th>POSTId</th>
+            <th>Id</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>BODY</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+        </tr>
+      </table>
+    <script>
+            var allcomments=[]
+        function getallcommentsFromAPI(){
+          var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () {
+          if (getData.status == 200 && getData.readyState == 4) {
+         allcomments=JSON.parse(getData.response);
+            console.log(allcomments);
+            displayUser(allcomments);
+          }
+        };
+        getData.open("GET","http://localhost:3000/comments");
+        getData.send();
+        }
+
+        function displayUser(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editallcomments("+i+")");
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd);
+
+          var deleteTd = document.createElement("td");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.setAttribute("onclicK","deleteallcomments("+i+")");
+          deleteBtn.innerHTML = "Delete";
+          deleteTd.appendChild(deleteBtn);
+          myTr.appendChild(deleteTd);
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+      
+      function deleteallcomments(i) {
+
+console.log(allcomments[i])
+var delallcomments = new XMLHttpRequest()
+delallcomments.onreadystatechange = function(){
+  if (delallcomments.status == 200 && delallcomments.readyState == 4) {
+    console.log("Allcomments deleted successfully")
+  }
+  delallcomments.open( "DELETE","http://localhost:3000/comments" +allcomments[i].id);
+   delallcomments.setRequestHeader("Content-type","application/json");
+    delallcomments.send();
+}
+  
+}
+
+        function editallcomments(i){
+  
+         document.getElementById("add").style.display="none"
+        document.getElementById("update").style.display="block"
+
+        document.getElementById("postid").value=allcomments[i].postid;   
+        document.getElementById("id").value=allcomments[i].id;
+        document.getElementById("name").value=allcomments[i].name;
+        
+        document.getElementById("email").value=allcomments[i].email;
+        
+        document.getElementById("body").value=allcomments[i].body;
+      }
+
+      function updateuser(){
+        var data={
+
+             postid:document.getElementById("postid").value,
+              id:document.getElementById("id").value,
+              name:document.getElementById("name").value,
+              
+              email:document.getElementById("email").value,
+              
+             body:document.getElementById("body").value
+            };
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("allbums added succesfully")
+                    getallcommentsFromAPI();
+                  
+        document.getElementById("add").style.display="block"
+        document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/comments"+data.id);
+            sendData.setRequestHeader("Content-type","application/json");
+            sendData.send(JSON.stringify(data));
+
+      }
+      getallcommentsFromAPI()
+          
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form >
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br>
+        <label for="price">price</label>
+        <input type="text" name="" id="price"><br>
+        <label for="description">description</label>
+        <input type="text" name="" id="description"><br>
+        <label for="category">category</label>
+        <input type="text" name="" id="category"><br>
+        <label for="image">image</label>
+        <input type="text" name="" id="image"><br>
+        <label for="rating">rating</label>
+        <input type="text" name="" id="rating"><br>
+
+        <button onclick="GetDataFromAPI()" type="button" id="add">GET DATA</button>
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">Update User</button>
+    </form>
+    <table border="1">
+        <thead>
+         
+            <th>id</th>
+            <th>title</th>
+            <th>price</th>
+            <th>description</th>
+            <th>category</th>
+            <th>image</th>
+            <th>rating</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+        <script>
+              var allproducts=[]
+            function GetDataFromAPI(){
+                var getData=new XMLHttpRequest()
+                getData.onreadystatechange=function(){
+                    if(getData.status==200 && getData.readyState==4){
+                        allproducts=JSON.parse(getData.response)
+                        displayusers(allproducts)
+                        console.log(allproducts)
+                    }
+                }
+                getData.open("GET","http://localhost:3000/products")
+                getData.send()
+            }
+            function displayusers(allproducts){
+                document.querySelector("tbody").innerHTML=""
+                allproducts.forEach((user,i)=>{
+                    var mytr=document.createElement("tr")
+                    for(a in user){
+                        
+                        if(a!=="image" && a!=="rating"){
+                            var mytd=document.createElement("td")
+                            mytd.innerHTML=user[a]
+                            mytr.appendChild(mytd)
+                        }else if(a=="image"){
+                            var mytd=document.createElement("td")
+                          
+                            // mytd.innerHTML = JSON.stringify(user[a])
+                            var image=document.createElement("img")
+                           image.setAttribute("src",user[a]) 
+                
+                            mytd.appendChild(image)
+                            mytr.appendChild(mytd)
+
+                        }else{
+                            var mytd=document.createElement("td")
+                            mytd.innerHTML=user[a].rate+"<br>"+user[a].count+"<br>"
+                            mytr.appendChild(mytd)
+                        }
+                    }
+                      //edit
+                 var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.innerHTML = "edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.innerHTML = "delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                    document.querySelector("tbody").appendChild(mytr)
+                })
+            }
+            function deleteuser(i){
+                console.log(allproducts[i])
+                var delproducts=new XMLHttpRequest()
+                delproducts.onreadystatechange=function(){
+                    if(delproducts.status==200 && delproducts.readdy==4){
+                        console.log("user deleted successfully")
+                    }
+                }
+                delproducts.open("DELETE","http://localhost:3000/products/"+allproducts[i].id)
+                delproducts.setRequestHeader("Content-type", "application/json")
+                delproducts.send()
+
+            }
+            function edituser(i){
+                document.getElementById("add").style.display="none";
+                document.getElementById("update").style.display="block"
+                document.getElementById("id").value=allproducts[i].id
+                document.getElementById("title").value=allproducts[i].title
+                document.getElementById("description").value=allproducts[i].description
+                document.getElementById("category").value=allproducts[i].category
+                document.getElementById("image").value=allproducts[i].image
+                document.getElementById("rating").value=allproducts[i].rating
+
+                
+            }
+            function updateuser(){
+                var user={
+                    id:document.getElementById("id").value,
+                    title:document.getElementById("title").value,
+                    description:document.getElementById("description").value,
+                    category: document.getElementById("category").value,
+                    image:document.getElementById("image").value,
+                    rating:document.getElementById("rating").value
+
+                }
+                var sendproducts=new XMLHttpRequest()
+                sendproducts.onreadystatechange=function(){
+                    if(sendproducts.status==201 && sendproducts.readyState==4){
+                        console.log("user added successfully")
+                        document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                    getdatafromapi()
+                    }
+                }
+                sendproducts.open("PUT","http://localhost:3000/products/"+user.id)
+                sendproducts.setRequestHeader("Content-type", "application/json")
+                sendproducts.send(JSON.stringify(user))
+            }
+            GetDataFromAPI()
+        </script>
+</body>
+</html>

@@ -20,7 +20,7 @@
         <input type="text" name="" id="products"><br>
         <label for="__v">__v</label>
         <input type="text" name="" id="__v"><br>
-        <input type="text" name="" id="id" hidden><br>
+        <!-- <input type="text" name="" id="id" hidden><br> -->
 
         <button type="button" id="add" onclick="GetdatafromApi()">Getdata</button>
         <button type="button" id="update" onclick="Updateuser()" style="display: none">Updateuser</button>
@@ -40,7 +40,7 @@
 
     <script>
         var allausers = []
-        function GetdatafromApi() {
+        function GetdatafromApi(){
             var getData = new XMLHttpRequest()
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
@@ -54,19 +54,20 @@
         }
         function displaycartsuser(allausers) {
             document.querySelector("tbody").innerHTML = ""
-            allausers.forEach((user, i) => {
+            allausers.forEach((users, i) => {
                 var myTr = document.createElement("tr")
-                for (a in user) {
+                for (a in users) {
                     if (a !== "products") {
                         var myTd = document.createElement("td")
-                        myTd.innerHTML = user[a]
+                        myTd.innerHTML = users[a]
                         myTr.appendChild(myTd)
                     }
                     else {
                         var myTd = document.createElement("td")
-                        myTd.innerHTML = JSON.stringify(user[a])
+                        myTd.innerHTML = JSON.stringify(users[a])
                         myTr.appendChild(myTd)
                     }
+                    myTr.appendChild(myTd)
 
                 }
                 //edit
@@ -102,39 +103,67 @@
         }
 
         function edituser(i) {
+
             document.getElementById("add").style.display = "none"
             document.getElementById("update").style.display = "block"
 
 
-            document.getElementById("id").value = allausers[i].id
-            document.getElementById("userId").value = allausers[i].userId
-            document.getElementById("date").value = allausers[i].date
-            document.getElementById("products").value = allausers[i].products
-            document.getElementById("products").value = allausers[i].__v
+            document.getElementById("id").value = allausers[i].id,
+            document.getElementById("userId").value = allausers[i].userId,
+            document.getElementById("date").value = allausers[i].date,
+            document.getElementById("products").value = allausers[i].products,
+            document.getElementById("__v").value = allausers[i].__v
         }
-        function Updateuser() {
-            var user = {
-                id: document.getElementById("id").value,
-                userId: document.getElementById("userId").value,
-                date: document.getElementById("date").value,
-                products: document.getElementById("products").value,
-                __v: document.getElementById("__v").value,
-            };
+         
+        function Updateuser(){
+            data ={
+                id:document.getElementById("id").value,
+                userId:document.getElementById("userId").value,
+                date:document.getElementById("date").value,
+                products:document.getElementById("products").value,
+                __v:document.getElementById("__v").value
+            }
             var sendData = new XMLHttpRequest();
-            sendData.onreadystatechange = function () {
-                if (sendData.status == 201 && sendData.readyState == 4) {
-                    console.log("updaten user successfully")
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState){
+                    console.log("update user successfully")
                     GetdatafromApi()
 
-                    document.getElementById("add").style.display = "block"
-                    document.getElementById("update").style.display = "none"
-
+                    
+            document.getElementById("add").style.display = "block"
+            document.getElementById("update").style.display = "none"
                 }
             }
-            sendData.open("PUT", "http://localhost:3000/carts/" + user.id)
-            sendData.setRequestHeader("Content-type", "appliction/json")
-            sendData.send(JSON.stringify(user))
+            sendData.open("PUT","http://localhost:3000/carts/"+data.id)
+            sendData.setRequestHeader("Content-type","appliction/json")
+            sendData.send(JSON.stringify(data))
         }
+        GetdatafromApi()
+
+
+        // function Updateuser(){
+        //     var user = {
+        //         id: document.getElementById("id").value,
+        //         userId: document.getElementById("userId").value,
+        //         date: document.getElementById("date").value,
+        //         products: document.getElementById("products").value,
+        //         __v: document.getElementById("__v").value,
+        //     };
+        //     var sendData = new XMLHttpRequest();
+        //     sendData.onreadystatechange = function () {
+        //         if (sendData.status == 201 && sendData.readyState == 4) {
+        //             console.log("updaten user successfully")
+        //             GetdatafromApi()
+
+        //             document.getElementById("add").style.display = "block"
+        //             document.getElementById("update").style.display = "none"
+
+        //         }
+        //     }
+        //     sendData.open("PUT", "http://localhost:3000/carts/" + user.id)
+        //     sendData.setRequestHeader("Content-type", "appliction/json")
+        //     sendData.send(JSON.stringify(user))
+        // }
         // GetdatafromApi()
         
 

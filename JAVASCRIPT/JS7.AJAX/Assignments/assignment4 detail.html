@@ -26,7 +26,8 @@
         <label for="state">zip</label>
         <input type="number" name="" id="zip"><br>
         <label for="Id">Id</label>
-        <input type="text" name="" id="Id">
+        <input type="text" name="" id="Id"><br>
+
 
         <button type="button" id="add" onclick="GetdatefromAPI()">GetData</button>
         <button type="button" id="update" onclick="Upadateuser()" style="display: none">UpdateUser</button>
@@ -98,7 +99,7 @@
                     console.log("delete user successfully")
                 }
             }
-            deluser.open("DELETE","http://localhost:3000/detail/"+ allusers[i].id)
+            deluser.open("DELETE","http://localhost:3000/detail/"+ allusers[i].Id)
             deluser.setRequestHeader("Content-type", "application/json")
             deluser.send()
         }
@@ -111,14 +112,14 @@
             document.getElementById("fname").value = allusers[i].fname,
             document.getElementById("lname").value = allusers[i].lname,
 
-            document.getElementById("id").value = allusers[i].id
+            document.getElementById("Id").value = allusers[i].Id,
 
             document.getElementById("tel").value = allusers[i].tel,
             document.getElementById("address").value = allusers[i].address,
             document.getElementById("city").value = allusers[i].city,
             document.getElementById("state").value = allusers[i].state,
-            document.getElementById("zip").value = allusers[i].zip,
-            // document.getElementById("id").value = allusers[i].id
+            document.getElementById("zip").value = allusers[i].zip
+            
             
         }
 
@@ -127,7 +128,7 @@
             fname:document.getElementById("fname").value,
             lname:document.getElementById("lname").value,
 
-            id:document.getElementById("id").value = allusers[i].id,
+            Id:document.getElementById("Id").value.Id,
 
 
             telnumber:document.getElementById("tel").value,
@@ -135,24 +136,24 @@
             city:document.getElementById("city").value,
             state: document.getElementById("state").value,
             zip: document.getElementById("zip").value,
-            // id: document.getElementById("id").value
+            
             
           }
           var sendData = new XMLHttpRequest();
           sendData .onreadystatechange = function (){
               if(sendData.status ==201 && sendData .readyState == 4){
                 console.log("update user Successfully")
-                displayuser()
+                GetdatefromAPI()
 
                 document.getElementById("add").style.display = "block",
                 document.getElementById("update").style.display = "none"
               }
           }
-          sendData.open("PUT","http://localhost:3000/detail/"+ user.id)
+          sendData.open("PUT","http://localhost:3000/detail/"+ user.Id)
           sendData.setRequestHeader("Content-type", "application/json")
           sendData.send(JSON.stringify(user))
         }
-        
+        GetdatefromAPI()
     </script>
 </body>
 

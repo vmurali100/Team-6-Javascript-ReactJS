@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table {
+        /* table {
             margin: 0 auto;
             width: 1000px;
-        }
+        } */
     </style>
 </head>
 
@@ -30,6 +30,7 @@
         <input type="text" name="" id="phone"><br>
         <label for="__v">__v</label>
         <input type="text" name="" id="__v"><br>
+
         <input type="text" name="" id="id" hidden>
         <button onclick="GetDataFromAPI()" type="button" id="add">GET DATA</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
@@ -112,12 +113,13 @@
                     console.log("User Deleted Successfully")
                 }
             }
-            delUser.open("DELETE", " http://localhost:3000/products" + allusers[i].id);
+            delUser.open("DELETE", "  http://localhost:3000/products/" + allusers[i].id);
             delUser.setRequestHeader("Content-type", "application/json");
             delUser.send();
 
         }
         function editUser(i) {
+
             document.getElementById("add").style.display = "none"
             document.getElementById("update").style.display = "block"
 
@@ -140,7 +142,7 @@
                 password: document.getElementById("password").value,
                 name: document.getElementById("name").value,
                 phone: document.getElementById("phone").value,
-                __v: document.getElementById("__v").value,
+                __v: document.getElementById("__v").value
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -152,11 +154,11 @@
                     document.getElementById("update").style.display = "none"
                 }
             };
-            sendData.open("PUT", " http://localhost:3000/products" + Data.id);
+            sendData.open("PUT", "  http://localhost:3000/products/" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
         }
-        // GetDataFromAPI()
+        GetDataFromAPI()
 
 
     </script>

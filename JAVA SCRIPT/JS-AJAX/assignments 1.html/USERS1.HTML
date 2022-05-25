@@ -1,0 +1,197 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="address">address</label>
+        <input type="text" name="" id="address"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br>
+        <label for="password">password</label>
+        <input type="text" name="" id="password"><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="phone">phone</label>
+        <input type="text" name="" id="phone"><br>
+        <label for="_v">_v</label>
+        <input type="text" name="" id="__v"><br>
+        <input type="text" name="" id="id" hidden>
+        <button onclick="AddUser()" type="button" id="add">Add User</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
+    </form>
+    <table border="1">
+        <tr>
+            <thead>
+                <th>address</th>
+                <th>id</th>
+                <th>email</th>
+                <th>username</th>
+                <th>password</th>
+                <th>name</th>
+                <th>phone</th>
+                <th>__v</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var allusers1 = []
+        function AddUser() {
+            var user = {
+                address: document.getElementById("address").value,
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                _v: document.getElementById("_v").value,
+            }
+            // console.log(user)
+
+
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("Form Added Successfully");
+                    GetDataFromAPI()
+
+                }
+            }
+            sendData.open("POST", "  http://localhost:3000/USERS");
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user))
+        }
+        function GetDataFromAPI() {
+            
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allusers1 = JSON.parse(getData.response)
+                    console.log(allusers1)
+                    displayUsers(allusers1)
+                }
+            }
+            getData.open("GET", "  http://localhost:3000/USERS/");
+            getData.send()
+        }
+
+        function displayUsers(allusers1) {
+            allusers1.forEach((user, i) => {
+                console.log(user)
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    if (a !== "address" && a !== "name") {
+                        myTd.innerHTML = user[a]
+                    } else {
+                         var details = ""
+                        for(b in user[a]){
+                            details = details + b + " : " + user[a][b] + "<br>"
+                        }
+                        myTd.innerHTML = details
+                    }
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td")
+                var editbutton = document.createElement("button");
+                editbutton.setAttribute("onclick", "editUser(" + i + ")")
+                editbutton.innerHTML = "Edit";
+                editTd.appendChild(editbutton);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deletebutton = document.createElement("button");
+                deletebutton.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebutton.innerHTML = "Delete";
+                deleteTd.appendChild(deletebutton);
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr);
+
+            });
+        }
+        function deleteUser(i) {
+            console.log(allusers1[i])
+            var delUser = new XMLHttpRequest()
+            delUser.onreadystatechange == function () {
+                if (delUser.status == 200 && delUser.readyState == 4) {
+                    console.log("User Deleted Successfully")
+                }
+            }
+            delUser.open("DELETE", "  http://localhost:3000/USERS/" + allusers1[i].id);
+            delUser.setRequestHeader("Content-type", "application/json");
+            delUser.send();
+
+        }
+        function editUser(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("address").value = allusers1[i].address;
+            document.getElementById("id").value = allusers1[i].id;
+            document.getElementById("email").value = allusers1[i].email;
+            document.getElementById("username").value = allusers1[i].username;
+            document.getElementById("password").value = allusers1[i].password;
+            document.getElementById("name").value = allusers1[i].name;
+            document.getElementById("phone").value = allusers1[i].phone;
+            document.getElementById("_v").value = allusers1[i]._v;
+
+        }
+        function updateUser() {
+            var Data = {
+                address: document.getElementById("address").value,
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                _v: document.getElementById("_v").value,
+            };
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("Form Added Successfully");
+                    GetDataFromAPI()
+
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            sendData.open("PUT", "  http://localhost:3000/USERS/" + Data.id);
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(Data))
+        }
+        GetDataFromAPI()
+
+
+    </script>
+
+
+</body>
+
+</html>
+</body>
+</html>

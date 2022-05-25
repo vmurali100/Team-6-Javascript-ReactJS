@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            width: 800px;
+        }
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="albumId">albumId</label>
+        <input type="text" name="" id="albumId"><br>
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br>
+        <label for="url">url</label>
+        <input type="text" name="" id="url"><br>
+        <label for="thumbnailUrl">thumbnailUrl</label>
+        <input type="text" name="" id="thumbnailUrl"><br>
+        <input type="text" name="" id="id" hidden>
+        <button onclick="AddUser()" type="button" id="add">Add User</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>albumId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>url</th>
+            <th>thumbnailUrl</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var allimages = []
+        function AddUser() {
+            var user = {
+                albumId: document.getElementById("albumId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                url: document.getElementById("url").value,
+                thumbnailUrl: document.getElementById("thumbnailUrl").value,
+            }
+            // console.log(user)
+
+
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("Form Added Successfully");
+                    GetDataFromAPI()
+
+                }
+            }
+            sendData.open("POST", " http://localhost:3000/images/");
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user))
+        }
+
+
+        function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allimages = JSON.parse(getData.response)
+                    console.log(allimages)
+                    displayUsers(allimages)
+                }
+            }
+            getData.open("GET", "  http://localhost:3000/images/");
+            getData.send()
+        }
+
+        function displayUsers(allimages) {
+            document.querySelector("tbody").innerHTML = ""
+            allimages.forEach((user,i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    if(a !== "url" && a !== "thumbnailUrl"){
+                        var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src",user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+
+                    }
+                   
+                }
+                var editTd = document.createElement("td")
+                var editbutton = document.createElement("button");
+                editbutton.setAttribute("onclick", "editUser(" + i + ")")
+                editbutton.innerHTML = "Edit";
+                editTd.appendChild(editbutton);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deletebutton = document.createElement("button");
+                deletebutton.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebutton.innerHTML = "Delete";
+                deleteTd.appendChild(deletebutton);
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function deleteUser(i) {
+            console.log(allimages[i])
+            var delUser = new XMLHttpRequest()
+            delUser.onreadystatechange == function () {
+                if (delUser.status == 200 && delUser.readyState == 4) {
+                    console.log("User Deleted Successfully")
+                }
+            }
+            delUser.open("DELETE", "  http://localhost:3000/images/" + allimages[i].id);
+            delUser.setRequestHeader("Content-type", "application/json");
+            delUser.send();
+
+        }
+        function editUser(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("albumId").value = allimages[i].albumId;
+            document.getElementById("id").value = allimages[i].id;
+            document.getElementById("title").value = allimages[i].title;
+            document.getElementById("url").value = allimages[i].url;
+            document.getElementById("thumbnailUrl").value = allimages[i].thumbnailUrl;
+
+        }
+        function updateUser() {
+            var Data = {
+                albumId: document.getElementById("albumId").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                url: document.getElementById("url").value,
+                thumbnailUrl: document.getElementById("thumbnailUrl").value,
+            };
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("Form Added Successfully");
+                    GetDataFromAPI()
+
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            };
+            sendData.open("PUT", "  http://localhost:3000/images/" + Data.id);
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(Data))
+        }
+        GetDataFromAPI()
+
+
+    </script>
+
+
+</body>
+
+</html>

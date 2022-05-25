@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="post">postId</label>
+        <input type="text" name="" id="post"><br>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <label for="name">name</label>
+        <input type="text" name="" id="name"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="bo">body</label>
+        <input type="text" name="" id="bo"><br>
+        <button type="button" onclick="getdatacomments()" id="add">Adduser</button>
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">Updateuser</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>postId</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allcomments=[]
+        function getdatacomments(){
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    allcomments=JSON.parse(getData.response)
+                    displayuser(allcomments)
+                    console.log(allcomments)
+                }
+            }
+            getData.open("GET","http://localhost:3000/comments/")
+            getData.send()
+        }
+        function displayuser(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user,i) => {
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                }
+               var edittd=document.createElement("td") 
+               var editbtn=document.createElement("button")
+               editbtn.setAttribute("onclick","edituser("+i+")")
+               editbtn.innerHTML="edit"
+               edittd.appendChild(editbtn)
+               mytr.appendChild(edittd)
+
+               var deletetd=document.createElement("td") 
+               var deletebtn=document.createElement("button")
+               deletebtn.setAttribute("onclick","deleteuser("+i+")")
+               deletebtn.innerHTML="delete"
+               deletetd.appendChild(deletebtn)
+               mytr.appendChild(deletetd)
+
+               document.querySelector("tbody").appendChild(mytr)
+            });
+        }
+
+        function deleteuser(i){
+            console.log(allcomments[i])
+            var deluser=new XMLHttpRequest()
+            deluser.onreadystatechange=function(){
+                if(deluser==200 && deluser==4){
+                    console.log("deleted")
+                }
+            }
+            deluser.open("DELETE","http://localhost:3000/comments/"+allcomments[i].id)
+            deluser.setRequestHeader("Content-type", "application/json")
+            deluser.send()
+        }
+        function edituser(i){
+            document.getElementById("add").style.display="none"
+            document.getElementById("update").style.display="block"
+            document.getElementById("post").value=allcomments[i].post
+            document.getElementById("id").value=allcomments[i].id
+            document.getElementById("name").value=allcomments[i].name
+            document.getElementById("email").value=allcomments[i].email
+            document.getElementById("bo").value=allcomments[i].bo
+        }
+
+        function updateuser(){
+            var user={
+                post:document.getElementById("post").value,
+                id:document.getElementById("id").value,
+                name:document.getElementById("name").value,
+                email:document.getElementById("email").value,
+                bo:document.getElementById("bo").value,
+            }
+            var sendData=new XMLHttpRequest()
+            sendData.onreadystatechange=function(){
+                if(sendData.status==201 && sendData.readyState==4){
+                    console.log("added")
+                    getdatacomments()
+
+                    document.getElementById("add").style.display="block"
+                    document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/comments/"+user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getdatacomments()
+    </script>
+</body>
+</html>
+<!-- {
+    "postId": 1,
+    "id": 1,
+    "name": "id labore ex et quam laborum",
+    "email": "Eliseo@gardner.biz",
+    "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+  }, -->

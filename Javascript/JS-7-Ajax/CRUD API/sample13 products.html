@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br>
+        <label for="price">price</label>
+        <input type="text" name="" id="price"><br>
+        <label for="description">description</label>
+        <input type="text" name="" id="description"><br>
+        <label for="category">category</label>
+        <input type="text" name="" id="category"><br>
+        <label for="image">image</label>
+        <input type="text" name="" id="image"><br>
+        <label for="rating">rating</label>
+        <input type="text" name="" id="rating"><br>
+        <button type="button" id="add" onclick="addproduct()">addusers</button>
+        <button type="button" id="update" onclick="updateproduct()" style="display:none ;">Updateuser</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>title</th>
+            <th>price</th>
+            <th>description</th>
+            <th>category</th>
+            <th>image</th>
+            <th>rating</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allproducts=[]
+        function addproduct(){
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    allproducts=JSON.parse(getData.response)
+                    console.log(allproducts)
+                    diplayproducts(allproducts)
+                }
+            }
+            getData.open("GET","http://localhost:3000/products")
+            getData.send()
+        }
+        function diplayproducts(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user,i) => {
+              var mytr=document.createElement("tr")
+              for(a in user){
+                  if( a!=="image" && a!=="rating"){
+                    var mytd=document.createElement("td")
+                  mytd.innerHTML=user[a]
+                  mytr.appendChild(mytd)
+                  }else if(a=="image"){
+                      var mytd=document.createElement("td")
+                      var image=document.createElement("img")
+                      image.setAttribute("src",user[a])
+                      mytd.appendChild(image)
+                      mytr.appendChild(mytd)
+                  }else{
+                      var mytd=document.createElement("td")
+                      mytd.innerHTML=user[a].rating+"<br>"+user[a].count+"<br>"
+                      mytr.appendChild(mytd)
+                  }
+                
+                  }
+              
+              var edittd=document.createElement("td")
+              var editbtn=document.createElement("button")
+              editbtn.setAttribute("onclick","edituser("+i+")")
+              editbtn.innerHTML="edit"
+              edittd.appendChild(editbtn)
+              mytr.appendChild(edittd)
+
+              var deletetd=document.createElement("td")
+              var deletebtn=document.createElement("button")
+              deletebtn.setAttribute("onclick","deleteuser("+i+")")
+              deletebtn.innerHTML="delete"
+              deletetd.appendChild(deletebtn)
+              mytr.appendChild(deletetd)
+
+              document.querySelector("tbody").appendChild(mytr)
+            });
+        
+        }
+
+        function deleteuser(i){
+            console.log(allproducts[i])
+            var deluser=new XMLHttpRequest()
+            deluser.onreadystatechange=function(){
+                if(deluser.status=200 && deluser.readyState==4){
+                    console.log("deleted")
+                }
+            }
+            deluser.open("DELETE","http://localhost:3000/products/"+allproducts[i].id)
+            deluser.setRequestHeader("Content-type", "application/json")
+            deluser.send()
+        }
+
+        function edituser(i){
+            document.getElementById("add").style.display="none"
+            document.getElementById("update").style.display="block"
+            document.getElementById("id").value=allproducts[i].id
+            document.getElementById("title").value=allproducts[i].title
+            document.getElementById("price").value=allproducts[i].price
+            document.getElementById("description").value=allproducts[i].description
+            document.getElementById("category").value=allproducts[i].category
+            document.getElementById("image").value=allproducts[i].image
+            document.getElementById("rating").value=allproducts[i].rating
+        }
+
+        function updateproduct(){
+            var user={
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                price: document.getElementById("price").value,
+                description: document.getElementById("description").value,
+                category: document.getElementById("category").value,
+                image: document.getElementById("image").value,
+                rating: document.getElementById("rating").value,
+            }
+            var sendData=new XMLHttpRequest()
+            sendData.onreadystatechange=function(){
+                if(sendData.status==201 && sendData.readyState==4){
+                    console.log("upded")
+                    addproduct()
+            document.getElementById("add").style.display="block"
+            document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/products/"+user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        addproduct()
+    </script>
+</body>
+</html>
+<!-- {
+    "id": 1,
+    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price": 109.95,
+    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "rating": {
+      "rate": 3.9,
+      "count": 120
+    }
+  }, -->

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <!-- <label for="id">id</label>
+        <input type="text" name="" id="id"><br> -->
+        <label for="email">email</label>
+        <input type="text" name="" id="email"><br>
+        <label for="username">username</label>
+        <input type="text" name="" id="username"><br>
+        <label for="password">password</label>
+        <input type="text" name="" id="password"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button type="button" id="pretty" onclick="prettytrue()">adduser</button>
+        <button type="button" id="update" onclick="updateuser()" style="display:none;">adduser</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>email</th>
+            <th>username</th>
+            <th>password</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alltrue = []
+        function prettytrue() {
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    alltrue = JSON.parse(getData.response)
+                    displaytrue(alltrue)
+                    console.log(alltrue)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/true1")
+            getData.send()
+        }
+        function displaytrue(users) {
+            document.querySelector("tbody").innerHTML = ""
+            users.forEach((user,i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick","edituser(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick","deleteuser(" + i + ")")
+                deletebtn.innerHTML = "delete"
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+
+                document.querySelector("tbody").appendChild(mytr)
+            });
+        }
+
+        function deleteuser(i) {
+            console.log(alltrue[i])
+            var deleteuser = new XMLHttpRequest()
+            deleteuser.onreadystatechange = function () {
+                if (deleteuser.status == 200 && deleteuser.readyState == 4) {
+                    console.log("true deleted")
+                }
+            }
+            deleteuser.open("DELETE", "http://localhost:3000/true1/"+alltrue[i].id)
+                deleteuser.setRequestHeader("Content-type", "application/json")
+                deleteuser.send()
+        }
+
+        function edituser(i) {
+            document.getElementById("pretty").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("email").value = alltrue[i].email
+            document.getElementById("id").value = alltrue[i].id
+            document.getElementById("username").value = alltrue[i].username
+            document.getElementById("password").value = alltrue[i].password
+        }
+
+        function updateuser() {
+            var user = {
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+            }
+            var sendData = new XMLHttpRequest()
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("true added")
+                    prettytrue()
+
+                    document.getElementById("pretty").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+                }
+            }
+            sendData.open("PUT", "http://localhost:3000/true1/" + user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        prettytrue()
+    </script>
+</body>
+
+</html>

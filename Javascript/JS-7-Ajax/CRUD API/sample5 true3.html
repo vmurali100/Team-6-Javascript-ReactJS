@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">fname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">lname</label>
+        <input type="text" name="" id="lname"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button type="button" id="add" onclick="adddatatrue()">adduser</button>
+        <button type="button" id="update" onclick="Updateuser()" style="display:none ;">update</button>
+    </form>
+    <br>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <th>id</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alltrue = []
+        function adddatatrue() {
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    alltrue=JSON.parse(getData.response)
+                    console.log(alltrue)
+                    displaygettrue(alltrue)
+                }
+            }
+            getData.open("GET", "http://localhost:3000/true3/")
+            getData.send()
+        }
+
+        function displaygettrue(data) {
+            document.querySelector("tbody").innerHTML = ""
+            data.forEach((user, i) => {
+                var mytr = document.createElement("tr")
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "editget(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick", "deleteget(" + i + ")")
+                deletebtn.innerHTML = "delete"
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+
+                document.querySelector("tbody").appendChild(mytr)
+            });
+        }
+
+        function deleteget(i) {
+            console.log(alltrue[i])
+            var deleteuser = new XMLHttpRequest()
+            deleteuser.onreadystatechange = function () {
+                if (deleteuser.status == 200 && deleteuser.readyState == 4) {
+                    console.log("deleted")
+                }
+            }
+            deleteuser.open("DELETE", "http://localhost:3000/true3/" + alltrue[i].id)
+            deleteuser.setRequestHeader("Content-type", "application/json")
+            deleteuser.send()
+        }
+
+        function editget(i) {
+            document.getElementById("add").style.display = "none"
+            document.getElementById("update").style.display = "block"
+
+            document.getElementById("fname").value = alltrue[i].fname
+            document.getElementById("lname").value = alltrue[i].lname
+            document.getElementById("id").value = alltrue[i].id
+        }
+
+        function Updateuser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                id: document.getElementById("id").value,
+            }
+            var sendData=new XMLHttpRequest()
+            sendData.onreadystatechange=function(){
+                if(sendData.status==201 && sendData.readyState==4){
+                    console.log("added successfully")
+                    adddatatrue()
+                    document.getElementById("add").style.display = "block"
+                    document.getElementById("update").style.display = "none"
+
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/true3/"+user.id)
+            sendData.setRequestHeader("Content-type", "application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        adddatatrue()
+    </script>
+</body>
+
+</html>
+<!-- {
+"fname": "Sherrie",
+"lname": "Kasuganti"
+}, -->

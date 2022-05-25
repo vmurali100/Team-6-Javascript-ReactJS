@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">f name</label><br>
+        <input type="text" name="" id="f"><br>
+        <label for="">l name</label><br>
+        <input type="text" name="" id="l"><br>
+        <label for="">tel</label><br>
+        <input type="text" name="" id="t"><br>
+        <label for="">adress</label><br>
+        <input type="text" name="" id="a"><br>
+        <label for="">city</label><br>
+        <input type="text" name="" id="c"><br>
+        <label for="">stste</label><br>
+        <input type="text" name="" id="s"><br>
+        <label for="">zip</label><br>
+        <input type="text" name="" id="z"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button onclick="getdatafromapi()" type="button" id="add">getdata</button>
+        <button onclick="updateuser()" type="button" id="update" style="display:none ;">getdata</button>
+    </form>
+    <table border="1">
+       <thead>
+           <th>f name</th>
+           <th>l name</th>
+           <th>tel</th>
+           <th>address</th>
+           <th>city</th>
+           <th>stste</th>
+           <th>zip</th>
+           <th>edit</th>
+           <th>delete</th>
+           
+
+       </thead>
+       <tbody></tbody>
+    </table>
+    <script>
+        var allposts=[]
+        function getdatafromapi (){
+            var getdata=new XMLHttpRequest();
+            getdata.onreadystatechange= function(){
+                if (getdata.status == 200 && getdata.readyState == 4) {
+                    allposts= JSON.parse(getdata.response)
+                    console.log(allposts)
+                    displayusers(allposts)
+                }
+            }
+            getdata.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true");
+            getdata.send()
+        }
+        function displayusers(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+
+          var editTd = document.createElement("td")
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editUser("+i+")")
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd)
+
+          var deleteTd = document.createElement("td")
+          var deleteBtn = document.createElement("button")
+          deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+
+          deleteBtn.innerHTML="Delete";
+          deleteTd.appendChild(deleteBtn)
+          myTr.appendChild(deleteTd)
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+       
+      function deleteuser(i){
+          console.log(allposts[i])
+
+          var deluser= new XMLHttpRequest()
+          deluser.onreadystatechange= function(){
+                if (deluser.status == 200 && deluser.readyState == 4) {
+                    console.log("user delete sucess")
+                }
+            }
+            deluser.open("DELETE","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true"+ allposts[i].id);
+            deluser.setRequestHeader("content-type","application/json");
+            deluser.send();
+
+
+      }
+      function edituser(i){
+        
+        document.getElementById("f").value = allUsers[i].f
+        document.getElementById("l").value = allUsers[i].l
+        document.getElementById("t").value = allUsers[i].t
+        document.getElementById("a").value = allUsers[i].a
+        document.getElementById("c").value = allUsers[i].c
+        document.getElementById("s").value = allUsers[i].s
+        document.getElementById("z").value = allUsers[i].z
+        
+     document.getElementById("add").style.display = "none"
+        document.getElementById("update").style.display = "block"
+      }
+      function updateusers(i){
+        console.log("Update User Called")
+        var data = {
+          f: document.getElementById("f").value,
+          l: document.getElementById("l").value,
+          t: document.getElementById("t").value,
+          a: document.getElementById("a").value,
+          c: document.getElementById("c").value,
+          s: document.getElementById("s").value,
+          z: document.getElementById("z").value,
+        
+        
+          
+        };
+
+        var senddata= new XMLHttpRequest()
+          senddata.onreadystatechange= function(){
+                if (senddata.status == 201 && senddata.readyState == 4) {
+                    console.log("form added sucess");
+                    getdatafromapi()
+                    document.getElementById("add").style.display = "block"
+                     document.getElementById("update").style.display = "none"
+                }
+          };
+        senddata.  open("PUT","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true"+ data.id);
+        senddata.setRequestHeader("content-type","application/json");
+        senddata.send(JSON.stringify(data));
+      }
+       
+    </script>
+</body>
+</html>

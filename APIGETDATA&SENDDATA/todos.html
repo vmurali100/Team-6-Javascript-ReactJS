@@ -8,13 +8,14 @@
 </head>
 <body>
     <form action="">
-        <label for="userid">UserId</label>
-        <input type="text" name="" id="userid"><br>
-        <label for="id">Id</label>
-        <input type="text" name="" id="id"><br>
-        <label for="title">Title</label>
+        <label for="userId">USERID</label>
+        <input type="text" name="" id="userId"><br>
+        <input type="text" name="" id="id"hidden>
+        <label for="id">TITLE</label>
         <input type="text" name="" id="title"><br>
-        <button type="button" onclick="getallbumsFromAPI()" id="add">Adduser</button>
+        <label for="completed">COMPLETED</label>
+        <input type="text" name="" id="completed"><br>
+        <button type="button" onclick="gettodosFromAPI()" id="add">Adduser</button>
         
         <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
     </form>
@@ -22,26 +23,28 @@
     <table border="1">
         <tr>
           <thead>
-              <th>UserId</th>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Edit</th>
-            <th>Delete</th>
+              <th>USERID</th>
+              <th>ID</th>
+            <th>TITLE</th>
+            <th>COMPLETED</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
           </thead>
         </tr>
       </table>
     <script>
-            var allbums=[]
-        function getallbumsFromAPI(){
+            var alltodos=[]
+        function gettodosFromAPI(){
+
           var getData = new XMLHttpRequest();
         getData.onreadystatechange = function () {
           if (getData.status == 200 && getData.readyState == 4) {
-          allbums=JSON.parse(getData.response);
-            console.log(allbums);
-            displayUser(allbums);
+         alltodos=JSON.parse(getData.response);
+            console.log(alltodos);
+            displayUser(alltodos);
           }
         };
-        getData.open("GET","http://localhost:3000/Albums");
+        getData.open("GET","http://localhost:3000/Todos");
         getData.send();
         }
 
@@ -56,14 +59,14 @@
           }
           var editTd = document.createElement("td");
           var editBtn = document.createElement("button");
-          editBtn.setAttribute("onclick","editalbums("+i+")");
+          editBtn.setAttribute("onclick","editalltodos("+i+")");
           editBtn.innerHTML = "Edit";
           editTd.appendChild(editBtn);
           myTr.appendChild(editTd);
 
           var deleteTd = document.createElement("td");
           var deleteBtn = document.createElement("button");
-          deleteBtn.setAttribute("onclicK","deletealbums("+i+")");
+          deleteBtn.setAttribute("onclicK","deletealltodos("+i+")");
           deleteBtn.innerHTML = "Delete";
           deleteTd.appendChild(deleteBtn);
           myTr.appendChild(deleteTd);
@@ -72,55 +75,64 @@
         });
       }
       
-      function deletealbums(i) {
+      function deletealltodos(i) {
 
-console.log(allbums[i])
-var delalbums = new XMLHttpRequest()
-delalbums.onreadystatechange = function(){
-  if (delalbums.status == 200 && delalbums.readyState == 4) {
-    console.log("Albums deleted successfully")
+console.log(alltodos[i])
+
+var delalltodos = new XMLHttpRequest()
+delalltodos.onreadystatechange = function(){
+  if (delalltodos.status == 200 && delalltodos.readyState == 4) {
+    console.log("Alltodos deleted successfully")
   }
 
 }
-delalbums.open( "DELETE","http://localhost:3000/Albums/" +allbums[i].id);
-   delalbums.setRequestHeader("Content-type","application/json");
-    delalbums.send();
+delalltodos.open( "DELETE","http://localhost:3000/Todos/"+alltodos[i].id);
+   delalltodos.setRequestHeader("Content-type","application/json");
+    delalltodos.send();
   
 }
 
-        function editalbums(i){
+        function editalltodos(i){
   
          document.getElementById("add").style.display="none"
         document.getElementById("update").style.display="block"
 
-         document.getElementById("userid").value=allbums[i].userId;   
-        document.getElementById("id").value=allbums[i].id;
-        document.getElementById("title").value=allbums[i].title;
+        document.getElementById("userId").value=alltodos[i].userId;
+        
+        document.getElementById("id").value=alltodos[i].id ;
+        document.getElementById("title").value=alltodos[i].title;
+        
+        document.getElementById("completed").value=alltodos[i].completed
+          
       }
 
       function updateuser(){
         var data={
-                userId:document.getElementById("userid").value,
-              id:document.getElementById("id").value,
-              title:document.getElementById("title").value
+
+             fname:document.getElementById("userId").value,
+             id:document.getElementById("id").value,
+           title:document.getElementById("title").value,
+           completed:document.getElementById("completed").value
+            
+              
             };
 
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange=function(){
                 if(sendData.status == 201 && sendData.readyState == 4){
-                    console.log("allbums added succesfully")
-                    getallbumsFromAPI();
+                    console.log("alltodos added succesfully")
+                    gettodosFromAPI()
                   
         document.getElementById("add").style.display="block"
         document.getElementById("update").style.display="none"
                 }
             }
-            sendData.open("PUT","http://localhost:3000/Albums/"+data.id);
+            sendData.open("PUT","http://localhost:3000/Todos/"+data.id);
             sendData.setRequestHeader("Content-type","application/json");
             sendData.send(JSON.stringify(data));
 
       }
-      getallbumsFromAPI()
+      gettodosFromAPI()
           
     </script>
 </body>

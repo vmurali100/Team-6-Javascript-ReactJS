@@ -85,10 +85,11 @@ delperson.onreadystatechange = function(){
   if (delperson.status == 200 && delperson.readyState == 4) {
     console.log("Person deleted successfully")
   }
-  delperson.open( "DELETE","http://localhost:3000/person" +person[i].id);
+
+}
+delperson.open( "DELETE","http://localhost:3000/person/" +person[i].id);
    delperson.setRequestHeader("Content-type","application/json");
     delperson.send();
-}
   
 }
 
@@ -121,7 +122,7 @@ delperson.onreadystatechange = function(){
         document.getElementById("update").style.display="none"
                 }
             }
-            sendData.open("PUT","http://localhost:3000/person"+data.id);
+            sendData.open("PUT","http://localhost:3000/person/"+data.id);
             sendData.setRequestHeader("Content-type","application/json");
             sendData.send(JSON.stringify(data));
 

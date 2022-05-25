@@ -85,10 +85,11 @@ function deletealcarts(i) {
   if (delalcarts.status == 200 && delalcarts.readyState == 4) {
     console.log("Alcarts deleted successfully")
   }
-     delalcarts.open("DELETE","http://localhost:3000/carts"+allcarts[i].id);
+   
+}
+delalcarts.open("DELETE","http://localhost:3000/carts/"+allcarts[i].id);
     delalcarts.setRequestHeader("Content-type","application/json");
     delalcarts.send();
-}
   
 }
 function editalcarts(i){
@@ -97,7 +98,7 @@ function editalcarts(i){
     document.getElementById("update").style.display="block"
 
  document.getElementById("id").value=allcarts[i].id;
-  document.getElementById("userid").value=allcarts[i].userid;   
+  document.getElementById("userid").value=allcarts[i].userId;   
   document.getElementById("date").value=allcarts[i].date;
  document.getElementById("products").value=allcarts[i].products;
 }
@@ -105,7 +106,7 @@ function editalcarts(i){
 function updateuser(){
         var data={
                  id:document.getElementById("id").value,
-                userid:document.getElementById("userid").value,
+                userId:document.getElementById("userid").value,
               date:document.getElementById("date").value,
               products:document.getElementById("products").value
             };
@@ -120,7 +121,7 @@ function updateuser(){
         document.getElementById("update").style.display="none"
                 }
             }
-            sendData.open("PUT","http://localhost:3000/carts"+data.id);
+            sendData.open("PUT","http://localhost:3000/carts/"+data.id);
             sendData.setRequestHeader("Content-type","application/json");
             sendData.send();
 

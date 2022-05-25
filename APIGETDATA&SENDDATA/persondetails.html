@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">Fname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">Lname</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="tel">TEL</label>
+        <input type="text" name="" id="tel"><br>
+        
+        <label for="address">Address</label>
+        <input type="text" name="" id="address"><br>
+        
+        <label for="city">CITY</label>
+        <input type="text" name="" id="city"><br>
+        <label for="state">STATE</label>
+        <input type="text" name="" id="state"><br>
+        <label for="zip">ZIP</label>
+        <input type="text" name="" id="zip"><br>
+        <input type="text" name="" id="id"hidden>
+        <button type="button" onclick="getpersondetailsFromAPI()" id="add">Adduser</button>
+        
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+          <thead>
+              <th>Fname</th>
+            <th>Lname</th>
+            <th>TEL</th>
+            <th>Address</th>
+            <th>CITY</th>
+            <th>STATE</th>
+            <th>ZIP</th>
+            <th>ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+        </tr>
+      </table>
+    <script>
+            var persondetails=[]
+        function getpersondetailsFromAPI(){
+          var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () {
+          if (getData.status == 200 && getData.readyState == 4) {
+         persondetails=JSON.parse(getData.response);
+            console.log(persondetails);
+            displayUser(persondetails);
+          }
+        };
+        getData.open("GET","http://localhost:3000/Persondetails");
+        getData.send();
+        }
+
+        function displayUser(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editpersondetails("+i+")");
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd);
+
+          var deleteTd = document.createElement("td");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.setAttribute("onclicK","deletepersondetails("+i+")");
+          deleteBtn.innerHTML = "Delete";
+          deleteTd.appendChild(deleteBtn);
+          myTr.appendChild(deleteTd);
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+      
+      function deletepersondetails(i) {
+
+console.log(persondetails[i])
+var delpersondetails = new XMLHttpRequest()
+delpersondetails.onreadystatechange = function(){
+  if (delallcomments.status == 200 && delpersondetails.readyState == 4) {
+    console.log("persondetails deleted successfully")
+  }
+
+}
+delpersondetails.open( "DELETE","http://localhost:3000/Persondetails/" +persondetails[i].id);
+   delpersondetails.setRequestHeader("Content-type","application/json");
+    delpersondetails.send();
+  
+}
+
+        function editpersondetails(i){
+  
+         document.getElementById("add").style.display="none"
+        document.getElementById("update").style.display="block"
+
+        document.getElementById("fname").value=persondetails[i].fname;   
+        document.getElementById("lname").value=persondetails[i].lname;
+        document.getElementById("tel").value=persondetails[i].tel;
+        
+        document.getElementById("address").value=persondetails[i].address;
+        
+        document.getElementById("city").value=persondetails[i].city;
+        
+        document.getElementById("state").value=persondetails[i].state;
+        
+        document.getElementById("zip").value=persondetails[i].zip;
+        
+        document.getElementById("id").value=persondetails[i].id;
+      }
+
+      function updateuser(){
+        var data={
+            fname:document.getElementById("fname").value,
+          lname:document.getElementById("lname").value,
+         tel:document.getElementById("tel").value,
+         address:document.getElementById("address").value,    
+        city:document.getElementById("city").value,
+       state:document.getElementById("state").value,
+        zip:document.getElementById("zip").value,
+        id:document.getElementById("id").value,
+            };
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("persondetails added succesfully")
+                    getpersondetailsFromAPI();
+                  
+        document.getElementById("add").style.display="block"
+        document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/Persondetails/"+data.id);
+            sendData.setRequestHeader("Content-type","application/json");
+            sendData.send(JSON.stringify(data));
+
+      }
+      getpersondetailsFromAPI()
+          
+    </script>
+</body>
+</html>

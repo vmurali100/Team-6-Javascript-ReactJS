@@ -8,13 +8,12 @@
 </head>
 <body>
     <form action="">
-        <label for="userid">UserId</label>
-        <input type="text" name="" id="userid"><br>
-        <label for="id">Id</label>
-        <input type="text" name="" id="id"><br>
-        <label for="title">Title</label>
-        <input type="text" name="" id="title"><br>
-        <button type="button" onclick="getallbumsFromAPI()" id="add">Adduser</button>
+        <label for="fname">Fname</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="id">Lname</label>
+        <input type="text" name="" id="lname"><br>
+        <input type="text" name="" id="id"hidden>
+        <button type="button" onclick="getstudentsFromAPI()" id="add">Adduser</button>
         
         <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
     </form>
@@ -22,26 +21,26 @@
     <table border="1">
         <tr>
           <thead>
-              <th>UserId</th>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Edit</th>
-            <th>Delete</th>
+              <th>FNAME</th>
+            <th>LNAME</th>
+            <th>ID</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
           </thead>
         </tr>
       </table>
     <script>
-            var allbums=[]
-        function getallbumsFromAPI(){
+            var allstudents=[]
+        function getstudentsFromAPI(){
           var getData = new XMLHttpRequest();
         getData.onreadystatechange = function () {
           if (getData.status == 200 && getData.readyState == 4) {
-          allbums=JSON.parse(getData.response);
-            console.log(allbums);
-            displayUser(allbums);
+         allstudents=JSON.parse(getData.response);
+            console.log(allstudents);
+            displayUser(allstudents);
           }
         };
-        getData.open("GET","http://localhost:3000/Albums");
+        getData.open("GET","http://localhost:3000/students");
         getData.send();
         }
 
@@ -56,14 +55,14 @@
           }
           var editTd = document.createElement("td");
           var editBtn = document.createElement("button");
-          editBtn.setAttribute("onclick","editalbums("+i+")");
+          editBtn.setAttribute("onclick","editallstudents("+i+")");
           editBtn.innerHTML = "Edit";
           editTd.appendChild(editBtn);
           myTr.appendChild(editTd);
 
           var deleteTd = document.createElement("td");
           var deleteBtn = document.createElement("button");
-          deleteBtn.setAttribute("onclicK","deletealbums("+i+")");
+          deleteBtn.setAttribute("onclicK","deleteallstudents("+i+")");
           deleteBtn.innerHTML = "Delete";
           deleteTd.appendChild(deleteBtn);
           myTr.appendChild(deleteTd);
@@ -72,55 +71,59 @@
         });
       }
       
-      function deletealbums(i) {
+      function deleteallstudents(i) {
 
-console.log(allbums[i])
-var delalbums = new XMLHttpRequest()
-delalbums.onreadystatechange = function(){
-  if (delalbums.status == 200 && delalbums.readyState == 4) {
-    console.log("Albums deleted successfully")
+console.log(allstudents[i])
+
+var delallstudents = new XMLHttpRequest()
+delallstudents.onreadystatechange = function(){
+  if (delallstudents.status == 200 && delallstudents.readyState == 4) {
+    console.log("Allstudents deleted successfully")
   }
 
 }
-delalbums.open( "DELETE","http://localhost:3000/Albums/" +allbums[i].id);
-   delalbums.setRequestHeader("Content-type","application/json");
-    delalbums.send();
+delallstudents.open( "DELETE","http://localhost:3000/students/"+allstudents[i].id);
+   delallstudents.setRequestHeader("Content-type","application/json");
+    delallstudents.send();
   
 }
 
-        function editalbums(i){
+        function editallstudents(i){
   
          document.getElementById("add").style.display="none"
         document.getElementById("update").style.display="block"
 
-         document.getElementById("userid").value=allbums[i].userId;   
-        document.getElementById("id").value=allbums[i].id;
-        document.getElementById("title").value=allbums[i].title;
+        document.getElementById("fname").value=allstudents[i].fname; 
+        document.getElementById("lname").value=allstudents[i].lname;
+          
+        document.getElementById("id").value=allstudents[i].id
       }
 
       function updateuser(){
         var data={
-                userId:document.getElementById("userid").value,
-              id:document.getElementById("id").value,
-              title:document.getElementById("title").value
+
+             fname:document.getElementById("fname").value,
+             lname:document.getElementById("lname").value,
+             id:document.getElementById("id").value
+              
             };
 
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange=function(){
                 if(sendData.status == 201 && sendData.readyState == 4){
-                    console.log("allbums added succesfully")
-                    getallbumsFromAPI();
+                    console.log("allstudents added succesfully")
+                    getstudentsFromAPI()
                   
         document.getElementById("add").style.display="block"
         document.getElementById("update").style.display="none"
                 }
             }
-            sendData.open("PUT","http://localhost:3000/Albums/"+data.id);
+            sendData.open("PUT","http://localhost:3000/students/"+data.id);
             sendData.setRequestHeader("Content-type","application/json");
             sendData.send(JSON.stringify(data));
 
       }
-      getallbumsFromAPI()
+      getstudentsFromAPI()
           
     </script>
 </body>

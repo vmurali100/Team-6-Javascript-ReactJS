@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="id">id</label>
+        <input type="text" name="" id="id"><br>
+
+        <label for="userId">userId</label>
+        <input type="text" name="" id="userId"> <br><br>
+
+        <label for="date">date</label>
+        <input type="text" name="" id="date"> <br><br>
+
+        <label for="products">products</label>
+        <input type="text" name="" id="products"><br><br>
+
+        <label for="__v">__v</label>
+        <input type="text" name="" id="__v"><br><br>
+        
+
+        <input type="text" name="" id="id" hidden><br><br>
+
+        <button type="button" onclick="adduser()" id="add">add user</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>userId</th>
+            <th>date</th>
+            <th>products</th>
+            <th>__v</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var cartsusers = []
+
+        function adduser() {
+            var user = {
+                id: document.getElementById("id").value,
+                lname: document.getElementById("userId").value,
+                date: document.getElementById("date").value,
+                products: document.getElementById("products").value,
+                __v: document.getElementById("__v").value,
+
+
+            };
+            // console.log(user)
+
+            var sendData = new XMLHttpRequest();
+
+
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("user added successfully")
+                    getcartsUsersfromAPI()
+                }
+            }
+            sendData.open("POST", " http://localhost:3000/carts");
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user));
+
+        }
+        function getcartsUsersfromAPI() {
+
+            var getData = new XMLHttpRequest();
+            cartsusers.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    cartsusers = JSON.parse(getData.response)
+                    console.log(cartsusers)
+                    displayusers(cartsusers)
+                }
+            }
+
+            getData.open("GET", "http://localhost:3000/carts");
+            getData.send();
+        }
+
+
+        function displayusers(cartsusers) {
+            document.querySelector("tbody").innerHTML = "",
+            cartsusers.forEach((user, i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+
+                    // edit button
+
+                    var editTd = document.createElement("td")
+                    var editbtn = document.createElement("button");
+                    editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                    editbtn.innerHTML = "Edit";
+                    editTd.appendChild(editbtn);
+                    myTr.appendChild(editTd)
+
+
+                    // delete button.
+
+                    var deleteTd = document.createElement("td")
+                    var deletebtn = document.createElement("button");
+                    deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                    deletebtn.innerHTML = "Delete";
+                    deleteTd.appendChild(deletebtn)
+                    myTr.appendChild(deleteTd)
+
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+
+        }
+
+
+        function deleteuser(i) {
+            console.log(cartsusers[i])
+
+            var deleteuser = new XMLHttpRequest()
+
+            deleteuser.onreadystatechange = function () {
+                if (deleteuser.status == 200 && deleteuser.readyState == 4) {
+                    console.log("user deleted success fully")
+                }
+
+            }
+
+            deleteuser.open("delete", "http://localhost:3000/carts/" + cartsusers[i].id);
+            deleteuser.setRequestHeader("Content-type", "application/json");
+
+            deleteuser.send();
+        }
+
+        function edituser(i) {
+            document.getElementById("id").value = cartsusers[i].id;
+            document.getElementById("userId").value = cartsusers[i].userId;
+            document.getElementById("date").value = cartsusers[i].date;
+            document.getElementById("products").value=cartsusers[i].products;
+            document.getElementById("__v").value=cartsusers[i].__v
+
+
+            document.getElementById("add").style.display = "none";
+            document.getElementById("update").style.display = "block";
+
+        }
+
+        function updateUser() {
+
+            var data = {
+                id: document.getElementById("id").value,
+                userId: document.getElementById("userId").value,
+                date: document.getElementById("date").value,
+                products: document.getElementById("products").value,
+                __v: document.getElementById("__v").value
+
+
+            };
+
+            var sendData = new XMLHttpRequest();
+
+
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("user added successfully")
+                    getcartsUsersfromAPI()
+
+
+
+                    document.getElementById("add").style.display = "block";
+                    document.getElementById("update").style.display = "none";
+
+                }
+            }
+            sendData.open("PUT", " http://localhost:3000/carts/" + data.id);
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(data));
+        }
+        
+        getcartsUsersfromAPI()
+
+</script>
+</body>
+
+</html>
+</body>
+</html>

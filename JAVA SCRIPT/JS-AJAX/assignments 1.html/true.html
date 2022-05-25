@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="fname">fname</label>
+        <input type="text" name="" id="fname"><br><br>
+
+        <label for="lname">last name</label>
+        <input type="text" name="" id="lname"><br><br>
+
+        <label for="tel">tel</label>
+        <input type="text" name="" id="tel"><br><br>
+
+        <label for="address">address</label>
+        <input type="text" name="" id="address"><br><br>
+
+        <label for="city">city</label>
+        <input type="text" name="" id="city"><br><br>
+
+        <label for="state">state</label>
+        <input type="text" name="" id="state"><br><br>
+
+        <label for="zip">zip</label>
+        <input type="text" name="" id="zip">
+
+
+
+        <input type="text" name="" id="id" hidden><br><br>
+
+        <button type="button" onclick="adduser()" id="add">add user</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <th>tel</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip</th>
+            <th>id</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var trueusers = []
+
+        function adduser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                tel: document.getElementById("tel").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zip: document.getElementById("zip").value,
+                id: document.getElementById("id").value
+
+            };
+            // console.log(user)
+
+            var sendData = new XMLHttpRequest();
+
+
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("user added successfully")
+                    gettrueUsersfromAPI()
+                }
+            }
+            sendData.open("POST", " http://localhost:3000/true");
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user));
+
+        }
+        function gettrueUsersfromAPI() {
+            var getData = new XMLHttpRequest();
+            trueusers.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    trueusers = JSON.parse(getData.response)
+                    console.log(trueusers)
+                    displayusers(trueusers)
+                }
+            }
+
+            getData.open("GET", "http://localhost:3000/true/");
+            getData.send();
+        }
+
+
+        function displayusers(trueusers) {
+
+            document.querySelector("tbody").innerHTML = "",
+                trueusers.forEach((user, i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+
+                    // edit button
+
+                    var editTd = document.createElement("td")
+                    var editbtn = document.createElement("button");
+                    editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                    editbtn.innerHTML = "Edit";
+                    editTd.appendChild(editbtn);
+                    myTr.appendChild(editTd)
+
+
+                    // delete button.
+
+                    var deleteTd = document.createElement("td")
+                    var deletebtn = document.createElement("button");
+                    deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                    deletebtn.innerHTML = "Delete";
+                    deleteTd.appendChild(deletebtn)
+                    myTr.appendChild(deleteTd)
+
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+
+        }
+
+
+        function deleteuser(i) {
+            console.log(datausers[i])
+
+            var deleteuser = new XMLHttpRequest()
+
+            deleteuser.onreadystatechange = function () {
+                if (deleteuser.status == 200 && deleteuser.readyState == 4) {
+                    console.log("user deleted success fully")
+                }
+
+            }
+
+            deleteuser.open("delete", "http://localhost:3000/true/" + trueusers[i].id);
+            deleteuser.setRequestHeader("Content-type", "application/json");
+
+            deleteuser.send();
+        }
+
+        function edituser(i) {
+
+            document.getElementById("fname").value = trueusers[i].fname;
+            document.getElementById("lname").value = trueusers[i].lname;
+            document.getElementById("tel").value = trueusers[i].tel;
+            document.getElementById("address").value = trueusers[i].address;
+            document.getElementById("city").value = trueusers[i].city;
+            document.getElementById("state").value = trueusers[i].state;
+            document.getElementById("zip").value = trueusers[i].zip;
+            document.getElementById("id").value = trueusers[i].id;
+            document.getElementById("id").value = trueusers[i].id;
+
+
+            document.getElementById("add").style.display = "none";
+            document.getElementById("update").style.display = "block";
+
+        }
+
+        function updateUser() {
+
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                tel: document.getElementById("tel").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                zip: document.getElementById("zip").value,
+                id: document.getElementById("id").value
+
+            };
+
+            var sendData = new XMLHttpRequest();
+
+
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
+                    console.log("user added successfully")
+                    gettrueUsersfromAPI()
+
+
+
+                    document.getElementById("add").style.display = "block";
+                    document.getElementById("update").style.display = "none";
+
+                }
+            }
+            sendData.open("PUT", "http://localhost:3000/true/" + trueusers.id);
+            sendData.setRequestHeader("Content-type", "application/json");
+            sendData.send(JSON.stringify(user));
+        }
+
+        gettrueUsersfromAPI()
+
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

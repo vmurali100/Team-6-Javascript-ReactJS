@@ -6,59 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
 <body>
     <form>
+        <label for="userId">userId</label>
+        <input type="text" name="" id="userId"><br><br>
+
         <label for="id">id</label>
-        <input type="text" name="" id="id"><br><br>
+        <input type="text" name="" id="id">
+        <br><br>
 
-        <label for="email">Email</label>
-        <input type="text" name="" id="email"><br><br>
-
-        <label for="username">username</label>
-        <input type="text" name="" id="username"><br><br>
-
-        <label for="password">password</label>
-        <input type="text" name="" id="password">
+        <label for="title">title</label>
+        <input type="text" name="" id="title">
 
         <input type="text" name="" id="id" hidden><br><br>
 
-        <button type="button" onclick="adduser()" id="add">add user</button>
+        <button type="button" onclick="adduser()" id="add">add user</button><br><br>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
     </form>
 
     <table border="1">
         <thead>
+            <th>userId</th>
             <th>id</th>
-            <th>Email</th>
-            <th>username</th>
-            <th>password</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>title</th>
+            <th>edit</th>
+            <th>delete</th>
         </thead>
         <tbody></tbody>
     </table>
 
     <script>
-
-        var datausers = []
+        var albumusers = []
 
         function adduser() {
             var user = {
+                userId: document.getElementById("userId").value,
                 id: document.getElementById("id").value,
-                email: document.getElementById("email").value,
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value
+                title: document.getElementById("title").value
 
             };
             // console.log(user)
@@ -66,35 +51,35 @@
             var sendData = new XMLHttpRequest();
 
 
-            sendData.onreadystatechange = function () {
-                if (sendData.status == 201 && sendData.readyState == 4) {
+            albumusers.onreadystatechange = function () {
+                if (albumusers.status == 201 && albumusers.readyState == 4) {
                     console.log("user added successfully")
-                    getdataUsersfromAPI()
+                    getalbumusersUsersfromAPI()
                 }
             }
-            sendData.open("POST", " http://localhost:3000/users");
+            sendData.open("POST", "http://localhost:3000/albums");
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user));
 
         }
-        function getdataUsersfromAPI() {
+        function getalbumusersUsersfromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    datausers = JSON.parse(getData.response)
-                    console.log(datausers)
-                    displayusers(datausers)
+                    albumusers = JSON.parse(getData.response)
+                    console.log(albumusers)
+                    displayusers(albumusers)
                 }
             }
 
-            getData.open("GET", "http://localhost:3000/users");
+            getData.open("GET", "http://localhost:3000/albums/");
             getData.send();
         }
 
 
-        function displayusers(data) {
+        function displayusers(albumusers) {
             document.querySelector("tbody").innerHTML = "",
-                data.forEach((user, i) => {
+            albumusers.forEach((user, i) => {
                     var myTr = document.createElement("tr");
                     for (a in user) {
                         var myTd = document.createElement("td");
@@ -131,7 +116,7 @@
 
 
         function deleteuser(i) {
-            console.log(datausers[i])
+            console.log(albumusers[i])
 
             var deleteuser = new XMLHttpRequest()
 
@@ -142,17 +127,16 @@
 
             }
 
-            deleteuser.open("delete", "http://localhost:3000/users/" + datausers[i].id);
+            deleteuser.open("delete", "http://localhost:3000/albums/" + albumusers[i].id);
             deleteuser.setRequestHeader("Content-type", "application/json");
 
             deleteuser.send();
         }
 
         function edituser(i) {
-            document.getElementById("id").value = datausers[i].id;
-            document.getElementById("email").value = datausers[i].email;
-            document.getElementById("username").value = datausers[i].username;
-            document.getElementById("password").value = datausers[i].password
+            document.getElementById("userId").value = albumusers[i].userId;
+            document.getElementById("id").value = albumusers[i].id;
+            document.getElementById("title").value = albumusers[i].title;
 
 
             document.getElementById("add").style.display = "none";
@@ -163,19 +147,19 @@
         function updateUser() {
 
             var user = {
+                userId: document.getElementById("userId").value,
                 id: document.getElementById("id").value,
-                email: document.getElementById("email").value,
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value
+                title: document.getElementById("title").value
 
             };
+
             var sendData = new XMLHttpRequest();
 
 
-            sendData.onreadystatechange = function () {
-                if (sendData.status == 201 && sendData.readyState == 4) {
+            albumusers.onreadystatechange = function () {
+                if (albumusers.status == 201 && albumusers.readyState == 4) {
                     console.log("user added successfully")
-                    getdataUsersfromAPI()
+                    getalbumusersUsersfromAPI()
 
 
 
@@ -184,21 +168,14 @@
 
                 }
             }
-            sendData.open("PUT", " http://localhost:3000/users/" + user.id);
+            sendData.open("PUT", "http://localhost:3000/albums/" + user.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user));
         }
+        
+        getalbumusersUsersfromAPI()
 
-        getdataUsersfromAPI()
-
-
-    </script>
-
-
-
-
-</body>
-
-</html>
+</script>
 </body>
 </html>
+

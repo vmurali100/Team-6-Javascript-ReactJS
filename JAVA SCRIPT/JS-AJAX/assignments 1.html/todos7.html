@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="userid">userId</label>
+        <input type="text" name="" id="userid"><br><br>
+
+        <label for="id">Id</label>
+        <input type="text" name="" id="id">
+        <br><br>
+
+        <label for="title">title</label>
+        <input type="text" name="" id="title"><br><br>
+
+        <label for="completed">completed</label>
+        <input type="text" name="" id="completed"><br><br>
+
+        <!-- <input type="text" name="" id="id" hidden><br><br> -->
+
+        <button type="button" onclick="gettodossUsersfromAPI()" id="add">add user</button>
+        <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
+    </form><br><br>
+
+    <table border="1">
+        <thead>
+            <th>userid</th>
+            <th>Id</th>
+            <th>title</th>
+            <th>completed</th>
+            <th>edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+
+    <script>
+        var todosusers = []
+
+        function adduser() {
+            var user = {
+                userid: document.getElementById("userid").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                completed: document.getElementById("completed").value,
+
+            };
+            // console.log(user)
+
+            var sendData = new XMLHttpRequest();
+
+
+            todosusers.onreadystatechange = function () {
+                if (todosusers.status == 201 && todosusers.readyState == 4) {
+                    console.log("user added successfully")
+                    gettodossUsersfromAPI()
+                }
+            }
+            todosusers.open("POST", "  http://localhost:3000/todos");
+            todosusers.setRequestHeader("Content-type", "application/json");
+            todosusers.send(JSON.stringify(user));
+
+        }
+        function gettodossUsersfromAPI() {
+            var todosusers = new XMLHttpRequest();
+            todosusers.onreadystatechange = function () {
+                if (todosusers.status == 200 && todosusers.readyState == 4) {
+                    todosusers = JSON.parse(todosusers.response)
+                    console.log(todosusers)
+                    displayusers(todosusers)
+                }
+            }
+
+            todosusers.open("GET", "http://localhost:3000/todos/");
+            todosusers.send();
+        }
+
+
+        function displayusers(todosusers) {
+            document.querySelector("tbody").innerHTML = "",
+                todosusers.forEach((user, i) => {
+                    var myTr = document.createElement("tr");
+                    for (a in user) {
+                        var myTd = document.createElement("td");
+                        myTd.innerHTML = user[a];
+                        myTr.appendChild(myTd);
+                    }
+
+
+                    // edit button
+
+                    var editTd = document.createElement("td")
+                    var editbtn = document.createElement("button");
+                    editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                    editbtn.innerHTML = "Edit";
+                    editTd.appendChild(editbtn);
+                    myTr.appendChild(editTd)
+
+
+                    // delete button.
+
+                    var deleteTd = document.createElement("td")
+                    var deletebtn = document.createElement("button");
+                    deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                    deletebtn.innerHTML = "Delete";
+                    deleteTd.appendChild(deletebtn)
+                    myTr.appendChild(deleteTd)
+
+
+
+                    document.querySelector("tbody").appendChild(myTr);
+                });
+
+        }
+
+
+        function deleteuser(i) {
+            console.log(todosusers[i])
+
+            var deluser = new XMLHttpRequest()
+
+            deluser.onreadystatechange = function () {
+                if (deluser.status == 200 && deluser.readyState == 4) {
+                    console.log("user deleted success fully")
+                }
+
+            }
+
+            deluser.open("DELETE", "http://localhost:3000/todos/" + todosusers[i].id);
+            deluser.setRequestHeader("Content-type", "application/json");
+
+            deluser.send();
+        }
+
+        function edituser(i) {
+            document.getElementById("userid").value = todosusers[i].userid;
+            document.getElementById("id").value = todosusers[i].id;
+            document.getElementById("title").value = todosusers[i].title;
+            document.getElementById("completed").value = todosusers[i].completed;
+
+
+
+            document.getElementById("add").style.display = "none";
+            document.getElementById("update").style.display = "block";
+
+        }
+
+        function updateUser() {
+
+            var user = {
+                userId: document.getElementById("userid").value,
+                id: document.getElementById("id").value,
+                title: document.getElementById("title").value,
+                completed: document.getElementById("completed").value,
+
+
+            };
+
+            var todosusers = new XMLHttpRequest();
+
+
+            todosusers.onreadystatechange = function () {
+                if (todosusers.status == 201 && todosusers.readyState == 4) {
+                    console.log("user added successfully")
+                    gettodossUsersfromAPI()
+
+
+
+                    document.getElementById("add").style.display = "block";
+                    document.getElementById("update").style.display = "none";
+
+                }
+            }
+            todosusers.open("PUT", "http://localhost:3000/todos/" + todosusers.id);
+            todosusers.setRequestHeader("Content-type", "application/json");
+            todosusers.send(JSON.stringify(user));
+        }
+
+        gettodossUsersfromAPI()
+
+    </script>
+</body>
+
+</html>

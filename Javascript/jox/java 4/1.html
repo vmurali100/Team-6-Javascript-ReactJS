@@ -8,6 +8,9 @@
 </head>
 <body>
     <form action="">
+      <label for="">e mail</label><br>
+      <input type="text" name="" id="email" onkeyup="validate()"><br>
+      <p style="color: red; display: none;">please enter correct e mail id</p>
         <label for="">user id</label><br>
         <input type="text" name="" id="user"><br>
         <label for="">title</label><br>
@@ -32,6 +35,14 @@
        <tbody></tbody>
     </table>
     <script>
+           
+           function validate(){
+             document.querySelector("p").style.display="block"
+             var inputvalue= document.getElementById("email").value;
+             var pattern
+           }
+
+        
         var allposts=[]
         function getdatafromapi (){
             var getdata=new XMLHttpRequest();

@@ -3,27 +3,32 @@
     {
       "fname": "padmaja",
       "lname": "munaswamy",
-      "id": 1
+      "id": 1,
+      "email": "padhummm@gmail.com"
     },
     {
       "fname": "geethu",
       "lname": "naga",
-      "id": 2
+      "id": 2,
+      "email": "gethu@gmail.com"
     },
     {
       "fname": "sneha",
       "lname": "bhaskar",
-      "id": 3
+      "id": 3,
+      "email": "sneha@gmail.com"
     },
     {
       "fname": "Munaswamy",
       "lname": "reddy",
-      "id": 4
+      "id": 4,
+      "email": "dms@gmail.com"
     },
     {
       "fname": "harshitha",
       "lname": "reddy",
-      "id": 5
+      "id": 5,
+      "email": "harshitha@gmail.com"
     }
   ]
 }

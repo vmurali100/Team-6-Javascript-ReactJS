@@ -1,39 +1,17 @@
 {
   "carts": [
     {
-      "id": 4,
-      "userId": 3,
-      "date": "2020-01-01T00:00:02.000Z",
-      "products": [
-        {
-          "productId": 1,
-          "quantity": 4
-        }
-      ],
-      "__v": 0
-    },
-    {
-      "id": 5,
-      "userId": 3,
-      "date": "2020-03-01T00:00:02.000Z",
-      "products": [
-        {
-          "productId": 7,
-          "quantity": 1
-        },
-        {
-          "productId": 8,
-          "quantity": 1
-        }
-      ],
-      "__v": 0
-    },
-    {
       "id": 6,
-      "userid": "5",
+      "userId": 8,
       "date": "2020-03-01T00:00:02.000Z",
-      "products": "[object Object],[object Object]",
-      "__v": "0"
+      "products": [
+        {
+          "productId": 18,
+          "quantity": 1
+        }
+      ],
+      "__v": 0,
+      "email": "bar@gmail.com"
     },
     {
       "id": 6,
@@ -45,7 +23,38 @@
           "quantity": 1
         }
       ],
-      "__v": 0
+      "__v": 0,
+      "email": "manju@gmail.com"
+    },
+    {
+      "id": 6,
+      "userid": "5",
+      "date": "2020-03-01T00:00:02.000Z",
+      "products": [
+        {
+          "productId": 7,
+          "quantity": 1
+        },
+        {
+          "productId": 8,
+          "quantity": 1
+        }
+      ],
+      "__v": "0",
+      "email": "marg@gmail.com"
+    },
+    {
+      "id": 6,
+      "userId": 8,
+      "date": "2020-03-01T00:00:02.000Z",
+      "products": [
+        {
+          "productId": 18,
+          "quantity": 1
+        }
+      ],
+      "__v": 0,
+      "email": "bar@gmail.com"
     }
   ]
 }

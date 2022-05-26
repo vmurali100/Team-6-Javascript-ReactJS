@@ -20,6 +20,10 @@
         <input type="text" name="" id="url"><br>
         <label for="thumbnailUrl">thumbnailUrl</label>
         <input type="text" name="" id="thumbnailUrl"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br>
+        <p style="color:darkred ;display:none">please enter the valied email id</p>
+        <button type="button" disabled>ADD USERS</button>
         <button type="button" onclick="getdataphoto()" id="add">Adduser</button>
         <button type="button" onclick="updatephoto()" id="update" style="display:none;">updateuser</button>
     </form>
@@ -30,6 +34,7 @@
             <th>title</th>
             <th>url</th>
             <th>thumbnailUrl</th>
+            <th>email</th>
             <th>edit</th>
             <th>delete</th>
         </thead>
@@ -97,6 +102,7 @@
             document.getElementById("title").value = alluser[i].title
             document.getElementById("url").value = alluser[i].url
             document.getElementById("thumbnailUrl").value = alluser[i].thumbnailUrl
+            document.getElementById("email").value = alluser[i].email
         }
 
         function updatephoto() {
@@ -106,6 +112,7 @@
                 title: document.getElementById("title").value,
                 url: document.getElementById("url").value,
                 thumbnailUrl: document.getElementById("thumbnailUrl").value,
+                email: document.getElementById("email").value,
             }
             var sendData = new XMLHttpRequest()
             sendData.onreadystatechange = function () {
@@ -119,6 +126,21 @@
             sendData.open("PUT", "http://localhost:3000/photos/" + user.id)
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputvalue=document.getElementById("email").value
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(pattern.test(inputvalue)){
+                document.querySelector("p").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+            }else if(inputvalue.length==0){
+                document.querySelector("p").style.display="none"
+                document.querySelector("button").setAttribute("disabled")
+            }else{
+                document.querySelector("p").style.display="block" 
+                document.querySelector("button").setAttribute("disabled",true)
+            }
         }
         getdataphoto()
     </script>

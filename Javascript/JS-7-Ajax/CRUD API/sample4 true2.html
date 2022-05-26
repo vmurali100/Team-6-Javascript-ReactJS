@@ -24,8 +24,11 @@
         <input type="text" name="" id="state"><br>
         <label for="zip">zip</label>
         <input type="text" name="" id="zip"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br>
+        <p style="color: red;display:none;">please enter valied email</p>
         <input type="text" name="" id="id" hidden><br>
-        <button type="button" id="gettrue" onclick="getdatatrue()">adduser</button>
+        <button type="button" id="gettrue" onclick="getdatatrue()" disabled>adduser</button>
         <button type="button" id="update" onclick="updatetrue()" style="display:none ;">updateuser</button>
     </form>
     <br>
@@ -39,6 +42,7 @@
             <th>state</th>
             <th>zip</th>
             <th>id</th>
+            <th>email</th>
             <th>edit</th>
             <th>delete</th>
         </thead>
@@ -109,7 +113,8 @@
             document.getElementById("city").value = alltrue[i].city
             document.getElementById("state").value = alltrue[i].state
             document.getElementById("zip").value = alltrue[i].zip
-            document.getElementById("id").value=alltrue[i].id
+            document.getElementById("id").value = alltrue[i].id
+            document.getElementById("email").value = alltrue[i].email
         }
 
         function updatetrue() {
@@ -122,6 +127,7 @@
                 state: document.getElementById("state").value,
                 zip: document.getElementById("zip").value,
                 id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
             }
             var sendData = new XMLHttpRequest()
             sendData.onreadystatechange = function () {
@@ -132,11 +138,26 @@
                     document.getElementById("update").style.display = "none"
                 }
             }
-            sendData.open("PUT", "http://localhost:3000/true2/"+ user.id)
+            sendData.open("PUT", "http://localhost:3000/true2/" + user.id)
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
         }
 
+        function validate() {
+            document.querySelector("p").style.display = "block"
+            var inputvalue = document.getElementById("email").value
+            var formula = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            if (formula.test(inputvalue)) {
+                document.querySelector("p").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            } else if (inputvalue.length == 0) {
+                document.querySelector("p").style.display = "none"
+                document.querySelector("button").setAttribute("disabled", true)
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+        }
         getdatatrue()
     </script>
 </body>

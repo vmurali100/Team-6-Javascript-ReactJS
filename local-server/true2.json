@@ -8,7 +8,8 @@
       "city": "Liberty",
       "state": "OR",
       "zip": "80437",
-      "id": 2
+      "id": 2,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Coralas",
@@ -18,7 +19,8 @@
       "city": "Winter Park",
       "state": "TN",
       "zip": 58079,
-      "id": 3
+      "id": 3,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Miyanda",
@@ -28,7 +30,8 @@
       "city": "Fort Bragg",
       "state": "RI",
       "zip": 39630,
-      "id": 4
+      "id": 4,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Marina",
@@ -38,7 +41,8 @@
       "city": "Crestview",
       "state": "VA",
       "zip": 43961,
-      "id": 5
+      "id": 5,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Joy",
@@ -48,7 +52,8 @@
       "city": "Evanston",
       "state": "NE",
       "zip": 35593,
-      "id": 6
+      "id": 6,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "RoMeka",
@@ -58,7 +63,8 @@
       "city": "Pasadena",
       "state": "WY",
       "zip": 38166,
-      "id": 7
+      "id": 7,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Fred",
@@ -68,7 +74,8 @@
       "city": "Birmingham",
       "state": "IL",
       "zip": 58537,
-      "id": 8
+      "id": 8,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Suwanto",
@@ -78,7 +85,8 @@
       "city": "Saint Ann",
       "state": "MI",
       "zip": 36256,
-      "id": 9
+      "id": 9,
+      "email": "akalyaksreejak@gmail.com"
     },
     {
       "fname": "Prince",
@@ -88,7 +96,8 @@
       "city": "Anderson",
       "state": "CT",
       "zip": 80609,
-      "id": 10
+      "id": 10,
+      "email": "akalyaksreejak@gmail.com"
     }
   ]
 }

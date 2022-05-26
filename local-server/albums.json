@@ -1,54 +1,64 @@
 {
   "albums": [
     {
-      "userId": 1,
+      "userId": "1",
       "id": 5,
-      "title": "eaque aut omnis a"
+      "title": "eaque aut omnis a",
+      "email": "akalyak@gmail.c"
     },
     {
       "userId": 1,
       "id": 6,
-      "title": "natus impedit quibusdam illo est"
+      "title": "natus impedit quibusdam illo est",
+      "email": "sreejak@gmail.com"
     },
     {
       "userId": 1,
       "id": 7,
-      "title": "quibusdam autem aliquid et et quia"
+      "title": "quibusdam autem aliquid et et quia",
+      "email": "kajolk@gmail.com"
     },
     {
       "userId": 1,
       "id": 8,
-      "title": "qui fuga est a eum"
+      "title": "qui fuga est a eum",
+      "email": "alyak@gmail.com"
     },
     {
       "userId": 1,
       "id": 9,
-      "title": "saepe unde necessitatibus rem"
+      "title": "saepe unde necessitatibus rem",
+      "email": "lilyak@gmail.com"
     },
     {
       "userId": 1,
       "id": 10,
-      "title": "distinctio laborum qui"
+      "title": "distinctio laborum qui",
+      "email": "tamilqueen@gmail.com"
     },
     {
       "userId": 2,
       "id": 11,
-      "title": "quam nostrum impedit mollitia quod et dolor"
+      "title": "quam nostrum impedit mollitia quod et dolor",
+      "email": "malyak@gmail.com"
     },
     {
       "userId": 2,
       "id": 12,
-      "title": "consequatur autem doloribus natus consectetur"
+      "title": "consequatur autem doloribus natus consectetur",
+      "email": "akalnak@gmail.com"
     },
     {
       "userId": 2,
       "id": 13,
-      "title": "ab rerum non rerum consequatur ut ea unde"
+      "title": "ab rerum non rerum consequatur ut ea unde",
+      "email": "akalyak@gmail.com"
     },
     {
       "userId": 2,
       "id": 14,
-      "title": "ducimus molestias eos animi atque nihil"
+      "title": "ducimus molestias eos animi atque nihil",
+      "email": "aralyak@gmail.com"
     },
     {
       "userId": 2,

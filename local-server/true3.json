@@ -3,42 +3,50 @@
     {
       "fname": "Polinaaaa",
       "lname": "Webster",
-      "id": 3
+      "id": 3,
+      "email": "davidr@gmail.c"
     },
     {
       "fname": "Carl",
       "lname": "Wantland",
-      "id": 4
+      "id": 4,
+      "email": "madona_r@gmail.com"
     },
     {
       "fname": "Martha",
       "lname": "Molina",
-      "id": 5
+      "id": 5,
+      "email": "dayanar@gmail.com"
     },
     {
       "fname": "Kerri",
       "lname": "Lee",
-      "id": 6
+      "id": 6,
+      "email": "angelinar@gmail.com"
     },
     {
       "fname": "Joyce",
       "lname": "Kellams",
-      "id": 7
+      "id": 7,
+      "email": "jvansr@gmail.com"
     },
     {
       "fname": "Nora",
       "lname": "Petitti",
-      "id": 8
+      "id": 8,
+      "email": "princyr@gmail.com"
     },
     {
       "fname": "Cynthia",
       "lname": "Kozlowski",
-      "id": 9
+      "id": 9,
+      "email": "madas@gmail.com"
     },
     {
       "fname": "Clint",
       "lname": "Miller",
-      "id": 10
+      "id": 10,
+      "email": "divainr@gmail.com"
     }
   ]
 }

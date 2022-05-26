@@ -7,14 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <form action="">
         <label for="fname">fname</label>
         <input type="text" name="" id="fname"><br>
         <label for="lname">lname</label>
         <input type="text" name="" id="lname"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br>
+        <p style="color: red;display:none">please enter valied email id</p>
+        <button  disabled>editbutton</button>
         <input type="text" name="" id="id" hidden><br>
-        <button type="button" id="add" onclick="adddatatrue()">adduser</button>
+        <button type="button" id="add" onclick="adddatatrue()" >adduser</button>
         <button type="button" id="update" onclick="Updateuser()" style="display:none ;">update</button>
     </form>
     <br>
@@ -23,6 +28,7 @@
             <th>fname</th>
             <th>lname</th>
             <th>id</th>
+            <th>email</th>
             <th>edit</th>
             <th>delete</th>
         </thead>
@@ -34,7 +40,7 @@
             var getData = new XMLHttpRequest()
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    alltrue=JSON.parse(getData.response)
+                    alltrue = JSON.parse(getData.response)
                     console.log(alltrue)
                     displaygettrue(alltrue)
                 }
@@ -90,6 +96,7 @@
             document.getElementById("fname").value = alltrue[i].fname
             document.getElementById("lname").value = alltrue[i].lname
             document.getElementById("id").value = alltrue[i].id
+            document.getElementById("email").value = alltrue[i].email
         }
 
         function Updateuser() {
@@ -97,10 +104,11 @@
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
                 id: document.getElementById("id").value,
+                email: document.getElementById("email").value,
             }
-            var sendData=new XMLHttpRequest()
-            sendData.onreadystatechange=function(){
-                if(sendData.status==201 && sendData.readyState==4){
+            var sendData = new XMLHttpRequest()
+            sendData.onreadystatechange = function () {
+                if (sendData.status == 201 && sendData.readyState == 4) {
                     console.log("added successfully")
                     adddatatrue()
                     document.getElementById("add").style.display = "block"
@@ -108,9 +116,25 @@
 
                 }
             }
-            sendData.open("PUT","http://localhost:3000/true3/"+user.id)
+            sendData.open("PUT", "http://localhost:3000/true3/" + user.id)
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+
+        function validate() {
+            document.querySelector("p").style.display = "block"
+            var inputvalue = document.getElementById("email").value
+            var formula = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            if (formula.test(inputvalue)) {//for valid email
+                document.querySelector("p").style.display = "none"
+                document.querySelector("button").removeAttribute("disabled")
+            } else if (inputvalue.length == 0) {//for mt input
+                document.querySelector("button").setAttribute("disabled", true)
+                document.querySelector("p").style.display = "none"
+            } else {//for invalid email
+                document.querySelector("p").style.display = "block"
+            }
         }
         adddatatrue()
     </script>

@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "fname": "AKALYAKI",
+      "lname": "KRISHNAMOORTHY",
+      "email": "david_r@gmail.com",
+      "id": "2"
+    },
+    {
+      "fname": "AKALYAKI",
+      "lname": "KRISHNAMOORTHY",
+      "email": "ARydinsky@orci.com",
+      "id": "1"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

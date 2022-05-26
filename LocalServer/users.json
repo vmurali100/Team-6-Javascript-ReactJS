@@ -1,24 +1,22 @@
 {
   "user": [
     {
-      "fname": "jayasankar",
-      "lname": "JSK",
-      "id": 1
-    },
-    {
       "fname": "sai",
-      "lname": "kiran",
-      "id": 2
-    },
-    {
-      "fname": "jayasankar",
-      "lname": "Raju",
-      "id": 3
+      "lname": "chinna",
+      "email": "saichinna@gmail.com",
+      "id": 5
     },
     {
       "fname": "sai",
       "lname": "chinna",
-      "id": 4
+      "email": "saikiran@gmail.com",
+      "id": 6
+    },
+    {
+      "fname": "sai",
+      "lname": "chinna",
+      "email": "saikiran@gmail.com",
+      "id": 7
     }
   ]
 }

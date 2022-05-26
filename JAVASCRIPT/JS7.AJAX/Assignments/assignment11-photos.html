@@ -25,6 +25,11 @@
         <label for="thumbnailUrl">thumbnailUrl</label>
         <input type="text" name="" id="thumbnailUrl"><br>
 
+        <label for="email">email</label>
+        <input type="email" name="" id="email" onkeyup="validate()">
+        <p  style="color: blue;display: none;">Please Enter The Validate Email ID</p><br><br>
+        <button type="button" disabled>Adduser</button> <br><br>
+
         <button type="button" id="add" onclick="GetdatafromAPI()">Getdata</button>
         <button type="button" id="update" onclick="updateuser()" style="display: none">updateuser</button>
 
@@ -36,6 +41,7 @@
             <th>title</th>
             <th>url</th>           
             <th>thumbnailUrl</th>
+            <th>email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -117,6 +123,7 @@
             document.getElementById("title").value =allphotos[i].title,
             document.getElementById("url").value =allphotos[i].url,
             document.getElementById("thumbnailUrl").value =allphotos[i].thumbnailUrl
+            document.getElementById("email").value =allphotos[i].email
         }
         function updateuser(){
             var user={
@@ -125,6 +132,7 @@
                 title:document.getElementById("title").value,
                 url:document.getElementById("url").value,
                 thumbnailUrl:document.getElementById("thumbnailUrl").value,
+                email:document.getElementById("email").value
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange=function(){
@@ -139,6 +147,23 @@
             sendData.open("PUT","http://localhost:3000/photos/"+user.id)
             sendData.setRequestHeader("Content-type","application/json")
             sendData.send(JSON.stringify(user))
+        }
+        GetdatafromAPI()
+
+        function validate(){
+            var inputValue=document.getElementById("email").value
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if (pattern.test(inputValue)){
+                document.querySelector("p").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+            }else if(inputValue.length==0){
+                   document.querySelector("p").style.display="none"
+                   document.querySelector("button").setAttribute("disabled","true")
+            }else{
+                document.querySelector("p").style.display="block"
+                document.querySelector("button").setAttribute("disabled",true)
+            }
         }
     </script>
 </body>

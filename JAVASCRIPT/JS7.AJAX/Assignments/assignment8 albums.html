@@ -17,6 +17,11 @@
         <label for="title">title</label>
         <input type="text" name="" id="title"><br>
 
+        <label for="email">email</label>
+        <input type="text" name="" id="email" onkeyup="validate()">
+        <p style="color: #000000;display: none;">Please enter validate email id</p>
+        <button type="button" disabled>AddUser</button><br><br>
+
         <button type="button" id="add" onclick="getdatafromAlbums()">GetData</button>
         <button type="button" id="update" onclick="Updateuser()" style="display: none">Updateuser</button>
     </form>
@@ -25,6 +30,7 @@
             <th>userId</th>
             <th>id</th>
             <th>title</th>
+            <th>email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -37,6 +43,7 @@
                 userId: document.getElementById("userId").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                email:document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -110,6 +117,7 @@
             document.getElementById("userId").value = allausers[i].userId,
                 document.getElementById("id").value = allausers[i].id,
                 document.getElementById("title").value = allausers[i].title
+                document.getElementById("email").value =allausers[i].email
 
         }
         function Updateuser() {
@@ -117,6 +125,7 @@
                 userId: document.getElementById("userId").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                email:document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange=function (){
@@ -132,6 +141,23 @@
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
 
+        }
+        getdatafromAlbums()
+
+        function validate(){
+           var inputValue=document.getElementById("email").value
+           var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+           if(pattern.test(inputValue)){
+            document.querySelector("p").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+               }else if(inputValue.length==0){
+                   document.querySelector("p").style.display="none"
+                   document.querySelector("button").setAttribute("disabled",true)
+               }else{
+                   document.querySelector("p").style.display="block"
+                   document.querySelector("button").setAttribute("disabled",true)
+               }
         }
     </script>
 </body>

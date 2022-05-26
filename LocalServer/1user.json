@@ -2,35 +2,13 @@
   "user": [
     {
       "address": "[object Object]",
-      "email": "kevin@gmail.com",
-      "username": "kevinryan",
-      "id": 3,
-      "password": "Saisiri",
-      "name": "[object Object]",
-      "phone": "1-567-094-1345",
-      "__v": "0"
-    },
-    {
-      "address": {
-        "geolocation": {
-          "lat": "40.3467",
-          "long": "-40.1310"
-        },
-        "city": "san Antonio",
-        "street": "adams St",
-        "number": 245,
-        "zipcode": "80796-1234"
-      },
       "id": 5,
-      "email": "derek@gmail.com",
+      "email": "5321derehgcdsk@gmail.com",
       "username": "derek",
       "password": "jklg*_56",
-      "name": {
-        "firstname": "derek",
-        "lastname": "powell"
-      },
+      "name": "[object Object]",
       "phone": "1-956-001-1945",
-      "__v": 0
+      "__v": "0"
     },
     {
       "address": {

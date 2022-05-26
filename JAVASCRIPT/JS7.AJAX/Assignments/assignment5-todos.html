@@ -19,6 +19,12 @@
         <label for="completed">completed</label>
         <input type="text" name="" id="completed"><br>
 
+        <label for="">email</label>
+        <input type="email" name="" id="email" onkeyup="validate()">
+        <p style="color: red ;display: none;">Please Enter valid email Id</p><br><br>
+        <button type="button" disabled>AddUser</button>
+        <input type="text" name="" id="id" hidden><br><br>
+
         <button type="button" id="add" onclick="Getdatafromtodos()">Getdata</button>
         <button type="button" id="update" onclick="updateuser()" style="display: none">updateuser</button>
     </form>
@@ -28,6 +34,7 @@
             <th>id</th>
             <th>title</th>
             <th>completed</th>
+            <th>email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -99,6 +106,7 @@
                 document.getElementById("id").value =alltodos[i].id;
                 document.getElementById("title").value =alltodos[i].title;
                 document.getElementById("completed").value = alltodos[i].completed
+                document.getElementById("email").value = alltodos[i].email
             }
 
             function updateuser(){
@@ -106,7 +114,8 @@
                     userId: document.getElementById("userId").value,
                     id:document.getElementById("id").value,
                     title: document.getElementById("title").value,
-                    completed: document.getElementById("completed").value 
+                    completed: document.getElementById("completed").value ,
+                    email: document.getElementById("email").value 
                 }
                 var sendData =new XMLHttpRequest();
                 sendData.onreadystatechange = function (){
@@ -121,6 +130,24 @@
                 sendData.setRequestHeader("Content-type", "application/json")
                 sendData.send(JSON.stringify(user))
             }
+
+            function validate(){
+                var inputValue=document.getElementById("email").value
+                var pattern =/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+               if(pattern.test(inputValue)){
+                document.querySelector("p").style.display="none"
+                document.querySelector("button").removeAttribute("disabled")
+               }else if(inputValue.length==0){
+                   document.querySelector("p").style.display="none"
+                   document.querySelector("button").setAttribute("disabled",true)
+               }else{
+                   document.querySelector("p").style.display="block"
+                   document.querySelector("button").setAttribute("disabled",true)
+               }
+            }
+
+
           
         </script>
 </body>

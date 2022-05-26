@@ -12,17 +12,21 @@
     <form>
          <label for="userId">userId</label>
          <input type="text" name="" id="userId"><br>
+         <label for="Email">Email</label>
+         <input type="text" name="" id="Email" onkeyup="Validation()"><br>
+         <p style="color: brown; display:none">Please Enter Valid Email Id:</p>
          <label for="title">title</label>
          <input type="text" name="" id="title"><br>
          <label for="body">body</label>
          <input type="text" name="" id="body"><br>
          <input type="text" name="" id="id" hidden>
-         <button onclick="AddUser()" type="button" id="add">Add User</button>
+         <button onclick="AddUser()" type="button" id="add" disabled>Add User</button>
          <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
         <thead>
             <th>userId</th>
+            <th>Email</th>
             <th>id</th>
             <th>title</th>
             <th>body</th>
@@ -41,6 +45,7 @@
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
                 body: document.getElementById("body").value,
+                Email: document.getElementById("Email").value,
             }
             // console.log(user)
 
@@ -127,15 +132,18 @@
             document.getElementById("id").value = allposts[i].id;
             document.getElementById("title").value =allposts[i].title;
             document.getElementById("body").value =allposts[i].body;
+            document.getElementById("Email").value =allposts[i].Email;
             
         }
 
             function updateUser() {
             var Data = {
                 userId: document.getElementById("userId").value,
+                Email: document.getElementById("Email").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
                 body: document.getElementById("body").value,
+                
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -151,7 +159,25 @@
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
         }
+       
+
+        function Validation() {
+            document.querySelector("p").style.display = "block";
+            var inputEmail = document.getElementById("Email").value;
+            var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(Code.test(inputEmail)) {
+                document.querySelector("p").style.display = "none";
+                document.querySelector("button").removeAttribute("disabled")
+            }else if(inputEmail.length == 0){
+                document.querySelector("button").setAttribute("disabled",true);
+                document.querySelector("p").style.display = "none"
+            }else {
+                document.querySelector("p").style.display = "block"
+            }
+        }
         GetDataFromAPI()
+
 
 
     </script>

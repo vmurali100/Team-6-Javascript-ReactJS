@@ -24,12 +24,15 @@
         <input type="text" name="" id="albumId"><br>
         <label for="title">title</label>
         <input type="text" name="" id="title"><br>
+        <label for="Email">Email</label>
+        <input type="text" name="" id="Email" onkeyup="Validation()"><br>
+        <p style="color: red; display:none">Please Enter Valid Email.</p>
         <label for="url">url</label>
         <input type="text" name="" id="url"><br>
         <label for="thumbnailUrl">thumbnailUrl</label>
         <input type="text" name="" id="thumbnailUrl"><br>
         <input type="text" name="" id="id" hidden>
-        <button onclick="AddUser()" type="button" id="add">Add User</button>
+        <button onclick="AddUser()" type="button" id="add" disabled>Add User</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
@@ -37,6 +40,7 @@
             <th>albumId</th>
             <th>id</th>
             <th>title</th>
+            <th>Email</th>
             <th>url</th>
             <th>thumbnailUrl</th>
             <th>Edit</th>
@@ -52,6 +56,7 @@
                 albumId: document.getElementById("albumId").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                Email: document.getElementById("Email").value,
                 url: document.getElementById("url").value,
                 thumbnailUrl: document.getElementById("thumbnailUrl").value,
             }
@@ -142,6 +147,7 @@
             document.getElementById("albumId").value = allphotos[i].albumId;
             document.getElementById("id").value = allphotos[i].id;
             document.getElementById("title").value = allphotos[i].title;
+            document.getElementById("Email").value = allphotos[i].Email;
             document.getElementById("url").value = allphotos[i].url;
             document.getElementById("thumbnailUrl").value = allphotos[i].thumbnailUrl;
 
@@ -151,6 +157,7 @@
                 albumId: document.getElementById("albumId").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                Email: document.getElementById("Email").value,
                 url: document.getElementById("url").value,
                 thumbnailUrl: document.getElementById("thumbnailUrl").value,
             };
@@ -167,6 +174,21 @@
             sendData.open("PUT", " http://localhost:3000/photos/" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
+        }
+        function Validation() {
+            document.querySelector("p").style.display = "block";
+            var inputEmail = document.getElementById("Email").value;
+            var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(Code.test(inputEmail)) {
+                document.querySelector("p").style.display = "none";
+                document.querySelector("button").removeAttribute("disabled")
+            }else if(inputEmail.length == 0){
+                document.querySelector("button").setAttribute("disabled",true);
+                document.querySelector("p").style.display = "none"
+            }else {
+                document.querySelector("p").style.display = "block"
+            }
         }
         GetDataFromAPI()
 

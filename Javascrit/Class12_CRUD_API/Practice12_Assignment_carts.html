@@ -11,7 +11,8 @@
 <body>
     <form>
         <label for="userId">userId</label>
-        <input type="text" name="" id="userId"><br>
+        <input type="text" name="" id="userId" onkeyup="Validation()"><br>
+        <p style="color: red;display:none">Please Enter Valid UserId....</p>
         <label for="date">date</label>
         <input type="text" name="" id="date"><br>
         <label for="products">products</label>
@@ -19,7 +20,7 @@
         <label for="__v">__v</label>
         <input type="text" name="" id="__v"><br>
         <input type="text" name="" id="id" hidden>
-        <button type="button" onclick="AddUser()" id="add">Add User</button>
+        <button type="button" onclick="AddUser()" id="add" disabled>Add User</button>
         <!-- <button onclick="GetDataFromAPI()" type="button" id="a">GET DATA</button> -->
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
@@ -161,6 +162,21 @@
             sendData.open("PUT", "http://localhost:3000/carts/" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(Data))
+        }
+        function Validation() {
+            document.querySelector("p").style.display = "block";
+            var inputEmail = document.getElementById("userId").value;
+            var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(Code.test(inputEmail)) {
+                document.querySelector("p").style.display = "none";
+                document.querySelector("button").removeAttribute("disabled")
+            }else if(inputEmail.length == 0){
+                document.querySelector("button").setAttribute("disabled",true);
+                document.querySelector("p").style.display = "none"
+            }else {
+                document.querySelector("p").style.display = "block"
+            }
         }
         GetDataFromAPI()
 

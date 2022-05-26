@@ -99,7 +99,7 @@
         document.getElementById("update").style.display = "block"
       }
       function updateusers(){
-        console.log("Update User Called")
+       
         var data = {
           email: document.getElementById("email").value,
           id: document.getElementById("id").value,
@@ -120,7 +120,7 @@
         senddata.setRequestHeader("content-type","application/json");
         senddata.send(JSON.stringify(data));
       }
-       getdatafromapi()
+      
     </script>
 </body>
 </html>

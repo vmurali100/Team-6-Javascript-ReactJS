@@ -3,17 +3,20 @@
     {
       "fname": "nithya",
       "lname": "reddy",
-      "id": 1
+      "id": 2,
+      "email":"nith@gmail.com"
     },
     {
-      "fname": "nithya",
-      "lname": "reddy",
-      "id": 2
-    },
-    {
-      "fname": "chandhini",
+      "fname": "chandhinipriya",
       "lname": "sathya",
-      "id": 3
+      "id": 3,
+      "email":"nith@gmail.com"
+    },
+    {
+      "fname": "mani",
+      "lname": "kanta",
+      "id": 5,
+      "email":"nith@gmail.com"
     }
   ]
 }

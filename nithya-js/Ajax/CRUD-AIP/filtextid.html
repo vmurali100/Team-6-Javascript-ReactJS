@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Id</label>
+        <input type="text" id="id">
+        <label for="">Email</label>
+        <input type="text" id="email" onkeyup="validate()">
+        <p style="color:red ;display:none">please enter valid mail id</p>
+        <label for="">UserName</label>
+        <input type="text" id="username">
+        <label for="">Password</label>
+        <input type="text" id="password">
+        <button type="button" onclick="getdatafromapi()" id="add">add user</button>
+        <button type="button" onclick="updatefiltextid()" id="updat" style="display:none ;">update filtextid</button>
+        <button id="but" disabled>click</button>
+    </form>
+    <table border="1"><thead>
+        <th>Id</th>
+        <th>Email</th>
+        <th>UserName</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody></tbody>
+</table>
+    <script>
+       var allfiltext=[]
+        function getdatafromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status ==200 && getData.readyState ==4){
+                    allfiltext=JSON.parse(getData.response)
+                    console.log(allfiltext)
+                    display(allfiltext)
+
+                }
+            }
+                getData.open("GET","http://localhost:3000/filtextid/")
+                getData.send();
+            
+        }
+        function display(data){
+            document.querySelector("tbody").innerHTML=""
+              data.forEach((user,i) => {
+                  var mytr=document.createElement("tr")
+                  for(a in user){
+                      var mytd=document.createElement("td")
+                      mytd.innerHTML=user[a]
+                      mytr.appendChild(mytd)
+                  }
+                  var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.setAttribute("onclick","editfiltextid("+i+")")
+                  editbtn.innerHTML="Edit"
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.setAttribute("onclick","deletefiltextid("+i+")")
+                  deletebtn.innerHTML="Delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+
+                  document.querySelector("tbody").appendChild(mytr)
+              });
+        }
+        function deletefiltextid(i){
+            console.log(allfiltext[i])
+            var delfiltextid=new XMLHttpRequest();
+            delfiltextid.onreadystatechange=function(){
+                if(delfiltextid.status=200 && delfiltextid.readyState ==4){
+                    console.log("filtextid deleted successfully")
+                }
+                delfiltextid.open("DELETE","http://localhost:3000/filtextid/"+allfiltextid[i].id)
+                delfiltextid.setRequestHeader("content-type","application/json");
+                delfiltextid.send()
+            }
+        }
+        function editfiltextid(i){
+            document.getElementById("add").style.display="none"
+            document.getElementById("updat").style.display="block"
+            
+            document.getElementById("id").value=allfiltext[i].id;
+            document.getElementById("email").value=allfiltext[i].email;
+            document.getElementById("username").value=allfiltext[i].username;
+            document.getElementById("password").value=allfiltext[i].password;
+        }
+        function updatefiltextid(){
+            var user={
+                id:document.getElementById("id").value,
+                email:document.getElementById("email").value,
+                username:document.getElementById("username").value,
+                password:document.getElementById("password").value
+            }
+            var sendData=new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status ==200 && readyState ==4){
+                    console.log("allfiltext added successfully")
+                    getdatafromapi();
+                    document.getElementById("add").style.display="block"
+                    document.getElementById("updat").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/filtextid/"+user.id);
+            sendData.setRequestHeader("content-type","application/json");
+            sendData.send(JSON.stringify(user));
+        }
+        getdatafromapi()
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputvalue=document.getElementById("email").value;
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputvalue)){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").removeAttribute("disabled")
+
+            }else if(inputvalue.length ==0){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").setAttribute("disabled",true)
+
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+        }
+    </script>
+
+</body>
+</html>

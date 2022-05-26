@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Id</label>
+        <input type="text" id="id"><br><br>
+        <label for="">Userid</label>
+        <input type="text" id="userid"><br><br>
+        <label for="">Date</label>
+        <input type="text" id="date"><br><br>
+        <label for="">email</label>
+        <input type="text" id="email" onkeyup="validate()"><br><br>
+        <p style="color: blue; display: none;">please enter valid email id</p>
+        <label for="">products</label>
+        <input type="text" id="products">
+        
+        <!-- <button onclick="getdatafromapi()" id="cartdata"> cart info</button>
+        <button onclick="updatecart()" id="update" style="display:none ;">  updates</button> -->
+        <button  disabled>submit</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>UserId</th>
+            <th>Date</th>
+            <th>Email</th>
+            <th>Products</th>
+            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allcarts=[]
+          function getdatafromapi(){
+              var getData=new XMLHttpRequest();
+              getData.onreadystatechange=function(){
+                  if(getData.status ==200 && getData.readyState ==4){
+                      allcarts=JSON.parse(getData.response)
+                      console.log(allcarts)
+                      displaycarts(allcarts)
+                  }
+              }
+              getData.open("GET","http://localhost:3000/cart/")
+              getData.send()
+          }
+          function displaycarts(data){
+              document.querySelector("tbody").innerHTML=""
+              data.forEach((user,i) => {
+                var  mytr=document.createElement("tr")
+                for(b in user){
+                    var mytd=document.createElement("td")
+                    if(b !== "products"){
+                        mytd.innerHTML=user[b]
+                    
+                    }else{
+                        mytd.innerHTML=JSON.stringify(user[b])
+                    }
+                    mytr.appendChild(mytd)
+                    
+
+                
+                   }
+                  var edittd=document.createElement("td")
+                  var editbtn=document.createElement("button")
+                  editbtn.setAttribute("onclick","editcart("+i+")")
+                  editbtn.innerHTML="Edit"
+                  edittd.appendChild(editbtn)
+                  mytr.appendChild(edittd)
+
+                  var deletetd=document.createElement("td")
+                  var deletebtn=document.createElement("button")
+                  deletebtn.setAttribute("onclick","deletecart("+i+")")
+                  deletebtn.innerHTML="Delete"
+                  deletetd.appendChild(deletebtn)
+                  mytr.appendChild(deletetd)
+
+                  document.querySelector("tbody").appendChild(mytr)
+                  
+               });
+          }
+          function deletecart(i){
+              console.log(allcarts[i])
+              var delcart=new XMLHttpRequest()
+              delcart.onreadystatechange=function(){
+                  if(delcart.status ==200 && delcart.readyState ==4){
+                      console.log("cart deleted successfully")
+                  }
+              }
+              delcart.open("DELETE","http://localhost:3000/cart/"+allcarts[i].id)
+              delcart.setRequestHeader("content-type","application/json")
+              delcart.send()
+          }
+          function editcart(i){
+              document.getElementById("cartdata").style.display="none"
+              document.getElementById("update").style.display="block"
+
+              document.getElementById("id").value=allcarts[i].id;
+              document.getElementById("userid").value=allcarts[i].userid;
+              document.getElementById("date").value=allcarts[i].date;
+              document.getElementById("email").value=allcarts[i].email;
+              document.getElementById("products").value=allcarts[i].products;
+
+          }
+          function updatecart(){
+              var user={
+                  id:document.getElementById("id").value,
+                  userid:document.getElementById("userid").value,
+                  date:document.getElementById("date").value,
+                  date:document.getElementById("email").value,
+                   products:document.getElementById("products").value,
+              }
+              var sendData=new XMLHttpRequest();
+              sendData.onreadystatechange=function(){
+                  if(sendData.status ==200 && sendData.readyState ==4){
+                      console.log("carts added successfully")
+                      getdatafromapi()
+
+                      document.getElementById("cartdata").style.display="block"
+                      document.getElementById("update").style.display="none"
+                  }
+              }
+              sendData.open("PUT","http://localhost:3000/cart/"+user.id);
+              sendData.setRequestHeader("content-type","application/json")
+              sendData.send(JSON.stringify(user))
+          }
+          getdatafromapi()
+          function validate(){
+              document.querySelector("p").style.display="block"
+              var inputvalue=document.getElementById("email").value;
+              var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+         
+          if(pattern.test(inputvalue)){//valid
+              document.querySelector("p").style.display="none"
+              document.querySelector("button").removeAttribute("disabled")
+          }else if(inputvalue.length ==0){//empty
+              document.querySelector("button").setAttribute("disabled",true)
+              document.querySelector("p").style.display="none"
+
+          }else{//invalid
+              document.querySelector("p").style.display="block"
+          }
+        }
+    </script>
+</body>
+</html>

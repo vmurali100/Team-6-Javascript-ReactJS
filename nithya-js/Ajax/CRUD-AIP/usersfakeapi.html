@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <form action="">
+       <label for="">address</label>
+       <input type="text" id="address">
+       <label for="">Id</label>
+       <input type="text" id="id">
+       <label for="">email</label>
+       <input type="text" id="email" onkeyup="validate()">
+       <p style="color: red;display:none">please enter valid email id</p>
+       <!-- <label for="">city</label>
+       <input type="text" id="city">
+       <label for="">street</label>
+       <input type="text" id="street"> -->
+       
+       <label for="">username</label>
+       <input type="text" id="username">
+       <label for="">password</label>
+       <input type="text" id="password">
+       <label for="">name</label>
+       <input type="text" id="name">
+       <label for="">phone</label>
+       <input type="text" id="phone">
+       <button type="button" onclick="getfakeuserfromapi()" id="adduser">fakeuser</button>
+       <button type="button" onclick="updatefakeuser()" id="update" style="display:none ;">updateuser</button>
+       <button id="but" disabled>submit</button>
+   </form> 
+   <table border="1">
+       <thead>
+           <th>address</th>
+           <th>Id</th>
+           <th>Email</th>
+           <th>UserName</th>
+           <th>Password</th>
+           <th>name</th>
+           <th>phone</th>
+           <th>num</th>
+           <!-- <th>city</th> -->
+           <!-- <th>street</th> -->
+           <!-- <th>number</th>
+           <th>zipcode</th> -->
+           <th>Edit</th>
+           <th>Delete</th>
+       </thead>
+       <tbody></tbody>
+   </table>
+   <script>
+       var allfakeusers=[]
+      function getfakeuserfromapi(){
+           var getData=new XMLHttpRequest();
+           getData.onreadystatechange=function(){
+               if(getData.status ==200 && getData.readyState ==4){
+                   allfakeusers=JSON.parse(getData.response)
+                   console.log(allfakeusers)
+                   displayallfakeusers(allfakeusers)
+               }
+           }
+           getData.open("GET","http://localhost:3000/usersfakeapi/")
+           getData.send()
+       }
+       function displayallfakeusers(data){
+           document.querySelector("tbody").innerHTML=""
+           data.forEach((user,i) => {
+               var mytr=document.createElement("tr")
+               for(b in user){
+                   var mytd=document.createElement("td")
+                   if(b !== "address" && b !== "name"){
+                       mytd.innerHTML=user[b]
+                   }else{
+                      mytd.innerHTML=JSON.stringify(user[b]) 
+                   }
+                   mytr.appendChild(mytd)
+               }
+            
+               var edittd=document.createElement("td")
+               var editbtn=document.createElement("button")
+               editbtn.setAttribute("onclick","editfakeuser("+i+")")
+               editbtn.innerHTML="Edit"
+               edittd.appendChild(editbtn)
+               mytr.appendChild(edittd)
+
+               var deleted=document.createElement("td")
+               var deletebtn=document.createElement("button")
+               deletebtn.setAttribute("onclick","deletefakeuser("+i+")")
+               deletebtn.innerHTML="Delete"
+               deleted.appendChild(deletebtn)
+               mytr.appendChild(deleted)
+               document.querySelector("tbody").appendChild(mytr)
+               
+           });
+       }
+       function deletefakeuser(i){
+           console.log(allfakeusers[i])
+           var delfakeuser=new XMLHttpRequest();
+           delfakeuser.onreadystatechange=function(){
+               if(delfakeuser.status ==200 && delfakeuser.readyState ==4){
+                   console.log("fakeusers deleted successfully")
+               }
+           }
+           delfakeuser.open("DELETE","http://localhost:3000/usersfakeapi/"+allfakeusers[i].id)
+           delfakeuser.setRequestHeader("content-type","application/json")
+           delfakeuser.send()
+       }
+       function editfakeuser(i){
+           document.getElementById("adduser").style.display="none"
+           document.getElementById("update").style.display="block"
+
+           document.getElementById("address").value=allfakeusers[i].address;
+           document.getElementById("id").value=allfakeusers[i].id;
+           document.getElementById("email").value=allfakeusers[i].email;
+           document.getElementById("username").value=allfakeusers[i].username;
+           document.getElementById("password").value=allfakeusers[i].password;
+           document.getElementById("name").value=allfakeusers[i].name;
+           document.getElementById("phone").value=allfakeusers[i].phone;
+       }
+       function updatefakeuser(){
+           user={
+            address:document.getElementById("address").value, 
+            id:document.getElementById("id").value,
+            // city:document.getElementById("city").value,
+            // street:document.getElementById("street").value,
+            email:document.getElementById("email").value,
+            username:document.getElementById("username").value,
+            password:document.getElementById("password").value,
+           name:document.getElementById("name").value,
+           phone:document.getElementById("phone").value,
+           }
+
+           var sendData=new XMLHttpRequest();
+           sendData.onreadystatechange=function(){
+               if(sendData.status ==200 && sendData.readyState ==4){
+                   console.log("fakeuser updated successfully")
+                   getfakeuserfromapi()
+
+
+                   document.getElementById("adduser").style.display="block"
+                   document.getElementById("update").style="none"
+               }
+           }
+           sendData.open("PUT","http://localhost:3000/usersfakeapi/"+user.id)
+           sendData.setRequestHeader("content-type","application/json")
+           sendData.send(JSON.stringify(user))
+          
+       }
+       getfakeuserfromapi()
+       function validate(){
+           document.querySelector("p").style.display="block"
+           var inputvalue=document.getElementById("email").value;
+           var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+           if(pattern.test(inputvalue)){
+               document.querySelector("p").style.display="none"
+               document.getElementById("but").removeAttribute("disabled")
+           }else if(inputvalue.length ==0){
+               document.querySelector("p").style.display="none"
+               document.getElementById("but").setAttribute("disabled",true)
+           }else{
+               document.querySelector("p").style.display="block"
+           }
+       }
+   </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">id</label>
+        <input type="text" id="id">
+        <label for="">name</label>
+        <input type="text" id="name">
+        <label for="">username</label>
+        <input type="text" id="username">
+        <label for="">email</label>
+        <input type="text" id="email" onkeyup="validate()">
+        <p style="color: red;display:none">please enter valid email id</p>
+        <label for="">address</label>
+        <input type="text" id="address">
+        <label for="">phone</label>
+        <input type="text" id="phone">
+        <label for="">Website</label>
+        <input type="text" id="website">
+        <label for="">company</label>
+        <input type="text" id="company">
+        <button type="button" onclick="gettypicodeuserfromapi()" id="typicode">get user</button>
+        <button type="button" onclick="updatetypicodeuser()" id="update">update user</button>
+        <button id="but" disabled>submit</button>
+    </form>
+    <table border="1">
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Company</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+        var alltypicodeuser=[]
+        function gettypicodeuserfromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status ==200 && getData.readyState ==4){
+                    alltypicodeuser=JSON.parse(getData.response)
+                    console.log(alltypicodeuser)
+                    displaytypicodeuser(alltypicodeuser)
+                }
+            }
+         getData.open("GET","http://localhost:3000/typicodeuser/")
+         getData.send()
+        }
+        function displaytypicodeuser(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user,i) => {
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    if(a !== "address" && a !== "company"){
+                        mytd.innerHTML=user[a]
+                    }else{
+                        mytd.innerHTML=JSON.stringify(user[a])
+                    }
+                       mytr.appendChild(mytd)
+                }
+
+                var edittd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick","edittypicodeuser("+i+")")
+                editbtn.innerHTML="Edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deletetypicodeuser("+i+")")
+                deletebtn.innerHTML="Delete"
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+        function deletetypicodeuser(i){
+            console.log(alltypicodeuser[i])
+            var deltypicodeuser=new XMLHttpRequest();
+            deltypicodeuser.onreadystatechange=function(){
+                if(deltypicodeuser.status ==200 && deltypicodeuser.readyState ==4){
+                    console.log("typicode deleted successfully")
+                }
+            }
+            deltypicodeuser.open("DELETE","http://localhost:3000/typicodeuser/"+alltypicodeuser[i].id)
+            deltypicodeuser.setRequestHeader("content-type","application/json")
+            deltypicodeuser.send()
+        }
+        function edittypicodeuser(i){
+            document.getElementById("typicode").style.display="none"
+            document.getElementById("update").style.display="block"
+
+            document.getElementById("id").value=alltypicodeuser[i].id;
+            document.getElementById("name").value=alltypicodeuser[i].name;
+            document.getElementById("username").value=alltypicodeuser[i].username;
+            document.getElementById("email").value=alltypicodeuser[i].email;
+            document.getElementById("address").value=alltypicodeuser[i].address;
+            document.getElementById("phone").value=alltypicodeuser[i].phone;
+            document.getElementById("website").value=alltypicodeuser[i].website;
+            document.getElementById("company").value=alltypicodeuser[i].company;
+
+
+        }
+        function updatetypicodeuser(){
+            
+            user={
+                id:document.getElementById("id").value,
+                name:document.getElementById("name").value,
+                username:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                address:document.getElementById("address").value,
+                phone:document.getElementById("phone").value,
+                website:document.getElementById("website").value,
+                company:document.getElementById("company").value,
+            } 
+            var sendData=new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status ==200 && sendData.readyState ==4){
+                    console.log("typicode updated successfully")
+                    gettypicodeuserfromapi()
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/typicodeuser/"+user.id)
+            sendData.setRequestHeader("content-type","application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        gettypicodeuserfromapi()
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputvalue=document.getElementById("email").value;
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputvalue)){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").removeAttribute("disabled")
+            }else if(inputvalue.length ==0){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+        }
+    </script>
+</body>
+</html>

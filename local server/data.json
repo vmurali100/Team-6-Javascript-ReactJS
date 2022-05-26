@@ -1,0 +1,103 @@
+{
+  "data": [
+    {
+      "fname": "Ronit",
+      "lname": "Posen",
+      "tel": "(954)857-6176",
+      "email":"nith@gmail.com",
+      "address": "7214 Nullam Ave",
+      "city": "Providence",
+      "state": "TX",
+      "zip": 99762
+    },
+    {
+      "fname": "Aurora",
+      "lname": "Pickett",
+      "tel": "(872)440-3061",
+      "email":"nith@gmail.com",
+      "address": "2684 Eros Rd",
+      "city": "San Jose",
+      "state": "NH",
+      "zip": 70501
+    },
+    {
+      "fname": "Minxue",
+      "lname": "Authier",
+      "tel": "(399)185-1761",
+      "email":"nith@gmail.com",
+      "address": "42 Ipsum Ln",
+      "city": "Albany",
+      "state": "KS",
+      "zip": 46647
+    },
+    {
+      "fname": "Antoine",
+      "lname": "Webster",
+      "tel": "(539)856-2639",
+      "email":"nith@gmail.com",
+      "address": "7558 Vitae Ave",
+      "city": "Beaumont",
+      "state": "NE",
+      "zip": 44869
+    },
+    {
+      "fname": "Vinit",
+      "lname": "Owens",
+      "tel": "(627)258-5417",
+      "address": "4206 Dolor St",
+      "city": "San Francisco",
+      "state": "OK",
+      "zip": 98480
+    },
+    {
+      "fname": "Suanne",
+      "lname": "Wooten",
+      "tel": "(592)178-6681",
+      "email":"nith@gmail.com",
+      "address": "5019 Sed Dr",
+      "city": "Snow Hill",
+      "state": "GA",
+      "zip": 97111
+    },
+    {
+      "fname": "Ralph",
+      "lname": "Chatham",
+      "tel": "(115)239-3342",
+      "email":"nith@gmail.com",
+      "address": "5276 Magna St",
+      "city": "Central",
+      "state": "TX",
+      "zip": 69647
+    },
+    {
+      "fname": "Christel",
+      "lname": "Kliban",
+      "tel": "(844)977-2796",
+      "email":"nith@gmail.com",
+      "address": "7868 Scelerisque St",
+      "city": "Lake Crystal",
+      "state": "NJ",
+      "zip": 94914
+    },
+    {
+      "fname": "Safiyyah",
+      "lname": "Gibbs",
+      "tel": "(795)915-2604",
+      "email":"nith@gmail.com",
+      "address": "6667 Sapien St",
+      "city": "Brooklyn Park",
+      "state": "IA",
+      "zip": 49988
+    },
+    {
+      "fname": "Juan",
+      "lname": "Siflinger",
+      "tel": "(224)655-8260",
+      "email":"nith@gmail.com",
+      "address": "4133 Donec Ln",
+      "city": "Arlington",
+      "state": "LA",
+      "zip": 75039
+    }
+  ]
+}

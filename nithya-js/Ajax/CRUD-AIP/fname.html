@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">fname</label>
+        <input type="text" id="fname"><br><br>
+        <label for="">lname</label>
+        <input type="text" id="lname">
+        <label for="">id</label>
+       <input type="text" id="id" >
+       <label for="">email</label>
+       <input type="text" id="email" onkeyup="validate()">
+       <p style="color:red ; display:none">please enter validate email id</p>
+        
+        <button type="button" onclick="getdatafromapi()" id="name">data</button>
+        <button type="button" onclick="updatedata()" id="updat" style="display:none ;">update</button>
+        <button id="but" disabled>submit</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <th>id</th>
+            <th>email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allnames=[]
+        function getdatafromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status ==200 && getData.readyState ==4){
+                    allnames=JSON.parse(getData.response)
+                    console.log(allnames)
+                    displayall(allnames)
+                }
+            }
+            getData.open("GET","http://localhost:3000/fname/")
+            getData.send()
+        }
+        function displayall(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user,i)=> {
+
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick","editname("+i+")")
+                editbtn.innerHTML="Edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deletename("+i+")")
+                deletebtn.innerHTML="Delete"
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+        function deletename(i){
+            console.log(allnames[i])
+            var delname=new XMLHttpRequest();
+            delname.onreadystatechange=function(){
+                if(delname.status ==200 && delname.readyState ==4){
+                    console.log("names deleted successfully")
+                }
+               
+            }
+            delname.open("DELETE","http://localhost:3000/fname/"+allnames[i].id)
+            delname.setRequestHeader("content-type","application/json")
+            delname.send()
+        }
+        function editname(i){
+            document.getElementById("name").style.display="none"
+            document.getElementById("updat").style.display="block"
+
+            document.getElementById("fname").value=allnames[i].fname;
+            document.getElementById("lname").value=allnames[i].lname;
+            document.getElementById("id").value=allnames[i].id;
+            document.getElementById("email").value=allnames[i].email;
+        }
+        function updatedata(){
+             user={
+                 fname:document.getElementById("fname").value,
+                 lname:document.getElementById("lname").value,
+                 id:document.getElementById("id").value,
+                 email:document.getElementById("id").email,
+             }
+             var sendData=new XMLHttpRequest();
+             sendData.onreadystatechange=function(){
+                 if(sendData.status ==201 && sendData.readyState ==4){
+                   console.log( "name update successfully") 
+                   getdatafromapi() 
+
+                   document.getElementById("name").style.display="block"
+                   document.getElementById("updat").style.display="none"
+                 }
+             }
+             sendData.open("PUT","http://localhost:3000/fname/"+user.id)
+             sendData.setRequestHeader("content-type","application/json")
+             sendData.send(JSON.stringify(user))
+        }
+        getdatafromapi()
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputvalue=document.getElementById("email").value;
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+        
+            if(pattern.test(inputvalue)){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").removeAttribute("disabled")
+            }else if(inputvalue.length ==0){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+        }
+    </script>
+</body>
+</html>

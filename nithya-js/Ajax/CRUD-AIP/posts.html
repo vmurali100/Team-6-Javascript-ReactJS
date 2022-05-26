@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+   <form action="">
+       <label for="">userid</label>
+       <input type="text" id="userid">
+       <label for="">id</label>
+       <input type="text" id="id">
+       <label for="">title</label>
+       <input type="text" id="tit">
+       <label for="">email</label>
+       <input type="text" id="email" onkeyup="validate()">
+       <p style="color:red ; display:none">please enter valid email id</p>
+       <label for="">body</label>
+       <input type="text" id="bod">
+       <button type="button" id="date" onclick="getallpostsfromapi()">data</button>
+       <button type="button" id="update" onclick="updatesuser()" style="display: none;">updates</button>
+       <button id="but" disabled>click</button>
+   </form>
+   <table border="1">
+    <thead>
+    <th>UserId</th>
+    <th>Id</th>
+    <th>Title</th>
+    <th>email</th>
+    <th>Body</th>
+    <th>Edit</th>
+    <th>Delete</th>
+</thead>
+<tbody></tbody>
+</table>
+    <script>
+       
+        var allposts=[]
+        function getallpostsfromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status == 200 & getData.readyState == 4){
+                    allposts=JSON.parse(getData.response);
+                    console.log(allposts)
+                    displayall(allposts)
+                }
+            }
+            getData.open("GET","http://localhost:3000/posts/")
+            getData.send();
+        }
+        function displayall(use){
+            document.querySelector("tbody").innerHTML=""
+            use.forEach((data,i) => {
+                
+                var mytr=document.createElement("tr")
+                for(a in data){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=data[a]
+                    mytr.appendChild(mytd)
+                }
+
+                var edittd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick","editpost("+i+")")
+                editbtn.innerHTML="Edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deletepost("+i+")")
+                deletebtn.innerHTML="Delete"
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+        function deletepost(i){
+                  console.log(allposts[i])
+                  var delpost=new XMLHttpRequest();
+                  delpost.onreadystatechange=function(){
+                      if(delpost.status ==200 && delpost.readyState ==4){
+                          console.log("posts deleted successfully")
+                      }
+                      delpost.open("DELETE","http://localhost:3000/posts/"+allposts[i].id)
+                      delpost.setRequestHeader("content-type","application/json");
+                      delpost.send()
+                  }
+        }
+        function editpost(i){
+                 document.getElementById("date").style.display="none"
+                 document.getElementById("update").style.display="block"
+
+                 document.getElementById("userid").value=allposts[i].userid;
+                 document.getElementById("id").value=allposts[i].id;
+                 document.getElementById("tit").value=allposts[i].title;
+                 document.getElementById("email").value=allposts[i].email;
+                 document.getElementById("bod").value=allposts[i].body
+        }
+        function updatesuser(){
+            var data={
+                userid:document.getElementById("userid").value,
+                id:document.getElementById("id").value,
+                title:document.getElementById("tit").value,
+                email:document.getElementById("email").value,
+                body:document.getElementById("bod").value
+            }
+            var sendData=new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status ==200 && sendData.readyState ==4){
+                    console.log("posts  added successfully ")
+                    getallpostsfromapi();
+
+                    document.getElementById("date").style.display="block"
+                    document.getElementById("update").style.display="none"
+                }
+            };
+            sendData.open("PUT","http://localhost:3000/posts/"+data.id);
+            sendData.setRequestHeader("content-type","application/json");
+            sendData.send(JSON.stringify(data));
+        }
+        getallpostsfromapi()
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputvalue=document.getElementById("email").value;
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputvalue)){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").removeAttribute("disabled")
+            }else if(inputvalue.length ==0){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").removeAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

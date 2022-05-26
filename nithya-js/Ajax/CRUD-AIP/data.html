@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">first name</label>
+        <input type="text" id="fname">
+        <label for="">last name</label>
+        <input type="text" id="lname">
+        <label for="">tel </label>
+        <input type="text" id="tel">
+        <label for="">email</label>
+        <input type="text" id="email" onkeyup="validate()">
+        <p style="color: red; display:none">please enter validate email id</p>
+        <label for=""> Address</label>
+        <input type="text" id="address">
+        <label for="">City </label>
+        <input type="text" id="city">
+        <label for="">State</label>
+        <input type="text" id="state">
+        <label for="">Zip </label>
+        <input type="text" id="zip">
+        <button type="button" onclick="getdatafromapi()" id="getdata">data</button>
+        <button type="button" onclick="updatedata()" id="update">updates</button>
+        <button id="but" disabled>click</button>
+    </form>
+    <table border="1">
+        <thead>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Tel</th>
+            <th>email</th>
+            <th>Address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>Zip</th>
+            <th>Edit</th>
+            <th>delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alldata=[]
+        function getdatafromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange =function(){
+                if(getData.status ==200 && getData.readyState ==4){
+                    
+                    alldata=JSON.parse(getData.response)
+                    console.log(alldata)
+                    displayall(alldata)
+                }
+            }
+            getData.open("GET","http://localhost:3000/data")
+            getData.send()
+        }
+        function displayall(data){
+            document.querySelector("tbody").innerHTML=""
+            data.forEach((user,i) => {
+                var mytr=document.createElement("tr")
+                   for(a in user){
+                       var mytd=document.createElement("td")
+                       mytd.innerHTML=user[a]
+                       mytr.appendChild(mytd)
+                   }
+                   var edittd=document.createElement("td")
+                   var editbtn=document.createElement("button")
+                   editbtn.setAttribute("onclick","editdata("+i+")")
+                   editbtn.innerHTML="Edit"
+                   edittd.appendChild(editbtn)
+                   mytr.appendChild(edittd)
+
+                   var deletetd=document.createElement("td")
+                   var deletebtn=document.createElement("button")
+                   deletebtn.setAttribute("onclick","deletedata("+i+")")
+                   deletebtn.innerHTML="Delete"
+                   deletetd.appendChild(deletebtn)
+                   mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+            });
+           
+        }
+        function deletedata(i){
+            console.log(alldata[i])
+            var deldata=new XMLHttpRequest();
+            deldata.onreadystatechange=function(){
+                if(deldata.status ==200 && deldata.readyState ==4){
+                    console.log("data deleted successfully")
+                }
+            }
+            deldata.open("DELETE","http://localhost:3000/data/"+alldata[i].id)
+            deldata.setRequestHeader("content-type","application/json")
+            deldata.send()
+        }
+        function editdata(i){
+            document.getElementById("getdata").style.display="none"
+            document.getElementById("update").style.display="block"
+
+            document.getElementById("fname").value=alldata[i].fname;
+            document.getElementById("lname").value=alldata[i].lname;
+            document.getElementById("tel").value=alldata[i].tel;
+            document.getElementById("email").value=alldata[i].email;
+            document.getElementById("address").value=alldata[i].address;
+            document.getElementById("city").value=alldata[i].city;
+            document.getElementById("state").value=alldata[i].state;
+            document.getElementById("zip").value=alldata[i].zip
+        }
+        function updatedata(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                tel:document.getElementById("tel").value,
+                email:document.getElementById("email").value,
+                address:document.getElementById("address").value,
+                city:document.getElementById("city").value,
+                state:document.getElementById("state").value,
+                zip:document.getElementById("zip").value,
+            }
+            var sendData=new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status ==200 && sendData.readyState ==4){
+                    console.log("successfully updated")
+                    getdatafromapi()
+
+                    document.getElementById("getdata").style.display="block"
+                    document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/data/"+user.id)
+            sendData.setRequestHeader("content-type","application/json")
+            sendData.send(JSON.stringify(user))
+        }
+        getdatafromapi()
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputvalue=document.getElementById("email").value;
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputvalue)){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").removeAttribute("disabled")
+            }else if(inputvalue.length ==0){
+                document.querySelector("p").style.display="none"
+                document.getElementById("but").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display="block"
+            }
+        }
+    </script>
+</body>
+</html>

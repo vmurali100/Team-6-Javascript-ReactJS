@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let text = "deepthi Boppana!";
+        // var searchPlace=text.search("Boppana")
+        var searchPlace = text.search(/boppana/i)
+        console.log(searchPlace)
+        var mytext="welcome to india";
+        var mynewtext=mytext.replace("india","America")
+        var mynewtext=mytext.replace(/india/,"Hyderabad")
+
+        console.log(mynewtext)
+    </script>
+</body>
+
+</html>

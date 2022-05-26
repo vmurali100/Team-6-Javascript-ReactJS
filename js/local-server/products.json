@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "id": 4,
-      "title": "Mens Casual Slim Fit",
-      "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-      "category": "men's clothing",
-      "image": "https://www.gardeningknowhow.com/wp-content/uploads/2019/09/flower-color-400x391.jpg",
-      "rating": "[object Object]"
-    },
-    {
       "id": 5,
       "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
       "price": 695,
@@ -18,7 +10,8 @@
       "rating": {
         "rate": 4.6,
         "count": 400
-      }
+      },
+      "email": "deepthi@gmail.com"
     },
     {
       "id": 6,
@@ -30,7 +23,8 @@
       "rating": {
         "rate": 3.9,
         "count": 70
-      }
+      },
+      "email": "jyothi@gmail.com"
     },
     {
       "id": 7,
@@ -42,7 +36,8 @@
       "rating": {
         "rate": 3,
         "count": 400
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 8,
@@ -54,7 +49,8 @@
       "rating": {
         "rate": 1.9,
         "count": 100
-      }
+      },
+      "email": "nani@gmail.com"
     },
     {
       "id": 9,
@@ -66,7 +62,8 @@
       "rating": {
         "rate": 3.3,
         "count": 203
-      }
+      },
+      "email": "chinni@gmail.com"
     },
     {
       "id": 10,
@@ -78,7 +75,8 @@
       "rating": {
         "rate": 2.9,
         "count": 470
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 11,
@@ -90,7 +88,8 @@
       "rating": {
         "rate": 4.8,
         "count": 319
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 12,
@@ -102,7 +101,8 @@
       "rating": {
         "rate": 4.8,
         "count": 400
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 13,
@@ -114,7 +114,8 @@
       "rating": {
         "rate": 2.9,
         "count": 250
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 14,
@@ -126,7 +127,8 @@
       "rating": {
         "rate": 2.2,
         "count": 140
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 15,
@@ -138,7 +140,8 @@
       "rating": {
         "rate": 2.6,
         "count": 235
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 16,
@@ -150,7 +153,8 @@
       "rating": {
         "rate": 2.9,
         "count": 340
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 17,
@@ -162,7 +166,8 @@
       "rating": {
         "rate": 3.8,
         "count": 679
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 18,
@@ -174,7 +179,8 @@
       "rating": {
         "rate": 4.7,
         "count": 130
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 19,
@@ -186,7 +192,8 @@
       "rating": {
         "rate": 4.5,
         "count": 146
-      }
+      },
+      "email": "vishnu@gmail.com"
     },
     {
       "id": 20,
@@ -198,7 +205,8 @@
       "rating": {
         "rate": 3.6,
         "count": 145
-      }
+      },
+      "email": "vishnu@gmail.com"
     }
   ]
 }

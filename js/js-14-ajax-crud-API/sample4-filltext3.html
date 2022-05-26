@@ -14,6 +14,10 @@
         <input type="text" name="" id="lname"><br>
         <label for="id">id</label>
         <input type="text" name="" id="id"><br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br>
+        <button type="button" disabled>add user</button><br>
+        <p style="color: red; display: none;" >add valid email</p>
         <button onclick="getdatafromapi()" id="add" type="button">get data</button>
         <button onclick="updateuser()" id="update" type="button" style="display: none;">update user</button>
     </form>
@@ -22,6 +26,7 @@
             <th>fname</th>
             <th>lname</th>
             <th>id</th>
+            <th>email</th>
             <th>edit</th>
             <th>delete</th>
         </thead>
@@ -85,12 +90,14 @@
             document.getElementById("fname").value=allUsers[i].fname;
             document.getElementById("lname").value=allUsers[i].lname;
             document.getElementById("id").value=allUsers[i].id
+            document.getElementById("email").value=allUsers[i].email
         }
         function updateuser(){
             var user={
                 fname:document.getElementById("fname").value,
                 lname:document.getElementById("lname").value,
                 id:document.getElementById("id").value,
+                email:document.getElementById("email").value
 
             }
             var sendData=new XMLHttpRequest()
@@ -107,7 +114,23 @@
             sendData.send(JSON.stringify(user))
         }
         getdatafromapi()
+        function validate(){
+            document.querySelector("p").style.display="block"
+            var inputVal=document.getElementById("email").value
+            var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
 
+            if(pattern.test(inputVal)){
+            document.querySelector("p").style.display="none";
+            document.querySelector("button").removeAttribute("disabled")
+        }else if(inputVal.length==0){
+            document.querySelector("p").style.display="none"
+            document.querySelector("button").setAttribute("disabled",true)
+        }else{
+            document.querySelector("button").setAttribute("disabled",true)
+            document.querySelector("p").style.display="block"
+        }
+        }
+      
     </script>
 </body>
 </html>

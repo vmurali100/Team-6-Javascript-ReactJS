@@ -15,10 +15,11 @@
         <label for="name">Name</label>
         <input type="text" name="" id="name"><br><br>
         <label for="email">Email</label>
-        <input type="text" name="" id="email"><br><br>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
         <label for="body">Body</label>
         <input type="text" name="" id="body"><br><br>
-        <button onclick="addUser()" type="button" id="add">Add Users</button>
+        <p style="color: red;"> Please Enter Valid Email Id</p>
+        <button onclick="addUser()" type="button" id="add" id="userAdding" disabled >Add Users</button>
         <button onclick="updateUser()" type="button" id="upDate" style="display: none;">Update User</button>
     </form>
     <br><hr>
@@ -141,6 +142,22 @@
             sendData.open("PUT","http://localhost:3000/comments/"+user.id);
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+        // Regular Expressions
+        function validate(){
+            document.querySelector("p").style.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if (pattern.test(inputValue)){
+                document.querySelector("p").style.display = "none";
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }else if(inputValue.lenght == 0){
+                document.querySelector("P").style.display = "none";
+                document.getElementById("userAdding").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
         }
         getallUsersFromAPI();
     </script>

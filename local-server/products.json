@@ -1,16 +1,14 @@
 {
   "products": [
     {
-      "id": 4,
       "title": "Mens Casual Slim Fit",
-      "price": 15.99,
+      "price": "15.99",
       "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-      "rating": {
-        "rate": 2.1,
-        "count": 430
-      }
+      "rating": "[object Object]",
+      "id": 4,
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 5,
@@ -22,7 +20,8 @@
       "rating": {
         "rate": 4.6,
         "count": 400
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 7,
@@ -34,7 +33,8 @@
       "rating": {
         "rate": 3,
         "count": 400
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 8,
@@ -46,7 +46,8 @@
       "rating": {
         "rate": 1.9,
         "count": 100
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 9,
@@ -58,7 +59,8 @@
       "rating": {
         "rate": 3.3,
         "count": 203
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 10,
@@ -70,7 +72,8 @@
       "rating": {
         "rate": 2.9,
         "count": 470
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 11,
@@ -82,7 +85,8 @@
       "rating": {
         "rate": 4.8,
         "count": 319
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 12,
@@ -94,7 +98,8 @@
       "rating": {
         "rate": 4.8,
         "count": 400
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 13,
@@ -106,7 +111,8 @@
       "rating": {
         "rate": 2.9,
         "count": 250
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 14,
@@ -118,7 +124,8 @@
       "rating": {
         "rate": 2.2,
         "count": 140
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 15,
@@ -130,7 +137,8 @@
       "rating": {
         "rate": 2.6,
         "count": 235
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 16,
@@ -142,7 +150,8 @@
       "rating": {
         "rate": 2.9,
         "count": 340
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 17,
@@ -154,7 +163,8 @@
       "rating": {
         "rate": 3.8,
         "count": 679
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 18,
@@ -166,7 +176,8 @@
       "rating": {
         "rate": 4.7,
         "count": 130
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 19,
@@ -178,7 +189,8 @@
       "rating": {
         "rate": 4.5,
         "count": 146
-      }
+      },
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 20,
@@ -190,7 +202,8 @@
       "rating": {
         "rate": 3.6,
         "count": 145
-      }
+      },
+      "email": "thammineedis@gmail.com"
     }
   ]
 }

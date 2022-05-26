@@ -15,7 +15,7 @@
         <label for="userName">User Name : </label>
         <input type="text" name="" id="userName"><br><br>
         <label for="email">Email : </label>
-        <input type="text" name="" id="email"><br><br>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
         <label for="address">Address : </label>
         <input type="text" name="" id="address"><br><br>
         <label for="phone">Phone</label>
@@ -24,7 +24,8 @@
         <input type="text" name="" id="website"><br><br>
         <label for="company">Company</label>
         <input type="text" name="" id="company"><br><br>
-        <button type="button" onclick="addUser()" id="add">Add User</button>
+        <p style="color: orangered;">Please Enter Valid Emila Id</p><br>
+        <button type="button" onclick="addUser()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="update()" id="userUpdate" style="display: none;">Update User</button>
     </form>
     <br><hr>
@@ -161,6 +162,21 @@
             sendData.open("PUT","http://localhost:3000/users1/"+user.id)
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+        function validate(){
+            document.querySelector("p").style.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputValue)){
+                document.getElementById("userAdding").removeAttribute("disabled")
+                document.querySelector("P").status.display = "none"
+            }else if(inputValue.length == 0){
+                document.getElementById("userAdding").setAttribute("disabled",true)
+                document.querySelector("p").style.display = "none"
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
         }
         getallUserFromAPI()
     </script>

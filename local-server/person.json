@@ -7,8 +7,9 @@
       "address": "1183 Nullam Rd",
       "city": "Rahway",
       "state": "TN",
-      "zip": 57914,
-      "id": 3
+      "zip": "57914",
+      "id": 3,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "fname": "Kay",
@@ -18,7 +19,8 @@
       "city": "Massillon",
       "state": "VA",
       "zip": 83495,
-      "id": 4
+      "id": 4,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Gabrielle",
@@ -28,7 +30,8 @@
       "city": "Sandwich",
       "state": "GA",
       "zip": 66053,
-      "id": 5
+      "id": 5,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "fname": "Thelma",
@@ -38,7 +41,8 @@
       "city": "Brick",
       "state": "IN",
       "zip": 23104,
-      "id": 6
+      "id": 6,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "janie",
@@ -48,7 +52,8 @@
       "city": "San Gabriel Valley",
       "state": "WA",
       "zip": 63403,
-      "id": 7
+      "id": 7,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "fname": "Kareemah",
@@ -58,7 +63,8 @@
       "city": "Kingsland",
       "state": "MS",
       "zip": 98900,
-      "id": 8
+      "id": 8,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Geeta",
@@ -68,7 +74,8 @@
       "city": "Prattville",
       "state": "TN",
       "zip": 94542,
-      "id": 9
+      "id": 9,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "fname": "Joy",
@@ -78,7 +85,8 @@
       "city": "Thornton",
       "state": "DC",
       "zip": 43099,
-      "id": 10
+      "id": 10,
+      "email": "thammineedis@gmail.com"
     }
   ]
 }

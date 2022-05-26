@@ -18,7 +18,10 @@
         <input type="text" name="" id="products"><br><br>
         <label for="__v">__v : </label>
         <input type="text" name="" id="__v"><br><br>
-        <button type="button" onclick="addUser()" id="add">Add User</button>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email" onkeyup="validate()">
+        <p style="color: blue;"> Please Enter Valid Email Id</p><br>
+        <button type="button" onclick="addUser()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="update()" id="userUpdate" style="display: none;">Update User</button>
     </form>
     <br><hr>
@@ -30,6 +33,7 @@
                 <th>date</th>
                 <th>products</th>
                 <th>__v</th>
+                <th>Email</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -44,7 +48,8 @@
                 userId:document.getElementById("userId").value,
                 date: document.getElementById("date").value,
                 products: document.getElementById("products").value,
-                __v: document.getElementById("__v").value
+                __v: document.getElementById("__v").value,
+                email:document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function(){
@@ -122,6 +127,7 @@
             document.getElementById("date").value = allUsers[i].date
             document.getElementById("products").value = allUsers[i].products[0].quantity
             document.getElementById("__v").value = allUsers[i].__v
+            document.getElementById("email").value = allUsers[i].email
         }
         function update(){
             var user = {
@@ -129,7 +135,8 @@
                 userId:document.getElementById("userId").value,
                 date: document.getElementById("date").value,
                 //products: document.getElementById("products").value,
-                __v: document.getElementById("__v").value
+                __v: document.getElementById("__v").value,
+                email:document.getElementById("email").value
             }
             user.products = [{quantity:document.getElementById("products").value}]
             var sendData = new XMLHttpRequest();
@@ -142,6 +149,21 @@
             sendData.open("PUT","http://localhost:3000/cart/"+user.id)
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+        function validate(){
+            document.querySelector("P").status.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputValue)){
+                document.querySelector("p").style.display = "none";
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }else if (inputValue.lenght == 0){
+                document.getElementById("userAdding").setAttribute("disabled", true)
+                document.querySelector("p").style.display = "none";
+            }else{
+                document.querySelector("p").style.display = "block";
+            }
         }
         getallUserFromAPI()
     </script>

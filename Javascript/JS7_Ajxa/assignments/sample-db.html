@@ -12,11 +12,17 @@
         <input type="text" name="" id="fname"><br><br>
 
         <label for="lname">Last Name</label>
-        <input type="text" name="" id="lname"><br>
+        <input type="text" name="" id="lname"><br><br>
 
-        <input type="text" name="" id="id" hidden> <br>
+        <label for="id">Id</label>
+        <input type="text" name="" id="id"> <br><br>
 
-        <button type="button" onclick="addUsers()" id="add">Add User</button>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+
+        <p style="color: darkviolet;">Please Enter Valid Email Id</p> <br>
+
+        <button type="button" onclick="addUsers()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="usersUpdate()" id="update" style="display: none;"> Update User</button>
     </form>
     <hr>
@@ -25,6 +31,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Id</th>
+            <th>Email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -36,7 +43,8 @@
             var user = {
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
-                id: document.getElementById("id").value
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function (){
@@ -108,12 +116,14 @@
             document.getElementById("fname").value = allUsers[i].fname;
             document.getElementById("lname").value = allUsers[i].lname;
             document.getElementById("id").value = allUsers[i].id;
+            document.getElementById("email").value = allUsers[i].email
         }
         function usersUpdate(){
             var user = {
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
-                id: document.getElementById("id").value
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
 
@@ -129,6 +139,22 @@
             sendData.open("PUT","http://localhost:3000/users/"+user.id);
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+        // Regular Expressions
+        function validate(){
+            document.querySelector("p").style.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if (pattern.test(inputValue)){
+                document.querySelector("p").style.display = "none";
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }else if(inputValue.lenght == 0){
+                document.querySelector("P").style.display = "none";
+                document.getElementById("userAdding").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
         }
 
         getallUsersFromAPI()

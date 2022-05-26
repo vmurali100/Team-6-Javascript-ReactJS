@@ -3,42 +3,50 @@
     {
       "fname": "Segun",
       "lname": "Barron",
-      "id": 3
+      "id": 3,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "fname": "Seth",
       "lname": "Hencmann",
-      "id": 4
+      "id": 4,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Matt",
       "lname": "Kesner",
-      "id": 5
+      "id": 5,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Eric",
       "lname": "Bergin",
-      "id": 6
+      "id": 6,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Cindy",
       "lname": "Leite",
-      "id": 7
+      "id": 7,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Forest",
       "lname": "Montemer",
-      "id": 8
+      "id": 8,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "fname": "Isaiahretta",
       "lname": "Jackson",
-      "id": 9
+      "id": 9,
+      "email": "thammineedis@gmail.com"
     },
     {
       "fname": "Shihong",
       "lname": "Hobbs",
-      "id": 10
+      "id": 10,
+      "email": "thammineedis@gmail.com"
     }
   ]
 }

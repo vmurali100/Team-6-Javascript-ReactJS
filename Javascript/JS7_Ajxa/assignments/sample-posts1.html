@@ -16,7 +16,10 @@
         <input type="text" name="" id="title"><br><br>
         <label for="body">Body : </label>
         <input type="text" name="" id="body"><br><br>
-        <button type="button" onclick="addUsers()" id="add">Add User</button>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+        <p style="color: red;">Please Enter Valid Email Id</p><br>
+        <button type="button" onclick="addUsers()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="usersUpdate()" id="update" style="display: none;">Update User</button>
     </form>
     <br><hr>
@@ -27,6 +30,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Body</th>
+                <th>Email</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -40,7 +44,8 @@
                 userId:document.getElementById("userId").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
-                body: document.getElementById("body").value
+                body: document.getElementById("body").value,
+                email: document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function (){
@@ -110,14 +115,16 @@
             document.getElementById("userId").value = allUsers[i].userId;
             document.getElementById("id").value = allUsers[i].id;
             document.getElementById("title").value = allUsers[i].title;
-            document.getElementById("body").value = allUsers[i].body
+            document.getElementById("body").value = allUsers[i].body;
+            document.getElementById("email").value = allUsers[i].email;
         }
         function usersUpdate(){
             var user = {
                 userId:document.getElementById("userId").value,
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
-                body: document.getElementById("body").value
+                body: document.getElementById("body").value,
+                email: document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function (){
@@ -132,6 +139,21 @@
             sendData.open("PUT","http://localhost:3000/posts/"+ user.id);
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
+        }
+        function validate(){
+            document.querySelector("p").style.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputValue)){
+                document.querySelector("p").style.display = "none"
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }else if(inputValue.length == 0){
+                document.querySelector("p").style.display = "none"
+                document.getElementById("userAdding").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
         }
         getallUsersFromApi()
     </script>  

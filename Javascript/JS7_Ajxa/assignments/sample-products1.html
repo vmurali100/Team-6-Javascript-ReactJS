@@ -30,7 +30,10 @@
         <input type="text" name="" id="rating"><br><br>
         <label for="id">Id</label>
         <input type="text" name="" id="id"><br><br>
-        <button type="button" onclick="AddUser()" id="add">Add User</button>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+        <p style="color: green;">please Enter Valid Email Id</p>
+        <button type="button" onclick="AddUser()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
@@ -42,6 +45,7 @@
             <th>category</th>
             <th>image</th>
             <th>rating</th>
+            <th>Email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -57,7 +61,8 @@
                 category: document.getElementById("category").value,
                 image: document.getElementById("image").value,
                 rating: document.getElementById("rating").value,
-                id: document.getElementById("id").value
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -145,7 +150,8 @@
             document.getElementById("category").value = allproducts[i].category
             document.getElementById("image").value = allproducts[i].image
             document.getElementById("rating").value = allproducts[i].rating
-            document.getElementById("id").value = allproducts[i].id  
+            document.getElementById("id").value = allproducts[i].id 
+            document.getElementById("email").value = allproducts[i].email 
         }
         function updateUser() {
             var user = {
@@ -156,7 +162,8 @@
                 category: document.getElementById("category").value,
                 image: document.getElementById("image").value,
                 rating: document.getElementById("rating").value,
-                id: document.getElementById("id").value
+                id: document.getElementById("id").value,
+                email: document.getElementById("email").value
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -171,6 +178,21 @@
             sendData.open("PUT", "http://localhost:3000/products/" + user.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user))
+        }
+        function validate(){
+            document.querySelector("p").style.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputValue)){
+                document.querySelector("p").style.display = "none"
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }else if(inputValue.length == 0){
+                document.querySelector("p").style.display = "none"
+                document.getElementById("userAdding").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
         }
         GetDataFromAPI()
     </script>

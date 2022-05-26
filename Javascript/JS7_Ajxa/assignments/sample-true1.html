@@ -11,12 +11,13 @@
         <label for="id">Id</label>
         <input type="text" name="" id="id"><br><br>
         <label for="email">Email</label>
-        <input type="email" name="" id="email"><br><br>
+        <input type="email" name="" id="email" onkeyup="validate()"><br><br>
         <label for="username">Username</label>
         <input type="text" name="" id="username"><br><br>
         <label for="password">Password</label>
         <input type="text" name="" id="password"><br><br>
-        <button type="button" onclick="buttonUser()" id="add">Add User</button>
+        <p style="color: darkmagenta;">Please Enter Valid Email Id</p>
+        <button type="button" onclick="buttonUser()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="userUpdate()" id="update" style="display: none;">Update User</button>
     </form>
     <br> <hr>
@@ -132,6 +133,21 @@
             senData.open("PUT","http://localhost:3000/true/"+user.id)
             senData.setRequestHeader("Content-type", "application/json")
             senData.send(JSON.stringify(user));
+        }
+        function validate(){
+            document.querySelector("p").style.display = "none"
+            var inputValue = document.getElementById("email").value;
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if(pattern.test(inputValue)){
+                document.querySelector("p").style.display = "none"
+                document.getElementById("userAdding").removeAttribute("disabled")
+            }else if(inputValue.length == 0){
+                document.querySelector("p").style.display = "none"
+                document.getElementById("userAdding").setAttribute("disabled",true)
+            }else{
+                document.querySelector("p").style.display = "block"
+            }
         }
         getallUsersFromAPI()
     </script>

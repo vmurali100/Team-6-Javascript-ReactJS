@@ -1,15 +1,58 @@
 {
   "cart": [
     {
-      "id": 5,
-      "userId": "3",
-      "date": "20-05-2022",
+      "id": 2,
+      "userId": "1",
+      "date": "2020-01-02T00:00:02.000Z",
       "__v": "0",
+      "email": "vidyachowdary7@gmail.com",
       "products": [
         {
-          "quantity": "8"
+          "quantity": "4"
         }
       ]
+    },
+    {
+      "id": 3,
+      "userId": "2",
+      "date": "2020-03-01T00:00:02.000Z",
+      "__v": "0",
+      "email": "vidyachowdary7@gmail.com",
+      "products": [
+        {
+          "quantity": "2"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "date": "2020-01-01T00:00:02.000Z",
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 4
+        }
+      ],
+      "__v": 0,
+      "email": "thammineedis@gmail.com"
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "date": "2020-03-01T00:00:02.000Z",
+      "products": [
+        {
+          "productId": 7,
+          "quantity": 1
+        },
+        {
+          "productId": 8,
+          "quantity": 1
+        }
+      ],
+      "__v": 0,
+      "email": "vidyachowdary7@gmail.com"
     },
     {
       "id": 6,
@@ -25,7 +68,8 @@
           "quantity": 3
         }
       ],
-      "__v": 0
+      "__v": 0,
+      "email": "thammineedis@gmail.com"
     },
     {
       "id": 6,
@@ -37,7 +81,8 @@
           "quantity": 1
         }
       ],
-      "__v": 0
+      "__v": 0,
+      "email": "thammineedis@gmail.com"
     }
   ]
 }

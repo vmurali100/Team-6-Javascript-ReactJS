@@ -1,48 +1,14 @@
 {
   "users2": [
     {
-      "address": {
-        "geolocation": {
-          "lat": "50.3467",
-          "long": "-20.1310"
-        },
-        "city": "San Antonio",
-        "street": "Hunters Creek Dr",
-        "number": 6454,
-        "zipcode": "98234-1734"
-      },
-      "id": 4,
-      "email": "don@gmail.com",
-      "username": "donero",
-      "password": "ewedon",
-      "name": {
-        "firstname": "don",
-        "lastname": "romer"
-      },
-      "phone": "1-765-789-6734",
-      "__v": 0
-    },
-    {
-      "address": {
-        "geolocation": {
-          "lat": "40.3467",
-          "long": "-40.1310"
-        },
-        "city": "san Antonio",
-        "street": "adams St",
-        "number": 245,
-        "zipcode": "80796-1234"
-      },
+      "address": "[object Object]",
       "id": 5,
-      "email": "derek@gmail.com",
+      "email": "thammineedis@gamil.com",
       "username": "derek",
       "password": "jklg*_56",
-      "name": {
-        "firstname": "derek",
-        "lastname": "powell"
-      },
+      "name": "[object Object]",
       "phone": "1-956-001-1945",
-      "__v": 0
+      "__v": "0"
     },
     {
       "address": {

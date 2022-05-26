@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img{
+            width: 20px;
+        }
+    </style>
 </head>
 <body>
     <form>
@@ -61,13 +66,19 @@
             data.forEach((user,i) =>{
                 var  mytr = document.createElement("tr")
                 for(a in user){
-                    if(a!=="rating"){
+                    if(a!=="image" && a!=="rating"){
                     var mytd = document.createElement("td")
                     mytd.innerHTML = user[a]
                     mytr.appendChild(mytd)
-                }else{
+                }else if(a=="image"){
                     var mytd = document.createElement("td")
-                    mytd.innerHTML= JSON.stringify(user[a])
+                    var image=document.createElement("img")
+                    image.setAttribute("src",user[a])
+                    mytr.appendChild(image)
+                    mytr.appendChild(mytd)
+                }else{
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a].rate+"<br>"+user[a].count+"<br>"
                     mytr.appendChild(mytd)
                 }
                 }

@@ -14,7 +14,8 @@
         <input type="text" name="" id="id"><br><br>
 
         <label for="email">Email</label>
-        <input type="text" name="" id="email"><br><br>
+        <input type="text" name="" id="email" onkeyup="Validation()"><br><br>
+        <p style="color: red;display:none">Please Enter Valid Email ....</p>
 
         <label for="username">username</label>
         <input type="text" name="" id="username"><br><br>
@@ -24,7 +25,7 @@
 
         <input type="text" name="" id="id" hidden><br><br>
 
-        <button type="button" onclick="adduser()" id="add">add user</button>
+        <button type="button" onclick="adduser()" id="add" disabled>add user</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
     </form>
 
@@ -41,6 +42,7 @@
     </table>
 
     <script>
+
 
         var datausers = []
 
@@ -63,7 +65,7 @@
                     getdataUsersfromAPI()
                 }
             }
-            sendData.open("POST", " http://localhost:3000/users");
+            sendData.open("POST", "  http://localhost:3000/user2");
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user));
 
@@ -78,7 +80,7 @@
                 }
             }
 
-            getData.open("GET", "http://localhost:3000/users");
+            getData.open("GET", " http://localhost:3000/user2");
             getData.send();
         }
 
@@ -133,7 +135,7 @@
 
             }
 
-            deleteuser.open("delete", "http://localhost:3000/users/" + datausers[i].id);
+            deleteuser.open("delete", " http://localhost:3000/user2/" + datausers[i].id);
             deleteuser.setRequestHeader("Content-type", "application/json");
 
             deleteuser.send();
@@ -175,10 +177,33 @@
 
                 }
             }
-            sendData.open("PUT", " http://localhost:3000/users/" + user.id);
+            sendData.open("PUT", "  http://localhost:3000/user2/" + user.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user));
+
+
+            
+
         }
+
+
+
+        function Validation() {
+                document.querySelector("p").style.display = "block";
+                var inputEmail = document.getElementById("email").value;
+                var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+                if (Code.test(inputEmail)) {
+                    document.querySelector("p").style.display = "none";
+                    document.querySelector("button").removeAttribute("disabled")
+                } else if (inputEmail.length == 0) {
+                    document.querySelector("button").setAttribute("disabled", true);
+                    document.querySelector("p").style.display = "none"
+                } else {
+                    document.querySelector("p").style.display = "block"
+                }
+
+            }
 
         getdataUsersfromAPI()
 

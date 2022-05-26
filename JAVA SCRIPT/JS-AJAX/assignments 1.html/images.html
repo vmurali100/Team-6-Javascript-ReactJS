@@ -11,7 +11,8 @@
             margin: 0 auto;
             width: 800px;
         }
-        img{
+
+        img {
             width: 50px;
             height: 50px;
         }
@@ -27,9 +28,11 @@
         <label for="url">url</label>
         <input type="text" name="" id="url"><br>
         <label for="thumbnailUrl">thumbnailUrl</label>
-        <input type="text" name="" id="thumbnailUrl"><br>
+        <input type="text" name="" id="thumbnailUrl"><br><br>
+        <label for="email">EMmail</label>
+        <input type="text" name="" id="email">
         <input type="text" name="" id="id" hidden>
-        <button onclick="AddUser()" type="button" id="add">Add User</button>
+        <button onclick="AddUser()" type="button" id="add">Add User</button><br><br>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">Update User</button>
     </form>
     <table border="1">
@@ -39,6 +42,7 @@
             <th>title</th>
             <th>url</th>
             <th>thumbnailUrl</th>
+            <th>Email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -54,6 +58,8 @@
                 title: document.getElementById("title").value,
                 url: document.getElementById("url").value,
                 thumbnailUrl: document.getElementById("thumbnailUrl").value,
+                Email: document.getElementById("email")
+
             }
             // console.log(user)
 
@@ -82,28 +88,28 @@
                     displayUsers(allimages)
                 }
             }
-            getData.open("GET", "  http://localhost:3000/images/");
+            getData.open("GET", "http://localhost:3000/images/");
             getData.send()
         }
 
         function displayUsers(allimages) {
             document.querySelector("tbody").innerHTML = ""
-            allimages.forEach((user,i) => {
+            allimages.forEach((user, i) => {
                 var myTr = document.createElement("tr");
                 for (a in user) {
-                    if(a !== "url" && a !== "thumbnailUrl"){
+                    if (a !== "url" && a !== "thumbnailUrl") {
                         var myTd = document.createElement("td")
-                    myTd.innerHTML = user[a]
-                    myTr.appendChild(myTd)
-                    }else{
+                        myTd.innerHTML = user[a]
+                        myTr.appendChild(myTd)
+                    } else {
                         var myTd = document.createElement("td")
                         var myImg = document.createElement("img")
-                        myImg.setAttribute("src",user[a])
+                        myImg.setAttribute("src", user[a])
                         myTd.appendChild(myImg)
                         myTr.appendChild(myTd)
 
                     }
-                   
+
                 }
                 var editTd = document.createElement("td")
                 var editbutton = document.createElement("button");
@@ -138,12 +144,12 @@
         function editUser(i) {
             document.getElementById("add").style.display = "none"
             document.getElementById("update").style.display = "block"
-
             document.getElementById("albumId").value = allimages[i].albumId;
             document.getElementById("id").value = allimages[i].id;
             document.getElementById("title").value = allimages[i].title;
             document.getElementById("url").value = allimages[i].url;
             document.getElementById("thumbnailUrl").value = allimages[i].thumbnailUrl;
+            document.getElementById("email").value = allimages[i].email
 
         }
         function updateUser() {
@@ -153,6 +159,8 @@
                 title: document.getElementById("title").value,
                 url: document.getElementById("url").value,
                 thumbnailUrl: document.getElementById("thumbnailUrl").value,
+                Email: document.getElementById("email").value
+
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -166,7 +174,25 @@
             };
             sendData.open("PUT", "  http://localhost:3000/images/" + Data.id);
             sendData.setRequestHeader("Content-type", "application/json");
-            sendData.send(JSON.stringify(Data))
+            sendData.send(JSON.stringify(Data));
+
+
+            function Validation() {
+                document.querySelector("p").style.display = "block";
+                var inputEmail = document.getElementById("email").value;
+                var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+                if (Code.test(inputEmail)) {
+                    document.querySelector("p").style.display = "none";
+                    document.querySelector("button").removeAttribute("disabled")
+                } else if (inputEmail.length == 0) {
+                    document.querySelector("button").setAttribute("disabled", true);
+                    document.querySelector("p").style.display = "none"
+                } else {
+                    document.querySelector("p").style.display = "block"
+                }
+
+            }
         }
         GetDataFromAPI()
 

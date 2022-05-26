@@ -13,15 +13,20 @@
         <label for="userid">userId</label>
         <input type="text" name="" id="userid"><br><br>
 
-        <label for="id">Id</label>
+        <!-- <label for="id">Id</label>
         <input type="text" name="" id="id">
-        <br><br>
+        <br><br> -->
 
         <label for="title">title</label>
         <input type="text" name="" id="title"><br><br>
 
         <label for="completed">completed</label>
         <input type="text" name="" id="completed"><br><br>
+
+
+        <label for="email">Email</label>
+        <input type="text" name="" id="email" onkeyup="Validation()"><br>
+        <p style="color: red; display:none">Please Enter Valid Email.....</p>
 
         <!-- <input type="text" name="" id="id" hidden><br><br> -->
 
@@ -32,8 +37,9 @@
     <table border="1">
         <thead>
             <th>userid</th>
-            <th>Id</th>
+            <!-- <th>Id</th> -->
             <th>title</th>
+            <th>Email</th>
             <th>completed</th>
             <th>edit</th>
             <th>delete</th>
@@ -48,9 +54,10 @@
         function adduser() {
             var user = {
                 userid: document.getElementById("userid").value,
-                id: document.getElementById("id").value,
+                // id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
-                completed: document.getElementById("completed").value,
+                Email: document.getElementById("email").value,
+                completed: document.getElementById("completed").value
 
             };
             // console.log(user)
@@ -142,9 +149,10 @@
 
         function edituser(i) {
             document.getElementById("userid").value = todosusers[i].userid;
-            document.getElementById("id").value = todosusers[i].id;
+            // document.getElementById("id").value = todosusers[i].id;
             document.getElementById("title").value = todosusers[i].title;
-            document.getElementById("completed").value = todosusers[i].completed;
+            document.getElementById("email").value = todosusers[i].email;
+            document.getElementById("completed").value = todosusers[i].completed
 
 
 
@@ -157,8 +165,9 @@
 
             var user = {
                 userId: document.getElementById("userid").value,
-                id: document.getElementById("id").value,
+                // id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
+                Email: document.getElementById("email").value,
                 completed: document.getElementById("completed").value,
 
 
@@ -182,6 +191,25 @@
             todosusers.open("PUT", "http://localhost:3000/todos/" + todosusers.id);
             todosusers.setRequestHeader("Content-type", "application/json");
             todosusers.send(JSON.stringify(user));
+
+
+
+
+            function Validation() {
+                document.querySelector("p").style.display = "block";
+                var inputEmail = document.getElementById("email").value;
+                var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+                if (Code.test(inputEmail)) {
+                    document.querySelector("p").style.display = "none";
+                    document.querySelector("button").removeAttribute("disabled")
+                } else if (inputEmail.length == 0) {
+                    document.querySelector("button").setAttribute("disabled", true);
+                    document.querySelector("p").style.display = "none"
+                } else {
+                    document.querySelector("p").style.display = "block"
+                }
+            }
         }
 
         gettodossUsersfromAPI()

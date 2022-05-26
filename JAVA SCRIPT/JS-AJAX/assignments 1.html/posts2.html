@@ -24,6 +24,16 @@
         <input type="text" name="" id="body"><br><br>
         <input type="text" name="" id="id" hidden><br>
 
+        <label for="email">EMAIL</label>
+        <input type="text" name="" id="email" onkeyup="validate()">
+
+        <p style="color:dark red; display:none">please enter the valid email id ....</p><br><br>
+        
+        <button type="button" disabled>add user</button>
+        <input type="text" name="" id="id" hidden><br><br>
+
+        
+
         <button onclick="getDataFromAPI()" type="button"  id="add">GET DATA</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
     </form>
@@ -34,6 +44,7 @@
             <th>ID</th>
             <th>TITLE</th>
             <th>BODY</th>
+            <th>Email</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -111,6 +122,7 @@
             document.getElementById("id").value = allposts[i].id;
             document.getElementById("title").value = allposts[i].title;
             document.getElementById("body").value = allposts[i].body;
+            document.getElementById("email").value = allposts[i].email;
         }
 
         function updateUser() {
@@ -119,6 +131,7 @@
                 id: document.getElementById("id").value,
                 title: document.getElementById("title").value,
                 body: document.getElementById("body").value,
+                email: document.getElementById("email").value
             };
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function () {
@@ -136,32 +149,27 @@
             sendData.send(JSON.stringify(data))
         }
 
+
+        function validate() {
+                document.querySelector("p").style.display = "block";
+                var inputEmail = document.getElementById("email").value;
+                var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+                if (Code.test(inputEmail)) {
+                    document.querySelector("p").style.display = "none";
+                    document.querySelector("button").removeAttribute("disabled")
+                } else if (inputEmail.length == 0) {
+                    document.querySelector("button").setAttribute("disabled", true);
+                    document.querySelector("p").style.display = "none"
+                } else {
+                    document.querySelector("p").style.display = "block"
+                }
+
+            }
+
         getDataFromAPI()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </script>
+</script>
 </body>
 
 </html>

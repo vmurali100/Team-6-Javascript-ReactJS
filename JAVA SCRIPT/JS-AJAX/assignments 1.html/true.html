@@ -35,6 +35,13 @@
 
         <input type="text" name="" id="id" hidden><br><br>
 
+        <label for="email">Email</label>
+
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+        <p style="color:pink; display:none">please enter vali email id ...</p>
+
+        <button type="button" disabled>adduser</button>
+
         <button type="button" onclick="adduser()" id="add">add user</button>
         <button type="button" onclick="updateUser()" id="update" style="display:none;">updateUser</button>
     </form>
@@ -49,6 +56,7 @@
             <th>state</th>
             <th>zip</th>
             <th>id</th>
+            <th>Email</th>
             <th>edit</th>
             <th>delete</th>
         </thead>
@@ -67,7 +75,8 @@
                 city: document.getElementById("city").value,
                 state: document.getElementById("state").value,
                 zip: document.getElementById("zip").value,
-                id: document.getElementById("id").value
+                id: document.getElementById("id").value,
+                Email:document.getElementById("email").value
 
             };
             // console.log(user)
@@ -77,7 +86,7 @@
 
             sendData.onreadystatechange = function () {
                 if (sendData.status == 201 && sendData.readyState == 4) {
-                    console.log("user added successfully")
+                    // console.log("user added successfully")
                     gettrueUsersfromAPI()
                 }
             }
@@ -86,17 +95,18 @@
             sendData.send(JSON.stringify(user));
 
         }
+
         function gettrueUsersfromAPI() {
             var getData = new XMLHttpRequest();
             trueusers.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
                     trueusers = JSON.parse(getData.response)
-                    console.log(trueusers)
+                    // console.log(trueusers)
                     displayusers(trueusers)
                 }
             }
 
-            getData.open("GET", "http://localhost:3000/true/");
+            getData.open("GET", "http://localhost:3000/true");
             getData.send();
         }
 
@@ -104,9 +114,11 @@
         function displayusers(trueusers) {
 
             document.querySelector("tbody").innerHTML = "",
+
                 trueusers.forEach((user, i) => {
                     var myTr = document.createElement("tr");
-                    for (a in user) {
+
+                    for (a in user[i]) {
                         var myTd = document.createElement("td");
                         myTd.innerHTML = user[a];
                         myTr.appendChild(myTd);
@@ -169,6 +181,7 @@
             document.getElementById("zip").value = trueusers[i].zip;
             document.getElementById("id").value = trueusers[i].id;
             document.getElementById("id").value = trueusers[i].id;
+            Email.getElementById("email").value = trueusers[i].email
 
 
             document.getElementById("add").style.display = "none";
@@ -186,7 +199,8 @@
                 city: document.getElementById("city").value,
                 state: document.getElementById("state").value,
                 zip: document.getElementById("zip").value,
-                id: document.getElementById("id").value
+                id: document.getElementById("id").value,
+                Email:document.getElementById("email").value
 
             };
 
@@ -208,6 +222,24 @@
             sendData.open("PUT", "http://localhost:3000/true/" + trueusers.id);
             sendData.setRequestHeader("Content-type", "application/json");
             sendData.send(JSON.stringify(user));
+        }
+
+
+        function Validation() {
+            document.querySelector("p").style.display = "block";
+            var inputEmail = document.getElementById("userId").value;
+            var Code = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            if (Code.test(inputEmail)) {
+                document.querySelector("p").style.display = "none";
+                document.querySelector("button").removeAttribute("disabled")
+            } else if (inputEmail.length == 0) {
+                document.querySelector("button").setAttribute("disabled", true);
+                document.querySelector("p").style.display = "none"
+            } else {
+                document.querySelector("p").style.display = "block"
+            }
+
         }
 
         gettrueUsersfromAPI()

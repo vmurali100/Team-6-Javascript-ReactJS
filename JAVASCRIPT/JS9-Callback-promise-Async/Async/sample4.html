@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table border="1">
+        <thead>
+            <th>postId</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getdataformcomments(){
+            return new Promise ((resolve,reject)=>{
+                var Getdata= new XMLHttpRequest();
+                Getdata.onreadystatechange=function(){
+                    if(Getdata.status == 200 && Getdata.readyState){
+                        var allcomments=JSON.parse(Getdata.response)
+                        resolve(allcomments)
+                    }
+                }
+                Getdata.open("GET","https://jsonplaceholder.typicode.com/comments")
+                Getdata.send()
+            })
+        }
+        function displayallusers(allcomments){
+            allcomments.forEach((comments,i)=>{
+                var myTr=document.createElement("tr")
+                for(a in comments){
+                    var myTd=document.createElement("td")
+                    myTd.innerHTML=comments[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+       async function Getallcommentsdisplay(){
+             var comments=await getdataformcomments();
+             displayallusers(comments)
+        }
+        Getallcommentsdisplay()
+    </script>
+</body>
+</html>

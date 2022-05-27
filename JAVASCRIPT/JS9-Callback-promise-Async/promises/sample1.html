@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+       
+        <thead>
+            <th>userId</th>
+            <th>id</th>
+            <th>title</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function GetdatagformApi(){
+            return new Promise((resolve,reject)=>{
+                var Getdata = new XMLHttpRequest();
+                Getdata.onreadystatechange=function(){
+                    if(Getdata.status == 200 && Getdata.readyState ==4){
+                        var allusers=JSON.parse(Getdata.response)
+                        resolve(allusers)
+                    }
+                }
+                Getdata.open("GET","https://jsonplaceholder.typicode.com/albums")
+                Getdata.send()
+            })
+        }
+        function displayallusers(allusers){
+            allusers.forEach((user,i)=>{
+                var myTr=document.createElement("tr")
+                for(a in user){
+                    var myTd=document.createElement("td")
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        GetdatagformApi().then((user)=>{
+            displayallusers(user)
+        })
+
+    </script>
+</body>
+</html>

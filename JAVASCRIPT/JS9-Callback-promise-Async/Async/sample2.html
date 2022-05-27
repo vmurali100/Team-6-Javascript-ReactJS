@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>email</th>
+            <th>username</th>
+            <th>password</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getdatafromAPI(){
+            return new Promise((resolve,reject)=>{
+                var GetData= new XMLHttpRequest();
+                GetData.onreadystatechange=function(){
+                    if(GetData.status == 200 && GetData.readyState == 4){
+                        var allusers=JSON.parse(GetData.response)
+                        resolve(allusers)
+                    }
+                }
+                GetData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+                GetData.send()
+            })
+        }
+        function displayusers(data){
+            data.forEach((user)=>{
+                var myTr=document.createElement("tr")
+                for(a in user){
+                    var myTd=document.createElement("td")
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        async function getdisplayusers(){
+            var user=await getdatafromAPI();
+            displayusers(user)
+        }
+        getdisplayusers()
+    </script>
+</body>
+</html>

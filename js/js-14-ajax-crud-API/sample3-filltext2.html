@@ -152,22 +152,34 @@
         }
         getdatafromapi()
         function validate(){
-            document.querySelector("p").style.display="block";
+            // document.querySelector("p").style.display="block";
             var inputVal=document.getElementById("email").value;
             var pattern=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
 
+            // if(pattern.test(inputVal)){
+            //     document.querySelector("p").style.display="none";
+            //     document.querySelector("button").removeAttribute("disabled")
+            // }else if(inputVal.length==0){
+            //     document.querySelector("p").style.display="none";
+            //     document.querySelector("button").setAttribute("disabled",true)
+            // }else{
+            //     document.querySelector("p").style.display="block"
+            //     document.querySelector("button").setAttribute("disabled",true)
+            // }
+            
             if(pattern.test(inputVal)){
                 document.querySelector("p").style.display="none";
                 document.querySelector("button").removeAttribute("disabled")
-            }else if(inputVal.length==0){
+            }
+            if(inputVal.length==0){
                 document.querySelector("p").style.display="none";
                 document.querySelector("button").setAttribute("disabled",true)
-            }else{
-                document.querySelector("p").style.display="block"
-                document.querySelector("button").setAttribute("disabled",true)
-            }
         }
-
+        if(!pattern.test(inputVal)){
+            document.querySelector("p").style.display="block";
+                document.querySelector("button").setAttribute("disabled",true)
+        }
+    }
     </script>
 </body>
 

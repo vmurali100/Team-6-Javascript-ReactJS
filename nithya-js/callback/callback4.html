@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Tel</th>
+            <th>email</th>
+            <th>Address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>Zip</th>
+            
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alldata=[]
+        function getdatafromapi(){
+            var getData=new XMLHttpRequest();
+            getData.onreadystatechange=function(){
+                if(getData.status ==200 && getData.readyState ==4){
+                    alldata=JSON.parse(getData.response)
+                    displaydata(alldata)
+                }
+            }
+            getData.open("GET","http://localhost:3000/data")
+            getData.send()
+        }
+        function displaydata(){
+            alldata.forEach((data,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in data){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=data[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        getdatafromapi()
+    </script>
+</body>
+</html>

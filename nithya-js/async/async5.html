@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+        <th>UserId</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>email</th>
+        <th>Body</th>
+    </thead>
+    <tbody></tbody>
+    </table>
+    <script>
+        function getpostsfromapi(){
+            return new Promise((resolve,reject)=>{
+                    var getposts=new XMLHttpRequest();
+                    getposts.onreadystatechange=function(){
+                        if(getposts.status ==200 && getposts.readyState ==4){
+                            var allposts=JSON.parse(getposts.response);
+                            resolve(allposts)
+                        }
+                    }
+                    getposts.open("GET"," http://localhost:3000/posts")
+                    getposts.send()
+            })
+        }
+        function displayposts(allposts){
+            allposts.forEach((posts,i) => {
+                var mytr=document.createElement("tr")
+                for(a in posts){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=posts[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+      async function getanddisplayposts(){
+          var posts=await getpostsfromapi()
+          displayposts(posts)
+      }
+      getanddisplayposts()
+    </script>
+</body>
+</html>

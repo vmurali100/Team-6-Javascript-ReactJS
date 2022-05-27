@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>userid</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>completed</th>
+            <th>email</th>
+            
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alltodos=[]
+        function gettodosfromapi(){
+            var gettodos=new XMLHttpRequest();
+            gettodos.onreadystatechange=function(){
+                if(gettodos.status ==200 && gettodos.readyState ==4){
+                    alltodos=JSON.parse(gettodos.response)
+                    displaytodos(alltodos)
+                }
+            }
+            gettodos.open("GET"," http://localhost:3000/todos")
+            gettodos.send()
+        }
+        function displaytodos(){
+                 alltodos.forEach((todos,i)=>{
+                     var mytr=document.createElement("tr")
+                     for(a in todos){
+                         var mytd=document.createElement("td")
+                         mytd.innerHTML=todos[a]
+                         mytr.appendChild(mytd)
+                     }
+                     document.querySelector("tbody").appendChild(mytr)
+                 })
+        }
+        gettodosfromapi()
+    </script>
+</body>
+</html>

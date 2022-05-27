@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+          <th>Id</th>
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Website</th>
+          <th>Company</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    <script>
+        var alltypicode=[]
+         function gettypicodefromapi(){
+             var gettypicode=new XMLHttpRequest();
+             gettypicode.onreadystatechange=function(){
+                 if(gettypicode.status ==200 && gettypicode.readyState ==4){
+                     alltypicode=JSON.parse(gettypicode.response)
+                     displaytypicode(alltypicode)
+                 }
+             }
+             gettypicode.open("GET"," http://localhost:3000/typicodeuser")
+             gettypicode.send()
+         }
+         function displaytypicode(){
+             alltypicode.forEach((typicode,i)=>{
+                 var mytr=document.createElement("tr")
+                 for(a in typicode){
+                     if(a !== "address" && a !== "company"){
+                         var mytd=document.createElement("td")
+                         mytd.innerHTML=typicode[a]
+                        
+                     }else{
+                       mytd.innerHTML=JSON.stringify(typicode[a])
+                     }
+                     mytr.appendChild(mytd)
+                 }
+                 document.querySelector("tbody").appendChild(mytr)
+             })
+         }
+         gettypicodefromapi()
+    </script>
+   
+</body>
+</html>

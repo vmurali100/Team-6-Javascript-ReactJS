@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>postid</th>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>body</th>
+            
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getcommentsfromapi(){
+            return new Promise((resolve,reject)=>{
+                var getcomments=new XMLHttpRequest();
+                getcomments.onreadystatechange=function(){
+                    if(getcomments.status ==200 && getcomments.readyState ==4){
+                        var allcomments=JSON.parse(getcomments.response)
+                        resolve(allcomments)
+                        
+                    }
+                }
+                getcomments.open("GET","http://localhost:3000/comments")
+                getcomments.send()
+            })
+        }
+        function displaycomments(allcomments){
+            allcomments.forEach((comments,i) => {
+                var mytr=document.createElement("tr")
+                for(a in comments){
+                    var mytd =document.createElement("td")
+                    mytd.innerHTML=comments[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+         getcommentsfromapi().then((comments)=>{
+             displaycomments(comments)
+         })
+    </script>
+</body>
+</html>

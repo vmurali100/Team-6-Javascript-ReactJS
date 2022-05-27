@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>fname</th>
+            <th>lname</th>
+            <th>id</th>
+            <th>email</th>
+           
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function getnamesfromserver(){
+            return new Promise((resolve,reject)=>{
+                var getname=new XMLHttpRequest();
+            getname.onreadystatechange=function(){
+                if(getname.status ==200 && getname.readyState ==4){
+                    var allnames=JSON.parse(getname.response);
+                    resolve(allnames)
+                }
+            }
+           
+        getname.open("GET","http://localhost:3000/fname/");
+        getname.send()
+    })
+            
+        }
+        function displaynames(allnames){
+            allnames.forEach((names) => {
+                var mytr=document.createElement("tr")
+                for(a in names){
+                    var mytd =document.createElement("td")
+                    mytd.innerHTML=names[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+        getnamesfromserver().then((names)=>{
+            displaynames(names)
+        })
+
+    </script>
+</body>
+</html>

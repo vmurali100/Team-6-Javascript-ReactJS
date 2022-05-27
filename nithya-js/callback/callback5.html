@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>address</th>
+            <th>Id</th>
+            <th>Email</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>num</th>
+            
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var alluserfake=[]
+        function getuserfakefromapi(){
+            var getuserfake=new XMLHttpRequest();
+            getuserfake.onreadystatechange =function(){
+                if(getuserfake.status ==200 && getuserfake.readyState ==4){
+                    alluserfake=JSON.parse(getuserfake.response)
+                    displayuserfake(alluserfake)
+                }
+            }
+            getuserfake.open("GET"," http://localhost:3000/usersfakeapi")
+            getuserfake.send()
+        }
+        function displayuserfake(){
+            alluserfake.forEach((userfake)=>{
+                var mytr=document.createElement("tr")
+                for(a in userfake){
+                    var mytd=document.createElement("td")
+                    if(a !== "address" && a !== "phone"){
+                        
+                        mytd.innerHTML=userfake[a]
+                    }else{
+                        mytd.innerHTML=JSON.stringify(userfake[a])
+                    }
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        getuserfakefromapi()
+    </script>
+</body>
+</html>

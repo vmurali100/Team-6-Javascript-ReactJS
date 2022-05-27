@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="albumId">ALBUMID</label>
+        <input type="text" name="" id="albumId"><br>
+        <label for="id">Id</label>
+        <input type="text" name="" id="id"><br>
+        <label for="title">TITLE</label>
+        <input type="text" name="" id="title"><br>
+        
+        <label for="url">URL</label>
+        <input type="text" name="" id="url"><br>
+        
+        <label for="thumbnailUrl">THUMBNAILURL</label>
+        <input type="text" name="" id="thumbnailUrl"><br>
+        <button type="button" onclick="getphotosFromAPI()" id="add">Adduser</button>
+        
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+          <thead>
+              <th>ALBUMID</th>
+            <th>Id</th>
+            <th>TITLE</th>
+            <th>URL</th>
+            <th>THUMBNAILURL</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+        </tr>
+      </table>
+    <script>
+            var allphotos=[]
+        function getphotosFromAPI(){
+          var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () {
+          if (getData.status == 200 && getData.readyState == 4) {
+         allphotos=JSON.parse(getData.response);
+            console.log(allphotos);
+            displayUser(allphotos);
+          }
+        };
+        getData.open("GET","http://localhost:3000/user");
+        getData.send();
+        }
+
+        function displayUser(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editallphotos("+i+")");
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd);
+
+          var deleteTd = document.createElement("td");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.setAttribute("onclicK","deleteallphotos("+i+")");
+          deleteBtn.innerHTML = "Delete";
+          deleteTd.appendChild(deleteBtn);
+          myTr.appendChild(deleteTd);
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+      
+      function deleteallphotos(i) {
+
+console.log(allphotos[i])
+var delallphotos = new XMLHttpRequest()
+delallphotos.onreadystatechange = function(){
+  if (delallphotos.status == 200 && delallphotos.readyState == 4) {
+    console.log("Allphotos deleted successfully")
+  }
+
+}
+delallphotos.open( "DELETE","http://localhost:3000/user/" +allphotos[i].id);
+   delallphotos.setRequestHeader("Content-type","application/json");
+    delallphotos.send();
+  
+}
+
+        function editallphotos(i){
+  
+         document.getElementById("add").style.display="none"
+        document.getElementById("update").style.display="block"
+
+        document.getElementById("albumId").value=allphotos[i].albumId;   
+        document.getElementById("id").value=allphotos[i].id;
+        document.getElementById("title").value=allphotos[i].title;
+        
+        document.getElementById("url").value=allphotos[i].url;
+      
+        document.getElementById("thumbnailUrl").value=allphotos[i].thumbnailUrl
+      }
+
+      function updateuser(){
+        var data={
+
+            albumId:document.getElementById("albumId").value,
+              id:document.getElementById("id").value,
+              title:document.getElementById("title").value,
+              
+              url:document.getElementById("url").value,
+              
+              thumbnailUrl:document.getElementById("thumbnailUrl").value
+            };
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("allphotos added succesfully")
+                    getphotosFromAPI();
+                  
+        document.getElementById("add").style.display="block"
+        document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/user/"+data.id);
+            sendData.setRequestHeader("Content-type","application/json");
+            sendData.send(JSON.stringify(data));
+
+      }
+      getphotosFromAPI()
+          
+    </script>
+</body>
+</html>

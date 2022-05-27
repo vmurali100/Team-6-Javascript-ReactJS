@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table border="1">
+        <thead>
+            <th>userid</th>
+            <th>id</th>
+            <th>title</th>
+           
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+        function getalbumsfromapi() {
+            return new Promise((resolve, reject) => {
+                var getalbums = new XMLHttpRequest();
+                getalbums.onreadystatechange = function () {
+                    if (getalbums.status == 200 && getalbums.readyState == 4) {
+                        var allalbums = JSON.parse(getalbums.response)
+                        resolve(allalbums)
+
+                    }
+
+                }
+
+                getalbums.open("GET", "https://jsonplaceholder.typicode.com/albums")
+                getalbums.send()
+            })
+        }
+
+        function displayalbums(allalbums) {
+            allalbums.forEach((albums, i) => {
+                var mytr = document.createElement("tr")
+                for (a in albums) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = albums[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            });
+        }
+
+        async function getanddisplayalbums() {
+            var albums = await getalbumsfromapi();
+            displayalbums(albums)
+        }
+        getanddisplayalbums()
+
+
+    </script>
+</body>
+
+</html>

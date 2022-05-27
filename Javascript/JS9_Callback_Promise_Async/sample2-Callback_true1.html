@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var allUsers = []
+        function getallUsersFromserver(){
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function (){
+                if(getData.status == 200 && getData.readyState == 4){
+                    allUsers = JSON.parse(getData.response)
+                    displayUsers(allUsers)
+                    console.log(allUsers)
+                }
+            }
+            getData.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+            getData.send()
+        }
+        function displayUsers(){
+            allUsers.forEach((user)=>{
+                console.log(user)
+            })
+        }
+        getallUsersFromserver()
+    </script>
+</body>
+</html>

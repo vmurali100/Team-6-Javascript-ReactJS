@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>id</th>
+        <th>userId</th>
+        <th>date</th>
+        <th>products</th>
+        <th>__v</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+    <script>
+      function getDatafromcarts(){
+          return new Promise((resolve,reject)=>{
+              var getDatacarts=new XMLHttpRequest()
+              getDatacarts.onreadystatechange=function(){
+                  if(getDatacarts.status==200 && getDatacarts.readyState==4){
+                      var allDatacarts=JSON.parse(getDatacarts.response)
+                      resolve(allDatacarts)
+                  }
+              }
+              getDatacarts.open("GET","https://fakestoreapi.com/carts")
+              getDatacarts.send()
+          })
+      }
+      function displaycarts(carts){
+          carts.forEach((user,i) => {
+             var mytr=document.createElement("tr") 
+             for(a in user){
+                 var mytd=document.createElement("td")
+                 mytd.innerHTML=user[a]
+                 mytr.appendChild(mytd)
+             }
+             document.querySelector("tbody").appendChild(mytr)
+          });
+      }
+
+      async function getDataanddisplay(){
+          var user=await getDatafromcarts();
+          displaycarts(user)
+      }
+      getDataanddisplay()
+    </script>
+</body>
+</html>
+<!-- {
+    "id": 3,
+    "userId": "2",
+    "date": "2020-03-01T00:00:02.000Z",
+    "products": "[object Object],[object Object]",
+    "__v": "000000000000000",
+    "email": "akalyaksreejak@gmail.c"
+  }, -->

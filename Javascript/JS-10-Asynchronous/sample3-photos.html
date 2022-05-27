@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>albumId</th>
+        <th>id</th>
+        <th>title</th>
+        <th>url</th>
+        <th>thumbnailUrl</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+    <script>
+        function getDataphotos(){
+            return new Promise((resole,reject)=>{
+                var getData=new XMLHttpRequest()
+                getData.onreadystatechange=function(){
+                    if(getData.status==200 && getData.readyState==4){
+                        var allphotos=JSON.parse(getData.response)
+                        resole(allphotos)
+                    }
+                }
+                getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+                getData.send()
+            })
+        }
+        function displayphotos(photos){
+            photos.forEach((user,i) => {
+                var mytr =document.createElement("tr")
+                for(a in user){
+                  var mytd=document.createElement("td")  
+                  mytd.innerHTML=user[a]
+                  mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            }); 
+        }
+       async function getdiplayphotos(){
+            var user=await getDataphotos()
+            displayphotos(user)
+        }
+        getdiplayphotos()
+    </script>
+</body>
+</html>
+
+<!-- {
+    "albumId": 1,
+    "id": 12,
+    "title": "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
+    "url": "https://via.placeholder.com/600/66b7d2",
+    "thumbnailUrl": "https://via.placeholder.com/150/66b7d2",
+  
+  }, -->

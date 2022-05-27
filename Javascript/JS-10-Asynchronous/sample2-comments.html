@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>postId</th>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>body</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+    <script>
+        function getDatacomments(){
+            return new Promise((resole,reject)=>{
+                var getData=new XMLHttpRequest()
+                getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    var allcomments=JSON.parse(getData.response)
+                    resole(allcomments)
+                }
+                }
+                getData.open("GET","https://jsonplaceholder.typicode.com/comments")
+                getData.send()
+            })
+        }
+        function displayacomments(commen){
+         commen.forEach((user,i) => {
+            var mytr=document.createElement("tr")
+        for(a in user){
+            var mytd=document.createElement("td")
+            mytd.innerHTML=user[a]
+            mytr.appendChild(mytd)
+        }
+        document.querySelector("tbody").appendChild(mytr)
+         });  
+        }
+
+       async function getdisplaycomments(){
+            var user=await getDatacomments()
+            displayacomments(user)
+        }
+        getdisplaycomments()
+    </script>
+</body>
+</html>
+
+<!-- {
+    "postId": "1",
+    "id": 4,
+    "name": "alias odio sit",
+    "email": "Lew@alysha.teeee",
+    "body": "undefined"
+  }, -->

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>username</th>
+        <th>email</th>
+        <th>address</th>
+        <th>phone</th>
+        <th>website</th>
+        <th>company</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+    <script>
+        function getDatausers(){
+            return new Promise((resole,reject)=>{
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+        if(getData.status==200 && getData.readyState==4){
+            var alluser=JSON.parse(getData.response)
+            resole(alluser)
+        }
+            }
+            getData.open("GET","https://fakestoreapi.com/users")
+            getData.send()
+            })
+        }
+        function displayuser(data){
+          data.forEach((user,i) => {
+        var mytr=document.createElement("tr")
+        for(a in user){
+            var mytd=document.createElement("td")
+            mytd.innerHTML=user[a]
+            mytr.appendChild(mytd)
+        }  
+        document.querySelector("tbody").appendChild(mytr)    
+          });  
+        }
+      async function getdiplayuser(){
+          var user=await getDatausers()
+          displayuser(user)
+      }
+      getdiplayuser()
+    </script>
+</body>
+</html>
+
+<!-- {
+    "id": 4,
+    "name": "Patricia Lebsackkkkkkkk",
+    "username": "Karianneeeeeeeeeeee",
+    "email": "Julianne.OConner@kory.ouu",
+    "address": "[object Object]",
+    "phone": "493-170-9623 x156",
+    "website": "kale.biz",
+    "company": "[object Object]"
+  }, -->

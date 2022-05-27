@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>fname</th>
+        <th>Iname</th>
+        <th>id</th>
+        <th>email</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+    <script>
+        var allusertrue4=[]
+    function getDatatrue4(){
+        var getData=new XMLHttpRequest()
+        getData.onreadystatechange=function(){
+            if(getData.status==200 && getData.readyState==4){
+                allusertrue4=JSON.parse(getData.response)
+                console.log(allusertrue4)
+                displaytrue4(allusertrue4)
+            }
+        }
+        getData.open("GET","http://localhost:3000/true3")
+        getData.send()
+    }
+
+    function displaytrue4(data){
+        document.querySelector("tbody").innerHTML=""
+        data.forEach((user) => {
+          var mytr=document.createElement("tr")
+          for(a in user){
+              var mytd=document.createElement("td")
+              mytd.innerHTML=user[a]
+              mytr.appendChild(mytd)
+          }
+          document.querySelector("tbody").appendChild(mytr)
+        });
+    }
+    getDatatrue4()
+    </script>
+</body>
+</html>
+<!-- {
+    "fname": "Martha",
+    "lname": "Molina",
+    "id": 5,
+    "email": "dayanar@gmail.com"
+  }, -->

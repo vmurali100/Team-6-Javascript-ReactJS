@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>userId</th>
+        <th>id</th>
+        <th>title</th>
+        <th>email</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+    <script>
+        var alluseralbums=[]
+        function getDataalbums(){
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    alluseralbums=JSON.parse(getData.response)
+                    console.log(alluseralbums)
+                    diplayalbums(alluseralbums)
+                }
+            }
+            getData.open("GET","http://localhost:3000/albums")
+            getData.send()
+        }
+         function diplayalbums(data){
+             document.querySelector("tbody").innerHTML=""
+             data.forEach((user) => {
+               var mytr=document.createElement("tr")  
+               for(a in user){
+                  var mytd=document.createElement("td") 
+                  mytd.innerHTML=user[a]
+                  mytr.appendChild(mytd)
+               }
+               document.querySelector("tbody").appendChild(mytr)
+             });
+         }
+         getDataalbums()
+    </script>
+</body>
+</html>
+<!-- {
+    "userId": "1",
+    "id": 5,
+    "title": "eaque aut omnis a",
+    "email": "akalyak@gmail.c"
+  } -->

@@ -44,12 +44,13 @@
                
              if (pattern.test(inputvalue)){
                document.querySelector("p").style.display="none";
-               document.querySelector("button").removeAttribute("disable")
+               document.querySelector("button").removeAttribute("disabled")
              }else if(inputvalue.length==0){
-              document.querySelector("button").setAttribute("disable",true);
+              document.querySelector("button").setAttribute("disabled",true);
               document.querySelector("p").style.display="none";
              }else{
               document.querySelector("p").style.display="block";
+              document.querySelector("button").setAttribute("disabled",true);
              }
            }
 
@@ -96,7 +97,7 @@
         });
       }
        
-      function deleteuser(i){
+      function deleteUser(i){
           console.log(allposts[i])
 
           var deluser= new XMLHttpRequest()
@@ -111,7 +112,7 @@
 
 
       }
-      function edituser(i){
+      function editUser(i){
         
         document.getElementById("user").value = allUsers[i].user
         document.getElementById("id").value = allUsers[i].id

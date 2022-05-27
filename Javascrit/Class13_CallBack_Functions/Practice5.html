@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var allproducts = []
+        function GetDataFormApiServer(){
+             var getdata = new XMLHttpRequest();
+             getdata.onreadystatechange = function (){
+                 if(getdata.status == 200 && getdata.readyState ==4){
+                     allproducts=JSON.parse(getdata.response)
+                     displayallusers(allproducts)
+                 }
+             }
+             getdata.open("GET","https://fakestoreapi.com/products")
+             getdata.send()
+        }
+        function displayallusers(allProducts){
+            allProducts.forEach((user) => {
+                console.log(user) 
+            });
+        }
+        GetDataFormApiServer()
+    </script>
+</body>
+</html>

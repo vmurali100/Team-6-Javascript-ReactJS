@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var alltodos = []
+        function GetDataFromAPIServer() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    alltodos = JSON.parse(getData.response)
+                    displayUsers(alltodos)
+                }
+            }
+            getData.open("GET", "https://jsonplaceholder.typicode.com/todos");
+            getData.send()
+        }
+        function displayUsers(alltodos) {
+            alltodos.forEach((user) => {
+                console.log(user)  
+            });    
+        }
+        GetDataFromAPIServer()
+        
+        
+    </script>
+</body>
+</html>>

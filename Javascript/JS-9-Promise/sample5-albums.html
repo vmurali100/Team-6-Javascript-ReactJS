@@ -6,35 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<table border="1">
+<table border="2">
     <thead>
         <th>userId</th>
         <th>id</th>
         <th>title</th>
-        <th>body</th>
         <th>email</th>
     </thead>
     <tbody></tbody>
 </table>
 <body>
     <script>
-        function getDataposts(){
+        function getDataalbums(){
             return new Promise((resolve,reject)=>{
-                var getData=new XMLHttpRequest()
+            var getData=new XMLHttpRequest()
             getData.onreadystatechange=function(){
-                if(getData.status==200 && getData.readyState==4){
-                  var alluserposts=JSON.parse(getData.response)
-                    resolve(alluserposts)
-                }
+            if(getData.status==200 && getData.readyState==4){
+            var alluser=JSON.parse(getData.response)
+            resolve(alluser)
             }
-            getData.open("GET","http://localhost:3000/posts")
+            }
+            getData.open("GET","http://localhost:3000/albums")
             getData.send()
-        
             })
         }
-        function displayposts(all){
+
+        function displayalbums(data){
             document.querySelector("tbody").innerHTML=""
-            all.forEach((user) => {
+            data.forEach((user,i) => {
                 var mytr=document.createElement("tr")
                 for(a in user){
                     var mytd=document.createElement("td")
@@ -44,16 +43,17 @@
                 document.querySelector("tbody").appendChild(mytr)
             });
         }
-        getDataposts().then((user)=>{
-            displayposts(user)
+
+        getDataalbums().then((user)=>{
+            displayalbums(user)
         })
     </script>
 </body>
 </html>
+
 <!-- {
-    "userId": 1,
-    "id": 1,
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-    "email": "akalyaksreejak@gmail.com"
-  } -->
+    "userId": "1",
+    "id": 5,
+    "title": "eaque aut omnis a",
+    "email": "akalyak@gmail.c"
+  }, -->

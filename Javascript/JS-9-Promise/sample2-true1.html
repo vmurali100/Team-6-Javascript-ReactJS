@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<table border="1">
+    <thead>
+        <th>id</th>
+        <th>email</th>
+        <th>username</th>
+        <th>password</th>
+    </thead>
+    <tbody></tbody>
+</table>
+<body>
+   <script>
+       function getDatatrue1(){
+           return new Promise((resolve,reject)=>{
+             var getData=new XMLHttpRequest()
+             getData.onreadystatechange=function(){
+                 if(getData.status==200 && getData.readyState==4){
+                     var allusertrue1=JSON.parse(getData.response)
+                     resolve(allusertrue1)
+                 }
+             }
+             getData.open("GET","http://localhost:3000/true1")
+             getData.send()
+           })
+       }
+       function displaytrue1(data){
+        data.forEach((user,i) => {
+            var mytr=document.createElement("tr")
+            for(a in user){
+                var mytd=document.createElement("td")
+                mytd.innerHTML=user[a]
+                mytr.appendChild(mytd)
+            }
+            document.querySelector("tbody").appendChild(mytr)
+        });
+       }
+       getDatatrue1().then((user)=>{
+           displaytrue1(user)
+       })
+   </script> 
+</body>
+</html>
+
+<!-- {
+    "id": 14,
+    "email": "DBouchard@porttitor.co",
+    "username": "JAltar",
+    "password": "9Lq5Mmmmmmmmmmmm"
+  }, -->

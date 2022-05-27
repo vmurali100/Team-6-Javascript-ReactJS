@@ -22,19 +22,19 @@
     </table>
     <script>
         var allUsers = []
-        function getProductsFromAPI() {
+        function getdatafromserver() {
             var getData = new XMLHttpRequest();
-
+            return new Promise((resolve,reject)=>{  
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
                     allUsers = JSON.parse(this.response);
-                    console.log(allUsers)
-                    displayUsers(allUsers)
+                    resolve(allUsers)
                 }
             };
 
             getData.open("GET", "https://jsonplaceholder.typicode.com/users");
             getData.send();
+        })
         }
 
         function displayUsers(allUsers) {
@@ -54,7 +54,9 @@
                 document.querySelector("tbody").appendChild(myTr)
             })
         }
-        getProductsFromAPI();
-    </script>
+        getdatafromserver() .then((users)=>{
+            displayUsers(users)
+        })
+        </script>
 </body>
 </html>

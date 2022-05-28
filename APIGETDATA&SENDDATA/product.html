@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      img{
+        width: 200px;
+        height: 200px;
+
+      }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="postid">ID</label>
+        <input type="text" name="" id="id"><br>
+        <label for="id">TITLE</label>
+        <input type="text" name="" id="title"><br>
+        <label for="title">PRICE</label>
+        <input type="text" name="" id="price"><br>
+        
+        <label for="title">DESCRIPTION</label>
+        <input type="text" name="" id="description"><br>
+        
+        <label for="title">CATEGORY</label>
+        <input type="text" name="" id="category"><br>
+        <label for="image">IMAGE</label>
+        <input type="text" name="" id="image"><br>
+        <label for="rate">Rating</label>
+        <input type="text" name="" id="rating"><br>
+        <button type="button" onclick="getallproductsFromAPI()" id="add">Adduser</button>
+        
+        <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+          <thead>
+              <th>ID</th>
+            <th>TITLE</th>
+            <th>PRICE</th>
+            <th>DESCRIPTION</th>
+            <th>CATEGORY</th>
+            <th>IMAGE</th>
+            <th>RATING</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+        </tr>
+      </table>
+    <script>
+            var allproducts=[]
+        function getallproductsFromAPI(){
+          var getData = new XMLHttpRequest();
+        getData.onreadystatechange = function () {
+          if (getData.status == 200 && getData.readyState == 4) {
+         allproducts=JSON.parse(getData.response);
+            console.log(allproducts);
+            displayUser(allproducts);
+          }
+        };
+        getData.open("GET","http://localhost:3000/products");
+        getData.send();
+        }
+
+        function displayUser(products) {
+        document.querySelector("tbody").innerHTML = "";
+        products.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+              if(a!=="image" && a!=="rating"){
+                var myTd = document.createElement("td");
+            myTd.innerHTML = user[a]
+            myTr.appendChild(myTd)
+              }else if(a=="image"){
+                var myTd=document.createElement("td")
+                // myTd.innerHTML=JSON.stringify(user[a])
+                var myimage=document.createElement("img")
+                myimage.setAttribute("src",user[a])
+                myTd.appendChild(myimage)
+                myTr.appendChild(myTd)
+              }else{
+                  
+                var myTd=document.createElement("td")
+                myTd.innerHTML=user[a].rate+"<br>"+user[a].count
+                myTr.appendChild(myTd)
+              }
+           
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editallproducts("+i+")");
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd);
+
+          var deleteTd = document.createElement("td");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.setAttribute("onclicK","deleteallproducts("+i+")");
+          deleteBtn.innerHTML = "Delete";
+          deleteTd.appendChild(deleteBtn);
+          myTr.appendChild(deleteTd);
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+      
+      function deleteallproducts(i) {
+
+console.log(allproducts[i])
+var delallproducts = new XMLHttpRequest()
+delallproducts.onreadystatechange = function(){
+  if (delallcomments.status == 200 && delallproducts.readyState == 4) {
+    console.log("Allproducts deleted successfully")
+  }
+
+}
+delallproducts.open( "DELETE","http://localhost:3000/products/"+allproducts[i].id);
+   delallproducts.setRequestHeader("Content-type","application/json");
+    delallproducts.send();
+  
+}
+
+        function editallproducts(i){
+          
+  
+  document.getElementById("add").style.display = "none"
+ document.getElementById("update").style.display = "block"
+  
+         document.getElementById("id").value=allproducts[i].id;
+        document.getElementById("title").value=allproducts[i].title;
+
+        document.getElementById("price").value=allproducts[i].price;   
+        document.getElementById("description").value=allproducts[i].description;
+        document.getElementById("category").value=allproducts[i].category;
+        
+        document.getElementById("image").value=allproducts[i].image;
+        
+        document.getElementById("rating").value=allproducts[i].rating
+      }
+
+      function updateuser(){
+        var data={
+
+             id:document.getElementById("id").value,
+              title:document.getElementById("title").value,
+              price:document.getElementById("price").value,
+              
+              description:document.getElementById("description").value,
+              
+             category:document.getElementById("category").value,
+             
+
+             image:document.getElementById("image").value,
+             
+
+             rating:document.getElementById("rating").value
+            };
+
+            var sendData = new XMLHttpRequest();
+            sendData.onreadystatechange=function(){
+                if(sendData.status == 201 && sendData.readyState == 4){
+                    console.log("allproducts added succesfully")
+                    getallproductsFromAPI();
+                  
+        document.getElementById("add").style.display="block"
+        document.getElementById("update").style.display="none"
+                }
+            }
+            sendData.open("PUT","http://localhost:3000/products/"+data.id);
+            sendData.setRequestHeader("Content-type","application/json");
+            sendData.send(JSON.stringify(data));
+
+      }
+      getallproductsFromAPI()
+          
+    </script>
+</body>
+</html>

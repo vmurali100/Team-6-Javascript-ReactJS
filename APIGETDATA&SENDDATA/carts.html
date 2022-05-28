@@ -11,13 +11,16 @@
         <label for="id">ID</label>
         <input type="text" name="" id="id"><br>
         <label for="userid">UserID</label>
-        <input type="text" name="" id="userid"><br>
+        <input type="text" name="" id="userId"><br>
         <label for="date">Date</label>
         <input type="text" name="" id="date"><br>
         <label for="products">Products</label>
-        <input type="text" name="" id="products">
+        <input type="text" name="" id="products"><br>
         
-        <button type="button" onclick="getallcartsFromAPI()" id="add">Adduser</button>
+        <label for="v">-v</label>
+        <input type="text" name="" id="__v">
+        
+        <button type="button" onclick="getallproductsFromAPI()" id="add">Adduser</button>
         
         <button type="button" onclick="updateuser()" id="update" style="display:none;">UpdateUser</button>
     </form>
@@ -29,6 +32,7 @@
                 <th>UserID</th>
                 <th>Date</th>
                 <th>Products</th>
+                <th>-v</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </thead>
@@ -50,14 +54,21 @@
         getData.send();
         }
 
-        function displayUser(data) {
+        function displayUser(carts) {
         document.querySelector("tbody").innerHTML = "";
-        data.forEach((user,i) => {
+        carts.forEach((user,i) => {
           var myTr = document.createElement("tr");
           for (a in user) {
-            var myTd = document.createElement("td");
+            if(a !=="products"){
+              var myTd = document.createElement("td");
             myTd.innerHTML = user[a];
             myTr.appendChild(myTd);
+            }else{
+              var myTd = document.createElement("td");
+            myTd.innerHTML = user[a][0].quantity
+            myTr.appendChild(myTd);
+            }
+         
           }
           var editTd = document.createElement("td");
           var editBtn = document.createElement("button");
@@ -92,38 +103,43 @@ delalcarts.open("DELETE","http://localhost:3000/carts/"+allcarts[i].id);
     delalcarts.send();
   
 }
-function editalcarts(i){
+    function editalcarts(i){
   
   document.getElementById("add").style.display="none"
-    document.getElementById("update").style.display="block"
+ document.getElementById("update").style.display="block"
 
- document.getElementById("id").value=allcarts[i].id;
-  document.getElementById("userid").value=allcarts[i].userId;   
-  document.getElementById("date").value=allcarts[i].date;
- document.getElementById("products").value=allcarts[i].products;
+ document.getElementById("id").value=allcarts[i].id
+  document.getElementById("userId").value=allcarts[i].userId   
+  document.getElementById("date").value=allcarts[i].date
+ document.getElementById("products").value=allcarts[i].products[0].quantity
+ 
+ document.getElementById("__v").value=allcarts[i].__v
 }
 
 function updateuser(){
         var data={
                  id:document.getElementById("id").value,
-                userId:document.getElementById("userid").value,
+                userId:document.getElementById("userId").value,
               date:document.getElementById("date").value,
-              products:document.getElementById("products").value
-            };
-
+             // products:document.getElementById("products").value,
+            __v:document.getElementById("__v").value
+            }
+            data.products =[{quantity:document.getElementById("products").value}]
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange=function(){
                 if(sendData.status == 201 && sendData.readyState == 4){
                     console.log("allcarts added succesfully")
                     getallcartsFromAPI();
+                    
                   
         document.getElementById("add").style.display="block"
         document.getElementById("update").style.display="none"
+                  
                 }
             }
             sendData.open("PUT","http://localhost:3000/carts/"+data.id);
             sendData.setRequestHeader("Content-type","application/json");
-            sendData.send();
+            sendData.send(JSON.stringify(data));
 
       }
       getallcartsFromAPI()

@@ -44,7 +44,7 @@
           var getData = new XMLHttpRequest();
         getData.onreadystatechange = function () {
           if (getData.status == 200 && getData.readyState == 4) {
-         allcomments=JSON.parse(getData.response);
+         allphotos=JSON.parse(getData.response);
             console.log(allphotos);
             displayUser(allphotos);
           }
@@ -101,19 +101,19 @@ delallphotos.open( "DELETE","http://localhost:3000/Photos/" +allphotos[i].id);
          document.getElementById("add").style.display="none"
         document.getElementById("update").style.display="block"
 
-        document.getElementById("albumid").value=allphotos[i].albumId;   
+        document.getElementById("albumId").value=allphotos[i].albumId;   
         document.getElementById("id").value=allphotos[i].id;
         document.getElementById("title").value=allphotos[i].title;
         
         document.getElementById("url").value=allphotos[i].url;
       
-        document.getElementById("thumnailUrl").value=allphotos[i].thumbnailUrl;
+        document.getElementById("thumbnailUrl").value=allphotos[i].thumbnailUrl
       }
 
       function updateuser(){
         var data={
 
-            albumId:document.getElementById("albumid").value,
+            albumId:document.getElementById("albumId").value,
               id:document.getElementById("id").value,
               title:document.getElementById("title").value,
               

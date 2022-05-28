@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User Id</th>
+                <th>Date</th>
+                <th>Products</th>   
+                <th>__V</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+        function GetCartsFromAPI(){
+            return new Promise((resolve,reject)=>{
+                var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function(){
+                if (getData.status == 200 && getData.readyState == 4){
+                    let allCarts = JSON.parse(this.response)
+                    resolve(allCarts)
+                }
+            }
+            getData.open("GET","https://fakestoreapi.com/carts")
+            getData.send()
+            })
+        }
+        function displayUsers(allCarts){
+            allCarts.forEach((carts, i) => {
+                console.log(carts)
+                var myTr = document.createElement("tr");
+                    for (a in carts){
+                        var myTd = document.createElement("td")
+                        if(a !== "products"){
+                            myTd.innerHTML = carts[a]
+                        }else{
+                            var details = ""
+                            for (b in carts[a]){
+                                details = details + b + " : " + carts[a][b] + "<br>"
+                            }
+                            myTd.innerHTML = details
+                        }
+                        myTr.appendChild(myTd)
+                    }
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        GetCartsFromAPI().then((user)=>{
+            displayUsers(user)
+        })
+    </script>
+</body>
+</html>

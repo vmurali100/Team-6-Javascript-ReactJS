@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>        
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>AlbumId</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Url</th>
+                <th>ThumbnailUrl</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function GetphotosFromAPI(){
+            return new Promise((resolve,reject)=>{
+                var getData = new XMLHttpRequest(); 
+
+            getData.onreadystatechange = function(){
+                if(getData.status == 200 && getData.readyState == 4){
+                let allPhotos = JSON.parse(this.response);
+                resolve(allPhotos)
+                }                
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getData.send()
+            })
+        }
+
+        function displayUsers(allPhotos){
+            allPhotos.forEach((user, i) => {
+                var myTr = document.createElement("tr");
+                for(a in user){
+                    if(a !=="url" && a !=="thumbnailUrl"){
+                        var myTd = document.createElement("td")                    
+                        myTd.innerHTML= user[a]
+                        myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src", user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+                    }
+                }      
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        GetphotosFromAPI().then((user)=>{
+            displayUsers(user)
+        })
+    </script>
+</body>
+</html>

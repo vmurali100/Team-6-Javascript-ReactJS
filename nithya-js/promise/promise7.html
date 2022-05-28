@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>email</th>
+            <th>username</th>
+            <th>password</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function  getfiltextfromapi(){
+            return new Promise((resolve,reject)=>{
+               var getfiltext=new XMLHttpRequest()
+               getfiltext.onreadystatechange=function(){
+                   if(getfiltext.status ==200 && getfiltext.readyState ==4){
+                       var allfiltext=JSON.parse(getfiltext.response)
+                       resolve(allfiltext)
+                   }
+               }
+               getfiltext.open("GET","http://localhost:3000/filtextid")
+               getfiltext.send()
+            })
+        }
+        function displayfiltext(allfiltext){
+            allfiltext.forEach((filtext,i) => {
+                var mytr=document.createElement("tr")
+                for(a in filtext){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=filtext[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+        getfiltextfromapi().then((filtext)=>{
+            displayfiltext(filtext)
+           
+        })
+    </script>
+</body>
+</html>

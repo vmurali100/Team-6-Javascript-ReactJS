@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1"> <thead>
+        <th>userid</th>
+        <th>id</th>
+        <th>title</th>
+        <th>email</th>
+        <tbody></tbody>
+    </thead>
+</table>
+    <script>
+        var allalbums=[]
+        function getalbumsfromapi(){
+            var getalbums=new XMLHttpRequest();
+            getalbums.onreadystatechange=function(){
+                if(getalbums.status ==200 && getalbums.readyState ==4){
+                    allalbums=JSON.parse(getalbums.response)
+                    displayalbums(allalbums)
+                }
+            }
+            getalbums.open("GET","http://localhost:3000/albums")
+            getalbums.send()
+        }
+        function displayalbums(){
+            allalbums.forEach((albums,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in albums){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=albums[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        getalbumsfromapi()
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var person = new Object({ fname: "Murali", lname: "Krishna" })
+        console.log(person)
+
+        // Creating a Class in Javascript
+        class Student {
+            constructor(firstName, lastName, mail) {
+                this.fname = firstName;
+                this.lname = lastName;
+                this.email = mail;
+            }
+        }
+
+        var student1 = new Student("Murali", "Krishna", "murali@gmail.com");
+        var student2 = new Student("Ram", "Krishna", "ram@gmail.com");
+        var student3 = new Student("sam", "sundar", "sam@gmail.com");
+        var student4 = new Student("kiran", "Kumar", "kiran@gmail.com");
+
+        console.log(student1)
+        console.log(student2)
+        console.log(student3)
+        console.log(student4)
+    </script>
+</body>
+
+</html>

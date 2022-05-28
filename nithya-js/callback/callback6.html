@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>albumId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Url</th>
+            <th>thumbnailUrl</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allphotos=[]
+        function getphotosfromapi(){
+            var getphotos=new XMLHttpRequest();
+            getphotos.onreadystatechange=function(){
+                if(getphotos.status ==200 && getphotos.readyState ==4){
+                    allphotos=JSON.parse(getphotos.response)
+                    displayphotos(allphotos)
+                }
+            }
+            getphotos.open("GET","http://localhost:3000/photos")
+            getphotos.send()
+        }
+        function displayphotos(){
+            allphotos.forEach((photos,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in photos){
+                    var mytd=document.createElement("td")
+                    if(a !== "url" && a !== "thumbnailUrl"){
+                        mytd.innerHTML=photos[a]
+                        mytr.appendChild(mytd)
+                    }else{
+                        var mytd=document.createElement("td")
+                        var myimg=document.createElement("img") 
+                        myimg.setAttribute("src",photos[a])
+                        mytd.appendChild(myimg)
+                        mytr.appendChild(mytd)
+                    }
+                   
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        getphotosfromapi()
+    </script>
+</body>
+</html>

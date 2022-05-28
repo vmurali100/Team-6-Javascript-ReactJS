@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <ul>
+          <li>Santhosh</li>
+          <li>Sai</li>
+          <li>Naveen</li>
+          <li>Mansur</li>
+      </ul> -->
+    <ul>
+        
+    </ul>
+
+    <script>
+      var students = [
+        "Santhosh",
+        "Sai",
+        "Naveen",
+        "Mansur",
+        "Abi",
+        "Bala",
+        "Kiran",
+        "Ram",
+        
+      ];
+
+      students.forEach((val) => {
+        var myLi = document.createElement("li"); // Creates a Li Element
+        myLi.innerHTML = val
+        document.querySelector("ul").appendChild(myLi); // Adding Li Elemnet to Ul
+      });
+    </script>
+  </body>
+</html>

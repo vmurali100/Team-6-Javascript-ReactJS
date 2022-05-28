@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <th>userid</th>
+            <th>id</th>
+            <th>title</th>
+            <th>completed</th>
+            <th>email</th>
+        </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+        
+        function gettodosfronapi(){
+            return new Promise((resolve,reject)=>{
+                var gettodos=new XMLHttpRequest();
+            gettodos.onreadystatechange=function(){
+                if(gettodos.status ==200 && gettodos.readyState ==4){
+                   var alltodos=JSON.parse(gettodos.response)
+                    resolve(alltodos)
+                    
+                }
+            }
+            gettodos.open("GET","http://localhost:3000/todos")
+            gettodos.send()
+            })
+           
+        }
+        function displaytodos(alltodos){
+            alltodos.forEach((todos,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in todos){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=todos[a]
+                    mytr.appendChild(mytd)
+                }
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+     async  function getanddisplat(){
+         var todos=await gettodosfronapi()
+         displaytodos(todos)
+     }
+     getanddisplat()
+    </script>
+</body>
+</html>

@@ -43,10 +43,7 @@
                 document.querySelector("tbody").appendChild(myTr)
             });
         }
-        getdataFromServer().then((user)=>{
-            displayUsers(user)
-        })
-        async function getanddiplay(){
+        async function getanddisplay(){
             var user = await getdataFromServer();
             displayUsers(user)
         }

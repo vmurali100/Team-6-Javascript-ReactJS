@@ -9,25 +9,24 @@
 <body>
     <script>
         var allUsers = []
-        function getallUsersFromAPI(){
-            var getData = new XMLHttpRequest();
-
-            getData.onreadystatechange = function (){
+        function getallUsersFromserver(){
+            var getData = new XMLHttpRequest()
+            getData.onreadystatechange = function(){
                 if(getData.status == 200 && getData.readyState == 4){
-                    allUsers = JSON.parse(getData.response)
+                    allUsers = JSON.parse(this.response)
                     console.log(allUsers)
-                    displyaAllUser(allUsers)
+                    displayUsers(allUsers)
                 }
             }
-            getData.open("GET","https://jsonplaceholder.typicode.com/comments")
+            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
             getData.send()
         }
-        function displyaAllUser(){
+        function displayUsers(){
             allUsers.forEach((data)=>{
                 console.log(data)
             })
         }
-        getallUsersFromAPI()
+        getallUsersFromserver()
     </script>
 </body>
 </html>

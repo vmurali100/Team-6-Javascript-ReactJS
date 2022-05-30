@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="University">University</label>
+        <input type="text" name="" id="University"><br><br>
+
+        <label for="">Institute</label>
+        <input type="text" name="" id="Institute"><br><br>
+
+        <label for="">Branch</label>
+        <input type="text" name="" id="Branch"><br><br>
+
+        <label for="">Degree</label>
+        <input type="text" name="" id="Degree">
+
+
+        <label for="">Avarage CPI</label>
+        <input type="text" name="" id="Averagecpi">
+
+        <label for="">Experience</label>
+        <input type="text" name="" id="Experience"><br><br>
+
+        <label for="WebSite">Your WebSite Or Blog</label>
+        <input type="text" name="" id="WebSite" placeholder="http//"><br><br>
+
+    </form>
+    <button type="button" id="adduser" onclick="Creatvalue()" disabled>click</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>University</th>
+                <th>Institute</th>
+                <th>Branch</th>
+                <th>Degree</th>
+                <th>Avarage CPI</th>
+                <th>Experience</th>
+                <th> Website</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if(allUsers==null){
+            allUsers=[]
+        }
+        function Creatvalue() {
+            var users = {
+                University: "",
+                Institute: "",
+                Branch: "",
+                Degree: "",
+                Averagecpi: "",
+                Experience: "",
+                WebSite: ""
+            }
+
+            for (a in users) {
+                users[a] = document.getElementById(a).value
+            }
+            allUsers.push(users)
+            localStorage.setItem("allUsers",JSON.stringify(allUsers))
+            displayuser()
+        }
+
+        function displayuser() {
+            document.querySelector("tbody").innerHTML=""
+            allUsers.forEach((users,i) => {
+                var mytr = document.createElement('tr')
+                for (a in users) {
+                    var mytd = document.createElement('td')
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = users[a]
+                }
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "editusers(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+
+                var deletetd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                mytr.appendChild(deletetd)
+                deletetd.appendChild(deletebtn)
+                deletebtn.innerHTML='Delete'
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+                document.querySelector('tbody').appendChild(mytr)
+            })
+        }
+        displayuser()
+
+        function edituser(i) {
+            console.log("edituser called" + i)
+        }
+
+
+
+        function deleteuser(i) {
+            allUsers.splice(i, 1);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayusers()
+
+        }
+
+
+        function validate(){
+
+            var users = {
+                University: "",
+                Institute: "",
+                Branch: "",
+                Degree: "",
+                Averagecpi: "",
+                Experience: "",
+                WebSite: ""
+            };
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

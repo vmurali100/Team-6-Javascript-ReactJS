@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+     <label for="">Username</label>
+     <input type="text" name="" id="Username">
+    <!-- <input type="text" name="" id="hookupgeek" placeholder="hookupgeek"> -->
+    <br><br>
+    <label for="password">Password</label><br><br>
+    <input type="text" name="" id="Password" placeholder="Password"><br><br>
+
+    <label for="Email address">Email address</label><br><br>
+    <input type="text" name="" id="Emailaddress" placeholder="Email address">
+    <br><br>
+    <select name="" id="">
+        <option value="">i am a man</option>
+        <option value="">i am a girl</option>
+    </select><br><br>
+    <select name="" id="">
+        <option value=""> i want to find women</option>
+        <option value=""> i want to find men</option>
+    </select><br><br>
+
+
+    <label for="dateofbirth">Date of birth</label><br><br>
+    <select name="yearofbirth" onkeyup="validate()">
+        <option value="">years</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+    </select>
+    <select name="" id="monthofbirth" onkeyup="validate()">
+        <option value="">month</option>
+        <option value="jan">jan</option>
+        <option value="feb">feb</option>
+        <option value="mar">mar</option>
+        <option value="jan">apr</option>
+        <option value="apr">may</option>
+        <option value="jun">jun</option>
+        <option value="jul">july</option>
+        <option value="aug">aug</option>
+        <option value="sep">sep</option>
+        <option value="oct">oct</option>
+        <option value="nov">nov</option>
+        <option value="dec">dec</option>
+    </select>
+    <select name="" id="dob" onkeyup="validate()">
+        <option value="">date</option>
+        <option value="1">01</option>
+        <option value="1">02</option>
+        <option value="1">03</option>
+        <option value="1">04</option>
+        <option value="1">05</option>
+        <option value="1">06</option>
+        <option value="1">07</option>
+        <option value="1">08</option>
+        <option value="1">09</option>
+        <option value="1">10</option>
+        <option value="1">11</option>
+        <option value="1">12</option>
+        <option value="1">13</option>
+        <option value="1">14</option>
+        <option value="1">15</option>
+       
+        
+        <!-- <select name="" id="dob" onkeyup="validate()"> -->
+
+    </select><br><br>
+
+    <label for=""><b>height/weight</b></label><br><br>
+    <select name="heightweight" id="heightweight">
+        <option value="">height</option>
+        <option value="">1.0m</option>
+        <option value="">2.0m</option>
+        <option value="">3.0m</option>
+        <option value="">4.0m</option>
+        <option value="">5.0m</option>
+        <option value="">6.0m</option>
+    </select>
+    <select name="heightweight" id="heightweight">
+
+        <option value="">weight</option>
+        <option value="">20kg</option>
+        <option value="">30kg</option>
+        <option value="">40kg</option>
+        <option value="">50kg</option>
+        <option value="">60kg</option>
+        <button type="button" id="chinna" onclick="diaplay()">enter</button>
+    </select>
+
+    </form>
+    <br><br>
+    <button type="button" id="adduser" onclick="Creatvalue()" disabled>click</button>
+    <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Emailaddress</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+
+        let i=0;
+        while(i<=31){
+            var opt=document.createElement("option")
+            opt.innerHTML=i
+            opt.setAttribute("value",i);
+            document.getElementById("dob").appendChild(opt)
+            i++
+        }
+        allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        if (allUsers == null) {
+            allUsers = []
+        }
+        function Creatvalue() {
+            var users = {
+                Username: "",
+                Password: "",
+                Emailaddress: ""
+
+            }
+
+            for (a in users) {
+                users[a] = document.getElementById(a).value
+            }
+            allUsers.push(users)
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayuser()
+        }
+
+        function displayuser() {
+            document.querySelector("tbody").innerHTML = ""
+            allUsers.forEach((users, i) => {
+                var mytr = document.createElement('tr')
+                for (a in users) {
+                    var mytd = document.createElement('td')
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = users[a]
+                }
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "editusers(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+
+                var deletetd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                mytr.appendChild(deletetd)
+                deletetd.appendChild(deletebtn)
+                deletebtn.innerHTML = 'Delete'
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+
+                document.querySelector('tbody').appendChild(mytr)
+            })
+        }
+        displayuser()
+
+        function edituser(i) {
+            console.log("edituser called" + i)
+        }
+
+
+
+        function deleteuser(i) {
+            allUsers.splice(i, 1);
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            displayusers()
+
+        }
+
+
+        function validate(){
+            var users = {
+                Username: "",
+                Password: "",
+                Emailaddress: ""
+
+            }
+
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+
+
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

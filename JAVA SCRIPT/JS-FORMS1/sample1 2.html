@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>HTML form</h1>
+
+    <form action="">
+
+        <label for="">firstname:</label>
+        <input type="text" name="" id="fname" onkeyup="validate()"><br><br>
+
+        <label for="">last name:</label>
+        <input type="text" name="" id="lname" onkeyup="validate()"><br><br>
+
+        <label for="">date of birth:</label>
+        <input type="text" name="" id="birth" onkeyup="validate()"><br><br>
+
+        <label for="">Email id:</label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+
+        <label for="">mobile no:</label>
+        <input type="text" name="" id="mobile" onkeyup="validate()"><br><br>
+
+        <button type="button" id="adduser" onclick="displayall()" disabled>submit</button>
+        <!-- <button>reset</button> -->
+
+    </form>
+    <br>
+
+    <table border="1" style="color:blue; background-color:gold">
+
+        <thead>
+
+            <th>firstname</th>
+            <th>last name</th>
+            <th>date of birth</th>
+            <th>Email</th>
+            <th>mobile</th>
+            <th>Edit</th>
+            <th>delete</th>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+
+        var allusers = JSON.parse(localStorage.getItem("allusers"))
+        if (allusers == null) {
+            // index = i
+            allusers = []
+
+        }
+
+        function displayall() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                birth: document.getElementById("birth").value,
+                email: document.getElementById("email").value,
+                mobile: document.getElementById("mobile").value
+
+            }
+
+            allusers.push(user)
+
+            localStorage.setItem("allusers", JSON.stringify(allusers))
+            console.log(user)
+            console.log(allusers)
+            displayusers()
+            clear()
+
+
+        }
+
+
+        function displayusers() {
+            document.querySelector("tbody").innerHTML = ""
+
+            allusers.forEach((user, i) => {
+
+                var mytr = document.createElement("tr")
+
+
+                for (a in user) {
+                    var mytd = document.createElement("td")
+                    mytd.innerHTML = user[a]
+                    mytr.appendChild(mytd)
+                }
+
+                var edittd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "editusers(" + i + ")")
+                editbtn.innerHTML = "edit"
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+
+                var deletetd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deletebtn.innerHTML = " delete"
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+
+                document.querySelector("tbody").appendChild(mytr)
+
+
+
+
+
+
+            });
+        }
+        displayusers()
+
+
+        function clear() {
+            document.getElementById("fname").value = "",
+                document.getElementById("lname").value = "",
+                document.getElementById("birth").value = "",
+                document.getElementById("email").value = "",
+                document.getElementById("mobile").value = ""
+
+        }
+
+
+        function edituser(i) {
+            console.log("edituser called" + i)
+        }
+
+
+
+        function deleteuser(i) {
+            console.log("deleteuser called" + i)
+            allusers.splice(i, 1);
+            localStorage.setItem("allusers", JSON.stringify(allusers))
+            displayusers(allusers)
+
+        }
+
+
+        function validate(){
+            // console.log("just u entered  some value")
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                birth: document.getElementById("birth").value,
+                email: document.getElementById("email").value,
+                mobile: document.getElementById("mobile").value
+
+            };
+            var check=false;
+            for(a in user){
+                if(user[a]==""){
+                    check=true
+
+                }
+            }
+
+            if (check==true){
+                document.getElementById("adduser").setAttribute("disabled",true)
+            }else{
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

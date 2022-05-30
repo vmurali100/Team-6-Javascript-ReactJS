@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            height: 30px;
+        }
+
+        button {
+            width: 150px;
+            background: blue;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>bootstap 4 form validation demo</h1>
+    <form action="">
+
+        <label for="">name</label>
+        <br>
+
+        <input type="text" name="" id="name" placeholder="name Space">
+        <br>
+
+        <label for="">username</label><br>
+        <input type="text" name="" id="username" placeholder="usernamee">
+        <br>
+
+        <label for="">Email</label><br>
+
+        <input type="text" name="" id="Email" placeholder="Emaill"><br>
+
+        <label for="">password</label>
+        <br>
+
+        <input type="text" name="" id="password" placeholder="passwordd">
+        <br>
+        <br>
+        <label for="">confirm password</label>
+        <br><br>
+        <input type="text" name="" id="confirmpassword" placeholder="confirmp">
+        <br>
+        <br>
+        <label for="">message</label>
+        <textarea name="" id="messege" cols="30" rows="10" placeholder="messegee"></textarea>
+        <br>
+        <br>
+        <button type="button" id="adduser" onclick="displayuser()" disabled>send</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Message</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <br><br>
+    <script>
+
+        allusres = JSON.parse(localStorage.getItem("allusres"))
+
+        if (allusres == null) {
+
+            allusres = [];
+        }
+
+        function displayuser() {
+            var users = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("password").value,
+                ConfirmPassword: document.getElementById("confirmpassword").value,
+                Message: document.getElementById("messege").value
+            }
+
+            allusres.push(users)
+            // console.log(users)
+            displayusers()
+            clearform(users)
+
+            localStorage.setItem("allusers", JSON.stringify(allusres))
+        }
+
+        function clearform(users) {
+            for (a in users) {
+                document.getElementById(a).value = ""
+            }
+        }
+
+        function displayusers() {
+            document.querySelector("tbody").innerHTML = ""
+            allusres.forEach((users,i) => {
+                var mytr = document.createElement("tr")        
+
+                for (a in users) {
+                    var mytd = document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML = users[a]
+                }
+                
+
+                // edit button
+
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                mytr.appendChild(editTd)
+                editTd.appendChild(editbtn)
+                editbtn.innerHTML = "Edit"
+                editbtn.setAttribute("onclick", "edituder(" + i + ")")
+
+
+                // delete button
+
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                mytr.appendChild(deleteTd)
+                deleteTd.appendChild(deletebtn)
+                deletebtn.innerHTML = "delete"
+                deletebtn.setAttribute("onclick", "Deleteuser(" + i + ")")
+
+                document.querySelector("tbody").appendChild(mytr)
+
+            })
+
+        }
+
+        displayusers()
+
+        function edituser(i) {
+            console.log("edit user called" + i)
+        }
+
+        function deleteuser(i) {
+            console.log("delete user called" + i)
+            allusres.splice(i, 1)
+            displayusers()
+        }
+
+
+        function validate(){
+            var users = {
+                name: document.getElementById("name").value,
+                username: document.getElementById("username").value,
+                Email: document.getElementById("Email").value,
+                Password: document.getElementById("password").value,
+                ConfirmPassword: document.getElementById("confirmpassword").value,
+                Message: document.getElementById("messege").value
+            };
+            
+            if (check == true) {
+                document.getElementById("adduser").setAttribute("disabled", true)
+            } else {
+                document.getElementById("adduser").removeAttribute("disabled")
+            }
+
+
+        }
+        
+        
+      
+
+    </script>
+
+</body>
+
+</html>

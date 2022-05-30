@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> create tables</h2>
+    <input type="text" name="" id="naveen">
+    <button onclick="searchuser()">searchusers</button>
+    <button onclick="clearsearch()">clearsearch</button>
+    <table border="1" , style="width: 100%">
+        <tr>
+            <thead>
+                <th>fname</th>
+                <th>lname</th>
+                <th>tel</th>
+                <th>address</th>
+                <th>city</th>
+                <th>state</th>
+                <th>zip</th>
+            </thead>
+        </tr>
+        <tbody></tbody>
+    </table>
+    <script>
+        var details = [
+            {
+                "fname": "kumar",
+                "lname": "bangalore",
+                "tel": "9030330280",
+                "address": "7209 numc ln",
+                "city": "delhi",
+                "state": "up",
+                "zip": 66304
+            },
+
+            {
+                "fname": "chandhu",
+                "lname": "kumri",
+                "tel": "123456",
+                "address": "8th cross",
+                "city": "blr",
+                "state": "ka",
+                "zip": "560063",
+            },
+            {
+                "fname": "sri",
+                "lname": "ram",
+                "tel": "(080)987456",
+                "address": "10th cross",
+                "city": "blr",
+                "state": "ka",
+                "zip": "560064",
+            },
+            {
+                "fname": "hari",
+                "lname": "krishna",
+                "tel": "(080)5623214",
+                "address": "12th cross",
+                "city": "blr",
+                "state": "ka",
+                "zip": "560069",
+            },
+            {
+                "fname": "anna",
+                "lname": "saami",
+                "tel": "(080)456321",
+                "address": "42th cross",
+                "city": "kerala",
+                "state": "kl",
+                "zip": "987460",
+            },
+            {
+                "fname": "roopa",
+                "lname": "sri",
+                "tel": "(080)9632581",
+                "address": "12th cross",
+                "city": "kerala",
+                "state": "kl",
+                "zip": "98789456",
+            },
+            {
+                "fname": "annapoorna",
+                "lname": "giri",
+                "tel": "(080)9632581",
+                "address": "52th cross",
+                "city": "kerala",
+                "state": "kl",
+                "zip": "8521470",
+            },
+            {
+                "fname": "geetha",
+                "lname": "reddy",
+                "tel": "(080)456321",
+                "address": "32th cross",
+                "city": "kuppam",
+                "state": "ap",
+                "zip": "987460",
+            },
+
+            {
+                "fname": "anwar",
+                "lname": "basha",
+                "tel": "(080)654321",
+                "address": "32th main line",
+                "city": "kuppam",
+                "state": "ap",
+                "zip": "987460",
+            },
+
+            {
+                "fname": "ajay",
+                "lname": "krishna",
+                "tel": "(080)7412580",
+                "address": "98th main line",
+                "city": "sri puram",
+                "state": "ap",
+                "zip": "564133",
+            },
+            {
+                "fname": "vijay",
+                "lname": "krishna",
+                "tel": "(080)7412580",
+                "address": "98th main line",
+                "city": "raama puram",
+                "state": "ap",
+                "zip": "564133",
+            },
+
+        ]
+        function displayusers(details) {
+            document.querySelector("tbody").innerHTML = ""
+            details.forEach((user) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                document.querySelector("tbody").appendChild(myTr)
+
+            })
+        }
+        displayusers(details)
+
+        function searchuser() {
+            var usersearch = document.getElementById("naveen").value
+            console.log(searchuser)
+
+            var filteruser = details.filter((user) => {
+                return user.city.indexOf(usersearch) > -1
+            })
+            displayusers(filteruser)
+        }
+        function clearsearch() {
+            displayusers(details)
+        }
+    </script>
+</body>
+
+</html>

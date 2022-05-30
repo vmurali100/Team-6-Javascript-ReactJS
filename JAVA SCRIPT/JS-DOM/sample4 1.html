@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="vandhana">favourite</div>
+
+    <button onclick="setvalue()">set value</button>
+    <button onclick="changevalue()">change value</button><br><br>
+
+    <input type="text" name="raju" id="banu" value="reshma"><br><br>
+
+    <button onclick="setnametext()">set name text</button>
+    <button onclick="changenametext()">change name text</button>
+
+    <p>Always free bird </p>
+
+    <button onclick="settagtext()">set tag text</button>
+    <button onclick="changetagtext()">change tag text</button>
+
+    <h1 class="sadik">syllabus</h1>
+
+    <button onclick="setclasstext()">set class text</button>
+    <button onclick="changeclasstext()"> change class text</button>
+
+    <h2>subject</h2>
+
+    <button onclick="setquerytext()">set query text</button>
+    <button onclick="changequerytext()">change query text</button>
+
+    <h3>holliyday</h3>
+
+    <button onclick="setqueryalltext()">set query all text</button>
+    <button onclick="changequeryalltext()">change query all text</button>
+
+    <hr>
+    <hr>
+
+
+    <script>
+        //    getelementsbyid
+        function setvalue() {
+            document.getElementById("vandhana").innerHTML = "raju"
+        }
+        function changevalue() {
+            document.getElementById("vandhana").innerHTML = "balaji"
+        }
+
+        // getElementsByName
+
+        function setnametext() {
+            document.getElementsByName("raju")[0].value = "vanitha"
+        }
+
+        function settagtext() {
+            document.getElementsByTagName("p")[0].innerHTML = "vedhaveni"
+        }
+
+        //    getElementsByClassName
+
+        function changetagtext() {
+            document.getElementsByTagName("chinna")[0].innerHTML = "priya"
+        }
+        function setclasstext() {
+            document.getElementsByClassName("gowthami")[0].innerHTML = "sundhari"
+        }
+        function changeclasstext() {
+            document.getElementsByClassName("gowthami")[0].innerHTML = "srimuki"
+        }
+
+        // querySelector
+
+        function setquerytext() {
+            document.querySelector("h2").innerHTML = "chandana"
+        }
+
+        function changequerytext() {
+            document.querySelector("h2").innerHTML = "veera raghav"
+        }
+
+        // querySelectorAll
+
+        function setqueryalltext() {
+            document.querySelectorAll("h3")[0].innerHTML = "shilpa"
+        }
+
+        function changequeryalltext() {
+            document.querySelectorAll("h3")[0].innerHTML = "veesha"
+        }
+    </script>
+</body>

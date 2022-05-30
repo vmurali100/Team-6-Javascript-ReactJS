@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="fname">First Name</label>
+      <input type="text" name="" id="fname" onkeyup="validate()"/> <br />
+      <label for="lname">Last Name</label>
+      <input type="text" name="" id="lname" onkeyup="validate()"/> <br />
+      <label for="email">Email</label>
+      <input type="text" name="" id="email" onkeyup="validate()"/> <br />
+      <button type="button" id="addUser" onclick="addUser()" disabled>Add User</button>
+    </form>
+    <hr />
+    <table border="1">
+      <tr>
+        <thead>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </thead>
+      </tr>
+      <tbody></tbody>
+    </table>
+
+    <!-- mynameismuraliiamfullstackdeveloperandihave12yearsofexperience   -->
+    <!-- My Name is Murali . I am fullstack devevloper  -->
+    <script>
+      // 1. Read the Values from Form and Crete an Object
+      // 2. Add the Object to the Array
+      // 3. Display the Array of Object in Table
+
+      var allUsers = JSON.parse(localStorage.getItem("allUsers"));
+      if (allUsers == null) {
+        allUsers = [];
+      }
+      function addUser() {
+        var user = {
+          fname: document.getElementById("fname").value,
+          lname: document.getElementById("lname").value,
+          email: document.getElementById("email").value,
+        };
+        allUsers.push(user);
+        // Storing in local Storage
+
+        localStorage.setItem("allUsers", JSON.stringify(allUsers));
+
+        displayUsers(allUsers);
+        clearForm();
+      }
+
+      function clearForm() {
+        document.getElementById("fname").value = "";
+        document.getElementById("lname").value = "";
+        document.getElementById("email").value = "";
+      }
+
+      function displayUsers(data) {
+        document.querySelector("tbody").innerHTML = "";
+        data.forEach((user,i) => {
+          var myTr = document.createElement("tr");
+          for (a in user) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = user[a];
+            myTr.appendChild(myTd);
+          }
+
+          var editTd = document.createElement("td")
+          var editBtn = document.createElement("button");
+          editBtn.setAttribute("onclick","editUser("+i+")")
+          editBtn.innerHTML = "Edit";
+          editTd.appendChild(editBtn);
+          myTr.appendChild(editTd)
+
+          var deleteTd = document.createElement("td")
+          var deleteBtn = document.createElement("button")
+          deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+
+          deleteBtn.innerHTML="Delete";
+          deleteTd.appendChild(deleteBtn)
+          myTr.appendChild(deleteTd)
+
+          document.querySelector("tbody").appendChild(myTr);
+        });
+      }
+
+
+      function editUser(i){
+        console.log("editUser called "+i)
+
+      }
+
+      function deleteUser(i){
+        allUsers.splice(i,1);
+        displayUsers(allUsers)
+      }
+      displayUsers(allUsers);
+
+
+      function validate(){
+        var user = {
+          fname: document.getElementById("fname").value,
+          lname: document.getElementById("lname").value,
+          email: document.getElementById("email").value,
+        };
+
+        var check = false;
+        for(a in user){
+          if(user[a] == ""){
+            check = true
+          }
+        }
+
+        if(check == true){
+          document.getElementById("addUser").setAttribute("disabled",true);
+        }else{
+          document.getElementById("addUser").removeAttribute("disabled");
+        }
+  
+      }
+    </script>
+  </body>
+</html>

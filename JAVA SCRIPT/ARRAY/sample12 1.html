@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var dressnames = ["hermes", "prada", "chanel", "ralph lauren", "burberry", "houseofversage", "fendi", "armani"]
+        dressnames.forEach((i, val) => {
+            document.write(val + i + "<br>")
+        })
+        var name = dressnames.map((val) => {
+            return val + "style" + "<br>"
+        })
+        document.write(name)
+        var char6 = dressnames.find((dressnames) => {
+            return dressnames.length == 7
+        })
+        document.write(char6)
+        var char6 = dressnames.filter((dressnames) => {
+            return dressnames.length == 6
+        })
+        document.write(char6)
+        var results = dressnames.some((val) => {
+            return val = length == 4
+        })
+        console.log(results)
+        document.write(char6)
+        var result = dressnames.every((val) => {
+            return val.length == 4
+        })
+    </script>
+</body>
+
+</html>

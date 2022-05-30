@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <img src="./images/1.jpg" alt="" style="width: 400px;height: 300px; ">
+    <img src="../images/1.jpg" alt="" style="width: 400px;height: 300px; ">
     <script>
         function changeImage() {
             var imageaddress = document.querySelector("img").src
             var imgNo = imageaddress.substr(imageaddress.lastIndexOf("/") + 1, 1)
             imgNo++;
             if(imgNo == 7) {
-                imgNo == 1
+                imgNo = 1
             }
-            document.querySelector("img").setAttribute("src", "./images/" + imgNo + ".jpg")
+            document.querySelector("img").setAttribute("src", "../images/" + imgNo + ".jpg")
             // console.log(imgNo++)
         }
         setInterval(

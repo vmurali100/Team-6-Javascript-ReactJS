@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./1.jpeg" alt="" style="width:400px; height:300px;">
+    <script>
+        function changeImage(){
+            var imageAddress=document.querySelector("img").src;
+            var imgNo=imageAddress.substr(imageAddress.lastIndexOf("/")+1,1);
+            imgNo++;
+            if(imgNo == 6){
+                imgNo = 1
+            }
+            document.querySelector("img").setAttribute("src","./"+imgNo+".jpeg");
+            
+            
+        }
+        
+        setInterval(function (){
+            changeImage()
+        },2000)
+    </script>
+</body>
+</html>

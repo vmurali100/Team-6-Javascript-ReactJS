@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./images/1.jpg" alt="" style="width: 300px;" height="250px">
+    <script>
+        //1. Need to write a function which changes Image
+        //2. Need to call that function in a specific interval
+
+        function changeImage(){
+            var imageAddress = document.querySelector("img").src;
+            //console.log(imageAddress)
+            var imgNo = imageAddress.substr(imageAddress.lastIndexOf("/")+1,1);
+            //console.log(imgNo)
+            imgNo++
+            if(imgNo == 5){
+                imgNo = 1
+            }
+            document.querySelector("img").setAttribute("src", "./images/"+imgNo+".jpg")
+            //console.log(imgNo)
+        }
+        setInterval(function(){
+            changeImage()
+        },2000)
+    </script>
+</body>
+</html>

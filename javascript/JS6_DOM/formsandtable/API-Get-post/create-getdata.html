@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+  <body>
+   <form action="">
+     <label for="fname">FirstName</label>
+     <input type="text" name="" id="fname"><br>
+     <label for="lname">LastName</label>
+     <input type="text" name="" id="lname"><br>
+     
+     <input type="text" name="" id="id"hidden><br>
+
+     <button type="button" onclick="addUser()" id="add">AddUser</button>
+     <button type="button" onclick="updateuser()" id="update">UpdateUser</button>
+   </form>
+    <table border="1">
+      <tr>
+        <thead>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>ID</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </thead>
+      </tr>
+    </table>
+    <script>
+      var allUsers = [];
+      function addUser() {
+        var user = {
+          fname: document.getElementById("fname").value,
+          lname: document.getElementById("lname").value,
+          id:document.getElementById("id").value
+        }
+        var sendData = new XMLHttpRequest();
+        sendData.onreadystatechange = function () {
+          if (sendData.status == 201 && sendData.readyState == 4) {
+            console.log("user add succesfully");
+       
+          }
+        };
+        sendData.open("POST","http://localhost:3000/user");
+        sendData.setRequestHeader("Content-type","application/json");
+        sendData.send(JSON.stringify(user));
+      }
+
+    
+      </script>
+</body>
+</html>

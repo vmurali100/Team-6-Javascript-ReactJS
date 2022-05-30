@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- search :-"Particular word and line any Carrector search"
+    slice(start, end)
+    substring(start, end)
+    substr(start, length) -->
+    <script>
+
+
+        var messege = "I am saikiran, i am in software person. i have 1ysers experience in software Industry";
+
+        var fname = "sai"
+        var lname = "kiran"
+
+        var fullname = fname.concat(lname)
+        console.log(fullname.trim())
+
+        console.log(messege.split(" "))
+        console.log(messege.match(/software/g))
+        console.log(messege.search("software"))
+        console.log(messege.substring(43, 51))
+        console.log(messege.substr(43, 8))
+        console.log(messege.slice(43, 51))
+
+        console.log(messege.toLocaleUpperCase())
+
+    </script>
+    <!-- 2 -->
+    <script>
+        var messege = "I am SaiKiran. I have 1 year Experirnce in software Industry"
+        var fname = " Virat "
+        var lname = " Kohli "
+
+        var fullname = fname.concat(lname)
+        console.log(fullname.trim())
+        console.log(messege.split(" "))
+
+        console.log(messege.search("software"))
+        console.log(messege.substring(43, 51))
+        console.log(messege.substr(43, 8))
+        console.log(messege.slice(43, 51))
+
+        console.log(messege.toLocaleUpperCase())
+    </script>
+
+    <!-- 3 -->
+
+    <script>
+        var messege = "I am saiKiran, i am in software .I have 12 years experience in software"
+        var fname = "  Jayasankar  ";
+        var lname = "   SaiKiran   ";
+
+        var fullname = fname.concat(lname)
+        console.log(fullname.trim())
+        console.log(messege.split(""))
+        var fullname = fname.concat(lname)
+
+        console.log(messege.match(/software/g))
+        console.log(messege.search("software"));
+        console.log(messege.substring(44, 52))
+        console.log(messege.substr(44, 8))
+        console.log(messege.slice(44, 52))
+
+    </script>
+
+</body>
+
+</html>

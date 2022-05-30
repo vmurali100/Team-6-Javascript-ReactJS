@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-   <img src="./images/1.jpg" alt="" style="width: 800px;height: 800px; ;"> 
+   <img src="./images/5.jpg" alt="" style="width: 800px;height: 800px; ;"> 
    <script>
      function changeimage(){
         var imageaddress=document.querySelector("img").src
         var imgNo=imageaddress.substr(imageaddress.lastIndexOf("/")+1,1);
         imgNo++;
         if(imgNo==10){
-        imgNo=1
+        imgNo=5
             }
     document.querySelector("img").setAttribute("src","./images/"+imgNo+".jpg")
      }

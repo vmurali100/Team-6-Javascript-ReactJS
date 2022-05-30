@@ -19,6 +19,7 @@
         <p style="color: red;display:none">please enter valied email id</p>
         <button  disabled>editbutton</button>
         <input type="text" name="" id="id" hidden><br>
+        <button type="button" disabled>ADDUSER</button>
         <button type="button" id="add" onclick="adddatatrue()" >adduser</button>
         <button type="button" id="update" onclick="Updateuser()" style="display:none ;">update</button>
     </form>
@@ -134,6 +135,7 @@
                 document.querySelector("p").style.display = "none"
             } else {//for invalid email
                 document.querySelector("p").style.display = "block"
+                document.querySelector("button").setAttribute("disabled", true)
             }
         }
         adddatatrue()

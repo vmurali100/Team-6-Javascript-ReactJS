@@ -21,7 +21,8 @@
         <label for="email">email</label>
         <input type="text" name="" id="email" onkeyup="validate()"><br>
         <p style="color: darkred;display:none">please enter valied email id</p>
-        <button type="button" id="add" onclick=" getpostdatafromapi()" disabled>add user</button>
+        <button type="button" disabled>ADDUSER</button>
+        <button type="button" id="add" onclick=" getpostdatafromapi()">add user</button>
         <button type="button" id="update" onclick="updateuser()" style="display:none;" >updateuser</button>
     </form>
     <br>
@@ -135,9 +136,10 @@
             }else if(inputvalue.length==0){ //for empty email
                 document.querySelector("p").style.display="none"
                 document.querySelector("button").setAttribute("disabled",true)
-            }else( //for invalid email
+            }else{//for invalid email
                 document.querySelector("p").style.display="block"
-            )
+                document.querySelector("button").setAttribute("disabled",true)
+        }
         }
         getpostdatafromapi()
     </script>

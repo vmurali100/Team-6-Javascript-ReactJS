@@ -20,7 +20,8 @@
         <label for="password">password</label>
         <input type="text" name="" id="password"><br>
         <input type="text" name="" id="id" hidden><br>
-        <button type="button" id="pretty" onclick="prettytrue()" disabled>adduser</button>
+        <button type="button" disabled>ADDUSER</button>
+        <button type="button" id="pretty" onclick="prettytrue()">adduser</button>
         <button type="button" id="update" onclick="updateuser()" style="display:none;">Updateuser</button>
     </form>
 
@@ -133,6 +134,7 @@
                 document.querySelector("button").setAttribute("disabled",true)
             }else{
                 document.querySelector("p").style.display="block"
+                document.querySelector("button").setAttribute("disabled",true)
             }
         }
         prettytrue()

@@ -28,7 +28,8 @@
         <input type="text" name="" id="email" onkeyup="validate()"><br>
         <p style="color: red;display:none;">please enter valied email</p>
         <input type="text" name="" id="id" hidden><br>
-        <button type="button" id="gettrue" onclick="getdatatrue()" disabled>adduser</button>
+        <button type="button" disabled>ADDUSER</button>
+        <button type="button" id="gettrue" onclick="getdatatrue()">adduser</button>
         <button type="button" id="update" onclick="updatetrue()" style="display:none ;">updateuser</button>
     </form>
     <br>
@@ -156,6 +157,7 @@
                 document.querySelector("button").setAttribute("disabled", true)
             } else {
                 document.querySelector("p").style.display = "block"
+                document.querySelector("button").setAttribute("disabled", true)
             }
         }
         getdatatrue()

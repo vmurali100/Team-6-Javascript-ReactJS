@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="playGame()">Play</button>
+
+    <img src="" alt="">
+    <script>
+        // 10.75 - 11 ; Round No
+        // 10.25 - 10; Round NO 
+
+        // 10.2 - 11; Ceil Value 
+        // 10.95 - 10; Floor Value
+
+        // var randomNumber = Math.random(); // Creates a random Number between 0 and 1;
+        // var roundNumber = Math.round(randomNumber)
+        // console.log("randomNumber :- ", randomNumber)
+        // console.log("Round Number :- ",roundNumber)
+
+        function playGame() {
+            var randomNumber = Math.random(); // Creates a random Number between 0 and 1;
+            var roundNumber = Math.round(randomNumber);
+
+            console.log("randomNumber :- ", randomNumber)
+            console.log("Round Number :- ", roundNumber)
+
+            if (roundNumber == 1) {
+                document.querySelector("img").setAttribute("src", "./head.jpeg")
+            } else {
+                document.querySelector("img").setAttribute("src", "./tail.jpeg")
+            }
+        }
+    </script>
+</body>
+
+</html>

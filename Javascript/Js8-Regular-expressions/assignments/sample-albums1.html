@@ -7,20 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form> 
         <label for="userId">User Id : </label>
         <input type="text" name="" id="userId"><br><br>
         <label for="id">Id : </label>
         <input type="text" name="" id="id" readonly><br><br>
         <label for="title">Title : </label>
         <input type="text" name="" id="title"><br><br>
-        <label for="body">Body : </label>
-        <input type="text" name="" id="body"><br><br>
         <label for="email">Email</label>
         <input type="text" name="" id="email" onkeyup="validate()"><br><br>
-        <p style="color: red;">Please Enter Valid Email Id</p><br>
-        <button type="button" onclick="addUsers()" id="add" id="userAdding" disabled>Add User</button>
-        <button type="button" onclick="usersUpdate()" id="update" style="display: none;">Update User</button>
+        <p style="color: orange;">Please Enter Valid Email Id</p>
+
+        <button onclick="addUser()" type="button" id="add"  id="userAdding" disabled>Add User</button>
+        <button onclick="userUpdate()" type="button" id="update" style="display: none;">Update User</button>
     </form>
     <br><hr>
     <table border="1">
@@ -29,84 +28,82 @@
                 <th>User Id</th>
                 <th>Id</th>
                 <th>Title</th>
-                <th>Body</th>
                 <th>Email</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody></tbody>
-    </table>  
+    </table>
     <script>
-        var allUsers = [] 
-        function addUsers(){
+        var allUsers = []
+        function addUser(){
             var user = {
-                userId:document.getElementById("userId").value,
+                userId: document.getElementById("userId").value,
                 id: document.getElementById("id").value,
-                title: document.getElementById("title").value,
-                body: document.getElementById("body").value,
+                titel: document.getElementById("title").value,
                 email: document.getElementById("email").value
             }
-            var sendData = new XMLHttpRequest();
-            sendData.onreadystatechange = function (){
-                if(sendData.status == 201 && sendData.readyState == 4){
-                    console.log("User Added Successfully")
-                    getallUsersFromApi()
+            var sendDate = new XMLHttpRequest();
+                sendDate.onreadystatechange = function(){
+                    if(sendDate.status == 201 && sendDate.readyState == 4){
+                        console.log("User Added Success Fully")
+                        getallUserFromAPI()
                 }
             }
-            sendData.open("POST","http://localhost:3000/posts");
-            sendData.setRequestHeader("Content-type", "application/json")
-            sendData.send(JSON.stringify(user))
-        }       
-        function getallUsersFromApi(){
+            sendDate.open("POST", "http://localhost:3000/albums");
+            sendDate.setRequestHeader("Content-type","application/json")
+            sendDate.send(JSON.stringify(user))
+        }
+        function getallUserFromAPI(){
             var getData = new XMLHttpRequest();
-            getData.onreadystatechange = function (){
+            getData.onreadystatechange = function(){
                 if(getData.status == 200 && getData.readyState == 4){
                     allUsers = JSON.parse(getData.response)
                     console.log(allUsers)
                     displayUsers(allUsers)
                 }
             }
-            getData.open("GET","http://localhost:3000/posts")
+            getData.open("GET","http://localhost:3000/albums")
             getData.send()
         }
         function displayUsers(data){
-            document.querySelector("tbody").innerHTML = ""
-            data.forEach((users, i) => {
-                var myTr = document.createElement("tr")         
-                for(a in users){
+            document.querySelector("tbody").innerHTML = "";
+            data.forEach((user, i) => {
+                var myTr = document.createElement("tr")        
+                for(a in user){
                     var myTd = document.createElement("td")
-                    myTd.innerHTML = users[a]
+                    myTd.innerHTML = user[a]
                     myTr.appendChild(myTd)
-                }       
+                } 
                 //Edit
                 var editTd = document.createElement("td")
                 var editBit = document.createElement("button")
-                editBit.setAttribute("onclick", "editUser("+i+")")
+                editBit.setAttribute("onclick","editUser("+i+")")
                 editBit.innerHTML = "Edit"
                 editTd.appendChild(editBit)
                 myTr.appendChild(editTd)
                 //Delete
-                var deletTd = document.createElement("td")
-                var deletBit = document.createElement("button")
-                deletBit.setAttribute("onclick", "deletUser("+i+")")
-                deletBit.innerHTML = "Delete"
-                deletTd.appendChild(deletBit)
-                myTr.appendChild(deletTd)
+                var deleteTd = document.createElement("td")
+                var deleteBit = document.createElement("button")
+                deleteBit.setAttribute("onclick","deleteUser("+i+")")
+                deleteBit.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBit)
+                myTr.appendChild(deleteTd)
 
                 document.querySelector("tbody").appendChild(myTr)
             });
         }
-        function deletUser(i){
+        function deleteUser(i){
             console.log(allUsers[i])
-            var delUsers = new XMLHttpRequest();
-            delUsers.onreadystatechange = function(){
-                if(delUsers.status == 200 && delUsers == 4){
-                    console.log("User Added Success Fully")
+            var delData = new XMLHttpRequest
+            delData.onreadystatechange = function(){
+                if(delData.status == 200 && delData.readyState == 4){
+                    console.log("User Delete Success Fully")
                 }
             }
-            delUsers.open("DELETE","http://localhost:3000/posts/"+allUsers[i].id)
-            delUsers.send();
+            delData.open("DELETE","http://localhost:3000/albums/"+allUsers[i].id)
+            delData.send();
         }
         function editUser(i){
             document.getElementById("add").style.display = "none"
@@ -115,48 +112,48 @@
             document.getElementById("userId").value = allUsers[i].userId;
             document.getElementById("id").value = allUsers[i].id;
             document.getElementById("title").value = allUsers[i].title;
-            document.getElementById("body").value = allUsers[i].body;
             document.getElementById("email").value = allUsers[i].email;
         }
-        function usersUpdate(){
+        function userUpdate(){
             var user = {
-                userId:document.getElementById("userId").value,
+                userId: document.getElementById("userId").value,
                 id: document.getElementById("id").value,
-                title: document.getElementById("title").value,
-                body: document.getElementById("body").value,
+                titel: document.getElementById("title").value,
                 email: document.getElementById("email").value
             }
-            var sendData = new XMLHttpRequest();
-            sendData.onreadystatechange = function (){
-                if(sendData.status == 201 && sendData.readyState == 4){
+            var sendDate = new XMLHttpRequest();
+            sendDate.onreadystatechange = function(){
+                if(sendDate.status == 201 && sendDate.readyState == 4){
                     console.log("User Added Success Fully")
-                    getallUsersFromApi()
+                    getallUserFromAPI()
 
                     document.getElementById("add").style.display = "block"
                     document.getElementById("update").style.display = "none"
                 }
             }
-            sendData.open("PUT","http://localhost:3000/posts/"+ user.id);
-            sendData.setRequestHeader("Content-type", "application/json")
-            sendData.send(JSON.stringify(user))
+            sendDate.open("PUT", "http://localhost:3000/albums/"+user.id);
+            sendDate.setRequestHeader("Content-type","application/json")
+            sendDate.send(JSON.stringify(user))
         }
+        // Regular Expressions
         function validate(){
             document.querySelector("p").style.display = "block"
             var inputValue = document.getElementById("email").value;
             var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
-
-            if(pattern.test(inputValue)){
-                document.querySelector("p").style.display = "none"
+            
+            if(pattern.test(inputValue)){ // for Valid Email
+                document.querySelector("p").style.display = "none";
                 document.getElementById("userAdding").removeAttribute("disabled")
-            }else if(inputValue.length == 0){
-                document.querySelector("p").style.display = "none"
+            }else if(inputValue.length == 0){ // for Empty Input
                 document.getElementById("userAdding").setAttribute("disabled",true)
-            }else{
-                document.querySelector("p").style.display = "block"
+                document.querySelector("p").style.display = "none";
+            }else{ // for Invalid Email
                 document.getElementById("userAdding").setAttribute("disabled",true)
-            }
+                document.querySelector("p").style.display = "block";
+            }                
         }
-        getallUsersFromApi()
-    </script>  
+        getallUserFromAPI()
+    </script>
+    
 </body>
 </html>

@@ -10,17 +10,21 @@
     <form> 
         <label for="id">Id : </label>
         <input type="text" name="" id="id" readonly><br><br>
-        <label for="userId">userId : </label>
-        <input type="text" name="" id="userId"><br><br>
-        <label for="date">Date : </label>
-        <input type="text" name="" id="date"><br><br>
-        <label for="products">Products : </label>
-        <input type="text" name="" id="products"><br><br>
-        <label for="__v">__v : </label>
-        <input type="text" name="" id="__v"><br><br>
-        <label for="email">Email</label>
-        <input type="text" name="" id="email" onkeyup="validate()">
-        <p style="color: blue;"> Please Enter Valid Email Id</p><br>
+        <label for="name">Name : </label>
+        <input type="text" name="" id="name"><br><br>
+        <label for="userName">User Name : </label>
+        <input type="text" name="" id="userName"><br><br>
+        <label for="email">Email : </label>
+        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
+        <label for="address">Address : </label>
+        <input type="text" name="" id="address"><br><br>
+        <label for="phone">Phone</label>
+        <input type="text" name="" id="phone"><br><br>
+        <label for="website">Website</label>
+        <input type="text" name="" id="website"><br><br>
+        <label for="company">Company</label>
+        <input type="text" name="" id="company"><br><br>
+        <p style="color: orangered;">Please Enter Valid Emila Id</p><br>
         <button type="button" onclick="addUser()" id="add" id="userAdding" disabled>Add User</button>
         <button type="button" onclick="update()" id="userUpdate" style="display: none;">Update User</button>
     </form>
@@ -29,11 +33,13 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>User Id</th>
-                <th>date</th>
-                <th>products</th>
-                <th>__v</th>
+                <th>Name</th>
+                <th>User Name</th>
                 <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Company</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -45,11 +51,13 @@
         function addUser(){
             var user = {
                 id: document.getElementById("id").value,
-                userId:document.getElementById("userId").value,
-                date: document.getElementById("date").value,
-                products: document.getElementById("products").value,
-                __v: document.getElementById("__v").value,
-                email:document.getElementById("email").value
+                name: document.getElementById("name").value,
+                userName:document.getElementById("userName").value,
+                email: document.getElementById("email").value,
+                address: document.getElementById("address").value,
+                phone: document.getElementById("phone").value,
+                website: document.getElementById("website").value,
+                company: document.getElementById("company").value
             }
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function(){
@@ -58,7 +66,7 @@
                     getallUserFromAPI()
                 }
             }
-            sendData.open("POST","http://localhost:3000/cart")
+            sendData.open("POST","http://localhost:3000/users1")
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
         }
@@ -71,23 +79,25 @@
                     displayUsers(allUsers)
                 }
             }
-            getData.open("GET","http://localhost:3000/cart")
+            getData.open("GET","http://localhost:3000/users1")
             getData.send()
         }
         function displayUsers(data){
             document.querySelector("tbody").innerHTML = "";
             data.forEach((user, i) => {
                 var myTr = document.createElement("tr")   
-                for(a in user){
-                    if(a !=="products"){                        
+                for(a in user){                       
                     var myTd = document.createElement("td")
-                    myTd.innerHTML = user[a]
-                    myTr.appendChild(myTd)
+                    if(a !== "address" && a !== "company"){
+                        myTd.innerHTML = user[a]
                     }else{
-                        var myTd = document.createElement("td")
-                        myTd.innerHTML= user[a][0].quantity
-                        myTr.appendChild(myTd)
+                        var details = ""
+                        for(b in user[a]){
+                            details = details + b + " : " + user[a][b] + "<br>" 
+                        }
+                        myTd.innerHTML = details
                     }
+                    myTr.appendChild(myTd)
                 }                             
                 //edit
                 var editTd = document.createElement("td")
@@ -115,7 +125,7 @@
                     console.log("User Deleted Success Fully")
                 }
             }
-            delUsers.open("DELETE","http://localhost:3000/cart/"+allUsers[i].id)
+            delUsers.open("DELETE","http://localhost:3000/users1/"+allUsers[i].id)
             delUsers.send()
         }
         function editUser(i){
@@ -123,22 +133,25 @@
             document.getElementById("userUpdate").style.display = "block"
 
             document.getElementById("id").value = allUsers[i].id
-            document.getElementById("userId").value = allUsers[i].userId
-            document.getElementById("date").value = allUsers[i].date
-            document.getElementById("products").value = allUsers[i].products[0].quantity
-            document.getElementById("__v").value = allUsers[i].__v
+            document.getElementById("name").value = allUsers[i].name
+            document.getElementById("userName").value = allUsers[i].userName
             document.getElementById("email").value = allUsers[i].email
+            document.getElementById("address").value = allUsers[i].address
+            document.getElementById("phone").value = allUsers[i].phone
+            document.getElementById("website").value = allUsers[i].website
+            document.getElementById("company").value = allUsers[i].company
         }
         function update(){
             var user = {
                 id: document.getElementById("id").value,
-                userId:document.getElementById("userId").value,
-                date: document.getElementById("date").value,
-                //products: document.getElementById("products").value,
-                __v: document.getElementById("__v").value,
-                email:document.getElementById("email").value
+                name: document.getElementById("name").value,
+                userName:document.getElementById("userName").value,
+                email: document.getElementById("email").value,
+                address: document.getElementById("address").value,
+                phone: document.getElementById("phone").value,
+                website: document.getElementById("website").value,
+                company: document.getElementById("company").value
             }
-            user.products = [{quantity:document.getElementById("products").value}]
             var sendData = new XMLHttpRequest();
             sendData.onreadystatechange = function(){
                 if(sendData.status == 201 && sendData.readyState == 4){
@@ -146,24 +159,25 @@
                     getallUserFromAPI()
                 }
             }
-            sendData.open("PUT","http://localhost:3000/cart/"+user.id)
+            sendData.open("PUT","http://localhost:3000/users1/"+user.id)
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
         }
+        // Regular Expressions
         function validate(){
-            document.querySelector("P").status.display = "block"
+            document.querySelector("p").style.display = "block"
             var inputValue = document.getElementById("email").value;
             var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
 
             if(pattern.test(inputValue)){
-                document.querySelector("p").style.display = "none";
                 document.getElementById("userAdding").removeAttribute("disabled")
-            }else if (inputValue.lenght == 0){
-                document.getElementById("userAdding").setAttribute("disabled", true)
-                document.querySelector("p").style.display = "none";
+                document.querySelector("P").status.display = "none"
+            }else if(inputValue.length == 0){
+                document.getElementById("userAdding").setAttribute("disabled",true)
+                document.querySelector("p").style.display = "none"
             }else{
-                document.querySelector("p").style.display = "block";
-                document.getElementById("userAdding").setAttribute("disabled", true)
+                document.querySelector("p").style.display = "block"
+                document.getElementById("userAdding").setAttribute("disabled",true)
             }
         }
         getallUserFromAPI()

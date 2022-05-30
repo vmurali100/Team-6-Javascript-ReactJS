@@ -12,21 +12,11 @@
         <input type="text" name="" id="fname"><br><br>
         <label for="lname">Last Name : </label>
         <input type="text" name="" id="lname"><br><br>
-        <label for="tel">Tel : </label>
-        <input type="text" name="" id="tel"><br><br>
-        <label for="address">Address :</label>
-        <input type="text" name="" id="address"><br><br>
-        <label for="city">City</label>
-        <input type="text" name="" id="city"><br><br>
-        <label for="state">State</label>
-        <input type="text" name="" id="state"><br><br>
-        <label for="zip">zip</label>
-        <input type="text" name="" id="zip"><br><br>
         <label for="id">Id</label>
         <input type="text" name="" id="id"><br><br>
         <label for="email">Email</label>
-        <input type="text" name="" id="email" onkeyup="validate()"><br><br>
-        <p style="color: darkgreen;">Please Enter Valid Email Id </p>
+        <input type="text" name="" id="email" onkeypress="validate()"><br><br>
+        <p style="color: lightcoral;">Please Enter Valid Email Id</p>
         <button onclick="addUsers()" type="button" id="add" id="userAdding" disabled>Add Users</button>
         <button onclick="userUpdate()" type="button" id="update" style="display: none;">Update Users</button>
     </form>
@@ -36,11 +26,6 @@
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Tel</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
                 <th>Id</th>
                 <th>Email</th>
                 <th>Edit</th>
@@ -55,11 +40,6 @@
             var user = {
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
-                tel: document.getElementById("tel").value,
-                address: document.getElementById("address").value,
-                city: document.getElementById("city").value,
-                state: document.getElementById("state").value,
-                zip: document.getElementById("zip").value,
                 id: document.getElementById("id").value,
                 email: document.getElementById("email").value
             } 
@@ -67,13 +47,13 @@
             sendData.onreadystatechange = function (){
                 if(sendData.status == 201 && sendData.readyState == 4){
                     console.log("User Added Successfully")
-                    getallUsersFromAPI()
+                    getallUsersFromApi()
                 }
             }
-            sendData.open("POST","http://localhost:3000/person");
+            sendData.open("POST","http://localhost:3000/trues");
             sendData.setRequestHeader("Content-type", "application/json")
             sendData.send(JSON.stringify(user))
-        }
+        } 
         function getallUsersFromAPI(){
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function(){
@@ -83,7 +63,7 @@
                     displayUsers(allUsers)
                 }
             }
-            getData.open("GET","http://localhost:3000/person")
+            getData.open("GET","http://localhost:3000/trues")
             getData.send()
         }
         function displayUsers(data){
@@ -123,7 +103,7 @@
                     console.log("User Deleted Success Fully")
                 }
             }
-            delUser.open("DELETE","http://localhost:3000/person/"+allUsers[i].id)
+            delUser.open("DELETE","http://localhost:3000/trues/"+allUsers[i].id)
             delUser.send();
         }
         function editUser(i){
@@ -132,11 +112,6 @@
 
             document.getElementById("fname").value = allUsers[i].fname
             document.getElementById("lname").value = allUsers[i].lname
-            document.getElementById("tel").value = allUsers[i].tel
-            document.getElementById("address").value = allUsers[i].address
-            document.getElementById("city").value = allUsers[i].city
-            document.getElementById("state").value = allUsers[i].state
-            document.getElementById("zip").value = allUsers[i].zip
             document.getElementById("id").value = allUsers[i].id
             document.getElementById("email").value = allUsers[i].email
         }
@@ -144,11 +119,6 @@
             var user = {
                 fname: document.getElementById("fname").value,
                 lname: document.getElementById("lname").value,
-                tel: document.getElementById("tel").value,
-                address: document.getElementById("address").value,
-                city: document.getElementById("city").value,
-                state: document.getElementById("state").value,
-                zip: document.getElementById("zip").value,
                 id: document.getElementById("id").value,
                 email: document.getElementById("email").value
             }            
@@ -161,10 +131,11 @@
                     document.getElementById("update").style.display = "none"
                 }
             }
-            sendDate.open("PUT","http://localhost:3000/person/"+user.id)
+            sendDate.open("PUT","http://localhost:3000/trues/"+user.id)
             sendDate.setRequestHeader("Content-type", "application/json")
             sendDate.send(JSON.stringify(user))
         }
+        // Regular Expressions
         function validate(){
             document.querySelector("p").style.display = "block"
             var inputValue = document.getElementById("email").value;

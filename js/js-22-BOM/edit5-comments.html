@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">postId</label>
+                        <input type="text" class="form-control" id="postId" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">name</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">email</label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">body</label>
+                        <input type="text" class="form-control" id="body">
+                    </div>
+                    <input type="text" class="form-control" id="id" hidden>
+
+                    <button type="button" class="btn btn-primary" onclick="updateUser()">update</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script>
+        var allComments = JSON.parse(localStorage.getItem("allComments"))
+        var urlAddress = window.location.href
+        var id = urlAddress.substr(urlAddress.lastIndexOf("?") + 1)
+
+        for (a in allComments[id]) {
+            document.getElementById(a).value = allComments[id][a]
+        }
+        console.log(allComments[id])
+        console.log(id)
+        function updateUser(){
+            var user={
+                id:"",
+                postId:"",
+                name:"",
+                email:"",
+                body:""
+            }
+            for(a in user){
+                user[a]=document.getElementById(a).value
+            }
+            allComments[id]=user
+            localStorage.setItem("allComments",JSON.stringify(allComments))
+            window.location.href="index5-comments.html"
+            console.log(user)
+        }
+    </script>
+</body>
+
+</html>

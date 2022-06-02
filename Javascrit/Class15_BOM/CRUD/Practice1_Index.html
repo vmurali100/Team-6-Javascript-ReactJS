@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+    </div>
+    <script>
+        var allUsers =JSON.parse(localStorage.getItem("allUsers"))
+        if(allUsers == null){
+            GetDataFromAPI()
+        }else{
+            displayUsers(allUsers)
+        }
+         function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allUsers = JSON.parse(getData.response)
+                    console.log("allUsers",allUsers)
+                    localStorage.setItem("allUsers",JSON.stringify(allUsers))
+                    displayUsers(allUsers)
+                    
+                    
+                }
+            }
+            getData.open("GET", "https://jsonplaceholder.typicode.com/users");
+            getData.send()
+        }
+    
+        function displayUsers(allUsers){
+            allUsers.forEach(function (user,i){
+                var myTr = document.createElement("tr")
+                for(a in user){
+                    var myTd = document.createElement("td");
+                    if(a !== "address" && a !== "company"){
+                        myTd.innerHTML = user[a]
+                    }
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td")
+                var editbutton = document.createElement("button");
+                editbutton.setAttribute("onclick", "editUser(" + i + ")")
+                editbutton.setAttribute("class", "btn btn-warning")
+                editbutton.innerHTML = "Edit";
+                editTd.appendChild(editbutton);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deletebutton = document.createElement("button");
+                deletebutton.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebutton.setAttribute("class", "btn btn-danger")
+                deletebutton.innerHTML = "Delete";
+                deleteTd.appendChild(deletebutton);
+                myTr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function editUser (i){
+            window.location.href = "Practice1_Edit.html?"+i
+
+        }
+
+        function deleteUser (i){
+
+        }
+    </script>
+</body>
+</html>

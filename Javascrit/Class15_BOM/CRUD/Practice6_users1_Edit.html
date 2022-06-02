@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                 
+              <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">email</label>
+                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="username" class="form-label">username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">password</label>
+                    <input type="text" class="form-control" id="password" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">phone</label>
+                    <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="__v" class="form-label">__v</label>
+                    <input type="text" class="form-control" id="__v" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                  </div>
+                  <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
+            </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var allusers1 = JSON.parse(localStorage.getItem("allusers1"))
+        var urlAddress = window.location.href;
+        var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
+
+        for(a in allusers1[id]){
+            if( a !== "address" && a !== "name"){
+                document.getElementById(a).value = allusers1[id][a]
+            }
+        }
+        
+        console.log(allusers1[id])
+        console.log(id)
+
+        function updateUser(){
+            let user = {
+                id:"",
+              email:"",
+              username:"",
+              password:"",
+              phone:"",
+              __v:""
+
+            }
+            for(a in user){
+                user[a] = document.getElementById(a).value
+            }
+            allusers1[id] = user;
+            localStorage.setItem("allusers1",JSON.stringify(allusers1))
+            window.location.href = "Practice6_users1_Index.html"
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

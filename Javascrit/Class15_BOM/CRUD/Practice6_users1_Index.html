@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        thead{
+            background-color: blueviolet;
+            color: white;
+        }
+    </style>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>email</th>
+                <th>username</th>
+                <th>password</th>
+                <th>phone</th>
+                <th>__v</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+    </div>
+    <script>
+        var allusers1 =JSON.parse(localStorage.getItem("allusers1"))
+        if(allusers1 == null){
+            GetDataFromAPI()
+        }else{
+            displayUsers(allusers1)
+        }
+         function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allusers1 = JSON.parse(getData.response)
+                    console.log("allusers1",allusers1)
+                    localStorage.setItem("allusers1",JSON.stringify(allusers1))
+                    displayUsers(allusers1)
+                    
+                    
+                }
+            }
+            getData.open("GET", "https://fakestoreapi.com/users");
+            getData.send()
+        }
+       
+        function displayUsers(allusers1){
+            allusers1.forEach(function (user,i){
+                var myTr = document.createElement("tr")
+                for(a in user){
+                    var myTd = document.createElement("td");
+                    if(a !== "address" && a !== "name"){
+                        myTd.innerHTML = user[a]
+                    }
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td")
+                var editbutton = document.createElement("button");
+                editbutton.setAttribute("onclick", "editUser(" + i + ")")
+                editbutton.setAttribute("class", "btn btn-warning")
+                editbutton.innerHTML = "Edit";
+                editTd.appendChild(editbutton);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deletebutton = document.createElement("button");
+                deletebutton.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebutton.setAttribute("class", "btn btn-danger")
+                deletebutton.innerHTML = "Delete";
+                deleteTd.appendChild(deletebutton);
+                myTr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function editUser (i){
+            window.location.href = "Practice5_comments_Edit.html?"+i
+
+        }
+
+        function deleteUser (i){
+
+        }
+    </script>
+</body>
+</html>

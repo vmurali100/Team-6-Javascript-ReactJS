@@ -23,7 +23,7 @@
                         <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
                     </div>
                    
-                    <!-- <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden> -->
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
 
                     <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
                 </form>
@@ -53,7 +53,7 @@
             }
             allfill[id] = user;
             localStorage.setItem("allfill",JSON.stringify(allfill))
-            window.location.href = "fill1.html"
+            window.location.href = "fill.html"
             // console.log(user)
         }
 

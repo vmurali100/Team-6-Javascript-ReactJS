@@ -13,16 +13,16 @@
             <div class="col">
                 <form>                
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">userId</label>
-                    <input type="text" class="form-control" id="userId" aria-describedby="emailHelp">                  
+                    <label for="exampleInputEmail1" class="form-label">email</label>
+                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp">                  
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">title</label>
-                    <input type="text" class="form-control" id="title" aria-describedby="emailHelp">                  
+                    <label for="exampleInputEmail1" class="form-label">username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">                  
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">completed</label>
-                <input type="text" class="form-control" id="completed" aria-describedby="emailHelp">                  
+                    <label for="exampleInputEmail1" class="form-label">password</label>
+                <input type="text" class="form-control" id="password" aria-describedby="emailHelp">                  
                   </div>
                   <input type="text" class="form-control" id="id" hidden>   
 
@@ -32,29 +32,27 @@
         </div>
     </div>   
     <script>
-        var allTodos = JSON.parse(localStorage.getItem("allTodos"))
+        var allTrus = JSON.parse(localStorage.getItem("allTrus"))
         var urlAddress = window.location.href
-        var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
+        var id = urlAddress.substring(urlAddress.lastIndexOf("?")+1)
         console.log(urlAddress)
         console.log(id)
-        for(a in allTodos[id]){
-            document.getElementById(a).value = allTodos[id][a]
+        for (a in allTrus[id]){
+            document.getElementById(a).value = allTrus[id][a]
         }
         function userUpdate(){
             var user = {
-                id: "",
-                userId: "",
-                title: "",
-                completed: ""
+                email: "",
+                username: "",
+                password: ""
             }
             for(a in user){
                 user[a] = document.getElementById(a).value
             }
-            allTodos[id] = user
-            localStorage.setItem("allTodos", JSON.stringify(allTodos))
-            window.location.href = "todos-index.html"
+            allTrus[id] = user
+            localStorage.setItem("allTrus", JSON.stringify(allTrus))
+            window.location.href = "true1-index.html"
         }
-        
     </script> 
 </body>
 </html>

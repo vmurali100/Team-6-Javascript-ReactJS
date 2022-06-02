@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">id</label>
+            <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">username</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">phone</label>
+            <input type="text" class="form-control" id="phone">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">password</label>
+            <input type="text" class="form-control" id="password">
+          </div>
+          <input type="text" class="form-control" id="id" hidden>
+
+          <button type="button" class="btn btn-primary" onclick="updateUser()">update</button>
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+  <script>
+    var allusers = JSON.parse(localStorage.getItem("allusers"))
+    var urlAddress = window.location.href
+    var id = urlAddress.substr(urlAddress.lastIndexOf("?") + 1)
+    for (a in allusers[id]) {
+      if (a !== "address" && a !== "name")
+        document.getElementById(a).value = allusers[id][a]
+
+    }
+    console.log(urlAddress)
+    console.log(id)
+    console.log(allusers[id])
+    function updateUser(){
+      var user={
+        id:"",
+        username:"",
+        email:"",
+        phone:"",
+        password:""
+      }
+      for( a in user){
+        user[a]=document.getElementById(a).value
+      }
+      allusers[id]=user
+      localStorage.setItem("allusers",JSON.stringify(allusers))
+      window.location.href="index6-users.html"
+      console.log(user)
+    }
+
+
+  </script>
+</body>
+
+</html>

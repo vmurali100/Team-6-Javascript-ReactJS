@@ -22,7 +22,7 @@
                         <label for="" class="form-label">lname</label>
                         <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
                     </div>
-                   
+                
                     <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
 
                     <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
@@ -32,27 +32,27 @@
         </div>
     </div>
     <script>
-        var allfill = JSON.parse(localStorage.getItem("allfill"))
+        var alltext = JSON.parse(localStorage.getItem("alltext"))
         var urlAddress = window.location.href;
         var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
-        for(a in allfill[id]){
-            document.getElementById(a).value=allfill[id][a]
+        for(a in alltext[id]){
+            document.getElementById(a).value=alltext[id][a]
         }
         
-        // console.log(allfill[id])
+        // console.log(alltext[id])
         // console.log(id)
         
         function updateUser(){
             let user = {
-                flame:"",
+                fname:"",
                 lname:""
-                
+              
             }
             for(a in user){
                 user[a]=document.getElementById(a).value
             }
-            allfill[id] = user;
-            localStorage.setItem("allfill",JSON.stringify(allfill))
+            alltext[id] = user;
+            localStorage.setItem("alltext",JSON.stringify(alltext))
             window.location.href = "fill.html"
             // console.log(user)
         }

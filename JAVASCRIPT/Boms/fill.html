@@ -24,29 +24,29 @@
     </div>
 
     <script>
-        var allfill = JSON.parse(localStorage.getItem("allfill"))
-        if(allfill == null){
-            getallusersfromfill()
+        var alltext = JSON.parse(localStorage.getItem("alltext"))
+        if(alltext == null){
+            getallusersfromfilltext()
         }else{
-            displayUsers(allfill)
+            displayUsers(alltext)
         }
-        function getallusersfromfill(){
+        function getallusersfromfilltext(){
             var getdata=new XMLHttpRequest()
             getdata.onreadystatechange=function(){
                 if(getdata.status==200 && getdata.readyState==4){
-                    allfill=JSON.parse(getdata.response)
-                    console.log("allfill",allfill)
-                    localStorage.setItem("allfill",JSON.stringify(allfill))
-                    displayUsers(allfill)
+                    alltext=JSON.parse(getdata.response)
+                    console.log("alltext",alltext)
+                    localStorage.setItem("alltext",JSON.stringify(alltext))
+                    displayUsers(alltext)
 
                 }
             }
             getdata.open("GET","http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true")
             getdata.send()
         }
-        getallusersfromfill()
-        function displayUsers(allfill){
-            allfill.forEach((user,i)=>{
+        getallusersfromfilltext()
+        function displayUsers(alltext){
+            alltext.forEach((user,i)=>{
                 var mytr=document.createElement("tr")
                 for(a in user){
                     var mytd=document.createElement("td")

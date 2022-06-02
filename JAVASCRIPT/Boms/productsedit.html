@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">id</label>
+                        <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">title</label>
+                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">price</label>
+                        <input type="email" class="form-control" id="price" aria-describedby="emailHelp">
+                    </div>
+                    <div>
+                        <label for="" class="form-label">description</label>
+                        <input type="text" class="form-control" id="description" aria-describedby="emailHelp">
+                    </div>
+                    <div>
+                        <label for="" class="form-label">category</label>
+                        <input type="email" class="form-control" id="category" aria-describedby="emailHelp">
+                        
+                    </div>
+                    <div>
+                        <label for="" class="form-label">image</label>
+                        <input type="email" class="form-control" id="image" aria-describedby="emailHelp">   
+                    </div>
+                    <div>
+                        <label for="" class="form-label">rating</label>
+                        <input type="email" class="form-control" id="rating" aria-describedby="emailHelp">
+                        
+                    </div>
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+
+                    <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script>
+        var allproducts = JSON.parse(localStorage.getItem("allproducts"))
+        var urlAddress = window.location.href;
+        var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
+        for(a in allproducts[id]){
+            document.getElementById(a).value=allproducts[id][a]
+        }
+        
+        // console.log(allproducts[id])
+        // console.log(id)
+        
+        function updateUser(){
+            let user = {
+                id:"",
+                title:"",
+                price:"",
+                description:"",
+                category:"",
+                image:"",
+                rating:""
+            }
+            for(a in user){
+                user[a]=document.getElementById(a).value
+            }
+            allproducts[id] = user;
+            localStorage.setItem("allproducts",JSON.stringify(allproducts))
+            window.location.href = "products.html"
+            // console.log(user)
+        }
+
+    </script>
+</body>
+</html>

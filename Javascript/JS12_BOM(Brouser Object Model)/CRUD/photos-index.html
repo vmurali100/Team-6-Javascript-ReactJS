@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <style>
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>albumId</th>
+                    <th>title</th>
+                    <th>url</th>
+                    <th>thumbnailUrl</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+        </div>
+        <img src="" alt="">
+        <script>
+            var ALlUsers=JSON.parse(localStorage.getItem("ALlUsers"))
+        if(ALlUsers==null){
+            getAllUsersFromServer()
+        }else{
+            displayUsers(ALlUsers)
+        }
+        function getAllUsersFromServer(){
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                 ALlUsers=JSON.parse(getData.response)
+                 localStorage.setItem("ALlUsers", JSON.stringify(ALlUsers))
+                 console.log(ALlUsers)
+                 displayUsers(ALlUsers)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getData.send()
+        }
+        getAllUsersFromServer()
+        function displayUsers(ALlUsers){
+            ALlUsers.forEach(function(user,i){
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    if(a!=="url" && a!=="thumbnailUrl"){
+                        var mytd=document.createElement("td")
+                        mytr.appendChild(mytd)
+                        mytd.innerHTML=user[a]
+                    }else{
+                        var mytd=document.createElement("td")
+                        var myimg=document.createElement("img")
+                        myimg.setAttribute("src",user[a])
+                        mytd.appendChild(myimg)
+                        mytr.appendChild(mytd)
+                    }
+                }
+                var editTd = document.createElement("td")
+                var editBtn = document.createElement("button")
+                editBtn.setAttribute("onclick", "edituser(" + i + ")")
+                editBtn.setAttribute("class","btn btn-warning")
+                editBtn.innerHTML = "edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                //delete
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deleteBtn.setAttribute("class","btn btn-danger")
+                deleteBtn.innerHTML = "delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function edituser(i){
+            window.location.href="photos-edit.html?"+i
+        }
+        function deleteuser(i){
+
+        }
+        </script>
+    </body>
+    </html>

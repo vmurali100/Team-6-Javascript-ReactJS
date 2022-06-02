@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>userId</th>
+                <th>title</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+    </div>
+    <script>
+        var allAlbums=JSON.parse(localStorage.getItem("allAlbums"))
+        if(allAlbums==null){
+            getAlbumsFromServer()
+        }else{
+            displayUsers(allAlbums)
+        }
+        function getAlbumsFromServer(){
+            var getData=new XMLHttpRequest()
+            getData.onreadystatechange=function(){
+                if(getData.status==200 && getData.readyState==4){
+                    allAlbums=JSON.parse(getData.response)
+                    localStorage.setItem("allAlbums",JSON.stringify(allAlbums))
+                    console.log(allAlbums)
+                    displayUsers(allAlbums)
+                }
+            }
+            getData.open("GET","https://jsonplaceholder.typicode.com/albums")
+            getData.send()
+        }
+
+        function displayUsers(allAlbums){
+            allAlbums.forEach(function(user,i){
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytr.appendChild(mytd)
+                    mytd.innerHTML=user[a]
+                }
+                //edit
+                var editTd=document.createElement("td")
+                var editBtn=document.createElement("button")
+                editBtn.setAttribute("onclick","editUser("+i+")")
+                editBtn.setAttribute("class","btn btn-warning")
+                editBtn.innerHTML="edit"
+                editTd.appendChild(editBtn)
+                mytr.appendChild(editTd)
+                // delete
+                var deleteTd=document.createElement("td")
+                var deleteBtn=document.createElement("button")
+                deleteBtn.setAttribute("onclick","deleteUser("+i+")")
+                deleteBtn.setAttribute("class","btn btn-danger")
+                deleteBtn.innerHTML="delete"
+                deleteTd.appendChild(deleteBtn)
+                mytr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+        function editUser(i){
+            window.location.href="album-edit.html?"+i
+        }
+        function deleteUser(i){
+
+        }
+    </script>
+</body>
+</html> 

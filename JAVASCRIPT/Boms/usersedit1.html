@@ -56,8 +56,8 @@
                 document.getElementById(a).value = allusers[id][a]
             }
         }
-        // console.log(allusers[id])
-        // console.log(id)
+        console.log(allusers[id])
+        console.log(id)
 
         function updateUser() {
             let user = {
@@ -73,7 +73,7 @@
             }
             allusers[id] = user;
             localStorage.setItem("allusers", JSON.stringify(allusers))
-            window.location.href = "sam1.html"
+            window.location.href = "users.html"
             console.log(user)
         }
 

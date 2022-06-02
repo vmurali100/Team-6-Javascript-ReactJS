@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">albumId</label>
+                      <input type="text" class="form-control" id="albumId" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">id</label>
+                      <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">title</label>
+                      <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">url</label>
+                      <input type="text" class="form-control" id="url" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">thumbnailUrl</label>
+                      <input type="text" class="form-control" id="thumbnailUrl" aria-describedby="emailHelp">
+                    </div>
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                    <button type="button" class="btn btn-primary" onclick="updatephotos()">update</button>
+                  </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script>
+      // 2-store in localStorage both file
+      var Alluser=JSON.parse(localStorage.getItem("alluser"))
+       // 1-that id number came in console
+      var urladdress=window.location.href
+      var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
+    // 3- table data displaying in the form
+    for(a in Alluser[id]){
+      document.getElementById(a).value=Alluser[id][a]
+    }
+
+    function updatephotos(){
+      let user={
+        albumId:"",
+        id:"",
+        title:"",
+        url:"",
+        thumbnailUrl:""
+      }
+      for(a in user){
+        user[a]=document.getElementById(a).value
+      }
+      Alluser[id]=user
+      localStorage.setItem("Alluser",JSON.stringify(Alluser))
+      window.location.href="10photos intex.html"
+      console.log(user)
+    }
+    </script>
+</body>
+</html>
+<!-- {
+  "albumId": 1,
+  "id": 1,
+  "title": "accusamus beatae ad facilis cum similique qui sunt",
+  "url": "https://via.placeholder.com/600/92c952",
+  "thumbnailUrl": "https://via.placeholder.com/150/92c952"
+}, -->

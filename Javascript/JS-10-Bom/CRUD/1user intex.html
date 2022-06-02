@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Website</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+  <script>
+    var ALlusers = JSON.parse(localStorage.getItem(" ALlusers "))
+    if ( ALlusers  == null) {
+      getalluserdata()
+    } else {
+      displayuser( ALlusers )
+    }
+    function getalluserdata() {
+      var getdata = new XMLHttpRequest();
+
+      getdata.onreadystatechange = function () {
+        if (getdata.status == 200 && getdata.readyState == 4) {
+
+          ALlusers  = JSON.parse(getdata.response)
+          console.log(" ALlusers ",  ALlusers )
+          localStorage.setItem(" ALlusers ", JSON.stringify( ALlusers ))
+          displayuser( ALlusers )
+        }
+      }
+      getdata.open("GET", "https://jsonplaceholder.typicode.com/users")
+      getdata.send()
+    }
+  
+
+    function displayuser( ALlusers ) {
+      ALlusers .forEach((user, i) => {
+        var mytr = document.createElement("tr")
+        for (a in user) {
+          var mytd = document.createElement("td")
+          if (a !== "address" && a !== "company") {
+            mytd.innerHTML = user[a]
+          }
+          mytr.appendChild(mytd)
+        }
+        var edittd = document.createElement("td")
+        var editbtn = document.createElement("button")
+        editbtn.setAttribute("onclick", "edituser(" + i + ")")
+        editbtn.setAttribute("class", "btn btn-warning")
+        editbtn.innerHTML = "edit"
+        edittd.appendChild(editbtn)
+        mytr.appendChild(edittd)
+
+       
+        var deletetd = document.createElement("td")
+        var deletebtn = document.createElement("button")
+        deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+        deletebtn.setAttribute("class", "btn btn-danger")
+        deletebtn.innerHTML = "delete"
+        deletetd.appendChild(deletebtn)
+        mytr.appendChild(deletetd)
+
+        document.querySelector("tbody").appendChild(mytr)
+      });
+    }
+    function edituser(i) {
+      window.location.href = "1user edit.html?" + i
+    }
+    function deleteuser(i) {
+
+    }
+ 
+  </script>
+</body>
+</html>
+<!-- {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  }, -->

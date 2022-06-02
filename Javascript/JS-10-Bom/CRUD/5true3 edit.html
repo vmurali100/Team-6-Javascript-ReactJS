@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">fname</label>
+                        <input type="text" class="form-control" id="fname" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">lname</label>
+                        <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
+                    </div>
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                    <button type="button" class="btn btn-primary" onclick="updateusertrue3()">update</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script>
+        var Alluser=JSON.parse(localStorage.getItem("Alluser"))
+        // that id Number came in the console
+        var urladdress=window.location.href
+        var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
+        // table content displaying in the form
+        for(a in Alluser[id]){
+            document.getElementById(a).value=Alluser[id][a]
+        }
+        function updateusertrue3(){
+            let user={
+                fname:"",
+                lname:""
+            }
+            for(a in user){
+                // that updated content displaying in the console
+                user[a]=document.getElementById(a).value
+            }
+            Alluser[id]=user
+            localStorage.setItem("Alluser",JSON.stringify(Alluser))
+            window.location.href="5true3 intex.html"
+            console.log(user)
+        }
+    </script>
+</body>
+
+</html>

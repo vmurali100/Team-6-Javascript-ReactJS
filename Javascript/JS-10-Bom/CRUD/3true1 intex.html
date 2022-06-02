@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>email</th>
+                <th>username</th>
+                <th>password</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+    </div>
+   <script>
+       var AllUser=JSON.parse(localStorage.getItem("AllUser"))
+       if(AllUser==null){
+        getallusertrue1()
+       }else{
+        displayusertrue1(AllUser) 
+       }
+       function getallusertrue1(){
+           var getdata=new XMLHttpRequest()
+           getdata.onreadystatechange=function(){
+               if(getdata.status==200 && getdata.readyState==4){
+                   AllUser=JSON.parse(getdata.response)
+                   console.log("AllUser",AllUser)
+                   localStorage.setItem("AllUser",JSON.stringify(AllUser))
+                   displayusertrue1(AllUser)
+               }
+           }
+           getdata.open("GET","http://www.filltext.com/?rows=10&id=%7Bindex%7D&email=%7Bemail%7D&username=%7Busername%7D&password=%7BrandomString%7C5%7D&pretty=true")
+           getdata.send()
+       }
+    
+
+       function displayusertrue1(AllUser){
+        AllUser.forEach((user,i) => {
+           var mytr=document.createElement("tr")
+           for(a in user){
+               var mytd=document.createElement("td")
+               mytd.innerText=user[a]
+               mytr.appendChild(mytd)
+           } 
+           var edittd=document.createElement("td")
+           var editbtn=document.createElement("button")
+           editbtn.innerHTML="edit"
+           editbtn.setAttribute("onclick","edituser("+i+")")
+           editbtn.setAttribute("class","btn btn-warning")
+           edittd.appendChild(editbtn)
+           mytr.appendChild(edittd)
+
+           var deletetd=document.createElement("td")
+           var deletebtn=document.createElement("button")
+           deletebtn.innerHTML="delete"
+           deletebtn.setAttribute("onclick","deleteuser("+i+")")
+           deletebtn.setAttribute("class","btn btn-danger")
+           deletetd.appendChild(deletebtn)
+           mytr.appendChild(deletetd)
+
+           document.querySelector("tbody").appendChild(mytr)
+        });  
+       }
+       function edituser(i){
+           window.location.href="3true1 edit.html?"+i
+       }
+       function deleteuser(i){
+
+       }
+   </script> 
+</body>
+</html>
+<!-- {
+    "id": 687,
+    "email": "TBubel@sit.net",
+    "username": "SMitu",
+    "password": "saFMf"
+},
+http://www.filltext.com/?rows=10&id=%7Bindex%7D&email=%7Bemail%7D&username=%7Busername%7D&password=%7BrandomString%7C5%7D&pretty=true -->

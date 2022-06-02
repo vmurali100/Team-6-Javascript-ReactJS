@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+  img{
+      width: 100px;
+  }
+</style>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>username</th>
+                <th>email</th>
+                <th>address</th>
+                <th>phone</th>
+                <th>address</th>
+                <th>website</th>
+                <th>company</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+    </div>
+    <script>
+      var alluser=JSON.parse(localStorage.getItem("alluser"))
+      if(alluser==null){
+        getdatproducts()
+      }else{
+        displayproducts(alluser)
+      }
+      function getdatproducts(){
+        var getdata=new XMLHttpRequest()
+        getdata.onreadystatechange=function(){
+          if(getdata.status==200 && getdata.readyState==4){
+            alluser=JSON.parse(getdata.response)
+            console.log("alluser",alluser)
+            localStorage.setItem("alluser",JSON.stringify(alluser))
+            
+            displayproducts(alluser)
+          }
+        }
+        getdata.open("GET","https://fakestoreapi.com/products")
+        getdata.send()
+      }
+     
+
+      function displayproducts(alluser){
+        alluser.forEach((user,i) => {
+        var mytr=document.createElement("tr")
+        for(a in user){
+         if(a!=="image" && a!=="rating"){
+          var mytd=document.createElement("td")
+          mytd.innerHTML=user[a]
+          mytr.appendChild(mytd)
+         }else if(a=="image"){
+           var mytd=document.createElement("td")
+           var image=document.createElement("img")
+           image.setAttribute("src",user[a])
+           mytd.appendChild(image)
+           mytr.appendChild(mytd)
+         }else{
+           var mytd=document.createElement("td")
+           mytd.innerHTML=user[a].rating+"<br>"+user[a].count+"<br>"
+           mytr.appendChild(mytd)
+         }
+          
+         
+        } 
+        var edittd=document.createElement("td")
+        var editbtn=document.createElement("button")
+        editbtn.innerHTML="edit"
+        editbtn.setAttribute("onclick","edituser("+i+")") 
+        editbtn.setAttribute("class","btn btn-warning")
+        edittd.appendChild(editbtn)
+        mytr.appendChild(edittd)
+
+        var edittd=document.createElement("td")
+        var editbtn=document.createElement("button")
+        editbtn.innerHTML="edit"
+        editbtn.setAttribute("onclick","edituser("+i+")") 
+        editbtn.setAttribute("class","btn btn-danger")
+        edittd.appendChild(editbtn)
+        mytr.appendChild(edittd)
+
+        document.querySelector("tbody").appendChild(mytr)
+        });
+      }
+      function edituser(i){
+        window.location.href="12products edit.html?"+i
+      }
+      function deleteuser(i){
+
+      }
+    </script>
+</body>
+</html>
+<!-- {
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz",
+  "address": {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-37.3159",
+      "lng": "81.1496"
+    }
+  },
+  "phone": "1-770-736-8031 x56442",
+  "website": "hildegard.org",
+  "company": {
+    "name": "Romaguera-Crona",
+    "catchPhrase": "Multi-layered client-server neural-net",
+    "bs": "harness real-time e-markets"
+  }
+}, -->

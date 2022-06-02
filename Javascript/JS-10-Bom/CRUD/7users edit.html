@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+   <div class="container">
+       <div class="row">
+        <div class="col">
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">address</label>
+                  <input type="text" class="form-control" id="address" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">id</label>
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">email</label>
+                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">password</label>
+                    <input type="text" class="form-control" id="password" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">phone</label>
+                    <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">__v</label>
+                    <input type="text" class="form-control" id="__v" aria-describedby="emailHelp">
+                  </div>
+                  <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                <button type="button" class="btn btn-primary" onclick="updateusers()">update</button>
+              </form>
+        </div>
+        <div class="col"></div>
+       </div>
+   </div> 
+   <script>
+    //    2-store in localStorage both file
+       var alluser=JSON.parse(localStorage.getItem("alluser"))
+    //    1-that id number came in console
+       var urladdress=window.location.href
+       var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
+       console.log(id)
+    //    3-table data displaying in the form
+    for(a in alluser[id]){
+        if(a !=="address" && a !=="name"){
+            document.getElementById(a).value=alluser[id][a]
+        }
+    }
+
+    function updateusers(){
+        let user={
+            address:"",
+            id:"",
+            email:"",
+            username:"",
+            password:"",
+            name:"",
+            phone:"",
+            __v:"",
+        }
+        for(a in user){
+            user[a]=document.getElementById(a).value
+        }
+        alluser[id]=user
+        localStorage.setItem("alluser",JSON.stringify(alluser))
+        window.location.href="7users intex.html"
+        console.log(user)
+    }
+   </script>
+</body>
+</html>
+<!-- {
+    "address": {
+      "geolocation": {
+        "lat": "-37.3159",
+        "long": "81.1496"
+      },
+      "city": "kilcoole",
+      "street": "new road",
+      "number": 7682,
+      "zipcode": "12926-3874"
+    },
+    "id": 1,
+    "email": "john@gmail.com",
+    "username": "johnd",
+    "password": "m38rmF$",
+    "name": {
+      "firstname": "john",
+      "lastname": "doe"
+    },
+    "phone": "1-570-236-7033",
+    "__v": 0
+  }, -->

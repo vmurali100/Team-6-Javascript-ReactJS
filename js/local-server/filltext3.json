@@ -3,9 +3,16 @@
     {
       "fname": "Koweta",
       "lname": "Penning",
-      "id": 2,
+      "id": 1,
       "email":"deepthi@gmail.com"
     },
+    
+  {
+    "fname": "Koweta",
+    "lname": "Penning",
+    "id": 2,
+    "email":"nandini@gmail.com"
+  },
     {
       "fname": "Allen",
       "lname": "car",

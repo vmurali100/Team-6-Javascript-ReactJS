@@ -8,6 +8,18 @@
       "city": "Semarang",
       "state": "ID",
       "zip": 21979,
+      "id": 1,
+      "email":"mahitha@gmail.com"
+
+    },
+    {
+      "fname": "Alana",
+      "lname": "Grunert",
+      "tel": "(759)316-4682",
+      "address": "9937 Tortor Ct",
+      "city": "Semarang",
+      "state": "ID",
+      "zip": 21979,
       "id": 2,
       "email":"mahitha@gmail.com"
 

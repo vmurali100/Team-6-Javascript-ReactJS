@@ -41,8 +41,8 @@
         var allCarts = JSON.parse(localStorage.getItem("allCarts"))
         var urlAddress = window.location.href
         var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
-        console.log(id)
-        console.log(urlAddress)
+        // console.log(id)
+        // console.log(urlAddress)
         for(a in allCarts[id]){
             if(a !== "products"){
                 document.getElementById(a).value = allCarts[id][a]
@@ -61,7 +61,7 @@
             allCarts[id] = user
             localStorage.setItem("allCarts", JSON.stringify(allCarts))
             window.location.herf = "cart-index.html"
-            console.log(user)
+            // console.log(user)
         }
 
     </script>

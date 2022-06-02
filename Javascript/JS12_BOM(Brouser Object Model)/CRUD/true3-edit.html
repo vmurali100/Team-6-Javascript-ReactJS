@@ -13,17 +13,14 @@
             <div class="col">
                 <form>                
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">email</label>
-                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp">                  
+                    <label for="exampleInputEmail1" class="form-label">fname</label>
+                    <input type="text" class="form-control" id="fname" aria-describedby="emailHelp">                  
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">username</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">                  
+                    <label for="exampleInputEmail1" class="form-label">lname</label>
+                    <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">                  
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">password</label>
-                <input type="text" class="form-control" id="password" aria-describedby="emailHelp">                  
-                  </div>
+
                   <input type="text" class="form-control" id="id" hidden>   
 
                 <button type="button" class="btn btn-primary" onclick="userUpdate()">Update</button>
@@ -32,26 +29,26 @@
         </div>
     </div>   
     <script>
-        var allTrus = JSON.parse(localStorage.getItem("allTrus"))
+        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
         var urlAddress = window.location.href
-        var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
+        var id = urlAddress.substr(urlAddress.lastIndexOf["?"]+1) 
         console.log(urlAddress)
         console.log(id)
-        for (a in allTrus[id]){
-            document.getElementById(a).value = allTrus[id][a]
+        for(a in allUsers[id]){
+            document.getElementById(a).value = allUsers[id][a]
         }
         function userUpdate(){
             var user = {
-                email: "",
-                username: "",
-                password: ""
+                fname: "",
+                lname: ""
             }
             for(a in user){
                 user[a] = document.getElementById(a).value
             }
-            allTrus[id] = user
-            localStorage.setItem("allTrus", JSON.stringify(allTrus))
-            window.location.href = "true1-index.html"
+            allUsers[id] = user
+            localStorage.setItem("allUsers", JSON.stringify(allUsers))
+            window.location.href = "true3-index.html"
+            // console.log(user)
         }
     </script> 
 </body>

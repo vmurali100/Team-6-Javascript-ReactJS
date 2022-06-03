@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        thead{
-            background-color: blueviolet;
-            color: white;
+         img{
+            width: 50px;
+            height: 50px;
         }
     </style>
     <!-- CSS only -->
@@ -19,9 +19,11 @@
         <table class="table">
             <thead>
               <tr>
-                <th>userId</th>
+                <th>albumId</th>
                 <th>id</th>
                 <th>title</th>
+                <th>url</th>
+                <th>thumbnailUrl</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -32,38 +34,58 @@
           </table>
     </div>
     <script>
-        var allalbums =JSON.parse(localStorage.getItem("allalbums"))
-        if(allalbums == null){
+        var allphotos =JSON.parse(localStorage.getItem("allphotos"))
+        if(allphotos == null){
             GetDataFromAPI()
         }else{
-            displayUsers(allalbums)
+            displayUsers(allphotos)
         }
          function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    allalbums = JSON.parse(getData.response)
-                    console.log("allalbums",allalbums)
-                    localStorage.setItem("allalbums",JSON.stringify(allalbums))
-                    displayUsers(allalbums)
+                    allphotos = JSON.parse(getData.response)
+                    console.log("allphotos",allphotos)
+                    localStorage.setItem("allphotos",JSON.stringify(allphotos))
+                    displayUsers(allphotos)
                     
                     
                 }
             }
-            getData.open("GET", "https://jsonplaceholder.typicode.com/albums");
+            getData.open("GET", "https://jsonplaceholder.typicode.com/photos");
             getData.send()
         }
-        
-        function displayUsers(allalbums){
-            allalbums.forEach(function (user,i){
-                var myTr = document.createElement("tr")
-                for(a in user){
-                    var myTd = document.createElement("td");
+    
+        // function displayUsers(allphotos){
+        //     allphotos.forEach(function (user,i){
+        //         var myTr = document.createElement("tr")
+        //         for(a in user){
+        //             var myTd = document.createElement("td");
+        //             myTr.appendChild(myTd)
+                    
+        //                 myTd.innerHTML = user[a]
+                    
+                    
+        //         }
+
+        function displayUsers(allphotos) {
+            document.querySelector("tbody").innerHTML = ""
+            allphotos.forEach((user,i) => {
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    if(a !== "url" && a !== "thumbnailUrl"){
+                        var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
                     myTr.appendChild(myTd)
-                    
-                        myTd.innerHTML = user[a]
-                    
-                    
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src",user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+
+                    }
+                   
                 }
 
                 var editTd = document.createElement("td")
@@ -85,7 +107,7 @@
             });
         }
         function editUser (i){
-            window.location.href = "Practice4_albums_Edit.html?"+i
+            window.location.href = "Practice7_photos_Edit.html?"+i
 
         }
 

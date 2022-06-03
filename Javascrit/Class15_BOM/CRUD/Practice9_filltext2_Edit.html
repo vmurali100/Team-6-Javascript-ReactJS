@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                 
+                    <form>
+                        <div class="mb-3">
+                          <label for="fname" class="form-label">fname</label>
+                          <input type="text" class="form-control" id="fname" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lname" class="form-label">lname</label>
+                            <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="tel" class="form-label">tel</label>
+                            <input type="text" class="form-control" id="tel" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="address" class="form-label">address</label>
+                            <input type="text" class="form-control" id="address" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="city" class="form-label">city</label>
+                            <input type="text" class="form-control" id="city" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="state" class="form-label">state</label>
+                            <input type="text" class="form-control" id="state" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="zip" class="form-label">zip</label>
+                            <input type="text" class="form-control" id="zip" aria-describedby="emailHelp">
+                            <!-- <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden> -->
+                          </div>
+                         
+                         
+                        <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
+                      </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var allfilltext2 = JSON.parse(localStorage.getItem("allfilltext2"))
+        var urlAddress = window.location.href;
+        var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
+
+        for(a in allfilltext2[id]){
+              document.getElementById(a).value = allfilltext2[id][a]
+            }
+        console.log(allfilltext2[id])
+        console.log(id)
+
+        function updateUser(){
+            let user = {
+                // id:"",
+                fname:"",
+                lname:"",
+                tel:"",
+                address:"",
+                city:"",
+                state:"",
+                zip:"",
+            }
+            for(a in user){
+                user[a] = document.getElementById(a).value
+            }
+            allfilltext2[id] = user;
+            localStorage.setItem("allfilltext2",JSON.stringify(allfilltext2))
+            window.location.href = "Practice9_filltext2_Index.html"
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        thead{
-            background-color: blueviolet;
-            color: white;
-        }
-    </style>
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
         <table class="table">
             <thead>
-              <tr>
-                <th>userId</th>
-                <th>id</th>
-                <th>title</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
+                <tr>
+                    <th>id</th>
+                    <th>email</th>
+                    <th>username</th>
+                    <th>password</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
             </thead>
             <tbody>
 
             </tbody>
-          </table>
+        </table>
     </div>
     <script>
-        var allalbums =JSON.parse(localStorage.getItem("allalbums"))
-        if(allalbums == null){
+        var allfilltext1 = JSON.parse(localStorage.getItem("allfilltext1"))
+        if (allfilltext1 == null) {
             GetDataFromAPI()
-        }else{
-            displayUsers(allalbums)
+        } else {
+            displayUsers(allfilltext1)
         }
-         function GetDataFromAPI() {
+        function GetDataFromAPI() {
             var getData = new XMLHttpRequest();
             getData.onreadystatechange = function () {
                 if (getData.status == 200 && getData.readyState == 4) {
-                    allalbums = JSON.parse(getData.response)
-                    console.log("allalbums",allalbums)
-                    localStorage.setItem("allalbums",JSON.stringify(allalbums))
-                    displayUsers(allalbums)
-                    
-                    
+                    allfilltext1 = JSON.parse(getData.response)
+                    console.log("allfilltext1", allfilltext1)
+                    localStorage.setItem("allfilltext1", JSON.stringify(allfilltext1))
+                    displayUsers(allfilltext1)
+
+
                 }
             }
-            getData.open("GET", "https://jsonplaceholder.typicode.com/albums");
+            getData.open("GET", "http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true");
             getData.send()
         }
-        
-        function displayUsers(allalbums){
-            allalbums.forEach(function (user,i){
+
+        function displayUsers(allfilltext1) {
+            allfilltext1.forEach(function (user, i) {
                 var myTr = document.createElement("tr")
-                for(a in user){
+                for (a in user) {
                     var myTd = document.createElement("td");
                     myTr.appendChild(myTd)
-                    
-                        myTd.innerHTML = user[a]
-                    
-                    
+
+                    myTd.innerHTML = user[a]
+
+
                 }
 
                 var editTd = document.createElement("td")
@@ -84,14 +82,15 @@
                 document.querySelector("tbody").appendChild(myTr)
             });
         }
-        function editUser (i){
-            window.location.href = "Practice4_albums_Edit.html?"+i
+        function editUser(i) {
+            window.location.href = "Practice8_filltext1_Edit.html?" + i
 
         }
 
-        function deleteUser (i){
+        function deleteUser(i) {
 
         }
     </script>
 </body>
+
 </html>

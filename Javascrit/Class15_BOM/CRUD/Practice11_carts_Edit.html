@@ -14,24 +14,22 @@
                  
                     <form>
                         <div class="mb-3">
-                          <label for="albumId" class="form-label">albumId</label>
-                          <input type="text" class="form-control" id="albumId" aria-describedby="emailHelp">
+                          <label for="userId" class="form-label">userId</label>
+                          <input type="text" class="form-control" id="userId" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                            <label for="title" class="form-label">title</label>
-                            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                            <label for="date" class="form-label">date</label>
+                            <input type="text" class="form-control" id="date" aria-describedby="emailHelp">
                           </div>
                           <div class="mb-3">
-                            <label for="url" class="form-label">url</label>
-                            <input type="text" class="form-control" id="url" aria-describedby="emailHelp">
+                            <label for="products" class="form-label">products</label>
+                            <input type="text" class="form-control" id="products" aria-describedby="emailHelp">
                           </div>
-                          <div class="mb-3">
-                            <label for="thumbnailUrl" class="form-label">thumbnailUrl</label>
-                            <input type="text" class="form-control" id="thumbnailUrl" aria-describedby="emailHelp">
+                        <div class="mb-3">
+                            <label for="__v" class="form-label">__v</label>
+                            <input type="text" class="form-control" id="__v" aria-describedby="emailHelp">
                             <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
                           </div>
-                         
-                         
                         <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
                       </form>
                 
@@ -40,30 +38,32 @@
     </div>
 
     <script>
-        var allphotos = JSON.parse(localStorage.getItem("allphotos"))
+        var allcarts = JSON.parse(localStorage.getItem("allcarts"))
         var urlAddress = window.location.href;
         var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
 
-        for(a in allphotos[id]){
-              document.getElementById(a).value = allphotos[id][a]
+        for(a in allcarts[id]){
+            if( a !== "products"){
+                document.getElementById(a).value = allcarts[id][a]
             }
-        console.log(allphotos[id])
+        }
+        console.log(allcarts[id])
         console.log(id)
 
         function updateUser(){
             let user = {
                 id:"",
-                albumId:"",
-                title:"",
-                url:"",
-                thumbnailUrl:"",
+                userId:"",
+                date:"",
+                products:"",
+                __v:"",
             }
             for(a in user){
                 user[a] = document.getElementById(a).value
             }
-            allphotos[id] = user;
-            localStorage.setItem("allphotos",JSON.stringify(allphotos))
-            window.location.href = "Practice7_photos_Index.html"
+            allcarts[id] = user;
+            localStorage.setItem("allcarts",JSON.stringify(allcarts))
+            window.location.href = "Practice11_carts_Index.html"
             console.log(user)
         }
     </script>

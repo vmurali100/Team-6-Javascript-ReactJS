@@ -14,27 +14,19 @@
                  
                     <form>
                         <div class="mb-3">
-                          <label for="name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                          <label for="email" class="form-label">email</label>
+                          <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                            <label for="username" class="form-label">UserName</label>
+                            <label for="username" class="form-label">username</label>
                             <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
                           </div>
                           <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
-                          </div>
-                          <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
-                          </div>
-                        <div class="mb-3">
-                            <label for="website" class="form-label">Website</label>
-                            <input type="text" class="form-control" id="website" aria-describedby="emailHelp">
+                            <label for="password" class="form-label">password</label>
+                            <input type="text" class="form-control" id="password" aria-describedby="emailHelp">
                             <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
-
                           </div>
+                         
                          
                         <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
                       </form>
@@ -44,33 +36,29 @@
     </div>
 
     <script>
-        var allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        var allfilltext1 = JSON.parse(localStorage.getItem("allfilltext1"))
         var urlAddress = window.location.href;
         var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
 
-        for(a in allUsers[id]){
-            if( a !== "address" && a !== "company"){
-                document.getElementById(a).value = allUsers[id][a]
+        for(a in allfilltext1[id]){
+              document.getElementById(a).value = allfilltext1[id][a]
             }
-        }
-        console.log(allUsers[id])
+        console.log(allfilltext1[id])
         console.log(id)
 
         function updateUser(){
             let user = {
                 id:"",
-                name:"",
-                username:"",
                 email:"",
-                phone:"",
-                website:""
+                username:"",
+                password:"",
             }
             for(a in user){
                 user[a] = document.getElementById(a).value
             }
-            allUsers[id] = user;
-            localStorage.setItem("allUsers",JSON.stringify(allUsers))
-            window.location.href = "Practice1_Index.html"
+            allfilltext1[id] = user;
+            localStorage.setItem("allfilltext1",JSON.stringify(allfilltext1))
+            window.location.href = "Practice8_filltext1_Index.html"
             console.log(user)
         }
     </script>

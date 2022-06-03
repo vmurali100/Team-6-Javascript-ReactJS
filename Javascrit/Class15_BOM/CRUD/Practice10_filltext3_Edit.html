@@ -13,17 +13,15 @@
             <div class="column">
                  
                     <form>
-                        
                         <div class="mb-3">
-                          <label for="userId" class="form-label">userId</label>
-                          <input type="text" class="form-control" id="userId" aria-describedby="emailHelp">
+                          <label for="fname" class="form-label">fname</label>
+                          <input type="text" class="form-control" id="fname" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                            <label for="title" class="form-label">title</label>
-                            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
-                            <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                            <label for="lname" class="form-label">lname</label>
+                            <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
+                            <!-- <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden> -->
                           </div>
-                         
                         <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
                       </form>
                 
@@ -32,29 +30,28 @@
     </div>
 
     <script>
-        var allalbums = JSON.parse(localStorage.getItem("allalbums"))
+        var allfilltext3 = JSON.parse(localStorage.getItem("allfilltext3"))
         var urlAddress = window.location.href;
         var id = urlAddress.substr(urlAddress.lastIndexOf("?")+1)
 
-        for(a in allalbums[id]){
-              document.getElementById(a).value = allalbums[id][a]
+        for(a in allfilltext3[id]){
+              document.getElementById(a).value = allfilltext3[id][a]
             }
-        
-        console.log(allalbums[id])
+        console.log(allfilltext3[id])
         console.log(id)
 
         function updateUser(){
             let user = {
-                userId:"",
-                id:"",
-                title:"",
+                // id:"",
+                fname:"",
+                lname:"",
             }
             for(a in user){
                 user[a] = document.getElementById(a).value
             }
-            allalbums[id] = user;
-            localStorage.setItem("allalbums",JSON.stringify(allalbums))
-            window.location.href = "Practice4_albums_Index.html"
+            allfilltext3[id] = user;
+            localStorage.setItem("allfilltext3",JSON.stringify(allfilltext3))
+            window.location.href = "Practice10_filltext3_Index.html"
             console.log(user)
         }
     </script>

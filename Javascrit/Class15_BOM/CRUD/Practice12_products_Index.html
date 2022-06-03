@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>description</th>
+                    <th>category</th>
+                    <th>image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var allproducts = JSON.parse(localStorage.getItem("allproducts"))
+        if (allproducts == null) {
+            GetDataFromAPI()
+        } else {
+            displayUsers(allproducts)
+        }
+        function GetDataFromAPI() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    allproducts = JSON.parse(getData.response)
+                    console.log("allproducts", allproducts)
+                    localStorage.setItem("allproducts", JSON.stringify(allproducts))
+                    displayUsers(allproducts)
+
+
+                }
+            }
+            getData.open("GET", "https://fakestoreapi.com/products");
+            getData.send()
+        }
+
+        function displayUsers(allproducts) {
+            allproducts.forEach((user, i) => {
+                console.log(user)
+                var myTr = document.createElement("tr");
+                for (a in user) {
+                    if(a !== "image"){
+                        var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                    }else{
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src",user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+                        var details = ""
+                        for(b in user[a]){
+                            details = details + b + " : " + user[a][b] + "<br>"
+                        }
+
+                    }
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td")
+                var editbutton = document.createElement("button");
+                editbutton.setAttribute("onclick", "editUser(" + i + ")")
+                editbutton.setAttribute("class", "btn btn-warning")
+                editbutton.innerHTML = "Edit";
+                editTd.appendChild(editbutton);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deletebutton = document.createElement("button");
+                deletebutton.setAttribute("onclick", "deleteUser(" + i + ")")
+                deletebutton.setAttribute("class", "btn btn-danger")
+                deletebutton.innerHTML = "Delete";
+                deleteTd.appendChild(deletebutton);
+                myTr.appendChild(deleteTd)
+                document.querySelector("tbody").appendChild(myTr)
+            });
+        }
+        function editUser(i) {
+            window.location.href = "Practice12_products_Edit.html?" + i
+
+        }
+
+        function deleteUser(i) {
+
+        }
+    </script>
+</body>
+
+</html>

@@ -13,20 +13,32 @@
             <div class="col">
                 <form>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">id</label>
-                      <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                      <label for="exampleInputEmail1" class="form-label">fname</label>
+                      <input type="text" class="form-control" id="fname" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">email</label>
-                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                        <label for="exampleInputEmail1" class="form-label">lname</label>
+                        <input type="text" class="form-control" id="lname" aria-describedby="emailHelp">
                       </div>
                       <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">username</label>
-                        <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                        <label for="exampleInputEmail1" class="form-label">tel</label>
+                        <input type="text" class="form-control" id="tel" aria-describedby="emailHelp">
                       </div>
                       <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">password</label>
-                        <input type="text" class="form-control" id="password" aria-describedby="emailHelp">
+                        <label for="exampleInputEmail1" class="form-label">address</label>
+                        <input type="text" class="form-control" id="address" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">city</label>
+                        <input type="text" class="form-control" id="city" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">state</label>
+                        <input type="text" class="form-control" id="state" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">zip</label>
+                        <input type="text" class="form-control" id="zip" aria-describedby="emailHelp">
                       </div>
                       <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
                     <button type="button" class="btn btn-primary" onclick="updateusertrue2()">update</button>
@@ -36,39 +48,42 @@
         </div>
     </div>
     <script>
-
-     
       var Alluser=JSON.parse(localStorage.getItem("Alluser"))
-      
-      var urladdress=window.location.href
-      var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
-      for(a in Alluser[id]){
-        document.getElementById(a).value=Alluser[id][a]
-      }
-      function updateusertrue2(){
-        let user={
-          id:"",
-          email:"",
-          username:"",
-          password:""
-        }
-        for(a in user){
-          // that updated content displaying in the console
-          user[a]=document.getElementById(a).value
-        }
-      
-        Alluser[id]=user
-        localStorage.setItem("Alluser",JSON.stringify(Alluser))
-        window.location.href="4true2 intex.html"
-        console.log(user)
-      }
+     var urladdress=window.location.href
+     var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
+     for(a in  Alluser[id]){
+       document.getElementById(a).value=Alluser[id][a]
+     }
+      console.log( Alluser[id]) 
+     console.log(id)
+     function updateusertrue2(){
+       let user={
+        fname:"",
+        lname:"",
+        tel:"",
+        address:"",
+        city:"",
+        state:"",
+        zip:""
+       }
+       for(a in user){
+         user[a]=document.getElementById(a).value
+       }
+       Alluser[id]=user
+       localStorage.setItem("Alluser",JSON.stringify(Alluser))
+       window.location.href="4true2 intex.html"
+       console.log(user)
+     }
     </script>
 </body>
 </html>
 <!-- {
-    "id": 687,
-    "email": "TBubel@sit.net",
-    "username": "SMitu",
-    "password": "saFMf"
-},
+    "fname": "Samantha",
+    "lname": "Haggerty",
+    "tel": "(358)237-3815",
+    "address": "1542 In St",
+    "city": "Mount Morris",
+    "state": "AK",
+    "zip": 26194
+}, -->
  

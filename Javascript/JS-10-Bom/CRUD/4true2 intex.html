@@ -39,7 +39,6 @@
             getdata.onreadystatechange=function(){
                 if(getdata.status==200 && getdata.readyState==4){
                     Alluser=JSON.parse(getdata.response)
-                      //  for displaying table content in the edit file
                     console.log("Alluser",Alluser) 
                     localStorage.setItem("Alluser",JSON.stringify(Alluser))
                     displayusertrue2(Alluser)

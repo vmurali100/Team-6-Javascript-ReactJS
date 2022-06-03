@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>postId</th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>body</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+        var AllUsers = JSON.parse(localStorage.getItem("AllUsers"))
+        if (AllUsers == null) {
+            getAllUsersFromServer()
+        } else {
+            displayUsers(AllUsers)
+        }
+
+
+        function getAllUsersFromServer() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+
+                    AllUsers = JSON.parse(getData.response)
+                    console.log("AllUsers", AllUsers)
+                    localStorage.setItem("AllUsers", JSON.stringify(AllUsers))
+                    displayUsers(AllUsers)
+                }
+            }
+            getData.open("GET", "https://jsonplaceholder.typicode.com/comments")
+            getData.send()
+        }
+
+        // getAllUsersFromServer()
+
+        function displayUsers() {
+            AllUsers.forEach(function (user, i) {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    var myTd = document.createElement("td");
+                    if (a !== "address" && a !== "company") {
+                        myTd.innerHTML = user[a]
+                    }
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button");
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.setAttribute("class", "btn btn-warning")
+                editbtn.innerHTML = "Edit";
+                editTd.appendChild(editbtn);
+                myTr.appendChild(editTd)
+
+
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button");
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deletebtn.setAttribute("class", "btn btn-danger")
+                deleteTd.appendChild(deletebtn);
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+
+
+            });
+
+        }
+
+        function edituser(i) {
+            window.location.href = "edit7.html?" + i
+
+        }
+
+        function deleteuser(i) {
+
+        }
+    </script>
+</body>
+
+</html>

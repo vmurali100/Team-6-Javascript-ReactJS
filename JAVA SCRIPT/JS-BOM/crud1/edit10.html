@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <form>
+                <div class="mb-3">
+                    <label for="userId" class="form-label">userId</label>
+                    <input type="text" class="form-control" id="userId" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="id" class="form-label">id</label>
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">title</label>
+                    <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="completed" class="form-label">completed</label>
+                    <input type="text" class="form-control" id="completed" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="updateUser()">update</button>
+            </form>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <script>
+
+        var AllUsers = JSON.parse(localStorage.getItem("AllUsers"))
+
+
+        var UrlAddress = window.location.href;
+        var id = UrlAddress.substr(UrlAddress.lastIndexOf("?") + 1)
+
+        for (a in AllUsers[id]) {
+            if (a !== "address" && a !== "company") {
+                document.getElementById(a).value = AllUsers[id][a]
+            }
+
+
+        }
+        // console.log(AllUsers(id))
+        // console.log(id)
+
+        function updateUser() {
+            var user = {
+                userId: "",
+                id: "",
+                title: "",
+                completed: "",
+
+
+            }
+            for (a in user) {
+                user[a] = document.getElementById(a).value
+            }
+            AllUsers[id] = user;
+            localStorage.setItem("AllUsers", JSON.stringify(AllUsers))
+            window.location.href = "index10.html"
+            console.log(user)
+        }
+
+    </script>
+</body>
+
+</html>

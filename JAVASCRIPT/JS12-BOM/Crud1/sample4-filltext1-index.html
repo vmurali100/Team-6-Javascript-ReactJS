@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="condainer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>fname</th>
+                    <th>lname</th>
+                    <th>tel</th>
+                    <th>address</th>
+                    <th>city</th>
+                    <th>state</th>
+                    <th>zip</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        var AllUsers=JSON.parse(localStorage.getItem("AllUsers"))
+        if(AllUsers == null){
+            GetDatafromapi()
+        }else{
+            DisplayAllUsers(AllUsers)
+        }
+
+        function GetDatafromapi() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    AllUsers = JSON.parse(getData.response)
+                    console.log(AllUsers)
+                    localStorage.setItem("AllUsers",JSON.stringify(AllUsers))
+                    DisplayAllUsers(AllUsers)
+                }
+            }
+            getData.open("GET", "http://www.filltext.com/?rows=10&fname=%7BfirstName%7D&lname=%7BlastName%7D&tel=%7Bphone%7Cformat%7D&address=%7BstreetAddress%7D&city=%7Bcity%7D&state=%7BusState%7Cabbr%7D&zip=%7Bzip%7D&pretty=true")
+            getData.send()
+        }
+        // GetDatafromapi()
+
+        function DisplayAllUsers(AllUsers) {
+            AllUsers.forEach(function (user, i) {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "edituser(" + i + ")")
+                editbtn.setAttribute("class", "btn btn-warning")
+                editbtn.innerHTML = "Edit"
+                myTr.appendChild(editTd)
+                editTd.appendChild(editbtn)
+
+                var deleteTd = document.createElement("td")
+                var deletebtn = document.createElement("button")
+                deletebtn.setAttribute("onclick", "deleteuser(" + i + ")")
+                deletebtn.setAttribute("class", "btn btn-danger")
+                deletebtn.innerHTML = "Delete"
+                myTr.appendChild(deleteTd)
+                deleteTd.appendChild(deletebtn)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        function edituser(i) {
+            window.location.href="sample4-filltext1-edit.html?"+i
+        }
+        function deleteuser(i) {
+
+        }
+    </script>
+</body>
+
+</html>

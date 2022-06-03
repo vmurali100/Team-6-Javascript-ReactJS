@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>description</th>
+                    <th>category</th>
+                    <th>image</th>
+                    <th>rating</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var AllProducts = JSON.parse(localStorage.getItem("AllProducts"))
+        if (AllProducts == null) {
+            getAllProducts()
+        } else {
+            displayUser(AllProducts)
+        }
+        function getAllProducts() {
+            var getData = new XMLHttpRequest();
+            getData.onreadystatechange = function () {
+                if (getData.status == 200 && getData.readyState == 4) {
+                    AllProducts = JSON.parse(getData.response)
+                    console.log(AllProducts)
+                    localStorage.setItem("AllProducts", JSON.stringify(AllProducts))
+                    displayUser(AllProducts)
+                }
+            }
+            getData.open("GET", "https://fakestoreapi.com/products")
+            getData.send()
+        }
+        // getAllProducts()
+
+        function displayUser(AllProducts) {
+            AllProducts.forEach(function (user, i) {
+                var myTr = document.createElement("tr")
+                for (a in user) {
+                    if (a !== "image") {
+                        var myTd = document.createElement("td")
+                        myTd.innerHTML = user[a]
+                        myTr.appendChild(myTd)
+                    } else {
+                        var myTd = document.createElement("td")
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src", user[a])
+                        myTd.appendChild(myImg)
+                        myTr.appendChild(myTd)
+
+                    }
+                }
+                var editTd = document.createElement("td")
+                var editbtn = document.createElement("button")
+                editbtn.setAttribute("onclick", "editUser(" + i + ")")
+                editbtn.setAttribute("class", "btn btn-warning")
+                editbtn.innerHTML = "Edit"
+                editTd.appendChild(editbtn)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td")
+                var deleteBtn = document.createElement("button")
+                deleteBtn.setAttribute("onclick", "deleteUser(" + i + ")")
+                deleteBtn.setAttribute("class", "btn btn-danger")
+                deleteBtn.innerHTML = "Delete"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        function editUser(i) {
+            window.location.href = "sample12-products-edit.html?" + i
+
+        }
+        function deleteUser(i) {
+
+        }
+    </script>
+</body>
+
+</html>

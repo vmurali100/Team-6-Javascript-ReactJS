@@ -29,7 +29,7 @@
                         <label for="exampleInputEmail1" class="form-label">products</label>
                         <input type="text" class="form-control" id="products" aria-describedby="emailHelp">
                       </div>
-                      <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                      <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
                     <button type="button" class="btn btn-primary" onclick="updateusercarts()">update</button>
                   </form>
             </div>
@@ -45,10 +45,8 @@
        
          //3- table content displaying in the form
         for(a in ALLuser[id]){
-            if (a !== "products") {
-            var mytd = document.createElement("td")
+           document.getElementById(a).value=ALLuser[id][a]
             }
-        }
         
         // 4-updated
         function updateusercarts(){

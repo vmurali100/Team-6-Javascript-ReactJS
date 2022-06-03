@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">f name</label><br>
+        <input type="text" name="" id="f"><br>
+        <label for="">l name</label><br>
+        <input type="text" name="" id="l"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button type="button" onclick=" updateuser()">update</button>
+        
+    
+    </form>
+
+    <script>
+        var AllUsers = JSON.parse(localStorage.getItem("AllUsers"))
+        var urlAddress =window.location.href;
+        var id =urlAddress.substr(urlAddress.lastIndexOf("/")+1)
+
+        for (a in AllUsers[id]){
+            if ( a !=="adress"&& a !=="compnany"){
+                document.getElementById(a).value = AllUsers[id][a]
+            }
+        }
+        console.log(AllUsers[id])
+        console.log(id)
+
+        function updateuser(){
+            let =user={
+                id:"",
+                f:"",
+                l:"",
+                
+
+            }
+            for (a in user){
+                user [a]= document.getElementById(a).value
+
+            }
+            AllUsers[id]= user;
+            localStorage.setItem("AllUsers",JSON.stringify(AllUsers))
+            window.localStorage.href="index6.html"
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

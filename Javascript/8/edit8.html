@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">adress</label><br>
+        <input type="text" name="" id="a"><br>
+        <label for="">id</label><br>
+        <input type="text" name="" id="i"><br>
+        <label for="">e mail</label><br>
+        <input type="text" name="" id="e"><br>
+        <label for="">username</label><br>
+        <input type="text" name="" id="u"><br>
+        <label for=""> password</label><br>
+        <input type="text" name="" id="po"><br>
+        <label for=""> name</label><br>
+        <input type="text" name="" id="n"><br>
+         <label for="">phone</label><br>
+        <input type="text" name="" id="p"><br>
+        <label for="">v</label><br>
+        <input type="text" name="" id="v"><br>
+        <label for=""> compnany</label><br>
+        <input type="text" name="" id="c"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button type="button" onclick=" updateuser()">update</button>
+    
+    </form>
+
+    <script>
+        var AllUsers = JSON.parse(localStorage.getItem("AllUsers"))
+        var urlAddress =window.location.href;
+        var id =urlAddress.substr(urlAddress.lastIndexOf("/")+1)
+
+        for (a in AllUsers[id]){
+            if ( a !=="adress"&& a !=="compnany"){
+                document.getElementById(a).value = AllUsers[id][a]
+            }
+        }
+        console.log(AllUsers[id])
+        console.log(id)
+
+        function updateuser(){
+            let =user={
+                id:"",
+                a:"",
+                i:"",
+                e:"",
+                u:"",
+                po:"",
+                n:"",
+                p:"",
+                v:"",
+                c:"",
+                
+                
+
+            }
+            for (a in user){
+                user [a]= document.getElementById(a).value
+
+            }
+            AllUsers[id]= user;
+            localStorage.setItem("AllUsers",JSON.stringify(AllUsers))
+            window.localStorage.href="index8.html"
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

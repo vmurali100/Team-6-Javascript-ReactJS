@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">user id</label><br>
+        <input type="text" name="" id="user"><br>
+        <label for="">title</label><br>
+        <input type="text" name="" id="title"><br>
+        <label for="">completed</label><br>
+        <input type="text" name="" id="c"><br>
+        <input type="text" name="" id="id" hidden><br>
+        <button type="button" onclick=" updateuser()">update</button>
+        
+    
+    </form>
+
+    <script>
+        var AllUsers = JSON.parse(localStorage.getItem("AllUsers"))
+        var urlAddress =window.location.href;
+        var id =urlAddress.substr(urlAddress.lastIndexOf("/")+1)
+
+        for (a in AllUsers[id]){
+            if ( a !=="adress"&& a !=="compnany"){
+                document.getElementById(a).value = AllUsers[id][a]
+            }
+        }
+        console.log(AllUsers[id])
+        console.log(id)
+
+        function updateuser(){
+            let =user={
+                id:"",
+                title:"",
+                c:"",
+                user:"",
+                
+
+            }
+            for (a in user){
+                user [a]= document.getElementById(a).value
+
+            }
+            AllUsers[id]= user;
+            localStorage.setItem("AllUsers",JSON.stringify(AllUsers))
+            window.localStorage.href="index5.html"
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

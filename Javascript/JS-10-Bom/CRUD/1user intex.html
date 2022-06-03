@@ -17,7 +17,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>#</th>
+          <th>id</th>
           <th>Name</th>
           <th>User Name</th>
           <th>Email</th>
@@ -31,22 +31,21 @@
     </table>
   </div>
   <script>
-    var ALlusers = JSON.parse(localStorage.getItem(" ALlusers "))
-    if ( ALlusers  == null) {
-      getalluserdata()
-    } else {
-      displayuser( ALlusers )
-    }
+   var ALlusers=JSON.parse(localStorage.getItem("ALlusers"))
+   if(ALlusers==null){
+    getalluserdata()
+   }else{
+    displayuser(ALlusers)
+   }
     function getalluserdata() {
       var getdata = new XMLHttpRequest();
 
       getdata.onreadystatechange = function () {
         if (getdata.status == 200 && getdata.readyState == 4) {
-
-          ALlusers  = JSON.parse(getdata.response)
-          console.log(" ALlusers ",  ALlusers )
-          localStorage.setItem(" ALlusers ", JSON.stringify( ALlusers ))
-          displayuser( ALlusers )
+        ALlusers=JSON.parse(getdata.response)
+        console.log("ALlusers",ALlusers)
+        localStorage.setItem("ALlusers",JSON.stringify(ALlusers))
+        displayuser( ALlusers )
         }
       }
       getdata.open("GET", "https://jsonplaceholder.typicode.com/users")
@@ -61,8 +60,13 @@
           var mytd = document.createElement("td")
           if (a !== "address" && a !== "company") {
             mytd.innerHTML = user[a]
+            mytr.appendChild(mytd)
+          }else{
+            var mytd=document.createElement("td")
+            mytd.innerHTML=JSON.stringify(user[a])
+            mytr.appendChild(mytd)
           }
-          mytr.appendChild(mytd)
+         
         }
         var edittd = document.createElement("td")
         var editbtn = document.createElement("button")
@@ -85,7 +89,7 @@
       });
     }
     function edituser(i) {
-      window.location.href = "1user edit.html?" + i
+      window.location.href = "1user edit.html?"+i
     }
     function deleteuser(i) {
 

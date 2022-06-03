@@ -16,6 +16,10 @@
       <div class="col">
         <form>
           <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">id</label>
+            <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
           </div>
@@ -43,31 +47,58 @@
     </div>
   </div>
   <script>
-    var ALlusers = JSON.parse(localStorage.getItem(" ALlusers "))
-    var urladdress = window.location.href
-    var id = urladdress.substr(urladdress.lastIndexOf("?") + 1)
-    for (a in ALlusers[id]) {
-      if (a !== "address" && a !== "company") {
-        document.getElementById(a).value = ALlusers[id][a]
-      }
-    }
+    var ALlusers=JSON.parse(localStorage.getItem("ALlusers"))
+   var urladdress=window.location.href
+   var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
 
-    function updateuser() {
-      let user = {
-        id: "",
-        name: "",
-        username: "",
-        email: "",
-        phone: "",
-        website: ""
-      }
-      for (a in user) {
-        user[a] = document.getElementById(a).value
-      }
-      ALlusers[id] = user;
-      localStorage.setItem("ALlusers", JSON.stringify(ALlusers))
-      window.location.href = "1user intex.html"
+   for(a in ALlusers[id]){
+     if(a !=="address" && a !=="company"){
+       document.getElementById(a).value=ALlusers[id][a]
+     }
+   }
+  //  console.log(ALlusers[id])
+  //  console.log(id)
+
+   function updateuser(){
+    let user={
+      id:"",
+      name:"",
+      username:"",
+      email:"",
+      phone:"",
+      website:""
     }
+    for(a in user){
+      user[a]=document.getElementById(a).value
+    }
+    ALlusers[id]=user
+    localStorage.setItem("ALlusers",JSON.stringify(ALlusers))
+    window.location.href="1user intex.html"
+    console.log(user)
+   }
   </script>
 </body>
 </html>
+<!-- {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  }, -->

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">id</label><br>
+        <input type="text" name="" id="id"><br>
+        <label for="">user</label><br>
+        <input type="text" name="" id="username"><br>
+        <label for="">email</label><br>
+        <input type="text" name="" id="email"><br>
+        <label for="">phone</label><br>
+        <input type="text" name="" id="phone"><br>
+        <label for="">website</label><br>
+        <input type="text" name="" id="website"><br>
+        <button type="button" onclick=" updateuser()">update</button>
+        
+    
+    </form>
+
+    <script>
+        var AllUsers = JSON.parse(localStorage.getItem("AllUsers"))
+        var urlAddress =window.location.href;
+        var id =urlAddress.substr(urlAddress.lastIndexOf("?")+1)
+
+        for (a in AllUsers[id]){
+            if ( a !=="adress"&& a !=="compnany"){
+                document.getElementById(a).value = AllUsers[id][a]
+            }
+        }
+        console.log(AllUsers[id])
+        console.log(id)
+
+        function updateuser(){
+            let =user={
+                id:"",
+                username:"",
+                email:"",
+                phone:"",
+                website:"",
+
+            }
+            for (a in user){
+                user [a]= document.getElementById(a).value
+
+            }
+            AllUsers[id]= user;
+            localStorage.setItem("AllUsers",JSON.stringify(AllUsers))
+            window.localStorage.href="index.html"
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

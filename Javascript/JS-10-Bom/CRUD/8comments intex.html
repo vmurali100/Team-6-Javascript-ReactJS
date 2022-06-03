@@ -38,7 +38,8 @@
         getdata.onreadystatechange=function(){
             if(getdata.status==200 && getdata.readyState==4){
                 alluser=JSON.parse(getdata.response)
-                console.log(alluser)
+                console.log("alluser",alluser)
+                localStorage.setItem("alluser",JSON.stringify(alluser))
                 displaycomments(alluser)
             }
         }

@@ -42,15 +42,15 @@
     </div>
     <script>
       // 2-store in localStorage both file
-      var Alluser=JSON.parse(localStorage.getItem("alluser"))
+      var Alluser=JSON.parse(localStorage.getItem("Alluser"))
        // 1-that id number came in console
       var urladdress=window.location.href
       var id=urladdress.substr(urladdress.lastIndexOf("?")+1)
-    // 3- table data displaying in the form
+    
+    // // 3- table data displaying in the form
     for(a in Alluser[id]){
-      document.getElementById(a).value=Alluser[id][a]
-    }
-
+       document.getElementById(a).value=Alluser[id][a]
+     }
     function updatephotos(){
       let user={
         albumId:"",

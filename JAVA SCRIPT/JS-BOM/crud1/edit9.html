@@ -54,7 +54,7 @@
         var id = UrlAddress.substr(UrlAddress.lastIndexOf("?") + 1)
 
         for (a in AllUsers[id]) {
-            if (a !== "address" && a !== "company") {
+            if (a !== "url" && a !== "thumbnailUrl") {
                 document.getElementById(a).value = AllUsers[id][a]
             }
 

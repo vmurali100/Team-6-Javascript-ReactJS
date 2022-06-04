@@ -37,7 +37,7 @@
             getData.onreadystatechange = function(){
                 if(getData.status == 200 && getData.readyState == 4){
                     allCarts = JSON.parse(getData.response)
-                    console.log("allCarts", allCarts)
+                    console.log(allCarts)
                     localStorage.setItem("allCarts",JSON.stringify(allCarts))
                     displayusers(allCarts)
                 }
@@ -45,7 +45,9 @@
             getData.open("GET","https://fakestoreapi.com/carts")
             getData.send()
         }
-        getCartsFromserver()
+
+
+        // getCartsFromserver()
         function displayusers(allCarts){
             allCarts.forEach(function(user, i) {
                 var myTr = document.createElement("tr")

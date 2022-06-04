@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="sayHello()">Click</button> Adding Event Handlers With Attributes -->
+    <button>Click Me 1</button> <br><br>
+    <button>Click Me 2</button> <br><br>
+    <button>Click Me 3</button> <br><br>
+    <button>Click Me 4</button> <br><br>
+
+    <script>
+
+        var allButtons = document.querySelectorAll("button");
+        console.log(allButtons)
+        allButtons.forEach(function (btn){
+            btn.onclick = function (event){
+                console.log(event)
+            }
+        })
+        // document.querySelector("button").setAttribute("onclick","sayHello()") // Adding Event Handlers With DOM Method
+
+        // document.querySelector("button").onclick=sayHello
+        // function sayHello(){
+        //     console.log('Hello World')
+        // }
+    </script>
+</body>
+</html>

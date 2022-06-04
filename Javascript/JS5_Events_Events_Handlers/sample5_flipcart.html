@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .myImg {
+            width: 100px;
+            height: 70px;
+            display: block;
+        }
+        .mainImage{
+            height: 350px;
+            width: 300px;
+        }
+        .allImages{
+            float: left;
+        }
+        .main{
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allImages">
+        <img src="./mob1.webp" alt="" srcset="" class="myImg">
+        <img src="./mob2.webp" alt="" srcset="" class="myImg">
+        <img src="./mob3.webp" alt="" srcset="" class="myImg">
+        <img src="./mob4.webp" alt="" srcset="" class="myImg">
+        <img src="./mob5.webp" alt="" srcset="" class="myImg">
+    </div>
+    <div class="main">
+        <img src="./mob1.webp" alt="" class="mainImage">
+    </div>
+
+    <script>
+        document.querySelector(".allImages").onmouseover=function(event){
+            document.querySelector(".mainImage").src= event.target.src
+        }
+    </script>
+</body>
+
+</html>

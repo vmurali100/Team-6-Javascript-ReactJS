@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>rose</li>
+        <li>lotus</li>
+        <li>jasmine</li>
+        <li>sunflower</li>
+        <li>daisy</li>
+        <li>tulip</li>
+        <li>magnolia</li>
+        <li>lavender</li>
+        <li>balsam </li>
+    </ul>
+    <script>
+        // synthedic event
+        document.querySelector("ul").onclick=function(event){
+            console.log(event.target)
+            var seletedli=event.target
+            var parentElement=seletedli.parentNode
+            parentElement.removeChild(seletedli)
+        
+        }
+        
+    </script>
+</body>
+</html>

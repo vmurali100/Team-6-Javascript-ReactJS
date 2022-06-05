@@ -32,7 +32,20 @@
         console.log("good evening")
     }
 </script> -->
-   
+<button>click 1</button><br><br>
+<button>click 2</button><br><br>
+<button>click 3</button><br><br>
+<button>click 4</button><br><br>
+<script>
+    var allbutton=document.querySelectorAll("button");
+    console.log(allbutton)
+    allbutton.forEach(function(btn){
+        btn.onclick=function(){
+            console.log("just u click")
+            btn.style.backgroundColor="green"
+        }
+    })
+</script>
    
 </body>
 </html>

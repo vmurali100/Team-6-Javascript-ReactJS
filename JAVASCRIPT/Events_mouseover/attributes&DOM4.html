@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="padmaja()">Click</button> -->
+    <button>Click I</button><br><br>
+    <button>Click II</button><br><br>
+    <button>Click III</button><br><br>
+    <button>Click IV</button><br><br>
+    <button>Click V</button><br><br>
+    <script>
+        var allbuttons=document.querySelectorAll("button")
+        console.log(allbuttons)
+        allbuttons.forEach(function(btn){
+            btn.onclick=(function(event){
+                console.log("clicked me")
+                btn.style.background="skyblue"
+                console.log(event)
+            })
+        })
+        // document.querySelector("button").setAttribute("onclick","padmaja()")
+        // document.querySelector("button").onclick=padmaja
+        // function padmaja(){
+        //     console.log("hii padmaja")
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- event handler with attribute -->
+    <!-- <button onclick="motivation() ">click</button>
+    <script>
+        function motivation(){
+            console.log("Don't sit down and wait for the opportunities to come. Get up and make them")
+        }
+    </script> -->
+
+
+    <!-- event handler with dom method -->
+    <!-- <button>click me</button>
+    <script>
+        document.querySelector("button").setAttribute("onclick","motivation()")
+        function motivation(){
+            console.log("All dreams are within reach. All you have to do is keep moving towards them")
+        }
+    </script> -->
+
+
+    <!-- direct to give element -dom method -->
+    <!-- <button>click me</button>
+    <script>
+     document.querySelector("button").onclick=motivation
+     function motivation(){
+         console.log("There is nothing impossible to they who will try")
+     }  
+    </script> -->
+
+     <button>click me1</button><br><br>
+     <button>click me2</button><br><br>
+     <button>click me3</button><br><br>
+     <button>click me4</button><br><br>
+     <button>click me5</button><br><br>
+     <button>click me6</button><br><br>
+  <script>
+     var allbutton=document.querySelectorAll("button")
+     console.log(allbutton)
+     allbutton.forEach(function (btn){
+         btn.onclick=function(){
+             console.log("Life changes very quickly, in a very positive way, if you let it")
+             btn.style.background="gold"
+             btn.style.color="brown"
+             btn.style.fontSize="30px"
+         }
+     })
+  </script>
+
+</body>
+</html>

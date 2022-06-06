@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- event handler with attribute -->
+    <!-- <button onclick="positive()">click me</button>
+    <script>
+        function positive (){
+            console.log("The best is yet to be")
+        }
+    </script> -->
+
+    <!-- event handler with dom method -->
+    <!-- <button>click me</button>
+    <script>
+        document.querySelector("button").setAttribute("onclick","positive()")
+        function positive(){
+            console.log("A positive mindset brings positive things")
+        }
+    </script> -->
+
+       <!-- direct to give element- dom method -->
+        <!-- <button>click me</button>
+        <script>
+            document.querySelector("button").onclick=positive
+            function positive(){
+                console.log("Live life to the fullest and focus on the positive")
+            }
+        </script> -->
+
+
+        <button>click me1</button>
+        <button>click me2</button>
+        <button>click me3</button>
+        <button>click me4</button>
+        <button>click me5</button>
+        <button>click me6</button>
+        <script>
+         var allbutton=document.querySelectorAll("button")
+         console.log(allbutton)
+            allbutton.forEach(function(btn){
+               btn.onclick=function(){
+                console.log("Do good and good will come to you")
+                btn.style.background="green"
+                btn.style.color="white"
+                btn.style.fontStyle="italin"
+                btn.style.fontSize="30px"
+               }
+            })
+        </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- event handler with attribute -->
+    <!-- <button onclick="hello()">click me</button>
+    <script>
+        function hello(){
+            console.log("be kind")
+        }
+    </script> -->
+
+    <!--adding event haduler with DOM method -->
+    <!-- <button>click me</button>
+    <script>
+        document.querySelector("button").setAttribute("onclick","hello()")
+        function hello(){
+            console.log("be stronng")
+        } -->
+
+        <!-- direct to give elevement -dom method -->
+        <!-- <button>click me</button>
+        <script>
+            document.querySelector("button").onclick=hello
+            function hello(){
+                console.log("be breve")
+            } -->
+
+            <button>click me1</button><br><br>
+            <button>click me2</button><br><br>
+            <button>click me3</button><br><br>
+            <button>click me4</button><br><br>
+            <button>click me5</button><br><br>
+            <button>click me6</button><br><br>
+            <script>
+            var allbutton=document.querySelectorAll("button")
+            console.log(allbutton)
+            allbutton.forEach(function(btn){
+                btn.onclick=function(){
+                    console.log("do good")
+                   btn.style.background="blue"
+                   btn.style.color="white"
+                }
+            })
+            </script>
+        </script>
+    </script>
+</body>
+</html>

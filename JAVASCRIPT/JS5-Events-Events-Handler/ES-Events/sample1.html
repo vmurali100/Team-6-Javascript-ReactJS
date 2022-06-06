@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1 <button onclick="SayHello()">Click</button>
+
+    <script>
+        function SayHello(){
+            console.log("Hello Everyone")
+        }
+    </script> -->
+
+    <!-- 2<button>Click</button>
+    <script>
+       2 document.querySelector("button").setAttribute("onclick","sayhello()")
+       3 document.querySelector("button").onclick=sayhello
+
+        function sayhello(){
+            console.log("hello Goodmorning")
+        }
+    </script> -->
+    <button>Click Me 1</button><br><br>
+    <button>Click Me 2</button><br><br>
+    <button>Click Me 3</button><br><br>
+    <button>Click Me 4</button><br><br>
+    <!-- 1 -->
+    <!-- <script>
+        var Allbuttons =document.querySelectorAll("button");
+        console.log(Allbuttons)
+        Allbuttons.forEach(function(btn){
+            btn.onclick=function(){
+               btn.style.backgroundColor="red"
+            }
+            btn.onclick=function(event){
+             console.log(event)
+            }
+        })
+    </script> -->
+     <!-- 2 -->
+    <script>
+        var Allbuttons=document.querySelectorAll("button")
+        console.log(Allbuttons)
+        Allbuttons.forEach(function(btn){
+            btn.onclick=function(){
+                btn.style.backgroundColor="Yellow"
+                btn.style.color="red"
+            }
+        })
+        Allbuttons.forEach(function(btn){
+            btn.onclick=function(event){
+                console.log(event)
+            }
+        })
+    </script>
+</body>
+</html>

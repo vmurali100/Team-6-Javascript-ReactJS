@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <button onclick="sayhello()"> click</button> -->
+
+    <button>click me1</button><br><br>
+    <button>click me2</button><br><br>
+    <button>click me3</button><br><br>
+    <button>click me4</button><br><br>
+
+    <script>
+        var Allbuttons = document.querySelectorAll("button");
+        console.log(Allbuttons)
+        Allbuttons.forEach(function (btn) {
+            btn.onclick = function () {
+                // console.log("you just clicked")
+                // btn.style.background = "blue"
+                console.log(event)
+            }
+        })
+
+        // document.querySelector("button").setAttribute("onclick","sayhello()")
+
+        document.querySelector("button").onclick = "HelloBangalore"
+
+        function sayhello() {
+            console.log("HelloBangalore")
+        }
+    </script>
+
+</body>
+
+</html>

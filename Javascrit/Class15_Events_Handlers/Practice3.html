@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Submit-1</button><br><br>
+    <button>Submit-2</button><br><br>
+    <button>Submit-3</button><br><br>
+    <button>Submit-4</button><br><br>
+    <button>Submit-5</button><br><br>
+    <script>
+        var Allbuttons = document.querySelectorAll("button")
+        console.log(Allbuttons)
+        Allbuttons.forEach(function(btn){
+            btn.onclick = function(event){
+                console.log("You just Clicked Me")
+                btn.style.background = "blue"
+                btn.style.color = "white"
+                console.log(event)
+            }
+        })
+    </script>
+</body>
+</html>

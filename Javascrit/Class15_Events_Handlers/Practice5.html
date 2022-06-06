@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .MyImage{
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+        .Mainwatch{
+            height: 350px;
+            width: 300px;
+        }
+        .AllWatches{
+            float: left;
+        }
+        .MainWatch{
+            float: left;
+            position: fixed;
+            margin-left: 150px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="AllWatches">
+        <img src="./Images/W1.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W2.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W3.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W4.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W5.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W6.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W7.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W8.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W9.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W10.webp" alt="" srcset="" class="MyImage">
+        <img src="./Images/W11.webp" alt="" srcset="" class="MyImage">
+    </div>
+    <div class="MainWatch">
+        <img src="./Images/W1.webp" alt="" class="Mainwatch">
+    </div>
+
+    <script>
+        document.querySelector(".AllWatches").onmouseover = function(event){
+            console.log(event.target.src)
+            document.querySelector(".Mainwatch").src = event.target.src
+        }
+    </script>
+</body>
+</html>

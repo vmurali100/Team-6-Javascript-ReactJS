@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click 1</button> <br><br>
+    <button>Click 2</button> <br><br>
+    <button>Click 3</button> <br><br>
+    <button>Click 4</button> <br><br>
+    <button>Click 5</button> <br><br>
+    <script>
+        var allBottons = document.querySelectorAll("button")
+        console.log(allBottons)
+        allBottons.forEach(function(btn){
+            btn.onclick = function (event){
+                btn.style.backgroundColor = "orange"
+            }
+        })
+    </script>
+</body>
+</html>

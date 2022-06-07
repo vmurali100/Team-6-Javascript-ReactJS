@@ -7,18 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="playGame()">Play</button>
+    <button onclick="playbutton()">play</button>
     <img src="" alt="">
     <script>
         var randomNumber = Math.random()
         var roundNumber = Math.round(randomNumber)
         console.log("Random Number:-", randomNumber)
         console.log("Round Number:-", roundNumber)
-
-        function playGame(){
+        function playbutton(){
             var randomNumber = Math.random()
             var roundNumber = Math.round(randomNumber)
-
             console.log("Random Number:-", randomNumber)
             console.log("Round Number:-", roundNumber)
             if(roundNumber == 1){
@@ -27,6 +25,6 @@
                 document.querySelector("img").setAttribute("src","./tail.jpeg")
             }
         }
-    </script>   
+    </script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>nithya</li>
+        <li>chandhini</li>
+        <li>harish</li>
+        <li>ranjith</li>
+        <li>sweetha</li>
+        <li>naveen</li>
+    </ul>
+    <script>
+        document.querySelector("ul").onclick=function(event){
+                console.log(event.target) 
+                var selectedli=event.target;
+                var parentelement=selectedli.parentNode;
+                parentelement.removeChild(selectedli)
+        }
+    </script>
+</body>
+</html>

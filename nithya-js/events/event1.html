@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="hellow()">click</button>//adding event handlers with Attribute -->
+    <button>click</button>
+    <button>click me1</button><br><br>
+    <button>click me2</button><br><br>
+    <button>click me3</button><br><br>
+    <button>click me4</button>
+    <script>
+        // document.querySelector("button").setAttribute("onclick","sayhellow()")//adding event handler with DOM method
+        // function sayhellow(){
+        //     console.log("hi all")
+        // }
+
+
+
+        // document.querySelector("button").onclick=sayhi
+        // function sayhi(){
+        //     console.log("i am nithya")
+        // }
+
+      var allbuttons=document.querySelectorAll("button");
+      console.log(allbuttons)
+      allbuttons.forEach(function(btn){
+          btn.onclick=function(event){
+            //   btn.style.background="red"
+            console.log(event)
+            //   console.log("u just click me")
+          }
+      })
+    </script>
+</body>
+</html>

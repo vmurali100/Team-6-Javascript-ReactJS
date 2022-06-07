@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class things{
+            constructor(tvs,washingmachine,fridge,ac){
+                this.tvs=tvs;
+                this.washingmachine=washingmachine;
+                this.fridge=fridge;
+                this.ac=ac;
+                this.location="ctr"
+            }
+        }
+        var things1=new things("sony","onida","samsaung","voltas")
+        console.log(things1)
+
+        class thingsdetails extends things{
+            constructor(tvs,washingmachine,fridge,ac,aircoolar){
+                super(tvs,washingmachine,fridge,ac)
+                this.aircoolar=aircoolar;
+            }
+        }
+
+
+        class thingsused extends thingsdetails{
+            constructor(tvs,washingmachine,fridge,ac,aircoolar,chimlly){
+                super(tvs,washingmachine,fridge,ac,aircoolar)
+                this.chimlly=chimlly;
+            }
+        }
+        var thing=new thingsdetails("sony","onida","samsaung","voltas","massimaa")
+        console.log('thing',thing)
+
+        var thing1=new thingsused("sony","onida","samsaung","voltas","massimaa","mainpro")
+        console.log('thing1',thing1)
+    </script>
+</body>
+</html>

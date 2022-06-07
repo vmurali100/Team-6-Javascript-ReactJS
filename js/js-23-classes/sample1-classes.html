@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+            constructor(fname,lname,email){
+                this.fname=fname;
+                this.lname=lname;
+                this.email=email
+            }
+        }
+        // var student1=new person("deepthi","boppana","deepthi@gmail.com")
+        // var student2=new person("jyothi","boppana","jyothi@gmail.com")
+        // console.log(student1)
+        class employeedetails extends person{
+            constructor(fname,lname,email,companyName,salary){
+                super(fname,lname,email)
+                this.companyName=companyName;
+                this.salary=salary;
+            }
+        }
+        // var emp1=new employeedetails("deepthi","boppana","deepthi@gmail.com","Amazon",100000)
+        // console.log(emp1)
+        class seniorDetails extends employeedetails{
+            constructor (fname,lname,email,companyName,salary,experience,position){
+                super(fname,lname,email,companyName,salary)
+                this.experience=experience;
+                this.position=position
+            }
+        }
+        var senemp1= new seniorDetails("deepthi","boppana","deepthi@gmail.com","Amazon",100000,"4years","maneger")
+        console.log(senemp1)
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person = { //Literal way of creating Object
+            fname: "Srinivas",
+            lname: "Srividya",            
+        }
+        var person = new object ({fname: "sai", lname: "charan"}) //Creating an object with Built In Object
+
+        function student (studentName){ // Creating A objcet with Constructor Function
+            this.cource = "Ract Js";
+            this.instructer = "Vidya";
+            this.studentName = studentName
+            this.courseDetails = function(){
+                return this.cource+ " " +this.studentName
+            }
+        }
+
+        class student{ //Creating an objcet with classes in ES6
+            constructor(firstname, lastname,mail){
+                this.fname = firstname;
+                this.lname = firstname;
+                this.email = mail;
+            }
+        }
+    </script>
+</body>
+</html>

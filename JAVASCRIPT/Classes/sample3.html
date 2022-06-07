@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+            constructor(fname,lname,age){
+                this.fname=fname;
+                this.lname=lname;
+                this.age=age;
+                this.city="CTR";
+                this.state="AP"
+            }
+        }
+        // var person1=new person("M","Padmaja",23)
+        // var person2=new person("E","Sandhya",22)
+        // var person3=new person("B","Neeraja",24)
+        // var person4=new person("R","Sowmya",24)
+        // var person5=new person("E","Bhargavi",23)
+        // console.log(person1)
+        // console.log(person2)
+        // console.log(person3)
+        // console.log(person4)
+        // console.log(person5)
+
+        class studentqualification extends person{
+            constructor(fname,lname,age,collage,location){
+                super(fname,lname,age)
+                this.collage=collage;
+                this.location=location;
+            }
+        }
+        class salarydetails extends studentqualification{
+            constructor(fname,lname,age,collage,location,group){
+                super(fname,lname,age,collage,location)
+                this.group=group;
+            }
+        }
+
+        var std1=new studentqualification("M","Padmaja",23,"SITAMS","Chittoor")
+        console.log('std1',std1)
+
+        var std2=new salarydetails("E","Sandhya",22,"SITAMS","Chittoor","MCA")
+        console.log('std2',std2)
+    </script>
+</body>
+</html>

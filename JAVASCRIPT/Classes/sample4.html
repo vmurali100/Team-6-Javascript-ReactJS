@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class family{
+            constructor(mother,father,sister,brother){
+                this.mother=mother;
+                this.father=father;
+                this.sister=sister;
+                this.brother=brother;
+                this.location="chittoor"
+            }
+        }
+        // var family1=new family("manju","munaswamy","sujatha","hemanth")
+        // console.log(family1)
+
+        class familydetails extends family{
+            constructor(mother,father,sister,brother,grandfather,grandmother){
+                super(mother,father,sister,brother)
+                this.grandfather=grandfather;
+                this.grandmother=grandmother;
+            }
+        }
+
+
+        class familymembers extends familydetails{
+            constructor(mother,father,sister,brother,grandfather,grandmother,sonsdaughters){
+                super(mother,father,sister,brother,grandfather,grandmother)
+                this.sonsdaughters=sonsdaughters;
+            }
+        }
+        var fly=new familydetails("manju","munaswamy","sujatha","hemanth","doraswamy","indrani")
+        console.log('fly',fly)
+
+        var fly1=new familymembers("manju","munaswamy","sujatha","hemanth","doraswamy","indrani","harshith and lohith")
+        console.log('fly1',fly1)
+    </script>
+</body>
+</html>

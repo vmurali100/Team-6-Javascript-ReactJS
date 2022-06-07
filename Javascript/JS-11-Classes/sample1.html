@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+            constructor(fname,lname,email){
+               this.fname=fname
+               this.lname=lname
+               this.email=email
+               this.city="bangalore"
+               this.state="karnataka"
+            }
+        }
+
+        // var student1= new person ("snega","murugesan","snegam@.com")
+        // var student2= new person ("rohini","karupan","rohinik@.com")
+        // var student3= new person ("janane","RS","jananek@.com")
+        // var student4= new person ("suganya","PK","suganypk@.com")
+        // var student5= new person ("gomathi","MS","gomathim@.com")
+        // console.log(student1,student2,student3,student4,student5)
+
+        class employdetails extends person{
+            constructor(fname,lname,email,companyname,role,salary){
+                super(fname,lname,email)
+                this.companyname=companyname
+                this.role=role
+                this.salary=salary
+            }
+        }
+        var emp1=new employdetails("paradeepa","MS","deepa@.com","HGS","UL developer",70000)
+        console.log("emp1",emp1)
+
+        class seniremployers extends employdetails{
+            constructor(fname,lname,email,companyname,role,salary,experians,position){
+                super(fname,lname,email,companyname,role,salary)
+                this.experians=experians
+                this.position=position
+            }
+            
+        }
+       
+        var smp1=new seniremployers("sarasvathi","vellaiyan","sarasvathiv@.com","HGS","UI",70000,"2 years","director")
+        console.log("smp1",smp1)
+    </script>
+</body>
+</html>

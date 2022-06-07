@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+            constructor(name,derocter,hero){
+                this.name=name
+                this.derocter=derocter
+                this.hero=hero
+                this.songs="4"
+                this.language="tamil"
+                this.musicderocter="G. V. Prakash"
+            }
+        }
+        // var movei1=new person("darling ","Sam Anton","G. V. Prakash ")
+        // var movei2=new person("Thalaiva ","A. L. Vijay","Vijay")
+        // var movei3=new person("Sivappu Manjal Pachai","sasi","Siddharth")
+
+        // console.log(movei1,movei2,movei3)
+
+        class moveidetails extends person{
+            constructor(name,derocter,hero,hroine,comedian ){
+                super(name,derocter,hero)
+                this.hroine=hroine
+                this.comedian =comedian 
+            }
+            
+        }
+        // var movei1=new moveidetails("darling ","Sam Anton","G. V. Prakash ","Nikki Galrani")
+        // console.log(movei1)
+        class allmoveidtails extends moveidetails{
+            constructor(name,derocter,hero,hroine,comedian,butget,collection){
+                super(name,derocter,hero,hroine,comedian )
+                this.butget=butget
+                this.comedian=comedian
+            }
+        }
+        var movei1=new allmoveidtails("Thalaiva ","A. L. Vijay","Vijay","amalapal","santhanam","₹60 crore"," 7,32,09,437")
+        console.log(movei1)
+    </script>
+</body>
+</html>

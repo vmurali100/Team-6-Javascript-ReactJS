@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class book{
+            constructor(bookname,price,page){
+                this.bookname=bookname
+                this.price=price
+                this.page=page
+                this.author="Brian Weiss"
+            }
+        }
+
+        // var book1=new book("Many Lives, Many Masters","189 rs",224)
+        // var book2=new book("Through time into healing","400 rs",340)
+        // var book3=new book("Messages from the masters","300rs",300)
+        // console.log(book1,book2,book3)
+
+        class bookdetails extends book{
+            constructor(bookname,price,page,year,rating){
+                super(bookname,price,page)
+                this.year=year
+                this.rating=rating
+            }
+        }
+        // var book1=new bookdetails("Many Lives, Many Masters","189 rs",224,1988,5)
+        // console.log(book1)
+
+        class allbookdetails extends bookdetails{
+            constructor(bookname,price,page,year,rating,language,Genre){
+                super(bookname,price,page,year,rating)
+                this.language=language
+                this.Genre=Genre
+            }
+        }
+        var book1=new allbookdetails("Many Lives, Many Masters","189 rs",224,1988,5,"english","Biography")
+        console.log(book1)
+    </script>
+</body>
+</html>

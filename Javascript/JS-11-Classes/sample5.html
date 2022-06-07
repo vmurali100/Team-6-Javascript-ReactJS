@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class books {
+            constructor(bookname, price, page) {
+                this.bookname = bookname
+                this.price = price
+                this.page = page
+                this.Author = "Dale Carnegie"
+            }
+        }
+        //  var book1=new books("How to win friends and influence people","150rs",291)
+        //  var book2=new books("How to Stop Worrying and Start Living","250rs",300)
+        //  var book3=new books("The Quick and Easy Way to Effective Speaking","350rs",400)
+        //  console.log(book1,book2,book3)
+
+        class bookdetails extends books {
+            constructor(bookname, price, page, subject, published) {
+                super(bookname, price, page)
+                this.subject = subject
+                this.published = published
+            }
+        }
+        // var bdetails = new bookdetails("How to win friends and influence people", "150rs", 291, "Self-help", "October 1936")
+        // console.log(bdetails)
+
+        class allbookdetails extends bookdetails{
+            constructor(bookname, price, page, subject, published,weight,language){
+                super(bookname, price, page, subject, published)
+                this.weight=weight
+                this.language=language
+            }
+        }
+        var alldetails=new allbookdetails("How to win friends and influence people","150rs",291,"200g","english")
+        console.log(alldetails)
+    </script>
+</body>
+
+</html>

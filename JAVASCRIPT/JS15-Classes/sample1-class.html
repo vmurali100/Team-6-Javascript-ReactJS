@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person={//literal way of creating a object
+            fname:"Sai",
+            lname:"Kiran"
+        }
+
+        var person=new Object({fname:"Sai",lname:"Kiran"})//creating an object with bulit in method or object
+
+        function student (studentname){//creating object with constructor function
+            this.college="Vijayam",
+            this.place="Chittoor",            
+            this.studentname=studentname;
+            this.collegedetails = function(){
+                return this.college+""+this. studentname
+            }
+        }
+
+        class student {//creating an object with classes in ES6
+            constructor (firstrname,lastname,mail){
+                this.fname=firstrname;
+                this.lname=lastname;
+                this.email=mail;
+            }
+        }
+    </script>
+</body>
+</html>

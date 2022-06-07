@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class student{
+           constructor(fname,lname,email,dob){
+               this.fname=fname;
+               this.lname=lname;
+               this.email=email;
+               this.dob=dob;
+           }
+       }
+    //    var person1 = new student("sai","kiran","sai@gmail.com","26/07/2001")
+    //    var person2 = new student("ram","charan","ram@gmail.com","26/05/1990")
+    //    var person3 = new student("virat","kohli","vk@gmail.com","12/08/1992")
+    //    var person4 = new student("vijay","vj","vj@gmail.com","22/06/1981")
+    //    console.log(person1)
+    //    console.log(person2)
+    //    console.log(person3)
+    //    console.log(person4)
+
+       class studentDetails extends student{
+        constructor(fname,lname,email,dob,city,state,){
+            super(fname,lname,email,dob)
+            this.city=city;
+            this.state=state
+        }
+        
+       }
+
+       class collegedetails extends studentDetails{
+        constructor(fname,lname,email,dob,city,state,collegename,Group,){
+            super(fname,lname,email,dob,city,state,)
+            this.collegename=collegename;
+            this.Group=Group
+        }
+       }
+       var studetl1 = new studentDetails("sai","kiran","sai@gmail.com","26/07/2001","Chittoor","AndraPradesh")
+    //    console.log("studetl1",studetl1)
+
+         var clgdetil1 = new collegedetails ("Ram","charan","RC@gmail.com","26/07/2001","chittoor","Andrapradesh","PVKNGovtCollege","B.Com")
+          console.log(clgdetil1)
+   </script>
+</body>
+</html>

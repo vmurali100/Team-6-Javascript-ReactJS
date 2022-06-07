@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <script>
+           class student{
+               constructor(fname,lname){
+                   this.fname=fname;
+                   this.lname=lname
+               }
+           }
+        //    var person1 = new student("Joseph","Vijay")
+        //    console.log(person1)
+
+           class newstudent extends  student{
+               constructor(fname,lname,Addno,roll){
+                   super(fname,lname)
+                   this.Addno=Addno;
+                   this.roll=roll
+               }
+           }
+
+           class seniors extends newstudent{
+               constructor(fname,lname,Addno,roll,phone,collegename,Place){
+                   super(fname,lname,Addno,roll)
+                   this.phone=phone;
+                   this.collegename=collegename;
+                   this.Place=Place
+               }
+           }
+
+        //    var student2 = new newstudent("Joseph","Vijay",7620,26)
+        //    console.log("student2",student2)
+
+        var student3=  new seniors("Joseph","Vijay",7620,26,6301400247,"Sitmas","Chittoor")
+        console.log(student3)
+       </script>
+</body>
+</html>

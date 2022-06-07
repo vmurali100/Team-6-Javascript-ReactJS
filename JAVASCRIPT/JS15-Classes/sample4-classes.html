@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           class person{
+               constructor(fname,lname){
+                   this.fname=fname;
+                   this.lname=lname;
+               }
+           }
+
+        //    var person1 = new person("Jayasankar","SaiKiran")
+        //    console.log(person1)
+
+           class CustmoerDetails extends person{
+               constructor(fname,lname,email,phone){
+                   super(fname,lname)
+                   this.email=email;
+                   this.phone=phone
+               }
+           }
+
+           class RegularCustmoer extends CustmoerDetails {
+               constructor(fname,lname,email,phone,city,state,town){
+                   super(fname,lname,email,phone)
+                   this.city=city;
+                   this.state=state;
+                   this.town=town
+               }
+           }
+
+        //    var cusdt1 = new CustmoerDetails("Sai","Kiran","sai@gmail.com",6301400247)
+        //    console.log("cusdt1",cusdt1)
+
+           var reguCus1 = new RegularCustmoer("SAI","KIRAN","Sai@gmail.com",6301400247,"Chittoor","AndraPradesh","Chittoor")
+        console.log(reguCus1)
+
+    </script>
+</body>
+</html>

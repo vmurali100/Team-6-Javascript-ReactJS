@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+      class bike{
+          constructor(name,brand){
+              this.name=name;
+              this.brand=brand
+          }
+      }
+      var bike1=new bike("activa","honda")
+      console.log(bike1)
+
+      class moreBikedetails extends bike{
+          constructor(name,brand,model,mileage){
+              super(name,brand)
+              this.model=model
+              this.mileage=mileage
+          }
+      }
+      var detbike=new moreBikedetails("activa","honda",2021,"100kmph")
+      console.log(detbike)
+
+      
+  </script>  
+</body>
+</html>

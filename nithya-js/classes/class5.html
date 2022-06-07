@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       class employees {
+           constructor(fname,lname,age){
+               this.fname=fname;
+               this.lname=lname;
+               this.age=age
+           }
+       }
+       var employee1=new employees("niraja","cc","25")
+       console.log(employee1)
+
+       class employeedetails extends employees{
+           constructor (fname,lname,age,salary,experience){
+               super(fname,lname,age)
+               this.salary=salary;
+               this.experience=experience;
+           }
+       }
+       class sremployee extends employeedetails{
+           constructor(fname,lname,age,salary,experience,position){
+               super(fname,lname,age,salary,experience)
+               this.position=position;
+           }
+       }
+       var emp1=new employeedetails("mani","kanta","31","30000","4")
+       var sremp=new sremployee("giri","gf","40","35000","4","surveare")
+       console.log('emp1',emp1)
+       console.log('sremp',sremp)
+       
+   </script> 
+</body>
+</html>

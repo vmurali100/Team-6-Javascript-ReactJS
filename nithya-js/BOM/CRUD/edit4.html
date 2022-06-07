@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">id</label>
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">email</label>
+                    <input type="text" class="form-control" id="email"  aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">password</label>
+                    <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+                  </div>
+                  
+                    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" hidden>
+                  
+                  <button type="button" class="btn btn-primary" onclick="updatefiltext()">update</button>
+                </form>
+            </div>
+        </div>
+        <form>
+            <script>
+                var allfiltext=JSON.parse(localStorage.getItem("allfiltext"))
+                var urladdress=window.location.href;
+                var id =urladdress.substr(urladdress.lastIndexOf("?")+1)
+
+                for(a in allfiltext[id]){
+                   
+                    document.getElementById(a).value=allfiltext[id][a]
+                }
+                console.log(allfiltext[id])
+                console.log(id)
+
+                function updatefiltext(){
+                    var filltext={
+                        id:"",
+                        email:"",
+                        username:"",
+                        password:""
+                    }
+                    for(a in filltext){
+                        filltext[a]=document.getElementById(a).value
+                    }
+                   allfiltext[id]=filltext;
+                   localStorage.setItem("allfiltext",JSON.stringify(allfiltext))
+
+                    window.location.href="index4.html"
+                    console.log(filltext)
+
+                }
+                
+               
+            </script>
+
+    </div>
+    
+</body>
+</html>

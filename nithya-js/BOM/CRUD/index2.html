@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="conntainer">
+        <table class="table">
+            <thead>
+              <tr>
+                <th >#</th>
+                <th>albumid</th>
+                <th >title</th>
+                <th >url</th>
+                <th>thumbnailUrl</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+    </div>
+    <script>
+        var allphotos=JSON.parse(localStorage.getItem("allphotos"))
+        if(allphotos==null){
+            getallphotosfromserver()
+        }else{
+            displayphotos(allphotos)
+        }
+        function getallphotosfromserver(){
+            var getdata= new XMLHttpRequest();
+
+            getdata.onreadystatechange=function(){
+                if(getdata.status ==200 && getdata.readyState ==4){
+
+                    allphotos=JSON.parse(getdata.response)
+                    localStorage.setItem("allphotos",JSON.stringify(allphotos))
+                    console.log("allphotos",allphotos)
+                   
+                    displayphotos(allphotos)
+                }
+            }
+            getdata.open("GET","https://jsonplaceholder.typicode.com/photos")
+            getdata.send()
+        }
+        getallphotosfromserver()
+        function displayphotos(allphotos){
+            allphotos.forEach((photos,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in photos){
+                   if(a !== "url" && a !== "thumbnailUrl"){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=photos[a]
+                    mytr.appendChild(mytd)
+                   }else{
+                       var mytd=document.createElement("td")
+                       var myimg=document.createElement("img")
+                       myimg.setAttribute("src",photos[a])
+                       mytd.appendChild(myimg)
+                       mytr.appendChild(mytd)
+                   }
+                   
+               }
+
+                var edittd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick","edituser("+i+")")
+                editbtn.setAttribute("class","btn btn-warning")
+                editbtn.innerHTML="Edit";
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deletephotos("+i+")")
+                deletebtn.setAttribute("class","btn btn-danger")
+                deletebtn.innerHTML="Delete";
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+                document.querySelector("tbody").appendChild(mytr)
+            })
+        }
+
+        function edituser(i){
+        window.location.href="edit2.html?"+i
+        }
+        function deletephotos(i){
+
+        }
+    </script>
+</body>
+</html>

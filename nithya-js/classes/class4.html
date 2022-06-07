@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class student{
+            constructor(fname,lname,age){
+                this.fname=fname;
+                this.lname=lname;
+                this.age=age;
+            }
+        }
+        var student1=new student("jeeva","sj","21")
+        var student2=new student("sandhya","sr","21")
+        console.log(student1)
+        console.log(student2)
+
+
+        class studentdetails extends student{
+            constructor(fname,lname,age,year,group){
+                super(fname,lname,age)
+                this.year=year;
+                this.group=group;
+
+            }
+        }
+
+        class passedoutstu extends studentdetails{
+            constructor(fname,lname,age,year,group,grade,yearofpassed){
+                super(fname,lname,age,year,group)
+                this.grade=grade;
+                this.yearofpassed;
+            }
+        }
+        var stu1= new studentdetails("joshna","EE","21","3rd year","B.com")
+        var srstu1=new passedoutstu("pavan","sp","25","completed","BSC","A","2019")
+        console.log('stu1',stu1)
+        console.log('srstu1',srstu1)
+    </script>
+</body>
+</html>

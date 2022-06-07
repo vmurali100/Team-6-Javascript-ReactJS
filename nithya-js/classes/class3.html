@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+          constructor(fname,lname,age){
+              this.fname=fname;
+              this.lname=lname;
+              this.age=age;
+              this.state="AP";
+          }
+        }
+        var person1=new person("mani","kanta","30")
+        console.log(person1)
+
+        class persondetails extends person{
+            constructor(fname,lname,age,city,district){
+            super(fname,lname,age)
+                this.city=city;
+                this.district=district;
+            }
+        
+        }
+
+        class srperson extends persondetails{
+            constructor(fname,lname,age,city,district,gender){
+                super(fname,lname,age,city,district)
+                this.gender=gender;
+            }
+        }
+        var srper=new srperson("dharani","naveen","35","yadamari","vellore","female")
+        var per1=new persondetails("latha","babu","42","kasiralla","chittoor")
+        console.log('per1',per1)
+        console.log('srper',srper)
+    </script>
+</body>
+</html>

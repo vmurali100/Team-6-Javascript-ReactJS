@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var person={
+        //     fname:"nithya",
+        //     lname:"reddy",
+        //     email:"nithya@gmail.com",
+        // }
+
+        class person{
+            constructor(fname,lname,email){
+                this.fname=fname;
+                this.lname=lname;
+                this.email=email;
+                this.city="bangalore";
+                this.state="karnataka";
+            }
+        }
+
+        var student1= new person("nithya","reddy","nith@gmail.com")
+        var student2= new person("sathya","gh","sath@gmail.com")
+        var student3= new person("hari","rr","hari@gmail.com")
+        var student4= new person("ram","ss","ram@gmail.com")
+        console.log(student1)
+        console.log(student2)
+        console.log(student3)
+        console.log(student4)
+
+
+        class employeedetails extends person{
+            constructor(fname,lname,email,companyname,role,salary){
+              super(fname,lname,email)//super means parant class details
+              this.companyname=companyname;
+              this.role=role;
+              this.salary=salary;
+            }
+        }
+
+        class senioremployees extends employeedetails{
+            constructor(fname,lname,email,companyname,role,salary,experience,position){
+                super(fname,lname,email,companyname,role,salary)
+                this.experience=experience;
+                this.position=position;
+            }
+        }
+        var emp1=new employeedetails("chandhini","priya","priya@gmail","hgs","receptionist","20000")
+        console.log('emp1',emp1)
+        
+        var sremp=new senioremployees("sai","prakesh","sai@gmail.com","tcs","ui developer","30000","5","manager")
+        console.log('sremp',sremp)
+    </script>
+</body>
+</html>

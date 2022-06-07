@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <th>#</th>
+                <th>email</th>
+                <th>username</th>
+                <th>password</th>
+                
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        var allfiltext=JSON.parse(localStorage.getItem("allfiltext"))
+        if(allfiltext==null){
+            getdatafromfiltext()
+        }else{
+            displayfiltext(allfiltext)
+        }
+        function getdatafromfiltext(){
+            var getfiltext=new XMLHttpRequest();
+            getfiltext.onreadystatechange=function(){
+                if(getfiltext.status ==200 && getfiltext.readyState ==4){
+                    allfiltext=JSON.parse(getfiltext.response)
+                    
+                    localStorage.setItem("allfiltext",JSON.stringify(allfiltext))
+                    console.log(" allfiltext",allfiltext)
+                    displayfiltext(allfiltext)
+                }
+            }
+            getfiltext.open("GET","http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true")
+            getfiltext.send()
+        }
+        getdatafromfiltext()
+        function displayfiltext(allfiltext){
+            allfiltext.forEach(function(filtext,i) {
+                var mytr=document.createElement("tr")
+                for( a in filtext){
+                    var mytd =document.createElement("td")
+                    mytd.innerHTML=filtext[a]
+                    mytr.appendChild(mytd)
+                }
+
+                var edittd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick","editfiltext("+i+")")
+                editbtn.setAttribute("class","btn btn-warning")
+                editbtn.innerHTML="Edit";
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deletefiltext("+i+")")
+                deletebtn.setAttribute("class","btn btn-danger")
+                deletebtn.innerHTML="Delete";
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+
+                document.querySelector("tbody").appendChild(mytr)
+                
+            });
+        }
+        function editfiltext(i){
+            window.location.href="edit4.html?"+1
+        }
+        function deletefiltext(i){
+
+        }
+    </script>
+</body>
+</html>

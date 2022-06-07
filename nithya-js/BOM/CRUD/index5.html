@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <th>#</th>
+                <th>postid</th>
+                <th>name</th>
+                <th>email</th>
+                <th>body</th>
+                
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        var allcomments=JSON.parse(localStorage.getItem("allcomments"))
+        if(allcomments==null){
+            getdatafromcomments()
+        }else{
+            displaycomments(allcomments)
+        }
+        function getdatafromcomments(){
+            var getcomment=new XMLHttpRequest();
+            getcomment.onreadystatechange=function(){
+                if(getcomment.status ==200 && getcomment.readyState ==4){
+                    allcomments=JSON.parse(getcomment.response)
+                    localStorage.setItem("allcomments",JSON.stringify(allcomments))
+                    console.log("allcomments",allcomments)
+                    displaycomments(allcomments)
+                }
+            }
+            getcomment.open("GET","https://jsonplaceholder.typicode.com/comments")
+            getcomment.send()
+        }
+        getdatafromcomments()
+        function displaycomments(allcomments){
+            allcomments.forEach(function(user,i)  {
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                }
+                var edittd=document.createElement("td")
+                var editbtn=document.createElement("button")
+                editbtn.setAttribute("onclick","edituser("+i+")")
+                editbtn.setAttribute("class","btn btn-warning")
+                editbtn.innerHTML="Edit";
+                edittd.appendChild(editbtn)
+                mytr.appendChild(edittd)
+
+                var deletetd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deleteuser("+i+")")
+                deletebtn.setAttribute("class","btn btn-danger")
+                deletebtn.innerHTML="Delete";
+                deletetd.appendChild(deletebtn)
+                mytr.appendChild(deletetd)
+
+                document.querySelector("tbody").appendChild(mytr)
+            });
+        }
+        function edituser(i){
+            window.location.href="edit5.html?"+1
+        }
+        function deleteuser(i){
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class phone{
+            constructor(name,brand,colour){
+                this.name=name
+                this.brand=brand
+                this.colour=colour
+            }
+        }
+        var mob1=new phone("m13","samsung","white")
+        var mob2=new phone("12 pro max","iphone","black")
+        console.log(mob1,mob2)
+
+        class phone2 extends phone{
+            constructor(name,brand,colour,type,os){
+                super(name,brand,colour)
+                this.type=type
+                this.colour=colour
+            }
+        }
+        var mobile=new phone2("12 pro max","iphone","black","android","qualcom")
+        console.log(mobile)
+    </script>
+</body>
+</html>

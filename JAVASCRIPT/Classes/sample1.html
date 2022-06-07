@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person = {
+            fname:"munaswamy",
+            lname:"padmaja"
+        }
+       
+
+        var person=new Object({fname:"munaswamy",lname:"padmaja"})
+        
+        function Student(studentName){
+            this.course="UI";
+            this.instructor="Murali sir";
+            this.studentName=studentName;
+            this.courseDetails=function(){
+                return this.course+""+this.studentName
+            }
+        }
+    
+
+        class Student{
+            constructor(firstname,lastname,mail){
+                this.fname=firstname;
+                this.lname=lastname;
+                this.email=mail;
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>

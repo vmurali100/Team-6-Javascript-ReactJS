@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+            constructor(name,fathername,mothername,email){
+                this.name=name;
+                this.fathername=fathername;
+                this.mothername=mothername;
+                this.email=email;
+                this.city="chittoor";
+                this.state="andhrapradesh"
+            }
+        }
+        // var student1=new person("padhu","DMS","Manju","padhu@gmail.com")
+        // var student2=new person("neeraja","chenga","ganga","neeraja@gmail.com")
+        // var student3=new person("sandhya","eswar","pushpa","sandhya@gmail.com")
+        // var student4=new person("sneha","bhaskar","rama","sneha@gmail.com")
+        // var student5=new person("geethu","naga","yemuna","geethu@gmail.com")
+        
+        // console.log(student1)
+        // console.log(student2)
+        // console.log(student3)
+        // console.log(student4)
+        // console.log(student5)
+
+        class employeedetails extends person{
+            constructor(name,fathername,mothername,email,companyname,role,salary){
+                super(name,fathername,mothername,email)
+                this.companyname=companyname;
+                this.role=role;
+                this.salary=salary;      
+            }
+        }
+
+        class senioremployers extends employeedetails{
+            constructor(name,fathername,mothername,email,companyname,role,salary,experience,position){
+                super(name,fathername,mothername,email,companyname,role,salary);
+                this.experience=experience;
+                this.position=position
+            }
+                
+        }
+
+        var emp1=new employeedetails("geethu","naga","yemuna","geethu@gmail.com","IBM","UI",40000)
+        console.log('emp1',emp1)
+
+        var sremp1=new senioremployers("padhu","DMS","Manju","padhu@gmail.com","HCL","frontend",100000,15,"director")
+        console.log('sremp1',sremp1)
+    </script>
+</body>
+</html>

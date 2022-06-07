@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class bikes{
+            constructor(scooty,activa,herohonda){
+                this.scooty=scooty;
+                this.activa=activa;
+                this.herohonda=herohonda;
+                this.location="BGR"
+            }
+        }
+        var bikes1=new bikes("pept","honda","spender")
+        console.log(bikes1)
+
+        class bikedetails extends bikes{
+            constructor(scooty,activa,herohonda,model){
+                super(scooty,activa,herohonda)
+                this.model=model;
+            }
+        }
+
+
+        class bikeuser extends bikedetails{
+            constructor(scooty,activa,herohonda,model,year){
+                super(scooty,activa,herohonda,model)
+                this.year=year;
+            }
+        }
+        var bikes1=new bikedetails("pept","honda","spender","APS2022")
+        console.log('bikes1',bikes1)
+
+        var bikes2=new bikeuser("pept","honda","spender","APS2022",2022)
+        console.log('bikes2',bikes2)
+    </script>
+</body>
+</html>

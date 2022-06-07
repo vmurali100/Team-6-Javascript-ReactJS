@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var person ={
+        //     fname: "Padhma",
+        //     lname: "Sambhasiva Rao",
+        //     email: "vidyachowdary7@gmail.com"
+        // }
+        class person{
+            constructor(fname,lname,email){
+                this.fname = fname;
+                this.lname = lname;
+                this.email = email;
+                this.city = "Hyderabad";
+                this.state = "Telangana";
+            }
+        }
+        // var student1 = new person("Lakshmi","padhma","vidyachowdary7@gamil.com")
+        // var student2 = new person("Vidya","Vasu","thammineedis@gamil.com")
+        // var student3 = new person("Padhma","NTR","charanntr@gamil.com")
+        // var student4 = new person("Varun","Sambhasiva Rao","shiva@gamil.com")
+        // var student5 = new person("Ram","Sambhasiva Rao","lashman@gamil.com")
+        // console.log(student1)
+        // console.log(student2)
+        // console.log(student3)
+        // console.log(student4)
+        // console.log(student5)
+
+        class EmployeeDatils extends person{
+            constructor (fname,lname,email,companyName,role,salary){
+                super(fname,lname,email)
+                this.companyName = companyName;
+                this.role = role;
+                this.salary = salary;
+            }     
+        }
+        class seniorEmployers extends EmployeeDatils{
+            constructor(fname,lname,email,companyName,role,salary,experience,position){
+                super(fname,lname,email,companyName,role,salary)
+                this.experience = experience;
+                this.position = position;
+            }
+        }
+
+        var emp1 = new EmployeeDatils("Vidya","Padma","vidyachowdary7@gamil.com","HPE","React JS",40000)
+        //console.log("emp1",emp1)
+
+        var sremp1 = new seniorEmployers("Vidya","Sambhasiva Rao","thammineedis@gmail.com","IBM","UI",60000,5,"Director")
+        console.log(sremp1)
+    </script>
+</body>
+</html>

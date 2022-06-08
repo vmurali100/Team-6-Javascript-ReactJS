@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var friends = {
+        //     fname: "baby",
+        //     lname: "priya",
+        //     Email: "babypriya@gmail.com"
+        // }
+
+        class person {
+            constructor(fname, lname, Email) {
+                this.fname=fname;
+                this.lname=lname;
+                this.Email=Email
+            }
+        }
+
+        var colleague1 = new person("swathi", "JJ", "swathiJJ@gmail.com");
+        var colleague2 = new person("pallavi", "SS","pallaviSS@gmail.com" );
+        var colleague3 = new person("pushpa", "MM","pushpaMM@gmail.com" );
+
+        console.log(colleague1)
+        console.log(colleague2)
+        console.log(colleague3)
+
+        class OfficeDetails extends person{
+            constructor(fname, lname, Email,OfficeName,Employeeid,Departments){
+                super(fname, lname, Email)
+                this.OfficeName=OfficeName;
+                this.Employeeid=Employeeid;
+                this.Departments=Departments
+            }
+            
+        }
+
+        class CompanyName extends OfficeDetails{
+            constructor(fname, lname, Email,OfficeName,Employeeid,Departments,position,Strength){
+                super(fname, lname, Email,OfficeName,Employeeid,Departments);
+                this.position=position;
+                this.Strength=Strength
+            }
+        
+        }
+        
+
+        var CMP1=new OfficeDetails("Manoj", "Rai","ManojRai@gmail.com","infosys","123","backend")
+        console.log("CMP1",CMP1)
+
+        var CMP2=new CompanyName("Naveen","Roy","bhaskarmanoj@gmail.com","infosys","123","backend","senior","5500")
+        console.log("CMP2",CMP2)
+
+
+
+    </script>
+
+</body>
+
+</html>

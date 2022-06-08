@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var friends = {
+        //     fname: "naveen",
+        //     lname: "kumar",
+        //     Email: "naveenkumar@gmail.com"
+        // }
+
+        class person {
+            constructor(fname, lname, Email) {
+                this.fname=fname;
+                this.lname=lname;
+                this.Email=Email
+            }
+        }
+
+        var friends1 = new person("chinna", "ram", "chinnaram@gmail.com");
+        var friends2 = new person("naveen", "mansoor","naveenmansoor@gmail.com" );
+        var friends3 = new person("bhaskar", "manoj","bhaskarmanoj@gmail.com" );
+
+        console.log(friends1)
+        console.log(friends2)
+        console.log(friends3)
+
+        class collegeDetails extends person{
+            constructor(fname, lname, Email,collegeName,studentsid,groups){
+                super(fname, lname, Email)
+                this.collegeName=collegeName;
+                this.studentsid=studentsid;
+                this.groups=groups
+            }
+            
+        }
+
+        class TopColleges extends collegeDetails{
+            constructor(fname, lname, Email,CollegeName,Studentsid,Groups,Rank,Strength){
+                super(fname, lname, Email,CollegeName,Studentsid,Groups);
+                this.Rank=Rank;
+                this.Strength=Strength
+            }
+        
+        }
+        
+
+        var clg1=new collegeDetails("bhaskar", "manoj","bhaskarmanoj@gmail.com","pvkn","123","MBA")
+        // console.log("clg1",clg1)
+
+        var TPC1=new TopColleges("bhaskar","manoj","bhaskarmanoj@gmail.com","pvkn","123","MBA","456","2500")
+        console.log("TPC1",TPC1)
+
+
+
+    </script>
+
+</body>
+
+</html>

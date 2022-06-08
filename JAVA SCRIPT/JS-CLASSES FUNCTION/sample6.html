@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var person = {
+        //     fname: "sunil",
+        //     lname: "kumar",
+        //     Email: "sunilkumar@gmail.com"
+        // }
+
+        class person {
+            constructor(Fname, lname, Email) {
+                this.Fname = Fname,
+                    this.lname = lname,
+                    this.Email = Email
+            }
+        }
+
+        // var staff1 = new person("swarna", "latha", "swarnalatha@gmail.com")
+        // var staff2 = new person("vineesha", "reddy", "vineeshareddy@gmail.com")
+        // var staff3 = new person("gowthami", "MM", "gowthami@gmail.com")
+        // var staff4 = new person("sridevi", "DD", "srideviDD@gmail.com")
+        // var staff5 = new person("baby", "BB", "babyBB@gmail.com")
+
+        // console.log(staff1)
+        // console.log(staff2)
+        // console.log(staff3)
+        // console.log(staff4)
+        // console.log(staff5)
+
+        class EmployeeDetails extends person {
+            constructor(Fname, lname, Email,CompanyName, Role, Salary) {
+                super(Fname, lname, Email,);
+                this.CompanyName = CompanyName;
+                this.Role = Role;
+                this.Salary = Salary;
+            }
+        }
+
+        class SeniorEmployee extends EmployeeDetails{
+            constructor(Fname, lname, Email,CompanyName, Role, Salary,Experience,position){
+                super(Fname, lname, Email,CompanyName, Role, Salary);
+                this.Experience=Experience;
+                this.position=position
+            }
+        }
+
+        var emp1=new EmployeeDetails("naveen","Nk","naveenkumar@gmail.com","TeamMember",75000)
+        console.log("emp1",emp1)
+
+        var SRemp1=new SeniorEmployee("naveen","kumar","naveenkumar@gmail.com","infosys","TeamMember",125000,15,"manager")
+        console.log(SRemp1)
+
+
+
+    </script>
+</body>
+
+</html>

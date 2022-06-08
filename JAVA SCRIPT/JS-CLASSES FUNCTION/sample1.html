@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // literal way off creating object,
+
+        var person={ 
+            fname:"naveen",
+            lname:"kumar"
+        }
+        // creating an object with built in object
+
+        var person=new Object({fname:"naveen",lname:"kumar"})
+
+        // creating a object with constructor function
+
+        function student (studentname){ 
+            this.course= "UI Development";
+            this.instructer="naveen";
+            this.studentname=studentname;
+            this.coursedetails=function(){
+                return this.course+""+this.studentname
+            }
+        }
+
+        // creating an Object with classes ES6
+
+        class student{
+            constructor(FirstName,LastName,Mail){
+                this.fname=FirstName;
+                this.lname=LastName;
+                this.Email=Email
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

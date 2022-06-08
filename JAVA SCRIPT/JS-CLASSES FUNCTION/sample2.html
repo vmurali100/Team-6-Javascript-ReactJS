@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var person = {
+        //     fname: "naveen",
+        //     lname: "kumar",
+        //     Email: "naveenkumar@gmail.com"
+        // }
+
+        class person {
+            constructor(Fname, lname, Email) {
+                this.Fname = Fname,
+                    this.lname = lname,
+                    this.Email = Email
+            }
+        }
+
+        // var student1 = new person("naveen", "kumar", "naveenkumar@gmail.com")
+        // var student2 = new person("raghu", "varma", "raghuvarma@gmail.com")
+        // var student3 = new person("venkat", "pandi", "venkatpandi@gmail.com")
+        // var student4 = new person("chinna", "raj", "chinnaraj@gmail.com")
+        // var student5 = new person("baby", "priya", "babypriya@gmail.com")
+
+        // console.log(student1)
+        // console.log(student2)
+        // console.log(student3)
+        // console.log(student4)
+        // console.log(student5)
+
+        class EmployeeDetails extends person {
+            constructor(Fname, lname, Email,CompanyName, Role, Salary) {
+                super(Fname, lname, Email,);
+                this.CompanyName = CompanyName;
+                this.Role = Role;
+                this.Salary = Salary;
+            }
+        }
+
+        class SeniorEmployee extends EmployeeDetails{
+            constructor(Fname, lname, Email,CompanyName, Role, Salary,Experience,position){
+                super(Fname, lname, Email,CompanyName, Role, Salary);
+                this.Experience=Experience;
+                this.position=position
+            }
+        }
+
+        var emp1=new EmployeeDetails("naveen","Nk","naveenkumar@gmail.com","UI Developer",50000)
+        console.log("emp1",emp1)
+
+        var SRemp1=new SeniorEmployee("naveen","kumar","naveenkumar@gmail.com","infosys","UI",150000,18,"CEO")
+        console.log(SRemp1)
+
+
+
+    </script>
+</body>
+
+</html>

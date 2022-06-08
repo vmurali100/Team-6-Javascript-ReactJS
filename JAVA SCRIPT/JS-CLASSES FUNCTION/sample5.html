@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var friends = {
+        //     fname: "venkat",
+        //     lname: "prabhu",
+        //     Email: "venkatprabhu@gmail.com"
+        // }
+
+        class person {
+            constructor(fname, lname, Email) {
+                this.fname = fname;
+                this.lname = lname;
+                this.Email = Email
+            }
+        }
+
+        var relative1 = new person("sweety", "BB", "sweety@gmail.com");
+        var relative2 = new person("geetha", "PP", "geetha@gmail.com");
+        var relative3 = new person("vandhana", "KKs", "vandhana@gmail.com");
+
+        console.log(relative1)
+        console.log(relative2)
+        console.log(relative3)
+
+        class RelativeDetails extends person {
+            constructor(fname, lname, Email, RelativeName, placess, city) {
+                super(fname, lname, Email)
+                this.RelativeName = RelativeName;
+                this.placess = placess;
+                this.city = city
+            }
+
+        }
+
+        class FamilyName extends person {
+            constructor(fname, lname, Email, RelativeName, placess, city, members, familys) {
+                super(fname, lname, Email,RelativeName, placess,city);
+                this.members = members;
+                this.familys = familys
+            }
+        }
+        var RTV1 = new RelativeDetails("sweety","BB", "sweety@gmail.com", "Naveen","ap", "ctr", )
+        console.log("RTV1", RTV1)
+
+        var FMLY2 = new FamilyName ("sweety","BB", "sweety@gmail.com", "naveen", "ap", "ctr", "100", "nuclear")
+        console.log("FMLY2", FMLY2)
+
+
+
+    </script>
+
+</body>
+
+</html>

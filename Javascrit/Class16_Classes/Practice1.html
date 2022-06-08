@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor (FirstName,LastName,Place) {
+                this.FirstName = FirstName;
+                this.LastName = LastName;
+                this.Place = Place;
+                this.Course = "UI Developer"
+
+            }
+        }
+
+        // var Person1 = new Person("Mansur","Vali","Kurnool");
+        // var Person2 = new Person("Naveen","Kumar","Chittoor");
+        // var Person3 = new Person("Santhosh","Kumar","Chittoor");
+        // var Person4 = new Person("Sai","Sundar","Tirupathi");
+        // var Person5 = new Person("Lokesh","Kumar","Bangalore");
+
+        // console.log(Person1)
+        // console.log(Person2)
+        // console.log(Person3)
+        // console.log(Person4)
+        // console.log(Person5)
+
+        class PersonDetails extends Person {
+            constructor(FirstName,LastName,Place,CompanyName,Role,Salary){
+                super(FirstName,LastName,Place);
+                this.CompanyName = CompanyName;
+                this.Role = Role;
+                this.Salary = Salary;
+
+            }
+             
+        }
+
+        class SeniorPersons extends PersonDetails {
+            constructor(FirstName,LastName,Place,CompanyName,Role,Salary,Experience,Position){
+                super(FirstName,LastName,Place,CompanyName,Role,Salary);
+                this.Experience = Experience;
+                this.Position = Position;
+            }
+        }
+        // var Prs1 = new PersonDetails("Lokesh","Kumar","Bangalore","TCS","UI Developer",60000)
+        // console.log("Prs1",Prs1)
+
+        var Prs1 = new SeniorPersons("Lokesh","Kumar","Bangalore","TCS","UI Developer",60000,"12 Years","FullStack Developer")
+        console.log("Prs1",Prs1)
+        
+    </script>
+</body>
+</html>

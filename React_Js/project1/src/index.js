@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Naveen } from './functional component/Naveen';
+import { Neeraja } from './component/Neeraja';
+import { Padhu } from './component/Padhu';
+import { Sandhya } from './component/Sandhya';
+// import { Naveen } from './functional component/Naveen';
+// import { Nithya } from './functional component/Nithya';
 // import { Akhalya } from './functional component/Akhalya';
 // import { Sai } from './functional component/Sai';
 // import { Deepthi } from './functional component/Deepthi';
@@ -15,7 +19,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Naveen/>
+    <Neeraja />
   </React.StrictMode>
 );
 

@@ -27,7 +27,7 @@ import { Sivaharia } from './Sivaharia';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<Orange></Orange>
+<App></App>
   </React.StrictMode>
 );
 

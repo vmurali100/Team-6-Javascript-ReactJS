@@ -3,6 +3,8 @@ import App from "../App";
 import { Class1 } from "../class component/Class1";
 import { Class2 } from "../class component/Class2";
 import { Class3 } from "../class component/Class3";
+import { Class4 } from "../class component/Class4";
+import { Class5 } from "../class component/Class5";
 import { Sample1 } from "./Sample1";
 import { Sample2 } from "./Sample2";
 import { Sample3 } from "./Sample3";
@@ -29,5 +31,7 @@ export function Deepthi() {
         <Class1></Class1>
         <Class2></Class2>
         <Class3></Class3>
+        <Class4></Class4>
+        <Class5></Class5>
     </div>
 }

@@ -8,8 +8,13 @@ import { Sample1FunComp } from './FunctionalComps/Sample1FunComp';
 import { Sample1Comp } from './Components/Sample1Comp';
 import { Sample2Comp } from './Components/Sample2Comp';
 import { Sample3Comp } from './Components/Sample3Comp';
-import { Sample4FunCompe } from './FunctionalComps/Sample4FunComp';
+import { Sample4FunComp } from './FunctionalComps/Sample4FunComp';
 import { Sample5FunComp } from './FunctionalComps/Sample5FunComp';
+import { Sample6FunComp } from './FunctionalComps/Sample6FunComp';
+import { Sample7FunComp } from './FunctionalComps/Sample7FunComp';
+import { Sample10FunComp } from './FunctionalComps/Sample10FunComp';
+import { Sample8FunComp } from './FunctionalComps/sample8FunComp';
+import { Sample9FunComp } from './FunctionalComps/Sample9FunComp';
 
 function App() {
   return (
@@ -19,8 +24,13 @@ function App() {
       <Sample1FunComp></Sample1FunComp>
       <Sample2FunComp></Sample2FunComp>
       <Sample3FunComp></Sample3FunComp>
-      <Sample4FunCompe></Sample4FunCompe>
+      <Sample4FunComp></Sample4FunComp>
       <Sample5FunComp></Sample5FunComp>
+      <Sample6FunComp></Sample6FunComp>
+      <Sample7FunComp></Sample7FunComp>
+      <Sample8FunComp></Sample8FunComp>
+      <Sample9FunComp></Sample9FunComp>
+      <Sample10FunComp></Sample10FunComp>
       <Sample1Comp></Sample1Comp>
       <Sample2Comp></Sample2Comp>
       <Sample3Comp></Sample3Comp>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const Sample4FunComp = () =>{
+export const Sample9FunComp = () =>{
 
     const [mycity, setmyCity]=useState("Hyderabad")
     const [myState, setmyState]=useState({

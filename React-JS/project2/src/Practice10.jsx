@@ -8,7 +8,7 @@ export class Practice10 extends Component{
         return (
             <div className="Am">
                 <h1>Andhrapradesh</h1>
-                <img src="https://newsmeter.in/wp-content/uploads/2019/12/andhrapradesh-district-map.jpg" alt="" />
+                <img src="./Images/Map.png" alt="" />
                 <ul><span>District's Names:</span>
                     <li>Kurnool</li>
                     <li>Anantapur</li>

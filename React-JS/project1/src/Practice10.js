@@ -1,7 +1,7 @@
 export function Practice10() {
     return (
         <div className="AMV2">
-        <img src="https://tse1.mm.bing.net/th?id=OIP.Tq1xcWlw4wbnkKeu_zon9AHaCj&pid=Api&P=0&w=455&h=156" alt=""></img>
+        <img src="./Images/th.jpg" alt=""></img>
         <h2>Vegetables:</h2>
         <ul>
             <li>Tomato</li>

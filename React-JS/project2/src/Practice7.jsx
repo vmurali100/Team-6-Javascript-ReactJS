@@ -8,7 +8,7 @@ export class Practice7 extends Component {
         return (
             <div className="A">
             <h1>Striped Men Round Neck Blue, Yellow T-Shirt  (Pack of 2)</h1>
-            <img src="https://rukminim1.flixcart.com/image/880/1056/l3q7jww0/t-shirt/4/v/s/s-ts1-vebnor-original-images23whtzvy52.jpeg?q=50" alt="" />
+            <img src="./Images/T-Shirts.png" alt="" />
             <ul>
                 <li>Type: Round Neck</li>
                 <li>Sleeve: Half Sleeve</li>

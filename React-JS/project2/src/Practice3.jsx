@@ -5,6 +5,6 @@ export class Practice3 extends Component{
         super()
     }
     render(){
-        return <img src="https://cdn.educba.com/academy/wp-content/uploads/2019/12/React-JS-component-1.png"></img>
+        return <img src="./Images/React-JS-component-1.png"></img>
     }
 }

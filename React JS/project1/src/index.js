@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Beach } from './Component/Beach';
 import { Space } from './Component/Space';
 import { Tree } from './Component/Tree';
 
@@ -18,7 +19,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Space/>
+   <Beach/>
   </React.StrictMode>
 );
 

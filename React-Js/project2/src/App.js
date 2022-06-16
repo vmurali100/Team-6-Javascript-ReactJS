@@ -15,6 +15,11 @@ import { Sample7FunComp } from './FunctionalComps/Sample7FunComp';
 import { Sample10FunComp } from './FunctionalComps/Sample10FunComp';
 import { Sample9FunComp } from './FunctionalComps/Sample9FunComp';
 import { Sample8FunComp } from './FunctionalComps/Sample8FunComp';
+import { Sample4Comp } from './Components/Sample4Comp';
+import { Sample5Copm } from './Components/Sample5Comp';
+import { Sample6Comp } from './Components/Sample6Comp';
+import { Sample7Comp } from './Components/Sample7Comp';
+import { Sample8Comp } from './Components/Sample8Comp';
 
 function App() {
   return (
@@ -34,6 +39,11 @@ function App() {
       <Sample1Comp></Sample1Comp>
       <Sample2Comp></Sample2Comp>
       <Sample3Comp></Sample3Comp>
+      <Sample4Comp></Sample4Comp>
+      <Sample5Copm></Sample5Copm>
+      <Sample6Comp></Sample6Comp>
+      <Sample7Comp></Sample7Comp>
+      <Sample8Comp></Sample8Comp>
     </div>
   );
 }

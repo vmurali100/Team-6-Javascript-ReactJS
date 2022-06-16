@@ -14,7 +14,7 @@ export class CommonClass extends Component{
     render(){
         return(
             <div>
-                {/* <Class1/> */}
+                <Class1/>
                 {/* <Class2/> */}
                 {/* <Parent3/> */}
                 {/* <Parent4/> */}

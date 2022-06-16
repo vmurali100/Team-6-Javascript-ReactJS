@@ -34,7 +34,7 @@ import { Bjasmine } from './Components/Bjasmine';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<Bjasmine></Bjasmine>
+<Ktulip></Ktulip>
   </React.StrictMode>
 );
 

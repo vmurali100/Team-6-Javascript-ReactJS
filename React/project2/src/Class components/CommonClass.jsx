@@ -25,10 +25,10 @@ export class CommonClass extends Component{
                 {/* <Parent4/> */}
                {/* <Parent5/> */}
                {/* <Parent6/> */}
-               {/* <Parent7/> */}
+               <Parent7/>
                {/* <Parent8/> */}
             {/* <Parent9/> */}
-            <Parent10/>
+            {/* <Parent10/> */}
             </div>
         )
     }

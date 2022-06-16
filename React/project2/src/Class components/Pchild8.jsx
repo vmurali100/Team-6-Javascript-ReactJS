@@ -24,7 +24,7 @@ export class Pchild8 extends Component{
                 <button onClick={this.displayNames}>showNames</button>
                 <button onClick={this.displayBikedet}>showBikedet</button>
                 <button onClick={this.displayAnimals}>showAnimals</button>
-                {this.state.showNames && <p>{this.props.myName.name}</p>}
+                {this.state.showNames && <p>{this.props.myName}</p>}
                 {this.state.showBikedet &&  <p>{this.props.myBike.name}-{this.props.myBike.model}-{this.props.myBike.mileage}</p>}
                 {this.state.showAnimals &&  <ul>{this.props.allAnimals.map((user,i)=>{
                     return <li key={i}>{user}</li>

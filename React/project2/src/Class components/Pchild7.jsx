@@ -26,7 +26,7 @@ export class Pchild7 extends Component {
                 <button onClick={this.displayNames}>showNames</button>
                 <button onClick={this.displayMobiles}>showMobiles</button>
                 <button onClick={this.displayPlaces}>showPlaces</button>
-                {this.state.showNames && <p>{this.props.allmyName.myName}</p>}
+                {this.state.showNames && <p>{this.props.allmyName}</p>}
                 {this.state.showMobiles && <p>{this.props.mymobiles.brand}-{this.props.mymobiles.color}-{this.props.mymobiles.os}</p>}
                 {this.state.showPlaces && <ul>{this.props.allplaces.map((user, i) => {
                     return <li key={i}>{user}</li>

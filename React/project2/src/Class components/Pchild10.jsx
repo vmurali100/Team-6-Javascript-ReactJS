@@ -29,7 +29,7 @@ export class Pchild10 extends Component {
 
                 <button onClick={this.displayFruits}>showFruits</button>
                 {/* for string */}
-                {this.state.showName && <p>{this.props.allnames.name}</p>}
+                {this.state.showName && <p>{this.props.allnames}</p>}
                 {/* for object */}
                 {this.state.showPerson && <p>{this.props.allpersons.fname}-{this.props.allpersons.lname}</p>}
                 {/* for array */}

@@ -11,8 +11,8 @@ function App() {
     <div className="App">
      {/* <DeepthiComp></DeepthiComp> */}
      {/* <Vishnu></Vishnu> */}
-     {/* <CommonClass/> */}
-     <Commonfunction/>
+     <CommonClass/>
+     {/* <Commonfunction/> */}
     </div>
   );
 }

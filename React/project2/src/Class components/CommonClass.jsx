@@ -5,6 +5,8 @@ import { Class2 } from "./Class2";
 import { Parent3 } from "./Parent3";
 import { Parent4 } from "./Parent4";
 import { Parent5 } from "./Parent5";
+import { Parent6 } from "./Parent6";
+import { Parent7 } from "./Parent7";
 import { Pchild5 } from "./Pchild5";
 
 export class CommonClass extends Component{
@@ -14,11 +16,13 @@ export class CommonClass extends Component{
     render(){
         return(
             <div>
-                <Class1/>
+                {/* <Class1/> */}
                 {/* <Class2/> */}
                 {/* <Parent3/> */}
                 {/* <Parent4/> */}
                {/* <Parent5/> */}
+               {/* <Parent6/> */}
+               <Parent7/>
             
             </div>
         )

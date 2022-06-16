@@ -5,14 +5,11 @@ export class Child1 extends Component {
         super(props)
         console.log(props)
         this.state = {
-            showUsers: false
-        }
-        this.state = {
-            showPerson: false
-        }
-        this.state = {
+            showUsers: false,
+            showPerson: false,
             UsersName: false
         }
+       
     }
     displayshowUsers = (() => {
         this.setState({ showUsers: true })

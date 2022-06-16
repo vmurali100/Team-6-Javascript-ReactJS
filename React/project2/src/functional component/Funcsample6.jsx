@@ -6,12 +6,15 @@ export const Funcsample6 =()=>{
         name:"kavya",
         email:"kavya@gmail.com"
     })
-    const[userrs,setusers]=useState(["ramya","sowmya","navya"])
+    const[users,setusers]=useState(["ramya","sowmya","navya"])
     return(
         <div>
+            <button onClick={()=>{{setname("navya")}}}>showName</button>
+            <button onClick={()=>{{setperson({name:"navya",email:"navya@gmail.com"})}}}>showPerson</button>
+            <button onClick={()=>{setusers(["divya","gayathri","anusha"])}}>showUser</button>
             <p>{name}</p>
             <p>{person.name}-{person.email}</p>
-            <ul>{userrs.map((user,i)=>{
+            <ul>{users.map((user,i)=>{
                 return <li key={i}>{user}</li>
             })}</ul>
         </div>

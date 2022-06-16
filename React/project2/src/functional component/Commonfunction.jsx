@@ -5,6 +5,8 @@ import { Funcsample3 } from "./Funcsample3"
 import { Funcsample4 } from "./Funcsample4"
 import { Funcsample5 } from "./Funcsample5"
 import { Funcsample6 } from "./Funcsample6"
+import { Funcsample7 } from "./Funcsample7"
+import { Funcsample8 } from "./Funcsample8"
 
 
 export const Commonfunction=()=>{
@@ -16,7 +18,9 @@ export const Commonfunction=()=>{
         {/* <Funcsample3/> */}
         {/* <Funcsample4/> */}
         {/* <Funcsample5/> */}
-        <Funcsample6/>
+        {/* <Funcsample6/> */}
+        {/* <Funcsample7/> */}
+        <Funcsample8/>
         </div>
     )
 }

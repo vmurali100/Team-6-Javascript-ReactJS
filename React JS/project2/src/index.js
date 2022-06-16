@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Change } from './fun';
 import './index.css';
 
+
+
+
 import reportWebVitals from './reportWebVitals';
-import { Sea } from './Sea';
+
+import { Space } from './Space';
+
+
 
 
 
@@ -11,7 +18,7 @@ import { Sea } from './Sea';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Sea/>
+   <Change/>
   </React.StrictMode>
 );
 

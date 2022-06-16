@@ -13,8 +13,8 @@ import { Sample5FunComp } from './FunctionalComps/Sample5FunComp';
 import { Sample6FunComp } from './FunctionalComps/Sample6FunComp';
 import { Sample7FunComp } from './FunctionalComps/Sample7FunComp';
 import { Sample10FunComp } from './FunctionalComps/Sample10FunComp';
-import { Sample8FunComp } from './FunctionalComps/sample8FunComp';
 import { Sample9FunComp } from './FunctionalComps/Sample9FunComp';
+import { Sample8FunComp } from './FunctionalComps/Sample8FunComp';
 
 function App() {
   return (

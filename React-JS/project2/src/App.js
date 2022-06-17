@@ -20,6 +20,7 @@ import { Dhanush9Comp } from './practice Fr Class Component/Dhanush9Comp';
 import { Deelip10Comp } from './practice Fr Class Component/Deelip10Comp';
 import { TharunFuncComp } from './Practice Fr Func Component/TharunFuncComp';
 import { SaikiranFuncComp } from './Practice Fr Func Component/SaikiranFuncComp';
+import { JayasankarFuncComp } from './Practice Fr Func Component/JayasankarFuncComp';
 
 
 
@@ -45,7 +46,8 @@ function App() {
      {/* <Dhanush9Comp/> */}
      {/* <Deelip10Comp/> */}
      {/* <TharunFuncComp/> */}
-     <SaikiranFuncComp/>
+     {/* <SaikiranFuncComp/> */}
+     {/* <JayasankarFuncComp/> */}
     </div>
   );
 }

@@ -1,11 +1,13 @@
-import SamComponent from "./components/SamComponent";
+import Parent1 from "./components/Parent1";
 import { SamCom, Sample1 } from "./components/Sample1";
+import { Padhufunc } from "./functionalcomponents/Padhufunc";
 
 function App() {
   return (
     <div className="Sam">
       {/* <Sample1></Sample1> */}
-      <SamComponent></SamComponent>
+          <Parent1/>
+      {/* <Padhufunc/> */}
 
     </div>
      

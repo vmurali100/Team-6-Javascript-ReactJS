@@ -1,7 +1,8 @@
 import { Component } from "react";
-import ChildComp from "./ChildComp";
+import Child1 from "./Child1";
 
-export default class SamComponent extends Component {
+
+export default class Parent1 extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -11,7 +12,7 @@ export default class SamComponent extends Component {
     render() {
         return (
             <div>
-                <ChildComp allUsers={this.state.users}/>
+                <Child1 allUsers={this.state.users}/>
             </div>
         )
         

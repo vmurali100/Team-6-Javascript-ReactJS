@@ -1,6 +1,6 @@
 // import Parent1 from "./components/Parent1";
 // import { SamCom, Sample1 } from "./components/Sample1";
-import { Function3 } from "./functionalcomponents/Function3";
+import { Function5 } from "./functionalcomponents/Function5";
 
 function App() {
   return (
@@ -9,7 +9,8 @@ function App() {
       {/* <Parent1/> */}
       {/* <Function1/> */}
       {/* <Function2/> */}
-      <Function3/>
+      {/* <Function3/> */}
+      <Function5/>
     </div>
      
   )

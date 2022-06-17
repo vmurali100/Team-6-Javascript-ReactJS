@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const Padhufunc = () => {
+export const Function1 = () => {
     const [myname, setmyname]= useState("PADMAJA");
     const [person, setperson]= useState({
         fname:"M",

@@ -1,23 +1,22 @@
 import { Component } from "react";
 
-export default class Child3 extends Component {
+export default class Child6 extends Component {
     constructor(props) {
         super(props)
-        console.log(props)
         this.state = {
-            showcompany: false
+            showelectronic: false
         }
     }
-    handleshowcompany = () => {
-        this.setState({ showcompany: true })
+    handleshowelectronnic = () => {
+        this.setState({ showelectronic: true })
     }
     render() {
         return (
             <div>
-                <button onClick={this.handleshowcompany}>show company</button>
-                {this.state.showcompany && (
+                <button onClick={this.handleshowelectronnic}>show electronic</button>
+                {this.state.showelectronic && (
                     <ul>
-                        {this.props.alluser.map((user,i)=>{
+                        {this.props.allelectronic.map((user, i) => {
                             return <li key={i}>{user}</li>
                         })}
                     </ul>

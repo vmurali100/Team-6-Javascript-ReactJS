@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Product } from './functional Child to Parent/Product';
+import { Users } from './functional Child to Parent/Users';
+// import { Photos } from './functional component Child to Parent/Photos';
+// import { Carts } from './functional component Child to Parent/Carts';
+// import { Posts } from './functional component Child to Parent/Posts';
 // import { Albums } from './functional component Child to Parent/Albums';
-import { Todos } from './functional component Child to Parent/Todos';
+// import { Todos } from './functional component Child to Parent/Todos';
 // import { Filltext2 } from './functional component Child to Parent/Filltext2';
 // import { Filltext3 } from './functional component Child to Parent/Filltext3';
 // import { User } from './functional component Child to Parent/User';
@@ -14,7 +19,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Todos />
+    <Users/>
   </React.StrictMode>
 );
 

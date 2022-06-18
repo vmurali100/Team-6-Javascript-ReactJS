@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Parent1 } from "./Parent1"
 
-export const Commonclass=()=>{
+export const FunctionCommonclass=()=>{
     const[]=useState()
     return(
         <div>

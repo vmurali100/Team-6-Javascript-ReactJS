@@ -3,12 +3,13 @@ import { Pchild1 } from "./Pchild1"
 
 export const Parent1 =()=>{
     const[filltextusers,setfilltextusers]=useState(allusers)
-  const sendDataToChild=()=>{
-    
+  const sendDataToChild=(parent1Details)=>{
+   
   }
     return(
         <div>
            <button onClick={sendDataToChild}>send data to child</button>
+           <p>userDetails from parent</p>
             <Pchild1 parent1Details={filltextusers}/>
         </div>
     )

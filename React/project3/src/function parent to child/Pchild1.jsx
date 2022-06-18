@@ -6,7 +6,7 @@ export const Pchild1 =({parent1Details})=>{
     
     return(
         <div>
-          <p>userDetails from parent</p>
+         
            <table border={1}>
                 <thead>
                     <tr>

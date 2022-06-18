@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// import { Filltext2 } from './functional component Child to Parent/Filltext2';
+import { Filltext3 } from './functional component Child to Parent/Filltext3';
+// import { User } from './functional component Child to Parent/User';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import { Filtext } from './functional component/Filtext';
+// import { Comment } from './functional component/Comment';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Filltext3 />
   </React.StrictMode>
 );
 

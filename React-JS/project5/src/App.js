@@ -1,11 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import { User } from './User';
+import { Children } from "react";
+import "./App.css";
+import Childs1 from "./FunctionalComponents/Childs1";
+ 
+ 
+ 
 
+ 
 function App() {
   return (
     <div className="App">
-       <User/>
+      
+    <Childs1/>
     </div>
   );
 }

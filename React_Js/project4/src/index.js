@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Product } from './functional Child to Parent/Product';
-import { Users } from './functional Child to Parent/Users';
+import { Palbums } from './class parent to child/Palbums';
+import { Pcarts } from './class parent to child/Pcarts';
+import { Pcomment } from './class parent to child/Pcomment';
+import { Pfilltext } from './class parent to child/Pfilltext';
+import { Pfilltext2 } from './class parent to child/Pfilltext2';
+import { Pfilltext3 } from './class parent to child/Pfilltext3';
+// import { Product } from './functional Child to Parent/Product';
+// import { Users } from './functional Child to Parent/Users';
 // import { Photos } from './functional component Child to Parent/Photos';
 // import { Carts } from './functional component Child to Parent/Carts';
 // import { Posts } from './functional component Child to Parent/Posts';
@@ -19,7 +25,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Users/>
+    <Pfilltext3/>
   </React.StrictMode>
 );
 

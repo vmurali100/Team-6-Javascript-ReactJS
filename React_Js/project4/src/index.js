@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Palbums } from './class parent to child/Palbums';
-import { Pcarts } from './class parent to child/Pcarts';
-import { Pcomment } from './class parent to child/Pcomment';
-import { Pfilltext } from './class parent to child/Pfilltext';
-import { Pfilltext2 } from './class parent to child/Pfilltext2';
-import { Pfilltext3 } from './class parent to child/Pfilltext3';
+import { Pfilltext } from './functional parent to child/Pfilltext';
+import { Pphotos } from './functional parent to child/Pphotos';
+import { Pposts } from './functional parent to child/Pposts';
+import { Pproducts } from './functional parent to child/Pproducts';
+import { Ptodos } from './functional parent to child/Ptodos';
+import { Pusers } from './functional parent to child/Pusers';
+// import { Palbums } from './Class parent to child/Palbums';
+// import { Pcarts } from './Class parent to child/Pcarts';
+// import { Pcomment } from './Class parent to child/Pcomment';
+// import { Pfilltext } from './Class parent to child/Pfilltext';
+// import { Pfilltext2 } from './Class parent to child/Pfilltext2';
+// import { Pfilltext3 } from './Class parent to child/Pfilltext3';
 // import { Product } from './functional Child to Parent/Product';
 // import { Users } from './functional Child to Parent/Users';
 // import { Photos } from './functional component Child to Parent/Photos';
@@ -25,7 +31,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Pfilltext3/>
+    <Pusers/>
   </React.StrictMode>
 );
 

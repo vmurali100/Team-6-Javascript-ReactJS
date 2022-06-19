@@ -2,13 +2,13 @@ import { useState } from "react"
 import { Pchild1 } from "./Pchild1"
 
 export const Parent1 =()=>{
-    const[filltextusers,setfilltextusers]=useState(allusers)
-//   const sendDataToChild=(parent1Details)=>{
-   
-//   }
+    const[filltextusers,setfilltextusers]=useState([])
+  const sendDataToChild=()=>{
+    setfilltextusers(allusers)
+  }
     return(
         <div>
-           {/* <button onClick={sendDataToChild}>send data to child</button> */}
+           <button onClick={sendDataToChild}>send data to child</button>
            <p>userDetails from parent</p>
             <Pchild1 parent1Details={filltextusers}/>
         </div>

@@ -2,9 +2,13 @@ import { useState } from "react"
 import { FilltextChild3 } from "./FilltextChild3"
 
 export const Filltext3 =()=>{
-    const[filltextusers,setfilltextusers]=useState(allusers)
+    const[filltextusers,setfilltextusers]=useState([])
+    const sendDataToChild=()=>{
+        setfilltextusers(allusers)
+    }
     return(
         <div>
+            <button onClick={sendDataToChild}>send Data To Child</button>
             <FilltextChild3 filltextDetails={filltextusers}/>
         </div>
     )

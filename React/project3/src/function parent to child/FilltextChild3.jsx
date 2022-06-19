@@ -13,8 +13,8 @@ export const FilltextChild3 =({filltextDetails})=>{
                     </tr>
                     </thead>
                 <tbody>
-                    {filltextDetails.map((user)=>{
-                        return <tr>
+                    {filltextDetails.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.fname}</td>
                             <td>{user.lname}</td>
                            

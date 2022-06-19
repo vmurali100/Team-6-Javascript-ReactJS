@@ -2,9 +2,13 @@ import { useState } from "react"
 import { CartsChild5 } from "./CartsChild5"
 
 export const Carts5=()=>{
-    const[usercarts,setusercarts]=useState(allcarts)
+    const[usercarts,setusercarts]=useState([])
+    const sendCarts=()=>{
+        setusercarts(allcarts)
+    }
     return(
         <div>
+            <button onClick={sendCarts}>send carts </button>
             <CartsChild5 usercarts={usercarts}/>
         </div>
     )

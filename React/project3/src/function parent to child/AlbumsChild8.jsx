@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const PostsChild4 =({postsDetails})=>{
+export const AlbumsChild8 =({albumDetails})=>{
     const[]=useState()
     return(
         <div>
@@ -10,16 +10,16 @@ export const PostsChild4 =({postsDetails})=>{
                         <th>userId</th>
                         <th>id</th>
                         <th>title</th>
-                        <th>body</th>
+                        
                     </tr>
-                    </thead>
+                </thead>
                 <tbody>
-                    {postsDetails.map((user,i)=>{
+                    {albumDetails.map((user,i) => {
                         return <tr key={i}>
                             <td>{user.userId}</td>
                             <td>{user.id}</td>
                             <td>{user.title}</td>
-                            <td>{user.body}</td>
+                            
                         </tr>
                     })}
                 </tbody>

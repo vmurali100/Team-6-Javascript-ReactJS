@@ -2,9 +2,13 @@ import { useState } from "react"
 import { PostsChild4 } from "./PostsChild4"
 
 export const Posts4 =()=>{
-    const[usersPost,setusersPost]=useState(allPosts)
+    const[usersPost,setusersPost]=useState([])
+    const postsDetails=()=>{
+      setusersPost(allPosts)
+    }
     return(
         <div>
+          <button onClick={postsDetails}> send posts</button>
             <PostsChild4 postsDetails={usersPost}/>
         </div>
     )

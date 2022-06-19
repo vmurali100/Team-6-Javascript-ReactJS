@@ -1,27 +1,27 @@
 import { useState } from "react"
 
-export const CartsChild5 = ({ usercarts }) => {
-    const [] = useState()
-    return (
+export const CommentsChild7 =({commentDetails})=>{
+    const[]=useState()
+    return(
         <div>
-            <table border={1}>
+             <table border={1}>
                 <thead>
                     <tr>
+                        <th>postId</th>
                         <th>id</th>
-                        <th>userId</th>
-                        <th>date</th>
-                        <th>date</th>
+                        <th>name</th>
                         <th>email</th>
+                        <th>body</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {usercarts.map((user,i) => {
+                    {commentDetails.map((user,i) => {
                         return <tr key={i}>
+                            <td>{user.postId}</td>
                             <td>{user.id}</td>
-                            <td>{user.userId}</td>
-                            <td>{user.date}</td>
-                            <td>{user.date}</td>
+                            <td>{user.name}</td>
                             <td>{user.email}</td>
+                            <td>{user.body}</td>
                         </tr>
                     })}
                 </tbody>

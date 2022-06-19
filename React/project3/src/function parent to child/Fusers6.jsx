@@ -2,9 +2,13 @@ import { useState } from "react"
 import { FusersChild6 } from "./FusersChild6"
 
 export const Fusers6=()=>{
-    const[usersDetails,setUserDetails]=useState(allusers)
+    const[usersDetails,setUserDetails]=useState([])
+    const sendUsers=( )=>{
+        setUserDetails(allusers)
+    }
     return(
         <div>
+            <button onClick={sendUsers}>send users</button>
             <FusersChild6 usersDetails={usersDetails}/>
         </div>
     )

@@ -21,7 +21,7 @@ export const Pchild1 =({parent1Details})=>{
                 </thead>
                 <tbody>
                     {parent1Details.map((User, i) => {
-                        return <tr>
+                        return <tr key={i}>
                             <td>{User.fname}</td>
                             <td>{User.lname}</td>
                             <td>{User.tel}</td>

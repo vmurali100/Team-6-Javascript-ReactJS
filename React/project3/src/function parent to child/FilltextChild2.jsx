@@ -14,8 +14,8 @@ export const FilltextChild2=({filltextDetails})=>{
                     </tr>
                     </thead>
                 <tbody>
-                    {filltextDetails.map((user)=>{
-                        return <tr>
+                    {filltextDetails.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.id}</td>
                             <td>{user.email}</td>
                             <td>{user.username}</td>

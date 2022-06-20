@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Filltext from './FunComponTable/Filltext';
+import Filltext from './Child-parent-FunctionComponent/Filltext';
 
 function App() {
   return (

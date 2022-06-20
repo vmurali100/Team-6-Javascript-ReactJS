@@ -19,7 +19,7 @@ export const FuserParent3 = () => {
                 </thead>
                 <tbody>
                    {userInfo.map((user,i)=>{
-                    return <tr>
+                    return <tr key={i}>
                         <td>{user.fname}</td>
                         <td>{user.lname}</td>
                     </tr>

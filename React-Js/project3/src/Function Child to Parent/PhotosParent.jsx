@@ -22,8 +22,8 @@ export const PhotosParent =()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {photosinfo.map((user)=>{
-                        return <tr>
+                    {photosinfo.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.albumId}</td>
                             <td>{user.id}</td>
                             <td>{user.title}</td>

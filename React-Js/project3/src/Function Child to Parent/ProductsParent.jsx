@@ -23,8 +23,8 @@ export const ProductsParent = ()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {productinfo.map((user)=>{
-                        return <tr>
+                    {productinfo.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.id}</td>
                             <td>{user.title}</td>
                             <td>{user.price}</td>

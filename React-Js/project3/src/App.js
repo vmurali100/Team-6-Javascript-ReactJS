@@ -4,6 +4,7 @@ import './App.css';
 import Userparent from './Userparent';
 import FilltextUser from './Components/FilltextUser';
 import { SrividyaCtoP } from './Function Child to Parent/SrividyaCtoP';
+import { FunParenttoChild } from './Function-Parent-to-Child/FunParenttoChild';
 
 function App() {
   const [person, setPerson]= useState({fname:"Vasu", lname:"Vidya"})
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
       {/* <Userparent userDetails={person}/> */}
       {/* <FilltextUser></FilltextUser> */}
-      <SrividyaCtoP></SrividyaCtoP>
+      {/* <SrividyaCtoP></SrividyaCtoP> */}
+      <FunParenttoChild></FunParenttoChild>
     </div>
   );
 }

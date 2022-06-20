@@ -21,8 +21,8 @@ export const TodoParent=()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {todoInfo.map((user)=>{
-                        return <tr>
+                    {todoInfo.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.userId}</td>
                             <td>{user.id}</td>
                             <td>{user.title}</td>

@@ -20,8 +20,8 @@ export const CommentsParent=()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {commentsinfo.map((user)=>{
-                        return <tr>
+                    {commentsinfo.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.postId}</td>
                             <td>{user.id}</td>
                             <td>{user.name}</td>

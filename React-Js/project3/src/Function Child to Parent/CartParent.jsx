@@ -21,8 +21,8 @@ export const CartParent = ()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {cartinfo.map((user)=>{
-                        return <tr>
+                    {cartinfo.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.id}</td>
                             <td>{user.userId}</td>
                             <td>{user.date}</td>

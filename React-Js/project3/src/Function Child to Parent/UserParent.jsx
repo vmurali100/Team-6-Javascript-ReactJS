@@ -24,7 +24,7 @@ export const UserParent =()=>{
                 </thead>
                 <tbody>
                     {filltextInfo.map((User, i) => {
-                        return <tr>
+                        return <tr key={i}>
                             <td>{User.fname}</td>
                             <td>{User.lname}</td>
                             <td>{User.tel}</td>

@@ -1,15 +1,9 @@
 import { useState } from "react"
-import { FuserChild4 } from "./FuserChild4"
 
-export const FuserParent4 = ()=>{
-    const[filltextInfo,setfilltextInfo]=useState([])
-    const getDataFromChild=(userDetails)=>{
-        setfilltextInfo(userDetails)
-    }
-    return(
+export const FilltextChild4 = ({filltextDetails})=>{
+    const[]=useState()
+    return (
         <div>
-            <FuserChild4 getData={getDataFromChild}/>
-            <h3>Data From Users Child</h3>
             <table border={1}>
                 <thead>
                     <tr>
@@ -20,7 +14,7 @@ export const FuserParent4 = ()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {filltextInfo.map((user,i)=>{
+                    {filltextDetails.map((user,i)=>{
                         return <tr key={i}>
                             <td>{user.id}</td>
                             <td>{user.email}</td>

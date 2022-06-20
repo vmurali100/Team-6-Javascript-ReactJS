@@ -24,8 +24,8 @@ export const FuserParent1 =()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {usersinfo.map((user)=>{
-                        return <tr>
+                    {usersinfo.map((user,i)=>{
+                        return <tr key={i}>
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>{user.username}</td>

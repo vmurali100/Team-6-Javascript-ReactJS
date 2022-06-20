@@ -1,29 +1,25 @@
 import { useState } from "react"
-import { AlbumChild } from "./AlbumChild"
 
-export const AlbumParent = () =>{
-    const [albumsInfo, getalbumsInfo]=useState([])
-    const getDataFromChild=(albumsdetails)=>{
-        getalbumsInfo(albumsdetails)
-    }
-    return (
+export const TodoChild2 = ({todoDetials}) =>{
+    const []=useState()
+    return(
         <div>
-            <AlbumChild getAlbums={getDataFromChild}/>
-            <p>Data From Albums Child</p>
             <table border={1}>
                 <thead>
                     <tr>
                         <th>userId</th>
                         <th>id</th>
                         <th>title</th>
+                        <th>completed</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {albumsInfo.map((user,i)=>{
+                    {todoDetials.map((user,i)=>{
                         return <tr key={i}>
                             <td>{user.userId}</td>
                             <td>{user.id}</td>
                             <td>{user.title}</td>
+                            <td>{user.completed}</td>
                         </tr>
                     })}
                 </tbody>

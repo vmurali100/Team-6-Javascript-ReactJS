@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Ccarts from './Class child to parent/Ccarts';
+import Ccomments from './Class child to parent/Ccomments';
+import Cfilltext from './Class child to parent/Cfilltext';
+import Ctodos from './Class child to parent/Ctodos';
+import Cuser from './Class child to parent/Cuser';
 import { Pfilltext } from './functional parent to child/Pfilltext';
 import { Pphotos } from './functional parent to child/Pphotos';
 import { Pposts } from './functional parent to child/Pposts';
@@ -31,7 +36,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Pusers/>
+    <Cuser/>
   </React.StrictMode>
 );
 

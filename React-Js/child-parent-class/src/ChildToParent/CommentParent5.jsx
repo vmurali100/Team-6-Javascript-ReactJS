@@ -1,7 +1,7 @@
 import { Component } from "react";
-import FilltextChild3 from "./FilltextChild3";
+import CommentChild5 from "./CommentChild5";
 
-export default class FilltextParent3 extends Component{
+export default class CommentParent5 extends Component{
     constructor(){
         super()
 
@@ -25,35 +25,31 @@ export default class FilltextParent3 extends Component{
         const{message,person,users} = this.state
         return(            
             <div>
-                <FilltextChild3 
+                <CommentChild5 
                 receiveString={receiveString} 
                 receiveObject={receiveObject} 
                 receiveArray={receiveArray}/>
                 <hr />
                 {message && <p>Message From Child Component : {message}</p>}
-                {Object.keys(person).length > 0 && <p>Person Details form Child Component : {person.fname}-{person.lname}-{person.tel}-{person.address}</p>}
+                {Object.keys(person).length > 0 && <p>Person Details form Child Component : {person.postId}-{person.id}-{person.name}-{person.email}-{person.body}</p>}
                 <table border={1}>
                     <thead>
                         <tr>
-                            <th>fname</th>
-                            <th>lname</th>
-                            <th>tel</th>
-                            <th>address</th>
-                            <th>city</th>
-                            <th>state</th>
-                            <th>zip</th>
+                            <th>postId</th>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>body</th>
                         </tr>
                     </thead>
                     <tbody>
                         {users.map((user,i)=>{
                             return <tr key={i}>
-                                <td>{user.fname}</td>
-                                <td>{user.lname}</td>
-                                <td>{user.tel}</td>
-                                <td>{user.address}</td>
-                                <td>{user.city}</td>
-                                <td>{user.state}</td>
-                                <td>{user.zip}</td>
+                                <td>{user.postId}</td>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.body}</td>
                             </tr>
                         })}
                     </tbody>

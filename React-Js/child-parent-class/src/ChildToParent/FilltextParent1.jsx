@@ -32,11 +32,26 @@ export default class FilltextParent1 extends Component{
                 <hr />
                 {message && <p>Message From Child Component : {message}</p>}
                 {Object.keys(person).length > 0 && <p>Person Details form Child Component : {person.id}-{person.email}-{person.username}-{person.password}</p>}
-                <ul>
-                    {users.map((user,i)=>{
-                        return <li key={i}>{user.username}</li>
-                    })}
-                </ul>
+                <table border={1}>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>username</th>
+                            <th>email</th>
+                            <th>password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user,i)=>{
+                            return <tr key={i}>
+                                <td>{user.id}</td>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td>{user.password}</td>
+                            </tr>
+                        })}
+                    </tbody>
+                </table>
             </div>
         )
     }

@@ -32,11 +32,24 @@ export default class AlbumsParent2 extends Component{
                 <hr />
                 {message && <p>Message From Child Component : {message}</p>}
                 {Object.keys(person).length > 0 && <p>Person Details form Child Component : {person.userId}-{person.id}-{person.title}</p>}
-                <ul>
-                    {users.map((user,i)=>{
-                        return <li key={i}>{user.title}</li>
-                    })}
-                </ul>
+                <table border={1}>
+                    <thead>
+                        <tr>
+                            <th>userId</th>
+                            <th>id</th>
+                            <th>title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user,i)=>{
+                            return <tr key={i}>
+                                <td>{user.userId}</td>
+                                <td>{user.id}</td>
+                                <td>{user.title}</td>
+                            </tr>
+                        })}
+                    </tbody>
+                </table>
             </div>
         )
     }

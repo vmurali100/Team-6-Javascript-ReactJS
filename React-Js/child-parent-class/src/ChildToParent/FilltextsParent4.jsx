@@ -1,7 +1,7 @@
 import { Component } from "react";
-import FilltextChild3 from "./FilltextChild3";
+import FilltextsChild4 from "./FilltextsChild4";
 
-export default class FilltextParent3 extends Component{
+export default class FilltextsParent4 extends Component{
     constructor(){
         super()
 
@@ -25,23 +25,18 @@ export default class FilltextParent3 extends Component{
         const{message,person,users} = this.state
         return(            
             <div>
-                <FilltextChild3 
+                <FilltextsChild4 
                 receiveString={receiveString} 
                 receiveObject={receiveObject} 
                 receiveArray={receiveArray}/>
                 <hr />
                 {message && <p>Message From Child Component : {message}</p>}
-                {Object.keys(person).length > 0 && <p>Person Details form Child Component : {person.fname}-{person.lname}-{person.tel}-{person.address}</p>}
+                {Object.keys(person).length > 0 && <p>Person Details form Child Component : {person.fname}-{person.lname}</p>}
                 <table border={1}>
                     <thead>
                         <tr>
                             <th>fname</th>
                             <th>lname</th>
-                            <th>tel</th>
-                            <th>address</th>
-                            <th>city</th>
-                            <th>state</th>
-                            <th>zip</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,11 +44,6 @@ export default class FilltextParent3 extends Component{
                             return <tr key={i}>
                                 <td>{user.fname}</td>
                                 <td>{user.lname}</td>
-                                <td>{user.tel}</td>
-                                <td>{user.address}</td>
-                                <td>{user.city}</td>
-                                <td>{user.state}</td>
-                                <td>{user.zip}</td>
                             </tr>
                         })}
                     </tbody>

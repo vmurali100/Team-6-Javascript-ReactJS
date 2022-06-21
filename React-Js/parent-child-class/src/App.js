@@ -1,12 +1,13 @@
 
 import './App.css';
-import FilltextParent1 from './ChildToParent/FilltextParent1';
-import FilltextParent2 from './ChildToParent/FilltextParent2';
+import CommentParent2 from './ParentToChildClass/CommentParent2';
+import PostsParent1 from './ParentToChildClass/PostsParent1';
 
 function App() {
   return (
     <div className="App">
-      
+      {/* <PostsParent1></PostsParent1> */}
+      <CommentParent2></CommentParent2>
     </div>
   );
 }

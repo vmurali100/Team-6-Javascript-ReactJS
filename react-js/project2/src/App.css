@@ -1,38 +1,73 @@
-.App {
+.userinfo{
+  width: 200px;
+  border: 1px solid red;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  float: left;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.idinfo{
+  width:200px;
+  padding: 10px;
+  float: left;
+  text-align: center;
+  border: 1px solid red;
+  margin: 10px;
+  border-radius: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nameinfo{
+  width: 200px;
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  float:left;
+  border-radius: 15px;
 }
+.postinfo{
+  width: 500px;
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  float:left;
+  border-radius: 15px;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.typeinfo{
+  width: 500px;
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  float:left;
+  border-radius: 15px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.photoinfo{
+  width: 500px;
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  float:left;
+  border-radius: 15px;
+}
+.albuminfo{
+  width: 500px;
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  float:left;
+  border-radius: 15px;
+}
+.todoinfo{
+  width: 500px;
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  float:left;
+  border-radius: 15px;
 }

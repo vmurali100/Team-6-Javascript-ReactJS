@@ -5,6 +5,8 @@ import { Comp2 } from './sibblings-class/Comp2';
 import { useState } from 'react';
 import { CompAB } from './sibblings-class/CompAB';
 import { Compo1and2 } from './sibblings-class/Compo1and2';
+import { Sib1and2 } from './sibblings-class/Sib1and2';
+import { CommonSibblings } from './sibblings-function/CommonSibblings';
 
 function App() {
     //   const[message,setmessage]=useState("");
@@ -23,8 +25,12 @@ function App() {
     <div className="App">
       {/* <Comp1 sendMessage={sendMessage} sendperson={sendperson} sendposts={sendposts}/>
       <Comp2 message={message} person={person} posts={posts}/> */}
+
       {/* <CompAB/> */}
-      <Compo1and2/>
+      {/* <Compo1and2/> */}
+      {/* <Sib1and2/> */}
+
+      <CommonSibblings/>
     </div>
   );
 }

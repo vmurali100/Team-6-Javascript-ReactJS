@@ -25,8 +25,9 @@ export class Photoss extends Component{
         return(
             <div>
                 <Photoschildd recievemessage={recievemessage} recievephoto={recievephoto} recieveuser={recieveuser}/>
-                <p>message from child component{message}</p>
-                <p>photo from child component{photo.albumId}-{photo.title}</p>
+            {message && <p>message from child component{message}</p>}
+            {Object.keys(photo).length>0 && <p>photo from child component{photo.albumId}-{photo.title}</p>}
+               
                 <ul>
                     {user.map((users,i)=>{
                         return <li key={i}>{users.albumId} {users.id} {users.title} {users.url} {users.thumbnailUrl}</li>

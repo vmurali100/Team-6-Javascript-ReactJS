@@ -25,8 +25,8 @@ export class Albumss extends Component{
         return(
             <div>
                 <Albumschildd recievemessage={recievemessage} recievealbum={recievealbum} recieveusers={recieveusers}/>
-                <p>message from child Component{message}</p>
-                <p>album from child Component{album.title}-{album.body}</p>
+               {message &&  <p>message from child Component{message}</p>}
+                {Object.keys(album).length>0 && <p>album from child Component{album.title}-{album.body}</p>}
                 <ul>
                     {users.map((user,i)=>{
                         return <li key={i}>{user.userId}{user.id}{user.title}</li>

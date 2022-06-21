@@ -25,8 +25,8 @@ export class Commentss extends Component{
         return(
             <div>
                 <Commentschildd recievemessage={recievemessage} recievecomment={recievecomment} recieveusers={recieveusers}/>
-                <p>message-{message}</p>
-                <p>comment-{comment.postId}-{comment.id}</p>
+               {message &&  <p>message-{message}</p>}
+              {Object.keys(comment).length>0 &&   <p>comment-{comment.postId}-{comment.id}</p>}
                 <ul>
                     {users.map((user,i)=>{
                         return <li key={i}>{user.name}{user.email}{user.body}</li>

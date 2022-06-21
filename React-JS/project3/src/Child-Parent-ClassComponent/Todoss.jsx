@@ -25,8 +25,8 @@ export class Todoss extends Component{
         return(
             <div>
                 <Todoschildd recievemessage={recievemessage} recievetodos={recievetodos} recieveuser={recieveuser}/>
-                <p>message from child componennt{message}</p>
-                <p>todos from child componennt{todos.userId}-{todos.title}</p>
+                {message && <p>message from child componennt{message}</p>}
+                {Object.keys(todos).length>0 && <p>todos from child componennt{todos.userId}-{todos.title}</p>}
                 <ul>
                     {users.map((user,i)=>{
                         return <li key={i}>{user.id}{user.title}{user.userId}{user.completed}</li>

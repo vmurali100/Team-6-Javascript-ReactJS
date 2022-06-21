@@ -25,8 +25,8 @@ export class Prettytruee extends Component{
         return(
             <div>
                 <Prettychildd recievemessage={recievemessage} recievepretty={recievepretty} recieveusers={recieveusers}/>
-                <p>message-{message}</p>
-                <p>pretty-{pretty.id}{pretty.email}</p>
+                {message && <p>message-{message}</p>}
+               {Object.keys(pretty).length>0 &&  <p>pretty-{pretty.id}{pretty.email}</p>}
                 <ul>
                     {users.map((user,i)=>{
                         return<li key={i}>

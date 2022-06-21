@@ -25,6 +25,18 @@ import { Photos } from './Parent-Child-ClassComponent/Photos1';
 import { Todos1 } from './Parent-Child-ClassComponent/Todos1';
 import { Products1 } from './Parent-Child-ClassComponent/Products1';
 import { Userss2 } from './Parent-Child-ClassComponent/Userss2';
+import { Postss } from './Child-Parent-ClassComponent/Postss';
+import { Albumss } from './Child-Parent-ClassComponent/Albumss';
+import { Photoss } from './Child-Parent-ClassComponent/Photoss';
+import { Todoss } from './Child-Parent-ClassComponent/Todoss';
+import { Commentss } from './Child-Parent-ClassComponent/Commentss';
+import { Postsss } from './Parent-Child-FunctionComponent/Postsss';
+import { Albumsss } from './Parent-Child-FunctionComponent/Albumsss';
+import { Todosss } from './Parent-Child-FunctionComponent/Todosss';
+import { Photoschilddd } from './Parent-Child-FunctionComponent/Photoschilddd';
+import { Commentsss } from './Parent-Child-FunctionComponent/Commentsss';
+import { Prettytrueee } from './Parent-Child-FunctionComponent/Prettytrueee';
+import { Prettytruee } from './Child-Parent-ClassComponent/Prettytruee';
 
 
 
@@ -33,7 +45,7 @@ import { Userss2 } from './Parent-Child-ClassComponent/Userss2';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<Userss2></Userss2>
+  <Postss></Postss>
   </React.StrictMode>
 );
 

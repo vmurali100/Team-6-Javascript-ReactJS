@@ -1,25 +1,36 @@
-import { Component } from "react";
+import { Component, useReducer } from "react";
 
 export class Child extends Component{
     constructor(props){
         super(props)
         this.state={
-          show:false 
+        
         }
     }
-    change=()=>{
-       this.setState({show:true})  
-    }
+   
+    
     render(){
         return (
             <div>
-                <button onClick={this.change}>show users</button>
-           {this .state.show && 
-            <ul>
-            {this.props.all.map((user,i)=>{
-               return <li key={i}>{user}</li> 
-            })}
-            </ul>}
+              
+            <table border= "1">
+                <thead>
+                    <tr>
+                    <th>fname</th>
+                    <th>lname</th>
+                   
+
+                    </tr>
+                </thead>
+                <tbody>
+                   {this.props.all .map((user)=>{
+                    return<tr>
+                        <td>{user.fname}</td>
+                        <td>{user.lname}</td>
+                    </tr>
+                   })}
+                </tbody>
+            </table>
             </div>
         )
     }

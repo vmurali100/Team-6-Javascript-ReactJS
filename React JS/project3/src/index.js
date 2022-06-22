@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Par1 } from './File/Par1';
 
-import { Parent } from './File/Parent';
-import { Parent2 } from './File/Parent2';
 
 import './index.css';
+import { Parent } from './parent to child/Parent';
+import { Parentclass } from './parent to child1/Parentclass';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -13,7 +12,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Parent2/>
+    <Parentclass/>
   </React.StrictMode>
 );
 

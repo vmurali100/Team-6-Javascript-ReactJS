@@ -1,27 +1,28 @@
 import { Component } from "react";
 
-export class Albumschildd extends Component{
-    constructor(){
-        super()
+export default class Album1 extends Component{
+    constructor(props){
+        super(props)
         this.state={
-            message:"",
-            album:{},
-            users:[]
+            message:"hello good morning",
+            album:{
+                userId:1,
+                id:1
+            },
+            allalbum,
         }
     }
     render(){
-        const{recievemessage,recievealbum,recieveusers}=this.props
         return(
             <div>
-                <button onClick={()=>{recievemessage("hello albums")}}>send message</button>
-                <button onClick={()=>{recievealbum(allalbums[0])}}>send album</button>
-                <button onClick={()=>{recieveusers(allalbums)}}>send user</button>
+                <button onClick={()=>{this.props.sendmessage(this.state.message)}}>send message</button>
+                <button onClick={()=>{this.props.sendalbum (this.state.album)}}>send album</button>
+                <button onClick={()=>{this.props.sendallalbum(this.state.allalbum)}}>send allalbum</button>
             </div>
         )
     }
 }
-
-var allalbums=[
+var allalbum=[
     {
         "userId": 1,
         "id": 1,
@@ -117,65 +118,84 @@ var allalbums=[
         "id": 19,
         "title": "velit pariatur quaerat similique libero omnis quia"
       },
-      
       {
-        "userId": 6,
-        "id": 51,
-        "title": "odit laboriosam sint quia cupiditate animi quis"
+        "userId": 2,
+        "id": 20,
+        "title": "voluptas rerum iure ut enim"
       },
       {
-        "userId": 6,
-        "id": 52,
-        "title": "necessitatibus quas et sunt at voluptatem"
+        "userId": 3,
+        "id": 21,
+        "title": "repudiandae voluptatem optio est consequatur rem in temporibus et"
       },
       {
-        "userId": 6,
-        "id": 53,
-        "title": "est vel sequi voluptatem nemo quam molestiae modi enim"
+        "userId": 3,
+        "id": 22,
+        "title": "et rem non provident vel ut"
       },
       {
-        "userId": 6,
-        "id": 54,
-        "title": "aut non illo amet perferendis"
+        "userId": 3,
+        "id": 23,
+        "title": "incidunt quisquam hic adipisci sequi"
       },
       {
-        "userId": 6,
-        "id": 55,
-        "title": "qui culpa itaque omnis in nesciunt architecto error"
+        "userId": 3,
+        "id": 24,
+        "title": "dolores ut et facere placeat"
       },
       {
-        "userId": 6,
-        "id": 56,
-        "title": "omnis qui maiores tempora officiis omnis rerum sed repellat"
+        "userId": 3,
+        "id": 25,
+        "title": "vero maxime id possimus sunt neque et consequatur"
       },
       {
-        "userId": 6,
-        "id": 57,
-        "title": "libero excepturi voluptatem est architecto quae voluptatum officia tempora"
+        "userId": 3,
+        "id": 26,
+        "title": "quibusdam saepe ipsa vel harum"
       },
       {
-        "userId": 6,
-        "id": 58,
-        "title": "nulla illo consequatur aspernatur veritatis aut error delectus et"
+        "userId": 3,
+        "id": 27,
+        "title": "id non nostrum expedita"
       },
       {
-        "userId": 6,
-        "id": 59,
-        "title": "eligendi similique provident nihil"
+        "userId": 3,
+        "id": 28,
+        "title": "omnis neque exercitationem sed dolor atque maxime aut cum"
       },
       {
-        "userId": 6,
-        "id": 60,
-        "title": "omnis mollitia sunt aliquid eum consequatur fugit minus laudantium"
+        "userId": 3,
+        "id": 29,
+        "title": "inventore ut quasi magnam itaque est fugit"
       },
       {
-        "userId": 7,
-        "id": 61,
-        "title": "delectus iusto et"
+        "userId": 3,
+        "id": 30,
+        "title": "tempora assumenda et similique odit distinctio error"
       },
       {
-        "userId": 7,
-        "id": 62,
-        "title": "eos ea non recusandae iste ut quasi"
+        "userId": 4,
+        "id": 31,
+        "title": "adipisci laborum fuga laboriosam"
       },
+      {
+        "userId": 4,
+        "id": 32,
+        "title": "reiciendis dolores a ut qui debitis non quo labore"
+      },
+      {
+        "userId": 4,
+        "id": 33,
+        "title": "iste eos nostrum"
+      },
+      {
+        "userId": 4,
+        "id": 34,
+        "title": "cumque voluptatibus rerum architecto blanditiis"
+      },
+      {
+        "userId": 4,
+        "id": 35,
+        "title": "et impedit nisi quae magni necessitatibus sed aut pariatur"
+      }
 ]

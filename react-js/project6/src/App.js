@@ -1,23 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { Func1and2 } from './siblings-functional -components/Func1and2';
+import { Func3and4 } from './siblings-functional -components/Func3and4';
+import { Func5and6 } from './siblings-functional -components/Func5and6';
+import { Func7and8 } from './siblings-functional -components/Func7and8';
+import { Func9and10 } from './siblings-functional -components/Func9and10';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Func1and2/>
+        <Func3and4/>
+        <Func5and6/>
+        <Func7and8/>
+        <Func9and10/>
     </div>
   );
 }

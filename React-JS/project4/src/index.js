@@ -8,10 +8,15 @@ import Comments from './Sibling Components/Child to Parent-Class/Comments';
 import Photos from './Sibling Components/Child to Parent-Class/Photos';
 import Todos from './Sibling Components/Child to Parent-Class/Todos';
 import Users from './Sibling Components/Child to Parent-Class/Users';
+import { Albumm } from './Sibling Components/Parent to Child Function/Albumm';
+import { Commentss } from './Sibling Components/Parent to Child Function/Commentss';
+import { Photoss } from './Sibling Components/Parent to Child Function/Photoss';
+import { Todoss } from './Sibling Components/Parent to Child Function/Todoss';
+import { Userss } from './Sibling Components/Parent to Child Function/Userss';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<Users></Users>
+<Todoss></Todoss>
   </React.StrictMode>
 );
 

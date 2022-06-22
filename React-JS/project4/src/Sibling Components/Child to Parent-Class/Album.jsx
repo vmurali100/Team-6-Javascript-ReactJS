@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Album1 from "./Album1";
-import Album2 from "./Album2";
+import { Albumm1 } from "../Parent to Child Function/Albumm1";
+import { Albumm2 } from "../Parent to Child Function/Albumm2";
+
 
 function Album(){
   const[message,setmessage]=useState("")
@@ -20,8 +21,8 @@ function Album(){
   }
   return(
     <div className="Album">
-      <Album1 sendmessage={sendmessage} sendalbum={sendalbum} sendallalbum={sendallalbum}/>
-      <Album2 message={message} album={album} allalbum={allalbum}/>
+      <Albumm1 sendmessage={sendmessage} sendalbum={sendalbum} sendallalbum={sendallalbum}/>
+      <Albumm2 message={message} album={album} allalbum={allalbum}/>
     </div>
   )
 }

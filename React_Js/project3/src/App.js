@@ -3,6 +3,7 @@ import './App.css';
 import Ccarts1 from './Sibling class/Ccarts1';
 import Ccarts2 from './Sibling class/Ccarts2';
 import React, { useState } from 'react';
+import { Functional } from './Sibling functional/Functional';
 
 function App() {
   const [message, setmessage] = useState("")
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
       <Ccarts1 sendmessage={sendmessage} sendperson={sendperson} sendcarts={sendcarts} />
       <Ccarts2 message={message} person={person} carts={carts} />
+      <Functional/>
     </div>
   );
 }

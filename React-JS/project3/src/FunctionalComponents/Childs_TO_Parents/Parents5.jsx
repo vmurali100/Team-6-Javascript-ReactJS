@@ -30,21 +30,18 @@ const Parents5 = ({ Users }) => {
             </table>
             )}
             
-            {/* <ul>
+            <ul>
                 {Users.map((user, i) => {
-                    return <div className="userinfo">
-                        <p>{user.fname}</p>
-                        <p>{user.lname}</p>
-                        <p>{user.tel}</p>
-                        <p>{user.address}</p>
-                        <p>{user.city}</p>
-                        <p>{user.state}</p>
-                        <p>{user.zip}</p>
+                    return <div className="userinfo" key={i}>
+                        <p>{user.id}</p>
+                        <p>{user.userId}</p>
+                        <p>{user.date}</p>
+                        <p>{user.__v}</p>
                     </div>
 
 
                 })}
-            </ul> */}
+            </ul>
         </div>
     )
 }

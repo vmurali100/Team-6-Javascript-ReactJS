@@ -25,7 +25,7 @@ import FComp2 from './FComp2'
 
    return (
      <div>
-        <p>ParentSiblingComponents</p>
+        <p>Functional Sibling Components</p>
         <FComp1 sendMessage={sendMessage} sendperson={sendperson} sendUsers={sendUsers}/>
           <FComp2 Message={Message} person={person} Users={Users}/>
 

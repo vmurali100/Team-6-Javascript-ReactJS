@@ -7,13 +7,13 @@ function FComp2({Message,person,Users}) {
   return (
     <div>
       <p>FComp2</p>
-      <p>{Message}</p>
-      <p>{person.fname}{person.lname}</p>
+      <h1>{Message}</h1>
+      <h2>{person.fname}{person.lname}</h2>
       <ul>
         {Users.map((user,i)=>{
           return <div className="userinfo" key={i}>
-            <p>{user.fname}</p>
-            <p>{user.lname}</p>
+            <h4>{user.fname}</h4>
+            <h4>{user.lname}</h4>
           </div>
         })}
       </ul>

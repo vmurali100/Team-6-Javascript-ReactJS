@@ -36,7 +36,7 @@ const Parents3 = () => {
             
             <ul>
                 {UsersInfo.map((user, i) => {
-                    return <div className="userinfo">
+                    return <div className="userinfo" key={i}>
                         <p>{user.id}</p>
                         <p>{user.postId}</p>
                         <p>{user.name}</p>

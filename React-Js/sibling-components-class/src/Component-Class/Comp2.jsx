@@ -5,7 +5,7 @@ export default class Comp2 extends Component{
         super(props)
 
         this.state = {
-            Showusers: false
+            
         }
     }
 

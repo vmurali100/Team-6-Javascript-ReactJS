@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Change } from './fun';
+import { Fun } from './Fun';
 import './index.css';
 
 
@@ -8,7 +8,7 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
-import { Space } from './Space';
+
 
 
 
@@ -18,7 +18,7 @@ import { Space } from './Space';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Change/>
+   <Fun/>
   </React.StrictMode>
 );
 

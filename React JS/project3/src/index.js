@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Par1 } from './File/Par1';
+
+import { Parent } from './File/Parent';
+import { Parent2 } from './File/Parent2';
+
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Parent2/>
   </React.StrictMode>
 );
 

@@ -1,28 +1,19 @@
-
-import Comp1 from './Sibling Components/Child to Parent-Class/Comp1';
-import { useState } from 'react';
-import Comp2 from './Sibling Components/Child to Parent-Class/Comp2';
-
+import logo from './logo.svg';
+import './App.css';
+import { Albumm } from './Sibling Components/Sibling Function/Albumm';
+import { Commentss } from './Sibling Components/Sibling Function/Commentss';
+import { Photoss } from '../../project3/src/Child-Parent-ClassComponent/Photoss';
+import { Todoss } from '../../project3/src/Child-Parent-ClassComponent/Todoss';
 function App() {
-  const[ message,setmessage]=useState("")
-  const[person,setperson]=useState({})
-  const[users,setusers]=useState([])
-
-  const sendmessage=(message)=>{
-    setmessage(message)
-  }
-  const sendperson=(person)=>{
-    setperson(person)
-  }
- const senduser=(usersinfo)=>{
-  setusers(usersinfo)
- }
   return (
     <div className="App">
-     <Comp1 sendmessage={sendmessage} sendperson={sendperson} senduser={senduser}/>
-    <Comp2 message={message} person={person} users={users}/>
+  {/* <Albumm></Albumm> */}
+  {/* <Commentss></Commentss> */}
+  {/* <Photoss></Photoss> */}
+  
     </div>
   );
 }
 
 export default App;
+

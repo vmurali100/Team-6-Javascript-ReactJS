@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const Albumm1=({sendmessage,message,sendperson,person,setallalbum,album})=>{
+export const Albumm1=({sendmessage,message,sendperson,person,sendallalbum,album})=>{
     const[]=useState(
         message="hello i am akalyak",
         person={
@@ -15,7 +15,7 @@ export const Albumm1=({sendmessage,message,sendperson,person,setallalbum,album})
             <p>hello albumm1</p>
             <button onClick={()=>{sendmessage(message)}}>send message</button>
             <button onClick={()=>{sendperson(person)}}>send person</button>
-            <button onClick={()=>{setallalbum(album)}}>send allalbum</button>
+            <button onClick={()=>{sendallalbum(album)}}>send allalbum</button>
         </div>
     )
 }

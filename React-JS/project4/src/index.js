@@ -1,22 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Todoss } from '../../project3/src/Child-Parent-ClassComponent/Todoss';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Album from './Sibling Components/Child to Parent-Class/Album';
-import Comments from './Sibling Components/Child to Parent-Class/Comments';
-import Photos from './Sibling Components/Child to Parent-Class/Photos';
-import Todos from './Sibling Components/Child to Parent-Class/Todos';
-import Users from './Sibling Components/Child to Parent-Class/Users';
-import { Albumm } from './Sibling Components/Parent to Child Function/Albumm';
-import { Commentss } from './Sibling Components/Parent to Child Function/Commentss';
-import { Photoss } from './Sibling Components/Parent to Child Function/Photoss';
-import { Todoss } from './Sibling Components/Parent to Child Function/Todoss';
-import { Userss } from './Sibling Components/Parent to Child Function/Userss';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<Album></Album>
+<Todoss></Todoss>
   </React.StrictMode>
 );
 

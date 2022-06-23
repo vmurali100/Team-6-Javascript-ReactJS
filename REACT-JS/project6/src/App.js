@@ -14,16 +14,13 @@ import Child5 from './FUNC-COMP-CHILD-PARENT/Child5';
 function App() {
   return (
     <div className="App">
-      {/* <Parent1/> */}
+      <Parent1/>
       {/* <Parent2/>  */}
       {/* <Parent3/> */}
       {/* <Parent4/> */}
       {/* <Parent5/> */}
-       {/* <Child1/>  */}
-      {/* <Child2/> */}
-      {/* <Child3/> */}
-      {/* <Child4/> */}
-     <Child5/>
+     
+    
     </div>
   );
 }

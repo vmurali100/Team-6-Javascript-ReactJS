@@ -1,11 +1,16 @@
 import React from "react";
 import { useState } from "react";
+import Child1 from "./Child1";
 
-const Parent1=({users})=>{
-    const[]=useState()
+const Parent1=()=>{
+    const[userInfo,setuserInfo]=useState([])
+    const recevedDaraFromChild=(users)=>{
+        setuserInfo(users)
+    }
     return(
         <div>
-            {users.length >0 && (<table border={2}>
+            <Child1 getuser={recevedDaraFromChild}/>
+            {userInfo.length >0 && (<table border={2}>
                 <thead>
                     <tr>
                         <th>fname</th>
@@ -32,7 +37,8 @@ const Parent1=({users})=>{
                     })}
                 </tbody>
 
-            </table>)}
+            </table>
+            )}
         </div>
     )
 }

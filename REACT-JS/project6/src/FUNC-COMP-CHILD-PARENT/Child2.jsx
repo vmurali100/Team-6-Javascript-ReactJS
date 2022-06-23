@@ -1,17 +1,17 @@
-import React,{useState} from "react";
-import Parent2 from"./Parent2"
+import React, { useState } from "react";
 
-const Child2=()=>{
-    const[users,setusers]=useState([])
 
-    const SendDataToParent=()=>{
-        setusers(allusers)
+const Child2 = ({ getusers }) => {
+    const [users, setusers] = useState(allusers)
+
+    const SendDataToParent = () => {
+        getusers(users)
     }
-    return(
+    return (
         <div>
             <button onClick={SendDataToParent}>SendData Child To Parent Components</button>
 
-            <Parent2 users={users}/>
+
         </div>
     )
 }
@@ -38,4 +38,4 @@ var allusers = [
         "fname": "Yeqing",
         "lname": "Branscombe"
     }
-   ]
+]

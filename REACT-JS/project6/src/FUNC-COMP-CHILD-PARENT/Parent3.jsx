@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import Child3 from "./Child3";
 
-
-const Parent3 = ({ users }) => {
-    const [] = useState()
+const Parent3 = () => {
+    const [usersInfo,setusersInfo] = useState([])
+    const receiveddatafromchild=(users)=>{
+        setusersInfo(users)
+    }
     return (
         <div>
+            <Child3 getusers={receiveddatafromchild}/>
             {users.length > 0 && (<table border={2}>
                 <thead>
                     <tr>

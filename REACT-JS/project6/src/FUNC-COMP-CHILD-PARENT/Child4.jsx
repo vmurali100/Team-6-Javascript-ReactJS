@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import Parent4 from "./Parent4"
 
-const Child4 = () => {
-    const [users, setusers] = useState([])
+
+const Child4 = ({ getusers }) => {
+    const [users, setusers] = useState(allusers)
 
     const SendDataToParent = () => {
-        setusers(allusers)
+        getusers(users)
     }
     return (
         <div>
             <button onClick={SendDataToParent}>SendData Child To Parent Components</button>
 
-            <Parent4 users={users} />
+
         </div>
     )
 }
+
 export default Child4
 
 var allusers = [

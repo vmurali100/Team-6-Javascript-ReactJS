@@ -1,22 +1,21 @@
-import React,{useState} from "react";
-import Child5 from "../FUNCTIONAL COMPONENTS/Parent-To-Child/Child5";
-import Parent5 from"./Parent5"
+import React, { useState } from "react";
 
-const Child1=()=>{
-    const[users,setusers]=useState([])
 
-    const SendDataToParent=()=>{
-        setusers(allusers)
+const Child5 = ({ getusers }) => {
+    const [users, setusers] = useState(allusers)
+
+    const SendDataToParent = () => {
+        getusers(users)
     }
-    return(
+    return (
         <div>
             <button onClick={SendDataToParent}>SendData Child To Parent Components</button>
 
-            <Parent5 users={users}/>
+
         </div>
     )
 }
-export default Child5;
+export default Child5
 
 var allusers = [
     [

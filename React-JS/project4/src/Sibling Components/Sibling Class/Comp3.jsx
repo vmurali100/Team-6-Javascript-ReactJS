@@ -20,7 +20,7 @@ function Comp3(){
   return (
     <div className="Comp3">
     <Comp1 sendmessage={sendmessage} sendperson={sendperson} senduser={senduser}/>
-    <Comp2 message={message} person={person} senduser={senduser}/>
+    <Comp2 message={message} person={person} senduser={users}/>
     </div>
   );
 }

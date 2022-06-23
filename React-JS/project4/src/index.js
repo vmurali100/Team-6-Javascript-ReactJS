@@ -16,7 +16,7 @@ import { Userss } from './Sibling Components/Parent to Child Function/Userss';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<Todoss></Todoss>
+<Album></Album>
   </React.StrictMode>
 );
 

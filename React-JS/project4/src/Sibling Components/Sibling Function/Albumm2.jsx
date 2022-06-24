@@ -5,7 +5,7 @@ export const Albumm2=({message,person,album})=>{
 
     return(
         <div>
-            <p>hello alnumm2</p>
+            
             <p>{message}</p>
             <p>{person.userId}-{person.id}-{person.title}</p>
             <ul>

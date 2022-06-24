@@ -6,11 +6,19 @@ export default class Comp2 extends Component{
             <div>
                 <p>{this.props.message}</p>
                 <p>{this.props.person.fname}-{this.props.person.lname}</p>
-                <ul>
-                    {this.props.users.map((user,i)=>{
-                        return <li key={i}>{user.userId}-{user.id}-{user.title}-{user.body}</li>
-                    })}
-                </ul>
+              <table border={1}>
+                <thead>
+                    <tr>
+                        <th>userId</th>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>body</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.props.users}
+                </tbody>
+               </table>
             </div>
         )
     }

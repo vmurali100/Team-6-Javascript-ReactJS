@@ -14,8 +14,8 @@ function Comp3(){
   const sendperson=(person)=>{
     setperson(person)
   }
- const senduser=(usersinfo)=>{
-  setusers(usersinfo)
+ const senduser=(users)=>{
+  setusers(users)
  }
   return (
     <div className="Comp3">

@@ -22,14 +22,14 @@ function App() {
  {/* <Album></Album> */}
  {/* <Photoss></Photoss> */}
  {/* <Comments></Comments> */}
- {/* <Comp3></Comp3> */}
+ <Comp3></Comp3>
  {/* <Photos></Photos> */}
  {/* <Users></Users> */}
  {/* <Albumm></Albumm> */}
  {/* <Commentss></Commentss> */}
   {/* <Todoss></Todoss> */}
   {/* <Userss></Userss> */}
-  <Prettyy></Prettyy>
+  {/* <Prettyy></Prettyy> */}
     </div>
 
   );

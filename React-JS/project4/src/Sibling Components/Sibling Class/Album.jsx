@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import Album1 from './Sibling Components/Sibling Class/Album1';
-// import Album2 from './Sibling Components/Sibling Class/Album2';
 import Album1 from "./Album1";
 import Album2 from "./Album2";
 

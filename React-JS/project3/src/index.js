@@ -45,7 +45,7 @@ import { Prettytruee } from './Child-Parent-ClassComponent/Prettytruee';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
- <Commentss></Commentss>
+ <Albumss></Albumss>
   </React.StrictMode>
 );
 

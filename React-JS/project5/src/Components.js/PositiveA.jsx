@@ -18,7 +18,7 @@ export default class PositiveA extends Component{
                 <p>PositiveA</p>
                 <button onClick={()=>{this.setState({message:"A positive mindset brings positive things",count:26})}}>click me</button>
                 <hr />
-                <PositiveB mgs={this.state.message}/>
+                <PositiveB msg={this.state.message}/>
                 <hr />
                 {this.state.count===10 && <Positivecount/>}
             </div>

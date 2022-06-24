@@ -4,6 +4,7 @@ import Lifecycle1 from './Components/Lifecycle1';
 import Lifecycle3 from './Components/Lifecycle3';
 import Lifecyclea from './Components/Lifecyclea';
 import Lifecyclec from './Components/Lifecyclec';
+import LifecycleE from './Components/LifecycleE';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* <Lifecyclea/> */}
       {/* <Lifecycle1/> */}
       {/* <Lifecyclec/> */}
-      <Lifecycle3/>
+      {/* <Lifecycle3/> */}
+      <LifecycleE/>
     </div>
   );
 }

@@ -6,6 +6,13 @@ import KindA from './Components.js/KindA';
 import MotivationA from './Components.js/MotivationalA';
 import PositiveA from './Components.js/PositiveA';
 import ThounghtA from './Components.js/ThounghtA';
+import Usersclasscomp from './Components.js/Usersclasscomp';
+
+import Albumclass from './Components.js/Albumclass';
+import Commentsclass from './Components.js/Commentsclass';
+import Postsclass from './Components.js/Postsclass';
+import Todosclass from './Components.js/Todosclass';
+import Photosclass from './Components.js/Photosclass';
 
 function App() {
   return (
@@ -14,8 +21,14 @@ function App() {
       {/* <HappyA/> */}
       {/* <MotivationA/> */}
       {/* <KindA/> */}
-      <PositiveA/>
-      {/* <ThounghtA></ThounghtA> */}
+      {/* <PositiveA/> */}
+    {/* <ThounghtA/> */}
+    {/* <Albumclass/> */}
+    {/* <Commentsclass/> */}
+    {/* <Postsclass/> */}
+    {/* <Todosclass/> */}
+    {/* <Usersclasscomp/> */}
+    <Photosclass/>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Lifecycle1 from './Components/Lifecycle1';
 import Lifecycle3 from './Components/Lifecycle3';
 import LifecycleC from './Components/LifecycleC';
 import Users from './lifecycle-hooks-class/Users';
+import Posts1 from './lifecycle-hooks-class/Posts1';
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
     {/* <Lifecycle3/> */}
     {/* <LifecycleC/> */}
 
-    <Users/>
+    {/* lifecyclehooks */}
+    {/* <Users/> */}
+    <Posts1/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
- export function Child ({getdata}){
- const [s,setse]=useState([" sealion","tiger fish","searay"])  ;
+ export function Child2 ({getdata}){
+ const [s,setse]=useState(["ship","plane","spaceship"])  ;
   function data(){
     getdata(s)
   } 

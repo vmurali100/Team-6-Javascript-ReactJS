@@ -1,37 +1,13 @@
-import { Component } from "react";
+import { useState } from "react";
 
-export class Child1 extends Component{
-    constructor(props){
-        super(props)
-        this.state={
-            
-        }
-    }
+ export function Child1 ({getdata}){
+ const [s,setse]=useState(["phone","laptop","tab"])  ;
+  function data(){
+    getdata(s)
+  } 
+  return <div>
+       <button onClick={data}>click</button>
+  </div>
     
-    
-    render(){
-        return (
-            <div>
-              
-            <table border= "1">
-                <thead>
-                    <tr>
-                    <th>fname</th>
-                    <th>lname</th>
-                   
-
-                    </tr>
-                </thead>
-                <tbody>
-                   {this.props.all .map((user)=>{
-                    return<tr>
-                        <td>{user.fname}</td>
-                        <td>{user.lname}</td>
-                    </tr>
-                   })}
-                </tbody>
-            </table>
-            </div>
-        )
-    }
+ 
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Parent2 } from './File/Parent2';
 import { Parent } from './File1/Parent';
 
 import './index.css';
@@ -19,7 +20,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Parent/>
+   <Parent2/>
   </React.StrictMode>
 );
 

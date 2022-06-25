@@ -1,26 +1,29 @@
 import { Component } from "react"
 
-export class Child extends Component{
+export class Comp1 extends Component{
     constructor(props){
         super(props)
         this.state={
-        message:"",
-        person:{},
-        students:[],
+        message:"hi",
+        person:{
+            fname:"santhosh",
+            lname:"B"
+        },
+        users:users
         
         }
     }
     render(){
-        const {remessage, reperson,rearray}=this.props
+        const {semessage, seperson,searray}=this.props
         return <div>
-            <button onClick={()=>{remessage("hello")}}>click</button>
-            <button onClick={()=>{reperson(data [0])}}>click</button>
-            <button onClick={()=>{rearray(text )}}>click</button>
+            <button onClick={()=>{semessage(this.state.message)}}>click</button>
+            <button onClick={()=>{seperson(this.state.person)}}>click</button>
+            <button onClick={()=>{searray(this.state.users )}}>click</button>
         </div>
     }
 }
 
-var data=[
+var users=[
     {
         "fname": "Meera",
         "lname": "Heilman"
@@ -64,4 +67,3 @@ var data=[
 
   ]
 
-  var text=["hi","what","space"]

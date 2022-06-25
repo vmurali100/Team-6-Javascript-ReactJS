@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Child1 } from "./Child1";
-
+import { Child2 } from "./Child2";
 
 export function Parent2(){
     const [w,setw]=useState([]);
@@ -8,7 +7,7 @@ export function Parent2(){
         setw(s)
     };
    return <div>
-   <Child1 getdata={recive}/>
+   <Child2 getdata={recive}/>
     <ul>
        {w.map((user)=>{
         return <li>{user}</li>

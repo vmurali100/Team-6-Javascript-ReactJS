@@ -2,6 +2,9 @@
 import './App.css';
 import Albums from './Class components/Albums';
 import Comments from './Class components/Comments';
+import Photos from './Class components/Photos';
+import Products from './Class components/Products';
+import Users from './Class components/Users';
 import Lifecycle1 from './Components/Lifecycle1';
 import Lifecycle3 from './Components/Lifecycle3';
 import Lifecyclea from './Components/Lifecyclea';
@@ -29,7 +32,10 @@ function App() {
       {/* <Todos/> */}
       {/* <Carts/> */}
       {/* <Comments/> */}
-      <Albums />
+      {/* <Albums /> */}
+      {/* <Photos/> */}
+      {/* <Users/> */}
+      <Products />
     </div>
   );
 }

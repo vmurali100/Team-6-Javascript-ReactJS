@@ -13,6 +13,7 @@ export default class LifeCycleOfA extends Component {
         Person:{
             fname:"A Mansur",
             lname:"Vali"
+            
         },
         Users:Users
       }

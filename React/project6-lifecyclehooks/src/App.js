@@ -8,6 +8,7 @@ import Users from './lifecycle-hooks-class/Users';
 import Posts1 from './lifecycle-hooks-class/Posts1';
 import Carts2 from './lifecycle-hooks-class/Carts2';
 import Comments3 from './lifecycle-hooks-class/Comments3';
+import Photos5 from './lifecycle-hooks-class/Photos5';
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
     {/* <Users/> */}
     {/* <Posts1/> */}
     {/* <Carts2/> */}
-    <Comments3/>
+    {/* <Comments3/> */}
+    <Photos5/>
+
     </div>
   );
 }

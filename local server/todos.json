@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "userid": "1",
+      "userId": 1,
       "id": 6,
       "title": "qui ullam ratione quibusdam voluptatem quia omnis",
       "completed": "true",
@@ -9,7 +9,7 @@
 
     },
     {
-      "userid": "undefined",
+      "userId": 1,
       "id": 7,
       "title": "illo expedita consequatur quia in",
       "completed": "true",
@@ -28,7 +28,7 @@
       "userId": 1,
       "id": 9,
       "title": "molestiae perspiciatis ipsa",
-      "completed": false,
+      "completed": "true",
       "email":"nith@gmail.com"
 
     },
@@ -56,7 +56,7 @@
       "userId": 1,
       "id": 13,
       "title": "et doloremque nulla",
-      "completed": false
+      "completed": "false"
     },
     {
       "userId": 1,

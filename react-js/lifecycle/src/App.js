@@ -5,6 +5,11 @@ import LifeCycleC from './Components/LifeCycleC';
 import LifeCycleE from './Components/LifeCycleE';
 import LifeCycleG from './Components/LifeCycleG';
 import Lifecycle1 from './Components/Lifecycle1';
+import UsersclassComp from './Components/UsersclassComp';
+import Todclas from './Components/Todclas';
+import Postclas from './Components/Postclas';
+import Cartclas from './Components/Cartclas';
+import Fakeuserclas from './Components/Fakeuserclas';
 
 function App() {
   return (
@@ -13,7 +18,14 @@ function App() {
        {/* <LifeCycleC/> */}
        {/* <LifeCycleE/> */}
        {/* <LifeCycleG/> */}
-       <Lifecycle1/>
+       {/* <Lifecycle1/> */}
+
+
+       {/* <UsersclassComp/> */}
+       {/* <Todclas/> */}
+       {/* <Postclas/> */}
+       {/* <Cartclas/> */}
+       <Fakeuserclas/>
     </div>
   );
 }

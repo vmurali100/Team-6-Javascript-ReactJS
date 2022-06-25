@@ -1,5 +1,6 @@
 
 import './App.css';
+import Comments from './Class components/Comments';
 import Lifecycle1 from './Components/Lifecycle1';
 import Lifecycle3 from './Components/Lifecycle3';
 import Lifecyclea from './Components/Lifecyclea';
@@ -25,7 +26,8 @@ function App() {
       {/* <Filltext2/> */}
       {/* <Posts/> */}
       {/* <Todos/> */}
-      <Carts/>
+      {/* <Carts/> */}
+      <Comments/>
     </div>
   );
 }

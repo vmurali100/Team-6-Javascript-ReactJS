@@ -1,4 +1,4 @@
-export function Hook1({filltextUsers}){
+export function Hook1({all}){
     return (
       <div>
         <table border="1">
@@ -14,7 +14,7 @@ export function Hook1({filltextUsers}){
             </tr>
           </thead>
           <tbody>
-            {filltextUsers.map((user,i) => {
+            {all.map((user,i) => {
               return (
                 <tr key={i}>
                   <td>{user.fname}</td>

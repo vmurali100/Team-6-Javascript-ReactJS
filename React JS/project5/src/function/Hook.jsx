@@ -13,7 +13,7 @@ import { useEffect } from 'react';
     },[])
   return (
     <div>
-        <Hook1 filltextUsers={allUsers}/>
+        <Hook1 all={allUsers}/>
     </div>
   )
 }

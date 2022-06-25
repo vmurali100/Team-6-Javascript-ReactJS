@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Class } from './class/Class';
-import { Hook } from './function/Hook';
+import { Ocean } from './class2/Ocean';
+
+import { Space } from './function2/Space';
 
 
 
@@ -10,7 +11,7 @@ import { Hook } from './function/Hook';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Class/>
+   <Ocean/>
   </React.StrictMode>
 );
 

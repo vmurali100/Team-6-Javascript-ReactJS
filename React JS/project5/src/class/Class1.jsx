@@ -1,6 +1,6 @@
 
 
-export function Class1({filltextUsers}){
+export function Class1({all}){
   return (
     <div>
       <table border="1">
@@ -16,7 +16,7 @@ export function Class1({filltextUsers}){
           </tr>
         </thead>
         <tbody>
-          {filltextUsers.map((user,i) => {
+          {all.map((user,i) => {
             return (
               <tr key={i}>
                 <td>{user.fname}</td>

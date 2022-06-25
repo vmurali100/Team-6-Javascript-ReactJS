@@ -17,7 +17,7 @@ export class Class extends Component {
   render() {
     return (
       <div>
-          <Class1 filltextUsers={this.state.users}/>
+          <Class1 all={this.state.users}/>
       </div>
     )
   }

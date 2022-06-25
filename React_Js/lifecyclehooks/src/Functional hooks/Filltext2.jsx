@@ -7,7 +7,7 @@ import Filltexttable2 from './Filltexttable2';
 const Filltext2 = () => {
     const[allfilltext,setAllfilltext]=useState([]);
     useEffect(()=>{
-        axios.get("http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true").then((response)=>{setAllfilltext(response.data)})
+        axios.get(" http://localhost:3000/filltext2").then((response)=>{setAllfilltext(response.data)})
     },[])
   return (
     <div>

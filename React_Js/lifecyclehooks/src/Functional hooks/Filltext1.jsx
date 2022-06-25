@@ -7,7 +7,7 @@ import Filltexttable1 from './Filltexttable1';
 const Filltext1 = () => {
     const[allfilltext,setAllfilltext]=useState([]);
     useEffect(()=>{
-        axios.get("http://www.filltext.com/?rows=10&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true").then((response)=>{setAllfilltext(response.data)})
+        axios.get("http://localhost:3000/filltext").then((response)=>{setAllfilltext(response.data)})
     },[])
   return (
     <div>

@@ -7,7 +7,7 @@ import Poststable from './Poststable';
 const Posts = () => {
     const[allposts,setAllposts]=useState([]);
     useEffect(()=>{
-        axios.get("https://jsonplaceholder.typicode.com/posts").then((response)=>{setAllposts(response.data)})
+        axios.get("http://localhost:3000/posts").then((response)=>{setAllposts(response.data)})
     },[])
   return (
     <div>

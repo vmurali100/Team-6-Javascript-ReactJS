@@ -7,7 +7,7 @@ import Todostable from './Todostable';
 const Todos = () => {
     const[alltodos,setAlltodos]=useState([]);
     useEffect(()=>{
-        axios.get("https://jsonplaceholder.typicode.com/todos").then((response)=>{setAlltodos(response.data)})
+        axios.get("http://localhost:3000/todos").then((response)=>{setAlltodos(response.data)})
     },[])
   return (
     <div>

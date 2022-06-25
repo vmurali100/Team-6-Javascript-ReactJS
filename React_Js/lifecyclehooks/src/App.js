@@ -7,6 +7,7 @@ import Lifecyclec from './Components/Lifecyclec';
 import LifecycleE from './Components/LifecycleE';
 import Filltext from './Functional hooks/Filltext';
 import Filltext1 from './Functional hooks/Filltext1';
+import Filltext2 from './Functional hooks/Filltext2';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       {/* <Lifecycle3/> */}
       {/* <LifecycleE/> */}
       {/* <Filltext/> */}
-      <Filltext1/>
+      {/* <Filltext1/> */}
+      <Filltext2/>
     </div>
   );
 }

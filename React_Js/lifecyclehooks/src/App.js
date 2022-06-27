@@ -1,5 +1,8 @@
 
 import './App.css';
+import Albumsparent from './Class child to parent/Albumsparent';
+// import Albumschild from './Class child to parent/Albumschild';
+// import Albumsparent from './Class child to parent/Albumsparent';
 import Albums from './Class components/Albums';
 import Comments from './Class components/Comments';
 import Photos from './Class components/Photos';
@@ -29,13 +32,15 @@ function App() {
       {/* <Filltext1/> */}
       {/* <Filltext2/> */}
       {/* <Posts/> */}
-      <Todos/>
+      {/* <Todos/> */}
       {/* <Carts/> */}
       {/* <Comments/> */}
       {/* <Albums /> */}
       {/* <Photos/> */}
       {/* <Users/> */}
       {/* <Products /> */}
+      <Albumsparent/>
+     
     </div>
   );
 }

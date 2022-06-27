@@ -17,6 +17,7 @@ import Lifecycle3 from './Components/Lifecycle3';
 import Lifecyclea from './Components/Lifecyclea';
 import Lifecyclec from './Components/Lifecyclec';
 import LifecycleE from './Components/LifecycleE';
+import Cartsparent from './Functional child to parent/Cartsparent';
 import Carts from './Functional hooks/Carts';
 import Filltext from './Functional hooks/Filltext';
 import Filltext1 from './Functional hooks/Filltext1';
@@ -47,7 +48,8 @@ function App() {
       {/* <Commentsparent/> */}
       {/* <Photosparent/> */}
       {/* <Productsparent/> */}
-      <Usersparent/>
+      {/* <Usersparent/> */}
+      <Cartsparent/>
      
     </div>
   );

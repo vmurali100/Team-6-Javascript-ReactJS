@@ -10,7 +10,7 @@ export default class Todosclass extends Component {
       }
     }
     componentDidMount(){
-        const url="https://jsonplaceholder.typicode.com/todos"
+        const url=" http://localhost:3000/todos"
         axios.get(url).then((Response)=>{this.setState({todos:Response.data})})
     }
   render() {

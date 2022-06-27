@@ -10,7 +10,7 @@ export default class Photosclass extends Component {
       }
     }
     componentDidMount(){
-        const url="https://jsonplaceholder.typicode.com/photos"
+        const url="http://localhost:3000/photos"
         axios.get(url).then((Response)=>{this.setState({photo:Response.data})})
     }
   render() {

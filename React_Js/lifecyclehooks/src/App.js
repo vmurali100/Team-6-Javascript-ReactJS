@@ -2,6 +2,9 @@
 import './App.css';
 import Albumsparent from './Class child to parent/Albumsparent';
 import Commentsparent from './Class child to parent/Commentsparent';
+import Photosparent from './Class child to parent/Photosparent';
+import Productsparent from './Class child to parent/Productsparent';
+import Usersparent from './Class child to parent/Usersparent';
 // import Albumschild from './Class child to parent/Albumschild';
 // import Albumsparent from './Class child to parent/Albumsparent';
 import Albums from './Class components/Albums';
@@ -41,7 +44,10 @@ function App() {
       {/* <Users/> */}
       {/* <Products /> */}
       {/* <Albumsparent/> */}
-      <Commentsparent/>
+      {/* <Commentsparent/> */}
+      {/* <Photosparent/> */}
+      {/* <Productsparent/> */}
+      <Usersparent/>
      
     </div>
   );

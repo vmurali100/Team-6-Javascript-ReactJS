@@ -8,7 +8,7 @@ function Practice1() {
         })
     }, [])
     return (
-        <div> 
+        <div>
             <p>Practice1</p>
             <table border={2}>
                 <thead>

@@ -1,21 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
-import Practice1 from './Components/ClassCompHooks/Practice1';
-import Practice2 from './Components/ClassCompHooks/Practice2';
-import Practice3 from './Components/ClassCompHooks/Practice3';
-import Practice4 from './Components/ClassCompHooks/Practice4';
-import Practice5 from './Components/ClassCompHooks/Practice5';
+import Parents2 from './ClassComponents/ChildComponent_To_ParentComponent/Parents2';
+import Parents3 from './ClassComponents/ChildComponent_To_ParentComponent/Parents3';
+import Parents4 from './ClassComponents/ChildComponent_To_ParentComponent/Parents4';
+import Parents5 from './ClassComponents/ChildComponent_To_ParentComponent/Parents5';
+ 
+ 
+ 
  
 
 function App() {
   return (
     <div className="App">
       
-       {/* <Practice1/> */}
-        {/* <Practice3/> */}
-        {/* <Practice3/> */}
-        {/* <Practice4/> */}
-        <Practice5/>
+        {/* <Parents1/> */}
+        {/* <Parents2/> */}
+        {/* <Parents3/> */}
+        {/* <Parents4/> */}
+        {/* <Parents5/> */}
+        {/* <Parents2/> */}
+        {/* <Parents3/> */}
+        {/* <Parents4/> */}
+        {/* <Parents5/> */}
+         
     </div>
   );
 }

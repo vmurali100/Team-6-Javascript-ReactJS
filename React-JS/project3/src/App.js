@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import React from 'react'
 import './App.css';
-import FACParent from './SiblingComponents/FunctionalComponents/FACParent';
+import Parents1 from './ClassComponents/Childs_To_Parents/Parents1';
+ 
  
  
  
@@ -9,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <FACParent/>
+     <Parents1/>
     </div>
   );
 }

@@ -41,11 +41,6 @@ export default class Practice3 extends Component {
                         })}
                     </tbody>
                 </table>
-                {/* <ul>
-            {this.state.Users.map(function (user){
-                return 
-            })}
-        </ul> */}
             </div>
         )
     }

@@ -18,6 +18,8 @@ import Lifecyclea from './Components/Lifecyclea';
 import Lifecyclec from './Components/Lifecyclec';
 import LifecycleE from './Components/LifecycleE';
 import Cartsparent from './Functional child to parent/Cartsparent';
+import Filltext1parent from './Functional child to parent/Filltext1parent';
+import Filltext2parent from './Functional child to parent/Filltext2parent';
 import Filltextparent from './Functional child to parent/Filltextparent';
 import Carts from './Functional hooks/Carts';
 import Filltext from './Functional hooks/Filltext';
@@ -51,8 +53,9 @@ function App() {
       {/* <Productsparent/> */}
       {/* <Usersparent/> */}
       {/* <Cartsparent/> */}
-      <Filltextparent/>
-     
+      {/* <Filltextparent/> */}
+     {/* <Filltext1parent/> */}
+     <Filltext2parent/>
     </div>
   );
 }

@@ -21,6 +21,7 @@ import Cartsparent from './Functional child to parent/Cartsparent';
 import Filltext1parent from './Functional child to parent/Filltext1parent';
 import Filltext2parent from './Functional child to parent/Filltext2parent';
 import Filltextparent from './Functional child to parent/Filltextparent';
+import Postparent from './Functional child to parent/Postparent';
 import Carts from './Functional hooks/Carts';
 import Filltext from './Functional hooks/Filltext';
 import Filltext1 from './Functional hooks/Filltext1';
@@ -55,7 +56,8 @@ function App() {
       {/* <Cartsparent/> */}
       {/* <Filltextparent/> */}
      {/* <Filltext1parent/> */}
-     <Filltext2parent/>
+     {/* <Filltext2parent/> */}
+     <Postparent/>
     </div>
   );
 }

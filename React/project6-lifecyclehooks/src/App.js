@@ -12,6 +12,7 @@ import Photos5 from './lifecycle-hooks-class/Photos5';
 import Child1 from './lifecyclehook-child-to-parent/Child1';
 import Parent1 from './lifecyclehook-child-to-parent/Parent1';
 import Parent2 from './lifecyclehook-child-to-parent/Parent2';
+import Carts3 from './lifecyclehook-child-to-parent/Carts3';
 
 function App() {
   return (
@@ -30,7 +31,8 @@ function App() {
 
     {/* lifehook child to  parent */}
     {/* <Parent1/> */}
-    <Parent2/>
+    {/* <Parent2/> */}
+    <Carts3/>
 
     </div>
   );

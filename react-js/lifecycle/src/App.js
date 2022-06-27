@@ -10,6 +10,12 @@ import Todclas from './Components/Todclas';
 import Postclas from './Components/Postclas';
 import Cartclas from './Components/Cartclas';
 import Fakeuserclas from './Components/Fakeuserclas';
+import ChildClas1 from './childtoparent/ChildClas1';
+import Parentclas1 from './childtoparent/Parentclas1';
+import Parentclas2 from './childtoparent/Parentclas2';
+import Parentclas3 from './childtoparent/Parentclas3';
+import Parentclas4 from './childtoparent/Parentclas4';
+import Parentclas5 from './childtoparent/Parentclas5';
 
 function App() {
   return (
@@ -25,7 +31,13 @@ function App() {
        {/* <Todclas/> */}
        {/* <Postclas/> */}
        {/* <Cartclas/> */}
-       <Fakeuserclas/>
+       {/* <Fakeuserclas/> */}
+
+       {/* <Parentclas1/> */}
+       {/* <Parentclas2/> */}
+       {/* <Parentclas3/> */}
+       {/* <Parentclas4/> */}
+       <Parentclas5/>
     </div>
   );
 }

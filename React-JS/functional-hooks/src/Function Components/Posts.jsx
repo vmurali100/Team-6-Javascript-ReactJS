@@ -5,7 +5,7 @@ import PostsTable from './PostsTable'
 export const Posts = () => {
     const [posts, setposts] = useState([])
     useEffect(()=>{
-        const url="https://jsonplaceholder.typicode.com/posts"
+        const url="http://localhost:3000/posts"
         axios.get(url).then((Response)=>{setposts(Response.data)})
     },[])
   return (

@@ -6,7 +6,7 @@ import TodosTable from './TodosTable'
 export const Todos = () => {
 const [todos, settodos] = useState([])
 useEffect(()=>{
-    const url="https://jsonplaceholder.typicode.com/todos"
+    const url="http://localhost:3000/todos"
     axios.get(url).then((Response)=>{settodos(Response.data)})
 },[])
   return (

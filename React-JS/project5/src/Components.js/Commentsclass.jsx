@@ -10,7 +10,7 @@ export default class Commentsclass extends Component {
       }
     }
     componentDidMount(){
-        const url="https://jsonplaceholder.typicode.com/comments"
+        const url=" http://localhost:3000/comments"
         axios.get(url).then((Response)=>{this.setState({comments:Response.data})})
     }
   render() {

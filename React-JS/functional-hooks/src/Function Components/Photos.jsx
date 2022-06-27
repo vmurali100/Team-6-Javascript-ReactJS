@@ -6,7 +6,7 @@ import PhotosTable from './PhotosTable'
 export const Photos = () => {
     const [photos, setPhotos] = useState([])
     useEffect(()=>{
-        const url="https://jsonplaceholder.typicode.com/photos"
+        const url="http://localhost:3000/photos"
         axios.get(url).then((Response)=>{setPhotos(Response.data)})
     },[])
 

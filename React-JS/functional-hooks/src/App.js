@@ -11,12 +11,12 @@ import { Users } from './Function Components/Users';
 function App() {
   return (
     <div className="App">
-      {/* <Users></Users> */}
+      <Users></Users>
       {/* <Albums></Albums> */}
       {/* <Comments></Comments> */}
     {/* <Photos></Photos> */}
     {/* <Todos></Todos> */}
-      <Posts></Posts>
+      {/* <Posts></Posts> */}
     </div>
   );
 }

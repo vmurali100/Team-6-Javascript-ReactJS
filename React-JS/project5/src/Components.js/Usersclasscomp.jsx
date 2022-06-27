@@ -10,7 +10,7 @@ export default class Usersclasscomp extends Component {
       }
     }
     componentDidMount(){
-        const url="https://jsonplaceholder.typicode.com/users"
+        const url=" http://localhost:3000/userss"
         axios.get(url).then((Response)=>{this.setState({users:Response.data})})
     }
   render() {

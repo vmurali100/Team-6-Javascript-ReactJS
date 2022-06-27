@@ -7,7 +7,7 @@ import CommentsTable from './CommentsTable'
 export const Comments = () => {
     const [comments,setComments]=useState([])
     useEffect(()=>{
-        const url="https://jsonplaceholder.typicode.com/comments"
+        const url=" http://localhost:3000/comments"
         axios.get(url).then((Response)=>{setComments(Response.data)})
     },[])
   return (

@@ -6,7 +6,7 @@ import AlbumsTable from './AlbumsTable'
 export const Albums = () => {
     const [allAlbums, setAllalbums] = useState([])
     useEffect(()=>{
-        const url="https://jsonplaceholder.typicode.com/albums"
+        const url="http://localhost:3000/albums"
         axios.get(url).then((Response)=>{setAllalbums(Response.data)})
     },[])
   return (

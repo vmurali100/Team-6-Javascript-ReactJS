@@ -10,7 +10,7 @@ export default class Postsclass extends Component {
       }
     }
     componentDidMount(){
-        const url="https://jsonplaceholder.typicode.com/posts"
+        const url="http://localhost:3000/posts"
         axios.get(url).then((Response)=>{this.setState({post:Response.data})})
     }
   render() {

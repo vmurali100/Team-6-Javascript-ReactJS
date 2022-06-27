@@ -3,11 +3,12 @@ import './App.css';
 import { Users } from './functional-components/Users';
 // import { Filltext2 } from './functional-components/Filltext2';
 // import { Filltext3 } from './functional-components/Filltext3';
-import { Filltext4 } from './functional-components/Filltext4';
+// import { Filltext4 } from './functional-components/Filltext4';
 import { Carts5 } from './functional-components/Carts5';
 import { Photos1 } from './Child-to-parent/Photos1';
 import { Fillltext2 } from './Child-to-parent/Fillltext2';
 import { Filltext3 } from './Child-to-parent/Filltext3';
+import { Filltext4 } from './Child-to-parent/Filltext4';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
     {/* hooks child to parent */}
     {/* <Photos1/> */}
     {/* <Fillltext2/> */}
-    <Filltext3/>
+    {/* <Filltext3/> */}
+    <Filltext4/>
     </div>
   );
 }

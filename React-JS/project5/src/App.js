@@ -13,6 +13,12 @@ import Commentsclass from './Components.js/Commentsclass';
 import Postsclass from './Components.js/Postsclass';
 import Todosclass from './Components.js/Todosclass';
 import Photosclass from './Components.js/Photosclass';
+import Albumparent from './Class-child to parent/Albumparent';
+import Cartparent from './Class-child to parent/Cartparent';
+import Comparent from './Class-child to parent/Comparent';
+import Photparent from './Class-child to parent/Photparent';
+import Posparent from './Class-child to parent/Posparent';
+import Todparent from './Class-child to parent/Todparent';
 
 function App() {
   return (
@@ -28,7 +34,13 @@ function App() {
     {/* <Postsclass/> */}
     {/* <Todosclass/> */}
     {/* <Usersclasscomp/> */}
-    <Photosclass/>
+    {/* <Photosclass/> */}
+    {/* <Albumparent></Albumparent> */}
+    {/* <Cartparent></Cartparent> */}
+    {/* <Comparent></Comparent> */}
+    {/* <Photparent></Photparent> */}
+    {/* <Posparent></Posparent> */}
+    <Todparent></Todparent>
     </div>
   );
 }

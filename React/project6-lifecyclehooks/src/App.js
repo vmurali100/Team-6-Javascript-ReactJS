@@ -14,6 +14,7 @@ import Parent1 from './lifecyclehook-child-to-parent/Parent1';
 import Parent2 from './lifecyclehook-child-to-parent/Parent2';
 import Carts3 from './lifecyclehook-child-to-parent/Carts3';
 import Photos4 from './lifecyclehook-child-to-parent/Photos4';
+import Users5 from './lifecyclehook-child-to-parent/Users5';
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
     {/* <Parent1/> */}
     {/* <Parent2/> */}
     {/* <Carts3/> */}
-    <Photos4/>
+    {/* <Photos4/> */}
+    <Users5/>
+
 
     </div>
   );

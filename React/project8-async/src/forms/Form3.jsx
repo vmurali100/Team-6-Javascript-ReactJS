@@ -29,7 +29,7 @@ export const Form3 = () => {
         <input type="text" name="lastName" value={person.lastName}  onChange={(event)=>{handleChange(event)}}/><br/>
 
         <label htmlFor="dateOfBirth">dateOfBirth</label>
-        <input type="text" name="dateOfBirth" value={person.dateOfBirth}  onChange={(event)=>{handleChange(event)}}/><br/>
+        <input type="date" name="dateOfBirth" value={person.dateOfBirth}  onChange={(event)=>{handleChange(event)}}/><br/>
 
         <label htmlFor="Email">Email</label>
         <input type="text" name="Email" value={person.Email}  onChange={(event)=>{handleChange(event)}}/><br/>

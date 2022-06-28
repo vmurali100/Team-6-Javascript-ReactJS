@@ -41,7 +41,7 @@ const Form3 = () => {
             <br />
             <input type="text" name="message" placeholder='Message' value={person.message} onChange={(event) => { handlechange(event) }} />
             <br />
-            <button onClick={addperson}>SUBMIT</button>
+            <button onClick={addperson}>send</button>
         </div>
     )
 }

@@ -10,6 +10,7 @@ import Form2 from './Forms/Form2';
 import Form3 from './Forms/Form3';
 import Form4 from './Forms/Form4';
 import Form5 from './Forms/Form5';
+import Form6 from './Forms/Form6';
 
 
 function App() {
@@ -23,8 +24,9 @@ function App() {
    {/* <Form1/>
    <Form2/>
    <Form3/> 
-   <Form4/>*/}
-   <Form5/>
+   <Form4/>
+   <Form5/>*/}
+   <Form6/>
     </div>
   );
 }

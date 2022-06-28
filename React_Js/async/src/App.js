@@ -7,6 +7,7 @@ import Products from './Async api/Products';
 import Todos from './Async api/Todos';
 import Form1 from './Forms/Form1';
 import Form2 from './Forms/Form2';
+import Form3 from './Forms/Form3';
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
    <Products/>
    <Photos/>
    <Albums/> */}
-   <Form1/>
-   <Form2/>
+   {/* <Form1/>
+   <Form2/> */}
+   <Form3/>
     </div>
   );
 }

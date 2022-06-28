@@ -12,6 +12,7 @@ import Carts from './API Component/Carts';
 import Comments from './API Component/Comments';
 import Photos from './API Component/Photos';
 import Todos from './API Component/Todos';
+import Pretty from './API Component/Pretty';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     {/* <User></User> */}
     {/* <Form></Form> */}
     {/* <Form1></Form1> */}
-    <Form2></Form2>
+    {/* <Form2></Form2> */}
     {/* <Form3></Form3> */}
 
 
@@ -31,6 +32,8 @@ function App() {
     {/* <Comments></Comments> */}
     {/* <Photos></Photos> */}
     {/* <Todos></Todos> */}
+    <Products></Products>
+    {/* <Pretty></Pretty> */}
     </div>
   );
 }

@@ -16,8 +16,8 @@ function App() {
     {/* <Form2/> */}
     {/* <Form3/> */}
     {/* <Form4/> */}
-    <Form5/>
-    {/* <Form6/> */}
+    {/* <Form5/> */}
+    <Form6/>
     </div>
   );
 }

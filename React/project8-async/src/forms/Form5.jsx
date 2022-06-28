@@ -27,9 +27,7 @@ export const Form5 = () => {
             <label htmlFor="Email">Email</label>
             <input type="text" name="Email" placeholder='Email address' value={details.Email} onChange={(event) => { handleChang(event) }} /><br />
             <label htmlFor="iam" hidden>iam</label>
-            {/* <input type="text" name="iam" placeholder='I am a man' value={details.iam} onChange={(event)=>{handleChang(event)}}/><br/>
-        <input type="text" name="Email" placeholder='I want to find women' value={details.Email} onChange={(event)=>{handleChang(event)}}/><br/> */}
-
+        
             <select name="" onChange={(event) => { handleChang(event) }}>
                 <option value="">I am a man</option>
                 <option value="">I am a girl</option>

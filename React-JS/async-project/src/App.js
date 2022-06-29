@@ -32,7 +32,7 @@ function App() {
     {/* <Comments></Comments> */}
     {/* <Photos></Photos> */}
     {/* <Todos></Todos> */}
-    <Products></Products>
+    {/* <Products></Products> */}
     {/* <Pretty></Pretty> */}
     </div>
   );

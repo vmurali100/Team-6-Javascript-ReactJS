@@ -1,5 +1,4 @@
 import React,{useState} from 'react'
-
 const Form3 = () => {
     const [person, setPerson] = useState({
         firstname:"",
@@ -36,9 +35,7 @@ const Form3 = () => {
         <input type="text" name="mobileno" className='4' value={person.mobileno} onChange={(event)=>{HandleChange(event)}}/> <br />
         </form>
         <button className='AA1' onClick={AddPerson}>SUBMIT</button>
-        <button className='AA2'>RESET</button>
-        
-        
+        <button className='AA2'>RESET</button> 
     </div>
   )
 }

@@ -36,7 +36,7 @@ const Form2 = () => {
         <input type="text" name="message" placeholder='Message' value={person.message} onChange={(event)=>{HandleChange(event)}}/> <br />
         </form>
         
-        <button className='' onClick={AddPerson}>Send</button>
+        <button className='AMV' onClick={AddPerson}>Send</button>
     </div>
   )
 }

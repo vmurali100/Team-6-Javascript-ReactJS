@@ -13,15 +13,15 @@ import Form7 from './Components/FunctionalComponents/Form7';
 function App() {
   return (
     <div className="App">
-    <br/>
-     {/* <Form1/> <br/> */}
-     {/* <Form2/> <br/> */}
-       {/* <Form3/> <br/> */}
-     {/* <Form4/> <br/> */}
-     {/* <Form5/> <br/> */}
-     {/* <Form6/> <br/> */}
-     <Form7/>  
-      
+      <br />
+      {/* <Form1/> <br/> */}
+      {/* <Form2/> <br/> */}
+      {/* <Form3/> <br/> */}
+      {/* <Form4/> <br/> */}
+      <Form5/> <br/>
+      {/* <Form6/> <br/> */}
+      {/* <Form7/>   */}
+
     </div>
   );
 }

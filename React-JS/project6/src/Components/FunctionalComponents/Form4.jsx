@@ -36,7 +36,7 @@ const Form4 = () => {
         <input type="text" name="mobileno" className='4' value={person.mobileno} onChange={(event)=>{HandleChange(event)}}/> <br />
         </form>
         <button className='AA1' onClick={AddPerson}>SUBMIT</button>
-        <button className='AA2'>RESET</button>
+        <button className='AA2'onClick={ResetPerson}>RESET</button>
         
         
     </div>

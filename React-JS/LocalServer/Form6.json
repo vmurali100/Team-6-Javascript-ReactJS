@@ -1,0 +1,22 @@
+{
+  "Form6": [
+    {
+      "username": "MansurVali",
+      "password": "asfd",
+      "email": "Sincere@april.biz",
+      "dateofbirth": "2022-06-29",
+      "height": "5.5 Feets",
+      "weight": "61 Kgs",
+      "id": 2
+    },
+    {
+      "username": "Bretasdfghh",
+      "password": "m38rmF$",
+      "email": "john@gmail.com",
+      "dateofbirth": "2022-06-29",
+      "height": "5.2 Feets",
+      "weight": "62 Kgs",
+      "id": 3
+    }
+  ]
+}

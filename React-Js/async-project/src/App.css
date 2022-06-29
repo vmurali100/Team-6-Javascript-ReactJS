@@ -1,0 +1,20 @@
+body{background-color: aqua;}
+
+.App{width: 100%;
+  margin: 0 auto;
+  max-width: 410px;
+  }
+  form{ line-height: 20px;
+  }
+  input{
+    display: block;
+    width: 400px;
+    padding: 10px;
+  }
+  button{
+    width: 420px;
+    padding: 8px;
+    font: 20px;
+    background-color: blue;
+    color: white;
+  }

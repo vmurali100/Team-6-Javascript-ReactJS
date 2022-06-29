@@ -171,5 +171,59 @@
       "weight": "54",
       "id": 5
     }
+  ],
+  "users5": [
+    {
+      "university": "JNTU",
+      "institute": "SITAMS",
+      "branch": "MCA",
+      "degree": "PG",
+      "average": "78",
+      "experience": "1",
+      "website": "http://localhost:3000/users5",
+      "id": 1,
+      "yourweb": "https"
+    },
+    {
+      "university": "SVU",
+      "institute": "Vijayam",
+      "branch": "BCA",
+      "degree": "UG",
+      "average": "80",
+      "experience": "2",
+      "website": "http://localhost:3000/users5",
+      "id": 2,
+      "yourweb": "http://localhost:3000/users5"
+    },
+    {
+      "university": "SVU",
+      "institute": "SITAMS",
+      "branch": "BCA",
+      "degree": "PG",
+      "average": "90",
+      "experience": "2",
+      "website": "http://localhost:3000/users5",
+      "id": 3
+    },
+    {
+      "university": "JNTU",
+      "institute": "SITAMS",
+      "branch": "MCA",
+      "degree": "PG",
+      "average": "80",
+      "experience": "1",
+      "website": "anastasia.net hfgkhhk",
+      "id": 4
+    },
+    {
+      "university": "SVU",
+      "institute": "vijetha",
+      "branch": "Bsc",
+      "degree": "UG",
+      "average": "88",
+      "experience": "3",
+      "website": "anastasia.net",
+      "id": 6
+    }
   ]
 }

@@ -54,5 +54,39 @@
       "message": "klajfk",
       "id": 7
     }
+  ],
+  "allusers": [
+    {
+      "fname": "Srinivas T",
+      "lname": "Srividya T",
+      "dob": "07-07-1991",
+      "emailid": "vidyachowdary7@gmail.com",
+      "mobilenumber": "8897095427",
+      "id": 1
+    },
+    {
+      "fname": "Srinivas",
+      "lname": "Srividya",
+      "dob": "07-07-1991",
+      "emailid": "vidyachowdary7@gmail.com",
+      "mobilenumber": "8897095427",
+      "id": 2
+    },
+    {
+      "fname": "Vasu T",
+      "lname": "Vidya T",
+      "dob": "04-12-1984",
+      "emailid": "thammineedis@gmail.com",
+      "mobilenumber": "8328172169",
+      "id": 3
+    },
+    {
+      "fname": "Srinivas",
+      "lname": "Srividya",
+      "dob": "07-07-1991",
+      "emailid": "vidyachowdary7@gmail.com",
+      "mobilenumber": "8897095427",
+      "id": 4
+    }
   ]
 }

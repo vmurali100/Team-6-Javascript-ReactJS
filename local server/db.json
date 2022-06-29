@@ -96,5 +96,42 @@
       "message": "erertrey",
       "id": 5
     }
+  ],
+  "users3": [
+    {
+      "street": "ration ",
+      "city": "Chittoor",
+      "zip": "517004",
+      "country": "India",
+      "id": 8
+    },
+    {
+      "street": "ration street colony",
+      "city": "Chittoor",
+      "zip": "29696",
+      "country": "India",
+      "id": 9
+    },
+    {
+      "street": "8774 Magna Ln",
+      "city": "Bremen",
+      "zip": "29696",
+      "country": "chennai",
+      "id": 11
+    },
+    {
+      "street": "manjunad",
+      "city": "ctr",
+      "zip": "69783",
+      "country": "india",
+      "id": 12
+    },
+    {
+      "street": "kaman",
+      "city": "murakampattu",
+      "zip": "r36784",
+      "country": "india",
+      "id": 13
+    }
   ]
 }

@@ -13,6 +13,14 @@ import FillTextUsersSai from './ClassComp/FillTextUsersSai';
 import SaiPostsClass from './ClassComp/SaiPostsClass';
 import FillCommentsClass from './ClassComp/FillCommentsClass';
 import JsonPlaceholderComp from './ClassComp/JsonPlaceholderComp';
+import PostsParentComp from './Class Child-Parent/PostsParentComp';
+import AlbumsParentClassComp from './Class Child-Parent/AlbumsParentClassComp';
+import TodosParentClass from './Class Child-Parent/TodosParentClass';
+import Filltext3ParentClass from './Class Child-Parent/Filltext3ParentClass';
+import CommentsParentClass from './Class Child-Parent/CommentsParentClass';
+
+
+
 
 function App() {
   return (
@@ -26,11 +34,18 @@ function App() {
       {/* <UsersClassComp/> */}
       {/* <FilltextClass/> */}
       {/* <TodosClassComp/> */}
-      <FillTextUsersSai/>
+      {/* <FillTextUsersSai/> */}
       {/* <SaiPostsClass/> */}
       {/* <FillCommentsClass/>? */}
 
-  {/* <JsonPlaceholderComp/> */}
+      {/* <JsonPlaceholderComp/> */}
+       
+       {/* <PostsParentComp/> */}
+       {/* <AlbumsParentClassComp/> */}
+       {/* <TodosParentClass/> */}
+       <Filltext3ParentClass/>
+       {/* <CommentsParentClass/> */}
+        
     </div>
   );
 }

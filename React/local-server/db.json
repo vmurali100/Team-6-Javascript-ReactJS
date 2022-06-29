@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "fname": "deepthi",
+      "lname": "boppana",
+      "id": 1
+    },
+    {
+      "fname": "Claudia",
+      "lname": "claudia",
+      "id": 2
+    },
+    {
+      "fname": "Claudia",
+      "lname": "Turner",
+      "id": 3
+    }
+  ]
+}

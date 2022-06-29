@@ -133,5 +133,43 @@
       "country": "india",
       "id": 13
     }
+  ],
+  "users4": [
+    {
+      "username": "padhu",
+      "password": "fgdiykh",
+      "email": "mpadhupadma@gmail.com",
+      "dob": "27-04-1999",
+      "height": "5.0",
+      "weight": "50",
+      "id": 1
+    },
+    {
+      "username": "Admin",
+      "password": "I9xkY",
+      "email": "Shanna@melissa.tv",
+      "dob": "04-08-1999",
+      "height": "5.1",
+      "weight": "52",
+      "id": 2
+    },
+    {
+      "username": "Sindhu",
+      "password": "hejwghl",
+      "email": "Jayne_Kuhic@sydney.com",
+      "dob": "22-02-2000",
+      "height": "5.3",
+      "weight": "54",
+      "id": 4
+    },
+    {
+      "username": "sneha",
+      "password": "hjfbhs",
+      "email": "sneha@gmail.com",
+      "dob": "25-12-1998",
+      "height": "5.4",
+      "weight": "54",
+      "id": 5
+    }
   ]
 }

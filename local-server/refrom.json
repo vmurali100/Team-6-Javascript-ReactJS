@@ -1,0 +1,58 @@
+{
+  "user": [
+    {
+      "name": "Srividya",
+      "username": "Vidya",
+      "email": "thammineedis",
+      "password": "88970",
+      "comfirmpassword": "88970",
+      "message": "Success",
+      "id": 1
+    },
+    {
+      "name": "Srinivas",
+      "username": "Vidya",
+      "email": "thammineedis@gmail.com",
+      "password": "8278",
+      "comfirmpassword": "8278",
+      "message": "Success",
+      "id": 2
+    },
+    {
+      "name": "Vidya",
+      "username": "Vasu",
+      "email": "vidyachowdary7@gmail.com",
+      "password": "55882",
+      "comfirmpassword": "558825",
+      "message": "Grand Success",
+      "id": 3
+    },
+    {
+      "name": "Srinivas",
+      "username": "VidyaVasu",
+      "email": "thammineedis@gmail.com",
+      "password": "686868",
+      "comfirmpassword": "68686",
+      "message": "jakljdlk",
+      "id": 4
+    },
+    {
+      "name": "manasa",
+      "username": "mamatha",
+      "email": "aklajfa@gmail.com",
+      "password": "5456",
+      "comfirmpassword": "45456",
+      "message": "kajlkfjalkdsaj",
+      "id": 5
+    },
+    {
+      "name": "vishnu T",
+      "username": "VidyaVasu",
+      "email": "vishnu@gmail.com",
+      "password": "24554",
+      "comfirmpassword": "123564",
+      "message": "klajfk",
+      "id": 7
+    }
+  ]
+}

@@ -88,5 +88,39 @@
       "mobilenumber": "8897095427",
       "id": 4
     }
+  ],
+  "person": [
+    {
+      "fname": "Srinivas",
+      "lname": "Srividya",
+      "dob": "1991-07-07",
+      "emailid": "vidyachowdary7@gmail.com",
+      "mobileno": "8889709542",
+      "id": 1
+    },
+    {
+      "fname": "Vidya",
+      "lname": "Vasu",
+      "dob": "1984-12-04",
+      "emailid": "thammineedis@gmail.com",
+      "mobileno": "9502607631",
+      "id": 2
+    },
+    {
+      "fname": "Srinivas",
+      "lname": "",
+      "dob": "",
+      "emailid": "",
+      "mobileno": "",
+      "id": 3
+    },
+    {
+      "fname": "Srinivas",
+      "lname": "Srividya",
+      "dob": "",
+      "emailid": "",
+      "mobileno": "",
+      "id": 4
+    }
   ]
 }

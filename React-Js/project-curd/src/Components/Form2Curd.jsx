@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 const Form2Curd = () => {
     const [allusers,setAllusers]= useState({fname:"",lname:"",dob:"",emailid:"",mobilenumber:"",id:""})
-    const [users, setallUsers] = useState([]);
+    const [users, setUsers] = useState([]);
     const [isEdit, setisEdit] = useState(false)
         const handlechange = (event) =>{
             var inputName = event.target.name;
@@ -13,7 +13,7 @@ const Form2Curd = () => {
         const getAllusers = () => {
             axios.get("http://localhost:3000/allusers").then((response)=>{
                 // console.log(response.data)
-                setallUsers(response.data)
+                setUsers(response.data)
             })
         } ;  
         const clearUser=()=>{

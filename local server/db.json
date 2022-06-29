@@ -58,5 +58,43 @@
       "mobile": "64892900244",
       "id": 3
     }
+  ],
+  "users2": [
+    {
+      "name": "Padmaja",
+      "username": "padhu",
+      "email": "mpadhupadma@gmail.com",
+      "password": "fgdiykh",
+      "confirm": "qwert",
+      "message": "hllo",
+      "id": 1
+    },
+    {
+      "name": "Harshitha",
+      "username": "harshi",
+      "email": "harshitha@gmail.com",
+      "password": "I9xkYtyty",
+      "confirm": "dfghj",
+      "message": "Helooo",
+      "id": 2
+    },
+    {
+      "name": "Monalisha",
+      "username": "mona",
+      "email": "mohanisha@gmail.com",
+      "password": "euyriwuriow",
+      "confirm": "hfjkdf",
+      "message": "Hiiiiii",
+      "id": 4
+    },
+    {
+      "name": "pranith",
+      "username": "prani",
+      "email": "pranith@gmail.com",
+      "password": "asdfg",
+      "confirm": "zxcvbjhfkjalhlf",
+      "message": "erertrey",
+      "id": 5
+    }
   ]
 }

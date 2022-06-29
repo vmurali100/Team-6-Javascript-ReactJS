@@ -52,6 +52,7 @@ const User = () => {
     return (
         <div>
             <form>
+                <h3>HTML FORM</h3>
                 <label htmlFor="">First Name : </label>
                 <input type="text" name='fname' value={user.fname} onChange={(event) => { handlechange(event) }} /><br />
                 <label htmlFor="">Last Name : </label>

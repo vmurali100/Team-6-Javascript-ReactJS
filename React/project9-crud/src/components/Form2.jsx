@@ -31,7 +31,7 @@ export const Form2 = () => {
     }
     useEffect(()=>{
         getallusers()
-    })
+    },[])
     const deleteuser=(data)=>{
         axios.delete("http://localhost:3000/form2/"+data.id).then((response)=>{
             getallusers()
@@ -45,7 +45,7 @@ export const Form2 = () => {
         axios.put("http://localhost:3000/form2/"+user.id,user).then(()=>{
 
             getallusers()
-            setisEdit(true)
+            setisEdit(false)
             clearform()
         })
     }

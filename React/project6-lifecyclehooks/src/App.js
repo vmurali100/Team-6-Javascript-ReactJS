@@ -35,8 +35,8 @@ function App() {
     {/* <Parent1/> */}
     {/* <Parent2/> */}
     {/* <Carts3/> */}
-    {/* <Photos4/> */}
-    <Users5/>
+    <Photos4/>
+    {/* <Users5/> */}
 
 
     </div>

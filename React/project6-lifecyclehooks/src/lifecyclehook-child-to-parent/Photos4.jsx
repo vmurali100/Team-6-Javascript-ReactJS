@@ -33,8 +33,8 @@ export default class Photos4 extends Component {
                 <td>{user.albumId}</td>
                 <td>{user.id}</td>
                 <td>{user.title}</td>
-                <td>{user.url}</td>
-                <td>{user.thumbnailUrl}</td>
+                <td><img src={user.url} alt="" width={150} /></td>
+                <td><img src={user.thumbnailUrl} alt="" /></td>
                 <td>{user.email}</td>
               </tr>
             })}

@@ -39811,6 +39811,26 @@
       "Experience": "1yrs",
       "YourWebsiteorBlog": "sunlineWww.com",
       "id": 4
+    },
+    {
+      "University": "SunLine",
+      "Institute": "Sunline IT Solution",
+      "Branch": "Chennai",
+      "Degree": "Degree",
+      "Avarage": "80per",
+      "Experience": "2yrs",
+      "YourWebsiteorBlog": "Sunlie1232www.com",
+      "id": 5
+    },
+    {
+      "University": "SunLine",
+      "Institute": "IT Sollutions",
+      "Branch": "Vizag",
+      "Degree": "Pass",
+      "Avarage": "75per",
+      "Experience": "5yrs",
+      "YourWebsiteorBlog": "aewrstdyfjgkl/",
+      "id": 6
     }
   ]
 }

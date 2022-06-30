@@ -3,8 +3,10 @@ import './App.css';
 // import Parent from './Component/Parent';
 // import { UserProvider } from './Context/userContext';
 import axios from 'axios'
-import { DataProvider } from './Context/dataContext';
-import Parent1 from './Context/Parent1';
+// import { DataProvider } from './Context/dataContext';
+// import Parent1 from './Context/Parent1';
+import { SendProvider } from './Context/sendContext';
+import Parent2 from './Context/Parent2';
 
 function App() {
   // const [message,setmessage]=useState("Iam from App.js component")
@@ -15,12 +17,20 @@ function App() {
   //     setfilltext(response.data)
   //   })
   // })
+  // const [message,setmessage]=useState("iam from App.js component")
+  // const [allfill,setallfill]=useState([])
+  // useEffect(()=>{
+  //   var url="http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true"
+  //   axios.get(url).then((response)=>{
+  //     setallfill(response.data)
+  //   })
+  // })
   const [message,setmessage]=useState("iam from App.js component")
-  const [allfill,setallfill]=useState([])
+  const [allalbums,setallalbums]=useState([])
   useEffect(()=>{
-    var url="http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true"
+    var url="https://jsonplaceholder.typicode.com/albums"
     axios.get(url).then((response)=>{
-      setallfill(response.data)
+      setallalbums(response.data)
     })
   })
   return (
@@ -29,9 +39,12 @@ function App() {
       {/* <UserProvider value={allfilltext}>
         <Parent />
       </UserProvider> */}
-      <DataProvider value={allfill}>
+      {/* <DataProvider value={allfill}>
       <Parent1/>   
-      </DataProvider>  
+      </DataProvider>   */}
+      <SendProvider value={allalbums}>
+        <Parent2/>
+      </SendProvider>
     </div>
   );
 }

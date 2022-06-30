@@ -51,5 +51,15 @@
       "id": 1
     }
   ],
-  "user":[]
+  "user": [
+    {
+      "name": "K.Akalya",
+      "username": "a.k___._.__frenzy",
+      "email": "akalyaksreejak@gmail.com",
+      "password": "11111111",
+      "confirm": "111111111",
+      "message": "good evening",
+      "id": 1
+    }
+  ]
 }

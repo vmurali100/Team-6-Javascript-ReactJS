@@ -1,94 +1,46 @@
 {
-    "jsonuser":[
-        {
-           "fname":"Toni",
-           "lname":"Morgan",
-           "tel":"(280)527-6325",
-           "address":"8796 Turpis St",
-           "city":"Kyle",
-           "state":"CO",
-           "zip":21714
-        },
-        {
-           "fname":"Noby",
-           "lname":"Guilfoyle",
-           "tel":"(216)026-5456",
-           "address":"239 Amet Rd",
-           "city":"Riverdale",
-           "state":"AZ",
-           "zip":86210
-        },
-        {
-           "fname":"Cathryn",
-           "lname":"Chew",
-           "tel":"(471)121-8543",
-           "address":"7532 Scelerisque Rd",
-           "city":"Waco",
-           "state":"AR",
-           "zip":52187
-        },
-        {
-           "fname":"Teresa",
-           "lname":"Thompson",
-           "tel":"(742)442-0277",
-           "address":"3439 Pulvinar Ln",
-           "city":"Winfield",
-           "state":"NV",
-           "zip":65765
-        },
-        {
-           "fname":"Rachelle",
-           "lname":"Altar",
-           "tel":"(816)246-4163",
-           "address":"1799 Hendrerit St",
-           "city":"Rapid City",
-           "state":"NM",
-           "zip":87467
-        },
-        {
-           "fname":"Ying",
-           "lname":"Bozzalla",
-           "tel":"(857)176-4682",
-           "address":"1958 Etiam St",
-           "city":"Bergen County",
-           "state":"NM",
-           "zip":37448
-        },
-        {
-           "fname":"Nancy",
-           "lname":"Rice",
-           "tel":"(714)846-5038",
-           "address":"5975 Adipiscing Rd",
-           "city":"Senoia",
-           "state":"IN",
-           "zip":44531
-        },
-        {
-           "fname":"Jean",
-           "lname":"Camire",
-           "tel":"(834)500-7959",
-           "address":"2287 Vitae Ave",
-           "city":"Smyrna",
-           "state":"TN",
-           "zip":34115
-        },
-        {
-           "fname":"Kinnell",
-           "lname":"Hull",
-           "tel":"(168)340-9676",
-           "address":"64 Scelerisque Dr",
-           "city":"E. Lansing",
-           "state":"TN",
-           "zip":78089
-        },
-        {
-           "fname":"Gill",
-           "lname":"Strobel",
-           "tel":"(442)845-6340",
-           "address":"446 Vestibulum Ln",
-           "city":"Sandwich",
-           "state":"MO",
-           "zip":21297
-        }
-     ]
+  "user": [
+    {
+      "fname": "santhosh",
+      "lname": "thrt",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "password": "kji",
+      "id": 1
+    },
+    {
+      "fname": "santhosh",
+      "lname": "thrt",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "password": "gngf",
+      "id": 2
+    },
+    {
+      "fname": "santhosh",
+      "lname": "thrt",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "password": " nb",
+      "id": 3
+    },
+    {
+      "fname": "santhosh",
+      "lname": "thrt",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "password": "jbjb",
+      "id": 4
+    },
+    {
+      "fname": "",
+      "lname": "",
+      "email": "",
+      "password": "",
+      "id": 5
+    },
+    {
+      "fname": "santhosh",
+      "lname": "thrt",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "password": "yguhi",
+      "id": 6
+    }
+  ]
 }

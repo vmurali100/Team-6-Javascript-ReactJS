@@ -1,25 +1,37 @@
 import React,{useEffect, useState} from 'react'
 import './App.css';
-import Parent from './Component/Parent';
-import { UserProvider } from './Context/userContext';
+// import Parent from './Component/Parent';
+// import { UserProvider } from './Context/userContext';
 import axios from 'axios'
+import { DataProvider } from './Context/dataContext';
+import Parent1 from './Context/Parent1';
 
 function App() {
-  const [message,setmessage]=useState("Iam from App.js component")
-  const [allfilltext,setfilltext]=useState([])
+  // const [message,setmessage]=useState("Iam from App.js component")
+  // const [allfilltext,setfilltext]=useState([])
+  // useEffect(()=>{
+  //   var url= "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true"
+  //   axios.get(url).then((response)=>{
+  //     setfilltext(response.data)
+  //   })
+  // })
+  const [message,setmessage]=useState("iam from App.js component")
+  const [allfill,setallfill]=useState([])
   useEffect(()=>{
-    var url= "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&tel={phone|format}&address={streetAddress}&city={city}&state={usState|abbr}&zip={zip}&pretty=true"
+    var url="http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&pretty=true"
     axios.get(url).then((response)=>{
-      setfilltext(response.data)
+      setallfill(response.data)
     })
   })
   return (
     <div className="App">
       <hr/>
-      <UserProvider value={allfilltext}>
+      {/* <UserProvider value={allfilltext}>
         <Parent />
-      </UserProvider>
-     
+      </UserProvider> */}
+      <DataProvider value={allfill}>
+      <Parent1/>   
+      </DataProvider>  
     </div>
   );
 }

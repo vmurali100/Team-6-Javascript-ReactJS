@@ -69,7 +69,7 @@ const Forms6 = () => {
         })
     }
     return (
-        <div class="userInfo6">
+        <div className="userInfo6">
             <form>
                 <fieldset>
                     <legend>Registration Details</legend>
@@ -98,13 +98,13 @@ const Forms6 = () => {
                     <input type="radio" name="degree" className='a6' value={person.degree} onChange={(event) => { HandleChange(event) }} />Completed <br />
                     <label htmlFor="">Average CPI :</label>
                     <input type="number" name='averagecpi' className='a7' value={person.averagecpi} onChange={(event) => { HandleChange(event) }}  ></input>
-                    <label for="">Upto</label>
+                    <label htmlFor="">Upto</label>
                     <input type="number" name='averagecpi' className='a8' value={person.averagecpi} onChange={(event) => { HandleChange(event) }}  ></input>
-                    <label for="">Th Semester</label> <br />
-                    <label for="">Experience:</label>
+                    <label htmlFor="">Th Semester</label> <br />
+                    <label htmlFor="">Experience:</label>
                     <input type="number" name='experience' className='a9' value={person.experience} onChange={(event) => { HandleChange(event) }}></input>
-                    <label for="">Years</label> <br />
-                    <label for="">Your Website Or Blog:</label>
+                    <label htmlFor="">Years</label> <br />
+                    <label htmlFor="">Your Website Or Blog:</label>
                     <input type="text" name='websiteblog' className='a10' placeholder="http://" value={person.websiteblog} onChange={(event) => { HandleChange(event) }}></input> <br />
                 </fieldset>
                 <input type="text" name="id" hidden />

@@ -67,7 +67,7 @@ const Forms7 = () => {
         })
     }
     return (
-        <div className='userInfo7'>
+        <div class='userInfo7'>
             <h1>PersonDetails</h1>
             <hr />
             <form className='Amv1'>

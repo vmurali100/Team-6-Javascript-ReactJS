@@ -18,8 +18,8 @@ function App() {
       {/* <Form2/> <br/> */}
       {/* <Form3/> <br/> */}
       {/* <Form4/> <br/> */}
-      <Form5/> <br/>
-      {/* <Form6/> <br/> */}
+      {/* <Form5/> <br/> */}
+      <Form6/> <br/>
       {/* <Form7/>   */}
 
     </div>

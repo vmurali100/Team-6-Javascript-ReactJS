@@ -24,22 +24,22 @@ const Form6 = () => {
             <form>
                 <fieldset>
                     <legend>Registration Details</legend>
-                    <label htmlFor="">University :</label>
+                    <label  >University :</label>
                     <input type="text" name="university" className='a1'  value={person.university} onChange={(event) => { HandleChange(event) }} /> <br />
-                    <label htmlFor="">Institute :</label>
+                    <label  >Institute :</label>
                     <input type="text" name="institute" className='a2'  value={person.institute} onChange={(event) => { HandleChange(event) }} /> <br />
-                    <label htmlFor="">Branch :</label>
+                    <label >Branch :</label>
                     <select name="branch" className='a3' value={person.branch} onChange={(event) => { HandleChange(event) }}>
-                        <option value="">---Select---</option>
+                        {/* <option value="">---Select---</option> */}
                         <option value="B.A">B.A</option>
                         <option value="B.Com">B.Com</option>
                         <option value="B.Com(Computers)">B.Com(Computers)</option>
                         <option value="B.Sc(MPC)">B.Sc(MPC)</option>
                         <option value="B.Sc(MPCS)">B.Sc(MPCS)</option>
                     </select> <br />
-                    <label htmlFor="">Degree :</label>
+                    <label  >Degree :</label>
                     <select name="degree" className='a4' value={person.degree} onChange={(event) => { HandleChange(event) }}>
-                        <option value="">---Select---</option>
+                        {/* <option value="">---Select---</option> */}
                         <option value="1st Year">1st Year</option>
                         <option value="2nd Year">2nd Year</option>
                         <option value="3rd Year">3rd Year</option>
@@ -47,15 +47,15 @@ const Form6 = () => {
                     </select>
                     <input type="radio" name="degree" className='a5' value={person.degree} onChange={(event) => { HandleChange(event) }} />Pursuing
                     <input type="radio" name="degree" className='a6' value={person.degree} onChange={(event) => { HandleChange(event) }} />Completed <br />
-                    <label htmlFor="">Average CPI :</label>
+                    <label >Average CPI :</label>
                     <input type="number" name='averagecpi'className='a7' value={person.averagecpi} onChange={(event) => { HandleChange(event) }}  ></input>
-                    <label for="">Upto</label>
+                    <label  >Upto</label>
                     <input type="number" name='averagecpi' className='a8' value={person.averagecpi} onChange={(event) => { HandleChange(event) }}  ></input>
-                    <label for="">Th Semester</label> <br />
-                    <label for="">Experience:</label>
+                    <label  >Th Semester</label> <br />
+                    <label >Experience:</label>
                     <input type="number" name='experience' className='a9' value={person.experience} onChange={(event) => { HandleChange(event) }}></input>
-                    <label for="">Years</label> <br />
-                    <label for="">Your Website Or Blog:</label>
+                    <label  >Years</label> <br />
+                    <label>Your Website Or Blog:</label>
                     <input type="text" name='websiteblog' className='a10' placeholder="http://" value={person.websiteblog} onChange={(event) => { HandleChange(event) }}></input> <br />
                 </fieldset>
             </form>

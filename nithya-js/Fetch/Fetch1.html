@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getData()">get data</button>
+    <script>
+        // function getdata(){
+        //     var getdata=new XMLHttpRequest();
+
+        //     getdata.onreadystatechange=function(){
+        //         if(getdata.status == 200 && getdata.readyState ==4){
+        //             console.log(this.response)
+        //         }
+        //     }
+        //     getdata.open("GET","http://localhost:3000/cart");
+        //     getdata.send()
+        // }
+      async  function getData(){
+            // fetch("http://localhost:3000/cart").then((response)=>{
+            //    return response.json()
+            // }).then((resp)=>{
+            //   console.log(resp)
+            // })
+             
+            var products = await fetch("http://localhost:3000/cart")
+            var data=await products.json()
+            console.log(data)
+        }
+    </script>
+</body>
+</html>

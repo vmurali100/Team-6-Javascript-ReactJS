@@ -4,49 +4,69 @@
       "fname": "Ayeoladfgfhgj",
       "lname": "Landau",
       "id": 2,
-      "email":"mani@gmail.com"
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Miguel",
       "lname": "Vidales",
       "id": 3,
-      "email":"mani@gmail.com"
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Anuj",
       "lname": "Towers",
-      "id":4,
-      "email":"mani@gmail.com"
+      "id": 4,
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Susana",
       "lname": "Arias",
-      "id":5,
-      "email":"mani@gmail.com"
+      "id": 5,
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Demetrius",
       "lname": "Haaf",
-      "id":6,
-      "email":"mani@gmail.com"
+      "id": 6,
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Ronit",
       "lname": "Breeland",
-      "id":7,
-      "email":"mani@gmail.com"
+      "id": 7,
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Tilena",
       "lname": "Larrabee",
-      "id":7,
-      "email":"mani@gmail.com"
+      "id": 7,
+      "email": "mani@gmail.com"
     },
     {
       "fname": "Aaron",
       "lname": "Landau",
-      "id":7,
-      "email":"mani@gmail.com"
+      "id": 7,
+      "email": "mani@gmail.com"
+    }
+  ],
+  "post": [
+    {
+      "street": "church",
+      "street1": "raman",
+      "city": "chittoor",
+      "state": "AP",
+      "zipcode": "552145",
+      "country": "india",
+      "id": 1
+    },
+    {
+      "street": "ramnagar",
+      "street1": "lakshman",
+      "city": "chittoordist",
+      "state": "AP",
+      "zipcode": "552145",
+      "country": "India",
+      "id": 2
     }
   ]
 }

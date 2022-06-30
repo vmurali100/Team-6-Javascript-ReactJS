@@ -5,40 +5,35 @@
       "id": 6,
       "title": "qui ullam ratione quibusdam voluptatem quia omnis",
       "completed": "true",
-      "email":"nith@gmail.com"
-
+      "email": "nith@gmail.com"
     },
     {
       "userId": 1,
       "id": 7,
       "title": "illo expedita consequatur quia in",
       "completed": "true",
-      "email":"nith@gmail.com"
-
+      "email": "nith@gmail.com"
     },
     {
       "userId": 1,
       "id": 8,
       "title": "quo adipisci enim quam ut ab",
-      "completed":" true",
-      "email":"nith@gmail.com"
-
+      "completed": " true",
+      "email": "nith@gmail.com"
     },
     {
       "userId": 1,
       "id": 9,
       "title": "molestiae perspiciatis ipsa",
       "completed": "true",
-      "email":"nith@gmail.com"
-
+      "email": "nith@gmail.com"
     },
     {
       "userId": 1,
       "id": 10,
       "title": "illo est ratione doloremque quia maiores aut",
       "completed": true,
-      "email":"nith@gmail.com"
-
+      "email": "nith@gmail.com"
     },
     {
       "userId": 1,
@@ -1179,6 +1174,51 @@
       "id": 200,
       "title": "ipsam aperiam voluptates qui",
       "completed": false
+    }
+  ],
+  "cars": [
+    {
+      "username": "Manikantareddytm",
+      "password": "ghmj,",
+      "email": "mr.mani789@gmail.com",
+      "dateofbirth": "10-5-2000",
+      "id": 1
+    },
+    {
+      "username": "Manikantareddy",
+      "password": "ghmj,",
+      "email": "mr.mani789@gmail.com",
+      "dateofbirth": "10-5-2000",
+      "id": 2
+    },
+    {
+      "username": "nithya@nithu",
+      "password": "6281himi",
+      "email": "mr.mani789@gmail.com",
+      "dateofbirth": "22-12-2021",
+      "id": 3
+    }
+  ],
+  "comes": [
+    {
+      "university": "svuniversity",
+      "institute": "vijayam",
+      "branch": "chittoor",
+      "averagecpi": "84",
+      "upto": "100",
+      "experience": "4",
+      "yourblog": "rdtyfughklj;",
+      "id": 3
+    },
+    {
+      "university": "svuniversity",
+      "institute": "vijayam",
+      "branch": "chittoor",
+      "averagecpi": "84",
+      "upto": "100",
+      "experience": "4",
+      "yourblog": "rdtyfughklj;",
+      "id": 4
     }
   ]
 }

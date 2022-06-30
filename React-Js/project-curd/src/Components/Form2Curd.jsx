@@ -86,8 +86,8 @@ const Form2Curd = () => {
                             <td>{userInfo.dob}</td>
                             <td>{userInfo.emailid}</td>
                             <td>{userInfo.mobilenumber}</td>
-                            <td><button onClick={()=>{editUser(userInfo)}}>Edit User</button></td>
-                            <td><button onClick={()=>{deleteUser(userInfo)}}>Delete User</button></td>
+                            <td><button type="button" onClick={()=>{editUser(userInfo)}}>Edit User</button></td>
+                            <td><button type="button" onClick={()=>{deleteUser(userInfo)}}>Delete User</button></td>
                         </tr>
                     })
                 }

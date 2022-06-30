@@ -26,7 +26,7 @@ const Form5 = () => {
             <input type="text" name="women" placeholder='I want to find Women' value={person.women} onChange={(event)=>{handlechange(event)}}/> <br />
             <label htmlFor="dob">Date of Birth</label>
             <input type="text" name="dob" value={person.dob} onChange={(event)=>{handlechange(event)}}/> <br />
-            <button onClick={addperson}>Send</button>
+            <button type="button" onClick={addperson}>Send</button>
         </form>
     </div>
   )

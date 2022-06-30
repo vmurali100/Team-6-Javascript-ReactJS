@@ -30,8 +30,8 @@ const Form4 = () => {
             <input type="text" name="zipcode" id="" value={person.zipcode} onChange={(event)=>{handlechange(event)}}/> <br />
             <label htmlFor="country">Country</label>
             <input type="text" name="country" id="" value={person.country} onChange={(event)=>{handlechange(event)}}/> <br />
-            <button onClick={addperson}>OK</button><br /> <br />
-            <button onClick={userCancel}>Cancel</button>
+            <button type="button" onClick={addperson}>OK</button><br /> <br />
+            <button type="button" onClick={userCancel}>Cancel</button>
         </form>
     </div>
   )

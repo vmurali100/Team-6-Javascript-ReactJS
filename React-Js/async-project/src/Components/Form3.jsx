@@ -33,8 +33,8 @@ const Form3 = () => {
             <input type="text" name="emailid" id="" value={person.emailid} onChange={(event)=>{handlechange(event)}} /> <br />
             <label htmlFor="mobileno">Mobile Number</label>
             <input type="text" name="mobileno" id="" value={person.mobileno} onChange={(event)=>{handlechange(event)}}/> <br />
-            <button onClick={addperson}>SUBMIT</button> <br /><br />
-            <button onClick={userRest}>RESET</button>
+            <button type="button" onClick={addperson}>SUBMIT</button> <br /><br />
+            <button type="button" onClick={userRest}>RESET</button>
         </form>
     </div>
   )

@@ -30,7 +30,7 @@ const Form1 = () => {
         <input type="Password" name="comfirmpassword" id="" placeholder="Confirm Password" value={person.comfirmpassword} onChange={(event)=>{handlechange(event)}}/> <br></br>
         <label htmlFor="">Message</label><br />
         <input type="message" name="message" id="" placeholder="Message" value={person.message} onChange={(event)=>{handlechange(event)}}/> <br></br>
-        <button onClick={addPerson}>Send</button>
+        <button type="button" onClick={addPerson}>Send</button>
         </form>
     </div>
   )

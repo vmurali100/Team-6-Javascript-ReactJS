@@ -29,8 +29,8 @@ const Form2 = () => {
             <input type="text" name="emailid" id="" value={person.emailid} onChange={(event)=>{handlechange(event)}}/> <br />
             <label htmlFor="mobilenumber">Mobile Number</label>
             <input type="text" name="mobilenumber" id="" value={person.mobilenumber} onChange={(event)=>{handlechange(event)}} /> <br />
-            <button onClick={addPerson}>SUBMIT</button><br /> <br />
-            <button onClick={userReset}>RESET</button>
+            <button type="button" onClick={addPerson}>SUBMIT</button><br /> <br />
+            <button type="button" onClick={userReset}>RESET</button>
         </form>
     </div>
   )

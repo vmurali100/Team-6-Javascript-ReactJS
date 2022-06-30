@@ -83,8 +83,8 @@ const Form4Curd = () => {
                             <td>{userInfo.citystate}</td>
                             <td>{userInfo.zipcode}</td>
                             <td>{userInfo.country}</td>
-                            <td><button onClick={()=>{editUser(userInfo)}}>Edit User</button></td>
-                            <td><button onClick={()=>{deleteUser(userInfo)}}>Delete User</button></td>
+                            <td><button type="button" onClick={()=>{editUser(userInfo)}}>Edit User</button></td>
+                            <td><button type="button" onClick={()=>{deleteUser(userInfo)}}>Delete User</button></td>
                         </tr>
                     })
                 }

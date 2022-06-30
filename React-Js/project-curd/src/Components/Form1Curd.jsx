@@ -90,8 +90,8 @@ const Form1Curd = () => {
                             <td>{userInfo.password}</td>
                             <td>{userInfo.comfirmpassword}</td>
                             <td>{userInfo.message}</td>
-                            <td><button onClick={()=>{editUser(userInfo)}}>Edit User</button></td>
-                            <td><button onClick={()=>{deleteUser(userInfo)}}>Delete User</button></td>
+                            <td><button type="button" onClick={()=>{editUser(userInfo)}}>Edit User</button></td>
+                            <td><button type="button" onClick={()=>{deleteUser(userInfo)}}>Delete User</button></td>
                         </tr>
                     })
                 }

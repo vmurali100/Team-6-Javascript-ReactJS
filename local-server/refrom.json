@@ -132,5 +132,34 @@
       "id": 1,
       "": "nijampet "
     }
+  ],
+  "students": [
+    {
+      "username": "VidyaVasu",
+      "password": "88885",
+      "emailaddress": "vidyachowdary7@gmail.com",
+      "dob": "07-07-1991",
+      "man": " a da",
+      "women": "jhnakjnfk",
+      "id": 1
+    },
+    {
+      "username": "VidyaVasu T",
+      "password": "88885",
+      "emailaddress": "vidyachowdary7@gmail.com",
+      "dob": "07-07-1991",
+      "man": " a da  dfadfa",
+      "women": "jhnakjnfk",
+      "id": 3
+    },
+    {
+      "username": "Srinivas",
+      "password": "Vidya",
+      "emailaddress": "thammineedis@gamil.com",
+      "dob": "04-12-1984",
+      "man": "ahkljfh",
+      "women": "kjlkajq",
+      "id": 4
+    }
   ]
 }

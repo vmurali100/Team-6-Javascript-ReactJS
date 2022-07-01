@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Parent from './file/Parent';
-import { User } from './json/User';
-import { User1 } from './json/User1';
+
+
+
+import { User3 } from './json/User3';
 
 
 
@@ -11,7 +12,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Parent/>
+   <User3/>
   </React.StrictMode>
 );
 

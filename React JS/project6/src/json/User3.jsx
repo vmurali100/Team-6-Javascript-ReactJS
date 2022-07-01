@@ -1,7 +1,7 @@
 import {useEffect,useState } from "react";
 import axios from 'axios'
-export function User1 (){
-    const [user,setuser]=useState({fname:"",lname:"",email:"",date:""})
+export function User3 (){
+    const [user,setuser]=useState({username:"",mobile:"",email:"",date:""})
     const [alluser,setalluser]=useState([])
     const [edit, setedit] = useState(false)
 
@@ -31,7 +31,7 @@ export function User1 (){
     }, []);
    
     function clear (){
-      setuser ( {fname:"",lname:"",email:"",date:""})
+      setuser ( {username:"",mobile:"",email:"",date:""})
     }
     const deleteuser = (userid) => {
       axios.delete("http://localhost:3000/all" + userid.id)
@@ -52,10 +52,10 @@ export function User1 (){
       });
     };
     return <div>
-    <label htmlFor="">fname</label>
-    <input type="text"name="fname" value={user.fname} onChange={(eve)=>{handle (eve)}}/> <br />
-    <label htmlFor="">lname</label>
-    <input type="text"name="lname" value={user.lname} onChange={(eve)=>{handle (eve)}}/> <br />
+    <label htmlFor="">username</label>
+    <input type="text"name="username" value={user.fname} onChange={(eve)=>{handle (eve)}}/> <br />
+    <label htmlFor="">mobile</label>
+    <input type="text"name="mobile" value={user.lname} onChange={(eve)=>{handle (eve)}}/> <br />
     <label htmlFor="">email</label>
     <input type="text"name="email" value={user.email} onChange={(eve)=>{handle (eve)}}/> <br />
     <label htmlFor="">date</label>
@@ -67,8 +67,8 @@ export function User1 (){
     <table border="1">
         <thead>
           <tr>
-            <th>Fname</th>
-            <th>Lname</th>
+            <th>username</th>
+            <th>mobile</th>
             <th>email</th>
             <th>date</th>
             <th>edit</th>
@@ -79,8 +79,8 @@ export function User1 (){
           {alluser.map((userid,i) => {
             return (
               <tr key={i}>
-                <td>{userid.fname}</td>
-                <td>{userid.lname}</td>
+                <td>{userid.username}</td>
+                <td>{userid.mobile}</td>
                 <td>{userid.email}</td>
                 <td>{userid.date}</td>
                 <td>

@@ -1,7 +1,7 @@
 import {useEffect,useState } from "react";
 import axios from 'axios'
 export function User1 (){
-    const [user,setuser]=useState({fname:"",lname:"",email:"",password:""})
+    const [user,setuser]=useState({fname:"",lname:"",email:"",date:""})
     const [alluser,setalluser]=useState([])
     const [edit, setedit] = useState(false)
 
@@ -31,7 +31,7 @@ export function User1 (){
     }, []);
    
     function clear (){
-      setuser ( {fname:"",lname:"",email:"",password:""})
+      setuser ( {fname:"",lname:"",email:"",date:""})
     }
     const deleteuser = (userid) => {
       axios.delete("http://localhost:3000/user" + userid.id)
@@ -58,8 +58,8 @@ export function User1 (){
     <input type="text"name="lname" value={user.lname} onChange={(eve)=>{handle (eve)}}/>
     <label htmlFor="">email</label>
     <input type="text"name="email" value={user.email} onChange={(eve)=>{handle (eve)}}/>
-    <label htmlFor="">password</label>
-    <input type="text"name="password" value={user.password} onChange={(eve)=>{handle (eve)}}/>
+    <label htmlFor="">date</label>
+    <input type="date"name="date" value={user.date} onChange={(eve)=>{handle (eve)}}/>
     <button onClick={adduser} type="button">add</button>
     <button onClick={updateuser} type="button">update</button>
 
@@ -70,7 +70,7 @@ export function User1 (){
             <th>Fname</th>
             <th>Lname</th>
             <th>email</th>
-            <th>password</th>
+            <th>date</th>
             <th>edit</th>
             <th>delete</th>
           </tr>
@@ -82,7 +82,7 @@ export function User1 (){
                 <td>{userid.fname}</td>
                 <td>{userid.lname}</td>
                 <td>{userid.email}</td>
-                <td>{userid.password}</td>
+                <td>{userid.date}</td>
                 <td>
                   <button
                     onClick={() => {

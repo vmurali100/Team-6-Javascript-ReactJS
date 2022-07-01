@@ -33,24 +33,24 @@ export function User (){
     function clear (){
       setuser ( {fname:"",lname:"",email:"",password:""})
     }
-    const deleteuser = (userid) => {
-      axios.delete("http://localhost:3000/user" + userid.id)
-        .then((response) => {
-          getallusers();
-        });
-    };
-    const edituser = (userid) => {
-      setedit(true);
-      setuser(userid);
-    };
+    // const deleteuser = (userid) => {
+    //   axios.delete("http://localhost:3000/user" + userid.id)
+    //     .then((response) => {
+    //       getallusers();
+    //     });
+    // };
+    // const edituser = (userid) => {
+    //   setedit(true);
+    //   setuser(userid);
+    // };
   
-    const updateuser = () => {
-      axios.put("http://localhost:3000/user" + user.id, user).then(() => {
-        getallusers();
-        clear();
-        setedit()
-      });
-    };
+    // const updateuser = () => {
+    //   axios.put("http://localhost:3000/user" + user.id, user).then(() => {
+    //     getallusers();
+    //     clear();
+    //     setedit()
+    //   });
+    // };
     return <div>
     <label htmlFor="">fname</label>
     <input type="text"name="fname" value={user.fname} onChange={(eve)=>{handle (eve)}}/>
@@ -61,7 +61,7 @@ export function User (){
     <label htmlFor="">password</label>
     <input type="text"name="password" value={user.password} onChange={(eve)=>{handle (eve)}}/>
     <button onClick={adduser} type="button">add</button>
-    <button onClick={updateuser} type="button">update</button>
+    {/* <button onClick={updateuser} type="button">update</button> */}
 
     <br />
     <table border="1">
@@ -84,22 +84,22 @@ export function User (){
                 <td>{userid.email}</td>
                 <td>{userid.password}</td>
                 <td>
-                  <button
+                  {/* <button
                     onClick={() => {
                       edituser(userid);
                     }}
                   >
                     edit
-                  </button>
+                  </button> */}
                 </td>
                 <td>
-                  <button
+                  {/* <button
                     onClick={() => {
                       deleteuser(userid);
                     }}
                   >
                     delete 
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             );

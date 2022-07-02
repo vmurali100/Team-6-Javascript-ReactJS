@@ -8,6 +8,8 @@ import Hovercounter from './Components/Hovercounter';
 import Hover from './Components/Hover';
 import Click2 from './Components/Click2';
 import Hover2 from './Components/Hover2';
+import Click3 from './Components/Click3';
+import Hover3 from './Components/Hover3';
 
 function App() {
   return (
@@ -21,9 +23,12 @@ function App() {
       {/* <Click1/>
       <hr/>
       <Hover1/> */}
-      <Click2/>
+      {/* <Click2/>
       <hr/>
-      <Hover2/>
+      <Hover2/> */}
+      <Click3/>
+      <hr/>
+      <Hover3/>
     
     </div>
   );

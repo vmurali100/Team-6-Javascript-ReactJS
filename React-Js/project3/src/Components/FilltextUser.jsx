@@ -4,7 +4,7 @@ import { FilltextUserClass } from "./FilltextUserClass"
 import UserTable from "./UsersTable"
 
 const FilltextUser = () =>{
-    const [filltexUsers, setfilltexUsers]=useState(allPosts)
+    const [filltexUsers, setfilltexUsers]=useState(allPosts) //React Hook
     return (
         <div>
             <UserTable filltexUsers={filltexUsers}/>

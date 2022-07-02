@@ -36,7 +36,7 @@ export default class Photosparent extends Component {
                                 <td>{user.id}</td>
                                 <td>{user.title}</td>
                                 <td>{user.url}</td>
-                                <td>{user.thumbnailUrl}</td>
+                                <td><img src={user.thumbnailUrl} alt="" /></td>
                             </tr>
                         )
                     })}

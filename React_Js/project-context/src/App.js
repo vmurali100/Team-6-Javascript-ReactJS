@@ -5,8 +5,10 @@ import './App.css';
 import axios from 'axios'
 // import { DataProvider } from './Context/dataContext';
 // import Parent1 from './Context/Parent1';
-import { SendProvider } from './Context/sendContext';
-import Parent2 from './Context/Parent2';
+// import { SendProvider } from './Context/sendContext';
+// import Parent2 from './Context/Parent2';
+import { ReceiveProvider } from './Context/receiveContext';
+import Parent3 from './Context/Parent3';
 
 function App() {
   // const [message,setmessage]=useState("Iam from App.js component")
@@ -25,12 +27,20 @@ function App() {
   //     setallfill(response.data)
   //   })
   // })
-  const [message,setmessage]=useState("iam from App.js component")
-  const [allalbums,setallalbums]=useState([])
+  // const [message,setmessage]=useState("iam from App.js component")
+  // const [allalbums,setallalbums]=useState([])
+  // useEffect(()=>{
+  //   var url="https://jsonplaceholder.typicode.com/albums"
+  //   axios.get(url).then((response)=>{
+  //     setallalbums(response.data)
+  //   })
+  // })
+  const [message,setmessage]=useState("iam from app.js component")
+  const [alltodos,setalltodos]=useState([])
   useEffect(()=>{
-    var url="https://jsonplaceholder.typicode.com/albums"
+    var url="https://jsonplaceholder.typicode.com/todos"
     axios.get(url).then((response)=>{
-      setallalbums(response.data)
+      setalltodos(response.data)
     })
   })
   return (
@@ -42,9 +52,12 @@ function App() {
       {/* <DataProvider value={allfill}>
       <Parent1/>   
       </DataProvider>   */}
-      <SendProvider value={allalbums}>
+      {/* <SendProvider value={allalbums}>
         <Parent2/>
-      </SendProvider>
+      </SendProvider> */}
+      <ReceiveProvider value={alltodos}>
+        <Parent3/>
+      </ReceiveProvider>
     </div>
   );
 }

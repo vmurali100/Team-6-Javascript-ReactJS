@@ -46,7 +46,7 @@ function App() {
       {/* <Carts/> */}
       {/* <Comments/> */}
       {/* <Albums /> */}
-      {/* <Photos/> */}
+      <Photos/>
       {/* <Users/> */}
       {/* <Products /> */}
       {/* <Albumsparent/> */}
@@ -58,7 +58,7 @@ function App() {
       {/* <Filltextparent/> */}
      {/* <Filltext1parent/> */}
      {/* <Filltext2parent/> */}
-     <Postparent/>
+     {/* <Postparent/> */}
      {/* <Todosparent/> */}
     </div>
   );

@@ -13,7 +13,7 @@ function App({value}) {
   useEffect(() => {
      
     return () => {
-      var url = "https://jsonplaceholder.typicode.com/todos"
+      var url = "https://jsonplaceholder.typicode.com/photos"
        axios.get(url).then((response)=>{
         setUsers(response.data)
 

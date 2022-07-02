@@ -21,18 +21,20 @@ const Users1 = () => {
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>UserId</th>
+                                <th>AlbumId</th>
                                 <th>Title</th>
-                                <th>Completed</th>
+                                <th>Url</th>
+                                <th>ThumbnailUrl</th>
                             </tr>
                         </thead>
                         <tbody>
                             {value.map((user,i) => {
                                 return <tr key={i}>
                                     <td>{user.id}</td>
-                                    <td>{user.userId}</td>
+                                    <td>{user.albumId}</td>
                                     <td>{user.title}</td>
-                                    <td>{user.completed}</td>
+                                    <td><img src={user.url} alt="" /></td>
+                                    <td><img src={user.thumbnailUrl} alt="" /></td>
                                 </tr>
                             })}
                         </tbody>

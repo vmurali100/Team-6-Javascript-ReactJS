@@ -5,6 +5,8 @@ import Hovercount from './Components/Hovercount';
 import { HOCcomponent } from './Components/HOCcomponent';
 import Clickcount1 from './Components/Clickcount1';
 import Hovercount1 from './Components/Hovercount1';
+import Clickcount2 from './Components/Clickcount2';
+import Hovercount2 from './Components/Hovercount2';
 
 
 
@@ -18,8 +20,11 @@ function App() {
       <hr />
       <Clickcounter/> */}
  
-      <Clickcount1/>
-      <Hovercount1/>
+      {/* <Clickcount1/>
+      <Hovercount1/> */}
+
+      <Clickcount2/>
+      <Hovercount2/>
     </div>
   );
 }

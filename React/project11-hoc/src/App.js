@@ -9,6 +9,8 @@ import Clickcount2 from './Components/Clickcount2';
 import Hovercount2 from './Components/Hovercount2';
 import Clickcount3 from './Components/Clickcount3';
 import  Hovercount3  from './Components/Hovercount3';
+import  Click4  from './Components/Click4';
+import Hover4 from './Components/Hover4';
 
 function App() {
   return (
@@ -24,9 +26,11 @@ function App() {
       {/* <Clickcount2/>
       <Hovercount2/> */}
 
-      <Clickcount3/>
-      <Hovercount3/>
+      {/* <Clickcount3/>
+      <Hovercount3/> */}
    
+   <Click4/>
+   <Hover4/>
     </div>
   );
 }

@@ -12,6 +12,9 @@ import Counter3 from './Components/Counter3';
 import Hover4 from './Components/Hover4';
 import Click4 from './Components/Click4';
 import Counter4 from './Components/Counter4';
+import Hover5 from './Components/Hover5';
+import Click5 from './Components/Click5';
+import Counter5 from './Components/Counter5';
 
 function App() {
   return (
@@ -33,8 +36,12 @@ function App() {
      <Counter3 render={(count,increment,decrement)=><Click3 count={count} increment={increment} decrement={decrement}/>}/> */}
      {/* <Hover4/>
      <Click4/> */}
-     <Counter4 render={(count,increment)=><Hover4 count={count} increment={increment}/>}/>
-     <Counter4 render={(count,increment,decrement)=><Click4 count={count} increment={increment} decrement={decrement}/>}/>
+     {/* <Counter4 render={(count,increment)=><Hover4 count={count} increment={increment}/>}/>
+     <Counter4 render={(count,increment,decrement)=><Click4 count={count} increment={increment} decrement={decrement}/>}/> */}
+    {/* <Hover5/>
+    <Click5/> */}
+    <Counter5 render={(count,increment)=><Hover5 count={count} increment={increment} />}/>
+    <Counter5 render={(count,increment,decrement)=><Click5 count={count} increment={increment} decrement={decrement} />}/>
     </div>
   );
 }

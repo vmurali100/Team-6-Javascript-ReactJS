@@ -3,14 +3,17 @@ import Clickcounter1 from './Clickcount1'
 import Clickcount2 from './Clickcount2'
 import Clickcount3 from './Clickcount3'
 import Clickcount4 from './Clickcount4'
+import Clickcount5 from './Clickcount5'
 import Counter1 from './Counter1'
 import Counter2 from './Counter2'
 import Counter3 from './Counter3'
 import Counter4 from './Counter4'
+import Counter5 from './Counter5'
 import Hovercounter1 from './Hovercounter1'
 import Hovercounter2 from './Hovercounter2'
 import Hovercounter3 from './Hovercounter3'
 import Hovercounter4 from './Hovercounter4'
+import Hovercounter5 from './Hovercounter5'
 
 const Commoncounter = () => {
   return (
@@ -28,11 +31,13 @@ const Commoncounter = () => {
         <hr/>
         <Counter3 render={( count,increment)=> <Hovercounter3 count={count} increment={increment}/> }/> */}
 
-        <Counter4 render={(count,increase,decrease)=> <Clickcount4 count={count} increase={increase} decrease={decrease}/>}/>
+        {/* <Counter4 render={(count,increase,decrease)=> <Clickcount4 count={count} increase={increase} decrease={decrease}/>}/>
         <hr/>
-        <Counter4 render={(count,increase,decrease)=> <Hovercounter4 count={count} increase={increase} decrease={decrease}/>}/>
+        <Counter4 render={(count,increase,decrease)=> <Hovercounter4 count={count} increase={increase} decrease={decrease}/>}/> */}
 
-
+        <Counter5 render={(count,increment,decrement)=><Clickcount5 count={count} increment={increment} decrement={decrement}/>}/>
+        <hr/>
+        <Counter5 render={(count,increment)=><Hovercounter5 count={count} increment={increment} />}/>
     </div>
   )
 }

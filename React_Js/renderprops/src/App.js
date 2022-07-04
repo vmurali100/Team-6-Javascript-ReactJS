@@ -9,6 +9,9 @@ import Counter2 from './Components/Counter2';
 import Hover3 from './Components/Hover3';
 import Click3 from './Components/Click3';
 import Counter3 from './Components/Counter3';
+import Hover4 from './Components/Hover4';
+import Click4 from './Components/Click4';
+import Counter4 from './Components/Counter4';
 
 function App() {
   return (
@@ -26,8 +29,12 @@ function App() {
      {/* <Hover3/>
      <hr/>
      <Click3/> */}
-     <Counter3 render={(count,increment)=><Hover3 count={count} increment={increment}/>}/>
-     <Counter3 render={(count,increment,decrement)=><Click3 count={count} increment={increment} decrement={decrement}/>}/>
+     {/* <Counter3 render={(count,increment)=><Hover3 count={count} increment={increment}/>}/>
+     <Counter3 render={(count,increment,decrement)=><Click3 count={count} increment={increment} decrement={decrement}/>}/> */}
+     {/* <Hover4/>
+     <Click4/> */}
+     <Counter4 render={(count,increment)=><Hover4 count={count} increment={increment}/>}/>
+     <Counter4 render={(count,increment,decrement)=><Click4 count={count} increment={increment} decrement={decrement}/>}/>
     </div>
   );
 }

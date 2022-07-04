@@ -20,13 +20,13 @@ function App() {
       <hr/>
       <HoverCount1/> */}
 
-      {/* <ClickCounter2/>
+      <ClickCounter2/>
       <hr/>
-      <HoverCount2/> */}
+      <HoverCount2/>
 
-      <ClickCounter3/>
+      {/* <ClickCounter3/>
       <hr/>
-      <HoverCount3/>
+      <HoverCount3/> */}
     </div>
   );
 }

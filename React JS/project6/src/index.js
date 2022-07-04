@@ -1,18 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-
-
-import { User3 } from './json/User3';
-
-
-
+ 
+import { Opera } from './file3/Opera';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <User3/>
+   <Opera/>
   </React.StrictMode>
 );
 

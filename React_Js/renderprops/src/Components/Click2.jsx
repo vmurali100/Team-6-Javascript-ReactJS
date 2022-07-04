@@ -8,7 +8,7 @@ export default class Click2 extends Component {
         <p>Click2</p>
         <button onClick={this.props.increment}>Increment</button>
         <button onClick={this.props.decrement}>Decrement</button>
-        <h2>Click {this.props.count} clicked</h2>
+        <h2>Click {this.state.count} clicked</h2>
       </div>
     )
   }

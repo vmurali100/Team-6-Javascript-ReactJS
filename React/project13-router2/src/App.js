@@ -13,11 +13,12 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import Gallery from './components/Gallery';
 import{ Projects} from './components/Projects';
+import Commonapp from './components2/Commonapp';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter>
       <Navbar/>
       <Routes>
         <Route index element={<Home/>}/>
@@ -27,7 +28,9 @@ function App() {
         <Route path='Gallery' element={<Gallery/>}/>
         <Route path='Projects' element={<Projects/>}/>
       </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <Commonapp/>
     </div>
   );
 }

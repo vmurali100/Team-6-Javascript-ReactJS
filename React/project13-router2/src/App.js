@@ -14,6 +14,7 @@ import { Contact } from './components/Contact';
 import Gallery from './components/Gallery';
 import{ Projects} from './components/Projects';
 import Commonapp from './components2/Commonapp';
+import Commonapp3 from './Components3/Commonapp3';
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
       </Routes>
       </BrowserRouter> */}
 
-      <Commonapp/>
+      {/* <Commonapp/> */}
+
+      <Commonapp3/>
     </div>
   );
 }

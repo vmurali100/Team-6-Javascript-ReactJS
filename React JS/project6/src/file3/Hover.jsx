@@ -9,7 +9,7 @@ export class Hover  extends Component{
        
         return <div>
             <h1>hover</h1>
-            <h2  onMouseOver={this.props .increase}>{this.props.count}</h2>
+            <h2 onMouseOver={this.props .increase}>{this.props.count}</h2>
         </div>
     }
 }

@@ -5,12 +5,21 @@ import {
  
 } from "react-router-dom";
 import './App.css';
-import About from "./Component3/About";
-import Contact from "./Component3/Contact";
-import Gallary from "./Component3/Gallary";
-import Home from "./Component3/Home";
-import Navbar from "./Component3/Navbar";
-import Project from "./Component3/Project";
+import About from "./Component4/About";
+import Contact from "./Component4/Contact";
+import Content from "./Component4/Content";
+import Gallary from "./Component4/Gallary";
+import Home from "./Component4/Home";
+import Navbar from "./Component4/Navbar";
+import Project from "./Component4/Project";
+
+// import About from "./Component3/About";
+// import Contact from "./Component3/Contact";
+// import Gallary from "./Component3/Gallary";
+// import Home from "./Component3/Home";
+// import Navbar from "./Component3/Navbar";
+// import Project from "./Component3/Project";
+
 // import About from "./Component2/About";
 // import Contact from "./Component2/Contact";
 // import Content from "./Component2/Content";
@@ -41,14 +50,25 @@ function App() {
         <Route path="project" element={<Project/>}/>
       </Routes>
       </BrowserRouter> */}
-
-      {/* <BrowserRouter>
+ 
+      {/*<BrowserRouter>
       <Navbar/>
       <Routes>
         <Route index element={<Home/>}/>
         <Route path="about" element={<About/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path="content" element={<Content/>}/>
+        <Route path="gallary" element={<Gallary/>}/>
+        <Route path="project" element={<Project/>}/>
+      </Routes>
+      </BrowserRouter> */}
+{/* 
+      <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route index element={<Home/>}/>
+        <Route path="about" element={<About/>}/>
+        <Route path="contact" element={<Contact/>}/>
         <Route path="gallary" element={<Gallary/>}/>
         <Route path="project" element={<Project/>}/>
       </Routes>

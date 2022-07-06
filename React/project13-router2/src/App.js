@@ -15,6 +15,8 @@ import Gallery from './components/Gallery';
 import{ Projects} from './components/Projects';
 import Commonapp from './components2/Commonapp';
 import Commonapp3 from './Components3/Commonapp3';
+import CommonApp4 from './Components4 basic89/CommonApp4';
+
 
 function App() {
   return (
@@ -33,7 +35,8 @@ function App() {
 
       {/* <Commonapp/> */}
 
-      <Commonapp3/>
+      {/* <Commonapp3/> */}
+      <CommonApp4/>
     </div>
   );
 }

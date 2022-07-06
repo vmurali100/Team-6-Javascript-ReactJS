@@ -2,16 +2,23 @@ import {
   BrowserRouter,
   Routes,
   Route,
- 
+
 } from "react-router-dom";
 import './App.css';
-import About from "./Component4/About";
-import Contact from "./Component4/Contact";
-import Content from "./Component4/Content";
-import Gallary from "./Component4/Gallary";
-import Home from "./Component4/Home";
-import Navbar from "./Component4/Navbar";
-import Project from "./Component4/Project";
+import Home from "./Component5/Home";
+import About from "./Component5/About";
+import Contact from "./Component5/Contact";
+import Content from "./Component5/Content";
+import Gallary from "./Component5/Gallary";
+import Project from "./Component5/Project";
+import Navbar from "./Component5/Navbar";
+
+// import About from "./Component4/About";
+// import Contact from "./Component4/Contact";
+// import Gallary from "./Component4/Gallary";
+// import Home from "./Component4/Home";
+// import Navbar from "./Component4/Navbar";
+// import Project from "./Component4/Project";
 
 // import About from "./Component3/About";
 // import Contact from "./Component3/Contact";
@@ -50,7 +57,7 @@ function App() {
         <Route path="project" element={<Project/>}/>
       </Routes>
       </BrowserRouter> */}
- 
+
       {/*<BrowserRouter>
       <Navbar/>
       <Routes>
@@ -62,7 +69,7 @@ function App() {
         <Route path="project" element={<Project/>}/>
       </Routes>
       </BrowserRouter> */}
-{/* 
+      {/* 
       <BrowserRouter>
       <Navbar/>
       <Routes>
@@ -74,7 +81,7 @@ function App() {
       </Routes>
       </BrowserRouter> */}
 
-      <BrowserRouter>
+      {/* <BrowserRouter>
       <Navbar/>
       <Routes>
         <Route index element={<Home/>}/>
@@ -83,8 +90,19 @@ function App() {
         <Route path="gallary" element={<Gallary/>}/>
         <Route path="project" element={<Project/>}/>
       </Routes>
+      </BrowserRouter> */}
+
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="gallary" element={<Gallary />} />
+          <Route path="project" element={<Project />} />
+        </Routes>
       </BrowserRouter>
-      
+
     </div>
   );
 }

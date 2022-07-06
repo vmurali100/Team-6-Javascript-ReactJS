@@ -1,0 +1,1549 @@
+
+<!doctype html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:false},ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={xpid:"VgQDVFFbDRAEVVdQAAMEV1c=",licenseKey:"d9fa496b0d",applicationID:"416272313"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(27),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(28),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(10),t(9),"addEventListener"in window&&t(6),c.xhrWrappable&&t(11),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function i(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+l])try{window.performance[h](m,i,!1)}catch(t){}else try{window.performance[h]("webkit"+m,i,!1)}catch(t){}}function o(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(10),f=t(9),u=t(5),d=t(19),l="learResourceTimings",p="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",S=t("loader");if(!S.disabled){S.features.stn=!0,t(8),"addEventListener"in window&&t(6);var O=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof O&&(this.bstStart=S.now())}),a.on(b,function(t,e){var n=t[0];n instanceof O&&s("bst",[n,e,this.bstStart,S.now()])}),c.on(x,function(t,e,n){this.bstStart=S.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),this.bstType])}),f.on(x,function(){this.bstStart=S.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=S.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):p in window.performance&&(window.performance["c"+l]?window.performance[p](m,i,d(!1)):window.performance[p]("webkit"+m,i,d(!1))),document[p]("scroll",o,d(!1)),document[p]("keypress",o,d(!1)),document[p]("click",o,d(!1))}}},{}],5:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(28),a=t(27);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],10:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],11:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function o(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,S.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=t(19),p=NREUM.o,h=p.XHR,m=p.MO,v=p.PR,w=p.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,i,l(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,S=document.createTextNode(R);new m(a).observe(S,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],12:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&l())&&(w.traceContextParentHeader=i(h,m),w.traceContextStateHeader=o(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(24),h=t(14);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],13:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function i(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(14),f=t(12).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(20),m=t(18),v=t(15),w=t(19),g=t(21).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(11),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;if("string"==typeof o?n=o:"object"==typeof o&&o instanceof y?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n),"data"!==this.params.protocol){var s=(""+(o&&o instanceof y&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],14:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],15:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(18);e.exports=r},{}],16:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),o(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(27),s=t(28),c=t("ee").get("tracer"),f=t("loader"),u=t(21),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var l=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(l,function(t,e){d[e]=i(p,e,!0,"api")}),d.addPageAction=i(p,"addPageAction",!0),d.setCurrentRouteName=i(p,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),o("err",[t,f.now(),!1,e])}},{}],17:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],20:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[s,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:i}},{}],22:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(29);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],23:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var i=[r],o=a({});o&&i.push(o),p("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,l,p=t("handle"),h=t("loader"),m=t(26),v=t(19),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}l=new PerformanceObserver(o);try{l.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],24:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(t)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],25:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],26:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(19);e.exports=r;var o,a,s;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],27:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],28:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],29:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return l[t]=l[t]||i(n)}function w(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(27),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(22),s=t("handle"),c=t(27),f=t("ee"),u=t(25),d=t(17),l=t(19),p=d.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!1;NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(16),t(23),m[v]?(m[v]("DOMContentLoaded",o,l(!1)),h[v]("load",r,l(!1))):(m[w]("onreadystatechange",i),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(28),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,13,4,3]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='dns-prefetch' href='//expertphotography.b-cdn.net' />
+  <link rel="preconnect" href="//connect.facebook.net" />
+  <link rel="preconnect" href="//www.facebook.com" />
+  <link rel="preconnect" href="//www.googletagmanager.com" />
+  
+  <link ref="preload" href="https://expertphotography.b-cdn.net/wp-content/theme/expert/dist/fonts/epicons.woff2" as="font" type="font/woff2" crossorigin>
+  
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+	const gtm4wp_use_sku_instead        = 0;
+	const gtm4wp_id_prefix              = '';
+	const gtm4wp_remarketing            = 1;
+	const gtm4wp_eec                    = 1;
+	const gtm4wp_classicec              = false;
+	const gtm4wp_currency               = 'USD';
+	const gtm4wp_product_per_impression = 10;
+	const gtm4wp_needs_shipping_address = false;
+	const gtm4wp_business_vertical      = 'education';
+	const gtm4wp_business_vertical_id   = 'id';
+
+	var gtm4wp_scrollerscript_debugmode         = false;
+	var gtm4wp_scrollerscript_callbacktime      = 100;
+	var gtm4wp_scrollerscript_readerlocation    = 150;
+	var gtm4wp_scrollerscript_contentelementid  = "content";
+	var gtm4wp_scrollerscript_scannertime       = 60;
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><script type="text/javascript">
+const gtm4wp_is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+if ( gtm4wp_is_safari ) {
+	window.addEventListener('pageshow', function(event) {
+		if ( event.persisted ) {
+			// if Safari loads the page from cache usually by navigating with the back button
+			// it creates issues with product list click tracking
+			// therefore GTM4WP forces the page reload in this browser
+			window.location.reload();
+		}
+	});
+}
+</script>
+<!-- Search Engine Optimization by Rank Math PRO - https://s.rankmath.com/home -->
+<title>12 Easy Ways to Improve Your Nature Photography</title>
+<meta name="description" content="Nature photography is a unique discipline covering flowers, macro, landscapes, bird or wildlife photography. Read our great tips to get you started!"/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://expertphotography.com/nature-photography-tips/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="12 Easy Ways to Improve Your Nature Photography" />
+<meta property="og:description" content="Nature photography is a unique discipline covering flowers, macro, landscapes, bird or wildlife photography. Read our great tips to get you started!" />
+<meta property="og:url" content="https://expertphotography.com/nature-photography-tips/" />
+<meta property="og:site_name" content="ExpertPhotography" />
+<meta property="article:section" content="Wildlife" />
+<meta property="og:updated_time" content="2022-07-04T09:36:14+00:00" />
+<meta property="og:image" content="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg" />
+<meta property="og:image:secure_url" content="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg" />
+<meta property="og:image:width" content="700" />
+<meta property="og:image:height" content="467" />
+<meta property="og:image:alt" content="A squirrel among blue flowers" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="article:published_time" content="2020-03-05T11:11:52+00:00" />
+<meta property="article:modified_time" content="2022-07-04T09:36:14+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="12 Easy Ways to Improve Your Nature Photography" />
+<meta name="twitter:description" content="Nature photography is a unique discipline covering flowers, macro, landscapes, bird or wildlife photography. Read our great tips to get you started!" />
+<meta name="twitter:image" content="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg" />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="David Eldon" />
+<meta name="twitter:label2" content="Time to read" />
+<meta name="twitter:data2" content="7 minutes" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://expertphotography.com/#organization","name":"ExpertPhotography","url":"https://expertphotography.com","logo":{"@type":"ImageObject","@id":"https://expertphotography.com/#logo","url":"https://expertphotography.b-cdn.net/wp-content/uploads/2022/06/Icon-512x512-1.png","caption":"ExpertPhotography","inLanguage":"en-US","width":"512","height":"512"}},{"@type":"WebSite","@id":"https://expertphotography.com/#website","url":"https://expertphotography.com","name":"ExpertPhotography","publisher":{"@id":"https://expertphotography.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg","url":"https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg","width":"700","height":"467","caption":"A squirrel among blue flowers","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://expertphotography.com/nature-photography-tips/#webpage","url":"https://expertphotography.com/nature-photography-tips/","name":"12 Easy Ways to Improve Your Nature Photography","datePublished":"2020-03-05T11:11:52+00:00","dateModified":"2022-07-04T09:36:14+00:00","isPartOf":{"@id":"https://expertphotography.com/#website"},"primaryImageOfPage":{"@id":"https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg"},"inLanguage":"en-US"},{"@type":"Person","@id":"https://expertphotography.com/author/david-eldon/","name":"David Eldon","url":"https://expertphotography.com/author/david-eldon/","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/c86f821980ccd78ab31e05dfe4615186?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/c86f821980ccd78ab31e05dfe4615186?s=96&amp;d=mm&amp;r=g","caption":"David Eldon","inLanguage":"en-US"},"worksFor":{"@id":"https://expertphotography.com/#organization"}},{"@type":"BlogPosting","headline":"12 Easy Ways to Improve Your Nature Photography","keywords":"nature photography","datePublished":"2020-03-05T11:11:52+00:00","dateModified":"2022-07-04T09:36:14+00:00","author":{"@id":"https://expertphotography.com/author/david-eldon/"},"publisher":{"@id":"https://expertphotography.com/#organization"},"description":"Nature photography is a unique discipline covering flowers, macro, landscapes, bird or wildlife photography. Read our great tips to get you started!","name":"12 Easy Ways to Improve Your Nature Photography","@id":"https://expertphotography.com/nature-photography-tips/#richSnippet","isPartOf":{"@id":"https://expertphotography.com/nature-photography-tips/#webpage"},"image":{"@id":"https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://expertphotography.com/nature-photography-tips/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//player.vimeo.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel='stylesheet' id='learndash_quiz_front_css-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/themes/legacy/templates/learndash_quiz_front.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='learndash_style-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/assets/css/style.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sfwd_front_css-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/assets/css/front.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-dropdown-css-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/assets/css/jquery.dropdown.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='learndash_pager_css-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/themes/legacy/templates/learndash_pager.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='learndash_template_style_css-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/themes/legacy/templates/learndash_template_style.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='learndash_lesson_video-css'  href='//expertphotography.com/wp-content/plugins/sfwd-lms/themes/legacy/templates/learndash_lesson_video.min.css?ver=4.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='twenty20-style-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/twenty20/assets/css/twenty20.css?ver=1.5.8' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-layout-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=4.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=4.8.1' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=4.8.1' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='lasso-live-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/lasso/admin/assets/css/lasso-live.css?ver=1656507547' type='text/css' media='all' />
+<link rel='stylesheet' id='lasso-table-frontend-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/lasso/admin/assets/css/lasso-table-frontend.css?ver=1656507547' type='text/css' media='all' />
+<link rel='stylesheet' id='affwp-forms-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/affiliate-wp/assets/css/forms.min.css?ver=2.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-icomoon-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.19' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.19' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}div#ez-toc-container {width: 275px;}
+</style>
+<link rel='stylesheet' id='main-css'  href='https://expertphotography.b-cdn.net/wp-content/themes/expert/style.css?ver=5.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='acf-fonticonpicker-icons-css'  href='https://expertphotography.b-cdn.net/wp-content/themes/expert/lib/acf-fonticonpicker/icons/css/epicons.css?ver=5.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://expertphotography.b-cdn.net/wp-content/tablepress-combined.min.css?ver=38' type='text/css' media='all' />
+<link rel='stylesheet' id='ep-tablepress-responsive-tables-css'  href='https://expertphotography.b-cdn.net/wp-content/plugins/ep-tablepress-responsive-tables/css/tablepress-responsive.min.css?ver=1.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-css'  href='https://fonts.googleapis.com/css2?family=Lato%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C700%3B0%2C900%3B1%2C300%3B1%2C400%3B1%2C700%3B1%2C900&#038;display=swap&#038;ver=5.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='sage/css-css'  href='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/styles/main.css?ver=1655987195' type='text/css' media='all' />
+<link rel='stylesheet' id='mcustomscrollbar-css'  href='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/styles/jquery.mCustomScrollbar.css?ver=3.0.7' type='text/css' media='all' />
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='jquery-cookie-js-extra'>
+/* <![CDATA[ */
+var affwp_scripts = {"ajaxurl":"https:\/\/expertphotography.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1' id='jquery-cookie-js'></script>
+<script type='text/javascript' id='affwp-tracking-js-extra'>
+/* <![CDATA[ */
+var affwp_debug_vars = {"integrations":{"woocommerce":"WooCommerce"},"version":"2.9.3","currency":"USD","ref_cookie":"affwp_ref","visit_cookie":"affwp_ref_visit_id","campaign_cookie":"affwp_campaign"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/affiliate-wp/assets/js/tracking.min.js?ver=2.9.3' id='affwp-tracking-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/duracelltomi-google-tag-manager/js/analytics-talk-content-tracking.js?ver=9.99' id='gtm4wp-scroll-tracking-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-woocommerce-enhanced.js?ver=9.99' id='gtm4wp-woocommerce-enhanced-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/ep-tablepress-responsive-tables/js/sticky.min.js?ver=1.2.2' id='sticky-js-js'></script>
+<link rel="https://api.w.org/" href="https://expertphotography.com/wp-json/" /><link rel="alternate" type="application/json" href="https://expertphotography.com/wp-json/wp/v2/posts/71610" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://expertphotography.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://expertphotography.b-cdn.net/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://expertphotography.com/?p=71610' />
+<link rel="alternate" type="application/json+oembed" href="https://expertphotography.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fexpertphotography.com%2Fnature-photography-tips%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://expertphotography.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fexpertphotography.com%2Fnature-photography-tips%2F&#038;format=xml" />
+<script type="text/javascript">var ajaxurl = "https://expertphotography.com/wp-admin/admin-ajax.php"</script><style type="text/css">
+			:root{
+				--lasso-main: black !important;
+				--lasso-title: black !important;
+				--lasso-button: #22BAA0 !important;
+				--lasso-secondary-button: #22BAA0 !important;
+				--lasso-button-text: white !important;
+				--lasso-background: white !important;
+				--lasso-pros: #22BAA0 !important;
+				--lasso-cons: #E06470 !important;
+			}
+			
+			
+		</style>
+			<script type="text/javascript">
+				// Notice how this gets configured before we load Font Awesome
+				window.FontAwesomeConfig = { autoReplaceSvg: false }
+			</script>
+				<script type="text/javascript">
+		var AFFWP = AFFWP || {};
+		AFFWP.referral_var = 'ref';
+		AFFWP.expiration = 365;
+		AFFWP.debug = 0;
+
+
+		AFFWP.referral_credit_last = 1;
+		</script>
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to automatic -->
+<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
+	const console_cmd = console.warn || console.log;
+var google_tag_params = {"pageTitle":"12 Easy Ways to Improve Your Nature Photography","pagePostType":"post","pagePostType2":"single-post","pageCategory":["wildlife","inspiration"],"pagePostAuthor":"David Eldon","browserName":"Facebook","browserVersion":"1.1","browserEngineName":"","browserEngineVersion":"","osName":"","osVersion":"","customerTotalOrders":0,"customerTotalOrderValue":"0.00","customerFirstName":"","customerLastName":"","customerBillingFirstName":"","customerBillingLastName":"","customerBillingCompany":"","customerBillingAddress1":"","customerBillingAddress2":"","customerBillingCity":"","customerBillingPostcode":"","customerBillingCountry":"","customerBillingEmail":"","customerBillingEmailHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","customerBillingPhone":"","customerShippingFirstName":"","customerShippingLastName":"","customerShippingCompany":"","customerShippingAddress1":"","customerShippingAddress2":"","customerShippingCity":"","customerShippingPostcode":"","customerShippingCountry":"","cartContent":{"totals":{"applied_coupons":[],"discount_total":0,"subtotal":0,"total":0},"items":[]},"ecomm_pagetype":"other"};
+	var dataLayer_content = {"pageTitle":"12 Easy Ways to Improve Your Nature Photography","pagePostType":"post","pagePostType2":"single-post","pageCategory":["wildlife","inspiration"],"pagePostAuthor":"David Eldon","browserName":"Facebook","browserVersion":"1.1","browserEngineName":"","browserEngineVersion":"","osName":"","osVersion":"","customerTotalOrders":0,"customerTotalOrderValue":"0.00","customerFirstName":"","customerLastName":"","customerBillingFirstName":"","customerBillingLastName":"","customerBillingCompany":"","customerBillingAddress1":"","customerBillingAddress2":"","customerBillingCity":"","customerBillingPostcode":"","customerBillingCountry":"","customerBillingEmail":"","customerBillingEmailHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","customerBillingPhone":"","customerShippingFirstName":"","customerShippingLastName":"","customerShippingCompany":"","customerShippingAddress1":"","customerShippingAddress2":"","customerShippingCity":"","customerShippingPostcode":"","customerShippingCountry":"","cartContent":{"totals":{"applied_coupons":[],"discount_total":0,"subtotal":0,"total":0},"items":[]},"ecomm_pagetype":"other","google_tag_params":window.google_tag_params};
+	dataLayer.push( dataLayer_content );
+</script>
+<script data-cfasync="false">
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.'+'js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K8R6BP');
+</script>
+<!-- End Google Tag Manager -->
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://expertphotography.com/nature-photography-tips/"
+    },
+    "image": [
+        "https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg"
+    ],
+    "headline": "12 Tips to Help You Improve Your Nature Photography Skills",
+    "author": {
+        "@type": "Person",
+        "name": "David Eldon"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "ExpertPhotography",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://cdn-ep19.pressidium.com/wp-content/themes/expert/dist/images/logo-black.png"
+        }
+    },
+    "description": "Nature photography covers shooting flora and fauna. This means plants, flowers, and animals, photographed in their immediate environments. It's challenging because of the variety of&hellip;",
+    "datePublished": "2020-03-05T11:11:52+00:00",
+    "dateModified": "2022-07-04T09:36:14+00:00"
+}</script>	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<link rel="icon" href="https://expertphotography.b-cdn.net/wp-content/uploads/2019/03/cropped-Icon-512x512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://expertphotography.b-cdn.net/wp-content/uploads/2019/03/cropped-Icon-512x512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://expertphotography.b-cdn.net/wp-content/uploads/2019/03/cropped-Icon-512x512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://expertphotography.b-cdn.net/wp-content/uploads/2019/03/cropped-Icon-512x512-270x270.png" />
+</head>
+<body class="post-template-default single single-post postid-71610 single-format-standard theme-expert woocommerce-no-js nature-photography-tips sidebar-primary">
+<div class="back-to-top">
+    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjUiIGhlaWdodD0iNjUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHRpdGxlPkJhY2sgdG8gVG9wPC90aXRsZT4KICA8ZyB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMzIuNTAwMDAwMDAwMDAwMDEsMzIuNSkgIiBzdHJva2U9Im51bGwiIGlkPSJzdmdfNiI+CiAgIDxnIHN0cm9rZT0ibnVsbCIgdHJhbnNmb3JtPSJtYXRyaXgoMC41NTA3OTk5MTM4NjcxNjc5LDAsMCwwLjU1MDc5OTkxMzg2NzE2NzksLTU5MS40NDAxMTMyMzM1MTU2LC01NTYuODg4MjQ5NTk5OTExOCkgIiBpZD0ic3ZnXzQiPgogICAgPHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJudWxsIiBpZD0ic3ZnXzUiIGQ9Im0xMTA4LjczOTA0NywxMTI2Ljg1ODc1MmMtMC44LDAuOCAtMS44LDEuMiAtMi45LDEuMnMtMi4xLC0wLjQgLTIuOSwtMS4yYy0xLjYsLTEuNiAtMS42LC00LjIgMCwtNS44bDUxLC01MWwtNTEsLTUxYy0xLjYsLTEuNiAtMS42LC00LjIgMCwtNS44YzEuNiwtMS42IDQuMiwtMS42IDUuOCwwbDUzLjksNTMuOWMxLjYsMS42IDEuNiw0LjIgMCw1LjhsLTUzLjksNTMuOXoiLz4KICAgPC9nPgogIDwvZz4KPC9zdmc+" alt="back to top">
+</div>
+<!--[if IE]>
+<div class="alert alert-warning">
+    You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your
+    browser</a> to improve your experience.</div>
+<![endif]-->
+    <header class="banner">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center top-bar">
+                <div class="col-md-4 left-side pl-0 d-none d-md-block">
+                                            <section class="widget social_icons-3 widget_social_icons">                                    <div class="d-flex icons-wrapper">
+                                                                    <a href="https://www.facebook.com/ExpertPhotography/" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-facebook" style="color: #8cc63f"></i>
+                        </a>
+                                                                    <a href="https://instagram.com/expertphotography" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-instagram" style="color: #8cc63f"></i>
+                        </a>
+                                                                    <a href="https://pinterest.com/photojosh/" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-pinterest" style="color: #8cc63f"></i>
+                        </a>
+                                    </div>
+                            </section>                                    </div>
+                <div class="col-md-4 center-side logo-wrapper text-center">
+                    <a class="brand" href="https://expertphotography.com/"><img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/logo.svg" alt="ExpertPhotography" width="198" height="35"></a>
+                </div>
+                <div class="col-md-4 right-side text-right pr-0">
+                                            <a href="/checkout" class="h6 mini-cart" title="View your shopping cart">
+                            <svg class="shopping-cart-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+                                <g>
+                                    <g id="shopping-cart">
+                                        <path d="M153,408c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S181.05,408,153,408z M0,0v51h51l91.8,193.8L107.1,306
+                                                    c-2.55,7.65-5.1,17.85-5.1,25.5c0,28.05,22.95,51,51,51h306v-51H163.2c-2.55,0-5.1-2.55-5.1-5.1v-2.551l22.95-43.35h188.7
+                                                    c20.4,0,35.7-10.2,43.35-25.5L504.9,89.25c5.1-5.1,5.1-7.65,5.1-12.75c0-15.3-10.2-25.5-25.5-25.5H107.1L84.15,0H0z M408,408
+                                                    c-28.05,0-51,22.95-51,51s22.95,51,51,51s51-22.95,51-51S436.05,408,408,408z" />
+                                    </g>
+                                </g>
+                            </svg>
+                            0                        </a>
+                                                    <a href="https://expertphotography.com/my-account/" title="Login / Register" class="h6 account d-none d-md-inline-block"><i class="epicon-round-account-button-with-user-inside"></i><span class="d-none d-md-inline-block">Log In</span></a>
+                                                <a href="#" class="h6 search" data-toggle="modal" data-target="#modal-search"><i class="epicon-magnifying-glass"></i></a>
+                                    </div>
+            </div>
+                                                            <nav class="nav-primary navbar navbar-expand-md">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse width" id="navbarSupportedContent">
+                            <div class="desktop-menu d-none d-md-block">
+                                <div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav"><li id="menu-item-123278" class="epicon-home menu-item menu-item-type-custom menu-item-object-custom menu-item-123278"><a title="Home" href="/"> </a></li>
+<li id="menu-item-64875" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64875"><a href="https://expertphotography.com/articles/">Articles</a></li>
+<li id="menu-item-64874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64874"><a href="https://expertphotography.com/student-successes/">Student Successes</a></li>
+<li id="menu-item-62630" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62630"><a href="/my-learning">My Learning</a></li>
+<li id="menu-item-64872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64872"><a href="https://expertphotography.com/store/">Store</a></li>
+<li id="menu-item-64869" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64869"><a href="https://expertphotography.com/about-us/">About</a></li>
+<li id="menu-item-64866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64866"><a href="https://expertphotography.com/contact-us/">Contact</a></li>
+<li id="menu-item-62639" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62639 btn btn-danger"><a href="https://expertphotography.com/quiz/photograph">Photo Quiz</a></li>
+</ul></div>                            </div>
+                            <div class="mobile-menu d-sm-block d-md-none">
+                                                                    <a href="https://expertphotography.com/my-account/" class="h6 account d-block d-md-none"><i class="epicon-round-account"></i><span class="">Login / Register</span></a>
+                                                                <div class="menu-main-menu-container"><ul id="menu-main-menu-1" class="nav nav__mobile"><li class="epicon-home menu-item menu-item-type-custom menu-item-object-custom menu-item-123278"><a title="Home" href="/"> </a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64875"><a href="https://expertphotography.com/articles/">Articles</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64874"><a href="https://expertphotography.com/student-successes/">Student Successes</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62630"><a href="/my-learning">My Learning</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64872"><a href="https://expertphotography.com/store/">Store</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64869"><a href="https://expertphotography.com/about-us/">About</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64866"><a href="https://expertphotography.com/contact-us/">Contact</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62639 btn btn-danger"><a href="https://expertphotography.com/quiz/photograph">Photo Quiz</a></li>
+</ul></div>                                <section class="widget social_icons-3 widget_social_icons">                                    <div class="d-flex icons-wrapper">
+                                                                    <a href="https://www.facebook.com/ExpertPhotography/" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-facebook" style="color: #8cc63f"></i>
+                        </a>
+                                                                    <a href="https://instagram.com/expertphotography" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-instagram" style="color: #8cc63f"></i>
+                        </a>
+                                                                    <a href="https://pinterest.com/photojosh/" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-pinterest" style="color: #8cc63f"></i>
+                        </a>
+                                    </div>
+                            </section>                            </div>
+                        </div>
+                    </nav>
+                                    </div>
+        <div class="widget_shopping_cart_content"></div>
+    </header>
+<section class="article-cta bnr-cta">
+  <div class="container-full-width">
+    <a href="https://expertphotography.com/sp/p27-next-stop-travel-photography-ad/?cf_1=cta-bar" class="img-holder">
+      <div class="overlay"></div>
+    </a>
+  </div>
+</section>
+<style>
+  section.article-cta.bnr-cta .container-full-width .img-holder {
+    background-image: url('https://expertphotography.b-cdn.net/wp-content/uploads/2022/06/P27-CTA-Banner-Large-V1.png');
+  }
+  @media (max-width: 768px) {
+    section.article-cta.bnr-cta .container-full-width .img-holder {
+      background-image: url('https://expertphotography.b-cdn.net/wp-content/uploads/2022/06/P27-CTA-Banner-Small-V1.png');
+    }
+  }
+</style>
+<div class="wrap container" role="document">
+    <div class="content row">
+        <main class="main col">
+			
+				<script>
+		var execute_ga = function(){
+			ga.getAll()[0].set('dimension7', "David Eldon");
+			ga.getAll()[0].set('dimension8', "Wildlife");
+			ga.getAll()[0].set('dimension9', "12 Tips to Help You Improve Your Nature Photography Skills");
+			ga.getAll()[0].send('event', 'Post Engagement', 'View', 'https://expertphotography.com/nature-photography-tips/', {'nonInteraction': 1});
+		};
+		function check_ga() {
+			if (typeof ga === 'function' && typeof ga.getAll == 'function') {
+				execute_ga();
+			} else {
+				setTimeout(check_ga,500);
+			}
+		}
+		check_ga();
+	</script>
+	<article id="apost" class="post-71610 post type-post status-publish format-standard has-post-thumbnail hentry category-wildlife category-inspiration" data-postid="71610" data-stamp="1583406712" data-url="https://expertphotography.com/nature-photography-tips/">
+		    					        				<a class="article-category h6 primcat" href="https://expertphotography.com/category/wildlife/">Wildlife</a>
+												<a class="article-category h6" href="https://expertphotography.com/category/inspiration/">Inspiration</a>
+					            <header>
+            <h1 class="entry-title">12 Tips to Help You Improve Your Nature Photography Skills</h1>
+						  <div class="avatar d-inline-block">
+    <img alt='' src='https://secure.gravatar.com/avatar/c86f821980ccd78ab31e05dfe4615186?s=40&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c86f821980ccd78ab31e05dfe4615186?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy'/>  </div>
+  <span class="byline author vcard ">
+    By <a href="https://expertphotography.com/author/david-eldon/" title="Posts by David Eldon" rel="author">David Eldon</a>  </span>
+						<div class="text-sizer">
+							<a href="#" class="decrease">A-</a>
+							<a href="#" class="increase">A+</a>
+							<script>
+								jQuery(document).ready(function($){
+									// TOOD: start with default settings
+									var current_size_change = parseInt($.cookie('content-size'));
+									if(current_size_change) {
+										$("#entry-content").children().each(function() {
+											if($(this).hasClass('pinterest-section')) return;
+											var size = parseInt($(this).css("font-size"));
+											size = parseInt(size + current_size_change) + "px";
+											$(this).animate({
+												'font-size': size
+											});
+										});
+									} else {
+										current_size_change = 0;
+									}
+									$('.increase').on('click', function(e) {
+										e.preventDefault();
+										current_size_change += 2;
+										$.cookie('content-size', current_size_change, {path: '/' });
+										$("#entry-content").children().each(function() {
+											if($(this).hasClass('pinterest-section')) return;
+											var size = parseInt($(this).css("font-size"));
+											size = parseInt(size + 2) + "px";
+											$(this).animate({
+												'font-size': size
+											});
+										});
+									});
+
+									$('.decrease').on('click', function(e) {
+										e.preventDefault();
+										current_size_change -= 2;
+										$.cookie('content-size', current_size_change, {path: '/' });
+										$("#entry-content").children().each(function() {
+											if($(this).hasClass('pinterest-section')) return;
+											var size = parseInt($(this).css("font-size"));
+											size = parseInt(size - 2) + "px";
+											$(this).animate({
+												'font-size': size
+											});
+										});
+									});
+								});
+							</script>
+						</div>
+						<div class="ask-to-pdf">
+  <a href="#" class="btn btn-primary send-as-pdf-btn">Download as <em>PDF <svg id="svg-download" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve"><g><g><g><rect x="24.466" y="16.12" fill="#0071bc" width="2.458" height="14.52"/></g><g><polygon fill="#0071bc" points="25.696,32.379 19.57,26.254 21.308,24.516 25.696,28.903 30.082,24.516 31.82,26.254 "/></g></g><g><polygon fill="#0071bc" points="38.494,37.327 12.897,37.327 12.897,28.709 15.453,28.709 15.453,34.771 35.938,34.771 35.938,28.709 38.494,28.709 "/></g></g></svg> </em></a></div>
+<div class="send-as-pdf">
+  <h4>Subscribe Below to Download the Article Immediately</h4>
+  <p>You can also select your interests for free access to our premium training:</p>
+    <form accept-charset="UTF-8" action="https://py248.infusionsoft.com/app/form/process/88271552e04d363321b1a8a49d1ae235"
+        class="form-inline infusion-form" id="inf_form_88271552e04d363321b1a8a49d1ae235" method="POST">
+    <input name="inf_form_xid" type="hidden" value="88271552e04d363321b1a8a49d1ae235"/>
+    <input name="inf_form_name" type="hidden" value="Text Area"/>
+    <input name="infusionsoft_version" type="hidden" value="1.70.0.252135"/>
+          <div class="infusion-field">
+        <input type="checkbox" id="business-basics"
+               name="business-basics" value="Business Basics"/>
+        <label for="business-basics">Business Basics</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="cheat-sheets"
+               name="cheat-sheets" value="Cheat Sheets"/>
+        <label for="cheat-sheets">Cheat Sheets</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="child-photography"
+               name="child-photography" value="Child Photography"/>
+        <label for="child-photography">Child Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="colorful-cityscapes"
+               name="colorful-cityscapes" value="Colorful Cityscapes"/>
+        <label for="colorful-cityscapes">Colorful Cityscapes</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="composition"
+               name="composition" value="Composition"/>
+        <label for="composition">Composition</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="creative-photography"
+               name="creative-photography" value="Creative Photography"/>
+        <label for="creative-photography">Creative Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="digital-photo-collages"
+               name="digital-photo-collages" value="Digital Photo Collages"/>
+        <label for="digital-photo-collages">Digital Photo Collages</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="fairytale-portrait-photography"
+               name="fairytale-portrait-photography" value="Fairytale Portrait Photography"/>
+        <label for="fairytale-portrait-photography">Fairytale Portrait Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="food-photography"
+               name="food-photography" value="Food Photography"/>
+        <label for="food-photography">Food Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="interior-photography"
+               name="interior-photography" value="Interior Photography"/>
+        <label for="interior-photography">Interior Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="landscape-editing"
+               name="landscape-editing" value="Landscape Editing"/>
+        <label for="landscape-editing">Landscape Editing</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="landscape-photography"
+               name="landscape-photography" value="Landscape Photography"/>
+        <label for="landscape-photography">Landscape Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="lightroom-processing"
+               name="lightroom-processing" value="Lightroom Processing"/>
+        <label for="lightroom-processing">Lightroom Processing</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="lightroom-presets"
+               name="lightroom-presets" value="Lightroom Presets"/>
+        <label for="lightroom-presets">Lightroom Presets</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="long-exposure"
+               name="long-exposure" value="Long Exposure"/>
+        <label for="long-exposure">Long Exposure</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="macro-photography"
+               name="macro-photography" value="Macro Photography"/>
+        <label for="macro-photography">Macro Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="milky-way-photography"
+               name="milky-way-photography" value="Milky Way Photography"/>
+        <label for="milky-way-photography">Milky Way Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="my-camera-and-photography"
+               name="my-camera-and-photography" value="My Camera and Photography"/>
+        <label for="my-camera-and-photography">My Camera and Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="organic-marketing"
+               name="organic-marketing" value="Organic Marketing"/>
+        <label for="organic-marketing">Organic Marketing</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="pets"
+               name="pets" value="Pets"/>
+        <label for="pets">Pets</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="product-photography"
+               name="product-photography" value="Product Photography"/>
+        <label for="product-photography">Product Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="sky-photography"
+               name="sky-photography" value="Sky Photography"/>
+        <label for="sky-photography">Sky Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="social-media"
+               name="social-media" value="Social Media"/>
+        <label for="social-media">Social Media</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="still-life"
+               name="still-life" value="Still Life"/>
+        <label for="still-life">Still Life</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="time-lapse-photography"
+               name="time-lapse-photography" value="Time-Lapse Photography"/>
+        <label for="time-lapse-photography">Time-Lapse Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="urban-photography"
+               name="urban-photography" value="Urban Photography"/>
+        <label for="urban-photography">Urban Photography</label>
+      </div>
+          <div class="infusion-field">
+        <input type="checkbox" id="wildlife-photography"
+               name="wildlife-photography" value="Wildlife Photography"/>
+        <label for="wildlife-photography">Wildlife Photography</label>
+      </div>
+        <div class="infusion-field" style="display: none">
+      <label for="inf_custom_Interests">Interests</label>
+
+      <textarea cols="24" id="inf_custom_Interests" name="inf_custom_Interests" placeholder="Interests"
+                rows="5"></textarea></div>
+    <input name="inf_custom_GaContent" type="hidden" value="null"/>
+    <input name="inf_custom_GaSource" type="hidden" value="null"/>
+    <input name="inf_custom_GaMedium" type="hidden" value="null"/>
+    <input name="inf_custom_GaTerm" type="hidden" value="null"/>
+    <input name="inf_custom_GaCampaign" type="hidden" value="null"/>
+    <input name="inf_custom_GaReferurl" type="hidden" value="null"/>
+    <input name="inf_custom_IPAddress" type="hidden" value="null"/>
+    <input name="inf_custom_AdGroup" type="hidden" value="null"/>
+    <input name="inf_custom_source" type="hidden" value="null"/>
+    <input name="inf_custom_Firstpagevisitedinsession" type="hidden" value="null"/>
+    <input name="inf_custom_Lastpagevisited" type="hidden" value="null"/>
+    <input name="inf_custom_Timeonsite" type="hidden" value="null"/>
+    <input name="inf_custom_Numberofpagesvisited" type="hidden" value="null"/>
+    <input name="inf_custom_Category" type="hidden" value="null"/>
+    <input name="inf_custom_Author" type="hidden" value="null"/>
+    <input name="inf_custom_MobileorDesktop" type="hidden" value="null"/>
+    <div class="infusion-mail-block">
+      <div class="infusion-field">
+        <input class="infusion-field-input" id="inf_field_Email" name="inf_field_Email" placeholder="Email *"
+               type="text"/>
+      </div>
+      <div class="infusion-submit">
+        <button type="submit">Subscribe and Download</button>
+      </div>
+    </div>
+    <span class="privacy-note h6"><i class="epicon-locked-padlock"></i>Your privacy is safe. I will never share your information.</span>
+  </form>
+  <script type="text/javascript" src="https://py248.infusionsoft.app/app/webTracking/getTrackingCode"></script>
+  <script type="text/javascript"
+          src="https://py248.infusionsoft.com/app/timezone/timezoneInputJs?xid=88271552e04d363321b1a8a49d1ae235"></script>
+  <style>
+    #svg-download {
+  width: 30px;
+  margin: -12px -5px -7px;
+}
+.ask-to-pdf {
+  margin: 32px 0 -8px;
+  border-top: 1px solid #c4c4c4;
+  padding-top: 12px;
+}
+.send-as-pdf > p {
+  margin-bottom: 0;
+}
+.send-as-pdf-btn {
+  margin-left: 0;
+}
+.send-as-pdf-btn em {
+  background: white;
+  color: #0071bc;
+  border-radius: 3px;
+  padding: 0 5px;
+  margin: 0 3px;
+}
+.send-as-pdf .privacy-note {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  opacity: 0.8;
+  padding-top: 12px;
+}
+.send-as-pdf .privacy-note i {
+  padding-right: 4px;
+}
+.send-as-pdf {
+  margin-top: 32px;
+  display: none;
+  margin-bottom: -16px;
+  border-top: 1px solid #c4c4c4;
+  padding-top: 16px;
+}
+
+.send-as-pdf h4 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.send-as-pdf input[type=checkbox] {
+  -webkit-appearance: checkbox !important;
+}
+
+.send-as-pdf form {
+  display: flex;
+  flex-wrap: wrap;
+  column-count: 3;
+  margin-right: 0;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.send-as-pdf .form-inline label {
+  display: inline-block;
+}
+
+.send-as-pdf form .infusion-field {
+  width: 33.3%;
+  font-size: 17px;
+}
+
+.send-as-pdf form .infusion-email label {
+  display: none;
+}
+
+.send-as-pdf .infusion-mail-block {
+  display: flex;
+  margin: 16px auto 0;
+}
+
+.send-as-pdf .infusion-mail-block .infusion-field {
+  width: auto;
+}
+.send-as-pdf .form-inline .infusion-submit button {
+  width: 250px;
+}
+@media screen and (max-width: 768px) { 
+  .send-as-pdf {
+    font-size: 16px;
+  }
+  .send-as-pdf h4 {
+    font-size: 18px;
+  }
+  .send-as-pdf > p {
+    font-size: 16px;
+  }
+  .send-as-pdf form {
+    flex-direction: column;
+    width: 100%;
+  }
+  .send-as-pdf form .infusion-field {
+    width: 100%;
+  }
+  .send-as-pdf .infusion-mail-block {
+    flex-direction: column;
+    text-align: center;
+  }
+  .send-as-pdf #inf_field_Email {
+    margin-bottom: 8px;
+  }
+  .send-as-pdf .infusion-option {
+    display: block;
+    width: 100%;
+    display: flex;
+  }
+  .send-as-pdf input[type=checkbox] {
+    width: auto;
+    margin-top: 6px;
+    margin-right: 12px;
+  }
+}  </style>
+  <script>
+    jQuery(document).ready(function($) {
+  $(".ask-to-pdf a").click(function(e) {
+    e.preventDefault();
+    $(".send-as-pdf").show();
+    $(".ask-to-pdf").hide();
+  });
+  $(".send-as-pdf input[type=checkbox]").change(function(e) {
+    var arr = [];
+    $(".send-as-pdf input[type=checkbox]:checked").each(function() {
+      var val = $(this).val();
+      arr.push(val);
+    });
+    $("#inf_custom_Interests").val(arr.join(','));
+  });
+  $(".send-as-pdf form").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: "https://epify.devil.services/api/post/pdf",
+      method: 'POST',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      data: JSON.stringify({
+        id: $("#apost").data('postid'),
+        url: $("#apost").data('url'),
+        stamp: $("#apost").data('stamp'),
+        email: $(".send-as-pdf #inf_field_Email").val(),
+        title: jQuery("h1.entry-title").text()
+      }),
+      success: (data) => {
+        $(this).off("submit");
+        $(this).submit();
+      }
+    });
+  });
+});
+
+function submitWebForm() {
+  var form = document.forms[0];
+  var resolution = document.createElement('input');
+  resolution.setAttribute('id', 'screenResolution');
+  resolution.setAttribute('type', 'hidden');
+  resolution.setAttribute('name', 'screenResolution');
+  var resolutionString = screen.width + 'x' + screen.height;
+  resolution.setAttribute('value', resolutionString);
+  form.appendChild(resolution);
+  var pluginString = '';
+  if (window.ActiveXObject) {
+    var activeXNames = {
+      'AcroPDF.PDF': 'Adobe Reader',
+      'ShockwaveFlash.ShockwaveFlash': 'Flash',
+      'QuickTime.QuickTime': 'Quick Time',
+      'SWCtl': 'Shockwave',
+      'WMPLayer.OCX': 'Windows Media Player',
+      'AgControl.AgControl': 'Silverlight'
+    };
+    var plugin = null;
+    for (var activeKey in activeXNames) {
+      try {
+        plugin = null;
+        plugin = new ActiveXObject(activeKey);
+      } catch (e) {
+        // do nothing, the plugin is not installed
+      }
+      pluginString += activeXNames[activeKey] + ',';
+    }
+    var realPlayerNames = ['rmockx.RealPlayer G2 Control',
+                           'rmocx.RealPlayer G2 Control.1',
+                           'RealPlayer.RealPlayer(tm) ActiveX Control (32-bit)',
+                           'RealVideo.RealVideo(tm) ActiveX Control (32-bit)',
+                           'RealPlayer'
+                          ];
+    for (var index = 0; index < realPlayerNames.length; index++) {
+      try {
+        plugin = new ActiveXObject(realPlayerNames[index]);
+      } catch (e) {
+        continue;
+      }
+      if (plugin) {
+        break;
+      }
+    }
+    if (plugin) {
+      pluginString += 'RealPlayer,';
+    }
+  } else {
+    for (var i = 0; i < navigator.plugins.length; i++) {
+      pluginString += navigator.plugins[i].name + ',';
+    }
+  }
+  pluginString = pluginString.substring(0, pluginString.lastIndexOf(','));
+  var plugins = document.createElement('input');
+  plugins.setAttribute('id', 'pluginList');
+  plugins.setAttribute('type', 'hidden');
+  plugins.setAttribute('name', 'pluginList');
+  plugins.setAttribute('value', pluginString);
+  form.appendChild(plugins);
+  var java = navigator.javaEnabled();
+  var javaEnabled = document.createElement('input');
+  javaEnabled.setAttribute('id', 'javaEnabled');
+  javaEnabled.setAttribute('type', 'hidden');
+  javaEnabled.setAttribute('name', 'javaEnabled');
+  javaEnabled.setAttribute('value', java);
+  form.appendChild(javaEnabled);
+  jQuery('.infusion-submit button').attr('disabled', true);
+}  </script>
+</div>
+						<div style="clear: both"></div>
+
+        </header>
+        <div class="entry-content" id="entry-content">
+									<div class="matching-course-ribbon">
+							<div>
+								<strong>Related course: </strong>
+								<a href="https://expertphotography.com/sp/p26-wonderful-wildlife-ad/?cf_1=ribbon" target="">Wonderful Wildlife</a>
+							</div>
+						</div>
+																		<p>Nature photography covers shooting flora and fauna. This means plants, <a href="https://expertphotography.com/flower-photography/" target="_blank" rel="noopener" data-lasso-id="108430">flowers</a>, and <a href="https://expertphotography.com/wildlife-photography-how-to-take-great-pictures-of-animals/" target="_blank" rel="noopener" data-lasso-id="108433">animals</a>, photographed in their immediate environments.<br />
+It&#8217;s challenging because of the variety of subjects and movement. But we&#8217;ve got you covered with all the nature photography tips you need.<br />
+<img loading="lazy" class="aligncenter size-full wp-image-288201" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-green-tree-plant-leaves.jpg" alt="A branch with green pine leaves " width="700" height="467" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-green-tree-plant-leaves.jpg 700w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-green-tree-plant-leaves-300x200.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-green-tree-plant-leaves-200x133.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-green-tree-plant-leaves-165x110.jpg 165w" sizes="(max-width: 700px) 100vw, 700px" /><em>[ExpertPhotography is supported by readers. Product links on ExpertPhotography are referral links. If you use one of these and buy something, we make a little bit of money. Need more info? <a href="https://expertphotography.com/expertphotography-referral-links-work/" target="_blank" rel="noopener" data-lasso-id="108436"><span class="s2">See how it all works here</span></a>.]</em></p>
+<div class="see-guide">
+    <a href="https://expertphotography.com/sp/p26-wonderful-wildlife-ad/?cf_1=blog-banner" target="_blank">
+        <img class="stg-desktop" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/P26_Blog-Post-Banner_Desktop.jpg" alt="">
+                    <img class="stg-mobile" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/P26_Blog-Post-Banner_Mobile.jpg" alt="">
+            </a>
+</div>
+<style>
+    .stg-desktop {
+        display: block;
+    }
+    .stg-mobile {
+        display: none;
+    }
+    @media screen and (max-width: 768px) {
+        .stg-desktop {
+            display: none;
+        }
+        .stg-mobile {
+            display: block;
+        }
+    }
+</style>
+<h2><span class="ez-toc-section" id="12_Pick_the_Right_Lens_for_Nature_Photography"></span>12. Pick the Right Lens for Nature Photography<span class="ez-toc-section-end"></span></h2>
+<p>There is a famous Boy Scouts saying &#8211; always be prepared. This applies to nature photography too.</p>
+<p>Figuring out the best <a href="https://expertphotography.com/prime-vs-zoom-lenses/" target="_blank" rel="noopener" data-lasso-id="108439">lens</a> for a particular <a href="https://expertphotography.com/types-of-photography/" target="_blank" rel="noopener" data-lasso-id="108442">type of photography</a> isn&#8217;t an exact science. You may have different goals for different shots.<br />
+In general, you&#8217;d do best to use a lens with a longer focal length. This could be a <a href="https://expertphotography.com/prime-vs-zoom-lenses/" target="_blank" rel="noopener" data-lasso-id="108445">zoom lens</a>, with a <a href="https://expertphotography.com/narrow-vs-wide-aperture/" target="_blank" rel="noopener" data-lasso-id="108448">wide aperture</a>.</p>
+<p>This is for two reasons. First, you&#8217;ll want the longest reach possible. Some nature photography subjects, such as <a href="https://expertphotography.com/wildlife-photography-how-to-take-great-pictures-of-animals/" target="_blank" rel="noopener" data-lasso-id="108451">animals</a>, will involve some distance. This way, you can observe and photograph without disturbing them.</p>
+<p>Second, we&#8217;ll want to provide a sharp image of our subject against a creamy, <a href="https://expertphotography.com/blurred-background-photoshop-lightroom/" target="_blank" rel="noopener" data-lasso-id="108454">blurred background</a>. This will make the subject pop. To do this, you need to understand the foreground and background distances. Use a lens with a wide aperture such as f/1.4, f/1.8, or f/2.8.<br />
+<img loading="lazy" class="aligncenter size-full wp-image-288204" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-outdoors.jpg" alt="A nature photographer taking an evening landscape shot" width="700" height="467" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-outdoors.jpg 700w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-outdoors-300x200.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-outdoors-200x133.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-outdoors-165x110.jpg 165w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+<h2><span class="ez-toc-section" id="11_Separate_the_Subject_From_the_Background"></span>11. Separate the Subject From the Background<span class="ez-toc-section-end"></span></h2>
+<p>Nature photography usually features a subject such as a plant, animal or flower. This means that you need to separate that subject from the background of the frame.<br />
+You&#8217;ll need to judge the placement of the elements in the <a href="https://expertphotography.com/naturally-framing-photography-composition/" target="_blank" rel="noopener" data-lasso-id="108457">frame</a>. And you&#8217;ll need to make a few adjustments.</p>
+<p>First, you&#8217;ll want some distance between your foreground and background. This will help separate them in the shot.<br />
+Use a wider aperture (<a href="https://expertphotography.com/understanding-fstops-stops-in-photography-exposure/" target="_blank" rel="noopener" data-lasso-id="108460">lower f-stop number</a>) such as f/2.0 or f/2.8. Focus on the subject in the foreground. The wide aperture should yield a softer, blurry background.<br />
+<img loading="lazy" class="aligncenter wp-image-288036 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-bird.jpg" alt="A red bird sitting on a branch " width="700" height="466" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-bird.jpg 700w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-bird-300x200.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-bird-200x133.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-bird-165x110.jpg 165w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+
+<h2><span class="ez-toc-section" id="10_Crop_Close_on_Textures"></span>10. Crop Close on Textures<span class="ez-toc-section-end"></span></h2>
+<p>We draw inspiration from nature for many things in life. From <a href="https://expertphotography.com/better-macro-flower-photography-tips/" target="_blank" rel="noopener" data-lasso-id="108463">colors</a>, to sounds, to <a href="https://expertphotography.com/tips-for-using-patterns-in-photography/" target="_blank" rel="noopener" data-lasso-id="108466">patterns</a>. Some of the most interesting subjects can be right in front of us.</p>
+<p>When shooting nature photography, zoom in and crop close on your subject. This could be tree bark, a leaf, the forest floor, a lizard&#8217;s skin.</p>
+<p>There is a whole new world waiting for you when you look closer. For an even closer look, invest in a <a href="https://expertphotography.com/what-is-a-macro-lens/" target="_blank" rel="noopener" data-lasso-id="108469">macro lens</a>. These lenses magnify even the tiniest details and can produce some amazing images.</p>
+<figure id="attachment_288039" aria-describedby="caption-attachment-288039" style="width: 700px" class="wp-caption aligncenter"><img loading="lazy" class="wp-image-288039 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/close-up-photography-of-leaves.jpg" alt="Close up shot of green leaves" width="700" height="525" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/close-up-photography-of-leaves.jpg 700w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/close-up-photography-of-leaves-300x225.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/close-up-photography-of-leaves-200x150.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/close-up-photography-of-leaves-147x110.jpg 147w" sizes="(max-width: 700px) 100vw, 700px" /><figcaption id="caption-attachment-288039" class="wp-caption-text">Photo by sohail na from Pexels</figcaption></figure>
+<h2><span class="ez-toc-section" id="9_Study_Your_Subjects_for_Better_Nature_Photography"></span>9. Study Your Subjects for Better Nature Photography<span class="ez-toc-section-end"></span></h2>
+<p>Nature photography is an interesting topic, and continues to be so all over the world.</p>
+<p>It&#8217;s very important to study your subject, as far as nature photography tips go. This is for a few reasons. First, we can better capture images of things we understand.</p>
+<p>Knowing your subject&#8217;s habits will also help you predict shots. You&#8217;ll know when that swan is about to charge, or when that particular plant is in bloom. And if you find out the animal you&#8217;re photographing isn&#8217;t so dangerous? Then you can start capturing close-up photography.<br />
+<img loading="lazy" class="aligncenter wp-image-32058 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-crane.jpg" alt="A black and white portrait of a crane standing by a lake" width="700" height="472" /></p>
+<h2><span class="ez-toc-section" id="8_Shoot_Your_Subject_in_Their_Natural_Context_for_Powerful_Images"></span>8. Shoot Your Subject in Their Natural Context for Powerful Images<span class="ez-toc-section-end"></span></h2>
+<p>This isn&#8217;t a hard and fast rule, but rather, a guideline. If you&#8217;re going to shoot nature photography, try to keep everything in the shot natural.</p>
+<p>There&#8217;s nothing wrong with taking a picture of the bird on a power line, or spider on the side of your house. It can make for some creative and interesting <a href="https://expertphotography.com/27-juxtaposition-examples/" data-lasso-id="108472">juxtapositions</a>.</p>
+<p>But if you&#8217;re after powerful nature photos, then photograph animals and plants in their natural habitat.</p>
+<p><img loading="lazy" class="size-full wp-image-288051 aligncenter" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg" alt="A squirrel among blue flowers " width="700" height="467" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography.jpg 700w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-300x200.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-200x133.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-165x110.jpg 165w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+<h2><span class="ez-toc-section" id="7_Take_the_Right_Gear_for_Taking_Nature_Photography"></span>7. Take the Right Gear for Taking Nature Photography<span class="ez-toc-section-end"></span></h2>
+<p>We&#8217;ve already discussed lenses, and later we&#8217;ll touch on camera bodies. But it&#8217;s easy to overlook other useful items.</p>
+<p>On the photography side, a <a href="https://expertphotography.com/10-seriously-cool-camera-bags/" target="_blank" rel="noopener" data-lasso-id="108475">camera bag</a> with extra gear such as batteries and lenses is a no-brainer.</p>
+<p>But how many times do nature photographers venture into a <a href="https://expertphotography.com/a-guide-to-scouting-landscape-photography-locations/" target="_blank" rel="noopener" data-lasso-id="108478">remote shooting location</a> without their <a href="https://expertphotography.com/choosing-the-best-tripods-for-landscape-photography/" target="_blank" rel="noopener" data-lasso-id="108481">tripod</a>? More times than you can count, I assure you.</p>
+<p>Also, don&#8217;t forget to wear appropriate clothing for the location and season. It may not seem like weather for a jacket, but wait until the sun drops behind the horizon.<br />
+Plan ahead. Hats, gloves, and different shoes could all prove useful. This might be one of the most important wildlife photography tips for beginners.</p>
+<p>What about navigation? Don&#8217;t depend on your phone. Bring a current map and a <a href="https://www.amazon.com/COSTIN-Multifunctional-Waterproof-Clinometer-Activities/dp/B074NZ353D/ref=as_li_ss_tl?ascsub=&amp;cv_ct_cx=compass&amp;cv_ct_id=amzn1.osa.6e4e95d3-5b9f-486c-908c-4ed0a7d55776.ATVPDKIKX0DER.en_US&amp;cv_ct_pg=search&amp;cv_ct_we=asin&amp;cv_ct_wn=osp-single-source-gl-ranking&amp;dchild=1&amp;keywords=compass&amp;pd_rd_i=B074NZ353D&amp;pd_rd_r=1aa38909-dce5-4a61-bbce-4ee77c4b923c&amp;pd_rd_w=ocl8F&amp;pd_rd_wg=imEb6&amp;pf_rd_p=5ca5891e-f8d5-441d-985e-3d725696ef70&amp;pf_rd_r=HZNCBRGBZB3CP0D92D1F&amp;qid=1607424198&amp;sr=1-3-d9dc7690-f7e1-44eb-ad06-aebbef559a37&amp;linkCode=sl1&amp;tag=expertphotog-20&amp;linkId=dfb9567586b359072c10fee196eb8999&amp;language=en_US" target="_blank" rel="nofollow noopener" data-lasso-id="108484">compass</a>, and learn how to use them.<br />
+<img loading="lazy" class="aligncenter wp-image-32053 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-tripod.jpg" alt="A tripod set up on a beach for landscape nature photography" width="700" height="467" /></p>
+<h2><span class="ez-toc-section" id="6_Find_the_Best_Camera_for_Nature_Photos"></span>6. Find the Best Camera for Nature Photos<span class="ez-toc-section-end"></span></h2>
+<p>Shoot with what you want. You might be tired of the phrase &#8220;the best camera is the one you have with you&#8221;. But there is definite truth in that statement.</p>
+<p>You can create amazing <a href="https://expertphotography.com/macro-iphone-photography/" target="_blank" rel="noopener" data-lasso-id="108487">smartphone photography</a> with an iPhone or Android device. Smaller apertures, dual-lenses and optic zooming are all becoming common features. These allow you to create some pretty compelling photos even without a DSLR.</p>
+<p>To see what&#8217;s possible, check out our article <a href="https://expertphotography.com/smartphone-photography-how-to-take-advantage-of-the-camera-you-carry-everywhere/" target="_blank" rel="noopener" data-lasso-id="108490">here</a>. And see what others have done with <a href="https://expertphotography.com/photography-equipment-minimal-gear/" target="_blank" rel="noopener" data-lasso-id="108493">minimal gear</a> and tiny camera sensors. Even national geographic photographers didn&#8217;t all have digital cameras.<br />
+<img loading="lazy" class="aligncenter wp-image-43866 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-image1-1.jpg" alt="Stunning mountainous landscape shot" width="700" height="397" /></p>
+<h2><span class="ez-toc-section" id="5_Use_Natural_Light_to_Improve_Your_Photos"></span>5. Use Natural Light to Improve Your Photos<span class="ez-toc-section-end"></span></h2>
+<p><a href="https://expertphotography.com/natural-light-photography/" target="_blank" rel="noopener" data-lasso-id="108496">Natural light photography</a> is outdoor photography using direct or indirect light from the <a href="https://expertphotography.com/stunning-sunset-photography/" target="_blank" rel="noopener" data-lasso-id="108499">sun</a> or <a href="https://expertphotography.com/how-to-photograph-the-moon/" target="_blank" rel="noopener" data-lasso-id="108502">moon</a>. Nature photos will look great in the morning or evening light in general. And during the <a href="https://expertphotography.com/what-is-golden-hour-photography/" target="_blank" rel="noopener" data-lasso-id="108505">golden hours</a> in particular.</p>
+<p>This light after <a href="https://expertphotography.com/how-to-get-started-with-sunrise-photography/" target="_blank" rel="noopener" data-lasso-id="108508">sunrise</a> and before <a href="https://expertphotography.com/stunning-sunset-photography/" target="_blank" rel="noopener" data-lasso-id="108511">sunset</a> has a softer, hazy quality. It illuminates your subjects more evenly and eliminates the harsh midday shadows.<br />
+Imagine a small bird in a tree or even the leaves of that tree. If that&#8217;s your subject, it will be softly lit with the golden hues of a setting sun. That&#8217;s what I would call <a href="https://expertphotography.com/ambient-light-portraits/" data-lasso-id="108514">atmospheric</a>.</p>
+<p>This type of light can provide an emotional overlay to your images. This is hard to reproduce otherwise. You&#8217;ll notice the difference in the effectiveness of the shot. You might even notice a difference between morning and evening shots. Check for colour temperature changes.</p>
+<p><img loading="lazy" class="aligncenter wp-image-32055 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-bird.jpg" alt="A low angle nature shot of a little bird standing on gravel" width="700" height="467" /></p>
+<h2><span class="ez-toc-section" id="4_Choose_the_Best_Time_of_Day_to_Get_Perfect_Nature_Shots"></span>4. Choose the Best Time of Day to Get Perfect Nature Shots<span class="ez-toc-section-end"></span></h2>
+<p>There are advantages to shooting in the early morning or late evenings. This includes the likelihood of the area you&#8217;re shooting being less crowded.<br />
+This is especially important in high-traffic &#8220;tourist&#8221; areas. These are popular national parks and other <a href="https://expertphotography.com/unique-photos-famous-places/" target="_blank" rel="noopener" data-lasso-id="108517">landmarks</a>.</p>
+<p>If you&#8217;re shooting animals, aim for mornings and evenings. You&#8217;re more likely to score great wildlife shots then. Many animals escape the heat of the day. They are much more active when it&#8217;s darker and cooler.<br />
+<img loading="lazy" class="aligncenter wp-image-32056 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-flower.jpg" alt="Dreamy low light photography of a green landscape with yellow flowers in the foreground" width="700" height="464" /></p>
+<h2><span class="ez-toc-section" id="3_Use_Different_Angles_and_Perspectives_to_Stand_Out"></span>3. Use Different Angles and Perspectives to Stand Out<span class="ez-toc-section-end"></span></h2>
+<p>Landscape photography isn&#8217;t about pleasing someone else. Or appealing to someone else&#8217;s sense of style. It&#8217;s about shooting what makes you happy.<br />
+Take the time to <a href="https://expertphotography.com/famous-nature-photographers/" target="_blank" rel="noopener" data-lasso-id="108520">study other nature photographer&#8217;s work</a> if you&#8217;ve not discovered your own style yet.</p>
+<p>What angles do they tend to use? What colors do they coordinate within the frame? How close do they get to their subject?<br />
+Try to do something different. Go against the grain! Use a different angle, shoot a close-up where others would shoot wide-angle.</p>
+<p>Nature offers us unlimited beautiful setups. Go out there and take advantage of them! Using your own creativity is one of the best wildlife photography tips for beginners.<br />
+<img loading="lazy" class="aligncenter wp-image-32054 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-beach-bird.jpg" alt="A low angle photo of a bird on the seashore with ocean in the background" width="700" height="467" /></p>
+<h2><span class="ez-toc-section" id="2_Bring_Your_Crop_Sensor_Camera_Body"></span>2. Bring Your Crop Sensor Camera Body<span class="ez-toc-section-end"></span></h2>
+<p>If you have a <a href="https://www.amazon.com/Canon-Mark-Frame-Digital-Camera/dp/B01KURGS9E/ref=as_li_ss_tl?ie=UTF8&amp;qid=1531153995&amp;sr=8-2-spons&amp;keywords=full-frame camera&amp;psc=1&amp;linkCode=sl1&amp;tag=expertphotog-20&amp;linkId=cdb66424c12e11f6a7182a2783625f4b" target="_blank" rel="nofollow noopener" data-lasso-id="108523">full-frame</a> and a <a href="https://www.amazon.com/Canon-Mark-Digital-Camera-Body/dp/B00NEWZDRG/ref=as_li_ss_tl?keywords=Canon EOS 7D Mark II Body&amp;qid=1583314930&amp;sr=8-1&amp;linkCode=sl1&amp;tag=expertphotog-20&amp;linkId=780c3515a6d2ccd6410e61889e66f816&amp;language=en_US" target="_blank" rel="nofollow noopener" data-lasso-id="108526">crop sensor camera</a> body, consider leaving the full-frame at home. Lenses have a more pronounced effective focal length on crop sensor cameras.</p>
+<p>This is especially useful when shooting animals. There is a distance you must maintain to avoid frightening them. A <a href="https://expertphotography.com/reasons-everyone-needs-50mm-prime-lens/" target="_blank" rel="noopener" data-lasso-id="108529">50mm lens</a> on a crop sensor camera body will show a 1.6x effective magnification over a full-frame camera. Using a crop sensor means getting as close as you can for your nature and wildlife photography.<br />
+<img loading="lazy" class="aligncenter wp-image-42960 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-image1.jpg" alt="A close up portrait of a tropical bird eating a nut" width="700" height="464" /></p>
+<h2><span class="ez-toc-section" id="1_Respect_the_Animals_and_Environment"></span>1. Respect the Animals and Environment<span class="ez-toc-section-end"></span></h2>
+<p>It&#8217;s impossible to explain this without using the phrase &#8220;leave only footprints&#8221;. As cliche as it is, it couldn&#8217;t be more accurate.</p>
+<p>Be sure to take home any rubbish, even if you think an item is biodegradable. An orange or banana peel can take up to 2 years to decompose.<img loading="lazy" class="aligncenter wp-image-32059 size-full" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/07/nature-photography-forest-1.jpg" alt="Lucious landscape photo of a river running a green forest" width="700" height="467" /> Respect the environment you&#8217;re shooting. You have to understand the importance of not disturbing natural environments.</p>
+<p>We are photographing a sensitive world that is the home of many living things. We should make every effort to have a minimal lasting impact on that world.</p>
+<h2><span class="ez-toc-section" id="Conclusion"></span>Conclusion<span class="ez-toc-section-end"></span></h2>
+<p>Are you a nature photography lover? What other tips would you give a beginner? And what are some of your favourite subjects and environments in the great outdoors to shoot in?</p>
+<p>Join the discussion and comment below!</p>
+<p>If you want to make the most of the great outdoors, then try our <a href="https://expho.to/p13-bp" target="_blank" rel="noopener" data-lasso-id="108532">Simply Stunning Landscapes</a> course!</p>
+<p><em>For more great nature photography tips, check out our article on <a href="https://expertphotography.com/how-to-photograph-high-and-low-key-wildlife-photography/" target="_blank" rel="noopener" data-lasso-id="108535">high and low key wildlife photos.</a></em></p><section id="quick-cta" data-text="PGgyPldhbnQgTW9yZT8gVHJ5IE91ciBXaWxkbGlmZSBQaG90b2dyYXBoeSBUcmFpbmluZzwvaDI+CjxwPkhhdmUgeW91IGV2ZXIgZHJlYW10IGFib3V0IHBob3RvZ3JhcGhpbmcgd2lsZCBhbmltYWxzIGluIHRoZWlyIG5hdHVyYWwgaGFiaXRhdHM/PC9wPgo8cD48c3Ryb25nPkJpcmRzIGluIHlvdXIgZ2FyZGVuLCBiZWFycyBpbiB0aGUgd29vZHMsIGVsZXBoYW50cyBpbiBCb3Rzd2FuYSwgdGlnZXJzIGluIEluZGlhJiM4MjMwOzwvc3Ryb25nPjwvcD4KPHA+WW91IGNhbiBzaG9vdCBhbmltYWxzIGluIHRoZWlyIG5hdHVyYWwgaGFiaXRhdCBhbnl3aGVyZSBpbiB0aGUgd29ybGQsIGFsbCB5b3UgbmVlZCBpcyB0aGUgcmlnaHQgYXBwcm9hY2guPGEgaHJlZj0iaHR0cHM6Ly9leHBlcnRwaG90b2dyYXBoeS5jb20vc3AvcDI2LXdvbmRlcmZ1bC13aWxkbGlmZS1hZC8/Y2ZfMT1ibG9nLWNvbnRlbnQtdXBncmFkZSI+PGltZyBsb2FkaW5nPSJsYXp5IiBjbGFzcz0iYWxpZ25sZWZ0IHdwLWltYWdlLTUxNTgwMyBzaXplLWZ1bGwiIHNyYz0iaHR0cHM6Ly9leHBlcnRwaG90b2dyYXBoeS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjEvMDEvUDI2X0Jsb2ctUG9zdC1CYW5uZXJfRGVza3RvcC5qcGciIGFsdD0iIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIzNDMiIHNyY3NldD0iaHR0cHM6Ly9leHBlcnRwaG90b2dyYXBoeS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjEvMDEvUDI2X0Jsb2ctUG9zdC1CYW5uZXJfRGVza3RvcC5qcGcgMTIwMHcsIGh0dHBzOi8vZXhwZXJ0cGhvdG9ncmFwaHkuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIxLzAxL1AyNl9CbG9nLVBvc3QtQmFubmVyX0Rlc2t0b3AtMzAweDg2LmpwZyAzMDB3LCBodHRwczovL2V4cGVydHBob3RvZ3JhcGh5LmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyMS8wMS9QMjZfQmxvZy1Qb3N0LUJhbm5lcl9EZXNrdG9wLTEwMjR4MjkzLmpwZyAxMDI0dywgaHR0cHM6Ly9leHBlcnRwaG90b2dyYXBoeS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjEvMDEvUDI2X0Jsb2ctUG9zdC1CYW5uZXJfRGVza3RvcC03Njh4MjIwLmpwZyA3Njh3LCBodHRwczovL2V4cGVydHBob3RvZ3JhcGh5LmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyMS8wMS9QMjZfQmxvZy1Qb3N0LUJhbm5lcl9EZXNrdG9wLTIwMHg1Ny5qcGcgMjAwdywgaHR0cHM6Ly9leHBlcnRwaG90b2dyYXBoeS5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjEvMDEvUDI2X0Jsb2ctUG9zdC1CYW5uZXJfRGVza3RvcC0xNjV4NDcuanBnIDE2NXciIHNpemVzPSIobWF4LXdpZHRoOiAxMjAwcHgpIDEwMHZ3LCAxMjAwcHgiIC8+PC9hPjwvcD4K"></section>			        </div>
+    </article>
+</main><!-- /.main++ -->
+	<div class="sidebar-wrapper">
+		<aside class="sidebar">
+			<section class="widget ezw_tco-2 ez-toc"><div class="ez-toc-widget-container ez-toc-v2_0_19 ez-toc-widget counter-hierarchy">
+
+					<h4>
+					<span class="ez-toc-title-container">
+
+						<style type="text/css">
+							#ezw_tco-2 .ez-toc-widget-container ul.ez-toc-list li.active::before {
+								background-color: #ededed;
+							}
+						</style>
+
+						<span class="ez-toc-title">Table of Contents</span>
+
+						<span class="ez-toc-title-toggle">
+
+							
+						</span>
+
+					</span>
+
+					</h4>
+					<nav>
+<ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-1" href="#12_Pick_the_Right_Lens_for_Nature_Photography" title="12. Pick the Right Lens for Nature Photography">12. Pick the Right Lens for Nature Photography</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-2" href="#11_Separate_the_Subject_From_the_Background" title="11. Separate the Subject From the Background">11. Separate the Subject From the Background</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-3" href="#10_Crop_Close_on_Textures" title="10. Crop Close on Textures">10. Crop Close on Textures</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-4" href="#9_Study_Your_Subjects_for_Better_Nature_Photography" title="9. Study Your Subjects for Better Nature Photography">9. Study Your Subjects for Better Nature Photography</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-5" href="#8_Shoot_Your_Subject_in_Their_Natural_Context_for_Powerful_Images" title="8. Shoot Your Subject in Their Natural Context for Powerful Images">8. Shoot Your Subject in Their Natural Context for Powerful Images</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-6" href="#7_Take_the_Right_Gear_for_Taking_Nature_Photography" title="7. Take the Right Gear for Taking Nature Photography">7. Take the Right Gear for Taking Nature Photography</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-7" href="#6_Find_the_Best_Camera_for_Nature_Photos" title="6. Find the Best Camera for Nature Photos">6. Find the Best Camera for Nature Photos</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-8" href="#5_Use_Natural_Light_to_Improve_Your_Photos" title="5. Use Natural Light to Improve Your Photos">5. Use Natural Light to Improve Your Photos</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-9" href="#4_Choose_the_Best_Time_of_Day_to_Get_Perfect_Nature_Shots" title="4. Choose the Best Time of Day to Get Perfect Nature Shots">4. Choose the Best Time of Day to Get Perfect Nature Shots</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-10" href="#3_Use_Different_Angles_and_Perspectives_to_Stand_Out" title="3. Use Different Angles and Perspectives to Stand Out">3. Use Different Angles and Perspectives to Stand Out</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-11" href="#2_Bring_Your_Crop_Sensor_Camera_Body" title="2. Bring Your Crop Sensor Camera Body">2. Bring Your Crop Sensor Camera Body</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-12" href="#1_Respect_the_Animals_and_Environment" title="1. Respect the Animals and Environment">1. Respect the Animals and Environment</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-13" href="#Conclusion" title="Conclusion">Conclusion</a></li></ul></nav>
+</div>
+</section><section class="widget help_widget-2 widget_help_widget"><h4>I Need Help With&#8230;</h4>                                    <div class="d-flex align-items-center icons-wrapper">
+                                                                    <a href="https://expho.to/3ard09X" rel="noopener" title="" target="_blank"
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/camera.png" alt="">                            </span>
+                            <span class="h5 title">
+                                My Camera                            </span>
+                        </a>
+                                                                                        <a href="https://expho.to/3cy4Gac" rel="noopener" title="" target="_blank"
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/composition.png" alt="">                            </span>
+                            <span class="h5 title">
+                                Composition                            </span>
+                        </a>
+                                                                                        <a href="https://expho.to/3cxX2fI" rel="noopener" title="" target="_blank"
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/edidting.png" alt="">                            </span>
+                            <span class="h5 title">
+                                Editing                            </span>
+                        </a>
+                                                                                        <a href="https://expho.to/3cyAqMk" rel="noopener" title="" target=""
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/ideas.png" alt="">                            </span>
+                            <span class="h5 title">
+                                Creative Ideas                            </span>
+                        </a>
+                                                        </div>
+                            </section><section class="widget verysticky media_image-74 widget_media_image"><a href="https://expertphotography.com/sp/p26-wonderful-wildlife-ad/?cf_1=sidebar"><img width="300" height="295" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-300x295.jpg" class="image wp-image-520093  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-300x295.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-200x196.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-112x110.jpg 112w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner.jpg 450w" sizes="(max-width: 300px) 100vw, 300px" /></a></section><section class="widget verysticky media_image-75 widget_media_image"><a href="https://expertphotography.com/lg/p26-case-studies/?cf_1=sidebar"><img width="300" height="245" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-300x245.jpg" class="image wp-image-520090  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-300x245.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-200x164.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-135x110.jpg 135w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets.jpg 450w" sizes="(max-width: 300px) 100vw, 300px" /></a></section><section class="widget verysticky media_image-76 widget_media_image"><a href="https://expertphotography.com/lg/p26-location-guide/?cf_1=sidebar"><img width="300" height="245" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-300x245.jpg" class="image wp-image-520087  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-300x245.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-200x164.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-135x110.jpg 135w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide.jpg 450w" sizes="(max-width: 300px) 100vw, 300px" /></a></section>		</aside><!-- /.sidebar -->
+	</div>
+</div><!-- /.content -->
+	<div class="h_sep"></div>
+<section class="widget social_sharing-2 widget_social_sharing">        <div class="social_sharing d-flex flex-wrap">
+			<h5>Share with friends</h5>            <div id="fb-share-button" class="btn btn-facebook btn-share">
+                <i class="epicon-facebook"></i>
+                <span>Share</span>
+            </div>
+            <a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&amp;ref_src=twsrc%5Etfw&amp;url=https%3A%2F%2Fexpertphotography.com%2Fnature-photography-tips%2F"
+               class="btn btn-twitter btn-share" id="b">
+                <i class="epicon-twitter"></i>
+                <span class="label" id="l">Share</span>
+            </a>
+            <a rel="noopener" data-pin-do="buttonBookmark" class="btn btn-share btn-pinterest" data-pin-lang="en" href="https://www.pinterest.com/pin/create/button/" target="_blank"><i class="epicon-pinterest"></i>Share</a>
+        </div>
+		</section>	<footer>
+		<div class="about-author" id="about-author">
+  <h2>About the Author</h2>
+          <div class="content-wrapper d-flex">
+      <div class="left-side">
+        <div class="author-image">
+          <img alt='' src='https://secure.gravatar.com/avatar/c86f821980ccd78ab31e05dfe4615186?s=105&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c86f821980ccd78ab31e05dfe4615186?s=210&#038;d=mm&#038;r=g 2x' class='avatar avatar-105 photo' height='105' width='105' loading='lazy'/>        </div>
+        <div class="author-social d-flex justify-content-between">
+                                                </div>
+      </div>
+      <div class="right-side">
+                <a class="name" href="https://expertphotography.com/author/david-eldon/">
+                    <span class="author-name h5">David Eldon</span>
+                  </a>
+              <div class="author-business"></div>
+        <div class="author-description">
+          <p>David Eldon is a Texas-born natural-light photographer and writer,
+relocated to the Florida coast and specializing in capturing the
+landscapes and nature of the area. David is an avid nature-lover and
+enjoys hiking, music and the Florida outdoors.</p>
+        </div>
+                  <a class="posts-link" href="https://expertphotography.com/author/david-eldon/" rel="author"
+             class="author-posts h6">More By David Eldon ></a>
+              </div>
+    </div>
+  </div>
+		<div class="help-mobile">
+			<section class="widget ezw_tco-2 ez-toc"><div class="ez-toc-widget-container ez-toc-v2_0_19 ez-toc-widget counter-hierarchy">
+
+					<h4>
+					<span class="ez-toc-title-container">
+
+						<style type="text/css">
+							#ezw_tco-2 .ez-toc-widget-container ul.ez-toc-list li.active::before {
+								background-color: #ededed;
+							}
+						</style>
+
+						<span class="ez-toc-title">Table of Contents</span>
+
+						<span class="ez-toc-title-toggle">
+
+							
+						</span>
+
+					</span>
+
+					</h4>
+					<nav>
+<ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-1" href="#12_Pick_the_Right_Lens_for_Nature_Photography" title="12. Pick the Right Lens for Nature Photography">12. Pick the Right Lens for Nature Photography</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-2" href="#11_Separate_the_Subject_From_the_Background" title="11. Separate the Subject From the Background">11. Separate the Subject From the Background</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-3" href="#10_Crop_Close_on_Textures" title="10. Crop Close on Textures">10. Crop Close on Textures</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-4" href="#9_Study_Your_Subjects_for_Better_Nature_Photography" title="9. Study Your Subjects for Better Nature Photography">9. Study Your Subjects for Better Nature Photography</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-5" href="#8_Shoot_Your_Subject_in_Their_Natural_Context_for_Powerful_Images" title="8. Shoot Your Subject in Their Natural Context for Powerful Images">8. Shoot Your Subject in Their Natural Context for Powerful Images</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-6" href="#7_Take_the_Right_Gear_for_Taking_Nature_Photography" title="7. Take the Right Gear for Taking Nature Photography">7. Take the Right Gear for Taking Nature Photography</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-7" href="#6_Find_the_Best_Camera_for_Nature_Photos" title="6. Find the Best Camera for Nature Photos">6. Find the Best Camera for Nature Photos</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-8" href="#5_Use_Natural_Light_to_Improve_Your_Photos" title="5. Use Natural Light to Improve Your Photos">5. Use Natural Light to Improve Your Photos</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-9" href="#4_Choose_the_Best_Time_of_Day_to_Get_Perfect_Nature_Shots" title="4. Choose the Best Time of Day to Get Perfect Nature Shots">4. Choose the Best Time of Day to Get Perfect Nature Shots</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-10" href="#3_Use_Different_Angles_and_Perspectives_to_Stand_Out" title="3. Use Different Angles and Perspectives to Stand Out">3. Use Different Angles and Perspectives to Stand Out</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-11" href="#2_Bring_Your_Crop_Sensor_Camera_Body" title="2. Bring Your Crop Sensor Camera Body">2. Bring Your Crop Sensor Camera Body</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-12" href="#1_Respect_the_Animals_and_Environment" title="1. Respect the Animals and Environment">1. Respect the Animals and Environment</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-13" href="#Conclusion" title="Conclusion">Conclusion</a></li></ul></nav>
+</div>
+</section><section class="widget help_widget-2 widget_help_widget"><h4>I Need Help With&#8230;</h4>                                    <div class="d-flex align-items-center icons-wrapper">
+                                                                    <a href="https://expho.to/3ard09X" rel="noopener" title="" target="_blank"
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/camera.png" alt="">                            </span>
+                            <span class="h5 title">
+                                My Camera                            </span>
+                        </a>
+                                                                                        <a href="https://expho.to/3cy4Gac" rel="noopener" title="" target="_blank"
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/composition.png" alt="">                            </span>
+                            <span class="h5 title">
+                                Composition                            </span>
+                        </a>
+                                                                                        <a href="https://expho.to/3cxX2fI" rel="noopener" title="" target="_blank"
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/edidting.png" alt="">                            </span>
+                            <span class="h5 title">
+                                Editing                            </span>
+                        </a>
+                                                                                        <a href="https://expho.to/3cyAqMk" rel="noopener" title="" target=""
+                           class="button d-flex align-items-center flex-column">
+                            <span class="icon">
+                                <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2019/02/ideas.png" alt="">                            </span>
+                            <span class="h5 title">
+                                Creative Ideas                            </span>
+                        </a>
+                                                        </div>
+                            </section><section class="widget verysticky media_image-74 widget_media_image"><a href="https://expertphotography.com/sp/p26-wonderful-wildlife-ad/?cf_1=sidebar"><img width="300" height="295" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-300x295.jpg" class="image wp-image-520093  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-300x295.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-200x196.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner-112x110.jpg 112w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Related-eBook_Leadgen-Sidebar-Banner.jpg 450w" sizes="(max-width: 300px) 100vw, 300px" /></a></section><section class="widget verysticky media_image-75 widget_media_image"><a href="https://expertphotography.com/lg/p26-case-studies/?cf_1=sidebar"><img width="300" height="245" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-300x245.jpg" class="image wp-image-520090  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-300x245.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-200x164.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets-135x110.jpg 135w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Sheets.jpg 450w" sizes="(max-width: 300px) 100vw, 300px" /></a></section><section class="widget verysticky media_image-76 widget_media_image"><a href="https://expertphotography.com/lg/p26-location-guide/?cf_1=sidebar"><img width="300" height="245" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-300x245.jpg" class="image wp-image-520087  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-300x245.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-200x164.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide-135x110.jpg 135w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/P26_Free-Download_Leadgen-Sidebar-Banner_Location-guide.jpg 450w" sizes="(max-width: 300px) 100vw, 300px" /></a></section>		</div>
+			</footer>
+</div><!-- /.wrap -->
+<script>
+  jQuery(document).ready(function($){
+    $("#show-post-comments").click(function(e) {
+      e.preventDefault();
+      $("#comments-loader").html("Loading comments...");
+      var data = {
+        action: 'get_lazy_comments',
+        post_id: $("#comments-loader").data('postid')
+      };
+      $.post(sage_ajax.ajaxurl, data, function(response) {
+        $("#comments-loader").html(response);
+        $("#hide-post-comments").show();
+      });
+      $("#show-post-comments").hide();
+    });
+    $("#hide-post-comments").click(function(e) {
+      e.preventDefault();
+      $("#comments-loader").html("");
+      $("#hide-post-comments").hide();
+      $("#show-post-comments").show();
+    });
+  });
+</script>
+<div id="comments-buttons" class="container">
+  <a id="show-post-comments" href="#" class="btn btn-primary">Show Comments (8)</a>
+  <a id="hide-post-comments" href="#" style="display: none" class="btn btn-primary">Hide Comments</a>
+</div>
+<div id="comments-loader" class="container" data-postid="71610"></div>
+<section class="related-articles loop-content loop-content__w-button">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="title">Related Articles</h2>
+      </div>
+                          <div class="col-md-4">
+          	    <div class="card animated">
+        <article class="post-43840 post type-post status-publish format-standard has-post-thumbnail hentry category-macro category-wildlife">
+                        <a href="https://expertphotography.com/beautiful-butterfly-photography/" onclick="ga.getAll()[0].send('event', 'Related Posts', 'click', 'How to Take Beautiful Butterfly Photography');">
+
+				<img width="300" height="200" src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/11/gray-and-black-butterfly-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="A grey and black butterfly on a flower" loading="lazy" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2018/11/gray-and-black-butterfly-300x200.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/11/gray-and-black-butterfly-200x133.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/11/gray-and-black-butterfly-165x110.jpg 165w, https://expertphotography.b-cdn.net/wp-content/uploads/2018/11/gray-and-black-butterfly.jpg 700w" sizes="(max-width: 300px) 100vw, 300px" />
+                <span class="card-body">
+                <span>
+                                        <h4 class="entry-title">How to Take Beautiful Butterfly Photography</h4>
+                </span>
+
+            <span class="entry-summary text text__small">
+				Butterflies are fascinating to photograph. If you don't know where to start in butterfly photography, we'll teach you a few useful tips. [Note: ExpertPhotography is&hellip;            </span>
+        </span>
+
+            </a>
+        </article>
+    </div>
+        </div>
+              <div class="col-md-4">
+          	    <div class="card animated">
+        <article class="post-47652 post type-post status-publish format-standard has-post-thumbnail hentry category-wildlife category-photography-gear">
+                        <a href="https://expertphotography.com/teleconverter/" onclick="ga.getAll()[0].send('event', 'Related Posts', 'click', 'What is a Teleconverter? (How to Use One to Your Advantage!)');">
+
+				<img width="300" height="203" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/12/Teleconverters-Jonathan-Mabey-300x203.jpg" class="attachment-medium size-medium wp-post-image" alt="teleconverter" loading="lazy" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/12/Teleconverters-Jonathan-Mabey-300x203.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/12/Teleconverters-Jonathan-Mabey-200x135.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/12/Teleconverters-Jonathan-Mabey-163x110.jpg 163w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/12/Teleconverters-Jonathan-Mabey.jpg 700w" sizes="(max-width: 300px) 100vw, 300px" />
+                <span class="card-body">
+                <span>
+                                        <h4 class="entry-title">What is a Teleconverter? (How to Use One to Your Advantage!)</h4>
+                </span>
+
+            <span class="entry-summary text text__small">
+				Distance is a difficult problem to solve in photography. You could be using the biggest and best telephoto lens, but you still can get as&hellip;            </span>
+        </span>
+
+            </a>
+        </article>
+    </div>
+        </div>
+              <div class="col-md-4">
+          	    <div class="card animated">
+        <article class="post-504760 post type-post status-publish format-standard has-post-thumbnail hentry category-wildlife category-beginner-photography category-photography-gear">
+                        <a href="https://expertphotography.com/best-photographer-vest/" onclick="ga.getAll()[0].send('event', 'Related Posts', 'click', '10 Best Photographers Vests and Jackets in 2022');">
+
+				<img width="300" height="200" src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/photographers-vest-photographer-1-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="" loading="lazy" srcset="https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/photographers-vest-photographer-1-300x200.jpg 300w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/photographers-vest-photographer-1-200x133.jpg 200w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/photographers-vest-photographer-1-165x110.jpg 165w, https://expertphotography.b-cdn.net/wp-content/uploads/2021/01/photographers-vest-photographer-1.jpg 700w" sizes="(max-width: 300px) 100vw, 300px" />
+                <span class="card-body">
+                <span>
+                                        <h4 class="entry-title">10 Best Photographers Vests and Jackets in 2022</h4>
+                </span>
+
+            <span class="entry-summary text text__small">
+				A photographers vest or jacket is a great way to carry camera gear and items without using a camera bag. Vests can be practical in&hellip;            </span>
+        </span>
+
+            </a>
+        </article>
+    </div>
+        </div>
+                              <div class="col-md-12 text-left">
+        <span class="link-arrow">
+          <a href="https://expertphotography.com/category/wildlife/" class="">See all articles in Wildlife</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="modal-search" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="" class="form-inline" id="ajax-search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="" placeholder="">
+                        <button type="submit" class="btn btn-search"><i class="epicon-magnifying-glass"></i></button>
+                    </div>
+
+                </form>
+                <div class="search-results-pane"></div>
+            </div>
+        </div>
+    </div>
+</div>                  <section class="option option__footer show-optin-desktop">
+        <div class="container-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title text-center">
+                            <h2>
+								Recreate 5 Famous Wildlife Photos That Make People Say "WOW"                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-none d-md-block">
+                        <div class="subtitle text-center text text__medium">
+							Unrevealing the exact process used to capture breathtaking wildlife photos with:                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters-sm d-flex justify-center option-items">
+					                            <div class="col-md-4">
+                                <div class="image text-center d-none d-md-block">
+                                    <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/18_Camera-Have-fun-with-shooting_150px.png" width="150" height="150" alt="Icon">
+                                </div>
+                                <div class="text">
+                                                                            <p><strong style="text-align: center; display: block;">Camera Choice</strong></p>
+                                    									<p style="text-align: center;">Stay prepared by choosing the best camera possible for your photo</p>
+                                </div>
+                            </div>
+						                            <div class="col-md-4">
+                                <div class="image text-center d-none d-md-block">
+                                    <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2018/12/29_Leading-Lines_150px.png" width="150" height="150" alt="Icon">
+                                </div>
+                                <div class="text">
+                                                                            <p><strong style="text-align: center; display: block;">Settings</strong></p>
+                                    									<p style="text-align: center;">Get access to the exact settings to avoid mistakes &amp; save time</p>
+                                </div>
+                            </div>
+						                            <div class="col-md-4">
+                                <div class="image text-center d-none d-md-block">
+                                    <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2021/02/36_cheat-sheets_150px.png" width="150" height="150" alt="Icon">
+                                </div>
+                                <div class="text">
+                                                                            <p><strong style="text-align: center; display: block;">Process & Preparation</strong></p>
+                                    									<p style="text-align: center;">The detailed stories show how the images were captured</p>
+                                </div>
+                            </div>
+						                </div>
+                <div class="row justify-content-center">
+                  <div class="col d-flex flex-column align-items-center">
+                    <div class="option-form">
+                        <div class="title">
+                            <h4>
+                                Where should we send your case studies?                            </h4>
+                        </div>
+                        <div class="form-inline">
+	                        <form accept-charset="UTF-8" action="https://py248.infusionsoft.com/app/form/process/a412d126920e8cb1367d00840610d4be" class="infusion-form" id="inf_form_a412d126920e8cb1367d00840610d4be" method="POST">
+    <input name="inf_form_xid" type="hidden" value="a412d126920e8cb1367d00840610d4be" />
+    <input name="inf_form_name" type="hidden" value="Footer" />
+    <input name="infusionsoft_version" type="hidden" value="1.70.0.249116" />
+    <div class="infusion-field">
+        <label for="inf_field_Email">Enter Your Email Address Here... *</label>
+        <input class="infusion-field-input" id="inf_field_Email" name="inf_field_Email" placeholder="Enter Your Email Address Here... *" type="text" />
+    </div>
+    <input name="inf_custom_GaContent" type="hidden" value="null" />
+    <input name="inf_custom_GaSource" type="hidden" value="null" />
+    <input name="inf_custom_GaMedium" type="hidden" value="null" />
+    <input name="inf_custom_GaTerm" type="hidden" value="null" />
+    <input name="inf_custom_GaCampaign" type="hidden" value="null" />
+    <input name="inf_custom_GaReferurl" type="hidden" value="null" />
+    <input name="inf_custom_IPAddress" type="hidden" value="null" />
+    <input name="inf_custom_AdGroup" type="hidden" value="null" />
+    <input name="inf_custom_source" type="hidden" value="null" />
+    <input name="inf_custom_Firstpagevisitedinsession" type="hidden" value="null" />
+    <input name="inf_custom_Lastpagevisited" type="hidden" value="null" />
+    <input name="inf_custom_Timeonsite" type="hidden" value="null" />
+    <input name="inf_custom_Numberofpagesvisited" type="hidden" value="null" />
+    <input name="inf_custom_Category" type="hidden" value="null" />
+    <input name="inf_custom_Author" type="hidden" value="null" />
+    <input name="inf_custom_MobileorDesktop" type="hidden" value="null" />
+    <input name="inf_custom_Popupsignedupthrough" type="hidden" value="null" />
+    <div>
+        <div>&nbsp;</div>
+    </div>
+    <div class="infusion-submit">
+        <button type="submit">Download Now &gt;</button>
+    </div>
+</form>
+<script type="text/javascript" src="https://py248.infusionsoft.app/app/webTracking/getTrackingCode"></script>
+<script type="text/javascript" src="https://py248.infusionsoft.com/app/timezone/timezoneInputJs?xid=a412d126920e8cb1367d00840610d4be"></script>                        </div>
+                        <div class="form-text">
+                            <span class="h6"><i class="epicon-locked-padlock"></i>Your privacy is safe! We will never share your information.</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="option option__footer show-optin-mobile ">
+        <div class="container-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title text-center">
+                            <h2>
+								Recreate 5 Famous Wildlife Photos That Make People Say "WOW"                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-none d-md-block">
+                        <div class="subtitle text text__medium">
+							Unrevealing the exact process used to capture breathtaking wildlife photos with:                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters-sm d-flex justify-center option-items">
+					                            <div class="col-md-4">
+                                <div class="image text-center d-none d-md-block">
+                                  <img src="" width="150" height="150" alt="Icon">
+                                </div>
+                                <div class="text">
+                                                                            <p><strong style="display: block;">Camera Choice</strong></p>
+                                    									<p style="text-align: center;">Stay prepared by choosing the best camera possible for your photo</p>
+                                </div>
+                            </div>
+						                            <div class="col-md-4">
+                                <div class="image text-center d-none d-md-block">
+                                  <img src="" width="150" height="150" alt="Icon">
+                                </div>
+                                <div class="text">
+                                                                            <p><strong style="display: block;">Settings</strong></p>
+                                    									<p style="text-align: center;">Get access to the exact settings to avoid mistakes &amp; save time</p>
+                                </div>
+                            </div>
+						                            <div class="col-md-4">
+                                <div class="image text-center d-none d-md-block">
+                                  <img src="" width="150" height="150" alt="Icon">
+                                </div>
+                                <div class="text">
+                                                                            <p><strong style="display: block;">Process & Preparation</strong></p>
+                                    									<p style="text-align: center;">The detailed stories show how the images were captured</p>
+                                </div>
+                            </div>
+						                </div>
+                <div class="row justify-content-center">
+                  <div class="col d-flex flex-column align-items-center">
+                    <div class="option-form">
+                        <div class="title">
+                            <h4>
+                                Where should we send your case studies?                            </h4>
+                        </div>
+                        <div class="form-inline">
+	                        <form accept-charset="UTF-8" action="https://py248.infusionsoft.com/app/form/process/a412d126920e8cb1367d00840610d4be" class="infusion-form" id="inf_form_a412d126920e8cb1367d00840610d4be" method="POST">
+    <input name="inf_form_xid" type="hidden" value="a412d126920e8cb1367d00840610d4be" />
+    <input name="inf_form_name" type="hidden" value="Footer" />
+    <input name="infusionsoft_version" type="hidden" value="1.70.0.249116" />
+    <div class="infusion-field">
+        <label for="inf_field_Email">Enter Your Email Address Here... *</label>
+        <input class="infusion-field-input" id="inf_field_Email" name="inf_field_Email" placeholder="Enter Your Email Address Here... *" type="text" />
+    </div>
+    <input name="inf_custom_GaContent" type="hidden" value="null" />
+    <input name="inf_custom_GaSource" type="hidden" value="null" />
+    <input name="inf_custom_GaMedium" type="hidden" value="null" />
+    <input name="inf_custom_GaTerm" type="hidden" value="null" />
+    <input name="inf_custom_GaCampaign" type="hidden" value="null" />
+    <input name="inf_custom_GaReferurl" type="hidden" value="null" />
+    <input name="inf_custom_IPAddress" type="hidden" value="null" />
+    <input name="inf_custom_AdGroup" type="hidden" value="null" />
+    <input name="inf_custom_source" type="hidden" value="null" />
+    <input name="inf_custom_Firstpagevisitedinsession" type="hidden" value="null" />
+    <input name="inf_custom_Lastpagevisited" type="hidden" value="null" />
+    <input name="inf_custom_Timeonsite" type="hidden" value="null" />
+    <input name="inf_custom_Numberofpagesvisited" type="hidden" value="null" />
+    <input name="inf_custom_Category" type="hidden" value="null" />
+    <input name="inf_custom_Author" type="hidden" value="null" />
+    <input name="inf_custom_MobileorDesktop" type="hidden" value="null" />
+    <input name="inf_custom_Popupsignedupthrough" type="hidden" value="null" />
+    <div>
+        <div>&nbsp;</div>
+    </div>
+    <div class="infusion-submit">
+        <button type="submit">Subscribe to Download Now &gt;&gt;</button>
+    </div>
+</form>
+<script type="text/javascript" src="https://py248.infusionsoft.app/app/webTracking/getTrackingCode"></script>
+<script type="text/javascript" src="https://py248.infusionsoft.com/app/timezone/timezoneInputJs?xid=a412d126920e8cb1367d00840610d4be"></script>                        </div>
+                        <div class="form-text">
+                            <span class="h6"><i class="epicon-locked-padlock"></i>Your privacy is safe! We will never share your information.</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="content-info">
+                  <div class="container footer-columns">
+          <div class="row">
+            <div class="col-md-3">
+              <section class="widget social_icons-2 widget_social_icons"><h5>FOLLOW US</h5>                                    <div class="d-flex icons-wrapper">
+                                                                    <a href="https://facebook.com/expertphotography/" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-facebook" style="color: #fc9e31"></i>
+                        </a>
+                                                                    <a href="https://instagram.com/expertphotography" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-instagram" style="color: #fc9e31"></i>
+                        </a>
+                                                                    <a href="https://pinterest.com/photojosh" rel="noopener" title="" target="_blank"
+                           class="icon">
+                            <i class="epicon-pinterest" style="color: #fc9e31"></i>
+                        </a>
+                                    </div>
+                            </section>            </div>
+            <div class="col-md-9 d-flex justify-content-between">
+              <div class="d-none d-md-block">
+                <section class="widget nav_menu-4 widget_nav_menu"><h5>EXPLORE</h5><div class="menu-explore-menu-container"><ul id="menu-explore-menu" class="menu"><li id="menu-item-64908" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64908"><a href="/store/courses/">Our Courses</a></li>
+<li id="menu-item-572431" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-572431"><a href="https://expertphotography.com/store/ebooks/">Our eBooks</a></li>
+<li id="menu-item-64910" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64910"><a href="/store/">Our Products</a></li>
+<li id="menu-item-64914" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64914"><a href="/about-us/">About Us</a></li>
+</ul></div></section>              </div>
+              <div class="d-none d-md-block">
+                <section class="widget nav_menu-5 widget_nav_menu"><h5>LEARN PHOTOGRAPHY</h5><div class="menu-learn-photography-menu-container"><ul id="menu-learn-photography-menu" class="menu"><li id="menu-item-64917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64917"><a href="https://expertphotography.com/sp/p11-photography-for-beginners-ad/?cf_1=footer-menu">Photography for Beginners</a></li>
+<li id="menu-item-64919" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64919"><a href="https://expertphotography.com/sp/p08-effortless-editing-lightroom-ad/?cf_1=footer-menu">Effortless Editing With Lightroom</a></li>
+<li id="menu-item-64922" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64922"><a href="https://expertphotography.com/sp/p10-total-time-lapse-ad/?cf_1=footer-menu">Total Time-Lapse</a></li>
+<li id="menu-item-64923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64923"><a href="https://expertphotography.com/sp/p07-milky-way-mastery-ad/?cf_1=footer-menu">Milky Way Mastery</a></li>
+<li id="menu-item-64925" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64925"><a href="https://expertphotography.com/sp/p12-wow-factor-photography-ad/?cf_1=footer-menu">Wow Factor Photography</a></li>
+<li id="menu-item-73406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-73406"><a href="https://expertphotography.com/sp/p13-simply-stunning-landscapes-ad/?cf_1=footer-menu">Simply Stunning Landscapes</a></li>
+<li id="menu-item-272542" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-272542"><a href="https://expertphotography.com/sp/p15-quick-capture-cheat-sheets-ad/?cf_1=footer-menu">Quick Capture Cheat Sheets</a></li>
+<li id="menu-item-272545" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-272545"><a href="https://expertphotography.com/sp/p16-macro-magic-ad/?cf_1=footer-menu">Macro Magic</a></li>
+<li id="menu-item-538176" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538176"><a href="https://expertphotography.com/sp/p17-profit-from-portraits-ad/?cf_1=footer-menu">Profit from Portraits</a></li>
+<li id="menu-item-538149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538149"><a href="https://expertphotography.com/sp/p18-edible-images-ad/?cf_1=footer-menu">Edible Images</a></li>
+<li id="menu-item-538152" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538152"><a href="https://expertphotography.com/sp/p19-infinite-exposures-ad/?cf_1=footer-menu">Infinite Exposures</a></li>
+<li id="menu-item-538179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538179"><a href="https://expertphotography.com/sp/p20-social-success-strategies-ad/?cf_1=footer-menu">Social Success Strategies</a></li>
+<li id="menu-item-538155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538155"><a href="https://expertphotography.com/sp/p21-creative-photography-cookbook-ad/?cf_1=footer-menu">The Creative Photography Cookbook</a></li>
+<li id="menu-item-538158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538158"><a href="https://expertphotography.com/sp/p22-picture-perfect-properties-ad/?cf_1=footer-menu">Picture Perfect Properties</a></li>
+<li id="menu-item-538161" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538161"><a href="https://expertphotography.com/sp/p23-organic-marketing-photographers-ad/?cf_1=footer-menu">Organic Marketing for Photographers</a></li>
+<li id="menu-item-538164" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538164"><a href="https://expertphotography.com/sp/p24-intuitive-composition-ad/?cf_1=footer-menu">Intuitive Composition</a></li>
+<li id="menu-item-538167" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538167"><a href="https://expertphotography.com/sp/p25-perfect-pawtraits-ad/?cf_1=footer-menu">Perfect Pawtraits</a></li>
+<li id="menu-item-538173" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-538173"><a href="https://expertphotography.com/sp/p26-wonderful-wildlife-ad/?cf_1=footer-menu">Wonderful Wildlife</a></li>
+<li id="menu-item-572428" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-572428"><a href="https://expertphotography.com/sp/p28-products-in-focus-ad/?cf_1=footer-menu">Products In Focus</a></li>
+<li id="menu-item-589378" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-589378"><a href="https://expertphotography.com/sp/p29-shooting-skies-ad/?cf_1=footer-menu">Shooting Skies</a></li>
+<li id="menu-item-609175" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-609175"><a href="https://expertphotography.com/sp/p30-dreamy-childhood-portraits-ad/?cf_1=footer-menu">Dreamy Childhood Portraits</a></li>
+<li id="menu-item-630742" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-630742"><a href="https://expertphotography.com/sp/p31-magical-photography-spellbook-ad/?cf_1=footer-menu">The Magical Photography Spellbook</a></li>
+<li id="menu-item-652171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-652171"><a href="https://expertphotography.com/sp/p32-fantastic-photo-adventures-ad/?cf_1=footer-menu">Fantastic Photo Adventures</a></li>
+<li id="menu-item-670948" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-670948"><a href="https://expertphotography.com/sp/p33-urban-smartphone-minimalism-ad/?cf_1=footer-menu">Urban Smartphone Minimalism</a></li>
+<li id="menu-item-700501" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-700501"><a href="https://expertphotography.com/sp/p34-flat-lay-photo-fever-ad/?cf_1=footer-menu/">Flat Lay Photo Fever</a></li>
+<li id="menu-item-722284" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-722284"><a href="https://expertphotography.com/sp/p35-digital-dreamworlds-ad/?cf_1=footer-menu">Digital Dreamworlds</a></li>
+<li id="menu-item-736123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-736123"><a href="https://expertphotography.com/sp/p36-fairytale-portraits-ad/?cf_1=footer-menu">Fairytale Portraits</a></li>
+<li id="menu-item-748024" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-748024"><a href="https://expertphotography.com/sp/p37-colorful-cityscapes-ad/?cf_1=footer-menu">Colorful Cityscapes</a></li>
+<li id="menu-item-765734" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-765734"><a href="https://expertphotography.com/sp/p38-epic-landscape-editing-ad/?cf_1=footer-menu">Epic Landscape Editing</a></li>
+<li id="menu-item-795731" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-795731"><a href="https://expertphotography.com/sp/p27-next-stop-travel-photography-ad/?cf_1=footer-menu">Next Stop: Travel Photography</a></li>
+</ul></div></section>              </div>
+              <div class="">
+                <section class="widget nav_menu-6 widget_nav_menu"><h5>NEED HELP?</h5><div class="menu-need-help-menu-container"><ul id="menu-need-help-menu" class="menu"><li id="menu-item-64928" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64928"><a href="/contact-us/">Contact Us</a></li>
+<li id="menu-item-73445" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-73445"><a href="/cookie-policy/">Cookie Policy</a></li>
+<li id="menu-item-73454" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-73454"><a href="/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-73472" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-73472"><a href="/terms-of-service-website-disclaimers/">Terms of Use</a></li>
+</ul></div></section>              </div>
+            </div>
+          </div>
+        </div>
+                    <div class="container copyright">
+        <div class="row">
+          <div class="col-md-12 text-center color-white">
+            <section class="widget text-53 widget_text">			<div class="textwidget"><p>ExpertPhotography is part of several affiliate sales networks. This means we may receive a commission if you purchase something by clicking on one of our links.<br />
+ExpertPhotography is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to <a href="https://www.amazon.com/" target="_blank" rel="noopener “&quot;nofollow">amazon.com</a>.<br />
+As an Amazon Associate, I earn from qualifying purchases.</p>
+<p>Expert Photography © 2011-2022. All Rights Reserved.<span class="desktop-only"><br />
+<a href="/privacy-policy/">Privacy Policy</a> <a href="/terms-of-service-website-disclaimers/">Terms of Use</a></span></p>
+</div>
+		</section>          </div>
+        </div>
+      </div>
+      </footer>
+<script>
+  const cookieGetx = document.cookie.split(";").reduce((ac, cv, i) => {
+    const [key, val] = cv.trim().split("=");
+    return Object.assign(ac, { [key]: val });
+  }, {});
+  window.dataLayer.push({
+    'x-fb-event_id': Math.random(),
+    event: 'fbParams',
+    fbc: cookieGetx["_fbc"],
+    fbp: cookieGetx["_fbp"]
+  });
+
+</script>
+<script>window.popity = {"categories":["2927"],"tags":[],"author":"54194","id":"71610"};</script><script src="https://pop.devil.services/pp.js"></script>  <script>
+    {
+      const urlParams = new URLSearchParams(window.location.search);
+      const contactId = urlParams.get('contactId');
+      if(contactId) {
+        document.cookie = "ep-cid="+contactId+"; SameSite=None; Secure; max-age=31536000; path=/";
+      }
+    }
+  </script>
+  	<script type="text/javascript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})()
+	</script>
+	<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/twenty20/assets/js/jquery.twenty20.js?ver=1.5.8' id='twenty20-style-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/twenty20/assets/js/jquery.event.move.js?ver=1.5.8' id='twenty20-eventmove-style-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70' id='jquery-blockui-js'></script>
+<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/expertphotography.com\/checkout\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=4.8.1' id='wc-add-to-cart-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4' id='js-cookie-js'></script>
+<script type='text/javascript' id='woocommerce-js-extra'>
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=4.8.1' id='woocommerce-js'></script>
+<script type='text/javascript' id='wc-cart-fragments-js-extra'>
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_5caeb303369947927974bb42aacdd56a","fragment_name":"wc_fragments_5caeb303369947927974bb42aacdd56a","request_timeout":"5000"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=4.8.1' id='wc-cart-fragments-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-form-move-tracker.js?ver=9.99' id='gtm4wp-form-move-tracker-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-youtube.js?ver=9.99' id='gtm4wp-youtube-js'></script>
+<script type='text/javascript' src='https://player.vimeo.com/api/player.js?ver=1.0' id='gtm4wp-vimeo-api-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-vimeo.js?ver=9.99' id='gtm4wp-vimeo-js'></script>
+<script type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/outdoor-course-for-7-days\/|\/sp\/test-4\/|\/sp\/lg-7-day-outdoor-signup\/|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/checkout\/|\/checkout\/|\/my-account\/|\/wc-api\/v(.*)|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/expertphotography.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-includes/js/comment-reply.min.js?ver=5.8.4' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/woocommerce/assets/js/select2/select2.full.min.js?ver=4.0.3' id='select2-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/scripts/slick-carousel.js' id='slick-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/scripts/jquery.redirect.js' id='jquery-redirect-js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.min.js' id='jquery-validate-js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.min.js' id='additional-methods-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/scripts/jquery.mCustomScrollbar.js' id='jquery.mCustomScrollbar-js'></script>
+<script type='text/javascript' id='sage/js-js-extra'>
+/* <![CDATA[ */
+var sage_ajax = {"ajaxurl":"https:\/\/expertphotography.com\/wp-admin\/admin-ajax.php","ajax_nonce":"d401b9e7ef"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/scripts/main.js?ver=1652961177' id='sage/js-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/scripts/icon_table_of_contents.js?ver=1.0.0' id='icon_table_of_contents-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/themes/expert/dist/scripts/shortcode.js?ver=1653032261' id='ep_shortcode-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-includes/js/wp-embed.min.js?ver=5.8.4' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js?ver=2.2.0' id='jquery-smooth-scroll-js'></script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='jquery-sticky-kit-js'></script>
+<script type='text/javascript' id='ez-toc-js-js-extra'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","scroll_offset":"30"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expertphotography.b-cdn.net/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.19-1650616637' id='ez-toc-js-js'></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"d9fa496b0d","applicationID":"416272313","transactionName":"ZgdbYUZSCxFRWkVbDV9NbEddHAwMVFxJHBJZEg==","queueTime":0,"applicationTime":1417,"atts":"SkBYFw5IGB8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

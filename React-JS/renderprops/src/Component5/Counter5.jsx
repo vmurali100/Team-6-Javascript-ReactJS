@@ -14,7 +14,7 @@ export default class Counter5 extends Component {
   render() {
     return (
       <div>
-        {this.props.render(this.state.count,this.incrementcounter)}
+        {this.props.hello(this.state.count,this.incrementcounter)}
       </div>
     )
   }

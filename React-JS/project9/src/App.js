@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import ClickCounter from './Components/ClickCounter';
-import HoverCount from './Components/HoverCount';
+import ClickCounter from './Hoc/ClickCounter';
+import HoverCounter from './Hoc/HoverCounter';
+import Click from './HOC1/Click';
+import Hover from './HOC1/Hover';
+ 
 
 function App() {
   return (
@@ -9,9 +12,19 @@ function App() {
        {/* <ClickCounter/>
        <hr/>
        <HoverCount/> */}
-       <HoverCount/>
+       {/* <HoverCount/>
        <hr/>
-       <ClickCounter/>
+       <ClickCounter/> */}
+        {/* <ClickCounter/>
+        <hr/>
+        <HoverCounter/> */}
+        {/* <Click/>
+        <hr/>
+         <Hover/> */}
+         {/* <HOC1/> */}
+         <Hover/>
+         <hr/>
+         <Click/>
     </div>
   );
 }

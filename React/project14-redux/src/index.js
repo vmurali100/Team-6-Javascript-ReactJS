@@ -3,18 +3,36 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux'
-import { store } from './store/index';
+import { Provider } from 'react-redux';
+
+// import { store } from './store/index';
+import App1 from './store1/App1';
+import { store1 } from './store1/Store1';
+import App2 from './store2/App2';
+import { store2 } from './store2/Store2';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-        <React.StrictMode>
-      <App />
+  // <Provider store={store}>
+  //       <React.StrictMode>
+  //     <App />
+  //   </React.StrictMode>
+  // </Provider>
+
+  // <Provider store={store1}>
+  //   <React.StrictMode>
+  //     <App1 />
+  //   </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store2}>
+    <React.StrictMode>
+        <App2/>
     </React.StrictMode>
   </Provider>
 
- 
+
 
 );
 

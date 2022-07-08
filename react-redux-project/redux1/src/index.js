@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { store } from './store2';
+// import { store } from './store2';
+import {  store3 } from './store3';
+import App3 from './store3/App3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
+  // <Provider store={store}>
+  //   <React.StrictMode>
+   //  <App />
+  // </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store3}>
     <React.StrictMode>
-    <App />
-  </React.StrictMode>
+     <App3 />
+   </React.StrictMode>
   </Provider>
 );
 

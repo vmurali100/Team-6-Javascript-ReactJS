@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 // import { store } from './store2';
 import {  store3 } from './store3';
 import App3 from './store3/App3';
+import App4 from './store4/App4';
+import { store4 } from './store4';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,9 +17,15 @@ root.render(
   // </React.StrictMode>
   // </Provider>
 
-  <Provider store={store3}>
+  // <Provider store={store3}>
+  //   <React.StrictMode>
+  //    <App3 />
+  //  </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store4}>
     <React.StrictMode>
-     <App3 />
+      <App4 />
    </React.StrictMode>
   </Provider>
 );

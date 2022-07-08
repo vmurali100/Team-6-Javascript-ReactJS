@@ -12,6 +12,8 @@ import App2 from './store2/App2';
 import { store2 } from './store2/Store2';
 import App3 from './store3/App3';
 import { store } from './store3/Store3';
+import APP4 from './store4/APP4';
+import { store4 } from './store4/Store4';
 
 
 
@@ -35,12 +37,17 @@ root.render(
   //   </React.StrictMode>
   // </Provider>
 
-  <Provider store={store}>
+  // <Provider store={store}>
+  //   <React.StrictMode>
+  //     <App3/>
+  //   </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store4}>
     <React.StrictMode>
-      <App3/>
+      <APP4/>
     </React.StrictMode>
   </Provider>
-
 );
 
 // If you want to start measuring performance in your app, pass a function

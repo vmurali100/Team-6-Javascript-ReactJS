@@ -10,6 +10,9 @@ import App1 from './store1/App1';
 import { store1 } from './store1/Store1';
 import App2 from './store2/App2';
 import { store2 } from './store2/Store2';
+import App3 from './store3/App3';
+import { store } from './store3/Store3';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,13 +29,17 @@ root.render(
   //   </React.StrictMode>
   // </Provider>
 
-  <Provider store={store2}>
+  // <Provider store={store2}>
+  //   <React.StrictMode>
+  //       <App2/>
+  //   </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store}>
     <React.StrictMode>
-        <App2/>
+      <App3/>
     </React.StrictMode>
   </Provider>
-
-
 
 );
 

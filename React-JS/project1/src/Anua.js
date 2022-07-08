@@ -27,5 +27,13 @@ export function Anua(){
             12,220 multi-millionaires (USD10m+), 524 individuals with more than 100 million
              dollars and 43 billionaires.</p>
         <br></br>
+        <h1>Canada Mountain</h1>
+        <img src="./canada.jpg" width="850" height="450" alt=""/>
+        <h1>Canada City</h1>
+        <img src="./canada1.jpg" width="850" height="450" alt=""/>
+        <h1>Canada Winter</h1>
+        <img src="./toronto.jpg" width="850" height="450" alt=""/>
+        <h1>Canada City Houses</h1>
+        <img src="./toronto1.jpg" width="850" height="450" alt=""/>
     </div>
 }

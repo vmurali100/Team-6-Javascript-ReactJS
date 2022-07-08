@@ -13,7 +13,10 @@ function App() {
         <li>White Chocolate.</li>
         <li>Ruby Chocolate.</li>
        </ul>
-       <img src="./chocolate.jpg" alt=""/>
+       <h1>Chocolate</h1>
+       <img src="./chocolate.jpg" width="650" height="350" alt=""/>
+       <h1>Dark-Chololate</h1>
+       <img src="./Dark-Chocolate.jpg" width="650" height="650" alt=""/>
   </div>
 }
 

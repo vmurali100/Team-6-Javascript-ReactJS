@@ -25,5 +25,16 @@ export function Arthia(){
             offers superior education at a low cost, good healthcare, great weather and
              a low cost of living.</p>
         <br></br>
+        <h1>Germany Mountain</h1>
+        <img src="./germany1.jpg" width="750" height="650" alt=""/>
+        <img src="./mountains-germany.jpg" width="850" height="350" alt=""/>
+        <h1>Germany Village</h1>
+        <img src="./germany2.jpg" width="750" height="350" alt=""/>
+        <h1>Germany Houses</h1>
+        <img src="./germany3.png" width="350" height="350" alt=""/>
+        <h1>Germany Nature</h1>
+        <img src="./germany-forest.jpg" width="750" height="350" alt=""/>
+        <h1>France</h1>
+        <img src="./frence.webp" width="750" height="350" alt=""/>
     </div>
 }

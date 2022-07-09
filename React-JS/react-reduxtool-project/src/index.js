@@ -11,15 +11,18 @@ import store3 from './store3';
 import App3 from './store3/App3';
 import App4 from './store4/App4';
 import store4 from './store4';
+import store5 from './store5';
+import App5 from './store5/App5';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store4}>
+  <Provider store={store5}>
     <React.StrictMode>
       {/* <App /> */}
       {/* <App2/> */}
       {/* <App3/> */}
-      <App4/>
+      {/* <App4/> */}
+      <App5/>
     </React.StrictMode>
   </Provider>
 

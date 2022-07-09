@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 import store from './store';
 import App1 from './store1/App1';
 import storeOne from './store1';
+import App2  from './store2/App2';
+import storeTwo from './store2/index2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,11 +19,17 @@ root.render(
   //   </React.StrictMode>
   // </Provider>
 
-  <Provider store={storeOne}>
-    <React.StrictMode>
-      <App1/>
-    </React.StrictMode>
-  </Provider>
+  // <Provider store={storeOne}>
+  //   <React.StrictMode>
+  //     <App1/>
+  //   </React.StrictMode>
+  // </Provider>
+
+  <Provider store={storeTwo}>
+  <React.StrictMode>
+   <App2/>
+  </React.StrictMode>
+</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

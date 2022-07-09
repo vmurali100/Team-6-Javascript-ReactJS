@@ -8,9 +8,11 @@ function App() {
 
   return (
     <div className="App">
-      <StateComp />
+      {/* <StateComp />
       <hr />
-      <TextComp/>
+      <TextComp/> */}
+      <hr/>
+  
     </div>
   );
 }

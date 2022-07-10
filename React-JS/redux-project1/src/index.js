@@ -3,24 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './store';
-import { Provider } from 'react-redux';
-import App1 from './store1/App1';
-import { store1 } from './store1/index1';
-
-
+import {Provider} from 'react-redux'
+import store from 'store'
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-{/* <Provider store={store}>
+root.render( 
+<Provider store={store}>
 <React.StrictMode>
-    <App/>
+    <App />
   </React.StrictMode>
-  </Provider> */},
-<Provider store={store1}>
-<React.StrictMode>
-    <App1/>
-  </React.StrictMode>
-</Provider>
+</Provider> 
 );
 
 // If you want to start measuring performance in your app, pass a function

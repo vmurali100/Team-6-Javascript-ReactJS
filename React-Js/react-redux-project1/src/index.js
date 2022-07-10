@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store'
 import App1 from './store2/App1';
-import store1 from './store2/index1';
+import store2 from './store2/index1';
+import App3 from './store3/App3';
+import store3 from './store3/index3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +18,14 @@ root.render(
   //   </React.StrictMode>
   // </Provider> 
 
-  <Provider store={store1}>
+  // <Provider store={store2}>
+  //   <React.StrictMode>
+  //     <App1/>
+  //   </React.StrictMode>
+  // </Provider>
+  <Provider store={store3}>
     <React.StrictMode>
-      <App1/>
+      <App3/>
     </React.StrictMode>
   </Provider>
 );

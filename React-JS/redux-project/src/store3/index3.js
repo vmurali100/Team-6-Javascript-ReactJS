@@ -1,3 +1,4 @@
+
 const {createStore}=require("redux")
 const reducerFun=(state={count:0},action)=>{
     switch(action.type){
@@ -8,4 +9,4 @@ const reducerFun=(state={count:0},action)=>{
     }
     return state
 }
-export const store5=createStore(reducerFun)
+export const store3=createStore(reducerFun)

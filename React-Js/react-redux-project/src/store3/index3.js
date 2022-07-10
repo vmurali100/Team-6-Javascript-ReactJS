@@ -9,4 +9,4 @@ const reducerFn = (state = { count: 0 }, action) => {
     }
     return state
 }
-export const store2 = createStore(reducerFn)
+export const store3 = createStore(reducerFn)

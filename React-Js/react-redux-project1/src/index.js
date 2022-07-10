@@ -9,6 +9,8 @@ import App1 from './store2/App1';
 import store2 from './store2/index1';
 import App3 from './store3/App3';
 import store3 from './store3/index3';
+import App4 from './store4/App4';
+import store4 from './store4';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,9 +25,16 @@ root.render(
   //     <App1/>
   //   </React.StrictMode>
   // </Provider>
-  <Provider store={store3}>
+  
+  // <Provider store={store3}>
+  //   <React.StrictMode>
+  //     <App3/>
+  //   </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store4}>
     <React.StrictMode>
-      <App3/>
+      <App4/>
     </React.StrictMode>
   </Provider>
 );

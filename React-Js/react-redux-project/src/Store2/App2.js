@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { Testcomp } from './Store/Testcomp';
 
-function App() {
+import { useDispatch, useSelector } from 'react-redux';
+import { Testcomp2 } from './Testcomp2';
+
+function App2() {
   let count = useSelector((state) => state.count);
   let dispatch = useDispatch();
   console.log(count);
@@ -20,9 +19,9 @@ function App() {
       <button onClick={incrementCount}>Increase</button>
       <button onClick={decrementCount}>Decrease</button>
       <hr />
-      <Testcomp />
+      <Testcomp2/>
     </div>
   );
 }
 
-export default App;
+export default App2;

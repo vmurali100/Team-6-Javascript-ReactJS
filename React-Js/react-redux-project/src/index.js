@@ -7,8 +7,8 @@ import { Provider } from 'react-redux'
 import { store } from './Store/Index';
 import { store1 } from './store1/Index1';
 import App1 from './store1/App1';
-import { store2 } from './Store2/Index2';
-import App2 from './Store2/App2';
+import { store2 } from './store2/Index2';
+import App2 from './store2/App2';
 import App3 from './store3/App3';
 import { store3 } from './store3/index3';
 

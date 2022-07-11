@@ -1,23 +1,24 @@
 import React from 'react'
-import {
-   
-    Link,
-  } from "react-router-dom";
 
 export default function Nav() {
+ 
   return (
-    <div>
-          <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/About">About</Link>
-      </li>
-      <li>
-        <Link to="/Contact">Contact</Link>
-      </li>
-     </ul>
+    <div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="#">Basic 85</a></h1>
+      <h2>Free HTML5 Website Template</h2>
     </div>
+    <nav>
+      <ul>
+        <li><a href="#">Text Link</a></li>
+        <li><a href="#">Text Link</a></li>
+        <li><a href="#">Text Link</a></li>
+        <li><a href="#">Text Link</a></li>
+        <li class="last"><a href="#">Text Link</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
   )
 }

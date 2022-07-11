@@ -1,28 +1,33 @@
+import { actions } from "./store";
+import {useDispatch,useSlector } from 'react-redux';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  
-} from "react-router-dom";
-import './App.css';
-import About from "./Components/About";
-import Contact from "./Components/Contact";
-import Home from "./Components/Home";
-import Nav from "./Components/Nav";
 
 function App() {
+  const count = useSlector((state)=> state.counter);
+  const {incrementcount,decrementcount,addby}=actions
+  const dispatch=useDispatch();
+
+  const handleincreament=()=>{
+    dispatch(incrementcount())
+
+  }
+  const handledecreament=()=>{
+    dispatch(decrementcount())
+
+  }
+  const handleaddby=()=>{
+    dispatch(addby(5))
+
+  }
+  
+
   return (
     <div className="App">
-    
-      <BrowserRouter>
-      <Nav/>
-      <Routes>
-      <Route index element={<Home />}/>
-      <Route path="About" element={<About />}/>
-      <Route path="Contact" element={<Contact />}/>
-      </Routes>
-      </BrowserRouter>
+    <h2>{count}</h2>
+    <button onClick={handleincreament}>increase</button>
+    <button onClick={handledecreament}>decrease</button>
+    <button onClick={ handleaddby}>addby</button>
+      
       
     </div>
   );

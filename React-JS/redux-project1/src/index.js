@@ -3,13 +3,53 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux'
-import store from 'store'
+
+import store from './store';
+import { Provider } from 'react-redux';
+import App1 from './store1/App1';
+import store1 from './store1';
+
+import App3 from './store3/App3';
+import store3 from './store3/index3';
+import App4 from './store4/App4';
+import store4 from './store4/index4';
+import store2 from './store2/index2';
+import App2 from './store2/App2';
+
+// import App4 from './store4/App4';
+// import store4 from './store4/index4';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
-<Provider store={store}>
+//  <Provider store={store}>
+// <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// </Provider>  
+
+//  <Provider store={store1}>
+// <React.StrictMode>
+//     <App1 />
+//   </React.StrictMode>
+// </Provider>
+
+ <Provider store={store2}>
 <React.StrictMode>
-    <App />
+    <App2/>
+  </React.StrictMode>
+</Provider>
+,
+
+//  <Provider store={store3}>
+//   <React.StrictMode>
+//     <App3/>
+//   </React.StrictMode>
+// </Provider> 
+
+ <Provider store={store4}>
+  <React.StrictMode>
+    <App4/>
   </React.StrictMode>
 </Provider> 
 );

@@ -22,4 +22,4 @@ function FidhaParveen() {
     )
 }
 
-export default FidhaParveen
+export default FidhaParveen;

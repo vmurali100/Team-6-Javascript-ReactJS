@@ -15,6 +15,9 @@ import App4 from './store4/App4';
 import store4 from './store4/index4';
 import store2 from './store2/index2';
 import App2 from './store2/App2';
+import App5 from './store5/App5';
+import store5 from './store5/index5';
+
 
 // import App4 from './store4/App4';
 // import store4 from './store4/index4';
@@ -34,12 +37,12 @@ root.render(
 //   </React.StrictMode>
 // </Provider>
 
- <Provider store={store2}>
-<React.StrictMode>
-    <App2/>
-  </React.StrictMode>
-</Provider>
-,
+//  <Provider store={store2}>
+// <React.StrictMode>
+//     <App2/>
+//   </React.StrictMode>
+// </Provider>
+
 
 //  <Provider store={store3}>
 //   <React.StrictMode>
@@ -47,9 +50,10 @@ root.render(
 //   </React.StrictMode>
 // </Provider> 
 
- <Provider store={store4}>
+ <Provider store={store5}>
   <React.StrictMode>
-    <App4/>
+    {/* <App4/> */}
+    <App5/>
   </React.StrictMode>
 </Provider> 
 );

@@ -13,16 +13,19 @@ import { store3 } from './store3';
 import AppCompo3 from './store3/AppCompo3';
 import { store4 } from './store4';
 import AppCom from './store4/AppCom';
+import { store5 } from './store5';
+import App5 from './store5/App5';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider  store={store4}>
+  <Provider  store={store5}>
     <React.StrictMode>
       {/* <App />      */}
       {/* <AppComp/> */}
       {/* <AppComponent2/> */}
       {/* <AppCompo3/> */}
-      <AppCom/>
+      {/* <AppCom/> */}
+      <App5/>
     </React.StrictMode>
   </Provider>
 );

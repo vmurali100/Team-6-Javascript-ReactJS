@@ -1,11 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Users from './Component/Users';
+import Albums from './Component/Albums';
+import Comments from './Component/Comments';
+import Photos from './Component/Photos';
+import Posts from './Component/Posts';
+import Todo from './Component/Todo';
 
 function App() {
   return (
     <div className="App">
-      <Users/>
+      {/* <Posts/> */}
+      {/* <Comments/> */}
+      {/* <Albums/> */}
+      {/* <Todo/> */}
+      <Photos/>
     </div>
   );
 }

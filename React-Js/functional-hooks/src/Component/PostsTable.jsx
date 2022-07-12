@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UsersTable = ({filltextUsers}) => {
+export const PostsTable = ({allPostsDetails}) => {
   return (
     <div>
         <table border="1">
@@ -13,7 +13,7 @@ export const UsersTable = ({filltextUsers}) => {
                 </tr>
             </thead>
             <tbody>
-                {filltextUsers.map((user,i)=>{
+                {allPostsDetails.map((user,i)=>{
                     return(
                         <tr key={i}>
                             <td>{user.userId}</td>

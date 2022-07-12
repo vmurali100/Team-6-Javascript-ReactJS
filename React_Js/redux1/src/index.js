@@ -10,7 +10,10 @@ import App4 from './store4/App4';
 import { store4 } from './store4';
 import { store, store5 } from './store5';
 import App5 from './store5/App5';
-
+import App6 from './store6/App6';
+import { store6 } from './store6';
+import { store7 } from './store7';
+import App7 from './store7/App7';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <Provider store={store}>
@@ -31,9 +34,21 @@ root.render(
   //  </React.StrictMode>
   // </Provider>
 
-  <Provider store={store5}>
-    <React.StrictMode>
-      <App5 />
+  // <Provider store={store5}>
+  //   <React.StrictMode>
+  //     <App5 />
+  //  </React.StrictMode>
+  // </Provider>
+
+  // <Provider store={store6}>
+  //   <React.StrictMode>
+  //     <App6 />
+  //  </React.StrictMode>
+  // </Provider>
+
+  <Provider store={store7}>
+     <React.StrictMode>
+      <App7 />
    </React.StrictMode>
   </Provider>
 );

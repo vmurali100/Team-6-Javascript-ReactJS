@@ -1,13 +1,17 @@
 
 import './App.css';
-import User from './components/User';
-import Usertable from './components/Usertable';
+import User from './component/User';
+import Usertable from './component/Usertable';
+import Person from './component1/Person';
+import Persontable from './component1/Persontable';
 
 function App() {
   return (
     <div className="App">
-     <User/>
-     <Usertable/>
+     {/* <User/>
+     <Usertable/> */}
+     <Person/>
+     <Persontable/>
     </div>
   );
 }

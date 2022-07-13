@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteUser, editUser } from '../slices/userSlice'
+import { deleteUser, editUser } from './userSlice'
 
 const Usertable = () => {
     const allusers=useSelector((state)=>state.usersInfo.users)

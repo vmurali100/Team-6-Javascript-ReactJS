@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addUser, updateUser } from '../slices/userSlice'
+import { addUser, updateUser } from './userSlice'
 
 const User = () => {
     const [user,setuser]=useState({

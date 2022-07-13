@@ -4,8 +4,11 @@ import { deleteUser, editUser } from '../slices/userSlices';
 
 
 export const Userstable = () => {
-    const allUsers = useSelector((state) => state.usersInfo.users)
+
     const dispatch = useDispatch();
+    
+    const allUsers = useSelector((state) => state.usersInfo.users);
+
     const handledeleteUser = (i)=>{
         dispatch(deleteUser(i))
     }

@@ -20,7 +20,9 @@ export const User = () => {
             setuser(userobj.users[userobj.editIndex])
         }
     },[userobj])
+    
     const dispatch = useDispatch();
+
     const handleChange = (e) => {
         let newUser = { ...user };
         let fieldName = e.target.name;

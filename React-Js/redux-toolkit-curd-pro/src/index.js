@@ -5,11 +5,15 @@ import './index.css';
 import App from './App';
 import store from './store'
 import reportWebVitals from './reportWebVitals';
+import { store1 } from './store1/index1';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    {/* <Provider store={store}>
+      <App/>
+    </Provider>     */}
+    <Provider store={store1}>
       <App/>
     </Provider>
   </React.StrictMode>

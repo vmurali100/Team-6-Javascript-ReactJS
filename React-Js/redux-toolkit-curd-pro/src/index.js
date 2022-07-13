@@ -6,6 +6,7 @@ import App from './App';
 import store from './store'
 import reportWebVitals from './reportWebVitals';
 import { store1 } from './store1/index1';
+import { store2 } from './store2/index2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,10 @@ root.render(
     {/* <Provider store={store}>
       <App/>
     </Provider>     */}
-    <Provider store={store1}>
+    {/* <Provider store={store1}>
+      <App/>
+    </Provider> */}
+    <Provider store={store2}>
       <App/>
     </Provider>
   </React.StrictMode>

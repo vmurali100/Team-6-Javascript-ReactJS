@@ -13,13 +13,13 @@ const Person = () => {
         mobile: ""
     })
     const personObj=useSelector((state)=>state.usersInfo)
+    console.log(personObj)
     useEffect(()=>{
         if(personObj.isEdit){
             setperson(personObj.users[personObj.editIndex])
         }
     },[personObj])
-    console.log(personObj)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const handleChange = (e) => {
         let newperson = { ...person };
         let fieldName = e.target.name
@@ -29,9 +29,9 @@ const Person = () => {
     const handleSubmit = () => {
         console.log(person)
         dispatch(addPerson(person))
-        handleClear();
+        handleClear()
     }
-    const handleClear = () => {
+    const handleClear=()=>{
         setperson({
             fname: "",
             lname: "",
@@ -40,13 +40,14 @@ const Person = () => {
             mobile: ""
         })
     }
-    const handleUpdateperson=()=>{
+    const handleUpdate=()=>{
         let updateObj={
             data:person,
             index:personObj.editIndex,
             isEdit:false
         }
         dispatch(updatePerson(updateObj))
+        handleClear()
     }
     return (
         <div>
@@ -61,7 +62,7 @@ const Person = () => {
                 <input type="text" name="email" onChange={(e) => { handleChange(e) }} /><br />
                 <label htmlFor="mobile">Mobile :</label>
                 <input type="text" name="mobile" onChange={(e) => { handleChange(e) }} /><br />
-                <button type='button' onClick={personObj. isEdit  ? handleUpdateperson : handleSubmit}>{personObj.isEdit ? 'Update person':'Edit person'}</button>
+                <button type='button' onClick={personObj.isEdit ? handleUpdate : handleSubmit}>{personObj.isEdit ? 'Update person':'Edit person'}</button>
 
             </form>
         </div>

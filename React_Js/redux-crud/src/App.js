@@ -6,8 +6,10 @@ import Person from './component1/Person';
 import Persontable from './component1/Persontable';
 import Details from './component2/Details';
 import Detailstable from './component2/Detailstable';
-import User from './component3/User';
-import Usertable from './component3/Usertable';
+// import User from './component3/User';
+// import Usertable from './component3/Usertable';
+import User from './component4/User';
+import Usertable from './component4/Usertable';
 function App() {
   return (
     <div className="App">
@@ -17,6 +19,8 @@ function App() {
      <Persontable/> */}
      {/* <Details/>
      <Detailstable/> */}
+     {/* <User/>
+     <Usertable/> */}
      <User/>
      <Usertable/>
     </div>

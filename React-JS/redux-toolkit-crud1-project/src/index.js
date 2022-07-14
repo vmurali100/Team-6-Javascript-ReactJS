@@ -5,12 +5,16 @@ import { Provider } from 'react-redux'
 import App from './App';
 import store from './store'
 import reportWebVitals from './reportWebVitals';
+import store1 from './store1';
+import App1 from './store1/App1';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
+    <Provider store={store1}>
+      {/* <App /> */}
+      <App1/>
     </Provider>
 
   </React.StrictMode>

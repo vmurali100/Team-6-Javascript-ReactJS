@@ -9,6 +9,8 @@ import Userstable3 from './components/Userstable3';
 import UserSlice4 from './slices/userSlice4';
 import Users4 from './components/Users4';
 import Userstable4 from './components/Userstable4';
+import Users5 from './components/Users5';
+import Userstable5 from './components/Userstable5';
 
 function App() {
   return (
@@ -22,8 +24,11 @@ function App() {
     {/* <Users3/>
     <Userstable3/> */}
 
-    <Users4/>
-    <Userstable4/>
+    {/* <Users4/>
+    <Userstable4/> */}
+
+    <Users5/>
+    <Userstable5/>
     </div>
   );
 }

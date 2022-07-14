@@ -2,7 +2,8 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 export const UserDetails1 = () => {
-    const allusers = useSelector((state)=>state.users.users)
+    const allusers = useSelector((state)=>state.usersInfo.users)
+    console.log(allusers)
   return (
     <div>
         <table border="1">

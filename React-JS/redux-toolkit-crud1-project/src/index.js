@@ -7,14 +7,17 @@ import store from './store'
 import reportWebVitals from './reportWebVitals';
 import store1 from './store1';
 import App1 from './store1/App1';
+import store2 from './store2';
+import App2 from './store2/App2';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store1}>
+    <Provider store={store2}>
       {/* <App /> */}
-      <App1/>
+      {/* <App1/> */}
+      <App2/>
     </Provider>
 
   </React.StrictMode>

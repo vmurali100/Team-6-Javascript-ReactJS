@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { addUser, updateUser } from '../slices/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, updateUser } from '../slices/UserSlice2';
 
-const User = () => {
+
+const User2 = () => {
     const [user, setuser] = useState({
         fname: "",
         lname: ""
     })
-    const userObj = useSelector((state)=>state.usersInfo);
-    useEffect(()=>{
+    const userObj = useSelector((state) => state.cartInfo);
+    useEffect(() => {
         // setuser(userObj.users[userObj.editIndex])
-        if(userObj.isEdit){
+        if (userObj.isEdit) {
             setuser(userObj.users[userObj.editIndex])
         }
 
-    },[userObj])
+    }, [userObj])
     console.log(userObj)
     const dispatch = useDispatch()
     const handleChange = (e) => {
@@ -34,11 +35,11 @@ const User = () => {
             lname: ""
         })
     }
-    const handleupdateUser=()=>{
+    const handleupdateUser = () => {
         let updateObj = {
-            data:user,
-            index:userObj.editIndex,
-            isEdit:false
+            data: user,
+            index: userObj.editIndex,
+            isEdit: false
         }
         dispatch(updateUser(updateObj))
         handleClear()
@@ -56,5 +57,4 @@ const User = () => {
         </div>
     )
 }
-
-export default User
+export default User2;

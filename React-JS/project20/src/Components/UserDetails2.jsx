@@ -1,13 +1,12 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteUser, editUser } from '../slices/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteUser, editUser } from '../slices/UserSlice2';
 
-export const UserDetails = () => {
-    const allUsers =  useSelector((state)=>state.usersInfo.users);
+const UserDetails2 = () => {
+    const allUsers =  useSelector((state)=>state.cartInfo.users);
     const dispatch = useDispatch()
     const handledeleteUser = (i)=>{
         dispatch(deleteUser(i))
-
     }
     const handleeditUser=(i)=>{
         var info = {
@@ -43,3 +42,5 @@ export const UserDetails = () => {
     </div>
   )
 }
+
+export default UserDetails2

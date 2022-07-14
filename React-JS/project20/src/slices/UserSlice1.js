@@ -5,7 +5,7 @@ const initialState =  {
     isEdit:false,
     editIndex:null
 }
-export const userSlice = createSlice({
+export const UserSlice1 = createSlice({
     name:"users",
     initialState,
     reducers:{
@@ -30,5 +30,5 @@ export const userSlice = createSlice({
 
 // export const actions = userSlice.actions
 
-export const {addUser,deleteUser,editUser,updateUser} = userSlice.actions;
-export default userSlice.reducer
+export const {addUser,deleteUser,editUser,updateUser} = UserSlice1.actions;
+export default UserSlice1.reducer

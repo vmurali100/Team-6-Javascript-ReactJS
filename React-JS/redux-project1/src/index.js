@@ -6,15 +6,15 @@ import reportWebVitals from './reportWebVitals';
 
 import store from './store';
 import { Provider } from 'react-redux';
-import App1 from './store1/App1';
-import store1 from './store1';
+// import App1 from './store1/App1';
+// import store1 from './store1';
 
-import App3 from './store3/App3';
-import store3 from './store3/index3';
-import App4 from './store4/App4';
-import store4 from './store4/index4';
-import store2 from './store2/index2';
-import App2 from './store2/App2';
+// import App3 from './store3/App3';
+// import store3 from './store3/index3';
+// import App4 from './store4/App4';
+// import store4 from './store4/index4';
+// import store2 from './store2/index2';
+// import App2 from './store2/App2';
 import App5 from './store5/App5';
 import store5 from './store5/index5';
 

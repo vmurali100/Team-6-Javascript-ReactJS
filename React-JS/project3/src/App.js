@@ -26,14 +26,14 @@ function App() {
       {/* classcomponent :-*/}
       {/* <AllClassComp/> */}
 
-      {/* <Parent1PostComp/> */}
+      <Parent1PostComp/>
       {/* <Parent2Filltext2 /> */}
       {/* <Parent3Filltext3/> */}
       {/* <Parent4Comment4/> */}
       {/* <Parent5todos5/> */}
 
       {/* <ClassParent1Post1/> */}
-      <ClassParent2Albums2/>
+      {/* <ClassParent2Albums2/> */}
       {/* <ClassParent3Fill3/> */}
       {/* <ClassParent4Fill4/> */}
       {/* <ClassParent5Comment5/> */}

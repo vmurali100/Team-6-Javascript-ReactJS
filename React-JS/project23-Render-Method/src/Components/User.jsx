@@ -1,27 +1,11 @@
-import axios from 'axios'
 import React, { Component } from 'react'
-
-export default class Practice5 extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            Users: []
-        }
-    }
-
-    componentDidMount() {
-        const url = "  http://localhost:3000/Products "
-        axios.get(url).then((response) => {
-            this.setState({ Users: response.data })
-
-        })
-    }
+ class User extends Component {
+    
     render() {
+        const { Users} = this.props
         return (
             <div>
-                <p>Practice5</p>
-                <table border={2}>
+                <table border="2px">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -30,22 +14,28 @@ export default class Practice5 extends Component {
                             <th>Description</th>
                             <th>Category</th>
                             <th>Image</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.Users.map(function (user,i) {
+                        {Users.map((user, i) => {
                             return <tr key={i}>
                                 <td>{user.id}</td>
                                 <td>{user.title}</td>
                                 <td>{user.price}</td>
                                 <td>{user.description}</td>
                                 <td>{user.category}</td>
-                                <td>{user.image}</td>
+                                <td><img src={user.image} alt="" /></td>
+                                <td><button>Edit</button></td>
+                                <td><button >Delete</button></td>
                             </tr>
                         })}
                     </tbody>
                 </table>
+               
             </div>
         )
     }
 }
+export default User

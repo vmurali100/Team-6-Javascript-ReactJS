@@ -4,6 +4,7 @@ import Parents2 from './ClassComponents/ChildComponent_To_ParentComponent/Parent
 import Parents3 from './ClassComponents/ChildComponent_To_ParentComponent/Parents3';
 import Parents4 from './ClassComponents/ChildComponent_To_ParentComponent/Parents4';
 import Parents5 from './ClassComponents/ChildComponent_To_ParentComponent/Parents5';
+import Practice5 from './Components/ClassCompHooks/Practice5';
  
  
  
@@ -22,6 +23,7 @@ function App() {
         {/* <Parents3/> */}
         {/* <Parents4/> */}
         {/* <Parents5/> */}
+        <Practice5/>
          
     </div>
   );

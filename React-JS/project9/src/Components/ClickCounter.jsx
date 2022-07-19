@@ -14,4 +14,4 @@ class ClickCounter extends Component {
     )
   }
 }
-export default HOCComponents(ClickCounter)
+export default HOCComponents(ClickCounter) 

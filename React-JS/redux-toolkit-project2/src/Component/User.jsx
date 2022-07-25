@@ -1,8 +1,7 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect,updateUser,useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { addUser, updateUser } from '../slices/userSlice'
+import { addUser } from '../slices/userSlice'
 
 export const User = () => {
     const allUsers=useSelector((state)=>state.users)

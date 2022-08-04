@@ -4,7 +4,7 @@ import axios from 'axios'
 export const Products = () => {
     const [productDetails, setproductDetails] = useState([])
     const getallproducts=()=>{
-        axios.get("http://localhost:3000/products").then((response)=>{
+        axios.get("https://api.covid19india.org/data.json").then((response)=>{
             console.log(response.data)
             setproductDetails(response.data)
         })

@@ -28,7 +28,7 @@ function App() {
 
     {/* <Posts></Posts> */}
     {/* <Albams></Albams> */}
-    {/* <Carts></Carts> */}
+    <Carts></Carts>
     {/* <Comments></Comments> */}
     {/* <Photos></Photos> */}
     {/* <Todos></Todos> */}

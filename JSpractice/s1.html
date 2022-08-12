@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var myname=["padmaja","manjula","dmsreddy","munaswami"];
+        // for(i=0;i<myname.length;i++){
+        //     document.write(myname[i]+"<br>");
+        // }
+        // myname.push("sandhya")
+        // myname.pop()
+        // myname.unshift("neeraja")
+        // myname.shift()
+        // myname.splice(4,4,"sowmya")
+        // myname.splice(4,4)
+        // myname.sort()
+        // myname.reverse()
+        // myname.slice(1,3)
+        // console.log(myname)
+        myname.forEach((value,i)=>{
+             document.write(value + i + "<br>")
+         })
+         var newmyname=myname.map((val)=>{
+             return val+ "-name"
+         })
+         console.log(newmyname)
+
+         var Char5Names = myname.find((val)=>{
+            return val.length == 5
+        })
+
+        var Char5Names = myname.filter((val)=>{
+            return val.length == 5
+        })
+        console.log(Char5Names)
+
+    </script>
+</body>
+</html>

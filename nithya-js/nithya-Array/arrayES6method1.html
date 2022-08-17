@@ -9,8 +9,11 @@
 <body>
     <script>
         var students=["haritha","sathya","harish","latha","chandhini"]
-        students.forEach((value,i)=>{
-            document.write(i+" . "+value+"<br>")//it is used to itarate an array
+        // students.forEach((value,i)=>{
+        //     document.write(i+" . "+value+"<br>")//it is used to itarate an array
+        // })
+        students.forEach((val)=>{
+            console.log(val+"<br>")
         })
         // var newstudents=students.map((val)=>{ //add a value and create new array
         //     return val+"@gmail.com"
@@ -28,10 +31,21 @@
     //         return val.length <=3
     //     })
     //     console.log(check)      
-        var check=students.some((val)=>{//satisfy one
-            return val.length >=2
-        })
-        console.log(check)
+        // var check=students.some((val)=>{//satisfy one
+        //     return val.length >=2
+        // })
+        // console.log(check)
+
+        // var students=["nithya","sathya","harish","naveen","hari"]
+        // var newstudents=students.map((val)=>{
+        //     return val+"@gmail.com"
+        // })
+        // console.log(newstudents)
+         
+        // var char5=students.filter((val)=>{
+        //     return val.length >=5
+        // })
+        // console.log(char5)
     </script>
 </body>
 </html>

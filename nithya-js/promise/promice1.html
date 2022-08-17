@@ -10,11 +10,11 @@
    <script>
        function getballfromshop(){
            return new Promise((resolve,reject)=>{
-            //    success("ball is available")
-               failure("ball is not available")
+               success("ball is available")
+            //    failure("ball is not available")
            })
        }
-       getballfromshop()
+        getballfromshop()
        .then((msg)=>{
            console.log("success msg:"+msg)
        })

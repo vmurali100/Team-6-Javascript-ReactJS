@@ -1,0 +1,313 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <style type="text/css">
+
+	@import "/health/educational/lose_wt/styles/aimstyle.css";
+
+   </style>
+
+ <script language="Javascript" type="text/javascript">
+
+function cal_bmi(lbs, ins)
+{
+   h2 = ins * ins;
+   bmi = lbs/h2 * 703
+   f_bmi = Math.floor(bmi);
+   diff  = bmi - f_bmi;
+   diff = diff * 10;
+   diff = Math.round(diff);
+
+
+
+   if (diff == 10)    // Need to bump up the whole thing instead
+   {
+      f_bmi += 1;
+      diff   = 0;
+   }
+   bmi = f_bmi + "." + diff;
+   return bmi;
+}
+function compute(){
+   var f = self.document.forms[0];
+
+   w = f.wt.value;
+   v = f.htf.value;
+   u = f.hti.value;
+
+   // Format values for the BMI calculation
+
+   if (!chkw(u))
+   {
+     var ii = 0;
+     f.hti.value = 0;
+   } else
+   {
+     var it = f.hti.value*1;
+     var ii = parseInt(it);
+    }
+
+   var fi = parseInt(f.htf.value * 12);
+   var i =  parseInt(f.htf.value * 12) + f.hti.value*1.0;  // var i = fi + ii; aeisenberg@air.org: now the height in inches is correctly summed
+
+  // Do validation of remaining fields to check for existence of values
+
+   if (!chkw(v))
+   {
+     alert("Please enter a number for your height.");
+     f.htf.focus();
+     return;
+   }
+   if (!chkw(w))
+   {
+     alert("Please enter a number for your weight.");
+     f.wt.focus();
+     return;
+   }
+
+   // Perform the calculation
+
+   f.bmi.value = cal_bmi(w, i);
+   f.bmi.focus();
+}
+
+function chkw(w){
+   if (isNaN(parseInt(w))){
+      return false;
+   } else if (w < 0){
+  return false;
+  }
+  else{
+  return true;
+  }
+}
+// -->
+  </script>
+
+
+
+ <!-- Header Include File -->
+<link rel="stylesheet" type="text/css" href="/styles/header.css" />
+<script src="//assets.adobedtm.com/073614e3197b/1c82765d3a26/launch-888908c4ba6f.min.js"></script>
+<!--Digital Analytics Program (DAP) Tracking Code  DO NOT REMOVE   -->
+<script async="" type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=HHS&subagency=NIH"></script>
+<!-- Foresee Survey Script -->
+<script type="text/javascript">
+  // Instructions: please embed this snippet directly into every page in your website template.
+  // For optimal performance, this must be embedded directly into the template, not referenced
+  // as an external file.
+
+  // ForeSee Embed Script v2.00
+  // DO NOT MODIFY BELOW THIS LINE *****************************************
+  ;(function (g) {
+  var d = document, am = d.createElement('script'), h = d.head || d.getElementsByTagName("head")[0], fsr = 'fsReady',
+  aex = {
+  "src": "//gateway.foresee.com/sites/nhlbi-gov/staging/gateway.min.js",
+  "type": "text/javascript",
+  "async": "true",
+  "data-vendor": "fs",
+  "data-role": "gateway"
+  };
+  for (var attr in aex){am.setAttribute(attr, aex[attr]);}h.appendChild(am);g[fsr] = function () {var aT = '__' + fsr + '_stk__';g[aT] = g[aT] || [];g[aT].push(arguments);};
+  })(window);
+  // DO NOT MODIFY ABOVE THIS LINE *****************************************
+</script>
+
+
+
+
+ </head>
+
+<body> <div class="container">
+
+<!--allows for spacing above and below date-->
+
+
+     <td width="795"><div id="aimtxt"><br />
+     <table border="0" cellpadding="4" cellspacing="0"
+					 summary="layout table">
+       <tr valign="top">
+        <td width="795" style="padding-left:28px; padding-right:28px; ">
+         <a name="content"></a>
+         <!--Start Body Text-->
+
+
+
+
+          <h1>Calculate Your Body Mass Index</h1>
+          <p style="margin: 0 0 10px 0;"><strong><a href="bmicalc_sp.htm">Espa&ntilde;ol</a></strong></p>
+          <p style="line-height: 1.3em;">Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.  <a href="bmi_tbl.htm">View the BMI tables</a> or use the tool below to compute yours. </p>
+              <ul style="margin-bottom: 30px;">
+                  <li>Enter your weight and height using standard or <a href="bmi-m.htm">metric</a> measures. </li>
+                  <li>Select "Compute BMI" and your BMI will appear below. </li>
+                </ul>
+
+                  <table summary="This table is used for layout purposes only." style="margin:auto; background:url(/health/educational/lose_wt/BMI/images/bmicalc-background.png); background-size: 520px 700px, cover;" class="bmibkg" width="520">
+		<tr>
+		  <td>
+			 <form name="bmi_input">
+				<table cellpadding="4" cellspacing="0" width="510"
+				 summary="This table is used for layout purposes only.">
+				  <tr>
+                  <td width="250" valign="top" style="margin:auto;">
+						<p align="center">&nbsp;</p>
+						<table border="10" cellpadding="0" cellspacing="0" width="200"
+						 summary="This table is used for layout purposes only." class="bmiCalc" style="margin:auto;">
+                          <tr>
+                            <td bgcolor="#6F48B3" width="200" colspan="3">
+                            <table width="2" border="0" cellpadding="0"
+								 cellspacing="0" summary="This table is used for layout purposes only.">
+                                <tr>
+                                  <td><img src="images/bmi-e_01.gif" border="0" alt="Standard Measurements"
+										 width="105" height="28" /></td>
+                                  <td valign="top"><a href="bmi-m.htm"> <img src="images/bmi-e_02.gif" border="0" alt="View Metric Measurements"
+										 width="104" height="28" /></a></td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                          <tr>
+                            <td bgcolor="#6F48B3" width="13"><img border="0" src="/files/images/spacer.gif" width="12" height="1" alt=" " /></td>
+                            <td bgcolor="#6F48B3" width="184"><table border="0" cellspacing="0" width="185"
+								 bgcolor="#FFFFFF" cellpadding="2"
+								 summary="This table is used for layout purposes only.">
+                              <tr>
+                                <td colspan="3" align="center" class="colcenter"><table border="0" cellspacing="0" width="185"
+								 bgcolor="#FFFFFF" cellpadding="2"
+								 summary="This table is used for layout purposes only.">
+                                      <tr>
+                                        <td width="95" style="text-align:right;"><b>Your Height:</b>&nbsp;</td>
+                                        <td width="59" align="left"><input
+										type="text" name="htf" size="6" id="height_feet" /></td>
+                                        <td width="100" align="left"><input
+										type="text" name="hti" size="6" id="height_inches" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="95"><span
+										style="font-size: 10pt;">&nbsp;</span></td>
+                                        <td width="45" align="left"><b>
+                                          <label
+										for="height_feet">(feet)</label>
+                                        </b></td>
+                                        <td width="53" align="left"><b>
+                                          <label
+										for="height_inches">(inches)</label>
+                                        </b></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="3"><img src="/files/images/spacer.gif"
+										width="2" height="12" border="0" alt=" " /></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="95" style="text-align:right;"><b>
+                                          <label for="your_weight">Your
+                                            Weight:</label>
+                                          &nbsp;</b></td>
+                                        <td width="45" align="left"><input type="text" name="wt" size="3" id="your_weight" /></td>
+                                        <td width="53" align="left">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="95"><span
+										style="font-size: 10pt;">&nbsp;</span></td>
+                                        <td align="left" valign="top"><b>(pounds)</b></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="3" align="center" class="colcenter" style="padding-top:5px;"><input type="button"
+										value="Compute BMI" onClick="self.compute();" /></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="3" class="colcenter"><table cellspacing="0" cellpadding="0" border="0"
+										 width="150" summary="This table is used for layout purposes only.">
+                                            <tr>
+                                              <td align="left"
+											  style="background-image: url(images/oeilogo.gif); background-repeat: no-repeat; background-position: center top"
+											  height="201"><div
+												 style="margin-left: 55px; margin-top: -3px">
+                                                  <label for="yourbmi"><span
+												  style="font-size: .9em; font-weight:bold;"> Your
+                                                    BMI:</span></label>
+                                                  <br />
+                                                  <input name="bmi" type="text" size="4" id="yourbmi"
+												  style="text-align: center" />
+                                              </div></td>
+                                            </tr>
+                                        </table></td>
+                                      </tr>
+                                  </table></td>
+                              </tr>
+                            </table></td>
+                            <td bgcolor="#6F48B3" width="13"><img border="0" src="/files/images/spacer.gif" width="12" height="1" alt=" " /></td>
+                          </tr>
+                          <tr>
+                            <td bgcolor="#6F48B3" colspan="3" width="100%" align="center">&nbsp;</td>
+                          </tr>
+                        </table></td>
+                  <td valign="top">
+
+						<p style="margin-top: 1.5em;"><b>BMI Categories: </b><br>
+						Underweight = &lt;18.5<br>
+						  Normal weight = 18.5&ndash;24.9 <br>
+						 Overweight = 25&ndash;29.9 <br>
+						  Obesity = BMI of 30 or greater </p>
+
+              <p><strong>What Next? Take Action Towards Better Health:</strong></p>
+              <p><a href="https://www.nhlbi.nih.gov/heart-truth/maintain-a-healthy-weight">Maintain a Healthy Weight</a>
+                <ul style="padding: 0 0 0 20px;">
+                  <li style="margin-bottom: 0;">Maintaining a healthy weight is important for your heart health.</li>
+                  <li style="margin-bottom: 0;">Learn more about <a href="https://www.nhlbi.nih.gov/health-topics/overweight-and-obesity">overweight and obesity</a></li>
+                </ul>
+              <p><a href="https://www.nhlbi.nih.gov/heart-truth/increase-physical-activity">Increase Physical Activity</a>
+                <ul style="padding: 0 0 0 20px;">
+                  <li style="margin-bottom: 0;">Moving more can lower your risk factors for heart disease.</li>
+                </ul>
+              <p><a href="https://www.nhlbi.nih.gov/heart-truth/eat-a-heart-healthy-diet">Eat a Heart-Healthy Diet</a>
+                <ul style="padding: 0 0 0 20px;">
+                  <li style="margin-bottom: 0;">Eating a healthy diet is the key to heart disease prevention.</li>
+                </ul>
+              <p><a href="https://www.nhlbi.nih.gov/heart-truth/know-and-control-your-heart-health-numbers">Know and Control Your Heart Health Numbers</a></li>
+                <ul style="padding: 0 0 0 20px;">
+                  <li style="margin-bottom: 0;">Tracking your heart health stats can help you meet your heart health goals.</li>
+                </ul>
+            
+                          <p>Download the BMI calculator app today (available for <a href="https://itunes.apple.com/at/app/nhlbi-bmi-calculator/id446441346?l=en&mt=8">iPhone</a><a href="/about/contact/link-disclaimer.htm"><img src="/files/images/external-link.png" alt="external disclaimer"></a> and <a href="https://play.google.com/store/apps/details?id=gov.nih.nhlbi.bmicalc&hl=en">Android</a><a href="/about/contact/link-disclaimer.htm"><img src="/files/images/external-link.png" alt="external disclaimer"></a>).</p>
+
+
+
+                      </td>
+				  </tr>
+				</table> </form>			 </td>
+		</tr>
+	 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <!--End Body Text--></td>
+
+       </tr>
+       <!--RIGHT-HAND COLUMN -->
+     </table>
+     <!--END Aimtxt --></div></td>
+    </tr>
+
+  </table></td>
+ </tr>
+</table>
+<br />
+
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+
+</div>
+</body>
+</html>

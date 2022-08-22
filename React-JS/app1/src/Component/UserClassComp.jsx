@@ -25,14 +25,16 @@ export class User extends Component{
     }
     render(){
         return <div>
+            <h1>String</h1>
             <button onClick={this.changemessage}>set message</button>
-            <h2>hello from user class component</h2>
             <p>user message is :{this.state.message}</p>
             <hr/>
+            <h1>Object</h1>
             <button onClick={this.changeperson}>change person</button>
             <p>First Name :{this.state.person.fname}</p>
             <p>Last Name :{this.state.person.lname}</p>
             <hr/>
+            <h1>Array</h1>
             <button onClick={this.displayusers}>display user</button>
             {this.state.users.map((users)=>{
                 return <p>{users}</p>

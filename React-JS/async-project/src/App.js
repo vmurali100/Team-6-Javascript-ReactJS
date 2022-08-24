@@ -27,14 +27,14 @@ function App() {
            {/* <Albumsasync/> */}
            {/* <PostsAsync/> */}
            {/* <UsersAsync/> */}
-           <CartsAsync/>
+           {/* <CartsAsync/> */}
 
           {/* <Assignment1/> */}
           {/* <Assignment2/> */}
           {/* <Assignment3/> */}
           {/* <Assignment4/> */}
           {/* <Assignment5/> */}
-         {/* <Assignment6/> */}
+         <Assignment6/>
     </div>
   );
 }

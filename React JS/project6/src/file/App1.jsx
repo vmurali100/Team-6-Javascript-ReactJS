@@ -3,7 +3,7 @@ import Parent from "./Parent";
 import { UserProvider } from "./userContext";
 
 
- export function App (){
+ export function App1 (){
     const [user, setuser] = useState(user)
     return <div>
     <UserProvider value={user}>

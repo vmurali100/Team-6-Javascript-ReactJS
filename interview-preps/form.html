@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">First Name</label>
+        <input type="text" name="" id="fname"><br><br>
+        <label for="lname">Last Name</label>
+        <input type="text" name="" id="lname"><br><br>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br><br>
+        <button type="button" onclick="addUser()">Add User</button>
+    </form>
+    <script>
+        var allusers=[]
+         function addUser(){
+            var user={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                email:document.getElementById("email").value
+            }
+            allusers.push(user)
+            console.log(allusers)
+            document.write(fname.value+'<br/>'+lname.value)
+           
+        }
+    </script>
+</body>
+</html>

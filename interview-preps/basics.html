@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // alert("heloo")
+        // console.log(123)
+        // console.table({a:1, b:2})
+
+        // //var, LET,CONST
+        // var Name="deepthi";
+        // console.log(Name)
+        // Name="deepthi boppana" //by using var and let we can reassign vairables
+        // console.log(Name)
+
+        //numbers and math
+        // const num1=100;
+        // const num2=50
+        // let val;
+        //simple math with numbers
+        // val=num1+num2
+        // val=num1*num2
+        // val=num1-num2
+        // val=num1/num2
+        // console.log(val)
+
+        // string methods
+        firstName = "deepthi"
+        lastName = "boppana"
+        str = "heloo i am deepthi boppana"
+        tags = "web design,web applications,ui design"
+        // // 1.concatenation
+        // val=firstName+' '+lastName
+        // console.log(val)
+
+        // //2 append
+        // val="jyothi "
+        // val +="boppana"
+        // console.log(val)
+
+        // char at last index
+        // val=lastName.charAt(lastName.length-1)
+        // console.log(val)
+
+        // substring
+        val = firstName.substring(0, 4)
+        //slice
+        val = firstName.slice(0, 4)
+        val = firstName.slice(-4)
+
+        //split
+        val = str.split(' ')
+        val = tags.split(',')
+
+        //replace
+        val = str.replace('deepthi', 'jyothi')
+        console.log(val)
+
+        //template literals
+        const name = "deepthi"
+        const age = 21
+        const job = "web development"
+        let html;
+
+        html = `<ul>
+ <li>Name:${name}</li>
+<li>Age:${age}</li>
+<li>Job:${job}</li>
+</ul>
+`;
+
+        document.body.innerHTML = html
+    </script>
+</body>
+
+</html>

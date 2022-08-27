@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Array Methods</h1>
+    <script>
+        //array methods
+        const numbers = [44, 34, 54, 64, 74, 84];
+        const numbers2 = new Array(11, 22, 33, 44, 55, 66);
+        let val;
+
+        //get array length
+        val = numbers.length;
+
+        //check if is array
+        val = Array.isArray(numbers)
+
+        //get single value
+        val = numbers[3]
+
+        //insert in to array
+        numbers[6] = 100
+        // console.log(numbers)
+
+        //find index of value
+        val = numbers.indexOf(100)
+
+        //concatenate arrays
+        val = numbers.concat(numbers2)
+
+        //sort
+        val = numbers.sort() // this will give highest to lowest so we need callback function
+
+        //sort for in a order low to high
+        val = numbers.sort(function (x, y) {
+            return x - y
+        })
+
+        //sort from high to low
+        val = numbers.sort(function (x, y) {
+            return y - x
+        })
+
+        console.log(val)
+    </script>
+</body>
+
+</html>

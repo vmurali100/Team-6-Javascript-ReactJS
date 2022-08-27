@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>IF condition & Switch </h1>
+    <script>
+
+        const id = 100;
+
+        //Equal To
+        if (id == 101) {
+            console.log('CORRECT')
+        } else {
+            console.log('INCORRECT')
+        }
+
+        // NOT EQUAL TO
+        if (id != 101) {
+            console.log('CORRECT')
+        } else {
+            console.log('INCORRECT')
+        }
+
+        //EQUAL TO VALUE AND TYPE
+        if (id === '100') {
+            console.log('CORRECT')
+        } else {
+            console.log('INCORRECT')
+        }
+
+        //GREATER OR LESS THAN
+        if (id >= 100) {
+            console.log('correct')
+        } else {
+            console.log('incorrect')
+        }
+
+        //if else
+        const color = "Red"
+
+        if (color === "Red") {
+            console.log('color is red')
+        } else if (color === "blue") {
+            console.log('color is blue')
+        } else {
+            console.log('color is not red and blue')
+        }
+
+        //logical operator
+        const Name = "deepthi"
+        age = 21
+
+        // And &&
+        if (age > 0 && age < 12) {
+            console.log(`${Name} is a child`)
+        } else if (age >= 13 && age <= 19) {
+            console.log(`${Name} is a Teenager`)
+        } else {
+            console.log(`${Name} is a adult`)
+        }
+
+        // OR ||
+        if (age < 16 || age > 65) {
+            console.log(`${Name} cannot run in race`)
+        } else {
+            console.log(`${Name} is registered for the race`)
+        }
+
+        // TERRNERY OPERATOR
+        console.log(id === 100 ? 'correct' : 'inncorrect') // we use question mark as ternary operator for else we use :
+
+        //without braces
+
+        if (id === 100)
+            console.log('correct')
+        else
+            console.log('incorrect')
+
+
+
+        //switch statement
+        const color2 = 'red'
+        switch (color2) {
+            case 'blue':
+                console.log('color is blue');
+                break;
+            case 'red':
+                console.log('color red');
+                break;
+            default:
+                console.log('color is not red or blue')
+
+        }
+    </script>
+</body>
+
+</html>

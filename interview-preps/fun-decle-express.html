@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>function declarations and examples</h1>
+    <script>
+        // function declarations
+        function greet(firstname) {
+            return 'heloo ' + firstname
+        }
+        // console.log(greet('hari'));
+
+        //function expressions
+        const square = function (x = 3) {
+            return x * x
+        }
+            // console.log(square())
+
+            //IMMEDIATELY INVOKED FUNCTION EXPRESSIONS - IIFES
+
+            (function () {
+                console.log('IIFE ran...');
+            }());
+
+        // IIFE also can take parameters
+        (function (Name) {
+            console.log('hello ' + Name)
+        }('Vishnu'))
+
+        //property methods
+        const todo = {
+            add: function () {
+                console.log('add todo.....')
+            },
+            edit: function (id) {
+                console.log(`edit todo ${id}`)
+            }
+        }
+        todo.add()
+        todo.edit(9)
+    </script>
+</body>
+
+</html>

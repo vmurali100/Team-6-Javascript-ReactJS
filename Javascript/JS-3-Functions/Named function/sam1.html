@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <script>
+   function createPerson(firstName, lastName) {
+       return {
+           firstName: firstName,
+           lastName: lastName,
+           getFullName() {
+               return firstName + ' ' + lastName;
+           }
+       }
+   }
+   let name = createPerson('This is a', 'named function!');
+     
+   console.log(name.getFullName());
+
+   
+function test() {
+	console.log (`This is a ${this.func}`);
+}
+const func = {
+	func: 'named function!',
+	test
+}
+func.test();
+
+
+</script>;
+     
+</body>
+</html>

@@ -8,16 +8,13 @@
 </head>
 <body>
     <script>
-        function parent(){
-            var name="Sai";
-
-            function child(){
-                var name="kiran";
-                console.log(name)
+        const sai=(a)=>{
+            return (b)=>{
+                return a*b
             }
-            child()
         }
-        parent()
+        console.log(sai (4)(4))
+        document.write(sai (4)(4))
     </script>
 </body>
 </html>

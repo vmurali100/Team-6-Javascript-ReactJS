@@ -9,15 +9,25 @@
 <body>
     <script>
         function parent(){
-            var name="Sai";
+            var name="Jayasankar";
 
             function child(){
-                var name="kiran";
+                var name="SaiKiran";
+
                 console.log(name)
+                // document.write(name)
             }
             child()
         }
         parent()
+
+        const Akhil =(a)=>{
+              return(b)=>{
+                return a*b
+              }
+        }
+        console.log(Akhil(5)(5))
+        document.write(Akhil(5)(4))
     </script>
 </body>
 </html>

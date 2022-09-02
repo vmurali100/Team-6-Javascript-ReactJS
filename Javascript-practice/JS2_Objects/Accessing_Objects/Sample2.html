@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var student = {
+            name:"Srividya",
+            email:"vidyachowdary7@gmail.com",
+            city:"Hyderabad",
+            state:"Telangana",
+            role:"UI Developer"
+        }
+        console.log(student)
+        
+        // document.write(
+        //     student.name + "<br>" +
+        //     student.email + "<br>" +
+        //     student.city + "<br>" +
+        //     student.state + "<br>" +
+        //     student.role
+        // )
+
+        // Destructering
+        var {name,email,city,state,role} = student
+        document.write(
+            name + "<br>" +
+            email + "<br>" +
+            city + "<br>" +
+            state + "<br>" +
+            role
+        )
+    </script>
+</body>
+</html>

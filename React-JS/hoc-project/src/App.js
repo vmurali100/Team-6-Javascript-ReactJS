@@ -32,9 +32,10 @@ function App() {
     {/* <DClickCount/>
     <hr/>
     <DHoverCount/> */}
-    <ClickCounter1/>
+    {/* <ClickCounter1/>
     <hr/>
-    <HoverCounter1/>
+    <HoverCounter1/> */}
+    <Sam/>
     </div>
   );
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            // Es 5 (ECMA script)
+            // Type:1
+            // Defining Function or Creating a Funtion
+        function prepareMaggie(){
+            console.log("Maggie is Ready and you can eat...")
+        }
+        prepareMaggie()  //Calling or excuting function in javascript
+
+        function attendingClass(){
+            console.log("Attend Javascript classes ...")
+        }
+        attendingClass()   // Calling or Excuting or Invoking Function
+
+            // Type:2 
+        var sayHello = function (){console.log("Excuting Say Hello Function")};
+        sayHello()
+        
+            // Type:3
+        var sayHelloTome = function sayHello(){
+            console.log("Say Hello to me from say Hello function")
+        }
+        sayHelloTome()
+
+            // ES 6
+            // Type:4
+        var sayHello = () =>{
+            console.log("Hello from Es6")
+        }   //Arrow Functions or Fat Arrow Functions ES6 Type of Creating Functions
+
+            // Type5
+            // Invoked Funtion
+        (function (){
+            console.log("Hello From immedietly Invoked function")
+        })()
+            // Fat Arrow Function
+        (()=>{
+            console.log("I am From IIFE with Fat arrow or Arrow Function")
+        })()
+
+    </script>
+</body>
+</html>

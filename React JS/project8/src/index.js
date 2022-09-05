@@ -5,11 +5,12 @@ import App from './App';
 import {Provider} from "react-redux";
 import reportWebVitals from './reportWebVitals';
 import { Click } from './file/Click';
+import { File } from './contact/File';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Click/>
+    <File/>
   </React.StrictMode>
 );
 

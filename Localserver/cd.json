@@ -1,18 +1,26 @@
 {
   "all": [
     {
-      "fname": "santhosh",
-      "lname": "thrt",
+      "name": "",
       "email": "santhoshfiredragon1234@gmail.com",
-      "date": "2022-06-29",
-      "id": 1
+      "id": 1,
+      "fname": "santhosh"
     },
     {
-      "username": "knk",
-      "mobile": "kidvj",
-      "email": "dkndk",
-      "date": "2022-06-30",
-      "id": 2
+      "name": "",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "id": 2,
+      "fname": "B.Santhosh"
+    },
+    {
+      "name": "",
+      "email": "",
+      "id": 3
+    },
+    {
+      "name": "hjjll",
+      "email": "santhoshfiredragon1234@gmail.com",
+      "id": 4
     }
   ]
 }

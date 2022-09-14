@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 method this can also be done in one line using chain methods
+        // function reverseString(str){
+        //     var strArr=str.split("")
+        //     var reverseStrArr=strArr.reverse()
+        //     var reversedStr=reverseStrArr.join("")
+        //     // console.log(reverseStrArr)
+        //     return reversedStr
+        // }
+        // console.log(reverseString('hello'))
+
+        //2
+        // function reverseString(str){
+        //     return str.split("").reverse().join("")
+        // }
+        // console.log(reverseString("HELLOO"))
+
+        //with loop
+       function reverseString(str){
+        var final="";
+        for( var i=str.length-1;i>=0;i--){
+            final+=str[i]
+        }
+        return final;
+       }
+       console.log(reverseString("HELLOo"))
+    </script>
+</body>
+
+</html>

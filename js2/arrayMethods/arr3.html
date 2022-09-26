@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addAtStart()">add value at start</button><br/>
+    <button onclick="addAtEnd()">add value at end</button><br/>
+    <button onclick="addAtMiddle()">add value at middle</button><br/>
+    <button onclick="deleteAtStart()">delete value at start</button><br/>
+    <button onclick="deleteAtMiddle()">delete value at middle</button><br/>
+    <button onclick="deleteAtEnd()">delete value at end</button><br/>
+    <button onclick="reverse()">revese</button><br/>
+    <button onclick="sortValues()">sort values</button><br/>
+
+    <button onclick="displayForeach()">display forEach</button><br/>
+    <button onclick="displayMap()">display map</button><br/>
+    <button onclick="displayFind()">display values find</button><br/>
+    <button onclick="displayFilter()">display values filter</button><br/>
+    <button onclick="displaysome()">display values some</button><br/>
+    <button onclick="displayEvery()">display values Every</button><br/>
+
+    <button onclick="reduceVal()">reduce</button>
+
+    
+    <script>
+        let arr=["BMW","Honda","Activa"]
+
+        function addAtStart(){
+            arr.unshift("Scooty")
+            console.log(arr)
+        }
+        function addAtEnd(){
+            arr.push("pleasure")
+            console.log(arr)
+        }
+        function addAtMiddle(){
+            arr.splice(2,0,"duke")
+            console.log(arr)
+        }
+        function deleteAtStart(){
+            arr.shift()
+            console.log(arr)
+        }
+        function deleteAtMiddle(){
+            arr.splice(2,1)
+            console.log(arr)
+        }
+        function deleteAtEnd(){
+            arr.pop()
+            console.log(arr)
+        }
+        function reverse(){
+            arr.reverse()
+            console.log(arr)
+        }
+        function sortValues(){
+            arr.sort()
+            console.log(arr)
+        }
+
+        function displayForeach(){
+            arr.forEach(function(val,i){
+                console.log(val+i)
+            })
+        }
+        function displayMap(){
+
+            var bikes=arr.map(function(bike){
+                return bike+"-car"
+            })
+            console.log(bikes)
+        }
+
+        function displayFind(){
+            var findArr=arr.find(function(val){
+                return val.length==4
+            })
+            console.log(findArr)
+        }
+        function displayFilter(){
+            var findArr=arr.filter(function(val){
+                return val.length==4
+            })
+            console.log(findArr)
+        }
+
+        function displaysome(){
+            var findSome=arr.some(function(val){
+                return val.length==5
+            })
+            console.log(findSome)
+        }
+        function displayEvery(){
+            var findEvery=arr.every(function(val){
+                return val.length==5
+            })
+            console.log(findEvery)
+        }
+
+        function reduceVal(){
+            var val=[5,4,3,2,1]
+            var totalSum=val.reduce(function(a,b){
+                return a+b
+            })
+            console.log(totalSum)
+        }
+    </script>
+</body>
+</html>

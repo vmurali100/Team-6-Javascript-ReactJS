@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="addvalstart()">add a value - start</button>
+    <button onclick="addvalend()">add a value - end</button>
+    <button onclick="addvalmiddle()">add a value - middle</button>
+
+    <button onclick="removevalstart()">remove a value - start</button>
+    <button onclick="removevalend()">remove a value - end</button>
+    <button onclick="removevalmiddle()">remove a value - middle</button>
+
+    <button onclick="sort()">sort</button>
+    <button onclick="reverse()">reverse</button>
+
+    <button onclick="foreach()">foreach</button>
+    <button onclick="map()">map</button>
+    <button onclick="find()">find</button>
+    <button onclick="filter()">filter</button>
+    <button onclick="some()">some</button>
+    <button onclick="every()">every</button>
+    <button onclick="reduce()">reduce</button>
+    <script>
+        var names = ["manju", "munaswamy", "padmaja", "sandhya", "neeraja","lokke"]
+        function addvalstart() {
+            names.unshift("M")
+            console.log(names)
+        }
+        function addvalend() {
+            names.push("D")
+            console.log(names)
+        }
+        function addvalmiddle() {
+            names.splice(1, 0, "S")
+            console.log(names)
+        }
+        function removevalstart() {
+            names.shift()
+            console.log(names)
+        }
+        function removevalend() {
+            names.pop()
+            console.log(names)
+        }
+        function removevalmiddle() {
+            names.splice(1, 1)
+            console.log(names)
+        }
+        function sort() {
+            names.sort()
+            console.log(names)
+        }
+        function reverse() {
+            names.reverse()
+            console.log(names)
+        }
+        function foreach() {
+            names.forEach(function (val, i) {
+                console.log(val + i)
+            })
+        }
+        function map() {
+            var newnames = names.map(function(name) {
+                return name + "-reddy"
+            })
+            console.log(newnames)
+        }
+        function find(){
+            var newnames=names.find(function(val){
+                return val.length==5
+            })
+            console.log(newnames)
+        }
+        function filter(){
+            var newnames=names.filter(function(val){
+                return val.length==5
+            })
+            console.log(newnames)
+        }
+
+        function some(){
+            var newnames=names.some(function(val){
+                return val.length==7
+            })
+            console.log(newnames)
+        }
+        function every(){
+            var newnames=names.every(function(val){
+                return val.length==5
+            })
+            console.log(newnames)
+        }
+
+        function reduce(){
+            var nums=[2,4,6,8,10]
+            var total=nums.reduce(function(a,b){
+                return a+b
+            })
+            console.log(total)
+        }
+    </script>
+</body>
+
+</html>

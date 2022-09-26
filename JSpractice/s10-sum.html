@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let toSum=(arr,sum)=>{
+            let hash={},
+            results=[]
+
+            for(let i=0;i<arr.length;i++){
+                if(hash[arr[i]]){
+                    results.push([hash[arr[i]],arr[i]])
+                }else{
+                    hash[sum - arr[i]] = arr[i]
+                }
+            }
+            return results
+        }
+        console.log(toSum([2,3,1,4,6,7,5,0],5))
+    </script>
+</body>
+</html>

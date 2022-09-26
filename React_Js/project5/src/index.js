@@ -5,13 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import F1 from './F1';
 import F2 from './F2';
+import Child from './CtoP/Child';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <F1/>
-    <F2/>
+    {/* <F1/>
+    <F2/> */}
+   <Child/>
   </React.StrictMode>
 );
 

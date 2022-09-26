@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Parent from './Functional/Parent';
+import Users from './Functional/Users';
+import Posts from './Functional/Posts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* <Parent/> */}
+    {/* <Users/> */}
+    <Posts/>
   </React.StrictMode>
 );
 

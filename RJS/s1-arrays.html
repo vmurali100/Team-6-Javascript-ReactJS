@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    var names=["padmaja","sandhya","neeru","neeraja","deepa"];
+    names.forEach(function(padhu,i,arr){
+        console.log(padhu,i,arr)
+        document.write(padhu + " "+i+"<br>")
+    })
+
+    names.map(function(val,i){
+        document.write(val+""+i+"<br/>")
+    })
+
+    var newnames=names.map(function(info){
+        return info+"-M"
+    })
+    console.log("newnames -",newnames)
+
+    var form =names.find(function(val){
+        return val.length==5
+    })
+
+    var form =names.filter(function(val){
+        return val.length==5
+    })
+    console.log(form)
+
+    var check=names.some(function(val){
+        return val.length==5
+    })
+    
+    var check=names.every(function(val){
+        return val.length>=5
+    })
+    console.log(check)
+
+    var numbers=[1,2,3,4,5,5,10]
+    var total=numbers.reduce(function(a,b){
+        return a+b
+    })
+    console.log(total)
+    var newarr=[]
+    for(i=1;i<=100;i++){
+        newarr.push(i)
+    }
+    console.log(newarr)
+   </script> 
+</body>
+</html>

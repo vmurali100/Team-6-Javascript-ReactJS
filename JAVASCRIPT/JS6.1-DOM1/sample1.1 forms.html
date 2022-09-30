@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="fname">FisrtName</label>
+        <input type="text" name="" id="fname"><br>
+        <label for="lname">LasttName</label>
+        <input type="text" name="" id="lname"><br>
+        <label for="city">City</label>
+        <input type="text" name="" id="city"><br>
+        <label for="state">State</label>
+        <input type="text" name="" id="state"><br>
+
+        <button type="button" onclick="addUser()">Add User</button>
+    </form>
+    <script>
+        function addUser(){
+            var user ={
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value,
+                city:document.getElementById("city").value,
+                state:document.getElementById("state").value,
+            }
+            console.log(user)
+        }
+    </script>
+</body>
+</html>

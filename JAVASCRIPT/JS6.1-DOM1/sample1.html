@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="fname">Fname</label>
+        <input type="text" name="" id="fname"> <br>
+        <label for="lname">Lname</label>
+        <input type="text" name="" id="lname"> <br>
+        <label for="email">email</label>
+        <input type="text" name="" id="email"> <br>
+        <label for="college">College</label>
+        <input type="text" name="" id="college"> <br>
+
+        <button type="button" onclick="addUser()">Add User</button>
+    </form>
+    <script>
+        function addUser() {
+            var user = {
+                fname: document.getElementById("fname").value,
+                lname: document.getElementById("lname").value,
+                email: document.getElementById("email").value,
+                college:document.getElementById("college").value
+            }
+            console.log(user)
+        }
+            
+           
+    </script>
+</body>
+
+</html>

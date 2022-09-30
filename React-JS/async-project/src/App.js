@@ -24,7 +24,7 @@ function App() {
           {/* <Users/> */}
           {/* <TodosAsync/> */}
           {/* <CommentsAsync/> */}
-           {/* <Albumsasync/> */}
+           <Albumsasync/>
            {/* <PostsAsync/> */}
            {/* <UsersAsync/> */}
            {/* <CartsAsync/> */}
@@ -34,7 +34,7 @@ function App() {
           {/* <Assignment3/> */}
           {/* <Assignment4/> */}
           {/* <Assignment5/> */}
-         <Assignment6/>
+         {/* <Assignment6/> */}
     </div>
   );
 }

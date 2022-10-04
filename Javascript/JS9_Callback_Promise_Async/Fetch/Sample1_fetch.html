@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getData()">Get Data</button>
+    <script>
+        // function getData(){
+        //     var getData = new XMLHttpRequest();
+
+        //     getData.onreadystatechange = function(){
+        //         if (getData.status == 200 && getData.readyState == 4){
+        //             console.log(this.response)
+        //         }
+        //     }
+
+        //     getData.open("GET","https://fakestoreapi.com/users")
+        //     getData.send()
+        // }
+        async function getData(){
+            // fetch("https://fakestoreapi.com/users").then((response)=>{
+            //     return response.json()
+            // }).then((resp)=>{
+            //     console.log(resp)
+            // })
+
+            var productInfo = await fetch("https://fakestoreapi.com/users");
+            var data = await productInfo.json()
+            console.log(data)
+
+        }
+    </script>
+</body>
+</html>

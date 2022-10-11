@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.name = "global";
+        var person = {
+            name: "jason",
+
+            shout: function () {
+                console.log("my name is shout", this.name);
+            },
+            shout2: () => {
+                console.log("my name is  shout2:", this.name);
+            },
+        };
+
+        person.shout();
+        person.shout2();
+    </script>
+</body>
+
+</html>

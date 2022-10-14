@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <form >
+        <label for="username">Username</label>
+        <input type="text" name="" id="username"><br/><br/>
+        <label for="email">Email</label>
+        <input type="text" name="" id="email"><br/><br/>
+        <label for="password">Password</label>
+        <input type="password" name="" id="password"><br/><br/>
+        <label for="cpassword">ConfirmPassword</label>
+        <input type="password" name="" id="cpassword"><br/><br/>
+        <label for="displayname">Display Name</label>
+        <input type="text" name="" id="displayname"><br/><br/>
+        <label for="name"> Name</label>
+        <input type="text" name="" placeholder="first" id="fname">
+        <input type="text" name="" placeholder="last" id="lname"><br/><br/>
+        <label for="nickname">Nick Name</label>
+        <input type="text" name="" id="nickname"><br/><br/>
+        <label for="website">website</label>
+        <input type="text" name="" id="website"><br/><br/>
+        <textarea name="" id="bio" cols="30" rows="10">Bio</textarea><br/><br/>
+        <button type="button" id="adduser" onclick="add()">add </button>
+        <button type="button" id="updateuser" onclick="update()" style="display:none;">update </button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>ConfirmPassword</th>
+                <th>Display Name</th>
+                <th>Name</th>
+                <th>Nick Name</th>
+                <th>website</th>
+                <th>Bio</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+          var alluser=[]
+          var index=null
+        function add(){
+          
+            var user={
+                username:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("password").value,
+                cpassword:document.getElementById("cpassword").value,
+                displayname:document.getElementById("displayname").value,
+                name:document.getElementById("fname").value,
+                name:document.getElementById("lname").value,
+                nickname:document.getElementById("nickname").value,
+                website:document.getElementById("website").value,
+                bio:document.getElementById("bio").value,
+            }
+            alluser.push(user)
+            console.log(alluser)
+            displayUser(alluser)
+        }
+        function displayUser(data){
+            document.querySelector('tbody').innerHTML=""
+            data.forEach((user,i)=>{
+                var mytr=document.createElement("tr")
+                for(a in user){
+                    var mytd=document.createElement("td")
+                    mytd.innerHTML=user[a]
+                    mytr.appendChild(mytd)
+                }
+                   //edit btn
+                   var EditTd=document.createElement("td")
+                var editBtn=document.createElement("button")
+                editBtn.setAttribute("onclick","edituser("+i+")")
+                editBtn.innerHTML="Edit"
+                EditTd.appendChild(editBtn)
+                mytr.appendChild(EditTd)
+                //delete
+                var DeleteTd=document.createElement("td")
+                var DeleteBtn=document.createElement("button")
+                DeleteBtn.setAttribute("onclick","deleteuser("+i+")")
+                DeleteBtn.innerHTML="delete"
+                DeleteTd.appendChild(DeleteBtn)
+                mytr.appendChild(DeleteTd)
+                document.querySelector('tbody').appendChild(mytr)
+            })
+        }
+        function deleteuser(i){
+            console.log(i)
+            alluser.splice(i,1)
+            // alldata.splice(i,1)
+            displayUser(alluser)
+        }
+        function edituser(i){
+            index=i
+            console.log(i)
+           document.getElementById("username").value=alluser[i].username
+               document.getElementById("email").value=alluser[i].email
+                document.getElementById("password").value=alluser[i].password
+                document.getElementById("cpassword").value=alluser[i].cpassword
+                document.getElementById("displayname").value=alluser[i].displayname
+               document.getElementById("fname").value=alluser[i].fname
+                document.getElementById("lname").value=alluser[i].lname
+                document.getElementById("nickname").value=alluser[i].nickname
+                document.getElementById("website").value=alluser[i].website
+               document.getElementById("bio").value=alluser[i].bio
+
+               document.getElementById("adduser").style.display="none"
+               document.getElementById("updateuser").style.display="block"
+        }
+        function update(){
+            var user={
+                username:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("password").value,
+                cpassword:document.getElementById("cpassword").value,
+                displayname:document.getElementById("displayname").value,
+                name:document.getElementById("fname").value,
+                name:document.getElementById("lname").value,
+                nickname:document.getElementById("nickname").value,
+                website:document.getElementById("website").value,
+                bio:document.getElementById("bio").value,
+            }
+            alluser[index]=user
+            displayUser(alluser)
+            document.getElementById("updateuser").style.display="none"
+            document.getElementById("adduser").style.display="block"
+              
+        }
+    </script>
+</body>
+</html>

@@ -14,7 +14,8 @@
         <label for="lname">Last Name</label>
         <input type="text" name="" id="lname"></form><br/><br/>
 
-        <button type="button" onclick="addUser()">add user</button>
+        <button type="button" onclick="updateUser()" id="update"  style="display: none;">update user</button>
+        <button type="button" onclick="addUser()" id="add">add user</button>
         <hr/>
         <table border="1">
             <thead>
@@ -30,6 +31,7 @@
     </form>
     <script>
         var alluser=[]
+        var index=null
         function addUser(){
             var user={
                 fname:document.getElementById("fname").value,
@@ -82,12 +84,27 @@
             displayUser(alluser)
         }
         function edituser(i){
-            var user={
+           
+            index=i
+            console.log(i)
+           document.getElementById('fname').value=alluser[i].fname,
+           document.getElementById('lname').value=alluser[i].lname
+
+           document.getElementById("update").style.display="block"
+           document.getElementById("add").style.display="none"
+        }
+      function updateUser(){
+        var user={
                 fname:document.getElementById("fname").value,
                 lname:document.getElementById("lname").value
             }
-        }
-      
+           alluser[index]=user
+           displayUser(alluser)
+           clearForm()
+
+           document.getElementById("update").style.display="none"
+           document.getElementById("add").style.display="block"
+      }
     </script>
 </body>
 </html>

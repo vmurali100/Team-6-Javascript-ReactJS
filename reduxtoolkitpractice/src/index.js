@@ -1,21 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
-import Hellow from './Components/Hellow';
-import { Harish } from './Harish';
-import { Mansur } from './Mansur';
-import { Nithya } from './Nithya';
 import reportWebVitals from './reportWebVitals';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    {/* <Harish/> */}
-    <Hellow/>
-    
-    
+import {BrowserRouter}from "react-router-dom";
+import store from "./reduxp/store";
+import {Provider}from "react-redux"
 
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+      <BrowserRouter>
+          <App/>
+       </BrowserRouter>
+      </Provider>
+      
   </React.StrictMode>
-);
+  );
+  
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

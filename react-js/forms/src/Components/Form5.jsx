@@ -16,6 +16,7 @@ const Form5 = () => {
     }
     const addstudent=()=>{
             console.log(student)
+            
     }
     return (<div>
         <fieldset>

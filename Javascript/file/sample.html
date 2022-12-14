@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="getapi()">click</button>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Rating</th>
+            <th>Delete</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var products=[]
+        function getapi(){
+            var getData= new XMLHttpRequest ();
+            getData.onreadystatechange = function (){
+                if (getData.status == 200 && getData.readyState == 4){
+                    // var allUsers = JSON.parse(this.response);
+                    products = JSON.parse(this.response);
+                    console.log(products)
+                    displayusers(products)
+                }
+            }
+            getData.open("GET","http://localhost:3000/products")
+            getData.send()
+        }
+        function displayusers(products){
+            document.querySelector("tbody").innerHTML="";
+            products.forEach((user,i)=>{
+                var myTr =document.createElement("tr")
+                for (a in user){
+                    var myTd=document.createElement("td")
+                    myTd.innerHTML=user[a]
+                    myTr.appendChild(myTd)
+                    
+                  
+
+                   
+                }
+                var deleteTd=document.createElement("td")
+                var deletebtn=document.createElement("button")
+                deletebtn.setAttribute("onclick","deleteuser("+i+")")
+                deletebtn.innerHTML="delete"
+                deleteTd.appendChild(deletebtn)
+                myTr.appendChild(deleteTd)
+
+                document.querySelector("tbody").appendChild(myTr)
+                
+            })
+        }
+        function deleteusers(i){
+            var deleteinfo= new XMLHttpRequest ();
+            deleteinfo.onreadystatechange = function (){
+                if (deleteinfo.status == 200 && deleteinfo.readyState == 4){
+                    
+                    
+                    getapi()
+                }
+            }
+            deleteinfo.open("DElETE","http://localhost:3000/products/"+products[i].id);
+            deleteinfo.send()
+
+        }
+               
+        
+    </script>
+</body>
+</html>

@@ -6,11 +6,12 @@ import {Provider} from "react-redux";
 import reportWebVitals from './reportWebVitals';
 import { Click } from './file/Click';
 import { File } from './contact/File';
+import Popular from './Popular';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <App/>
+   <Popular/>
   </React.StrictMode>
 );
 
